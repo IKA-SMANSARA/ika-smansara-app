@@ -8,20 +8,48 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
+  chopper: ^6.1.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.3.1
+  flutter_screenutil: ^5.8.4
+  flutter_svg: ^2.0.7
+  font_awesome_flutter: ^10.5.0
+  formz: ^0.6.0
+  freezed_annotation: ^2.2.0
+  go_router: ^9.0.2
+  google_fonts: ^5.1.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
   intl: ^0.18.0
+  injectable: ^2.1.2
+  json_annotation: ^4.8.1
+  path: ^1.8.3
+  path_provider: ^2.0.15
 
 dev_dependencies:
   bloc_test: ^9.1.2
+  build_runner: ^2.4.6
+  chopper_generator: ^6.0.3
+  flutter_gen_runner: ^5.3.1
   flutter_test:
     sdk: flutter
+  freezed: ^2.3.5
+  hive_generator: ^2.0.0
+  hive_test: ^1.0.1
+  injectable_generator: ^2.1.6
+  json_serializable: ^6.7.1
   mocktail: ^0.3.0
   very_good_analysis: ^5.0.0
 
 flutter:
   uses-material-design: true
   generate: true
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+
