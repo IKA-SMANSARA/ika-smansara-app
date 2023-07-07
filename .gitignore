@@ -129,3 +129,8 @@ app.*.map.json
 /lib/gen/*
 *.g.dart
 *.freezed.dart
+pubspec.lock
+*.hive
+*_keys.lock
+/*_collection/*.hive
+/*_collection/*.lock
