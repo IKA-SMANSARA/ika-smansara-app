@@ -127,3 +127,5 @@ app.*.map.json
 
 # others
 /lib/gen/*
+*.g.dart
+*.freezed.dart
