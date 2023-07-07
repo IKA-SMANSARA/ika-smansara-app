@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "744574529338",
+    "project_id": "ika-smansara-donation-platform",
+    "storage_bucket": "ika-smansara-donation-platform.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744574529338:android:d1835469cce71fbd7faa03",
+        "android_client_info": {
+          "package_name": "com.ikasmansara.ika_smansara"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744574529338-iiufbt69dic7ou40d8r3496sjopf6asm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ikasmansara.ika_smansara",
+            "certificate_hash": "84965cb00faee2a2bed7ae20b0890cecf833d149"
+          }
+        },
+        {
+          "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgoZRFhKufLBg7Og-bq1XUdM-rodGLsnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744574529338-cg7hbddn4rfue5d8cb2hhlsfdbce9im9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ikasmansara.ika-smansara"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744574529338:android:21cebd0312cb96877faa03",
+        "android_client_info": {
+          "package_name": "com.ikasmansara.ika_smansara.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgoZRFhKufLBg7Og-bq1XUdM-rodGLsnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744574529338-cg7hbddn4rfue5d8cb2hhlsfdbce9im9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ikasmansara.ika-smansara"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744574529338:android:d4f1ccbfe07d397c7faa03",
+        "android_client_info": {
+          "package_name": "com.ikasmansara.ika_smansara.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgoZRFhKufLBg7Og-bq1XUdM-rodGLsnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744574529338-qup2qn9sj8jmkol9tehtqe1lisb3hgqa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744574529338-cg7hbddn4rfue5d8cb2hhlsfdbce9im9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ikasmansara.ika-smansara"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
