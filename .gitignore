@@ -124,3 +124,13 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+
+# others
+/lib/gen/*
+*.g.dart
+*.freezed.dart
+pubspec.lock
+*.hive
+*_keys.lock
+/*_collection/*.hive
+/*_collection/*.lock
