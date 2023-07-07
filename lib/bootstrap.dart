@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:ika_smansara/common/di/injection.dart';
 import 'package:ika_smansara/firebase_options.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -49,6 +50,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   };
 
   await Hive.initFlutter();
+
+  await configureDependencies();
 
   runApp(await builder());
 }
