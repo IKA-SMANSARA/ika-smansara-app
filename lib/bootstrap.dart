@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:ika_smansara/common/di/injection.dart';
 import 'package:ika_smansara/firebase_options.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -23,8 +26,10 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
+// ignore: lines_longer_than_80_chars
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(details);
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
@@ -32,9 +37,21 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Pass all uncaught asynchronous errors that aren't handled by
+  // the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   await Hive.initFlutter();
+
+  await configureDependencies();
+
   runApp(await builder());
 }

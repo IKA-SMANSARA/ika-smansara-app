@@ -12,6 +12,14 @@ IKA SMANSARA
 
 ## Getting Started 🚀
 
+after clone this repo, please run this command
+
+```sh
+$ flutter pub get
+
+$ flutter packages pub run build_runner build
+```sh
+
 This project contains 3 flavors:
 
 - development
