@@ -134,3 +134,4 @@ pubspec.lock
 *_keys.lock
 /*_collection/*.hive
 /*_collection/*.lock
+/lib/**/injection.config.dart
