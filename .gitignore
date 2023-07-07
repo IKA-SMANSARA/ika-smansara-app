@@ -126,4 +126,4 @@ app.*.map.json
 !.idea/runConfigurations/
 
 # others
-gen/*
+/lib/gen/*
