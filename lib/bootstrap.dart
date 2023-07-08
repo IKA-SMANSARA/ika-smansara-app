@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:ika_smansara/common/di/injection.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/firebase_options.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -26,6 +28,17 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await setupFlutterNotifications();
+  showFlutterNotification(message);
+  // If you're going to use other Firebase services in the background, such as
+  // Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  Constants.logger.d('Handling a background message ${message.messageId}');
+}
+
 // ignore: lines_longer_than_80_chars
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
@@ -38,9 +51,48 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
+  await Hive.initFlutter();
+  await configureDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // firebase notification
+  // Set the background messaging handler early on, as a named top-level
+  // function
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  if (!kIsWeb) {
+    await setupFlutterNotifications();
+  }
+
+  // get fcm token
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  // ignore: inference_failure_on_function_invocation
+  final fcmTokenBox = await Hive.openBox('fcmTokenBox');
+  // save fcm token to local db
+  await fcmTokenBox.put('fcmToken', fcmToken ?? '');
+
+  // init messaging instance for permission
+  final messaging = FirebaseMessaging.instance;
+
+  // permission request for notification
+  final settings = await messaging.requestPermission();
+
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    Constants.logger.i('User granted permission');
+  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    Constants.logger.i('User granted provisional permission');
+  } else {
+    Constants.logger.w('User declined or has not accepted permission');
+
+    // Flutter local notification request permission android 13
+    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestPermission();
+  }
 
   // Pass all uncaught asynchronous errors that aren't handled by
   // the Flutter framework to Crashlytics
@@ -48,10 +100,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-
-  await Hive.initFlutter();
-
-  await configureDependencies();
 
   runApp(await builder());
 }
