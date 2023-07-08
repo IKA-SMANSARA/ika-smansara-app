@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/common/view/utils/adaptive_responsive_utils/minimum_screen_size.dart';
+import 'package:ika_smansara/common/common.dart';
 
 class ResponsivePortraitScreen extends StatelessWidget {
   const ResponsivePortraitScreen({
