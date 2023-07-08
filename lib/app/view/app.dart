@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/counter/counter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -7,16 +7,20 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFF13B9FF),
+    return ScreenUtilInit(
+      builder: (context, child) => MaterialApp.router(
+        // TODO(mashudi): configure go router here!.
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+          colorScheme: ColorScheme.fromSwatch(
+            accentColor: const Color(0xFF13B9FF),
+          ),
         ),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      splitScreenMode: true,
+      minTextAdapt: true,
     );
   }
 }
