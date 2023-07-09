@@ -52,6 +52,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
+  setupLogging();
   await configureDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -69,7 +70,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // get fcm token
   final fcmToken = await FirebaseMessaging.instance.getToken();
   // ignore: inference_failure_on_function_invocation
-  final fcmTokenBox = await Hive.openBox('fcmTokenBox');
+  final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
   // save fcm token to local db
   await fcmTokenBox.put('fcmToken', fcmToken ?? '');
 
