@@ -18,4 +18,8 @@ class Constants {
   static const xAppwriteProject = 'X-Appwrite-Project';
   static const xAppwriteKey = 'X-Appwrite-Key';
   static const fcmTokenBoxName = 'fcmTokenBox';
+
+  // ignore: lines_longer_than_80_chars
+  static const vapidKeyFcm =
+      'BH7TgdBEdeyIbhc15HLEZhvQ28R67tn5N9lfoyiyF6gSwzy8zX1AkVmTaOZs16pnAwyXVNz6O3bvWfDco2O0Rw8';
 }

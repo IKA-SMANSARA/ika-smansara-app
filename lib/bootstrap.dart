@@ -67,13 +67,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     await setupFlutterNotifications();
   }
 
-  // get fcm token
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  // ignore: inference_failure_on_function_invocation
-  final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
-  // save fcm token to local db
-  await fcmTokenBox.put('fcmToken', fcmToken ?? '');
-
   // init messaging instance for permission
   final messaging = FirebaseMessaging.instance;
 
@@ -82,6 +75,15 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
     Constants.logger.i('User granted permission');
+
+    // get fcm token
+    final fcmToken = kIsWeb
+        ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
+        : await messaging.getToken();
+    // ignore: inference_failure_on_function_invocation
+    final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
+    // save fcm token to local db
+    await fcmTokenBox.put('fcmToken', fcmToken ?? '');
   } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
     Constants.logger.i('User granted provisional permission');
   } else {
