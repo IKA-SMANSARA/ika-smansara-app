@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
+  bloc_concurrency: ^0.2.2
   chopper: ^6.1.4
   firebase_analytics: ^10.4.3
   firebase_app_check: ^0.1.5
