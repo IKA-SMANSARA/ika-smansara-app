@@ -69,17 +69,17 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     await setupFlutterNotifications();
   }
 
-  // init messaging instance for permission
-  final messaging = FirebaseMessaging.instance;
-
-  // permission request for notification
-  final settings = await messaging.requestPermission();
-
-  // get fcm token
   // disable get fcm for build web
   // issue cannot run application if request fcm before allow notification
   // permission in browser
   if (!kIsWeb) {
+    // init messaging instance for permission
+    final messaging = FirebaseMessaging.instance;
+
+    // permission request for notification
+    final settings = await messaging.requestPermission();
+
+    // get fcm token
     final fcmToken = kIsWeb
         ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
         : await messaging.getToken();
@@ -87,22 +87,23 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
     // save fcm token to local db
     await fcmTokenBox.put('fcmToken', fcmToken ?? '');
-  }
 
-  // notification permission condition
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    Constants.logger.i('User granted permission');
-  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-    Constants.logger.i('User granted provisional permission');
-  } else {
-    Constants.logger.w('User declined or has not accepted permission');
+    // notification permission condition
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      Constants.logger.i('User granted permission');
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
+      Constants.logger.i('User granted provisional permission');
+    } else {
+      Constants.logger.w('User declined or has not accepted permission');
 
-    // Flutter local notification request permission android 13
-    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestPermission();
+      // Flutter local notification request permission android 13
+      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestPermission();
+    }
   }
 
   // Pass all uncaught asynchronous errors that aren't handled by
