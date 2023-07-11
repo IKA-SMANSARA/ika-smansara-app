@@ -51,6 +51,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
+  // init basic configuration
   await Hive.initFlutter();
   setupLogging();
   await configureDependencies();
@@ -59,10 +60,11 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   );
 
   // firebase notification
-  // Set the background messaging handler early on, as a named top-level
-  // function
+  // Set the background messaging handler early on,
+  // as a named top-level function
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
+  // allow notification for application not for build web
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
@@ -73,10 +75,11 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // permission request for notification
   final settings = await messaging.requestPermission();
 
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    Constants.logger.i('User granted permission');
-
-    // get fcm token
+  // get fcm token
+  // disable get fcm for build web
+  // issue cannot run application if request fcm before allow notification
+  // permission in browser
+  if (!kIsWeb) {
     final fcmToken = kIsWeb
         ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
         : await messaging.getToken();
@@ -84,6 +87,11 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
     // save fcm token to local db
     await fcmTokenBox.put('fcmToken', fcmToken ?? '');
+  }
+
+  // notification permission condition
+  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    Constants.logger.i('User granted permission');
   } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
     Constants.logger.i('User granted provisional permission');
   } else {
