@@ -22,18 +22,14 @@ ErrorResponseDTO _$ErrorResponseDTOFromJson(Map<String, dynamic> json) {
 mixin _$ErrorResponseDTO {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'code')
   String? get code => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'version')
   String? get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ErrorResponseDTOCopyWith<ErrorResponseDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +40,6 @@ abstract class $ErrorResponseDTOCopyWith<$Res> {
   factory $ErrorResponseDTOCopyWith(
           ErrorResponseDTO value, $Res Function(ErrorResponseDTO) then) =
       _$ErrorResponseDTOCopyWithImpl<$Res, ErrorResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
@@ -60,7 +55,6 @@ class _$ErrorResponseDTOCopyWithImpl<$Res, $Val extends ErrorResponseDTO>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -99,7 +93,6 @@ abstract class _$$_ErrorResponseDTOCopyWith<$Res>
   factory _$$_ErrorResponseDTOCopyWith(
           _$_ErrorResponseDTO value, $Res Function(_$_ErrorResponseDTO) then) =
       __$$_ErrorResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -218,19 +211,15 @@ abstract class _ErrorResponseDTO implements ErrorResponseDTO {
   @override
   @JsonKey(name: 'message')
   String? get message;
-
   @override
   @JsonKey(name: 'code')
   String? get code;
-
   @override
   @JsonKey(name: 'type')
   String? get type;
-
   @override
   @JsonKey(name: 'version')
   String? get version;
-
   @override
   @JsonKey(ignore: true)
   _$$_ErrorResponseDTOCopyWith<_$_ErrorResponseDTO> get copyWith =>

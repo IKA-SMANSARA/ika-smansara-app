@@ -22,21 +22,14 @@ CounterDocumentResponse _$CounterDocumentResponseFromJson(
 /// @nodoc
 mixin _$CounterDocumentResponse {
   String? get id => throw _privateConstructorUsedError;
-
   String? get collectionId => throw _privateConstructorUsedError;
-
   String? get databaseId => throw _privateConstructorUsedError;
-
   String? get createdAt => throw _privateConstructorUsedError;
-
   String? get updatedAt => throw _privateConstructorUsedError;
-
   List<String?>? get permissions => throw _privateConstructorUsedError;
-
   String? get counterValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CounterDocumentResponseCopyWith<CounterDocumentResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,7 +40,6 @@ abstract class $CounterDocumentResponseCopyWith<$Res> {
   factory $CounterDocumentResponseCopyWith(CounterDocumentResponse value,
           $Res Function(CounterDocumentResponse) then) =
       _$CounterDocumentResponseCopyWithImpl<$Res, CounterDocumentResponse>;
-
   @useResult
   $Res call(
       {String? id,
@@ -67,7 +59,6 @@ class _$CounterDocumentResponseCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -121,7 +112,6 @@ abstract class _$$_CounterDocumentResponseCopyWith<$Res>
   factory _$$_CounterDocumentResponseCopyWith(_$_CounterDocumentResponse value,
           $Res Function(_$_CounterDocumentResponse) then) =
       __$$_CounterDocumentResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -214,7 +204,6 @@ class _$_CounterDocumentResponse implements _CounterDocumentResponse {
   @override
   final String? updatedAt;
   final List<String?>? _permissions;
-
   @override
   List<String?>? get permissions {
     final value = _permissions;
@@ -295,25 +284,18 @@ abstract class _CounterDocumentResponse implements CounterDocumentResponse {
 
   @override
   String? get id;
-
   @override
   String? get collectionId;
-
   @override
   String? get databaseId;
-
   @override
   String? get createdAt;
-
   @override
   String? get updatedAt;
-
   @override
   List<String?>? get permissions;
-
   @override
   String? get counterValue;
-
   @override
   @JsonKey(ignore: true)
   _$$_CounterDocumentResponseCopyWith<_$_CounterDocumentResponse>

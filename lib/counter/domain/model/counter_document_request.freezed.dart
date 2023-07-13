@@ -22,13 +22,10 @@ CounterDocumentRequest _$CounterDocumentRequestFromJson(
 /// @nodoc
 mixin _$CounterDocumentRequest {
   String? get documentId => throw _privateConstructorUsedError;
-
   CounterDataDocumentRequest? get data => throw _privateConstructorUsedError;
-
   List<String?>? get permissions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CounterDocumentRequestCopyWith<CounterDocumentRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,7 +36,6 @@ abstract class $CounterDocumentRequestCopyWith<$Res> {
   factory $CounterDocumentRequestCopyWith(CounterDocumentRequest value,
           $Res Function(CounterDocumentRequest) then) =
       _$CounterDocumentRequestCopyWithImpl<$Res, CounterDocumentRequest>;
-
   @useResult
   $Res call(
       {String? documentId,
@@ -57,7 +53,6 @@ class _$CounterDocumentRequestCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -103,7 +98,6 @@ abstract class _$$_CounterDocumentRequestCopyWith<$Res>
   factory _$$_CounterDocumentRequestCopyWith(_$_CounterDocumentRequest value,
           $Res Function(_$_CounterDocumentRequest) then) =
       __$$_CounterDocumentRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -163,7 +157,6 @@ class _$_CounterDocumentRequest implements _CounterDocumentRequest {
   @override
   final CounterDataDocumentRequest? data;
   final List<String?>? _permissions;
-
   @override
   List<String?>? get permissions {
     final value = _permissions;
@@ -221,13 +214,10 @@ abstract class _CounterDocumentRequest implements CounterDocumentRequest {
 
   @override
   String? get documentId;
-
   @override
   CounterDataDocumentRequest? get data;
-
   @override
   List<String?>? get permissions;
-
   @override
   @JsonKey(ignore: true)
   _$$_CounterDocumentRequestCopyWith<_$_CounterDocumentRequest> get copyWith =>

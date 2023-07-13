@@ -23,27 +23,20 @@ CounterDocumentResponseDTO _$CounterDocumentResponseDTOFromJson(
 mixin _$CounterDocumentResponseDTO {
   @JsonKey(name: '\$id')
   String? get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$collectionId')
   String? get collectionId => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$databaseId')
   String? get databaseId => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$createdAt')
   String? get createdAt => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$updatedAt')
   String? get updatedAt => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$permissions')
   List<String?>? get permissions => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'counter-value')
   String? get counterValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CounterDocumentResponseDTOCopyWith<CounterDocumentResponseDTO>
       get copyWith => throw _privateConstructorUsedError;
@@ -55,7 +48,6 @@ abstract class $CounterDocumentResponseDTOCopyWith<$Res> {
           $Res Function(CounterDocumentResponseDTO) then) =
       _$CounterDocumentResponseDTOCopyWithImpl<$Res,
           CounterDocumentResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String? id,
@@ -75,7 +67,6 @@ class _$CounterDocumentResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -130,7 +121,6 @@ abstract class _$$_CounterDocumentResponseDTOCopyWith<$Res>
           _$_CounterDocumentResponseDTO value,
           $Res Function(_$_CounterDocumentResponseDTO) then) =
       __$$_CounterDocumentResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -229,7 +219,6 @@ class _$_CounterDocumentResponseDTO implements _CounterDocumentResponseDTO {
   @JsonKey(name: '\$updatedAt')
   final String? updatedAt;
   final List<String?>? _permissions;
-
   @override
   @JsonKey(name: '\$permissions')
   List<String?>? get permissions {
@@ -314,31 +303,24 @@ abstract class _CounterDocumentResponseDTO
   @override
   @JsonKey(name: '\$id')
   String? get id;
-
   @override
   @JsonKey(name: '\$collectionId')
   String? get collectionId;
-
   @override
   @JsonKey(name: '\$databaseId')
   String? get databaseId;
-
   @override
   @JsonKey(name: '\$createdAt')
   String? get createdAt;
-
   @override
   @JsonKey(name: '\$updatedAt')
   String? get updatedAt;
-
   @override
   @JsonKey(name: '\$permissions')
   List<String?>? get permissions;
-
   @override
   @JsonKey(name: 'counter-value')
   String? get counterValue;
-
   @override
   @JsonKey(ignore: true)
   _$$_CounterDocumentResponseDTOCopyWith<_$_CounterDocumentResponseDTO>
