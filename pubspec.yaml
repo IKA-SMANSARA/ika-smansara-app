@@ -10,6 +10,7 @@ dependencies:
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
   chopper: ^6.1.4
+  crypto: ^3.0.3
   firebase_analytics: ^10.4.3
   firebase_app_check: ^0.1.5
   firebase_core: ^2.14.0
@@ -42,6 +43,7 @@ dependencies:
   logging: ^1.2.0
   path: ^1.8.3
   path_provider: ^2.0.15
+  webview_flutter: ^4.2.2
 
 dev_dependencies:
   bloc_test: ^9.1.2

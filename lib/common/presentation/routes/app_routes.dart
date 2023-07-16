@@ -9,8 +9,21 @@ class AppRoutes {
     routerNeglect: true,
     routes: [
       GoRoute(
+        name: 'root',
         path: Routes.root,
-        builder: (context, state) => const PaymentGatewayPage(),
+        builder: (context, state) {
+          return PaymentGatewayPage(
+            paymentMethod: state.queryParameters['payment method'],
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.paymentWindowWebView,
+        builder: (context, state) => const PaymentWindowWebViewPage(),
+      ),
+      GoRoute(
+        path: Routes.selectPaymentMethod,
+        builder: (context, state) => const PaymentMethodPage(),
       ),
       // deeplink for payment gateway route
       GoRoute(
@@ -20,7 +33,11 @@ class AppRoutes {
       // deeplink for payment gateway route
       GoRoute(
         path: Routes.returnRoute,
-        builder: (context, state) => const CounterPage(),
+        builder: (context, state) {
+          return PaymentGatewayPage(
+            paymentMethod: state.queryParameters['payment method'],
+          );
+        },
       ),
       // deeplink for payment gateway route
       GoRoute(

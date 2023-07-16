@@ -5,9 +5,7 @@ import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/counter/domain/use_case/update_counter_data_use_case/update_counter_data_use_case.dart';
 
 part 'counter_bloc.freezed.dart';
-
 part 'counter_event.dart';
-
 part 'counter_state.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {

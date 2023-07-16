@@ -20,9 +20,15 @@ class Constants {
   static const uniqueId = 'unique()';
   static const xAppwriteProject = 'X-Appwrite-Project';
   static const xAppwriteKey = 'X-Appwrite-Key';
+  static const contentType = 'Content-Type';
   static const fcmTokenBoxName = 'fcmTokenBox';
   static const vapidKeyFcm =
       'BH7TgdBEdeyIbhc15HLEZhvQ28R67tn5N9lfoyiyF6gSwzy8zX1AkVmTaOZs16pnAwyXVNz6O3bvWfDco2O0Rw8';
-  static const paymentGateWayURLSandbox =
-      'https://sandbox.duitku.com/webapi/api/merchant/paymentmethod/getpaymentmethod';
+  static const paymentGateWayURL =
+      'https://sandbox.duitku.com/webapi/api/merchant/';
+  static const merchantCode = 'DS16156';
+  static const apiKeyPaymentGateway = 'a8e0a7ddbe91233f832b8f7c0cf3015f';
+  static const merchantCodeKey = 'merchantCode';
+  static const merchantOrderIdKey = 'merchantOrderId';
+  static const signatureKey = 'signature';
 }
