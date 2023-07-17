@@ -18,8 +18,13 @@ class AppRoutes {
         },
       ),
       GoRoute(
+        name: 'payment-window-web-view',
         path: Routes.paymentWindowWebView,
-        builder: (context, state) => const PaymentWindowWebViewPage(),
+        builder: (context, state) {
+          return PaymentWindowWebViewPage(
+            paymentMethod: state.queryParameters['payment method'],
+          );
+        },
       ),
       GoRoute(
         path: Routes.selectPaymentMethod,

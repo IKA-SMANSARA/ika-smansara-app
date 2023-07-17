@@ -29,6 +29,12 @@ class Constants {
   static const merchantCode = 'DS16156';
   static const apiKeyPaymentGateway = 'a8e0a7ddbe91233f832b8f7c0cf3015f';
   static const merchantCodeKey = 'merchantCode';
+  static const merchantOrderIdDummy = 'ikasmansara002';
   static const merchantOrderIdKey = 'merchantOrderId';
   static const signatureKey = 'signature';
+  static const mockUrlReturn = 'https://ikasmansara.page.link/return';
+  static const mockUrlCallback = 'https://ikasmansara.page.link/callback';
+  static const blankString = '';
+  static const idCountryCode = 'ID';
+  static const defaultExpiryPeriod = 20;
 }

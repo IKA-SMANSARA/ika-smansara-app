@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class PaymentGatewayNetworkModule {
   @Named(Constants.paymentGatewayBaseURLNamed)
-  String get paymentGatewayBaseURL => Constants.paymentGateWayURLSandbox;
+  String get paymentGatewayBaseURL => Constants.paymentGateWayURL;
 
   @lazySingleton
   @Named(Constants.paymentGatewayNetworkModuleNamed)
