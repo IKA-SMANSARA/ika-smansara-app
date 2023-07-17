@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Resource<T> {
   T? get data => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T? data) success,
@@ -33,12 +32,9 @@ mixin _$Resource<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-
-  TResult Function(T? data)? success,
-
-  TResult Function(String message, T? data)? error,
-
-  required TResult orElse(),
+    TResult Function(T? data)? success,
+    TResult Function(String message, T? data)? error,
+    required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs

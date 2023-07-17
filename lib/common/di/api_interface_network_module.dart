@@ -5,6 +5,6 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class ApiInterfaceNetworkModule {
   @lazySingleton
-  ApiServices getCounter(ChopperClient chopperClient) =>
+  ApiServices apiServices(ChopperClient chopperClient) =>
       ApiServices.create(chopperClient);
 }

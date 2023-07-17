@@ -23,15 +23,12 @@ CounterDocumentRequestDTO _$CounterDocumentRequestDTOFromJson(
 mixin _$CounterDocumentRequestDTO {
   @JsonKey(name: 'documentId')
   String? get documentId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'data')
   CounterDataDocumentRequestDTO? get data => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'permissions')
   List<String?>? get permissions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CounterDocumentRequestDTOCopyWith<CounterDocumentRequestDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,7 +39,6 @@ abstract class $CounterDocumentRequestDTOCopyWith<$Res> {
   factory $CounterDocumentRequestDTOCopyWith(CounterDocumentRequestDTO value,
           $Res Function(CounterDocumentRequestDTO) then) =
       _$CounterDocumentRequestDTOCopyWithImpl<$Res, CounterDocumentRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'documentId') String? documentId,
@@ -60,7 +56,6 @@ class _$CounterDocumentRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -107,7 +102,6 @@ abstract class _$$_CounterDocumentRequestDTOCopyWith<$Res>
           _$_CounterDocumentRequestDTO value,
           $Res Function(_$_CounterDocumentRequestDTO) then) =
       __$$_CounterDocumentRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -172,7 +166,6 @@ class _$_CounterDocumentRequestDTO implements _CounterDocumentRequestDTO {
   @JsonKey(name: 'data')
   final CounterDataDocumentRequestDTO? data;
   final List<String?>? _permissions;
-
   @override
   @JsonKey(name: 'permissions')
   List<String?>? get permissions {
@@ -233,15 +226,12 @@ abstract class _CounterDocumentRequestDTO implements CounterDocumentRequestDTO {
   @override
   @JsonKey(name: 'documentId')
   String? get documentId;
-
   @override
   @JsonKey(name: 'data')
   CounterDataDocumentRequestDTO? get data;
-
   @override
   @JsonKey(name: 'permissions')
   List<String?>? get permissions;
-
   @override
   @JsonKey(ignore: true)
   _$$_CounterDocumentRequestDTOCopyWith<_$_CounterDocumentRequestDTO>

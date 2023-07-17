@@ -29,12 +29,12 @@ class CounterRepositoryImpl implements CounterRepository {
                 responseGetCounter.body as Map<String, dynamic>,
               ).toErrorResponse().message ??
               '',
-          null,
+          const CounterDocumentResponse(),
         );
       }
     } catch (e) {
       Constants.logger.e(e.toString());
-      result = Resource.error(e.toString(), null);
+      result = Resource.error(e.toString(), const CounterDocumentResponse());
     }
 
     return result;
@@ -64,12 +64,12 @@ class CounterRepositoryImpl implements CounterRepository {
                 responseGetCounter.body as Map<String, dynamic>,
               ).toErrorResponse().message ??
               '',
-          null,
+          const CounterDocumentResponse(),
         );
       }
     } catch (e) {
       Constants.logger.e(e.toString());
-      result = Resource.error(e.toString(), null);
+      result = Resource.error(e.toString(), const CounterDocumentResponse());
     }
 
     return result;
