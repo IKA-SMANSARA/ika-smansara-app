@@ -24,7 +24,6 @@ mixin _$CounterEvent {
     required TResult Function(String? documentId) decrement,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
@@ -42,7 +41,6 @@ mixin _$CounterEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
@@ -51,7 +49,6 @@ mixin _$CounterEvent {
     required TResult Function(_Decrement value) decrement,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
@@ -83,9 +80,9 @@ class _$CounterEventCopyWithImpl<$Res, $Val extends CounterEvent>
     implements $CounterEventCopyWith<$Res> {
   _$CounterEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -701,7 +698,7 @@ class _$CounterStateCopyWithImpl<$Res, $Val extends CounterState>
     implements $CounterStateCopyWith<$Res> {
   _$CounterStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

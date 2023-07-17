@@ -51,6 +51,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
+  // init basic configuration
   await Hive.initFlutter();
   setupLogging();
   await configureDependencies();
@@ -59,40 +60,50 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   );
 
   // firebase notification
-  // Set the background messaging handler early on, as a named top-level
-  // function
+  // Set the background messaging handler early on,
+  // as a named top-level function
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
+  // allow notification for application not for build web
   if (!kIsWeb) {
     await setupFlutterNotifications();
   }
 
-  // get fcm token
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  // ignore: inference_failure_on_function_invocation
-  final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
-  // save fcm token to local db
-  await fcmTokenBox.put('fcmToken', fcmToken ?? '');
+  // disable get fcm for build web
+  // issue cannot run application if request fcm before allow notification
+  // permission in browser
+  if (!kIsWeb) {
+    // init messaging instance for permission
+    final messaging = FirebaseMessaging.instance;
 
-  // init messaging instance for permission
-  final messaging = FirebaseMessaging.instance;
+    // permission request for notification
+    final settings = await messaging.requestPermission();
 
-  // permission request for notification
-  final settings = await messaging.requestPermission();
+    // get fcm token
+    final fcmToken = kIsWeb
+        ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
+        : await messaging.getToken();
+    // ignore: inference_failure_on_function_invocation
+    final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
+    // save fcm token to local db
+    await fcmTokenBox.put('fcmToken', fcmToken ?? '');
 
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    Constants.logger.i('User granted permission');
-  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-    Constants.logger.i('User granted provisional permission');
-  } else {
-    Constants.logger.w('User declined or has not accepted permission');
+    // notification permission condition
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      Constants.logger.i('User granted permission');
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
+      Constants.logger.i('User granted provisional permission');
+    } else {
+      Constants.logger.w('User declined or has not accepted permission');
 
-    // Flutter local notification request permission android 13
-    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestPermission();
+      // Flutter local notification request permission android 13
+      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestPermission();
+    }
   }
 
   // Pass all uncaught asynchronous errors that aren't handled by

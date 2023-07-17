@@ -25,7 +25,6 @@ mixin _$CounterDataDocumentRequestDTO {
   String? get counterValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CounterDataDocumentRequestDTOCopyWith<CounterDataDocumentRequestDTO>
       get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +37,6 @@ abstract class $CounterDataDocumentRequestDTOCopyWith<$Res> {
           $Res Function(CounterDataDocumentRequestDTO) then) =
       _$CounterDataDocumentRequestDTOCopyWithImpl<$Res,
           CounterDataDocumentRequestDTO>;
-
   @useResult
   $Res call({@JsonKey(name: 'counter-value') String? counterValue});
 }
@@ -51,7 +49,6 @@ class _$CounterDataDocumentRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -76,7 +73,6 @@ abstract class _$$_CounterDataDocumentRequestDTOCopyWith<$Res>
           _$_CounterDataDocumentRequestDTO value,
           $Res Function(_$_CounterDataDocumentRequestDTO) then) =
       __$$_CounterDataDocumentRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({@JsonKey(name: 'counter-value') String? counterValue});
@@ -166,7 +162,6 @@ abstract class _CounterDataDocumentRequestDTO
   @override
   @JsonKey(name: 'counter-value')
   String? get counterValue;
-
   @override
   @JsonKey(ignore: true)
   _$$_CounterDataDocumentRequestDTOCopyWith<_$_CounterDataDocumentRequestDTO>

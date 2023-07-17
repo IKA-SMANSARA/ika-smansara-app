@@ -21,15 +21,11 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ErrorResponse {
   String? get message => throw _privateConstructorUsedError;
-
   String? get code => throw _privateConstructorUsedError;
-
   String? get type => throw _privateConstructorUsedError;
-
   String? get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ErrorResponseCopyWith<ErrorResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -40,7 +36,6 @@ abstract class $ErrorResponseCopyWith<$Res> {
   factory $ErrorResponseCopyWith(
           ErrorResponse value, $Res Function(ErrorResponse) then) =
       _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
-
   @useResult
   $Res call({String? message, String? code, String? type, String? version});
 }
@@ -52,7 +47,6 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -91,7 +85,6 @@ abstract class _$$_ErrorResponseCopyWith<$Res>
   factory _$$_ErrorResponseCopyWith(
           _$_ErrorResponse value, $Res Function(_$_ErrorResponse) then) =
       __$$_ErrorResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? message, String? code, String? type, String? version});
@@ -197,16 +190,12 @@ abstract class _ErrorResponse implements ErrorResponse {
 
   @override
   String? get message;
-
   @override
   String? get code;
-
   @override
   String? get type;
-
   @override
   String? get version;
-
   @override
   @JsonKey(ignore: true)
   _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
