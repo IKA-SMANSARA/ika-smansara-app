@@ -72,7 +72,7 @@ class PaymentMethodList extends StatelessWidget {
                       ),
                     ),
                     onTap: () => context.pushNamed(
-                      'root',
+                      'payment-gateway',
                       queryParameters: {
                         'payment method':
                             state.paymentFee?[index]?.paymentMethod,

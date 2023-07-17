@@ -4,6 +4,7 @@ import 'package:ika_smansara/common/common.dart';
 
 class Routes {
   static const root = '/';
+  static const paymentGateway = '/payment-gateway';
   static const selectPaymentMethod = '/select-payment-method';
   static const paymentWindowWebView = '/payment-window-web-view';
   static const redirect = '/redirect'; // deeplink for payment gateway route

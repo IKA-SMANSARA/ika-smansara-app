@@ -11,6 +11,11 @@ class AppRoutes {
       GoRoute(
         name: 'root',
         path: Routes.root,
+        builder: (context, state) => const CounterPage(),
+      ),
+      GoRoute(
+        name: 'payment-gateway',
+        path: Routes.paymentGateway,
         builder: (context, state) {
           return PaymentGatewayPage(
             paymentMethod: state.queryParameters['payment method'],
