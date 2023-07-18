@@ -3,5 +3,17 @@
   "counterAppBarTitle": "Penghitung",
   "@counterAppBarTitle": {
     "description": "Teks yang ditampilkan di AppBar Halaman Penghitung"
+  },
+  "homeBottomNavTitle": "Beranda",
+  "@homeBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke beranda"
+  },
+  "myDonationBottomNavTitle": "Donasiku",
+  "@myDonationBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke halaman donasiku"
+  },
+  "accountBottomNavTitle": "Akun",
+  "@accountBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke halaman akun"
   }
 }

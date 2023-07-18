@@ -21,39 +21,23 @@ TransactionRequest _$TransactionRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TransactionRequest {
   String? get merchantCode => throw _privateConstructorUsedError;
-
   String? get paymentAmount => throw _privateConstructorUsedError;
-
   String? get paymentMethod => throw _privateConstructorUsedError;
-
   String? get merchantOrderId => throw _privateConstructorUsedError;
-
   String? get productDetails => throw _privateConstructorUsedError;
-
   String? get additionalParam => throw _privateConstructorUsedError;
-
   String? get merchantUserInfo => throw _privateConstructorUsedError;
-
   String? get customerVaName => throw _privateConstructorUsedError;
-
   String? get email => throw _privateConstructorUsedError;
-
   String? get phoneNumber => throw _privateConstructorUsedError;
-
   List<ItemDetail?>? get itemDetails => throw _privateConstructorUsedError;
-
   CustomerDetail? get customerDetail => throw _privateConstructorUsedError;
-
   String? get callbackUrl => throw _privateConstructorUsedError;
-
   String? get returnUrl => throw _privateConstructorUsedError;
-
   String? get signature => throw _privateConstructorUsedError;
-
   int? get expiryPeriod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TransactionRequestCopyWith<TransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -64,7 +48,6 @@ abstract class $TransactionRequestCopyWith<$Res> {
   factory $TransactionRequestCopyWith(
           TransactionRequest value, $Res Function(TransactionRequest) then) =
       _$TransactionRequestCopyWithImpl<$Res, TransactionRequest>;
-
   @useResult
   $Res call(
       {String? merchantCode,
@@ -94,7 +77,6 @@ class _$TransactionRequestCopyWithImpl<$Res, $Val extends TransactionRequest>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -205,7 +187,6 @@ abstract class _$$_TransactionRequestCopyWith<$Res>
   factory _$$_TransactionRequestCopyWith(_$_TransactionRequest value,
           $Res Function(_$_TransactionRequest) then) =
       __$$_TransactionRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -373,7 +354,6 @@ class _$_TransactionRequest implements _TransactionRequest {
   @override
   final String? phoneNumber;
   final List<ItemDetail?>? _itemDetails;
-
   @override
   List<ItemDetail?>? get itemDetails {
     final value = _itemDetails;
@@ -497,52 +477,36 @@ abstract class _TransactionRequest implements TransactionRequest {
 
   @override
   String? get merchantCode;
-
   @override
   String? get paymentAmount;
-
   @override
   String? get paymentMethod;
-
   @override
   String? get merchantOrderId;
-
   @override
   String? get productDetails;
-
   @override
   String? get additionalParam;
-
   @override
   String? get merchantUserInfo;
-
   @override
   String? get customerVaName;
-
   @override
   String? get email;
-
   @override
   String? get phoneNumber;
-
   @override
   List<ItemDetail?>? get itemDetails;
-
   @override
   CustomerDetail? get customerDetail;
-
   @override
   String? get callbackUrl;
-
   @override
   String? get returnUrl;
-
   @override
   String? get signature;
-
   @override
   int? get expiryPeriod;
-
   @override
   @JsonKey(ignore: true)
   _$$_TransactionRequestCopyWith<_$_TransactionRequest> get copyWith =>

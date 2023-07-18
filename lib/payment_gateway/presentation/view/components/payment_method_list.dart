@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ika_smansara/common/presentation/routes/routes.dart';
+import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:ika_smansara/payment_gateway/presentation/bloc/get_payment_method_bloc/get_payment_method_bloc.dart';
 
 class PaymentMethodList extends StatelessWidget {
@@ -72,9 +74,9 @@ class PaymentMethodList extends StatelessWidget {
                       ),
                     ),
                     onTap: () => context.pushNamed(
-                      'payment-gateway',
+                      Routes.paymentGateway,
                       queryParameters: {
-                        'payment method':
+                        Constants.paymentMethodKey:
                             state.paymentFee?[index]?.paymentMethod,
                       },
                     ),

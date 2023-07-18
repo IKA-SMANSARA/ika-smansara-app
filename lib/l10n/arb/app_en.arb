@@ -1,7 +1,19 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "counterAppBarTitle": "Counter",
+  "@counterAppBarTitle": {
+    "description": "Text shown in the AppBar of the Counter Page"
+  },
+  "homeBottomNavTitle": "Home",
+  "@bottomNavigationMenu1": {
+    "description": "Bottom Navigation Menu to Home Page"
+  },
+  "myDonationBottomNavTitle": "My Donation",
+  "@myDonationBottomNavTitle": {
+    "description": "Bottom Navigation Menu to My Donation Page"
+  },
+  "accountBottomNavTitle": "Account",
+  "@accountBottomNavTitle": {
+    "description": "Bottom Navigation Menu to Account Page"
+  }
 }

@@ -22,13 +22,10 @@ PaymentMethodResponse _$PaymentMethodResponseFromJson(
 /// @nodoc
 mixin _$PaymentMethodResponse {
   List<PaymentFee?>? get paymentFee => throw _privateConstructorUsedError;
-
   String? get responseCode => throw _privateConstructorUsedError;
-
   String? get responseMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentMethodResponseCopyWith<PaymentMethodResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,7 +36,6 @@ abstract class $PaymentMethodResponseCopyWith<$Res> {
   factory $PaymentMethodResponseCopyWith(PaymentMethodResponse value,
           $Res Function(PaymentMethodResponse) then) =
       _$PaymentMethodResponseCopyWithImpl<$Res, PaymentMethodResponse>;
-
   @useResult
   $Res call(
       {List<PaymentFee?>? paymentFee,
@@ -55,7 +51,6 @@ class _$PaymentMethodResponseCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -89,7 +84,6 @@ abstract class _$$_PaymentMethodResponseCopyWith<$Res>
   factory _$$_PaymentMethodResponseCopyWith(_$_PaymentMethodResponse value,
           $Res Function(_$_PaymentMethodResponse) then) =
       __$$_PaymentMethodResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -143,7 +137,6 @@ class _$_PaymentMethodResponse implements _PaymentMethodResponse {
       _$$_PaymentMethodResponseFromJson(json);
 
   final List<PaymentFee?>? _paymentFee;
-
   @override
   List<PaymentFee?>? get paymentFee {
     final value = _paymentFee;
@@ -210,13 +203,10 @@ abstract class _PaymentMethodResponse implements PaymentMethodResponse {
 
   @override
   List<PaymentFee?>? get paymentFee;
-
   @override
   String? get responseCode;
-
   @override
   String? get responseMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodResponseCopyWith<_$_PaymentMethodResponse> get copyWith =>
