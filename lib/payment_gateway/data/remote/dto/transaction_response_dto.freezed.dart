@@ -23,24 +23,18 @@ TransactionResponseDTO _$TransactionResponseDTOFromJson(
 mixin _$TransactionResponseDTO {
   @JsonKey(name: 'merchantCode')
   String? get merchantCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'reference')
   String? get reference => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'paymentUrl')
   String? get paymentUrl => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusCode')
   String? get statusCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusMessage')
   String? get statusMessage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'Message')
   String? get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TransactionResponseDTOCopyWith<TransactionResponseDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -51,7 +45,6 @@ abstract class $TransactionResponseDTOCopyWith<$Res> {
   factory $TransactionResponseDTOCopyWith(TransactionResponseDTO value,
           $Res Function(TransactionResponseDTO) then) =
       _$TransactionResponseDTOCopyWithImpl<$Res, TransactionResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'merchantCode') String? merchantCode,
@@ -70,7 +63,6 @@ class _$TransactionResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -119,7 +111,6 @@ abstract class _$$_TransactionResponseDTOCopyWith<$Res>
   factory _$$_TransactionResponseDTOCopyWith(_$_TransactionResponseDTO value,
           $Res Function(_$_TransactionResponseDTO) then) =
       __$$_TransactionResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -271,27 +262,21 @@ abstract class _TransactionResponseDTO implements TransactionResponseDTO {
   @override
   @JsonKey(name: 'merchantCode')
   String? get merchantCode;
-
   @override
   @JsonKey(name: 'reference')
   String? get reference;
-
   @override
   @JsonKey(name: 'paymentUrl')
   String? get paymentUrl;
-
   @override
   @JsonKey(name: 'statusCode')
   String? get statusCode;
-
   @override
   @JsonKey(name: 'statusMessage')
   String? get statusMessage;
-
   @override
   @JsonKey(name: 'Message')
   String? get message;
-
   @override
   @JsonKey(ignore: true)
   _$$_TransactionResponseDTOCopyWith<_$_TransactionResponseDTO> get copyWith =>

@@ -21,19 +21,13 @@ TransactionResponse _$TransactionResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TransactionResponse {
   String? get merchantCode => throw _privateConstructorUsedError;
-
   String? get reference => throw _privateConstructorUsedError;
-
   String? get paymentUrl => throw _privateConstructorUsedError;
-
   String? get statusCode => throw _privateConstructorUsedError;
-
   String? get statusMessage => throw _privateConstructorUsedError;
-
   String? get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TransactionResponseCopyWith<TransactionResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +38,6 @@ abstract class $TransactionResponseCopyWith<$Res> {
   factory $TransactionResponseCopyWith(
           TransactionResponse value, $Res Function(TransactionResponse) then) =
       _$TransactionResponseCopyWithImpl<$Res, TransactionResponse>;
-
   @useResult
   $Res call(
       {String? merchantCode,
@@ -62,7 +55,6 @@ class _$TransactionResponseCopyWithImpl<$Res, $Val extends TransactionResponse>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -111,7 +103,6 @@ abstract class _$$_TransactionResponseCopyWith<$Res>
   factory _$$_TransactionResponseCopyWith(_$_TransactionResponse value,
           $Res Function(_$_TransactionResponse) then) =
       __$$_TransactionResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -254,22 +245,16 @@ abstract class _TransactionResponse implements TransactionResponse {
 
   @override
   String? get merchantCode;
-
   @override
   String? get reference;
-
   @override
   String? get paymentUrl;
-
   @override
   String? get statusCode;
-
   @override
   String? get statusMessage;
-
   @override
   String? get message;
-
   @override
   @JsonKey(ignore: true)
   _$$_TransactionResponseCopyWith<_$_TransactionResponse> get copyWith =>

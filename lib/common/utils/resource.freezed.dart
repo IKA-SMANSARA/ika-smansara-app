@@ -23,7 +23,6 @@ mixin _$Resource<T> {
     required TResult Function(String message, T? data) error,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T? data)? success,
@@ -76,7 +75,7 @@ class _$ResourceCopyWithImpl<T, $Res, $Val extends Resource<T>>
     implements $ResourceCopyWith<T, $Res> {
   _$ResourceCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

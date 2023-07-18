@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:ika_smansara/common/presentation/routes/routes.dart';
+import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/transaction_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:ika_smansara/payment_gateway/presentation/cubit/web_view_visibilities_cubit.dart';
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
@@ -60,29 +59,11 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                     );
                 return const CircularProgressIndicator();
               }
+
               if (state is Success) {
-                return WebViewWidget(
-                  controller: WebViewController()
-                    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-                    ..setBackgroundColor(Colors.white)
-                    ..setNavigationDelegate(
-                      NavigationDelegate(
-                        onNavigationRequest: (NavigationRequest request) {
-                          if (request.url.startsWith(
-                            'intent://ikasmansara.page.link/return',
-                          )) {
-                            context.go(Routes.returnRoute);
-                            return NavigationDecision.prevent;
-                          }
-                          return NavigationDecision.navigate;
-                        },
-                      ),
-                    )
-                    ..loadRequest(
-                      Uri.parse(
-                        'https://app-sandbox.duitku.com/redirect_checkout?reference=${state.reference}&lang=id',
-                      ),
-                    ),
+                return BlocProvider(
+                  create: (context) => WebViewVisibilitiesCubit(),
+                  child: PaymentWebView(reference: state.reference),
                 );
               }
 

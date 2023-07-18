@@ -23,15 +23,12 @@ PaymentMethodResponseDTO _$PaymentMethodResponseDTOFromJson(
 mixin _$PaymentMethodResponseDTO {
   @JsonKey(name: 'paymentFee')
   List<PaymentFeeDTO?>? get paymentFee => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'responseCode')
   String? get responseCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'responseMessage')
   String? get responseMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentMethodResponseDTOCopyWith<PaymentMethodResponseDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,7 +39,6 @@ abstract class $PaymentMethodResponseDTOCopyWith<$Res> {
   factory $PaymentMethodResponseDTOCopyWith(PaymentMethodResponseDTO value,
           $Res Function(PaymentMethodResponseDTO) then) =
       _$PaymentMethodResponseDTOCopyWithImpl<$Res, PaymentMethodResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'paymentFee') List<PaymentFeeDTO?>? paymentFee,
@@ -58,7 +54,6 @@ class _$PaymentMethodResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -93,7 +88,6 @@ abstract class _$$_PaymentMethodResponseDTOCopyWith<$Res>
           _$_PaymentMethodResponseDTO value,
           $Res Function(_$_PaymentMethodResponseDTO) then) =
       __$$_PaymentMethodResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -148,7 +142,6 @@ class _$_PaymentMethodResponseDTO implements _PaymentMethodResponseDTO {
       _$$_PaymentMethodResponseDTOFromJson(json);
 
   final List<PaymentFeeDTO?>? _paymentFee;
-
   @override
   @JsonKey(name: 'paymentFee')
   List<PaymentFeeDTO?>? get paymentFee {
@@ -220,15 +213,12 @@ abstract class _PaymentMethodResponseDTO implements PaymentMethodResponseDTO {
   @override
   @JsonKey(name: 'paymentFee')
   List<PaymentFeeDTO?>? get paymentFee;
-
   @override
   @JsonKey(name: 'responseCode')
   String? get responseCode;
-
   @override
   @JsonKey(name: 'responseMessage')
   String? get responseMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodResponseDTOCopyWith<_$_PaymentMethodResponseDTO>

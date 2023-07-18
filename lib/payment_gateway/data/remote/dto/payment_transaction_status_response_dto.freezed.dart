@@ -23,24 +23,18 @@ PaymentTransactionStatusResponseDTO
 mixin _$PaymentTransactionStatusResponseDTO {
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'reference')
   String? get reference => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'amount')
   String? get amount => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'fee')
   String? get fee => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusCode')
   String? get statusCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusMessage')
   String? get statusMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentTransactionStatusResponseDTOCopyWith<
           PaymentTransactionStatusResponseDTO>
@@ -54,7 +48,6 @@ abstract class $PaymentTransactionStatusResponseDTOCopyWith<$Res> {
           $Res Function(PaymentTransactionStatusResponseDTO) then) =
       _$PaymentTransactionStatusResponseDTOCopyWithImpl<$Res,
           PaymentTransactionStatusResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'merchantOrderId') String? merchantOrderId,
@@ -73,7 +66,6 @@ class _$PaymentTransactionStatusResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -123,7 +115,6 @@ abstract class _$$_PaymentTransactionStatusResponseDTOCopyWith<$Res>
           _$_PaymentTransactionStatusResponseDTO value,
           $Res Function(_$_PaymentTransactionStatusResponseDTO) then) =
       __$$_PaymentTransactionStatusResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -280,27 +271,21 @@ abstract class _PaymentTransactionStatusResponseDTO
   @override
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId;
-
   @override
   @JsonKey(name: 'reference')
   String? get reference;
-
   @override
   @JsonKey(name: 'amount')
   String? get amount;
-
   @override
   @JsonKey(name: 'fee')
   String? get fee;
-
   @override
   @JsonKey(name: 'statusCode')
   String? get statusCode;
-
   @override
   @JsonKey(name: 'statusMessage')
   String? get statusMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentTransactionStatusResponseDTOCopyWith<

@@ -22,7 +22,6 @@ mixin _$GetPaymentMethodEvent {
     required TResult Function(int? amount) fetchData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
@@ -36,14 +35,12 @@ mixin _$GetPaymentMethodEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchData value) fetchData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
@@ -72,7 +69,7 @@ class _$GetPaymentMethodEventCopyWithImpl<$Res,
     implements $GetPaymentMethodEventCopyWith<$Res> {
   _$GetPaymentMethodEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

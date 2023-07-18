@@ -27,6 +27,7 @@ export 'domain/repository/payment_gateway_repository.dart';
 export 'domain/use_case/get_payment_method_use_case/get_payment_method_use_case.dart';
 export 'domain/use_case/request_transaction_use_case/request_transaction_use_case.dart';
 export 'presentation/view/components/payment_method_list.dart';
+export 'presentation/view/components/payment_web_view.dart';
 export 'presentation/view/payment_gateway_page.dart';
 export 'presentation/view/payment_method_page.dart';
 export 'presentation/view/payment_window_webview_page.dart';
