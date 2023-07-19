@@ -15,5 +15,57 @@
   "accountBottomNavTitle": "Account",
   "@accountBottomNavTitle": {
     "description": "Bottom Navigation Menu to Account Page"
+  },
+  "needHelpTitle": "Need Help",
+  "@needHelpTitle": {
+    "description": "Need Help Title Section"
+  },
+  "seeMoreTitle": "See More",
+  "@seeMoreTitle": {
+    "description": "See more Title Section"
+  },
+  "programTitle": "Program IKA SMANSARA",
+  "@needHelpTitle": {
+    "description": "Program Title Section"
+  },
+  "scholarshipTitle": "scholarship",
+  "@scholarshipTitle": {
+    "description": "scholarship category"
+  },
+  "yatamadhuafaTitle": "yatama/dhuafa",
+  "@yatamadhuafaTitle": {
+    "description": "yatamadhuafa category"
+  },
+  "educationTitle": "education",
+  "@educationTitle": {
+    "description": "education category"
+  },
+  "orphanageTitle": "orphanage",
+  "@orphanageTitle": {
+    "description": "orphanage category"
+  },
+  "humanityTitle": "humanity",
+  "@humanityTitle": {
+    "description": "humanity category"
+  },
+  "naturaldisastersTitle": "natural disasters",
+  "@naturaldisastersTitle": {
+    "description": "natural disasters category"
+  },
+  "worshipplaceTitle": "worship place",
+  "@worshipplaceTitle": {
+    "description": "worship place category"
+  },
+  "neighborhoodTitle": "neighborhood",
+  "@neighborhoodTitle": {
+    "description": "neighborhood category"
+  },
+  "disabilityTitle": "disability",
+  "@disabilityTitle": {
+    "description": "disability category"
+  },
+  "medicalhealthTitle": "medical & health",
+  "@medicalhealthTitle": {
+    "description": "medical & health category"
   }
 }

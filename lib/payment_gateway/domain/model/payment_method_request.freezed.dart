@@ -21,15 +21,11 @@ PaymentMethodRequest _$PaymentMethodRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PaymentMethodRequest {
   String? get merchantCode => throw _privateConstructorUsedError;
-
   int? get amount => throw _privateConstructorUsedError;
-
   String? get datetime => throw _privateConstructorUsedError;
-
   String? get signature => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentMethodRequestCopyWith<PaymentMethodRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -40,7 +36,6 @@ abstract class $PaymentMethodRequestCopyWith<$Res> {
   factory $PaymentMethodRequestCopyWith(PaymentMethodRequest value,
           $Res Function(PaymentMethodRequest) then) =
       _$PaymentMethodRequestCopyWithImpl<$Res, PaymentMethodRequest>;
-
   @useResult
   $Res call(
       {String? merchantCode, int? amount, String? datetime, String? signature});
@@ -54,7 +49,6 @@ class _$PaymentMethodRequestCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -93,7 +87,6 @@ abstract class _$$_PaymentMethodRequestCopyWith<$Res>
   factory _$$_PaymentMethodRequestCopyWith(_$_PaymentMethodRequest value,
           $Res Function(_$_PaymentMethodRequest) then) =
       __$$_PaymentMethodRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -206,16 +199,12 @@ abstract class _PaymentMethodRequest implements PaymentMethodRequest {
 
   @override
   String? get merchantCode;
-
   @override
   int? get amount;
-
   @override
   String? get datetime;
-
   @override
   String? get signature;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodRequestCopyWith<_$_PaymentMethodRequest> get copyWith =>

@@ -22,18 +22,14 @@ PaymentFeeDTO _$PaymentFeeDTOFromJson(Map<String, dynamic> json) {
 mixin _$PaymentFeeDTO {
   @JsonKey(name: 'paymentMethod')
   String? get paymentMethod => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'paymentName')
   String? get paymentName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'paymentImage')
   String? get paymentImage => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'totalFee')
   String? get totalFee => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentFeeDTOCopyWith<PaymentFeeDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +40,6 @@ abstract class $PaymentFeeDTOCopyWith<$Res> {
   factory $PaymentFeeDTOCopyWith(
           PaymentFeeDTO value, $Res Function(PaymentFeeDTO) then) =
       _$PaymentFeeDTOCopyWithImpl<$Res, PaymentFeeDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'paymentMethod') String? paymentMethod,
@@ -60,7 +55,6 @@ class _$PaymentFeeDTOCopyWithImpl<$Res, $Val extends PaymentFeeDTO>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -99,7 +93,6 @@ abstract class _$$_PaymentFeeDTOCopyWith<$Res>
   factory _$$_PaymentFeeDTOCopyWith(
           _$_PaymentFeeDTO value, $Res Function(_$_PaymentFeeDTO) then) =
       __$$_PaymentFeeDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -223,19 +216,15 @@ abstract class _PaymentFeeDTO implements PaymentFeeDTO {
   @override
   @JsonKey(name: 'paymentMethod')
   String? get paymentMethod;
-
   @override
   @JsonKey(name: 'paymentName')
   String? get paymentName;
-
   @override
   @JsonKey(name: 'paymentImage')
   String? get paymentImage;
-
   @override
   @JsonKey(name: 'totalFee')
   String? get totalFee;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentFeeDTOCopyWith<_$_PaymentFeeDTO> get copyWith =>

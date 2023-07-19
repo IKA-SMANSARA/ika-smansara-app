@@ -22,27 +22,20 @@ BillingAddressDTO _$BillingAddressDTOFromJson(Map<String, dynamic> json) {
 mixin _$BillingAddressDTO {
   @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'lastName')
   String? get lastName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'address')
   String? get address => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'city')
   String? get city => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'postalCode')
   String? get postalCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'phone')
   String? get phone => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'countryCode')
   String? get countryCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $BillingAddressDTOCopyWith<BillingAddressDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -53,7 +46,6 @@ abstract class $BillingAddressDTOCopyWith<$Res> {
   factory $BillingAddressDTOCopyWith(
           BillingAddressDTO value, $Res Function(BillingAddressDTO) then) =
       _$BillingAddressDTOCopyWithImpl<$Res, BillingAddressDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'firstName') String? firstName,
@@ -72,7 +64,6 @@ class _$BillingAddressDTOCopyWithImpl<$Res, $Val extends BillingAddressDTO>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -126,7 +117,6 @@ abstract class _$$_BillingAddressDTOCopyWith<$Res>
   factory _$$_BillingAddressDTOCopyWith(_$_BillingAddressDTO value,
           $Res Function(_$_BillingAddressDTO) then) =
       __$$_BillingAddressDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -288,31 +278,24 @@ abstract class _BillingAddressDTO implements BillingAddressDTO {
   @override
   @JsonKey(name: 'firstName')
   String? get firstName;
-
   @override
   @JsonKey(name: 'lastName')
   String? get lastName;
-
   @override
   @JsonKey(name: 'address')
   String? get address;
-
   @override
   @JsonKey(name: 'city')
   String? get city;
-
   @override
   @JsonKey(name: 'postalCode')
   String? get postalCode;
-
   @override
   @JsonKey(name: 'phone')
   String? get phone;
-
   @override
   @JsonKey(name: 'countryCode')
   String? get countryCode;
-
   @override
   @JsonKey(ignore: true)
   _$$_BillingAddressDTOCopyWith<_$_BillingAddressDTO> get copyWith =>

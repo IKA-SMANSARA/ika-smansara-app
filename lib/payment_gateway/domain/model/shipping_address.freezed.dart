@@ -21,21 +21,14 @@ ShippingAddress _$ShippingAddressFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ShippingAddress {
   String? get firstName => throw _privateConstructorUsedError;
-
   String? get lastName => throw _privateConstructorUsedError;
-
   String? get address => throw _privateConstructorUsedError;
-
   String? get city => throw _privateConstructorUsedError;
-
   String? get postalCode => throw _privateConstructorUsedError;
-
   String? get phone => throw _privateConstructorUsedError;
-
   String? get countryCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ShippingAddressCopyWith<ShippingAddress> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,7 +39,6 @@ abstract class $ShippingAddressCopyWith<$Res> {
   factory $ShippingAddressCopyWith(
           ShippingAddress value, $Res Function(ShippingAddress) then) =
       _$ShippingAddressCopyWithImpl<$Res, ShippingAddress>;
-
   @useResult
   $Res call(
       {String? firstName,
@@ -65,7 +57,6 @@ class _$ShippingAddressCopyWithImpl<$Res, $Val extends ShippingAddress>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -119,7 +110,6 @@ abstract class _$$_ShippingAddressCopyWith<$Res>
   factory _$$_ShippingAddressCopyWith(
           _$_ShippingAddress value, $Res Function(_$_ShippingAddress) then) =
       __$$_ShippingAddressCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -271,25 +261,18 @@ abstract class _ShippingAddress implements ShippingAddress {
 
   @override
   String? get firstName;
-
   @override
   String? get lastName;
-
   @override
   String? get address;
-
   @override
   String? get city;
-
   @override
   String? get postalCode;
-
   @override
   String? get phone;
-
   @override
   String? get countryCode;
-
   @override
   @JsonKey(ignore: true)
   _$$_ShippingAddressCopyWith<_$_ShippingAddress> get copyWith =>

@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NavigationState {
   String get bottomNavItems => throw _privateConstructorUsedError;
-
   int get index => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +29,6 @@ abstract class $NavigationStateCopyWith<$Res> {
   factory $NavigationStateCopyWith(
           NavigationState value, $Res Function(NavigationState) then) =
       _$NavigationStateCopyWithImpl<$Res, NavigationState>;
-
   @useResult
   $Res call({String bottomNavItems, int index});
 }
@@ -42,7 +40,6 @@ class _$NavigationStateCopyWithImpl<$Res, $Val extends NavigationState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -71,7 +68,6 @@ abstract class _$$_NavigationStateCopyWith<$Res>
   factory _$$_NavigationStateCopyWith(
           _$_NavigationState value, $Res Function(_$_NavigationState) then) =
       __$$_NavigationStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String bottomNavItems, int index});
@@ -147,10 +143,8 @@ abstract class _NavigationState implements NavigationState {
 
   @override
   String get bottomNavItems;
-
   @override
   int get index;
-
   @override
   @JsonKey(ignore: true)
   _$$_NavigationStateCopyWith<_$_NavigationState> get copyWith =>
