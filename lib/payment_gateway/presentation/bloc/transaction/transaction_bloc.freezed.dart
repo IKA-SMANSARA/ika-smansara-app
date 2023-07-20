@@ -1025,7 +1025,7 @@ class _$TransactionStateCopyWithImpl<$Res, $Val extends TransactionState>
     implements $TransactionStateCopyWith<$Res> {
   _$TransactionStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

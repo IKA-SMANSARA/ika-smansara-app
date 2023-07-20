@@ -13,37 +13,29 @@ class Categories extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
       child: SizedBox(
-        width: double.infinity,
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.graduationCap.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.graduationCap.svg(),
                   categoryTitle: l10n.scholarshipTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.childSafeZone.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.childSafeZone.svg(),
                   categoryTitle: l10n.yatamadhuafaTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.classroom.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.classroom.svg(),
                   categoryTitle: l10n.educationTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.house.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.house.svg(),
                   categoryTitle: l10n.orphanageTitle.toUpperCase(),
                 ),
               ],
@@ -52,33 +44,26 @@ class Categories extends StatelessWidget {
               height: 16.h,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.trust.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.trust.svg(),
                   categoryTitle: l10n.humanityTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.factoryBreakdown.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.factoryBreakdown.svg(),
                   categoryTitle: l10n.naturaldisastersTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.pray1.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.pray1.svg(),
                   categoryTitle: l10n.worshipplaceTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.oakTree.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.oakTree.svg(),
                   categoryTitle: l10n.neighborhoodTitle.toUpperCase(),
                 ),
               ],
@@ -87,19 +72,16 @@ class Categories extends StatelessWidget {
               height: 16.h,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.wheelchair1.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.wheelchair1.svg(),
                   categoryTitle: l10n.disabilityTitle.toUpperCase(),
                 ),
                 CategoryItem(
                   onPress: () {},
-                  categoryIcon: Assets.images.heartWithPulse.image(
-                    scale: 0.5.h,
-                  ),
+                  categoryIcon: Assets.images.heartWithPulse.svg(),
                   categoryTitle: l10n.medicalhealthTitle.toUpperCase(),
                 ),
               ],

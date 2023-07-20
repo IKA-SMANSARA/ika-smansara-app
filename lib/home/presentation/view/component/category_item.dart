@@ -21,12 +21,14 @@ class CategoryItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: 85.w,
-            height: 70.w,
+            width: 70.w,
             child: categoryIcon,
           ),
           SizedBox(
-            width: 85.w,
+            height: 8.h,
+          ),
+          SizedBox(
+            width: 70.w,
             height: 12.w,
             child: Wrap(
               children: [
