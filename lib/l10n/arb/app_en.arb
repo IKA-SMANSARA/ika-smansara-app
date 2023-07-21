@@ -67,5 +67,9 @@
   "medicalhealthTitle": "medical & health",
   "@medicalhealthTitle": {
     "description": "medical & health category"
+  },
+  "collectedTitle": "Collected Donation",
+  "@collectedTitle": {
+    "description": "collected title"
   }
 }

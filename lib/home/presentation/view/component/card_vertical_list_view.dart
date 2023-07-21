@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/home/home.dart';
 
 class CardVerticalListView extends StatelessWidget {
   const CardVerticalListView({
@@ -15,7 +17,7 @@ class CardVerticalListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 240.h,
+      height: 250.h,
       child: Column(
         children: [
           Padding(
@@ -52,29 +54,45 @@ class CardVerticalListView extends StatelessWidget {
               vertical: 8.h,
             ),
             child: SizedBox(
-              height: 200.h,
+              height: 215.h,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  Card(
-                    color: Colors.amber,
-                    child: Placeholder(),
+                children: [
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(),
                   ),
-                  Card(
-                    color: Colors.amber,
-                    child: Placeholder(),
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(),
                   ),
-                  Card(
-                    color: Colors.amber,
-                    child: Placeholder(),
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(),
                   ),
-                  Card(
-                    color: Colors.amber,
-                    child: Placeholder(),
-                  ),
-                  Card(
-                    color: Colors.amber,
-                    child: Placeholder(),
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(),
                   ),
                 ],
               ),

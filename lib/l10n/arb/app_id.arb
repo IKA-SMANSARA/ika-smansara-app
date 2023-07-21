@@ -67,5 +67,9 @@
   "medicalhealthTitle": "medis & kesehatan",
   "@medicalhealthTitle": {
     "description": "kategori medis dan kesehatan"
+  },
+  "collectedTitle": "Donasi Terkumpul",
+  "@collectedTitle": {
+    "description": "collected title"
   }
 }
