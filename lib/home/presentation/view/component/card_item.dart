@@ -23,81 +23,95 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return SizedBox(
-      width: 255.w,
-      child: Card(
-        elevation: 4.w,
-        color: Colors.amber,
-        child: Stack(
-          children: [
-            campaignImage ?? const Placeholder(),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 125.w,
+    return GestureDetector(
+      onTap: onPress,
+      child: OrientationBuilder(
+        builder: (context, orientation) {
+          return SizedBox(
+            width: orientation == Orientation.portrait ? 200.w : 300.w,
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        campaignTitle ?? '',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      Text(
-                        l10n.collectedTitle,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 10.sp,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 2.w,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: AspectRatio(
+                aspectRatio: 3 / 2,
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: campaignImage ?? const Placeholder(),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(8.w),
+                        color: Colors.white,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Rp.$campaignDonationCollected',
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              campaignDuration ?? '',
+                              campaignTitle ?? '',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 10.sp,
+                                fontWeight: FontWeight.w700,
                               ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 8.h,
+                                bottom: 4.h,
+                              ),
+                              child: Text(
+                                l10n.collectedTitle,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 10.sp,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 4.h,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Rp.$campaignDonationCollected',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  Text(
+                                    campaignDuration ?? '',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 10.sp,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            LinearProgressIndicator(
+                              value: campaignProgressIndicator,
                             ),
                           ],
                         ),
                       ),
-                      LinearProgressIndicator(
-                        value: campaignProgressIndicator ?? 0.0,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
