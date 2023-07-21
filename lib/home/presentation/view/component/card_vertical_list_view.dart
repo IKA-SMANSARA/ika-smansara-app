@@ -61,7 +61,7 @@ class CardVerticalListView extends StatelessWidget {
                   CardItem(
                     onPress: () {},
                     campaignTitle:
-                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
                     campaignDuration: '5 hari lagi',
                     campaignProgressIndicator: 0.65,
@@ -70,7 +70,7 @@ class CardVerticalListView extends StatelessWidget {
                   CardItem(
                     onPress: () {},
                     campaignTitle:
-                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
                     campaignDuration: '5 hari lagi',
                     campaignProgressIndicator: 0.65,
@@ -79,7 +79,7 @@ class CardVerticalListView extends StatelessWidget {
                   CardItem(
                     onPress: () {},
                     campaignTitle:
-                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
                     campaignDuration: '5 hari lagi',
                     campaignProgressIndicator: 0.65,
@@ -88,7 +88,7 @@ class CardVerticalListView extends StatelessWidget {
                   CardItem(
                     onPress: () {},
                     campaignTitle:
-                        'campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle campaignTitle',
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
                     campaignDuration: '5 hari lagi',
                     campaignProgressIndicator: 0.65,
