@@ -12,78 +12,72 @@ class HomePortraitScreen extends StatelessWidget {
     final l10n = context.l10n;
 
     return Scaffold(
-      body: ListView(
+      body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        shrinkWrap: true,
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 150.h,
-                decoration: const BoxDecoration(color: Color(0xFF104993)),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.h,
-                      vertical: 8.h,
-                    ),
-                    child: Assets.images.ikaSmansaraHeaderHome.svg(
-                      width: double.infinity,
-                      height: 32.h,
-                    ),
+        child: Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: 150.h,
+              decoration: const BoxDecoration(color: Color(0xFF104993)),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.h,
+                    vertical: 8.h,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.h,
-                      vertical: 8.h,
-                    ),
-                    child: const CardCarousel(),
+                  child: Assets.images.ikaSmansaraHeaderHome.svg(
+                    width: double.infinity,
+                    height: 32.h,
                   ),
-                  const Categories(),
-                  SizedBox(
-                    height: 16.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.h,
+                    vertical: 8.h,
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(8.h),
-                    child: Divider(
-                      color: Colors.blueGrey.withAlpha(150),
-                      thickness: 0.5.h,
-                      height: 0.5.h,
-                    ),
+                  child: const CardCarousel(),
+                ),
+                const Categories(),
+                Padding(
+                  padding: EdgeInsets.all(16.h),
+                  child: Divider(
+                    color: Colors.blueGrey.withAlpha(150),
+                    thickness: 0.5.h,
+                    height: 0.5.h,
                   ),
-                  CardVerticalListView(
-                    listTitle: l10n.needHelpTitle,
-                    buttonTitle: l10n.seeMoreTitle,
+                ),
+                CardVerticalListView(
+                  listTitle: l10n.needHelpTitle,
+                  buttonTitle: l10n.seeMoreTitle,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.h),
+                  child: Divider(
+                    color: Colors.blueGrey.withAlpha(150),
+                    thickness: 0.5.h,
+                    height: 0.5.h,
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(8.h),
-                    child: Divider(
-                      color: Colors.blueGrey.withAlpha(150),
-                      thickness: 0.5.h,
-                      height: 0.5.h,
-                    ),
+                ),
+                CardVerticalListView(
+                  listTitle: l10n.programTitle,
+                  buttonTitle: l10n.seeMoreTitle,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16.h),
+                  child: Divider(
+                    color: Colors.blueGrey.withAlpha(150),
+                    thickness: 0.5.h,
+                    height: 0.5.h,
                   ),
-                  CardVerticalListView(
-                    listTitle: l10n.programTitle,
-                    buttonTitle: l10n.seeMoreTitle,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.h),
-                    child: Divider(
-                      color: Colors.blueGrey.withAlpha(150),
-                      thickness: 0.5.h,
-                      height: 0.5.h,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

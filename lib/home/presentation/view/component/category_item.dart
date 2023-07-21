@@ -18,18 +18,14 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            width: 70.w,
-            child: categoryIcon,
+          Expanded(
+            child: categoryIcon ?? const Placeholder(),
           ),
           SizedBox(
             height: 8.h,
           ),
-          SizedBox(
-            width: 70.w,
-            height: 12.w,
+          Expanded(
             child: Wrap(
               children: [
                 Center(
