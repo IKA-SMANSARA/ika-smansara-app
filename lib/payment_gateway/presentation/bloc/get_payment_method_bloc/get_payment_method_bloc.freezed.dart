@@ -647,7 +647,7 @@ class _$Success implements Success {
     final value = _paymentFee;
     if (value == null) return null;
     if (_paymentFee is EqualUnmodifiableListView) return _paymentFee;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 

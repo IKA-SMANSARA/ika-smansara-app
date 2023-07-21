@@ -10,6 +10,7 @@ dependencies:
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
   cached_network_image: ^3.2.3
+  carousel_slider: ^4.2.1
   chopper: ^6.1.4
   crypto: ^3.0.3
   firebase_analytics: ^10.4.3

@@ -36,7 +36,6 @@ class HomePortraitScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 16.h,
                     vertical: 8.h,
                   ),
                   child: const CardCarousel(),
