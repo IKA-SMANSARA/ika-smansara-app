@@ -91,6 +91,28 @@ class CardVerticalListView extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  CardItem(
+                    onPress: () {},
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ],
               ),
             ),

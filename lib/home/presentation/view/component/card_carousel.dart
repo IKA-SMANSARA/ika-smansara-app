@@ -8,54 +8,47 @@ class CardCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(
-      builder: (context, orientation) {
-        return SizedBox(
-          width: orientation == Orientation.portrait ? 400.w : 600.w,
-          child: CarouselSlider(
-            items: [
-              Assets.images.imgPp.image(
-                fit: BoxFit.cover,
+    return CarouselSlider(
+      items: [
+        Assets.images.imgPp.image(
+          fit: BoxFit.cover,
+        ),
+        Assets.images.children.image(
+          fit: BoxFit.cover,
+        ),
+        Assets.images.deathCub.image(
+          fit: BoxFit.cover,
+        ),
+        Assets.images.donate.image(
+          fit: BoxFit.cover,
+        ),
+        Assets.images.donation1.image(
+          fit: BoxFit.cover,
+        ),
+        Assets.images.volunteerDancingVillage.image(
+          fit: BoxFit.cover,
+        ),
+      ].map((image) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
               ),
-              Assets.images.children.image(
-                fit: BoxFit.cover,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: image,
               ),
-              Assets.images.deathCub.image(
-                fit: BoxFit.cover,
-              ),
-              Assets.images.donate.image(
-                fit: BoxFit.cover,
-              ),
-              Assets.images.donation1.image(
-                fit: BoxFit.cover,
-              ),
-              Assets.images.volunteerDancingVillage.image(
-                fit: BoxFit.cover,
-              ),
-            ].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: i,
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-            options: CarouselOptions(
-              height: 200.h,
-              autoPlay: true,
-              viewportFraction: 1,
-            ),
-          ),
+            );
+          },
         );
-      },
+      }).toList(),
+      options: CarouselOptions(
+        height: 180.h,
+        autoPlay: true,
+        viewportFraction: 1,
+      ),
     );
   }
 }
