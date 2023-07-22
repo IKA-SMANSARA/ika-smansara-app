@@ -22,24 +22,18 @@ CustomerDetailDTO _$CustomerDetailDTOFromJson(Map<String, dynamic> json) {
 mixin _$CustomerDetailDTO {
   @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'lastName')
   String? get lastName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'phoneNumber')
   String? get phoneNumber => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'billingAddress')
   BillingAddressDTO? get billingAddress => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'shippingAddress')
   ShippingAddressDTO? get shippingAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CustomerDetailDTOCopyWith<CustomerDetailDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -50,7 +44,6 @@ abstract class $CustomerDetailDTOCopyWith<$Res> {
   factory $CustomerDetailDTOCopyWith(
           CustomerDetailDTO value, $Res Function(CustomerDetailDTO) then) =
       _$CustomerDetailDTOCopyWithImpl<$Res, CustomerDetailDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'firstName') String? firstName,
@@ -61,7 +54,6 @@ abstract class $CustomerDetailDTOCopyWith<$Res> {
       @JsonKey(name: 'shippingAddress') ShippingAddressDTO? shippingAddress});
 
   $BillingAddressDTOCopyWith<$Res>? get billingAddress;
-
   $ShippingAddressDTOCopyWith<$Res>? get shippingAddress;
 }
 
@@ -72,7 +64,6 @@ class _$CustomerDetailDTOCopyWithImpl<$Res, $Val extends CustomerDetailDTO>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -145,7 +136,6 @@ abstract class _$$_CustomerDetailDTOCopyWith<$Res>
   factory _$$_CustomerDetailDTOCopyWith(_$_CustomerDetailDTO value,
           $Res Function(_$_CustomerDetailDTO) then) =
       __$$_CustomerDetailDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -158,7 +148,6 @@ abstract class _$$_CustomerDetailDTOCopyWith<$Res>
 
   @override
   $BillingAddressDTOCopyWith<$Res>? get billingAddress;
-
   @override
   $ShippingAddressDTOCopyWith<$Res>? get shippingAddress;
 }
@@ -302,27 +291,21 @@ abstract class _CustomerDetailDTO implements CustomerDetailDTO {
   @override
   @JsonKey(name: 'firstName')
   String? get firstName;
-
   @override
   @JsonKey(name: 'lastName')
   String? get lastName;
-
   @override
   @JsonKey(name: 'email')
   String? get email;
-
   @override
   @JsonKey(name: 'phoneNumber')
   String? get phoneNumber;
-
   @override
   @JsonKey(name: 'billingAddress')
   BillingAddressDTO? get billingAddress;
-
   @override
   @JsonKey(name: 'shippingAddress')
   ShippingAddressDTO? get shippingAddress;
-
   @override
   @JsonKey(ignore: true)
   _$$_CustomerDetailDTOCopyWith<_$_CustomerDetailDTO> get copyWith =>

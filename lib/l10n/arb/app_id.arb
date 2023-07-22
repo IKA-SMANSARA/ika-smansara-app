@@ -3,5 +3,73 @@
   "counterAppBarTitle": "Penghitung",
   "@counterAppBarTitle": {
     "description": "Teks yang ditampilkan di AppBar Halaman Penghitung"
+  },
+  "homeBottomNavTitle": "Beranda",
+  "@homeBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke beranda"
+  },
+  "myDonationBottomNavTitle": "Donasiku",
+  "@myDonationBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke halaman donasiku"
+  },
+  "accountBottomNavTitle": "Akun",
+  "@accountBottomNavTitle": {
+    "description": "Menu pada navigasi bawah mengarah ke halaman akun"
+  },
+  "needHelpTitle": "Butuh Bantuan",
+  "@needHelpTitle": {
+    "description": "Judul dari butuh bantuan"
+  },
+  "seeMoreTitle": "Lihat Semua",
+  "@seeMoreTitle": {
+    "description": "Judul dari lihat semua"
+  },
+  "programTitle": "Program IKA SMANSARA",
+  "@needHelpTitle": {
+    "description": "Program Title Section"
+  },
+  "scholarshipTitle": "beasiswa",
+  "@scholarshipTitle": {
+    "description": "kategori beasiswa"
+  },
+  "yatamadhuafaTitle": "yatama/dhuafa",
+  "@yatamadhuafaTitle": {
+    "description": "kategori yatama dhuafa"
+  },
+  "educationTitle": "pendidikan",
+  "@educationTitle": {
+    "description": "kategori pendidikan"
+  },
+  "orphanageTitle": "panti asuhan",
+  "@orphanageTitle": {
+    "description": "kategori panti asuhan"
+  },
+  "humanityTitle": "kemanusiaan",
+  "@humanityTitle": {
+    "description": "kategori kemanusiaan"
+  },
+  "naturaldisastersTitle": "bencana alam",
+  "@naturaldisastersTitle": {
+    "description": "kategori bencana alam"
+  },
+  "worshipplaceTitle": "rumah ibadah",
+  "@worshipplaceTitle": {
+    "description": "kategori rumah ibadah"
+  },
+  "neighborhoodTitle": "lingkungan",
+  "@neighborhoodTitle": {
+    "description": "kategori lingkungan"
+  },
+  "disabilityTitle": "disabilitas",
+  "@disabilityTitle": {
+    "description": "kategori disabilitas"
+  },
+  "medicalhealthTitle": "medis & kesehatan",
+  "@medicalhealthTitle": {
+    "description": "kategori medis dan kesehatan"
+  },
+  "collectedTitle": "Donasi Terkumpul",
+  "@collectedTitle": {
+    "description": "collected title"
   }
 }

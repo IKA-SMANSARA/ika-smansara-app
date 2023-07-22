@@ -21,19 +21,13 @@ CustomerDetail _$CustomerDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CustomerDetail {
   String? get firstName => throw _privateConstructorUsedError;
-
   String? get lastName => throw _privateConstructorUsedError;
-
   String? get email => throw _privateConstructorUsedError;
-
   String? get phoneNumber => throw _privateConstructorUsedError;
-
   BillingAddress? get billingAddress => throw _privateConstructorUsedError;
-
   ShippingAddress? get shippingAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CustomerDetailCopyWith<CustomerDetail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -44,7 +38,6 @@ abstract class $CustomerDetailCopyWith<$Res> {
   factory $CustomerDetailCopyWith(
           CustomerDetail value, $Res Function(CustomerDetail) then) =
       _$CustomerDetailCopyWithImpl<$Res, CustomerDetail>;
-
   @useResult
   $Res call(
       {String? firstName,
@@ -55,7 +48,6 @@ abstract class $CustomerDetailCopyWith<$Res> {
       ShippingAddress? shippingAddress});
 
   $BillingAddressCopyWith<$Res>? get billingAddress;
-
   $ShippingAddressCopyWith<$Res>? get shippingAddress;
 }
 
@@ -66,7 +58,6 @@ class _$CustomerDetailCopyWithImpl<$Res, $Val extends CustomerDetail>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -139,7 +130,6 @@ abstract class _$$_CustomerDetailCopyWith<$Res>
   factory _$$_CustomerDetailCopyWith(
           _$_CustomerDetail value, $Res Function(_$_CustomerDetail) then) =
       __$$_CustomerDetailCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -152,7 +142,6 @@ abstract class _$$_CustomerDetailCopyWith<$Res>
 
   @override
   $BillingAddressCopyWith<$Res>? get billingAddress;
-
   @override
   $ShippingAddressCopyWith<$Res>? get shippingAddress;
 }
@@ -287,22 +276,16 @@ abstract class _CustomerDetail implements CustomerDetail {
 
   @override
   String? get firstName;
-
   @override
   String? get lastName;
-
   @override
   String? get email;
-
   @override
   String? get phoneNumber;
-
   @override
   BillingAddress? get billingAddress;
-
   @override
   ShippingAddress? get shippingAddress;
-
   @override
   @JsonKey(ignore: true)
   _$$_CustomerDetailCopyWith<_$_CustomerDetail> get copyWith =>

@@ -23,54 +23,38 @@ TransactionRequestDTO _$TransactionRequestDTOFromJson(
 mixin _$TransactionRequestDTO {
   @JsonKey(name: 'merchantCode')
   String? get merchantCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'paymentAmount')
   String? get paymentAmount => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'paymentMethod')
   String? get paymentMethod => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'productDetails')
   String? get productDetails => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'additionalParam')
   String? get additionalParam => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'merchantUserInfo')
   String? get merchantUserInfo => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'customerVaName')
   String? get customerVaName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'phoneNumber')
   String? get phoneNumber => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'itemDetails')
   List<ItemDetailDTO?>? get itemDetails => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'customerDetail')
   CustomerDetailDTO? get customerDetail => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'callbackUrl')
   String? get callbackUrl => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'returnUrl')
   String? get returnUrl => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'signature')
   String? get signature => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'expiryPeriod')
   int? get expiryPeriod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TransactionRequestDTOCopyWith<TransactionRequestDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -81,7 +65,6 @@ abstract class $TransactionRequestDTOCopyWith<$Res> {
   factory $TransactionRequestDTOCopyWith(TransactionRequestDTO value,
           $Res Function(TransactionRequestDTO) then) =
       _$TransactionRequestDTOCopyWithImpl<$Res, TransactionRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'merchantCode') String? merchantCode,
@@ -112,7 +95,6 @@ class _$TransactionRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -223,7 +205,6 @@ abstract class _$$_TransactionRequestDTOCopyWith<$Res>
   factory _$$_TransactionRequestDTOCopyWith(_$_TransactionRequestDTO value,
           $Res Function(_$_TransactionRequestDTO) then) =
       __$$_TransactionRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -401,7 +382,6 @@ class _$_TransactionRequestDTO implements _TransactionRequestDTO {
   @JsonKey(name: 'phoneNumber')
   final String? phoneNumber;
   final List<ItemDetailDTO?>? _itemDetails;
-
   @override
   @JsonKey(name: 'itemDetails')
   List<ItemDetailDTO?>? get itemDetails {
@@ -533,67 +513,51 @@ abstract class _TransactionRequestDTO implements TransactionRequestDTO {
   @override
   @JsonKey(name: 'merchantCode')
   String? get merchantCode;
-
   @override
   @JsonKey(name: 'paymentAmount')
   String? get paymentAmount;
-
   @override
   @JsonKey(name: 'paymentMethod')
   String? get paymentMethod;
-
   @override
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId;
-
   @override
   @JsonKey(name: 'productDetails')
   String? get productDetails;
-
   @override
   @JsonKey(name: 'additionalParam')
   String? get additionalParam;
-
   @override
   @JsonKey(name: 'merchantUserInfo')
   String? get merchantUserInfo;
-
   @override
   @JsonKey(name: 'customerVaName')
   String? get customerVaName;
-
   @override
   @JsonKey(name: 'email')
   String? get email;
-
   @override
   @JsonKey(name: 'phoneNumber')
   String? get phoneNumber;
-
   @override
   @JsonKey(name: 'itemDetails')
   List<ItemDetailDTO?>? get itemDetails;
-
   @override
   @JsonKey(name: 'customerDetail')
   CustomerDetailDTO? get customerDetail;
-
   @override
   @JsonKey(name: 'callbackUrl')
   String? get callbackUrl;
-
   @override
   @JsonKey(name: 'returnUrl')
   String? get returnUrl;
-
   @override
   @JsonKey(name: 'signature')
   String? get signature;
-
   @override
   @JsonKey(name: 'expiryPeriod')
   int? get expiryPeriod;
-
   @override
   @JsonKey(ignore: true)
   _$$_TransactionRequestDTOCopyWith<_$_TransactionRequestDTO> get copyWith =>

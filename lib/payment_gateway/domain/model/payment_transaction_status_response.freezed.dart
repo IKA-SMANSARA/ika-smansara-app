@@ -23,24 +23,18 @@ PaymentTransactionStatusResponse _$PaymentTransactionStatusResponseFromJson(
 mixin _$PaymentTransactionStatusResponse {
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'reference')
   String? get reference => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'amount')
   String? get amount => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'fee')
   String? get fee => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusCode')
   String? get statusCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'statusMessage')
   String? get statusMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentTransactionStatusResponseCopyWith<PaymentTransactionStatusResponse>
       get copyWith => throw _privateConstructorUsedError;
@@ -53,7 +47,6 @@ abstract class $PaymentTransactionStatusResponseCopyWith<$Res> {
           $Res Function(PaymentTransactionStatusResponse) then) =
       _$PaymentTransactionStatusResponseCopyWithImpl<$Res,
           PaymentTransactionStatusResponse>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'merchantOrderId') String? merchantOrderId,
@@ -72,7 +65,6 @@ class _$PaymentTransactionStatusResponseCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -122,7 +114,6 @@ abstract class _$$_PaymentTransactionStatusResponseCopyWith<$Res>
           _$_PaymentTransactionStatusResponse value,
           $Res Function(_$_PaymentTransactionStatusResponse) then) =
       __$$_PaymentTransactionStatusResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -278,27 +269,21 @@ abstract class _PaymentTransactionStatusResponse
   @override
   @JsonKey(name: 'merchantOrderId')
   String? get merchantOrderId;
-
   @override
   @JsonKey(name: 'reference')
   String? get reference;
-
   @override
   @JsonKey(name: 'amount')
   String? get amount;
-
   @override
   @JsonKey(name: 'fee')
   String? get fee;
-
   @override
   @JsonKey(name: 'statusCode')
   String? get statusCode;
-
   @override
   @JsonKey(name: 'statusMessage')
   String? get statusMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentTransactionStatusResponseCopyWith<
