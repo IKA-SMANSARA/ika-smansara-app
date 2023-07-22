@@ -1,62 +1,59 @@
-<svg fill="none" height="60" viewBox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
-    <rect fill="#1E1E1E" height="60" width="60" />
-    <g id="beranda">
-        <g clip-path="url(#clip0_89_105)">
-            <rect fill="white" height="1362" rx="28" width="390" x="-32" y="-266" />
-            <g id="Layer_x0020_1">
-                <g id="_2562764286528">
-                    <path
-                        d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z"
-                        fill="#F9DBD2" id="Vector" />
-                    <path d="M11.5361 24.2252V39.3933" id="Vector_2" stroke="#332C2B"
-                        stroke-miterlimit="22.9256" stroke-width="1.13523" />
-                    <path clip-rule="evenodd"
-                        d="M17.0755 26.3542C17.0755 24.4247 23.2193 22.8587 30.7951 22.8587C38.3737 22.8587 44.5174 24.422 44.5174 26.3542V28.5707L54.829 23.7141L30.7951 12.8068L6.76123 23.7141L11.533 25.9634L17.0728 28.5734V26.3569L17.0755 26.3542Z"
-                        fill="#97AEC7" fill-rule="evenodd" id="Vector_3" stroke="#332C2B"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path
-                        d="M30.7985 41.4403C38.3771 41.4403 44.5208 39.8753 44.5208 37.9448C44.5208 36.0143 38.3771 34.4493 30.7985 34.4493C23.2199 34.4493 17.0762 36.0143 17.0762 37.9448C17.0762 39.8753 23.2199 41.4403 30.7985 41.4403Z"
-                        id="Vector_4" stroke="#332C2B" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path
-                        d="M30.7985 29.8497C38.3771 29.8497 44.5208 28.2847 44.5208 26.3542C44.5208 24.4237 38.3771 22.8587 30.7985 22.8587C23.2199 22.8587 17.0762 24.4237 17.0762 26.3542C17.0762 28.2847 23.2199 29.8497 30.7985 29.8497Z"
-                        id="Vector_5" stroke="#332C2B" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path clip-rule="evenodd"
-                        d="M11.5362 48.7537C9.90734 46.7477 8.49165 44.5367 8.76495 42.0333C8.93166 40.5029 10.2107 39.6994 11.5362 39.3905C12.859 39.6994 14.1407 40.5029 14.3074 42.0333C14.5807 44.5367 13.1678 46.7477 11.5362 48.7537Z"
-                        fill-rule="evenodd" id="Vector_6" stroke="#332C2B"
-                        stroke-miterlimit="22.9256" stroke-width="1.13523" />
-                    <path clip-rule="evenodd"
-                        d="M17.0762 37.9448C17.0762 39.8743 23.2199 41.4403 30.7958 41.4403C38.3743 41.4403 44.5181 39.877 44.5181 37.9448C44.5181 36.0153 38.3743 34.4493 30.7958 34.4493C23.2172 34.4493 17.0762 36.0126 17.0762 37.9448Z"
-                        fill="#66798F" fill-rule="evenodd" id="Vector_7" stroke="#332C2B"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path clip-rule="evenodd"
-                        d="M44.5181 26.3542C44.5181 24.4247 38.3743 22.8587 30.7958 22.8587C23.2172 22.8587 17.0762 24.422 17.0762 26.3542V28.5706V37.9448C17.0762 37.2998 17.7622 36.6958 18.9565 36.1793C21.3396 35.1462 25.7507 34.452 30.7958 34.452C38.3743 34.452 44.5181 36.0153 44.5181 37.9475V28.5734V26.3569V26.3542Z"
-                        fill="#B0C1D4" fill-rule="evenodd" id="Vector_8" stroke="#332C2B"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path clip-rule="evenodd"
-                        d="M14.3075 42.0361C14.1408 40.5056 12.8618 39.7021 11.5363 39.3933C10.2135 39.7021 8.93172 40.5056 8.765 42.0361C8.4917 44.5395 9.90466 46.7505 11.5363 48.7565C13.1651 46.7505 14.5808 44.5395 14.3075 42.0361Z"
-                        fill="#ECAD6F" fill-rule="evenodd" id="Vector_9" stroke="#332C2B"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path d="M18.9556 34.3892C23.1261 32.7166 29.5186 31.812 36.6735 32.9899"
-                        id="Vector_10" stroke="#332C2B" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                    <path d="M42.4599 34.3482C41.3749 33.8617 40.3555 33.5802 39.3579 33.378"
-                        id="Vector_11" stroke="#332C2B" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-miterlimit="22.9256"
-                        stroke-width="1.13523" />
-                </g>
-            </g>
-        </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" fill="none" height="60"
+    id="svg27" version="1.1" viewBox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg"
+    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)" sodipodi:docname="Graduation Cap.svg">
+  <sodipodi:namedview bordercolor="#eeeeee" borderopacity="1" id="namedview29" pagecolor="#505050"
+      showgrid="false" inkscape:current-layer="g19" inkscape:cx="-111.80124" inkscape:cy="92.795031"
+      inkscape:pagecheckerboard="0" inkscape:pageopacity="0" inkscape:pageshadow="0"
+      inkscape:window-height="1009" inkscape:window-maximized="1" inkscape:window-width="1920"
+      inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="2.6833333" />
+  <g clip-path="url(#clip0_89_105)" id="g19">
+    <g id="Layer_x0020_1">
+      <g id="_2562764286528">
+        <path
+            d="M 30,60 C 46.5685,60 60,46.5685 60,30 60,13.4315 46.5685,0 30,0 13.4315,0 0,13.4315 0,30 0,46.5685 13.4315,60 30,60 Z"
+            fill="#f9dbd2" id="Vector" />
+        <path d="M 11.5361,24.2252 V 39.3933" id="Vector_2" stroke="#332c2b"
+            stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path clip-rule="evenodd"
+            d="m 17.0755,26.3542 c 0,-1.9295 6.1438,-3.4955 13.7196,-3.4955 7.5786,0 13.7223,1.5633 13.7223,3.4955 v 2.2165 L 54.829,23.7141 30.7951,12.8068 6.76123,23.7141 l 4.77177,2.2493 5.5398,2.61 v -2.2165 z"
+            fill="#97aec7" fill-rule="evenodd" id="Vector_3" stroke="#332c2b" stroke-linecap="round"
+            stroke-linejoin="round" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path
+            d="m 30.7985,41.4403 c 7.5786,0 13.7223,-1.565 13.7223,-3.4955 0,-1.9305 -6.1437,-3.4955 -13.7223,-3.4955 -7.5786,0 -13.7223,1.565 -13.7223,3.4955 0,1.9305 6.1437,3.4955 13.7223,3.4955 z"
+            id="Vector_4" stroke="#332c2b" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path
+            d="m 30.7985,29.8497 c 7.5786,0 13.7223,-1.565 13.7223,-3.4955 0,-1.9305 -6.1437,-3.4955 -13.7223,-3.4955 -7.5786,0 -13.7223,1.565 -13.7223,3.4955 0,1.9305 6.1437,3.4955 13.7223,3.4955 z"
+            id="Vector_5" stroke="#332c2b" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path clip-rule="evenodd"
+            d="m 11.5362,48.7537 c -1.62886,-2.006 -3.04455,-4.217 -2.77125,-6.7204 0.16671,-1.5304 1.44575,-2.3339 2.77125,-2.6428 1.3228,0.3089 2.6045,1.1124 2.7712,2.6428 0.2733,2.5034 -1.1396,4.7144 -2.7712,6.7204 z"
+            fill-rule="evenodd" id="Vector_6" stroke="#332c2b" stroke-miterlimit="22.9256"
+            stroke-width="1.13523" />
+        <path clip-rule="evenodd"
+            d="m 17.0762,37.9448 c 0,1.9295 6.1437,3.4955 13.7196,3.4955 7.5785,0 13.7223,-1.5633 13.7223,-3.4955 0,-1.9295 -6.1438,-3.4955 -13.7223,-3.4955 -7.5786,0 -13.7196,1.5633 -13.7196,3.4955 z"
+            fill="#66798f" fill-rule="evenodd" id="Vector_7" stroke="#332c2b" stroke-linecap="round"
+            stroke-linejoin="round" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path clip-rule="evenodd"
+            d="m 44.5181,26.3542 c 0,-1.9295 -6.1438,-3.4955 -13.7223,-3.4955 -7.5786,0 -13.7196,1.5633 -13.7196,3.4955 v 2.2164 9.3742 c 0,-0.645 0.686,-1.249 1.8803,-1.7655 2.3831,-1.0331 6.7942,-1.7273 11.8393,-1.7273 7.5785,0 13.7223,1.5633 13.7223,3.4955 v -9.3741 -2.2165 z"
+            fill="#b0c1d4" fill-rule="evenodd" id="Vector_8" stroke="#332c2b" stroke-linecap="round"
+            stroke-linejoin="round" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path clip-rule="evenodd"
+            d="m 14.3075,42.0361 c -0.1667,-1.5305 -1.4457,-2.334 -2.7712,-2.6428 -1.3228,0.3088 -2.60458,1.1123 -2.7713,2.6428 -0.2733,2.5034 1.13966,4.7144 2.7713,6.7204 1.6288,-2.006 3.0445,-4.217 2.7712,-6.7204 z"
+            fill="#ecad6f" fill-rule="evenodd" id="Vector_9" stroke="#332c2b" stroke-linecap="round"
+            stroke-linejoin="round" stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path d="m 18.9556,34.3892 c 4.1705,-1.6726 10.563,-2.5772 17.7179,-1.3993" id="Vector_10"
+            stroke="#332c2b" stroke-linecap="round" stroke-linejoin="round"
+            stroke-miterlimit="22.9256" stroke-width="1.13523" />
+        <path d="m 42.4599,34.3482 c -1.085,-0.4865 -2.1044,-0.768 -3.102,-0.9702" id="Vector_11"
+            stroke="#332c2b" stroke-linecap="round" stroke-linejoin="round"
+            stroke-miterlimit="22.9256" stroke-width="1.13523" />
+      </g>
     </g>
-    <defs>
-        <clipPath id="clip0_89_105">
-            <rect fill="white" height="1362" rx="28" width="390" x="-32" y="-266" />
-        </clipPath>
-    </defs>
+  </g>
+  <defs id="defs25">
+    <clipPath id="clip0_89_105">
+      <rect fill="white" height="1362" id="rect22" rx="28" width="390" x="-32" y="-266" />
+    </clipPath>
+  </defs>
 </svg>
