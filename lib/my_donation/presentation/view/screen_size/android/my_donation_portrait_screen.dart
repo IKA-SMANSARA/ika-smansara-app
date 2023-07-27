@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
@@ -50,6 +51,7 @@ class MyDonationPortraitScreen extends StatelessWidget {
                 ),
               ),
             ),
+            CardItemHorizontal(),
           ],
         ),
       ),

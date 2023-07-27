@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
-import 'package:ika_smansara/home/home.dart';
 
 class CardVerticalListView extends StatelessWidget {
   const CardVerticalListView({
@@ -59,7 +59,7 @@ class CardVerticalListView extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  CardItem(
+                  CardItemVertical(
                     onPress: () {},
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
@@ -70,7 +70,7 @@ class CardVerticalListView extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  CardItem(
+                  CardItemVertical(
                     onPress: () {},
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
@@ -81,7 +81,7 @@ class CardVerticalListView extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  CardItem(
+                  CardItemVertical(
                     onPress: () {},
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
@@ -92,7 +92,7 @@ class CardVerticalListView extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  CardItem(
+                  CardItemVertical(
                     onPress: () {},
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
@@ -103,7 +103,7 @@ class CardVerticalListView extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  CardItem(
+                  CardItemVertical(
                     onPress: () {},
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
