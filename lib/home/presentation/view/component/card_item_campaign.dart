@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
-class CardItemVertical extends StatelessWidget {
-  const CardItemVertical({
+class CardItemCampaign extends StatelessWidget {
+  const CardItemCampaign({
     required this.onPress,
     required this.campaignTitle,
     required this.campaignDonationCollected,
