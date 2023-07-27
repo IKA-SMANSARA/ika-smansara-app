@@ -700,7 +700,7 @@ class _$CounterStateCopyWithImpl<$Res, $Val extends CounterState>
 
   // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 

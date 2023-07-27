@@ -21,21 +21,14 @@ BillingAddress _$BillingAddressFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BillingAddress {
   String? get firstName => throw _privateConstructorUsedError;
-
   String? get lastName => throw _privateConstructorUsedError;
-
   String? get address => throw _privateConstructorUsedError;
-
   String? get city => throw _privateConstructorUsedError;
-
   String? get postalCode => throw _privateConstructorUsedError;
-
   String? get phone => throw _privateConstructorUsedError;
-
   String? get countryCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $BillingAddressCopyWith<BillingAddress> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,7 +39,6 @@ abstract class $BillingAddressCopyWith<$Res> {
   factory $BillingAddressCopyWith(
           BillingAddress value, $Res Function(BillingAddress) then) =
       _$BillingAddressCopyWithImpl<$Res, BillingAddress>;
-
   @useResult
   $Res call(
       {String? firstName,
@@ -65,7 +57,6 @@ class _$BillingAddressCopyWithImpl<$Res, $Val extends BillingAddress>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -119,7 +110,6 @@ abstract class _$$_BillingAddressCopyWith<$Res>
   factory _$$_BillingAddressCopyWith(
           _$_BillingAddress value, $Res Function(_$_BillingAddress) then) =
       __$$_BillingAddressCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -271,25 +261,18 @@ abstract class _BillingAddress implements BillingAddress {
 
   @override
   String? get firstName;
-
   @override
   String? get lastName;
-
   @override
   String? get address;
-
   @override
   String? get city;
-
   @override
   String? get postalCode;
-
   @override
   String? get phone;
-
   @override
   String? get countryCode;
-
   @override
   @JsonKey(ignore: true)
   _$$_BillingAddressCopyWith<_$_BillingAddress> get copyWith =>

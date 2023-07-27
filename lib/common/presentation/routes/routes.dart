@@ -3,7 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/common.dart';
 
 class Routes {
-  static const root = '/';
+  static const counter = '/counter-app';
+  static const home = '/home';
+  static const myDonation = '/my-donation';
+  static const account = '/account';
   static const paymentGateway = '/payment-gateway';
   static const selectPaymentMethod = '/select-payment-method';
   static const paymentWindowWebView = '/payment-window-web-view';

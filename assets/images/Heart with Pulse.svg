@@ -1,0 +1,28 @@
+<svg fill="none" height="60" viewBox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+    <g id="Group 61">
+        <g id="Layer_x0020_1">
+            <g id="_2562767777632">
+                <path
+                    d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z"
+                    fill="#FCE0A2" id="Vector" />
+                <path clip-rule="evenodd"
+                    d="M30.283 50.3076C-11.1415 25.7857 20.7291 0.933753 30.283 22.4755C39.8369 0.933753 71.7075 25.7857 30.283 50.3076Z"
+                    fill="#EA5167" fill-rule="evenodd" id="Vector_2" stroke="#332C2B"
+                    stroke-miterlimit="22.9256" stroke-width="1.134" />
+                <path
+                    d="M16.6753 34.6205H18.8416L20.6624 30.6334L23.003 36.9611L26.4688 24.4799L30.456 40.0814L33.8362 30.1136L36.7837 37.7408L38.8629 34.1007H43.8911"
+                    id="Vector_3" stroke="#332C2B" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-miterlimit="22.9256" stroke-width="1.134" />
+                <path d="M39.104 16.8123C44.6956 16.0217 48.0494 19.9839 48.3746 24.7305"
+                    id="Vector_4" stroke="#332C2B" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-miterlimit="22.9256" stroke-width="1.134" />
+                <path d="M36.8489 42.8142C34.4911 44.6833 32.5894 46.0295 31.0425 46.9741"
+                    id="Vector_5" stroke="#332C2B" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-miterlimit="22.9256" stroke-width="1.134" />
+                <path d="M15.1811 18.1553C13.4583 19.2291 12.2522 20.9815 12.1479 24.136"
+                    id="Vector_6" stroke="#332C2B" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-miterlimit="22.9256" stroke-width="1.134" />
+            </g>
+        </g>
+    </g>
+</svg>

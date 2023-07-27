@@ -21,13 +21,10 @@ ItemDetail _$ItemDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ItemDetail {
   String? get name => throw _privateConstructorUsedError;
-
   int? get price => throw _privateConstructorUsedError;
-
   int? get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ItemDetailCopyWith<ItemDetail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -38,7 +35,6 @@ abstract class $ItemDetailCopyWith<$Res> {
   factory $ItemDetailCopyWith(
           ItemDetail value, $Res Function(ItemDetail) then) =
       _$ItemDetailCopyWithImpl<$Res, ItemDetail>;
-
   @useResult
   $Res call({String? name, int? price, int? quantity});
 }
@@ -50,7 +46,6 @@ class _$ItemDetailCopyWithImpl<$Res, $Val extends ItemDetail>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -84,7 +79,6 @@ abstract class _$$_ItemDetailCopyWith<$Res>
   factory _$$_ItemDetailCopyWith(
           _$_ItemDetail value, $Res Function(_$_ItemDetail) then) =
       __$$_ItemDetailCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? name, int? price, int? quantity});
@@ -182,13 +176,10 @@ abstract class _ItemDetail implements ItemDetail {
 
   @override
   String? get name;
-
   @override
   int? get price;
-
   @override
   int? get quantity;
-
   @override
   @JsonKey(ignore: true)
   _$$_ItemDetailCopyWith<_$_ItemDetail> get copyWith =>

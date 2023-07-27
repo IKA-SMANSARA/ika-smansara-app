@@ -23,18 +23,14 @@ PaymentMethodRequestDTO _$PaymentMethodRequestDTOFromJson(
 mixin _$PaymentMethodRequestDTO {
   @JsonKey(name: 'merchantCode')
   String? get merchantCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'amount')
   int? get amount => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'datetime')
   String? get datetime => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'signature')
   String? get signature => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PaymentMethodRequestDTOCopyWith<PaymentMethodRequestDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -45,7 +41,6 @@ abstract class $PaymentMethodRequestDTOCopyWith<$Res> {
   factory $PaymentMethodRequestDTOCopyWith(PaymentMethodRequestDTO value,
           $Res Function(PaymentMethodRequestDTO) then) =
       _$PaymentMethodRequestDTOCopyWithImpl<$Res, PaymentMethodRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'merchantCode') String? merchantCode,
@@ -62,7 +57,6 @@ class _$PaymentMethodRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -101,7 +95,6 @@ abstract class _$$_PaymentMethodRequestDTOCopyWith<$Res>
   factory _$$_PaymentMethodRequestDTOCopyWith(_$_PaymentMethodRequestDTO value,
           $Res Function(_$_PaymentMethodRequestDTO) then) =
       __$$_PaymentMethodRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -228,19 +221,15 @@ abstract class _PaymentMethodRequestDTO implements PaymentMethodRequestDTO {
   @override
   @JsonKey(name: 'merchantCode')
   String? get merchantCode;
-
   @override
   @JsonKey(name: 'amount')
   int? get amount;
-
   @override
   @JsonKey(name: 'datetime')
   String? get datetime;
-
   @override
   @JsonKey(name: 'signature')
   String? get signature;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodRequestDTOCopyWith<_$_PaymentMethodRequestDTO>

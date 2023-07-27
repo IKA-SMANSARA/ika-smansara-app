@@ -22,15 +22,12 @@ ItemDetailDTO _$ItemDetailDTOFromJson(Map<String, dynamic> json) {
 mixin _$ItemDetailDTO {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'price')
   int? get price => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'quantity')
   int? get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ItemDetailDTOCopyWith<ItemDetailDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -41,7 +38,6 @@ abstract class $ItemDetailDTOCopyWith<$Res> {
   factory $ItemDetailDTOCopyWith(
           ItemDetailDTO value, $Res Function(ItemDetailDTO) then) =
       _$ItemDetailDTOCopyWithImpl<$Res, ItemDetailDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'name') String? name,
@@ -56,7 +52,6 @@ class _$ItemDetailDTOCopyWithImpl<$Res, $Val extends ItemDetailDTO>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -90,7 +85,6 @@ abstract class _$$_ItemDetailDTOCopyWith<$Res>
   factory _$$_ItemDetailDTOCopyWith(
           _$_ItemDetailDTO value, $Res Function(_$_ItemDetailDTO) then) =
       __$$_ItemDetailDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -198,15 +192,12 @@ abstract class _ItemDetailDTO implements ItemDetailDTO {
   @override
   @JsonKey(name: 'name')
   String? get name;
-
   @override
   @JsonKey(name: 'price')
   int? get price;
-
   @override
   @JsonKey(name: 'quantity')
   int? get quantity;
-
   @override
   @JsonKey(ignore: true)
   _$$_ItemDetailDTOCopyWith<_$_ItemDetailDTO> get copyWith =>
