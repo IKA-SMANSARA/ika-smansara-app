@@ -51,13 +51,7 @@ class MyDonationPortraitScreen extends StatelessWidget {
                 ),
               ),
             ),
-            CardItemDonationHistory(
-              onPress: () {},
-              campaignTitle:
-                  'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
-              campaignImage: Assets.images.volunteerDancingVillage.image(),
-              createdDonationAt: '1 hari lalu',
-            ),
+            const CardDonationHistoryHorizontalListView(),
           ],
         ),
       ),

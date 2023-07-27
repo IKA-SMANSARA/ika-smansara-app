@@ -27,16 +27,16 @@ class CardItemCampaign extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Card(
-        elevation: 4,
+        elevation: 4.w,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.w),
         ),
         child: AspectRatio(
           aspectRatio: 3 / 2,
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.w),
                 child: campaignImage ?? const Placeholder(),
               ),
               Positioned(
