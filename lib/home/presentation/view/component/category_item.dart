@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -31,7 +32,7 @@ class CategoryItem extends StatelessWidget {
                 Center(
                   child: Text(
                     categoryTitle ?? '',
-                    style: TextStyle(fontSize: 10.sp),
+                    style: GoogleFonts.inter(fontSize: 10.sp),
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

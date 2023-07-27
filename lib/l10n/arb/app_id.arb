@@ -71,5 +71,9 @@
   "collectedTitle": "Donasi Terkumpul",
   "@collectedTitle": {
     "description": "collected title"
+  },
+  "donationHistoryTitle": "Riwayat Donasi",
+  "@donationHistoryTitle": {
+    "description": "judul riwayat donasi"
   }
 }

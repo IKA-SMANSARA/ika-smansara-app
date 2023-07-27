@@ -17,12 +17,10 @@ class HomePortraitScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: double.infinity,
               height: 150.h,
               decoration: const BoxDecoration(color: Color(0xFF104993)),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
 class CardItem extends StatelessWidget {
@@ -50,7 +51,7 @@ class CardItem extends StatelessWidget {
                     children: [
                       Text(
                         campaignTitle ?? '',
-                        style: TextStyle(
+                        style: GoogleFonts.inter(
                           color: Colors.black,
                           fontSize: 10.sp,
                           fontWeight: FontWeight.w700,
@@ -63,7 +64,7 @@ class CardItem extends StatelessWidget {
                         ),
                         child: Text(
                           l10n.collectedTitle,
-                          style: TextStyle(
+                          style: GoogleFonts.inter(
                             color: Colors.black,
                             fontSize: 10.sp,
                           ),
@@ -78,7 +79,7 @@ class CardItem extends StatelessWidget {
                           children: [
                             Text(
                               'Rp.$campaignDonationCollected',
-                              style: TextStyle(
+                              style: GoogleFonts.inter(
                                 color: Colors.blue,
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w700,
@@ -86,7 +87,7 @@ class CardItem extends StatelessWidget {
                             ),
                             Text(
                               campaignDuration ?? '',
-                              style: TextStyle(
+                              style: GoogleFonts.inter(
                                 color: Colors.black,
                                 fontSize: 10.sp,
                               ),

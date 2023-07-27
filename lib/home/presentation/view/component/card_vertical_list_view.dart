@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/home/home.dart';
 
@@ -29,7 +30,7 @@ class CardVerticalListView extends StatelessWidget {
               children: [
                 Text(
                   listTitle ?? '',
-                  style: TextStyle(
+                  style: GoogleFonts.inter(
                     color: Colors.black,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w700,
@@ -39,7 +40,7 @@ class CardVerticalListView extends StatelessWidget {
                   onTap: () {},
                   child: Text(
                     buttonTitle ?? '',
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
                       color: const Color(0xFF104993),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w700,
