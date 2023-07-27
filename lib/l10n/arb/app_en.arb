@@ -71,5 +71,9 @@
   "collectedTitle": "Collected Donation",
   "@collectedTitle": {
     "description": "collected title"
+  },
+  "donationHistoryTitle": "Donation Histories",
+  "@donationHistoryTitle": {
+    "description": "donation histories title"
   }
 }
