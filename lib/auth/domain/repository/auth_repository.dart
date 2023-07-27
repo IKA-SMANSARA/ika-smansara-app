@@ -6,7 +6,11 @@ abstract class AuthRepository {
     EmailSessionRequest emailSessionRequest,
   );
 
-  Future<Resource<SimpleResource>> saveIdEmailSessionToLocal(
+  Future<void> saveIdEmailSessionToLocal(
     String? sessionId,
   );
+
+  Future<SessionId> readIdEmailSessionFromLocal();
+
+  Future<Resource<EmailSessionResponse>> getEmailSession(String? sessionId);
 }

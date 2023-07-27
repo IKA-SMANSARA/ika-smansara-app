@@ -21,11 +21,9 @@ EmailSessionRequest _$EmailSessionRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EmailSessionRequest {
   String? get email => throw _privateConstructorUsedError;
-
   String? get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $EmailSessionRequestCopyWith<EmailSessionRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $EmailSessionRequestCopyWith<$Res> {
   factory $EmailSessionRequestCopyWith(
           EmailSessionRequest value, $Res Function(EmailSessionRequest) then) =
       _$EmailSessionRequestCopyWithImpl<$Res, EmailSessionRequest>;
-
   @useResult
   $Res call({String? email, String? password});
 }
@@ -48,7 +45,6 @@ class _$EmailSessionRequestCopyWithImpl<$Res, $Val extends EmailSessionRequest>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$_EmailSessionRequestCopyWith<$Res>
   factory _$$_EmailSessionRequestCopyWith(_$_EmailSessionRequest value,
           $Res Function(_$_EmailSessionRequest) then) =
       __$$_EmailSessionRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? email, String? password});
@@ -166,10 +161,8 @@ abstract class _EmailSessionRequest implements EmailSessionRequest {
 
   @override
   String? get email;
-
   @override
   String? get password;
-
   @override
   @JsonKey(ignore: true)
   _$$_EmailSessionRequestCopyWith<_$_EmailSessionRequest> get copyWith =>

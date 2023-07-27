@@ -17,6 +17,22 @@ class _$ApiServices extends ApiServices {
   final definitionType = ApiServices;
 
   @override
+  Future<Response<dynamic>> getEmailSession(String sessionId) {
+    final Uri $url = Uri.parse('account/sessions/${sessionId}');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '64aa86334bd6c9d9678f',
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> createEmailSession(
       EmailSessionRequestDTO emailSessionRequestDTO) {
     final Uri $url = Uri.parse('account/sessions/email');

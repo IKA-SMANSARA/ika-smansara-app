@@ -23,12 +23,10 @@ EmailSessionRequestDTO _$EmailSessionRequestDTOFromJson(
 mixin _$EmailSessionRequestDTO {
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'password')
   String? get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $EmailSessionRequestDTOCopyWith<EmailSessionRequestDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ abstract class $EmailSessionRequestDTOCopyWith<$Res> {
   factory $EmailSessionRequestDTOCopyWith(EmailSessionRequestDTO value,
           $Res Function(EmailSessionRequestDTO) then) =
       _$EmailSessionRequestDTOCopyWithImpl<$Res, EmailSessionRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'email') String? email,
@@ -54,7 +51,6 @@ class _$EmailSessionRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -83,7 +79,6 @@ abstract class _$$_EmailSessionRequestDTOCopyWith<$Res>
   factory _$$_EmailSessionRequestDTOCopyWith(_$_EmailSessionRequestDTO value,
           $Res Function(_$_EmailSessionRequestDTO) then) =
       __$$_EmailSessionRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -182,11 +177,9 @@ abstract class _EmailSessionRequestDTO implements EmailSessionRequestDTO {
   @override
   @JsonKey(name: 'email')
   String? get email;
-
   @override
   @JsonKey(name: 'password')
   String? get password;
-
   @override
   @JsonKey(ignore: true)
   _$$_EmailSessionRequestDTOCopyWith<_$_EmailSessionRequestDTO> get copyWith =>

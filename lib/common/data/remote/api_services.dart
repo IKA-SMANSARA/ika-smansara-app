@@ -11,6 +11,16 @@ part 'api_services.chopper.dart';
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
 
+  // get email session
+  @Get(
+    path: 'account/sessions/{sessionId}',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.projectId,
+    },
+  )
+  Future<Response> getEmailSession(@Path('sessionId') String sessionId);
+
   // create email session / login
   @Post(
     path: 'account/sessions/email',

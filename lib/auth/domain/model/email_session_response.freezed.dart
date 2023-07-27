@@ -21,65 +21,36 @@ EmailSessionResponse _$EmailSessionResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EmailSessionResponse {
   String? get id => throw _privateConstructorUsedError;
-
   String? get createAt => throw _privateConstructorUsedError;
-
   String? get userId => throw _privateConstructorUsedError;
-
   String? get expire => throw _privateConstructorUsedError;
-
   String? get provider => throw _privateConstructorUsedError;
-
   String? get providerUid => throw _privateConstructorUsedError;
-
   String? get providerAccessToken => throw _privateConstructorUsedError;
-
   String? get providerTokenExpiry => throw _privateConstructorUsedError;
-
   String? get providerRefreshToken => throw _privateConstructorUsedError;
-
   String? get ip => throw _privateConstructorUsedError;
-
   String? get osCode => throw _privateConstructorUsedError;
-
   String? get onName => throw _privateConstructorUsedError;
-
   String? get osVersion => throw _privateConstructorUsedError;
-
   String? get clientType => throw _privateConstructorUsedError;
-
   String? get clientCode => throw _privateConstructorUsedError;
-
   String? get clientName => throw _privateConstructorUsedError;
-
   String? get clientVersion => throw _privateConstructorUsedError;
-
   String? get clientEngine => throw _privateConstructorUsedError;
-
   String? get clientEngineVersion => throw _privateConstructorUsedError;
-
   String? get deviceName => throw _privateConstructorUsedError;
-
   String? get deviceBrand => throw _privateConstructorUsedError;
-
   String? get deviceModel => throw _privateConstructorUsedError;
-
   String? get countryCode => throw _privateConstructorUsedError;
-
   String? get countryName => throw _privateConstructorUsedError;
-
   String? get current => throw _privateConstructorUsedError;
-
   String? get message => throw _privateConstructorUsedError;
-
   int? get code => throw _privateConstructorUsedError;
-
   String? get type => throw _privateConstructorUsedError;
-
   String? get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $EmailSessionResponseCopyWith<EmailSessionResponse> get copyWith =>
       throw _privateConstructorUsedError;
@@ -90,7 +61,6 @@ abstract class $EmailSessionResponseCopyWith<$Res> {
   factory $EmailSessionResponseCopyWith(EmailSessionResponse value,
           $Res Function(EmailSessionResponse) then) =
       _$EmailSessionResponseCopyWithImpl<$Res, EmailSessionResponse>;
-
   @useResult
   $Res call(
       {String? id,
@@ -132,7 +102,6 @@ class _$EmailSessionResponseCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -296,7 +265,6 @@ abstract class _$$_EmailSessionResponseCopyWith<$Res>
   factory _$$_EmailSessionResponseCopyWith(_$_EmailSessionResponse value,
           $Res Function(_$_EmailSessionResponse) then) =
       __$$_EmailSessionResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -735,91 +703,62 @@ abstract class _EmailSessionResponse implements EmailSessionResponse {
 
   @override
   String? get id;
-
   @override
   String? get createAt;
-
   @override
   String? get userId;
-
   @override
   String? get expire;
-
   @override
   String? get provider;
-
   @override
   String? get providerUid;
-
   @override
   String? get providerAccessToken;
-
   @override
   String? get providerTokenExpiry;
-
   @override
   String? get providerRefreshToken;
-
   @override
   String? get ip;
-
   @override
   String? get osCode;
-
   @override
   String? get onName;
-
   @override
   String? get osVersion;
-
   @override
   String? get clientType;
-
   @override
   String? get clientCode;
-
   @override
   String? get clientName;
-
   @override
   String? get clientVersion;
-
   @override
   String? get clientEngine;
-
   @override
   String? get clientEngineVersion;
-
   @override
   String? get deviceName;
-
   @override
   String? get deviceBrand;
-
   @override
   String? get deviceModel;
-
   @override
   String? get countryCode;
-
   @override
   String? get countryName;
-
   @override
   String? get current;
-
   @override
   String? get message;
-
   @override
   int? get code;
-
   @override
   String? get type;
-
   @override
   String? get version;
-
   @override
   @JsonKey(ignore: true)
   _$$_EmailSessionResponseCopyWith<_$_EmailSessionResponse> get copyWith =>

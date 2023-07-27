@@ -23,93 +23,64 @@ EmailSessionResponseDTO _$EmailSessionResponseDTOFromJson(
 mixin _$EmailSessionResponseDTO {
   @JsonKey(name: '\$id')
   String? get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$createdAt')
   String? get createAt => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'userId')
   String? get userId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'expire')
   String? get expire => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'provider')
   String? get provider => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'providerUid')
   String? get providerUid => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'providerAccessToken')
   String? get providerAccessToken => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'providerTokenExpiry')
   String? get providerTokenExpiry => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'providerRefreshToken')
   String? get providerRefreshToken => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'ip')
   String? get ip => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'osCode')
   String? get osCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'osName')
   String? get onName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'osVersion')
   String? get osVersion => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientType')
   String? get clientType => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientCode')
   String? get clientCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientName')
   String? get clientName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientVersion')
   String? get clientVersion => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientEngine')
   String? get clientEngine => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'clientEngineVersion')
   String? get clientEngineVersion => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'deviceName')
   String? get deviceName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'deviceBrand')
   String? get deviceBrand => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'deviceModel')
   String? get deviceModel => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'countryCode')
   String? get countryCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'countryName')
   String? get countryName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'current')
   String? get current => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'code')
   int? get code => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'version')
   String? get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $EmailSessionResponseDTOCopyWith<EmailSessionResponseDTO> get copyWith =>
       throw _privateConstructorUsedError;
@@ -120,7 +91,6 @@ abstract class $EmailSessionResponseDTOCopyWith<$Res> {
   factory $EmailSessionResponseDTOCopyWith(EmailSessionResponseDTO value,
           $Res Function(EmailSessionResponseDTO) then) =
       _$EmailSessionResponseDTOCopyWithImpl<$Res, EmailSessionResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String? id,
@@ -162,7 +132,6 @@ class _$EmailSessionResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -326,7 +295,6 @@ abstract class _$$_EmailSessionResponseDTOCopyWith<$Res>
   factory _$$_EmailSessionResponseDTOCopyWith(_$_EmailSessionResponseDTO value,
           $Res Function(_$_EmailSessionResponseDTO) then) =
       __$$_EmailSessionResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -798,119 +766,90 @@ abstract class _EmailSessionResponseDTO implements EmailSessionResponseDTO {
   @override
   @JsonKey(name: '\$id')
   String? get id;
-
   @override
   @JsonKey(name: '\$createdAt')
   String? get createAt;
-
   @override
   @JsonKey(name: 'userId')
   String? get userId;
-
   @override
   @JsonKey(name: 'expire')
   String? get expire;
-
   @override
   @JsonKey(name: 'provider')
   String? get provider;
-
   @override
   @JsonKey(name: 'providerUid')
   String? get providerUid;
-
   @override
   @JsonKey(name: 'providerAccessToken')
   String? get providerAccessToken;
-
   @override
   @JsonKey(name: 'providerTokenExpiry')
   String? get providerTokenExpiry;
-
   @override
   @JsonKey(name: 'providerRefreshToken')
   String? get providerRefreshToken;
-
   @override
   @JsonKey(name: 'ip')
   String? get ip;
-
   @override
   @JsonKey(name: 'osCode')
   String? get osCode;
-
   @override
   @JsonKey(name: 'osName')
   String? get onName;
-
   @override
   @JsonKey(name: 'osVersion')
   String? get osVersion;
-
   @override
   @JsonKey(name: 'clientType')
   String? get clientType;
-
   @override
   @JsonKey(name: 'clientCode')
   String? get clientCode;
-
   @override
   @JsonKey(name: 'clientName')
   String? get clientName;
-
   @override
   @JsonKey(name: 'clientVersion')
   String? get clientVersion;
-
   @override
   @JsonKey(name: 'clientEngine')
   String? get clientEngine;
-
   @override
   @JsonKey(name: 'clientEngineVersion')
   String? get clientEngineVersion;
-
   @override
   @JsonKey(name: 'deviceName')
   String? get deviceName;
-
   @override
   @JsonKey(name: 'deviceBrand')
   String? get deviceBrand;
-
   @override
   @JsonKey(name: 'deviceModel')
   String? get deviceModel;
-
   @override
   @JsonKey(name: 'countryCode')
   String? get countryCode;
-
   @override
   @JsonKey(name: 'countryName')
   String? get countryName;
-
   @override
   @JsonKey(name: 'current')
   String? get current;
-
   @override
   @JsonKey(name: 'message')
   String? get message;
-
   @override
   @JsonKey(name: 'code')
   int? get code;
-
   @override
   @JsonKey(name: 'type')
   String? get type;
-
   @override
   @JsonKey(name: 'version')
   String? get version;
-
   @override
   @JsonKey(ignore: true)
   _$$_EmailSessionResponseDTOCopyWith<_$_EmailSessionResponseDTO>
