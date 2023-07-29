@@ -27,7 +27,7 @@ class CardDonationHistoryHorizontalListView extends StatelessWidget {
           onPress: () {},
           campaignTitle:
               'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
-          campaignImage: Assets.images.volunteerDancingVillage.image(
+          campaignImage: Assets.images.children.image(
             fit: BoxFit.cover,
           ),
           createdDonationAt: '1 hari lalu',
@@ -37,7 +37,7 @@ class CardDonationHistoryHorizontalListView extends StatelessWidget {
           onPress: () {},
           campaignTitle:
               'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
-          campaignImage: Assets.images.volunteerDancingVillage.image(
+          campaignImage: Assets.images.deathCub.image(
             fit: BoxFit.cover,
           ),
           createdDonationAt: '1 hari lalu',
@@ -47,7 +47,7 @@ class CardDonationHistoryHorizontalListView extends StatelessWidget {
           onPress: () {},
           campaignTitle:
               'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
-          campaignImage: Assets.images.volunteerDancingVillage.image(
+          campaignImage: Assets.images.donation1.image(
             fit: BoxFit.cover,
           ),
           createdDonationAt: '1 hari lalu',
@@ -57,7 +57,7 @@ class CardDonationHistoryHorizontalListView extends StatelessWidget {
           onPress: () {},
           campaignTitle:
               'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
-          campaignImage: Assets.images.volunteerDancingVillage.image(
+          campaignImage: Assets.images.donate.image(
             fit: BoxFit.cover,
           ),
           createdDonationAt: '1 hari lalu',

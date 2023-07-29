@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    fill="none" height="35" id="svg15" version="1.1" viewBox="0 0 35 35" width="35" xmlns="http://www.w3.org/2000/svg"
+    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)" sodipodi:docname="credit_card.svg">
+    <sodipodi:namedview bordercolor="#eeeeee" borderopacity="1" id="namedview17" pagecolor="#505050"
+        showgrid="false" inkscape:current-layer="svg15" inkscape:cx="20.403727"
+        inkscape:cy="14.860248" inkscape:pagecheckerboard="0" inkscape:pageopacity="0" inkscape:pageshadow="0"
+        inkscape:window-height="1009" inkscape:window-maximized="1" inkscape:window-width="1920"
+        inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="21.466667" />
+    <g clip-path="url(#clip0_1_30)" id="g8"
+        transform="matrix(0.84159379,0,0,0.84159379,0.33131756,4.8129738)">
+        <path
+            d="M 38.871,0.5 H 1.92934 C 0.864182,0.5 7.01904e-4,2.29111 7.01904e-4,4.50055 V 25.6494 c 0,2.2095 0.863480096,4.0006 1.928638096,4.0006 H 38.871 c 1.0652,0 1.9287,-1.7911 1.9287,-4.0006 V 4.50055 C 40.7997,2.29111 39.9362,0.5 38.871,0.5 Z"
+            fill="#64b5f6" id="path2" />
+        <path d="M 40.7997,5.34915 H 7.01904e-4 V 11.2012 H 40.7997 Z" fill="#37474f" id="path4" />
+        <path d="M 38.9482,13.0968 H 1.8522 v 5.1026 h 37.096 z" fill="#e3f2fd" id="path6" />
+    </g>
+    <defs id="defs13">
+        <clipPath id="clip0_1_30">
+            <rect fill="#ffffff" height="29.15" id="rect10" transform="translate(0,0.5)"
+                width="40.8004" x="0" y="0" />
+        </clipPath>
+    </defs>
+</svg>
