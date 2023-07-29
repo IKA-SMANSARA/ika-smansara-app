@@ -22,49 +22,49 @@ class AccountMenuList extends StatelessWidget {
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.gift.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Penggalangan Dana',
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.money.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Riwayat Pencairan Dana',
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.creditCard.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Data Rekening',
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.person.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Ubah Profile',
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.about.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Tentang IKA SMANSARA',
           ),
           AccountMenu(
             onPress: () {},
-            menuIcon: Assets.images.trust.svg(
-              width: 35.w,
-              height: 35.h,
+            menuIcon: Assets.images.logout.svg(
+              width: 20.w,
+              height: 20.h,
             ),
             menuTitle: 'Keluar',
           ),
