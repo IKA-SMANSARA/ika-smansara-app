@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/common.dart';
 
 class Routes {
+  static const login = '/login';
+  static const register = '/register';
   static const counter = '/counter-app';
   static const home = '/home';
   static const myDonation = '/my-donation';

@@ -75,5 +75,29 @@
   "donationHistoryTitle": "Donation Histories",
   "@donationHistoryTitle": {
     "description": "donation histories title"
+  },
+  "welcome": "Welcome",
+  "@welcome": {
+    "description": "welcome"
+  },
+  "emailFieldTitle": "Email",
+  "@emailFieldTitle": {
+    "description": "email field title"
+  },
+  "passwordFieldTitle": "Password",
+  "@passwordFieldTitle": {
+    "description": "password field title"
+  },
+  "loginTitle": "Login",
+  "@loginTitle": {
+    "description": "login title"
+  },
+  "accountQuestion": "Don't have an account yet? ",
+  "@accountQuestion": {
+    "description": "account question"
+  },
+  "registerTitle": "Register",
+  "@registerTitle": {
+    "description": "Register title"
   }
 }

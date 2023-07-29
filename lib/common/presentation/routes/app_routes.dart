@@ -5,6 +5,7 @@ import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/home/home.dart';
+import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
@@ -13,7 +14,7 @@ class AppRoutes {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: Routes.home,
+    initialLocation: Routes.login,
     debugLogDiagnostics: true,
     routerNeglect: true,
     navigatorKey: _rootNavigatorKey,
@@ -42,6 +43,11 @@ class AppRoutes {
             builder: (context, state) => const AccountPage(),
           ),
         ],
+      ),
+      GoRoute(
+        name: Routes.login,
+        path: Routes.login,
+        builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         name: Routes.counter,

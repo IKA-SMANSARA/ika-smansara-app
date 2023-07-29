@@ -75,5 +75,29 @@
   "donationHistoryTitle": "Riwayat Donasi",
   "@donationHistoryTitle": {
     "description": "judul riwayat donasi"
+  },
+  "welcome": "Selamat Datang",
+  "@welcome": {
+    "description": "selamat datang"
+  },
+  "emailFieldTitle": "Email",
+  "@emailFieldTitle": {
+    "description": "email field title"
+  },
+  "passwordFieldTitle": "Password",
+  "@passwordFieldTitle": {
+    "description": "password field title"
+  },
+  "loginTitle": "Masuk",
+  "@loginTitle": {
+    "description": "masuk title"
+  },
+  "accountQuestion": "Belum punya akun? ",
+  "@accountQuestion": {
+    "description": "account question"
+  },
+  "registerTitle": "Daftar",
+  "@registerTitle": {
+    "description": "daftar title"
   }
 }
