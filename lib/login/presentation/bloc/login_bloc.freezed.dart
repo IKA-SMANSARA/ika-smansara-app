@@ -23,7 +23,6 @@ mixin _$LoginEvent {
     required TResult Function() loginSubmitted,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? email)? loginEmailChange,
@@ -39,7 +38,6 @@ mixin _$LoginEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginEmailChange value) loginEmailChange,
@@ -47,7 +45,6 @@ mixin _$LoginEvent {
     required TResult Function(_LoginSubmitted value) loginSubmitted,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginEmailChange value)? loginEmailChange,
@@ -77,7 +74,7 @@ class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
     implements $LoginEventCopyWith<$Res> {
   _$LoginEventCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;

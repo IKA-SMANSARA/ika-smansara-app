@@ -12,10 +12,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEvent>(
       (event, emit) {
         event.when(
-          loginEmailChange: (email) {
+          loginEmailChange: (email) async {
             emit(
               state.copyWith(
-                email: EmailValidation.dirty(email ?? Constants.blankString),
+                email: EmailValidation.dirty(
+                  email ?? Constants.blankString,
+                ),
                 status: FormzSubmissionStatus.initial,
               ),
             );
