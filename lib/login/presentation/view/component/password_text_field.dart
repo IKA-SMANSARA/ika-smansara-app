@@ -11,7 +11,7 @@ extension on PasswordValidationError {
   String text() {
     switch (this) {
       case PasswordValidationError.invalid:
-        return '''Kata sandi harus minimal 8 karakter dan mengandung setidaknya satu huruf dan angka''';
+        return '''minimal 8 karakter dan mengandung\nsetidaknya satu huruf dan angka''';
     }
   }
 }

@@ -22,7 +22,7 @@ class LoginForm extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 8.h),
-          child: const LoginButton(),
+          child: LoginButton(_emailController, _passwordController),
         ),
       ],
     );

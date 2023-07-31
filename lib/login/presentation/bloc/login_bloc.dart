@@ -33,6 +33,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           },
           loginSubmitted: () {
             emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+            emit(
+              state.copyWith(
+                status: FormzSubmissionStatus
+                    .canceled, // change it if true logic is available
+              ),
+            );
           },
         );
       },
