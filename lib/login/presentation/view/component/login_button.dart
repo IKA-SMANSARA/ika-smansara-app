@@ -9,8 +9,11 @@ import 'package:ika_smansara/l10n/l10n.dart';
 import 'package:ika_smansara/login/login.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton(this._emailController, this._passwordController,
-      {super.key});
+  const LoginButton(
+    this._emailController,
+    this._passwordController, {
+    super.key,
+  });
 
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
