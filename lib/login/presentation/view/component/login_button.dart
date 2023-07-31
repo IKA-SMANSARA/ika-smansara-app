@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 import 'package:ika_smansara/login/login.dart';
 
 class LoginButton extends StatelessWidget {
-  LoginButton(this._emailController, this._passwordController, {super.key});
+  const LoginButton(this._emailController, this._passwordController,
+      {super.key});
 
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
@@ -35,6 +38,10 @@ class LoginButton extends StatelessWidget {
             context.read<LoginBloc>().add(
                   const LoginEvent.loginSubmitted(),
                 );
+
+            if (state.status.isCanceled) {
+              context.go(Routes.home);
+            }
           },
           child: (state.status.isInProgress)
               ? const CircularProgressIndicator()
