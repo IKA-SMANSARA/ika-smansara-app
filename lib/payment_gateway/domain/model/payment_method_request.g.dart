@@ -7,7 +7,8 @@ part of 'payment_method_request.dart';
 // **************************************************************************
 
 _$_PaymentMethodRequest _$$_PaymentMethodRequestFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_PaymentMethodRequest(
       merchantCode: json['merchantCode'] as String?,
       amount: json['amount'] as int?,
@@ -16,7 +17,8 @@ _$_PaymentMethodRequest _$$_PaymentMethodRequestFromJson(
     );
 
 Map<String, dynamic> _$$_PaymentMethodRequestToJson(
-        _$_PaymentMethodRequest instance) =>
+  _$_PaymentMethodRequest instance,
+) =>
     <String, dynamic>{
       'merchantCode': instance.merchantCode,
       'amount': instance.amount,

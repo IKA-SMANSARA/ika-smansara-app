@@ -11,7 +11,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Resource<EmailSessionResponse>> createEmailSession(
-      EmailSessionRequest emailSessionRequest) async {
+    EmailSessionRequest emailSessionRequest,
+  ) async {
     Resource<EmailSessionResponse> result;
 
     try {

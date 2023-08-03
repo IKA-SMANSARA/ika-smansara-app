@@ -39,7 +39,8 @@ class PasswordTextField extends StatelessWidget {
               onEditingComplete: () {
                 context.read<LoginBloc>().add(
                       LoginEvent.loginPasswordChange(
-                          password: _passwordController.text),
+                        password: _passwordController.text,
+                      ),
                     );
               },
               errorText: state.password.displayError?.text(),

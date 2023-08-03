@@ -8,7 +8,8 @@ part of 'payment_transaction_status_response_dto.dart';
 
 _$_PaymentTransactionStatusResponseDTO
     _$$_PaymentTransactionStatusResponseDTOFromJson(
-            Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
         _$_PaymentTransactionStatusResponseDTO(
           merchantOrderId: json['merchantOrderId'] as String?,
           reference: json['reference'] as String?,
@@ -19,7 +20,8 @@ _$_PaymentTransactionStatusResponseDTO
         );
 
 Map<String, dynamic> _$$_PaymentTransactionStatusResponseDTOToJson(
-        _$_PaymentTransactionStatusResponseDTO instance) =>
+  _$_PaymentTransactionStatusResponseDTO instance,
+) =>
     <String, dynamic>{
       'merchantOrderId': instance.merchantOrderId,
       'reference': instance.reference,

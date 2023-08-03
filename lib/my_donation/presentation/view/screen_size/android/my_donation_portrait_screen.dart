@@ -51,6 +51,14 @@ class MyDonationPortraitScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 4.h),
+              child: Divider(
+                color: Colors.blueGrey.withAlpha(150),
+                thickness: 0.5.h,
+                height: 0.5.h,
+              ),
+            ),
             const CardDonationHistoryHorizontalListView(),
           ],
         ),

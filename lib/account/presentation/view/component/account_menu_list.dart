@@ -13,7 +13,7 @@ class AccountMenuList extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(16.h),
+            padding: EdgeInsets.symmetric(vertical: 16.h),
             child: Divider(
               color: Colors.blueGrey.withAlpha(150),
               thickness: 0.5.h,
