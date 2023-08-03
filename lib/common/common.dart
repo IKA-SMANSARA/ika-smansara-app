@@ -5,6 +5,7 @@ export 'di/api_interface_network_module.dart';
 export 'di/injection.dart';
 export 'di/network_module.dart';
 export 'domain/model/error_response.dart';
+export 'presentation/component/custom_text_field.dart';
 export 'presentation/component/not_found_page.dart';
 export 'presentation/routes/app_routes.dart';
 export 'presentation/routes/bottom_nav_items.dart';
