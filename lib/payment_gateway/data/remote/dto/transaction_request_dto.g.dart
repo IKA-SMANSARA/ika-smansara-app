@@ -7,7 +7,8 @@ part of 'transaction_request_dto.dart';
 // **************************************************************************
 
 _$_TransactionRequestDTO _$$_TransactionRequestDTOFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_TransactionRequestDTO(
       merchantCode: json['merchantCode'] as String?,
       paymentAmount: json['paymentAmount'] as String?,
@@ -20,14 +21,17 @@ _$_TransactionRequestDTO _$$_TransactionRequestDTOFromJson(
       email: json['email'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       itemDetails: (json['itemDetails'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : ItemDetailDTO.fromJson(e as Map<String, dynamic>))
+          ?.map(
+            (e) => e == null
+                ? null
+                : ItemDetailDTO.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
       customerDetail: json['customerDetail'] == null
           ? null
           : CustomerDetailDTO.fromJson(
-              json['customerDetail'] as Map<String, dynamic>),
+              json['customerDetail'] as Map<String, dynamic>,
+            ),
       callbackUrl: json['callbackUrl'] as String?,
       returnUrl: json['returnUrl'] as String?,
       signature: json['signature'] as String?,
@@ -35,7 +39,8 @@ _$_TransactionRequestDTO _$$_TransactionRequestDTOFromJson(
     );
 
 Map<String, dynamic> _$$_TransactionRequestDTOToJson(
-        _$_TransactionRequestDTO instance) =>
+  _$_TransactionRequestDTO instance,
+) =>
     <String, dynamic>{
       'merchantCode': instance.merchantCode,
       'paymentAmount': instance.paymentAmount,

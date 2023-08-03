@@ -9,7 +9,7 @@ class CreateCampaignButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.red,
+        backgroundColor: const Color(0xFFD52014),
         minimumSize: Size(288.w, 36.h),
         padding: EdgeInsets.symmetric(horizontal: 16.w),
       ),

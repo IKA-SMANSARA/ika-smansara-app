@@ -7,7 +7,8 @@ part of 'shipping_address_dto.dart';
 // **************************************************************************
 
 _$_ShippingAddressDTO _$$_ShippingAddressDTOFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_ShippingAddressDTO(
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
@@ -19,7 +20,8 @@ _$_ShippingAddressDTO _$$_ShippingAddressDTOFromJson(
     );
 
 Map<String, dynamic> _$$_ShippingAddressDTOToJson(
-        _$_ShippingAddressDTO instance) =>
+  _$_ShippingAddressDTO instance,
+) =>
     <String, dynamic>{
       'firstName': instance.firstName,
       'lastName': instance.lastName,

@@ -24,7 +24,7 @@ class CategoryItem extends StatelessWidget {
             child: categoryIcon ?? const Placeholder(),
           ),
           SizedBox(
-            height: 8.h,
+            height: 4.h,
           ),
           Expanded(
             child: Wrap(

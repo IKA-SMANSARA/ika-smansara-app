@@ -19,7 +19,7 @@ class AccountPortraitScreen extends StatelessWidget {
             const AccountUserProfile(),
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 227.h),
+                padding: EdgeInsets.only(top: 230.h),
                 child: const CreateCampaignButton(),
               ),
             ),

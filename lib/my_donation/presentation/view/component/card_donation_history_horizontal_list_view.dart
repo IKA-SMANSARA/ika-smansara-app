@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 
@@ -11,7 +10,6 @@ class CardDonationHistoryHorizontalListView extends StatelessWidget {
     return ListView(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      padding: EdgeInsets.all(16.w),
       children: [
         CardItemDonationHistory(
           onPress: () {},

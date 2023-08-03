@@ -7,7 +7,8 @@ part of 'payment_method_request_dto.dart';
 // **************************************************************************
 
 _$_PaymentMethodRequestDTO _$$_PaymentMethodRequestDTOFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_PaymentMethodRequestDTO(
       merchantCode: json['merchantCode'] as String?,
       amount: json['amount'] as int?,
@@ -16,7 +17,8 @@ _$_PaymentMethodRequestDTO _$$_PaymentMethodRequestDTOFromJson(
     );
 
 Map<String, dynamic> _$$_PaymentMethodRequestDTOToJson(
-        _$_PaymentMethodRequestDTO instance) =>
+  _$_PaymentMethodRequestDTO instance,
+) =>
     <String, dynamic>{
       'merchantCode': instance.merchantCode,
       'amount': instance.amount,

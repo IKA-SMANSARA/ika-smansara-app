@@ -18,13 +18,14 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
 
   @override
   Future<Response<dynamic>> getPaymentMethod(
-      PaymentMethodRequestDTO paymentMethodRequestDTO) {
-    final Uri $url = Uri.parse('paymentmethod/getpaymentmethod');
-    final Map<String, String> $headers = {
+    PaymentMethodRequestDTO paymentMethodRequestDTO,
+  ) {
+    final $url = Uri.parse('paymentmethod/getpaymentmethod');
+    final $headers = <String, String>{
       'Content-Type': 'application/json',
     };
     final $body = paymentMethodRequestDTO;
-    final Request $request = Request(
+    final $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -36,13 +37,14 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
 
   @override
   Future<Response<dynamic>> requestTransaction(
-      TransactionRequestDTO transactionRequestDTO) {
-    final Uri $url = Uri.parse('v2/inquiry');
-    final Map<String, String> $headers = {
+    TransactionRequestDTO transactionRequestDTO,
+  ) {
+    final $url = Uri.parse('v2/inquiry');
+    final $headers = <String, String>{
       'Content-Type': 'application/json',
     };
     final $body = transactionRequestDTO;
-    final Request $request = Request(
+    final $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -58,8 +60,8 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
     String merchantOrderId,
     String signature,
   ) {
-    final Uri $url = Uri.parse('transactionStatus');
-    final Map<String, String> $headers = {
+    final $url = Uri.parse('transactionStatus');
+    final $headers = <String, String>{
       'Content-Type': 'application/json',
     };
     final $body = <String, dynamic>{
@@ -67,7 +69,7 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
       'merchantOrderId': merchantOrderId,
       'signature': signature,
     };
-    final Request $request = Request(
+    final $request = Request(
       'POST',
       $url,
       client.baseUrl,

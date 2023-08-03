@@ -7,7 +7,8 @@ part of 'transaction_request.dart';
 // **************************************************************************
 
 _$_TransactionRequest _$$_TransactionRequestFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_TransactionRequest(
       merchantCode: json['merchantCode'] as String?,
       paymentAmount: json['paymentAmount'] as String?,
@@ -20,13 +21,17 @@ _$_TransactionRequest _$$_TransactionRequestFromJson(
       email: json['email'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       itemDetails: (json['itemDetails'] as List<dynamic>?)
-          ?.map((e) =>
-              e == null ? null : ItemDetail.fromJson(e as Map<String, dynamic>))
+          ?.map(
+            (e) => e == null
+                ? null
+                : ItemDetail.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
       customerDetail: json['customerDetail'] == null
           ? null
           : CustomerDetail.fromJson(
-              json['customerDetail'] as Map<String, dynamic>),
+              json['customerDetail'] as Map<String, dynamic>,
+            ),
       callbackUrl: json['callbackUrl'] as String?,
       returnUrl: json['returnUrl'] as String?,
       signature: json['signature'] as String?,
@@ -34,7 +39,8 @@ _$_TransactionRequest _$$_TransactionRequestFromJson(
     );
 
 Map<String, dynamic> _$$_TransactionRequestToJson(
-        _$_TransactionRequest instance) =>
+  _$_TransactionRequest instance,
+) =>
     <String, dynamic>{
       'merchantCode': instance.merchantCode,
       'paymentAmount': instance.paymentAmount,

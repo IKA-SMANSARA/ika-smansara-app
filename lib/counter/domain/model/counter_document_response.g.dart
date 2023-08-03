@@ -7,7 +7,8 @@ part of 'counter_document_response.dart';
 // **************************************************************************
 
 _$_CounterDocumentResponse _$$_CounterDocumentResponseFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$_CounterDocumentResponse(
       id: json['id'] as String?,
       collectionId: json['collectionId'] as String?,
@@ -21,7 +22,8 @@ _$_CounterDocumentResponse _$$_CounterDocumentResponseFromJson(
     );
 
 Map<String, dynamic> _$$_CounterDocumentResponseToJson(
-        _$_CounterDocumentResponse instance) =>
+  _$_CounterDocumentResponse instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

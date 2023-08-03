@@ -65,7 +65,8 @@ class AppRoutes {
         path: Routes.paymentGateway,
         builder: (context, state) {
           return PaymentGatewayPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),
@@ -74,7 +75,8 @@ class AppRoutes {
         path: Routes.paymentWindowWebView,
         builder: (context, state) {
           return PaymentWindowWebViewPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),
@@ -92,7 +94,8 @@ class AppRoutes {
         path: Routes.returnRoute,
         builder: (context, state) {
           return PaymentGatewayPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),
