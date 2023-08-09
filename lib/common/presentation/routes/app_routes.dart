@@ -10,6 +10,8 @@ import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
+import '../../../detail_campaign/detail_campaign.dart';
+
 class AppRoutes {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -54,6 +56,15 @@ class AppRoutes {
         name: Routes.login,
         path: Routes.login,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        name: Routes.detailCampaign,
+        path: Routes.detailCampaign,
+        builder: (context, state) {
+          return DetailCampaignPage(
+            idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
+          );
+        },
       ),
       GoRoute(
         name: Routes.counter,

@@ -62,4 +62,5 @@ class Constants {
   static const loginFormBox = 'login-form';
   static const emailKey = 'email';
   static const passwordKey = 'password';
+  static const idCampaignKey = 'id campaign';
 }
