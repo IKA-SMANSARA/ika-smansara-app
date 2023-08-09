@@ -20,22 +20,20 @@ class CategoryItem extends StatelessWidget {
       onTap: onPress,
       child: Column(
         children: [
-          Expanded(
-            child: categoryIcon ?? const Placeholder(),
-          ),
-          SizedBox(
-            height: 4.h,
-          ),
+          categoryIcon ?? const Placeholder(),
           Expanded(
             child: Wrap(
               children: [
-                Center(
-                  child: Text(
-                    categoryTitle ?? '',
-                    style: GoogleFonts.inter(fontSize: 10.sp),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                Padding(
+                  padding: EdgeInsets.all(4.h),
+                  child: Center(
+                    child: Text(
+                      categoryTitle ?? '',
+                      style: GoogleFonts.inter(fontSize: 10.sp),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
               ],
