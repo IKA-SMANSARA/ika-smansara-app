@@ -33,14 +33,17 @@ class AppRoutes {
         },
         routes: [
           GoRoute(
+            name: Routes.home,
             path: Routes.home,
             builder: (context, state) => const HomePage(),
           ),
           GoRoute(
+            name: Routes.myDonation,
             path: Routes.myDonation,
             builder: (context, state) => const MyDonationPage(),
           ),
           GoRoute(
+            name: Routes.account,
             path: Routes.account,
             builder: (context, state) => const AccountPage(),
           ),
@@ -91,16 +94,19 @@ class AppRoutes {
         },
       ),
       GoRoute(
+        name: Routes.selectPaymentMethod,
         path: Routes.selectPaymentMethod,
         builder: (context, state) => const PaymentMethodPage(),
       ),
       // deeplink for payment gateway route
       GoRoute(
+        name: Routes.redirect,
         path: Routes.redirect,
         builder: (context, state) => const CounterPage(),
       ),
       // deeplink for payment gateway route
       GoRoute(
+        name: Routes.returnRoute,
         path: Routes.returnRoute,
         builder: (context, state) {
           return PaymentGatewayPage(
@@ -111,11 +117,13 @@ class AppRoutes {
       ),
       // deeplink for payment gateway route
       GoRoute(
+        name: Routes.callbackPayment,
         path: Routes.callbackPayment,
         builder: (context, state) => const CounterPage(),
       ),
       // deeplink for email verification
       GoRoute(
+        name: Routes.callbackPageEmailVerification,
         path: Routes.callbackPageEmailVerification,
         builder: (context, state) => const CounterPage(),
       ),
