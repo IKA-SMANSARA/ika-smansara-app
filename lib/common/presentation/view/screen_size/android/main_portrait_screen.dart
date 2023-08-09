@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -16,18 +18,24 @@ class MainPortraitScreen extends StatelessWidget {
     final tabs = [
       NamedNavBarItemWidget(
         initLocation: Routes.home,
-        icon: const Icon(Icons.home_outlined),
+        icon: const FaIcon(Icons.home_outlined),
+        activeIcon: const FaIcon(Icons.home_rounded),
         label: l10n.homeBottomNavTitle,
+        tooltip: l10n.homeBottomNavTitle,
       ),
       NamedNavBarItemWidget(
         initLocation: Routes.myDonation,
-        icon: const Icon(Icons.favorite_border),
+        icon: const FaIcon(Icons.favorite_border),
+        activeIcon: const FaIcon(Icons.favorite_rounded),
         label: l10n.myDonationBottomNavTitle,
+        tooltip: l10n.myDonationBottomNavTitle,
       ),
       NamedNavBarItemWidget(
         initLocation: Routes.account,
-        icon: const Icon(Icons.person_outline),
+        icon: const FaIcon(Icons.person_outlined),
+        activeIcon: const FaIcon(Icons.person_rounded),
         label: l10n.accountBottomNavTitle,
+        tooltip: l10n.accountBottomNavTitle,
       ),
     ];
 
@@ -49,8 +57,15 @@ class MainPortraitScreen extends StatelessWidget {
             items: tabs,
             currentIndex: state.index,
             type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: GoogleFonts.inter(),
-            unselectedLabelStyle: GoogleFonts.inter(),
+            selectedLabelStyle: GoogleFonts.inter(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w700,
+            ),
+            unselectedLabelStyle: GoogleFonts.inter(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w400,
+            ),
+            fixedColor: const Color(0xFF104993),
             backgroundColor: Colors.white,
             mouseCursor: SystemMouseCursors.grab,
             landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
