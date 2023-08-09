@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 
@@ -8,7 +8,7 @@ class CardCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
+    return FlutterCarousel(
       items: [
         Assets.images.imgPp.image(
           fit: BoxFit.cover,
@@ -45,9 +45,13 @@ class CardCarousel extends StatelessWidget {
         );
       }).toList(),
       options: CarouselOptions(
-        height: 180.h,
-        autoPlay: true,
+        height: 200.h,
         viewportFraction: 1,
+        autoPlay: true,
+        slideIndicator: CircularWaveSlideIndicator(
+          currentIndicatorColor: const Color(0xFF104993),
+          indicatorBackgroundColor: Colors.white,
+        ),
       ),
     );
   }

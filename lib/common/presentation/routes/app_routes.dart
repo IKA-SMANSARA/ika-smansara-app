@@ -5,15 +5,17 @@ import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/home/home.dart';
+import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
+import 'package:ika_smansara/register/register.dart';
 
 class AppRoutes {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: Routes.home,
+    initialLocation: Routes.login,
     debugLogDiagnostics: true,
     routerNeglect: true,
     navigatorKey: _rootNavigatorKey,
@@ -44,6 +46,16 @@ class AppRoutes {
         ],
       ),
       GoRoute(
+        name: Routes.register,
+        path: Routes.register,
+        builder: (context, state) => const RegisterPage(),
+      ),
+      GoRoute(
+        name: Routes.login,
+        path: Routes.login,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
         name: Routes.counter,
         path: Routes.counter,
         builder: (context, state) => const CounterPage(),
@@ -53,7 +65,8 @@ class AppRoutes {
         path: Routes.paymentGateway,
         builder: (context, state) {
           return PaymentGatewayPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),
@@ -62,7 +75,8 @@ class AppRoutes {
         path: Routes.paymentWindowWebView,
         builder: (context, state) {
           return PaymentWindowWebViewPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),
@@ -80,7 +94,8 @@ class AppRoutes {
         path: Routes.returnRoute,
         builder: (context, state) {
           return PaymentGatewayPage(
-            paymentMethod: state.queryParameters[Constants.paymentMethodKey],
+            paymentMethod:
+                state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
       ),

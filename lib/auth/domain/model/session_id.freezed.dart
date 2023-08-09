@@ -23,7 +23,6 @@ mixin _$SessionId {
   String? get sessionId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SessionIdCopyWith<SessionId> get copyWith =>
       throw _privateConstructorUsedError;
@@ -33,7 +32,6 @@ mixin _$SessionId {
 abstract class $SessionIdCopyWith<$Res> {
   factory $SessionIdCopyWith(SessionId value, $Res Function(SessionId) then) =
       _$SessionIdCopyWithImpl<$Res, SessionId>;
-
   @useResult
   $Res call({String? sessionId});
 }
@@ -45,7 +43,6 @@ class _$SessionIdCopyWithImpl<$Res, $Val extends SessionId>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -68,7 +65,6 @@ abstract class _$$_SessionIdCopyWith<$Res> implements $SessionIdCopyWith<$Res> {
   factory _$$_SessionIdCopyWith(
           _$_SessionId value, $Res Function(_$_SessionId) then) =
       __$$_SessionIdCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? sessionId});
@@ -148,7 +144,6 @@ abstract class _SessionId implements SessionId {
 
   @override
   String? get sessionId;
-
   @override
   @JsonKey(ignore: true)
   _$$_SessionIdCopyWith<_$_SessionId> get copyWith =>

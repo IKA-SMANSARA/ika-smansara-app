@@ -3,7 +3,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'payment_transaction_status_response_dto.freezed.dart';
-
 part 'payment_transaction_status_response_dto.g.dart';
 
 @freezed
@@ -19,6 +18,7 @@ class PaymentTransactionStatusResponseDTO
   }) = _PaymentTransactionStatusResponseDTO;
 
   factory PaymentTransactionStatusResponseDTO.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PaymentTransactionStatusResponseDTOFromJson(json);
 }

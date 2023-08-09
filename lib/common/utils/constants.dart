@@ -59,4 +59,7 @@ class Constants {
   static const paymentMethodKey = 'payment method';
   static const sessionUserIdBoxName = 'session-user-id';
   static const sessionUserIdKeyName = 'sessionUserId';
+  static const loginFormBox = 'login-form';
+  static const emailKey = 'email';
+  static const passwordKey = 'password';
 }

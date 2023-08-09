@@ -23,7 +23,6 @@ mixin _$AuthStatus {
   bool? get authStatus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AuthStatusCopyWith<AuthStatus> get copyWith =>
       throw _privateConstructorUsedError;
@@ -34,7 +33,6 @@ abstract class $AuthStatusCopyWith<$Res> {
   factory $AuthStatusCopyWith(
           AuthStatus value, $Res Function(AuthStatus) then) =
       _$AuthStatusCopyWithImpl<$Res, AuthStatus>;
-
   @useResult
   $Res call({bool? authStatus});
 }
@@ -46,7 +44,6 @@ class _$AuthStatusCopyWithImpl<$Res, $Val extends AuthStatus>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -70,7 +67,6 @@ abstract class _$$_AuthStatusCopyWith<$Res>
   factory _$$_AuthStatusCopyWith(
           _$_AuthStatus value, $Res Function(_$_AuthStatus) then) =
       __$$_AuthStatusCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({bool? authStatus});
@@ -150,7 +146,6 @@ abstract class _AuthStatus implements AuthStatus {
 
   @override
   bool? get authStatus;
-
   @override
   @JsonKey(ignore: true)
   _$$_AuthStatusCopyWith<_$_AuthStatus> get copyWith =>

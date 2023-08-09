@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
 
 void keyboardDismiss(BuildContext context) {
-  return FocusScope.of(context).unfocus();
+  return WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
 }
 
 // Chopper already uses the Logger package.

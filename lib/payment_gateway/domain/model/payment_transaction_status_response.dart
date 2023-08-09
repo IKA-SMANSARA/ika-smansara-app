@@ -3,7 +3,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'payment_transaction_status_response.freezed.dart';
-
 part 'payment_transaction_status_response.g.dart';
 
 @freezed
@@ -18,6 +17,7 @@ class PaymentTransactionStatusResponse with _$PaymentTransactionStatusResponse {
   }) = _PaymentTransactionStatusResponse;
 
   factory PaymentTransactionStatusResponse.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$PaymentTransactionStatusResponseFromJson(json);
 }
