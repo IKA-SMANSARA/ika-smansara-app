@@ -18,8 +18,7 @@ _$_PaymentTransactionStatusResponse
         );
 
 Map<String, dynamic> _$$_PaymentTransactionStatusResponseToJson(
-  _$_PaymentTransactionStatusResponse instance,
-) =>
+        _$_PaymentTransactionStatusResponse instance) =>
     <String, dynamic>{
       'merchantOrderId': instance.merchantOrderId,
       'reference': instance.reference,

@@ -15,13 +15,11 @@ _$_CustomerDetail _$$_CustomerDetailFromJson(Map<String, dynamic> json) =>
       billingAddress: json['billingAddress'] == null
           ? null
           : BillingAddress.fromJson(
-              json['billingAddress'] as Map<String, dynamic>,
-            ),
+              json['billingAddress'] as Map<String, dynamic>),
       shippingAddress: json['shippingAddress'] == null
           ? null
           : ShippingAddress.fromJson(
-              json['shippingAddress'] as Map<String, dynamic>,
-            ),
+              json['shippingAddress'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_CustomerDetailToJson(_$_CustomerDetail instance) =>

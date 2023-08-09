@@ -7,7 +7,7 @@ part of 'api_services_payment_gateway.dart';
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
+final class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
   _$ApiServicesPaymentGateway([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
@@ -18,14 +18,13 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
 
   @override
   Future<Response<dynamic>> getPaymentMethod(
-    PaymentMethodRequestDTO paymentMethodRequestDTO,
-  ) {
-    final $url = Uri.parse('paymentmethod/getpaymentmethod');
-    final $headers = <String, String>{
+      PaymentMethodRequestDTO paymentMethodRequestDTO) {
+    final Uri $url = Uri.parse('paymentmethod/getpaymentmethod');
+    final Map<String, String> $headers = {
       'Content-Type': 'application/json',
     };
     final $body = paymentMethodRequestDTO;
-    final $request = Request(
+    final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -37,14 +36,13 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
 
   @override
   Future<Response<dynamic>> requestTransaction(
-    TransactionRequestDTO transactionRequestDTO,
-  ) {
-    final $url = Uri.parse('v2/inquiry');
-    final $headers = <String, String>{
+      TransactionRequestDTO transactionRequestDTO) {
+    final Uri $url = Uri.parse('v2/inquiry');
+    final Map<String, String> $headers = {
       'Content-Type': 'application/json',
     };
     final $body = transactionRequestDTO;
-    final $request = Request(
+    final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -60,8 +58,8 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
     String merchantOrderId,
     String signature,
   ) {
-    final $url = Uri.parse('transactionStatus');
-    final $headers = <String, String>{
+    final Uri $url = Uri.parse('transactionStatus');
+    final Map<String, String> $headers = {
       'Content-Type': 'application/json',
     };
     final $body = <String, dynamic>{
@@ -69,7 +67,7 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
       'merchantOrderId': merchantOrderId,
       'signature': signature,
     };
-    final $request = Request(
+    final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,

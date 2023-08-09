@@ -25,7 +25,7 @@
     "description": "See more Title Section"
   },
   "programTitle": "Program IKA SMANSARA",
-  "@needHelpTitle": {
+  "@programTitle": {
     "description": "Program Title Section"
   },
   "scholarshipTitle": "scholarship",
@@ -99,5 +99,29 @@
   "registerTitle": "Register",
   "@registerTitle": {
     "description": "Register title"
+  },
+  "fullNameFieldTitle": "Full Name",
+  "@fullNameFieldTitle": {
+    "description": "full name field title"
+  },
+  "addressFieldTitle": "Address",
+  "@addressFieldTitle": {
+    "description": "address field title"
+  },
+  "phoneFieldTitle": "Phone",
+  "@phoneFieldTitle": {
+    "description": "phone field title"
+  },
+  "graduateYearFieldTitle": "Graduate Year",
+  "@graduateYearFieldTitle": {
+    "description": "graduate year field title"
+  },
+  "repeatPasswordFieldTitle": "Repeat Password",
+  "@repeatPasswordFieldTitle": {
+    "description": "repeat password field title"
+  },
+  "examplePhoneNumberFieldTitle": "Example: 085123123123",
+  "@examplePhoneNumberFieldTitle": {
+    "description": "example phone number field title"
   }
 }

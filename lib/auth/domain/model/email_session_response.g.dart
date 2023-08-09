@@ -7,8 +7,7 @@ part of 'email_session_response.dart';
 // **************************************************************************
 
 _$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _$_EmailSessionResponse(
       id: json['id'] as String?,
       createAt: json['createAt'] as String?,
@@ -42,8 +41,7 @@ _$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
     );
 
 Map<String, dynamic> _$$_EmailSessionResponseToJson(
-  _$_EmailSessionResponse instance,
-) =>
+        _$_EmailSessionResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'createAt': instance.createAt,

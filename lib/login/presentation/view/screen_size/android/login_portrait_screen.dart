@@ -43,7 +43,7 @@ class LoginPortraitScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(16.w),
-                child: LoginForm(),
+                child: const LoginForm(),
               ),
               Padding(
                 padding: EdgeInsets.all(16.w),

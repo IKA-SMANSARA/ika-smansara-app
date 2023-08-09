@@ -7,7 +7,7 @@ part of 'api_services.dart';
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$ApiServices extends ApiServices {
+final class _$ApiServices extends ApiServices {
   _$ApiServices([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
@@ -18,12 +18,12 @@ class _$ApiServices extends ApiServices {
 
   @override
   Future<Response<dynamic>> getEmailSession(String sessionId) {
-    final $url = Uri.parse('account/sessions/${sessionId}');
-    final $headers = <String, String>{
+    final Uri $url = Uri.parse('account/sessions/${sessionId}');
+    final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Project': '64aa86334bd6c9d9678f',
     };
-    final $request = Request(
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -34,15 +34,14 @@ class _$ApiServices extends ApiServices {
 
   @override
   Future<Response<dynamic>> createEmailSession(
-    EmailSessionRequestDTO emailSessionRequestDTO,
-  ) {
-    final $url = Uri.parse('account/sessions/email');
-    final $headers = <String, String>{
+      EmailSessionRequestDTO emailSessionRequestDTO) {
+    final Uri $url = Uri.parse('account/sessions/email');
+    final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Project': '64aa86334bd6c9d9678f',
     };
     final $body = emailSessionRequestDTO;
-    final $request = Request(
+    final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
@@ -54,16 +53,15 @@ class _$ApiServices extends ApiServices {
 
   @override
   Future<Response<dynamic>> getCounter(String documentId) {
-    final $url = Uri.parse(
-      'databases/64aa86f05fa0d48d76ff/collections/64aa87186f6e663fc87a/documents/${documentId}',
-    );
-    final $headers = <String, String>{
+    final Uri $url = Uri.parse(
+        'databases/64aa86f05fa0d48d76ff/collections/64aa87186f6e663fc87a/documents/${documentId}');
+    final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Key':
           '7cd6d6df8450843baab9c47046573c63fd753e70d89c8223e420cb1ccf7854ee73a93170bef6af6a31db8a0bad67d903de0bd2bf7ffb059123f4edf8b0dec18bfc6bb8e2ecd42be0d04793cc792a276274fff9000997331a1a755c4934e4e0994da5a58b3bec0d1cdb5c3c2f9c70030fcddbc15fd659b74d2afe044472611ee3',
       'X-Appwrite-Project': '64aa86334bd6c9d9678f',
     };
-    final $request = Request(
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
@@ -77,17 +75,16 @@ class _$ApiServices extends ApiServices {
     String documentId,
     CounterDocumentRequestDTO counterDocumentRequestDTO,
   ) {
-    final $url = Uri.parse(
-      'databases/64aa86f05fa0d48d76ff/collections/64aa87186f6e663fc87a/documents/${documentId}',
-    );
-    final $headers = <String, String>{
+    final Uri $url = Uri.parse(
+        'databases/64aa86f05fa0d48d76ff/collections/64aa87186f6e663fc87a/documents/${documentId}');
+    final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Key':
           '7cd6d6df8450843baab9c47046573c63fd753e70d89c8223e420cb1ccf7854ee73a93170bef6af6a31db8a0bad67d903de0bd2bf7ffb059123f4edf8b0dec18bfc6bb8e2ecd42be0d04793cc792a276274fff9000997331a1a755c4934e4e0994da5a58b3bec0d1cdb5c3c2f9c70030fcddbc15fd659b74d2afe044472611ee3',
       'X-Appwrite-Project': '64aa86334bd6c9d9678f',
     };
     final $body = counterDocumentRequestDTO;
-    final $request = Request(
+    final Request $request = Request(
       'PATCH',
       $url,
       client.baseUrl,

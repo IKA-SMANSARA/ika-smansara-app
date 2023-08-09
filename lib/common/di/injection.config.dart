@@ -69,57 +69,40 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'BASEURLPAYMENTGATEWAY',
     );
     gh.lazySingleton<_i3.ChopperClient>(
-      () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')),
-    );
+        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
     gh.lazySingleton<_i3.ChopperClient>(
       () => paymentGatewayNetworkModule
           .chopperClient(gh<String>(instanceName: 'BASEURLPAYMENTGATEWAY')),
       instanceName: 'PAYMENTGATEWAYNETWORKMODULE',
     );
     gh.lazySingleton<_i4.ApiServices>(
-      () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()),
-    );
-    gh.lazySingleton<_i5.ApiServicesPaymentGateway>(
-      () => apiInterfacePaymentGatewayNetworkModule.apiServicesPaymentGateway(
-        gh<_i3.ChopperClient>(
-          instanceName: 'PAYMENTGATEWAYNETWORKMODULE',
-        ),
-      ),
-    );
+        () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()));
+    gh.lazySingleton<_i5.ApiServicesPaymentGateway>(() =>
+        apiInterfacePaymentGatewayNetworkModule.apiServicesPaymentGateway(
+            gh<_i3.ChopperClient>(
+                instanceName: 'PAYMENTGATEWAYNETWORKMODULE')));
     gh.factory<_i6.AuthRepository>(
-      () => _i7.AuthRepositoryImpl(gh<_i4.ApiServices>()),
-    );
+        () => _i7.AuthRepositoryImpl(gh<_i4.ApiServices>()));
     gh.factory<_i8.CheckUserSessionStatusUseCase>(
-      () => _i8.CheckUserSessionStatusUseCase(gh<_i6.AuthRepository>()),
-    );
+        () => _i8.CheckUserSessionStatusUseCase(gh<_i6.AuthRepository>()));
     gh.factory<_i9.CounterRepository>(
-      () => _i10.CounterRepositoryImpl(gh<_i4.ApiServices>()),
-    );
+        () => _i10.CounterRepositoryImpl(gh<_i4.ApiServices>()));
     gh.factory<_i11.GetCounterDataUseCase>(
-      () => _i11.GetCounterDataUseCase(gh<_i9.CounterRepository>()),
-    );
-    gh.factory<_i5.PaymentGatewayRepository>(
-      () => _i12.PaymentGatewayRepositoryImpl(
-          gh<_i5.ApiServicesPaymentGateway>()),
-    );
-    gh.factory<_i13.RequestTransactionUseCase>(
-      () => _i13.RequestTransactionUseCase(gh<_i5.PaymentGatewayRepository>()),
-    );
+        () => _i11.GetCounterDataUseCase(gh<_i9.CounterRepository>()));
+    gh.factory<_i5.PaymentGatewayRepository>(() =>
+        _i12.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()));
+    gh.factory<_i13.RequestTransactionUseCase>(() =>
+        _i13.RequestTransactionUseCase(gh<_i5.PaymentGatewayRepository>()));
     gh.factory<_i14.SaveIdEmailSessionToLocalUseCase>(
-      () => _i14.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()),
-    );
+        () => _i14.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()));
     gh.factory<_i15.UpdateCounterDataUseCase>(
-      () => _i15.UpdateCounterDataUseCase(gh<_i9.CounterRepository>()),
-    );
-    gh.factory<_i16.UserLoginUseCase>(
-      () => _i16.UserLoginUseCase(
-        gh<_i6.AuthRepository>(),
-        gh<_i6.SaveIdEmailSessionToLocalUseCase>(),
-      ),
-    );
+        () => _i15.UpdateCounterDataUseCase(gh<_i9.CounterRepository>()));
+    gh.factory<_i16.UserLoginUseCase>(() => _i16.UserLoginUseCase(
+          gh<_i6.AuthRepository>(),
+          gh<_i6.SaveIdEmailSessionToLocalUseCase>(),
+        ));
     gh.factory<_i17.GetPaymentMethodUseCase>(
-      () => _i17.GetPaymentMethodUseCase(gh<_i5.PaymentGatewayRepository>()),
-    );
+        () => _i17.GetPaymentMethodUseCase(gh<_i5.PaymentGatewayRepository>()));
     return this;
   }
 }

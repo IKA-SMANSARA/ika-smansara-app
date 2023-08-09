@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({this.onSubmitted, super.key});
+class RegisterButton extends StatelessWidget {
+  const RegisterButton({this.onSubmitted, super.key});
 
   final void Function()? onSubmitted;
 
@@ -19,7 +19,7 @@ class LoginButton extends StatelessWidget {
       ),
       onPressed: onSubmitted,
       child: Text(
-        l10n.loginTitle,
+        l10n.registerTitle,
         style: GoogleFonts.inter(
           color: Colors.white,
           fontSize: 16.sp,

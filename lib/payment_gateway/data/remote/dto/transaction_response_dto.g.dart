@@ -7,8 +7,7 @@ part of 'transaction_response_dto.dart';
 // **************************************************************************
 
 _$_TransactionResponseDTO _$$_TransactionResponseDTOFromJson(
-  Map<String, dynamic> json,
-) =>
+        Map<String, dynamic> json) =>
     _$_TransactionResponseDTO(
       merchantCode: json['merchantCode'] as String?,
       reference: json['reference'] as String?,
@@ -19,8 +18,7 @@ _$_TransactionResponseDTO _$$_TransactionResponseDTOFromJson(
     );
 
 Map<String, dynamic> _$$_TransactionResponseDTOToJson(
-  _$_TransactionResponseDTO instance,
-) =>
+        _$_TransactionResponseDTO instance) =>
     <String, dynamic>{
       'merchantCode': instance.merchantCode,
       'reference': instance.reference,

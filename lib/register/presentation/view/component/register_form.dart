@@ -5,21 +5,21 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
-import 'package:ika_smansara/login/login.dart';
+import 'package:ika_smansara/register/register.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+class RegisterForm extends StatelessWidget {
+  const RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return BlocProvider(
-      create: (_) => LoginFormBloc(),
+      create: (_) => RegisterFormBloc(),
       child: Builder(
         builder: (context) {
-          final loginFormBloc = context.read<LoginFormBloc>();
+          final registerFormBloc = context.read<RegisterFormBloc>();
 
-          return FormBlocListener<LoginFormBloc, String, String>(
+          return FormBlocListener<RegisterFormBloc, String, String>(
             onSubmitting: (context, state) {
               CustomLoadingDialog.show(context);
               ScaffoldMessenger.of(context).showSnackBar(
@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
             },
             onSuccess: (context, state) {
               CustomLoadingDialog.hide(context);
-              context.go(Routes.home);
+              context.go(Routes.login);
             },
             onFailure: (context, state) {
               CustomLoadingDialog.hide(context);
@@ -53,7 +53,7 @@ class LoginForm extends StatelessWidget {
               children: [
                 TextFieldBlocBuilder(
                   padding: EdgeInsets.symmetric(vertical: 8.h),
-                  textFieldBloc: loginFormBloc.email,
+                  textFieldBloc: registerFormBloc.email,
                   keyboardType: TextInputType.emailAddress,
                   autofillHints: const [AutofillHints.email],
                   textInputAction: TextInputAction.next,
@@ -64,7 +64,66 @@ class LoginForm extends StatelessWidget {
                 ),
                 TextFieldBlocBuilder(
                   padding: EdgeInsets.symmetric(vertical: 8.h),
-                  textFieldBloc: loginFormBloc.password,
+                  textFieldBloc: registerFormBloc.fullName,
+                  keyboardType: TextInputType.name,
+                  autofillHints: const [AutofillHints.name],
+                  textInputAction: TextInputAction.next,
+                  decoration: buildInputDecoration(
+                    l10n.fullNameFieldTitle,
+                    l10n.fullNameFieldTitle,
+                  ),
+                ),
+                TextFieldBlocBuilder(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  minLines: 1,
+                  maxLines: 5,
+                  textFieldBloc: registerFormBloc.address,
+                  keyboardType: TextInputType.streetAddress,
+                  autofillHints: const [AutofillHints.fullStreetAddress],
+                  textInputAction: TextInputAction.next,
+                  decoration: buildInputDecoration(
+                    l10n.addressFieldTitle,
+                    l10n.addressFieldTitle,
+                  ),
+                ),
+                TextFieldBlocBuilder(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  textFieldBloc: registerFormBloc.phone,
+                  keyboardType: TextInputType.phone,
+                  autofillHints: const [AutofillHints.telephoneNumber],
+                  textInputAction: TextInputAction.next,
+                  decoration: buildInputDecoration(
+                    l10n.phoneFieldTitle,
+                    l10n.examplePhoneNumberFieldTitle,
+                  ),
+                ),
+                CheckboxFieldBlocBuilder(
+                  booleanFieldBloc: registerFormBloc.isAlumnus,
+                  body: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Apakah anda lulusan dari SMA Negeri 1 Jepara ?',
+                      style: GoogleFonts.inter(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                TextFieldBlocBuilder(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  textFieldBloc: registerFormBloc.graduateYear,
+                  keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.next,
+                  decoration: buildInputDecoration(
+                    l10n.graduateYearFieldTitle,
+                    'Contoh : 2008',
+                  ),
+                ),
+                TextFieldBlocBuilder(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  textFieldBloc: registerFormBloc.password,
                   keyboardType: TextInputType.visiblePassword,
                   suffixButton: SuffixButton.obscureText,
                   autofillHints: const [AutofillHints.password],
@@ -74,10 +133,22 @@ class LoginForm extends StatelessWidget {
                     l10n.passwordFieldTitle,
                   ),
                 ),
+                TextFieldBlocBuilder(
+                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  textFieldBloc: registerFormBloc.confirmPassword,
+                  keyboardType: TextInputType.visiblePassword,
+                  suffixButton: SuffixButton.obscureText,
+                  autofillHints: const [AutofillHints.password],
+                  textInputAction: TextInputAction.next,
+                  decoration: buildInputDecoration(
+                    l10n.repeatPasswordFieldTitle,
+                    l10n.repeatPasswordFieldTitle,
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: LoginButton(
-                    onSubmitted: loginFormBloc.submit,
+                  child: RegisterButton(
+                    onSubmitted: registerFormBloc.submit,
                   ),
                 ),
               ],

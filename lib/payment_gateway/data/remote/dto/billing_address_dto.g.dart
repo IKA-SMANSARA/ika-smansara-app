@@ -18,8 +18,7 @@ _$_BillingAddressDTO _$$_BillingAddressDTOFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$_BillingAddressDTOToJson(
-  _$_BillingAddressDTO instance,
-) =>
+        _$_BillingAddressDTO instance) =>
     <String, dynamic>{
       'firstName': instance.firstName,
       'lastName': instance.lastName,
