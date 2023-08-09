@@ -4,13 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
+import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
-
-import '../../../detail_campaign/detail_campaign.dart';
 
 class AppRoutes {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
