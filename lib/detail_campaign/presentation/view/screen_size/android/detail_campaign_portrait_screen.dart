@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 
 class DetailCampaignPortraitScreen extends StatelessWidget {
@@ -274,71 +275,25 @@ class DetailCampaignPortraitScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
-                    style: GoogleFonts.inter(
-                      color: Colors.black,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.justify,
-                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Donatur',
-                                style: GoogleFonts.inter(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ' (505)',
-                                style: GoogleFonts.inter(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text(
-                          'Lihat semua',
-                          style: GoogleFonts.inter(
-                            color: const Color(0xFF104993),
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+                      style: GoogleFonts.inter(
+                        color: Colors.black,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                   Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: const DonaturListHeader()),
+                  const DonaturShortList(),
+                  Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF104993),
-                        minimumSize: Size(350.w, 36.h),
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Kirim Donasi',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
+                    child: const DonateButton(),
                   ),
                 ],
               ),
