@@ -23,9 +23,9 @@ class PaymentGatewayPortraitScreen extends StatelessWidget {
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () => context.pushNamed(
-                'payment-window-web-view',
+                Routes.paymentWindowWebView,
                 queryParameters: {
-                  'payment method': paymentMethod,
+                  Constants.paymentMethodKey: paymentMethod,
                 },
               ),
               child: const Text('Open Window Payment'),

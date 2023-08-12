@@ -52,16 +52,19 @@ class AppRoutes {
       GoRoute(
         name: Routes.register,
         path: Routes.register,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const RegisterPage(),
       ),
       GoRoute(
         name: Routes.login,
         path: Routes.login,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const LoginPage(),
       ),
       GoRoute(
         name: Routes.detailCampaign,
         path: Routes.detailCampaign,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return DetailCampaignPage(
             idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
@@ -71,11 +74,13 @@ class AppRoutes {
       GoRoute(
         name: Routes.counter,
         path: Routes.counter,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CounterPage(),
       ),
       GoRoute(
         name: Routes.paymentGateway,
         path: Routes.paymentGateway,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentGatewayPage(
             paymentMethod:
@@ -86,6 +91,7 @@ class AppRoutes {
       GoRoute(
         name: Routes.paymentWindowWebView,
         path: Routes.paymentWindowWebView,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentWindowWebViewPage(
             paymentMethod:
@@ -96,18 +102,21 @@ class AppRoutes {
       GoRoute(
         name: Routes.selectPaymentMethod,
         path: Routes.selectPaymentMethod,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const PaymentMethodPage(),
       ),
       // deeplink for payment gateway route
       GoRoute(
         name: Routes.redirect,
         path: Routes.redirect,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CounterPage(),
       ),
       // deeplink for payment gateway route
       GoRoute(
         name: Routes.returnRoute,
         path: Routes.returnRoute,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentGatewayPage(
             paymentMethod:
@@ -119,12 +128,14 @@ class AppRoutes {
       GoRoute(
         name: Routes.callbackPayment,
         path: Routes.callbackPayment,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CounterPage(),
       ),
       // deeplink for email verification
       GoRoute(
         name: Routes.callbackPageEmailVerification,
         path: Routes.callbackPageEmailVerification,
+        parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CounterPage(),
       ),
     ],
