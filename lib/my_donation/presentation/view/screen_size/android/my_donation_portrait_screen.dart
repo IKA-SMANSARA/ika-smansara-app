@@ -59,7 +59,7 @@ class MyDonationPortraitScreen extends StatelessWidget {
                 height: 0.5.h,
               ),
             ),
-            const CardDonationHistoryHorizontalListView(),
+            const CardDonationHistoryListView(),
           ],
         ),
       ),
