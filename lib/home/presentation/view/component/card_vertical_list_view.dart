@@ -39,7 +39,12 @@ class CardVerticalListView extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => context.pushNamed(
+                    Routes.listCampaignPerCategory,
+                    queryParameters: {
+                      Constants.categoryNameKey: listTitle,
+                    },
+                  ),
                   child: Text(
                     buttonTitle ?? '',
                     style: GoogleFonts.inter(
@@ -76,7 +81,10 @@ class CardVerticalListView extends StatelessWidget {
                     ),
                   ),
                   CardItemCampaign(
-                    onPress: () {},
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '2'},
+                    ),
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
@@ -87,7 +95,10 @@ class CardVerticalListView extends StatelessWidget {
                     ),
                   ),
                   CardItemCampaign(
-                    onPress: () {},
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '3'},
+                    ),
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
@@ -98,7 +109,10 @@ class CardVerticalListView extends StatelessWidget {
                     ),
                   ),
                   CardItemCampaign(
-                    onPress: () {},
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '4'},
+                    ),
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',
@@ -109,7 +123,10 @@ class CardVerticalListView extends StatelessWidget {
                     ),
                   ),
                   CardItemCampaign(
-                    onPress: () {},
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '5'},
+                    ),
                     campaignTitle:
                         'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
                     campaignDonationCollected: '1.999.000',

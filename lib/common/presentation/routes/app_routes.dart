@@ -6,6 +6,7 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/home/home.dart';
+import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
 import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
@@ -60,6 +61,16 @@ class AppRoutes {
         path: Routes.login,
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        name: Routes.listCampaignPerCategory,
+        path: Routes.listCampaignPerCategory,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          return ListCampaignPerCategoryPage(
+            categoryName: state.uri.queryParameters[Constants.categoryNameKey],
+          );
+        },
       ),
       GoRoute(
         name: Routes.detailCampaign,
