@@ -24,7 +24,7 @@ class LoginForm extends StatelessWidget {
               CustomLoadingDialog.show(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('submitting'),
+                  content: Text('login process'),
                 ),
               );
             },
@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
               CustomLoadingDialog.hide(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('submitting failed'),
+                  content: Text('login failed'),
                 ),
               );
             },

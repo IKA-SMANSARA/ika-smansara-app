@@ -10,6 +10,7 @@ class DonaturShortList extends StatelessWidget {
     return SizedBox(
       height: 200.h,
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         children: const [
           DonaturCard(),
           DonaturCard(),
