@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 
-class CardDonationHistoryHorizontalListView extends StatelessWidget {
-  const CardDonationHistoryHorizontalListView({super.key});
+class CardDonationHistoryListView extends StatelessWidget {
+  const CardDonationHistoryListView({super.key});
 
   @override
   Widget build(BuildContext context) {

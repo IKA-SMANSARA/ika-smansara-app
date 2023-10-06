@@ -22,17 +22,12 @@ class LoginForm extends StatelessWidget {
           return FormBlocListener<LoginFormBloc, String, String>(
             onSubmitting: (context, state) {
               CustomLoadingDialog.show(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('submitting'),
-                ),
-              );
             },
             onSubmissionFailed: (context, state) {
               CustomLoadingDialog.hide(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('submitting failed'),
+                  content: Text('login failed'),
                 ),
               );
             },
