@@ -22,11 +22,6 @@ class LoginForm extends StatelessWidget {
           return FormBlocListener<LoginFormBloc, String, String>(
             onSubmitting: (context, state) {
               CustomLoadingDialog.show(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('login process'),
-                ),
-              );
             },
             onSubmissionFailed: (context, state) {
               CustomLoadingDialog.hide(context);

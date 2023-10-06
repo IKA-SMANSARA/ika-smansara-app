@@ -26,7 +26,7 @@ class CustomLoadingDialog extends StatelessWidget {
       child: Center(
         child: Card(
           child: Container(
-            width: 80.w,
+            width: 100.w,
             height: 80.h,
             padding: EdgeInsets.all(12.h),
             child: const CircularProgressIndicator(),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 
 class DonateButton extends StatelessWidget {
   const DonateButton({super.key});
@@ -13,7 +15,7 @@ class DonateButton extends StatelessWidget {
         minimumSize: Size(350.w, 36.h),
         padding: EdgeInsets.symmetric(horizontal: 16.w),
       ),
-      onPressed: () {},
+      onPressed: () => context.push(Routes.selectPaymentMethod),
       child: Text(
         'Kirim Donasi',
         style: GoogleFonts.inter(
