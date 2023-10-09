@@ -17,13 +17,16 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
   final definitionType = ApiServicesPaymentGateway;
 
   @override
-  Future<Response<dynamic>> getPaymentMethod(
-      PaymentMethodRequestDTO paymentMethodRequestDTO) {
-    final Uri $url = Uri.parse('paymentmethod/getpaymentmethod');
+  Future<Response<dynamic>> acquiringTransactionToken(
+      MidtransTransactionRequestDTO midtransTransactionRequestDTO) {
+    final Uri $url = Uri.parse('');
     final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'Authorization':
+          'Basic U0ItTWlkLXNlcnZlci15d09YOE1TRXM4TlJFOElTQV90bi1NMEE6',
       'Content-Type': 'application/json',
     };
-    final $body = paymentMethodRequestDTO;
+    final $body = midtransTransactionRequestDTO;
     final Request $request = Request(
       'POST',
       $url,
@@ -32,51 +35,5 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
       headers: $headers,
     );
     return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> requestTransaction(
-      TransactionRequestDTO transactionRequestDTO) {
-    final Uri $url = Uri.parse('v2/inquiry');
-    final Map<String, String> $headers = {
-      'Content-Type': 'application/json',
-    };
-    final $body = transactionRequestDTO;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
-      headers: $headers,
-    );
-    return client.send<dynamic, dynamic>($request);
-  }
-
-  @override
-  Future<Response<dynamic>> checkTransactionStatus(
-    String merchantCode,
-    String merchantOrderId,
-    String signature,
-  ) {
-    final Uri $url = Uri.parse('transactionStatus');
-    final Map<String, String> $headers = {
-      'Content-Type': 'application/json',
-    };
-    final $body = <String, dynamic>{
-      'merchantCode': merchantCode,
-      'merchantOrderId': merchantOrderId,
-      'signature': signature,
-    };
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
-      headers: $headers,
-    );
-    return client.send<dynamic, dynamic>(
-      $request,
-      requestConverter: FormUrlEncodedConverter.requestFactory,
-    );
   }
 }

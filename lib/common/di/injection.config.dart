@@ -13,8 +13,8 @@ import 'package:chopper/chopper.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:ika_smansara/common/common.dart' as _i4;
 import 'package:ika_smansara/common/di/api_interface_network_module.dart'
-    as _i13;
-import 'package:ika_smansara/common/di/network_module.dart' as _i14;
+    as _i12;
+import 'package:ika_smansara/common/di/network_module.dart' as _i13;
 import 'package:ika_smansara/counter/counter.dart' as _i6;
 import 'package:ika_smansara/counter/data/repository/counter_repository_impl.dart'
     as _i7;
@@ -25,12 +25,10 @@ import 'package:ika_smansara/counter/domain/use_case/update_counter_data_use_cas
 import 'package:ika_smansara/payment_gateway/data/repository/payment_gateway_repository_impl.dart'
     as _i9;
 import 'package:ika_smansara/payment_gateway/di/api_interface_payment_gateway_network_module.dart'
-    as _i15;
+    as _i14;
 import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
-    as _i16;
-import 'package:ika_smansara/payment_gateway/domain/use_case/get_payment_method_use_case/get_payment_method_use_case.dart'
-    as _i12;
-import 'package:ika_smansara/payment_gateway/domain/use_case/request_transaction_use_case/request_transaction_use_case.dart'
+    as _i15;
+import 'package:ika_smansara/payment_gateway/domain/use_case/request_acquiring_transaction_token_use_case/request_acquiring_transaction_token_use_case.dart'
     as _i10;
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
@@ -78,21 +76,20 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.GetCounterDataUseCase(gh<_i6.CounterRepository>()));
     gh.factory<_i5.PaymentGatewayRepository>(() =>
         _i9.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()));
-    gh.factory<_i10.RequestTransactionUseCase>(() =>
-        _i10.RequestTransactionUseCase(gh<_i5.PaymentGatewayRepository>()));
+    gh.factory<_i10.RequestAcquiringTransactionTokenUseCase>(() =>
+        _i10.RequestAcquiringTransactionTokenUseCase(
+            gh<_i5.PaymentGatewayRepository>()));
     gh.factory<_i11.UpdateCounterDataUseCase>(
         () => _i11.UpdateCounterDataUseCase(gh<_i6.CounterRepository>()));
-    gh.factory<_i12.GetPaymentMethodUseCase>(
-        () => _i12.GetPaymentMethodUseCase(gh<_i5.PaymentGatewayRepository>()));
     return this;
   }
 }
 
-class _$ApiInterfaceNetworkModule extends _i13.ApiInterfaceNetworkModule {}
+class _$ApiInterfaceNetworkModule extends _i12.ApiInterfaceNetworkModule {}
 
-class _$NetworkModule extends _i14.NetworkModule {}
+class _$NetworkModule extends _i13.NetworkModule {}
 
 class _$ApiInterfacePaymentGatewayNetworkModule
-    extends _i15.ApiInterfacePaymentGatewayNetworkModule {}
+    extends _i14.ApiInterfacePaymentGatewayNetworkModule {}
 
-class _$PaymentGatewayNetworkModule extends _i16.PaymentGatewayNetworkModule {}
+class _$PaymentGatewayNetworkModule extends _i15.PaymentGatewayNetworkModule {}

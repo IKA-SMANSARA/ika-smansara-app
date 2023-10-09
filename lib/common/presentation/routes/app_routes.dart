@@ -26,10 +26,6 @@ class AppRoutes {
           );
         },
       ),
-      GoRoute(
-        path: Routes.selectPaymentMethod,
-        builder: (context, state) => const PaymentMethodPage(),
-      ),
       // deeplink for payment gateway route
       GoRoute(
         path: Routes.redirect,
