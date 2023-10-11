@@ -44,9 +44,9 @@ class Constants {
   static const vapidKeyFcm =
       'BH7TgdBEdeyIbhc15HLEZhvQ28R67tn5N9lfoyiyF6gSwzy8zX1AkVmTaOZs16pnAwyXVNz6O3bvWfDco2O0Rw8';
   static const paymentGateWayURL =
-      'https://app.sandbox.midtrans.com/snap/v1/transactions';
-  static const merchantCode = 'G472325854';
-  static const apiKeyPaymentGateway = 'SB-Mid-server-ywOX8MSEs8NRE8ISA_tn-M0A';
+      'https://sandbox.duitku.com/webapi/api/merchant/';
+  static const merchantCode = 'DS16156';
+  static const apiKeyPaymentGateway = 'a8e0a7ddbe91233f832b8f7c0cf3015f';
   static const merchantCodeKey = 'merchantCode';
   static const merchantOrderIdDummy = 'ikasmansara002';
   static const merchantOrderIdKey = 'merchantOrderId';

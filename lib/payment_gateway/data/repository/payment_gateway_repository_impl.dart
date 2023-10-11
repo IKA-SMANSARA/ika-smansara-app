@@ -9,36 +9,112 @@ class PaymentGatewayRepositoryImpl implements PaymentGatewayRepository {
   final ApiServicesPaymentGateway _apiServicesPaymentGateway;
 
   @override
-  Future<Resource<MidtransTransactionResponse>> getAcquiringTransactionToken(
-    MidtransTransactionRequest midtransTransactionRequest,
+  Future<Resource<PaymentTransactionStatusResponse>> checkTransactionStatus(
+    String merchantCode,
+    String merchantOrderId,
+    String signature,
   ) async {
-    Resource<MidtransTransactionResponse> result;
+    Resource<PaymentTransactionStatusResponse> result;
 
     try {
-      final responseMidtransTransaction =
-          await _apiServicesPaymentGateway.acquiringTransactionToken(
-        midtransTransactionRequest.toMidtransTransactionRequestDTO(),
+      final responseCheckTransactionStatus =
+          await _apiServicesPaymentGateway.checkTransactionStatus(
+        merchantCode,
+        merchantOrderId,
+        signature,
       );
 
-      if (responseMidtransTransaction.isSuccessful) {
+      if (responseCheckTransactionStatus.isSuccessful) {
         result = Resource.success(
-          MidtransTransactionResponseDTO.fromJson(
-            responseMidtransTransaction.body as Map<String, dynamic>,
-          ).toMidtransTransactionResponse(),
+          PaymentTransactionStatusResponseDTO.fromJson(
+            responseCheckTransactionStatus.body as Map<String, dynamic>,
+          ).toPaymentTransactionStatusResponse(),
         );
       } else {
         result = Resource.error(
           ErrorResponseDTO.fromJson(
-                responseMidtransTransaction.body as Map<String, dynamic>,
+                responseCheckTransactionStatus.body as Map<String, dynamic>,
               ).toErrorResponse().message ??
               '',
-          const MidtransTransactionResponse(),
+          const PaymentTransactionStatusResponse(),
         );
       }
     } catch (e) {
       Constants.logger.e(e.toString());
-      result =
-          Resource.error(e.toString(), const MidtransTransactionResponse());
+      result = Resource.error(
+        e.toString(),
+        const PaymentTransactionStatusResponse(),
+      );
+    }
+
+    return result;
+  }
+
+  @override
+  Future<Resource<PaymentMethodResponse>> getPaymentMethod(
+    PaymentMethodRequest paymentMethodRequest,
+  ) async {
+    Resource<PaymentMethodResponse> result;
+
+    try {
+      final responsePaymentMethod =
+          await _apiServicesPaymentGateway.getPaymentMethod(
+        paymentMethodRequest.toPaymentMethodRequestDTO(),
+      );
+
+      if (responsePaymentMethod.isSuccessful) {
+        result = Resource.success(
+          PaymentMethodResponseDTO.fromJson(
+            responsePaymentMethod.body as Map<String, dynamic>,
+          ).toPaymentMethodResponse(),
+        );
+      } else {
+        result = Resource.error(
+          ErrorResponseDTO.fromJson(
+                responsePaymentMethod.body as Map<String, dynamic>,
+              ).toErrorResponse().message ??
+              '',
+          const PaymentMethodResponse(),
+        );
+      }
+    } catch (e) {
+      Constants.logger.e(e.toString());
+      result = Resource.error(e.toString(), const PaymentMethodResponse());
+    }
+
+    return result;
+  }
+
+  @override
+  Future<Resource<TransactionResponse>> requestTransaction(
+    TransactionRequest transactionRequest,
+  ) async {
+    Resource<TransactionResponse> result;
+
+    try {
+      final responsePaymentMethod =
+          await _apiServicesPaymentGateway.requestTransaction(
+        transactionRequest.toTransactionRequestDTO(),
+      );
+
+      if (responsePaymentMethod.isSuccessful) {
+        result = Resource.success(
+          TransactionResponseDTO.fromJson(
+            responsePaymentMethod.body as Map<String, dynamic>,
+          ).toTransactionResponse(),
+        );
+      } else {
+        result = Resource.error(
+          ErrorResponseDTO.fromJson(
+                responsePaymentMethod.body as Map<String, dynamic>,
+              ).toErrorResponse().message ??
+              '',
+          const TransactionResponse(),
+        );
+      }
+    } catch (e) {
+      Constants.logger.e(e.toString());
+      result = Resource.error(e.toString(), const TransactionResponse());
     }
 
     return result;
