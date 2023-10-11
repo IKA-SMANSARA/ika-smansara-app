@@ -22,11 +22,9 @@ MidtransTransactionDetailsRequest _$MidtransTransactionDetailsRequestFromJson(
 /// @nodoc
 mixin _$MidtransTransactionDetailsRequest {
   String? get orderId => throw _privateConstructorUsedError;
-
   String? get grossAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionDetailsRequestCopyWith<MidtransTransactionDetailsRequest>
       get copyWith => throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ abstract class $MidtransTransactionDetailsRequestCopyWith<$Res> {
           $Res Function(MidtransTransactionDetailsRequest) then) =
       _$MidtransTransactionDetailsRequestCopyWithImpl<$Res,
           MidtransTransactionDetailsRequest>;
-
   @useResult
   $Res call({String? orderId, String? grossAmount});
 }
@@ -52,7 +49,6 @@ class _$MidtransTransactionDetailsRequestCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -82,7 +78,6 @@ abstract class _$$_MidtransTransactionDetailsRequestCopyWith<$Res>
           _$_MidtransTransactionDetailsRequest value,
           $Res Function(_$_MidtransTransactionDetailsRequest) then) =
       __$$_MidtransTransactionDetailsRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? orderId, String? grossAmount});
@@ -179,10 +174,8 @@ abstract class _MidtransTransactionDetailsRequest
 
   @override
   String? get orderId;
-
   @override
   String? get grossAmount;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionDetailsRequestCopyWith<

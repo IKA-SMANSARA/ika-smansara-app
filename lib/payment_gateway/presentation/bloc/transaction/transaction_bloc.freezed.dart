@@ -22,7 +22,6 @@ mixin _$TransactionEvent {
     required TResult Function(String? grossAmount, String? orderId) fetchData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
@@ -71,7 +70,7 @@ class _$TransactionEventCopyWithImpl<$Res, $Val extends TransactionEvent>
 
   // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 

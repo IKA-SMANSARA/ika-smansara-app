@@ -23,12 +23,10 @@ MidtransTransactionResponseDTO _$MidtransTransactionResponseDTOFromJson(
 mixin _$MidtransTransactionResponseDTO {
   @JsonKey(name: 'token')
   String? get token => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'redirect_url')
   String? get redirectUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionResponseDTOCopyWith<MidtransTransactionResponseDTO>
       get copyWith => throw _privateConstructorUsedError;
@@ -41,7 +39,6 @@ abstract class $MidtransTransactionResponseDTOCopyWith<$Res> {
           $Res Function(MidtransTransactionResponseDTO) then) =
       _$MidtransTransactionResponseDTOCopyWithImpl<$Res,
           MidtransTransactionResponseDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'token') String? token,
@@ -56,7 +53,6 @@ class _$MidtransTransactionResponseDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -86,7 +82,6 @@ abstract class _$$_MidtransTransactionResponseDTOCopyWith<$Res>
           _$_MidtransTransactionResponseDTO value,
           $Res Function(_$_MidtransTransactionResponseDTO) then) =
       __$$_MidtransTransactionResponseDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -189,11 +184,9 @@ abstract class _MidtransTransactionResponseDTO
   @override
   @JsonKey(name: 'token')
   String? get token;
-
   @override
   @JsonKey(name: 'redirect_url')
   String? get redirectUrl;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionResponseDTOCopyWith<_$_MidtransTransactionResponseDTO>
