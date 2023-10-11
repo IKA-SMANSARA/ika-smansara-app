@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ika_smansara/common/common.dart';
 
 class PaymentGatewayPortraitScreen extends StatelessWidget {
   const PaymentGatewayPortraitScreen({required this.paymentMethod, super.key});
@@ -13,12 +14,18 @@ class PaymentGatewayPortraitScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: () => context.push(Routes.selectPaymentMethod),
+              child: const Text('Select Payment Method'),
+            ),
+            const SizedBox(height: 8),
+            Text('payment method : $paymentMethod'),
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () => context.pushNamed(
-                'payment-window-web-view',
+                Routes.paymentWindowWebView,
                 queryParameters: {
-                  'payment method': paymentMethod,
+                  Constants.paymentMethodKey: paymentMethod,
                 },
               ),
               child: const Text('Open Window Payment'),
