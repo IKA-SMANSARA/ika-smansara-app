@@ -3,17 +3,13 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
 class PaymentGatewayPage extends StatelessWidget {
-  const PaymentGatewayPage({required this.paymentMethod, super.key});
-
-  final String? paymentMethod;
+  const PaymentGatewayPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: AdaptiveScreen(
-        androidScreen: PaymentGatewayPortraitScreen(
-          paymentMethod: paymentMethod ?? '',
-        ),
+        androidScreen: PaymentGatewayPortraitScreen(),
       ),
     );
   }
