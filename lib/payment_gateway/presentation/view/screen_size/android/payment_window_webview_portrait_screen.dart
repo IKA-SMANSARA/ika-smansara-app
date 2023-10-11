@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
 import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/transaction_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
@@ -37,33 +37,33 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                     );
                 return const CircularProgressIndicator();
               }
-
               if (state is Success) {
-                return WebViewWidget(
-                  controller: WebViewController()
-                    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-                    ..setBackgroundColor(Colors.white12)
-                    ..setNavigationDelegate(
-                      NavigationDelegate(
-                        onNavigationRequest: (NavigationRequest request) {
-                          if (request.url.startsWith(
-                            'intent://ikasmansara.page.link/return',
-                          )) {
-                            context.go(Routes.returnRoute);
-                            return NavigationDecision.prevent;
-                          }
-                          return NavigationDecision.navigate;
-                        },
-                      ),
-                    )
-                    ..loadRequest(
-                      Uri.parse(
-                        state.redirectUrl ?? '',
-                      ),
+                return InAppWebView(
+                  initialUrlRequest: URLRequest(
+                    url: Uri.parse(state.redirectUrl ?? ''),
+                  ),
+                  initialOptions: InAppWebViewGroupOptions(
+                    crossPlatform: InAppWebViewOptions(
+                      useShouldOverrideUrlLoading: true,
+                      mediaPlaybackRequiresUserGesture: false,
                     ),
+                    android: AndroidInAppWebViewOptions(
+                      useHybridComposition: true,
+                    ),
+                    ios: IOSInAppWebViewOptions(
+                      allowsInlineMediaPlayback: true,
+                    ),
+                  ),
+                  shouldOverrideUrlLoading:
+                      (controller, navigationAction) async {
+                    if (navigationAction.request.url?.host == 'example.com') {
+                      context.go(Routes.returnRoute);
+                      return NavigationActionPolicy.CANCEL;
+                    }
+                    return NavigationActionPolicy.ALLOW;
+                  },
                 );
               }
-
               if (state is Error) {
                 return Text(state.errorMessage ?? '');
               }
