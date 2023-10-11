@@ -7,7 +7,7 @@ part of 'api_services.dart';
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$ApiServices extends ApiServices {
+final class _$ApiServices extends ApiServices {
   _$ApiServices([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
@@ -15,6 +15,41 @@ class _$ApiServices extends ApiServices {
 
   @override
   final definitionType = ApiServices;
+
+  @override
+  Future<Response<dynamic>> getEmailSession(String sessionId) {
+    final Uri $url = Uri.parse('account/sessions/${sessionId}');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '64aa86334bd6c9d9678f',
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> createEmailSession(
+      EmailSessionRequestDTO emailSessionRequestDTO) {
+    final Uri $url = Uri.parse('account/sessions/email');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '64aa86334bd6c9d9678f',
+    };
+    final $body = emailSessionRequestDTO;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
 
   @override
   Future<Response<dynamic>> getCounter(String documentId) {

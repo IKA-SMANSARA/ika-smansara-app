@@ -1,0 +1,45 @@
+<svg fill="none" height="60" viewBox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+    <g id="Layer_x0020_1">
+        <g id="_2562764952928">
+            <path
+                d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z"
+                fill="#E4E4F9" id="Vector" />
+            <path clip-rule="evenodd"
+                d="M13.7755 14.8814H45.984C46.4812 14.8814 46.8874 15.288 46.8874 15.7848V46.0211C46.8874 46.6998 46.3327 47.2531 45.6554 47.2531H14.1046C13.4264 47.2531 12.8726 46.6998 12.8726 46.0211V15.7848C12.8726 15.288 13.2788 14.8814 13.7759 14.8814H13.7755Z"
+                fill="#FEFEFE" fill-rule="evenodd" id="Vector_2" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path clip-rule="evenodd"
+                d="M26.5112 47.2531H33.4133V38.2973C33.4133 36.3995 31.8602 34.8469 29.962 34.8469H29.9616C28.0638 34.8469 26.5112 36.3995 26.5112 38.2973V47.2531Z"
+                fill="#F08519" fill-rule="evenodd" id="Vector_3" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path
+                d="M22.7477 31.2316H17.7037C17.3949 31.2316 17.1445 31.671 17.1445 32.213V36.7411C17.1445 37.2831 17.3949 37.7225 17.7037 37.7225H22.7477C23.0565 37.7225 23.3068 37.2831 23.3068 36.7411V32.213C23.3068 31.671 23.0565 31.2316 22.7477 31.2316Z"
+                fill="#88CDD7" id="Vector_4" stroke="#332C2B" stroke-linecap="round"
+                stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path
+                d="M42.4259 31.2316H37.3819C37.0731 31.2316 36.8228 31.671 36.8228 32.213V36.7411C36.8228 37.2831 37.0731 37.7225 37.3819 37.7225H42.4259C42.7347 37.7225 42.9851 37.2831 42.9851 36.7411V32.213C42.9851 31.671 42.7347 31.2316 42.4259 31.2316Z"
+                fill="#88CDD7" id="Vector_5" stroke="#332C2B" stroke-linecap="round"
+                stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path clip-rule="evenodd"
+                d="M46.8874 28.0942C47.8796 27.9716 48.6541 27.12 48.6541 26.0966V14.9224C48.6541 13.8153 47.748 12.9096 46.6408 12.9096H13.1187C12.0111 12.9096 11.1055 13.8153 11.1055 14.9224V26.0966C11.1055 27.1204 11.88 27.9721 12.8721 28.0942C12.9528 28.104 13.0353 28.1094 13.1187 28.1094H24.2929L29.1269 21.5342C29.3088 21.2863 29.5728 21.153 29.88 21.153C30.1868 21.153 30.4512 21.2863 30.6331 21.5342L35.4666 28.1094H46.6408C46.7242 28.1094 46.8063 28.104 46.8874 28.0942Z"
+                fill="#EA5167" fill-rule="evenodd" id="Vector_6" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path
+                d="M11.1055 25.727H23.0604L29.1197 17.2585C29.3008 17.0052 29.5688 16.8679 29.88 16.8679C30.1912 16.8679 30.4592 17.0052 30.6402 17.2585L36.6991 25.727H48.6541"
+                id="Vector_7" stroke="#332C2B" stroke-linecap="round" stroke-miterlimit="22.9256"
+                stroke-width="1.13377" />
+            <path clip-rule="evenodd"
+                d="M26.5112 41.765H12.8726V46.0216C12.8726 46.6989 13.4268 47.2536 14.1041 47.2536H26.5112V41.765Z"
+                fill="#BCB8C6" fill-rule="evenodd" id="Vector_8" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path clip-rule="evenodd"
+                d="M33.4126 41.765V47.2536H45.6552C46.3325 47.2536 46.8867 46.6989 46.8867 46.0216V41.765H33.4126Z"
+                fill="#BCB8C6" fill-rule="evenodd" id="Vector_9" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path d="M17.1445 33.4401H23.3068" id="Vector_10" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+            <path d="M36.8228 33.4401H42.9851" id="Vector_11" stroke="#332C2B"
+                stroke-linecap="round" stroke-miterlimit="22.9256" stroke-width="1.13377" />
+        </g>
+    </g>
+</svg>

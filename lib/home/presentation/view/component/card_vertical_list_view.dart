@@ -1,0 +1,147 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
+import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/home/home.dart';
+
+class CardVerticalListView extends StatelessWidget {
+  const CardVerticalListView({
+    required this.listTitle,
+    required this.buttonTitle,
+    super.key,
+  });
+
+  final String? listTitle;
+  final String? buttonTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 250.h,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.h,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  listTitle ?? '',
+                  style: GoogleFonts.inter(
+                    color: Colors.black,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => context.pushNamed(
+                    Routes.listCampaignPerCategory,
+                    queryParameters: {
+                      Constants.categoryNameKey: listTitle,
+                    },
+                  ),
+                  child: Text(
+                    buttonTitle ?? '',
+                    style: GoogleFonts.inter(
+                      color: const Color(0xFF104993),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 8.h,
+            ),
+            child: SizedBox(
+              height: 215.h,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  CardItemCampaign(
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '1'},
+                    ),
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  CardItemCampaign(
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '2'},
+                    ),
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  CardItemCampaign(
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '3'},
+                    ),
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  CardItemCampaign(
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '4'},
+                    ),
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  CardItemCampaign(
+                    onPress: () => context.pushNamed(
+                      Routes.detailCampaign,
+                      queryParameters: {Constants.idCampaignKey: '5'},
+                    ),
+                    campaignTitle:
+                        'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU',
+                    campaignDonationCollected: '1.999.000',
+                    campaignDuration: '5 hari lagi',
+                    campaignProgressIndicator: 0.65,
+                    campaignImage: Assets.images.imgPp.image(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
