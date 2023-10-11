@@ -110,12 +110,6 @@ class AppRoutes {
           );
         },
       ),
-      GoRoute(
-        name: Routes.selectPaymentMethod,
-        path: Routes.selectPaymentMethod,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PaymentMethodPage(),
-      ),
       // deeplink for payment gateway route
       GoRoute(
         name: Routes.redirect,
