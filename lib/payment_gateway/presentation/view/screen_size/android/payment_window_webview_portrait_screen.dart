@@ -57,7 +57,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                   shouldOverrideUrlLoading:
                       (controller, navigationAction) async {
                     if (navigationAction.request.url?.host == 'example.com') {
-                      context.go(Routes.returnRoute);
+                      context.go(Routes.paymentGateway);
                       return NavigationActionPolicy.CANCEL;
                     }
                     return NavigationActionPolicy.ALLOW;

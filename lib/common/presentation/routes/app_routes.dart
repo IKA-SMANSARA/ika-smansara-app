@@ -92,12 +92,7 @@ class AppRoutes {
         name: Routes.paymentGateway,
         path: Routes.paymentGateway,
         parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          return PaymentGatewayPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
-          );
-        },
+        builder: (context, state) => const PaymentGatewayPage(),
       ),
       GoRoute(
         name: Routes.paymentWindowWebView,
@@ -109,39 +104,6 @@ class AppRoutes {
                 state.uri.queryParameters[Constants.paymentMethodKey],
           );
         },
-      ),
-      // deeplink for payment gateway route
-      GoRoute(
-        name: Routes.redirect,
-        path: Routes.redirect,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const CounterPage(),
-      ),
-      // deeplink for payment gateway route
-      GoRoute(
-        name: Routes.returnRoute,
-        path: Routes.returnRoute,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          return PaymentGatewayPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
-          );
-        },
-      ),
-      // deeplink for payment gateway route
-      GoRoute(
-        name: Routes.callbackPayment,
-        path: Routes.callbackPayment,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const CounterPage(),
-      ),
-      // deeplink for email verification
-      GoRoute(
-        name: Routes.callbackPageEmailVerification,
-        path: Routes.callbackPageEmailVerification,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const CounterPage(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundPage(),
