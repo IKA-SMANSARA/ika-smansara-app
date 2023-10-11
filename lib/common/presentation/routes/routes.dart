@@ -11,9 +11,6 @@ class Routes {
   static const myDonation = '/my-donation';
   static const account = '/account';
   static const listCampaignPerCategory = '/list-campaign-per-category';
-  static const paymentGateway = '/payment-gateway';
-  static const selectPaymentMethod = '/select-payment-method';
-  static const paymentWindowWebView = '/payment-window-web-view';
   static const redirect = '/redirect'; // deeplink for payment gateway route
   static const returnRoute = '/return'; // deeplink for payment gateway route
   static const callbackPayment =

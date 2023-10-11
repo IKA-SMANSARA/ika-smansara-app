@@ -9,7 +9,6 @@ import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
 import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
-import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
 class AppRoutes {
@@ -88,34 +87,6 @@ class AppRoutes {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CounterPage(),
       ),
-      GoRoute(
-        name: Routes.paymentGateway,
-        path: Routes.paymentGateway,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          return PaymentGatewayPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
-          );
-        },
-      ),
-      GoRoute(
-        name: Routes.paymentWindowWebView,
-        path: Routes.paymentWindowWebView,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          return PaymentWindowWebViewPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
-          );
-        },
-      ),
-      GoRoute(
-        name: Routes.selectPaymentMethod,
-        path: Routes.selectPaymentMethod,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PaymentMethodPage(),
-      ),
       // deeplink for payment gateway route
       GoRoute(
         name: Routes.redirect,
@@ -124,17 +95,6 @@ class AppRoutes {
         builder: (context, state) => const CounterPage(),
       ),
       // deeplink for payment gateway route
-      GoRoute(
-        name: Routes.returnRoute,
-        path: Routes.returnRoute,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          return PaymentGatewayPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
-          );
-        },
-      ),
       // deeplink for payment gateway route
       GoRoute(
         name: Routes.callbackPayment,
