@@ -19,97 +19,19 @@ mixin _$TransactionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)
-        fetchData,
+    required TResult Function(String? grossAmount, String? orderId) fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult? Function(String? grossAmount, String? orderId)? fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult Function(String? grossAmount, String? orderId)? fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,33 +112,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)
-        fetchData,
+    required TResult Function(String? grossAmount, String? orderId) fetchData,
   }) {
     return started();
   }
@@ -225,33 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult? Function(String? grossAmount, String? orderId)? fetchData,
   }) {
     return started?.call();
   }
@@ -260,33 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult Function(String? grossAmount, String? orderId)? fetchData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -337,32 +181,7 @@ abstract class _$$_FetchDataCopyWith<$Res> {
           _$_FetchData value, $Res Function(_$_FetchData) then) =
       __$$_FetchDataCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String? paymentAmount,
-      String? paymentMethod,
-      String? productDetails,
-      String? customerVaName,
-      String? email,
-      String? phoneNumber,
-      String? itemName,
-      int? itemPrice,
-      int? itemQuantity,
-      String? customerFirstName,
-      String? customerLastName,
-      String? customerEmail,
-      String? customerPhoneNumber,
-      String? billingFirstName,
-      String? billingLastName,
-      String? billingAddress,
-      String? billingCity,
-      String? billingPostalCode,
-      String? billingPhone,
-      String? shippingFirstName,
-      String? shippingLastName,
-      String? shippingAddress,
-      String? shippingCity,
-      String? shippingPostalCode,
-      String? shippingPhone});
+  $Res call({String? grossAmount, String? orderId});
 }
 
 /// @nodoc
@@ -376,132 +195,17 @@ class __$$_FetchDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? paymentAmount = freezed,
-    Object? paymentMethod = freezed,
-    Object? productDetails = freezed,
-    Object? customerVaName = freezed,
-    Object? email = freezed,
-    Object? phoneNumber = freezed,
-    Object? itemName = freezed,
-    Object? itemPrice = freezed,
-    Object? itemQuantity = freezed,
-    Object? customerFirstName = freezed,
-    Object? customerLastName = freezed,
-    Object? customerEmail = freezed,
-    Object? customerPhoneNumber = freezed,
-    Object? billingFirstName = freezed,
-    Object? billingLastName = freezed,
-    Object? billingAddress = freezed,
-    Object? billingCity = freezed,
-    Object? billingPostalCode = freezed,
-    Object? billingPhone = freezed,
-    Object? shippingFirstName = freezed,
-    Object? shippingLastName = freezed,
-    Object? shippingAddress = freezed,
-    Object? shippingCity = freezed,
-    Object? shippingPostalCode = freezed,
-    Object? shippingPhone = freezed,
+    Object? grossAmount = freezed,
+    Object? orderId = freezed,
   }) {
     return _then(_$_FetchData(
-      freezed == paymentAmount
-          ? _value.paymentAmount
-          : paymentAmount // ignore: cast_nullable_to_non_nullable
+      freezed == grossAmount
+          ? _value.grossAmount
+          : grossAmount // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == paymentMethod
-          ? _value.paymentMethod
-          : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == productDetails
-          ? _value.productDetails
-          : productDetails // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == customerVaName
-          ? _value.customerVaName
-          : customerVaName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == itemName
-          ? _value.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == itemPrice
-          ? _value.itemPrice
-          : itemPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == itemQuantity
-          ? _value.itemQuantity
-          : itemQuantity // ignore: cast_nullable_to_non_nullable
-              as int?,
-      freezed == customerFirstName
-          ? _value.customerFirstName
-          : customerFirstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == customerLastName
-          ? _value.customerLastName
-          : customerLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == customerEmail
-          ? _value.customerEmail
-          : customerEmail // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == customerPhoneNumber
-          ? _value.customerPhoneNumber
-          : customerPhoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingFirstName
-          ? _value.billingFirstName
-          : billingFirstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingLastName
-          ? _value.billingLastName
-          : billingLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingAddress
-          ? _value.billingAddress
-          : billingAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingCity
-          ? _value.billingCity
-          : billingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingPostalCode
-          ? _value.billingPostalCode
-          : billingPostalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == billingPhone
-          ? _value.billingPhone
-          : billingPhone // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingFirstName
-          ? _value.shippingFirstName
-          : shippingFirstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingLastName
-          ? _value.shippingLastName
-          : shippingLastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingAddress
-          ? _value.shippingAddress
-          : shippingAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingCity
-          ? _value.shippingCity
-          : shippingCity // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingPostalCode
-          ? _value.shippingPostalCode
-          : shippingPostalCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      freezed == shippingPhone
-          ? _value.shippingPhone
-          : shippingPhone // ignore: cast_nullable_to_non_nullable
+      freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -510,87 +214,16 @@ class __$$_FetchDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FetchData implements _FetchData {
-  const _$_FetchData(
-      this.paymentAmount,
-      this.paymentMethod,
-      this.productDetails,
-      this.customerVaName,
-      this.email,
-      this.phoneNumber,
-      this.itemName,
-      this.itemPrice,
-      this.itemQuantity,
-      this.customerFirstName,
-      this.customerLastName,
-      this.customerEmail,
-      this.customerPhoneNumber,
-      this.billingFirstName,
-      this.billingLastName,
-      this.billingAddress,
-      this.billingCity,
-      this.billingPostalCode,
-      this.billingPhone,
-      this.shippingFirstName,
-      this.shippingLastName,
-      this.shippingAddress,
-      this.shippingCity,
-      this.shippingPostalCode,
-      this.shippingPhone);
+  const _$_FetchData(this.grossAmount, this.orderId);
 
   @override
-  final String? paymentAmount;
+  final String? grossAmount;
   @override
-  final String? paymentMethod;
-  @override
-  final String? productDetails;
-  @override
-  final String? customerVaName;
-  @override
-  final String? email;
-  @override
-  final String? phoneNumber;
-  @override
-  final String? itemName;
-  @override
-  final int? itemPrice;
-  @override
-  final int? itemQuantity;
-  @override
-  final String? customerFirstName;
-  @override
-  final String? customerLastName;
-  @override
-  final String? customerEmail;
-  @override
-  final String? customerPhoneNumber;
-  @override
-  final String? billingFirstName;
-  @override
-  final String? billingLastName;
-  @override
-  final String? billingAddress;
-  @override
-  final String? billingCity;
-  @override
-  final String? billingPostalCode;
-  @override
-  final String? billingPhone;
-  @override
-  final String? shippingFirstName;
-  @override
-  final String? shippingLastName;
-  @override
-  final String? shippingAddress;
-  @override
-  final String? shippingCity;
-  @override
-  final String? shippingPostalCode;
-  @override
-  final String? shippingPhone;
+  final String? orderId;
 
   @override
   String toString() {
-    return 'TransactionEvent.fetchData(paymentAmount: $paymentAmount, paymentMethod: $paymentMethod, productDetails: $productDetails, customerVaName: $customerVaName, email: $email, phoneNumber: $phoneNumber, itemName: $itemName, itemPrice: $itemPrice, itemQuantity: $itemQuantity, customerFirstName: $customerFirstName, customerLastName: $customerLastName, customerEmail: $customerEmail, customerPhoneNumber: $customerPhoneNumber, billingFirstName: $billingFirstName, billingLastName: $billingLastName, billingAddress: $billingAddress, billingCity: $billingCity, billingPostalCode: $billingPostalCode, billingPhone: $billingPhone, shippingFirstName: $shippingFirstName, shippingLastName: $shippingLastName, shippingAddress: $shippingAddress, shippingCity: $shippingCity, shippingPostalCode: $shippingPostalCode, shippingPhone: $shippingPhone)';
+    return 'TransactionEvent.fetchData(grossAmount: $grossAmount, orderId: $orderId)';
   }
 
   @override
@@ -598,86 +231,13 @@ class _$_FetchData implements _FetchData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FetchData &&
-            (identical(other.paymentAmount, paymentAmount) ||
-                other.paymentAmount == paymentAmount) &&
-            (identical(other.paymentMethod, paymentMethod) ||
-                other.paymentMethod == paymentMethod) &&
-            (identical(other.productDetails, productDetails) ||
-                other.productDetails == productDetails) &&
-            (identical(other.customerVaName, customerVaName) ||
-                other.customerVaName == customerVaName) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.itemName, itemName) ||
-                other.itemName == itemName) &&
-            (identical(other.itemPrice, itemPrice) ||
-                other.itemPrice == itemPrice) &&
-            (identical(other.itemQuantity, itemQuantity) ||
-                other.itemQuantity == itemQuantity) &&
-            (identical(other.customerFirstName, customerFirstName) ||
-                other.customerFirstName == customerFirstName) &&
-            (identical(other.customerLastName, customerLastName) ||
-                other.customerLastName == customerLastName) &&
-            (identical(other.customerEmail, customerEmail) ||
-                other.customerEmail == customerEmail) &&
-            (identical(other.customerPhoneNumber, customerPhoneNumber) ||
-                other.customerPhoneNumber == customerPhoneNumber) &&
-            (identical(other.billingFirstName, billingFirstName) ||
-                other.billingFirstName == billingFirstName) &&
-            (identical(other.billingLastName, billingLastName) ||
-                other.billingLastName == billingLastName) &&
-            (identical(other.billingAddress, billingAddress) ||
-                other.billingAddress == billingAddress) &&
-            (identical(other.billingCity, billingCity) ||
-                other.billingCity == billingCity) &&
-            (identical(other.billingPostalCode, billingPostalCode) ||
-                other.billingPostalCode == billingPostalCode) &&
-            (identical(other.billingPhone, billingPhone) ||
-                other.billingPhone == billingPhone) &&
-            (identical(other.shippingFirstName, shippingFirstName) ||
-                other.shippingFirstName == shippingFirstName) &&
-            (identical(other.shippingLastName, shippingLastName) ||
-                other.shippingLastName == shippingLastName) &&
-            (identical(other.shippingAddress, shippingAddress) ||
-                other.shippingAddress == shippingAddress) &&
-            (identical(other.shippingCity, shippingCity) ||
-                other.shippingCity == shippingCity) &&
-            (identical(other.shippingPostalCode, shippingPostalCode) ||
-                other.shippingPostalCode == shippingPostalCode) &&
-            (identical(other.shippingPhone, shippingPhone) ||
-                other.shippingPhone == shippingPhone));
+            (identical(other.grossAmount, grossAmount) ||
+                other.grossAmount == grossAmount) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        paymentAmount,
-        paymentMethod,
-        productDetails,
-        customerVaName,
-        email,
-        phoneNumber,
-        itemName,
-        itemPrice,
-        itemQuantity,
-        customerFirstName,
-        customerLastName,
-        customerEmail,
-        customerPhoneNumber,
-        billingFirstName,
-        billingLastName,
-        billingAddress,
-        billingCity,
-        billingPostalCode,
-        billingPhone,
-        shippingFirstName,
-        shippingLastName,
-        shippingAddress,
-        shippingCity,
-        shippingPostalCode,
-        shippingPhone
-      ]);
+  int get hashCode => Object.hash(runtimeType, grossAmount, orderId);
 
   @JsonKey(ignore: true)
   @override
@@ -689,182 +249,29 @@ class _$_FetchData implements _FetchData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)
-        fetchData,
+    required TResult Function(String? grossAmount, String? orderId) fetchData,
   }) {
-    return fetchData(
-        paymentAmount,
-        paymentMethod,
-        productDetails,
-        customerVaName,
-        email,
-        phoneNumber,
-        itemName,
-        itemPrice,
-        itemQuantity,
-        customerFirstName,
-        customerLastName,
-        customerEmail,
-        customerPhoneNumber,
-        billingFirstName,
-        billingLastName,
-        billingAddress,
-        billingCity,
-        billingPostalCode,
-        billingPhone,
-        shippingFirstName,
-        shippingLastName,
-        shippingAddress,
-        shippingCity,
-        shippingPostalCode,
-        shippingPhone);
+    return fetchData(grossAmount, orderId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult? Function(String? grossAmount, String? orderId)? fetchData,
   }) {
-    return fetchData?.call(
-        paymentAmount,
-        paymentMethod,
-        productDetails,
-        customerVaName,
-        email,
-        phoneNumber,
-        itemName,
-        itemPrice,
-        itemQuantity,
-        customerFirstName,
-        customerLastName,
-        customerEmail,
-        customerPhoneNumber,
-        billingFirstName,
-        billingLastName,
-        billingAddress,
-        billingCity,
-        billingPostalCode,
-        billingPhone,
-        shippingFirstName,
-        shippingLastName,
-        shippingAddress,
-        shippingCity,
-        shippingPostalCode,
-        shippingPhone);
+    return fetchData?.call(grossAmount, orderId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            String? paymentAmount,
-            String? paymentMethod,
-            String? productDetails,
-            String? customerVaName,
-            String? email,
-            String? phoneNumber,
-            String? itemName,
-            int? itemPrice,
-            int? itemQuantity,
-            String? customerFirstName,
-            String? customerLastName,
-            String? customerEmail,
-            String? customerPhoneNumber,
-            String? billingFirstName,
-            String? billingLastName,
-            String? billingAddress,
-            String? billingCity,
-            String? billingPostalCode,
-            String? billingPhone,
-            String? shippingFirstName,
-            String? shippingLastName,
-            String? shippingAddress,
-            String? shippingCity,
-            String? shippingPostalCode,
-            String? shippingPhone)?
-        fetchData,
+    TResult Function(String? grossAmount, String? orderId)? fetchData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
-      return fetchData(
-          paymentAmount,
-          paymentMethod,
-          productDetails,
-          customerVaName,
-          email,
-          phoneNumber,
-          itemName,
-          itemPrice,
-          itemQuantity,
-          customerFirstName,
-          customerLastName,
-          customerEmail,
-          customerPhoneNumber,
-          billingFirstName,
-          billingLastName,
-          billingAddress,
-          billingCity,
-          billingPostalCode,
-          billingPhone,
-          shippingFirstName,
-          shippingLastName,
-          shippingAddress,
-          shippingCity,
-          shippingPostalCode,
-          shippingPhone);
+      return fetchData(grossAmount, orderId);
     }
     return orElse();
   }
@@ -902,58 +309,11 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements TransactionEvent {
-  const factory _FetchData(
-      final String? paymentAmount,
-      final String? paymentMethod,
-      final String? productDetails,
-      final String? customerVaName,
-      final String? email,
-      final String? phoneNumber,
-      final String? itemName,
-      final int? itemPrice,
-      final int? itemQuantity,
-      final String? customerFirstName,
-      final String? customerLastName,
-      final String? customerEmail,
-      final String? customerPhoneNumber,
-      final String? billingFirstName,
-      final String? billingLastName,
-      final String? billingAddress,
-      final String? billingCity,
-      final String? billingPostalCode,
-      final String? billingPhone,
-      final String? shippingFirstName,
-      final String? shippingLastName,
-      final String? shippingAddress,
-      final String? shippingCity,
-      final String? shippingPostalCode,
-      final String? shippingPhone) = _$_FetchData;
+  const factory _FetchData(final String? grossAmount, final String? orderId) =
+      _$_FetchData;
 
-  String? get paymentAmount;
-  String? get paymentMethod;
-  String? get productDetails;
-  String? get customerVaName;
-  String? get email;
-  String? get phoneNumber;
-  String? get itemName;
-  int? get itemPrice;
-  int? get itemQuantity;
-  String? get customerFirstName;
-  String? get customerLastName;
-  String? get customerEmail;
-  String? get customerPhoneNumber;
-  String? get billingFirstName;
-  String? get billingLastName;
-  String? get billingAddress;
-  String? get billingCity;
-  String? get billingPostalCode;
-  String? get billingPhone;
-  String? get shippingFirstName;
-  String? get shippingLastName;
-  String? get shippingAddress;
-  String? get shippingCity;
-  String? get shippingPostalCode;
-  String? get shippingPhone;
+  String? get grossAmount;
+  String? get orderId;
   @JsonKey(ignore: true)
   _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -966,7 +326,7 @@ mixin _$TransactionState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? errorMessage) error,
-    required TResult Function(String? reference) success,
+    required TResult Function(String? redirectUrl) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -974,7 +334,7 @@ mixin _$TransactionState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String? errorMessage)? error,
-    TResult? Function(String? reference)? success,
+    TResult? Function(String? redirectUrl)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -982,7 +342,7 @@ mixin _$TransactionState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? errorMessage)? error,
-    TResult Function(String? reference)? success,
+    TResult Function(String? redirectUrl)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1025,9 +385,9 @@ class _$TransactionStateCopyWithImpl<$Res, $Val extends TransactionState>
     implements $TransactionStateCopyWith<$Res> {
   _$TransactionStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
+// ignore: unused_field
   final $Val _value;
-  // ignore: unused_field
+// ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -1070,7 +430,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? errorMessage) error,
-    required TResult Function(String? reference) success,
+    required TResult Function(String? redirectUrl) success,
   }) {
     return initial();
   }
@@ -1081,7 +441,7 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String? errorMessage)? error,
-    TResult? Function(String? reference)? success,
+    TResult? Function(String? redirectUrl)? success,
   }) {
     return initial?.call();
   }
@@ -1092,7 +452,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? errorMessage)? error,
-    TResult Function(String? reference)? success,
+    TResult Function(String? redirectUrl)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1182,7 +542,7 @@ class _$Loading implements Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? errorMessage) error,
-    required TResult Function(String? reference) success,
+    required TResult Function(String? redirectUrl) success,
   }) {
     return loading();
   }
@@ -1193,7 +553,7 @@ class _$Loading implements Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String? errorMessage)? error,
-    TResult? Function(String? reference)? success,
+    TResult? Function(String? redirectUrl)? success,
   }) {
     return loading?.call();
   }
@@ -1204,7 +564,7 @@ class _$Loading implements Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? errorMessage)? error,
-    TResult Function(String? reference)? success,
+    TResult Function(String? redirectUrl)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1321,7 +681,7 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? errorMessage) error,
-    required TResult Function(String? reference) success,
+    required TResult Function(String? redirectUrl) success,
   }) {
     return error(errorMessage);
   }
@@ -1332,7 +692,7 @@ class _$Error implements Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String? errorMessage)? error,
-    TResult? Function(String? reference)? success,
+    TResult? Function(String? redirectUrl)? success,
   }) {
     return error?.call(errorMessage);
   }
@@ -1343,7 +703,7 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? errorMessage)? error,
-    TResult Function(String? reference)? success,
+    TResult Function(String? redirectUrl)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1403,7 +763,7 @@ abstract class _$$SuccessCopyWith<$Res> {
   factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
       __$$SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? reference});
+  $Res call({String? redirectUrl});
 }
 
 /// @nodoc
@@ -1416,12 +776,12 @@ class __$$SuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? reference = freezed,
+    Object? redirectUrl = freezed,
   }) {
     return _then(_$Success(
-      freezed == reference
-          ? _value.reference
-          : reference // ignore: cast_nullable_to_non_nullable
+      freezed == redirectUrl
+          ? _value.redirectUrl
+          : redirectUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -1430,14 +790,14 @@ class __$$SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Success implements Success {
-  const _$Success(this.reference);
+  const _$Success(this.redirectUrl);
 
   @override
-  final String? reference;
+  final String? redirectUrl;
 
   @override
   String toString() {
-    return 'TransactionState.success(reference: $reference)';
+    return 'TransactionState.success(redirectUrl: $redirectUrl)';
   }
 
   @override
@@ -1445,12 +805,12 @@ class _$Success implements Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Success &&
-            (identical(other.reference, reference) ||
-                other.reference == reference));
+            (identical(other.redirectUrl, redirectUrl) ||
+                other.redirectUrl == redirectUrl));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reference);
+  int get hashCode => Object.hash(runtimeType, redirectUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -1464,9 +824,9 @@ class _$Success implements Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String? errorMessage) error,
-    required TResult Function(String? reference) success,
+    required TResult Function(String? redirectUrl) success,
   }) {
-    return success(reference);
+    return success(redirectUrl);
   }
 
   @override
@@ -1475,9 +835,9 @@ class _$Success implements Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String? errorMessage)? error,
-    TResult? Function(String? reference)? success,
+    TResult? Function(String? redirectUrl)? success,
   }) {
-    return success?.call(reference);
+    return success?.call(redirectUrl);
   }
 
   @override
@@ -1486,11 +846,11 @@ class _$Success implements Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String? errorMessage)? error,
-    TResult Function(String? reference)? success,
+    TResult Function(String? redirectUrl)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(reference);
+      return success(redirectUrl);
     }
     return orElse();
   }
@@ -1534,9 +894,9 @@ class _$Success implements Success {
 }
 
 abstract class Success implements TransactionState {
-  const factory Success(final String? reference) = _$Success;
+  const factory Success(final String? redirectUrl) = _$Success;
 
-  String? get reference;
+  String? get redirectUrl;
   @JsonKey(ignore: true)
   _$$SuccessCopyWith<_$Success> get copyWith =>
       throw _privateConstructorUsedError;

@@ -8,5 +8,5 @@ class TransactionState with _$TransactionState {
 
   const factory TransactionState.error(String? errorMessage) = Error;
 
-  const factory TransactionState.success(String? reference) = Success;
+  const factory TransactionState.success(String? redirectUrl) = Success;
 }
