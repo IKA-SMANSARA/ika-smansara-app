@@ -1,49 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
+import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
+import 'package:ika_smansara/payment_gateway/presentation/view/component/title_wording.dart';
 
 class PaymentGatewayPortraitScreen extends StatelessWidget {
-  const PaymentGatewayPortraitScreen({super.key});
+  PaymentGatewayPortraitScreen({super.key});
+
+  final TextEditingController _amountNominal = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF104993),
-        title: Text(
-          'Kirim Donasi',
-          style: GoogleFonts.inter(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16.h),
-                child: Text(
-                  'Pilih Nominal Donasi',
-                  style: GoogleFonts.inter(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
+    return BlocProvider(
+      create: (_) => AmountValueCubit(),
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: const Color(0xFF104993),
+              title: Text(
+                'Kirim Donasi',
+                style: GoogleFonts.inter(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () => context.pushNamed(Routes.paymentWindowWebView),
-                child: const Text('Open Window Payment'),
+            ),
+            body: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              child: Center(
+                child: Column(
+                  children: [
+                    const TitleWording(title: 'Pilih Nominal Donasi'),
+                    const AmountNominalGroupButton(),
+                    const TitleWording(title: 'Nominal Lainnya'),
+                    AmountNominalTextField(amountNominal: _amountNominal),
+                    Text(
+                      'Minimal donasi Rp. 50.000',
+                      style: GoogleFonts.inter(
+                        color: Colors.black,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    PaymentButton(
+                      onPress: () => context.pushNamed(
+                        Routes.paymentWindowWebView,
+                        queryParameters: {
+                          Constants.amountValueKey:
+                              context.read<AmountValueCubit>().state,
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 8),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

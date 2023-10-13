@@ -56,7 +56,7 @@ class Constants {
   static const blankString = '';
   static const idCountryCode = 'ID';
   static const defaultExpiryPeriod = 20;
-  static const paymentMethodKey = 'payment method';
+  static const amountValueKey = 'amount value';
   static const sessionUserIdBoxName = 'session-user-id';
   static const sessionUserIdKeyName = 'sessionUserId';
   static const loginFormBox = 'login-form';
