@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
+import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/transaction_bloc.dart';
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
-    required this.paymentMethod,
+    required this.amountValue,
     super.key,
   });
 
-  final String? paymentMethod;
+  final String? amountValue;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
               if (state is Loading) {
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
-                        '10000',
+                        amountValue,
                         'ORDER-${DateTime.now().millisecondsSinceEpoch}',
                       ),
                     );
@@ -56,6 +57,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                   ),
                   shouldOverrideUrlLoading:
                       (controller, navigationAction) async {
+                        Constants.logger.w(navigationAction.request.url);
                     if (navigationAction.request.url?.host == 'example.com') {
                       context.go(Routes.paymentGateway);
                       return NavigationActionPolicy.CANCEL;
@@ -67,7 +69,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
               if (state is Error) {
                 return Text(state.errorMessage ?? '');
               }
-              return Text('Error no load payment $paymentMethod');
+              return Text('Error no load payment $amountValue');
             },
           ),
         ),

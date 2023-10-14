@@ -288,8 +288,9 @@ class DetailCampaignPortraitScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      child: const DonaturListHeader()),
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    child: const DonaturListHeader(),
+                  ),
                   const DonaturShortList(),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.h),

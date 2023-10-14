@@ -100,8 +100,7 @@ class AppRoutes {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentWindowWebViewPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
+            amountValue: state.uri.queryParameters[Constants.amountValueKey],
           );
         },
       ),
