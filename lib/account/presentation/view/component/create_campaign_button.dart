@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 
 class CreateCampaignButton extends StatelessWidget {
   const CreateCampaignButton({super.key});
@@ -13,7 +15,7 @@ class CreateCampaignButton extends StatelessWidget {
         minimumSize: Size(288.w, 36.h),
         padding: EdgeInsets.symmetric(horizontal: 16.w),
       ),
-      onPressed: () {},
+      onPressed: () => context.pushNamed(Routes.createCampaign),
       child: Text(
         'Buat Galang Dana',
         style: GoogleFonts.inter(

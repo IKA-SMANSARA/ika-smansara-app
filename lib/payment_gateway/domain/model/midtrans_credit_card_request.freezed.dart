@@ -24,7 +24,6 @@ mixin _$MidtransCreditCardRequest {
   bool get secure => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransCreditCardRequestCopyWith<MidtransCreditCardRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,7 +34,6 @@ abstract class $MidtransCreditCardRequestCopyWith<$Res> {
   factory $MidtransCreditCardRequestCopyWith(MidtransCreditCardRequest value,
           $Res Function(MidtransCreditCardRequest) then) =
       _$MidtransCreditCardRequestCopyWithImpl<$Res, MidtransCreditCardRequest>;
-
   @useResult
   $Res call({bool secure});
 }
@@ -48,7 +46,6 @@ class _$MidtransCreditCardRequestCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -73,7 +70,6 @@ abstract class _$$_MidtransCreditCardRequestCopyWith<$Res>
           _$_MidtransCreditCardRequest value,
           $Res Function(_$_MidtransCreditCardRequest) then) =
       __$$_MidtransCreditCardRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({bool secure});
@@ -156,7 +152,6 @@ abstract class _MidtransCreditCardRequest implements MidtransCreditCardRequest {
 
   @override
   bool get secure;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransCreditCardRequestCopyWith<_$_MidtransCreditCardRequest>
