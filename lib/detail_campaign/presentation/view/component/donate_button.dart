@@ -15,7 +15,7 @@ class DonateButton extends StatelessWidget {
         minimumSize: Size(350.w, 36.h),
         padding: EdgeInsets.symmetric(horizontal: 16.w),
       ),
-      onPressed: () => context.push(Routes.paymentGateway),
+      onPressed: () => context.pushNamed(Routes.paymentGateway),
       child: Text(
         'Kirim Donasi',
         style: GoogleFonts.inter(

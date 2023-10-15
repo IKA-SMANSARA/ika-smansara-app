@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/my_donation/my_donation.dart';
 
@@ -12,7 +14,12 @@ class CardDonationHistoryListView extends StatelessWidget {
       shrinkWrap: true,
       children: [
         CardItemDonationHistory(
-          onPress: () {},
+          onPress: () => context.pushNamed(
+            Routes.detailMyDonation,
+            queryParameters: {
+              Constants.myDonationIdKey: '1',
+            },
+          ),
           campaignTitle:
               'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM PIATU DAN DHUAFA',
           campaignImage: Assets.images.volunteerDancingVillage.image(
