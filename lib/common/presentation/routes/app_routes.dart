@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
+import 'package:ika_smansara/create_campaign/create_campaign.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
+import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
 import 'package:ika_smansara/login/login.dart';
@@ -51,6 +53,12 @@ class AppRoutes {
         ],
       ),
       GoRoute(
+        path: Routes.createCampaign,
+        name: Routes.createCampaign,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const CreateCampaignPage(),
+      ),
+      GoRoute(
         name: Routes.register,
         path: Routes.register,
         parentNavigatorKey: _rootNavigatorKey,
@@ -61,6 +69,16 @@ class AppRoutes {
         path: Routes.login,
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: Routes.detailMyDonation,
+        name: Routes.detailMyDonation,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          return DetailMyDonationPage(
+            myDonationId: state.uri.queryParameters[Constants.myDonationIdKey],
+          );
+        },
       ),
       GoRoute(
         name: Routes.listCampaignPerCategory,
@@ -100,8 +118,7 @@ class AppRoutes {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentWindowWebViewPage(
-            paymentMethod:
-                state.uri.queryParameters[Constants.paymentMethodKey],
+            amountValue: state.uri.queryParameters[Constants.amountValueKey],
           );
         },
       ),

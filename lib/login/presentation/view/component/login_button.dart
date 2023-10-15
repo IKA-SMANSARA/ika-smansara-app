@@ -6,7 +6,7 @@ import 'package:ika_smansara/l10n/l10n.dart';
 class LoginButton extends StatelessWidget {
   const LoginButton({this.onSubmitted, super.key});
 
-  final void Function()? onSubmitted;
+  final VoidCallback? onSubmitted;
 
   @override
   Widget build(BuildContext context) {

@@ -56,7 +56,7 @@ class Constants {
   static const blankString = '';
   static const idCountryCode = 'ID';
   static const defaultExpiryPeriod = 20;
-  static const paymentMethodKey = 'payment method';
+  static const amountValueKey = 'amount value';
   static const sessionUserIdBoxName = 'session-user-id';
   static const sessionUserIdKeyName = 'sessionUserId';
   static const loginFormBox = 'login-form';
@@ -64,4 +64,5 @@ class Constants {
   static const passwordKey = 'password';
   static const idCampaignKey = 'id campaign';
   static const categoryNameKey = 'category name key';
+  static const myDonationIdKey = 'my donation id key';
 }

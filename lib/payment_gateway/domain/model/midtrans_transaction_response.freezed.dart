@@ -22,11 +22,9 @@ MidtransTransactionResponse _$MidtransTransactionResponseFromJson(
 /// @nodoc
 mixin _$MidtransTransactionResponse {
   String? get token => throw _privateConstructorUsedError;
-
   String? get redirectUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionResponseCopyWith<MidtransTransactionResponse>
       get copyWith => throw _privateConstructorUsedError;
@@ -39,7 +37,6 @@ abstract class $MidtransTransactionResponseCopyWith<$Res> {
           $Res Function(MidtransTransactionResponse) then) =
       _$MidtransTransactionResponseCopyWithImpl<$Res,
           MidtransTransactionResponse>;
-
   @useResult
   $Res call({String? token, String? redirectUrl});
 }
@@ -52,7 +49,6 @@ class _$MidtransTransactionResponseCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -82,7 +78,6 @@ abstract class _$$_MidtransTransactionResponseCopyWith<$Res>
           _$_MidtransTransactionResponse value,
           $Res Function(_$_MidtransTransactionResponse) then) =
       __$$_MidtransTransactionResponseCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String? token, String? redirectUrl});
@@ -175,10 +170,8 @@ abstract class _MidtransTransactionResponse
 
   @override
   String? get token;
-
   @override
   String? get redirectUrl;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionResponseCopyWith<_$_MidtransTransactionResponse>

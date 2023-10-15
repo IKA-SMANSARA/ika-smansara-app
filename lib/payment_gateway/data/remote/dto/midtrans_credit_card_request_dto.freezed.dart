@@ -25,7 +25,6 @@ mixin _$MidtransCreditCardRequestDTO {
   bool get secure => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransCreditCardRequestDTOCopyWith<MidtransCreditCardRequestDTO>
       get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +37,6 @@ abstract class $MidtransCreditCardRequestDTOCopyWith<$Res> {
           $Res Function(MidtransCreditCardRequestDTO) then) =
       _$MidtransCreditCardRequestDTOCopyWithImpl<$Res,
           MidtransCreditCardRequestDTO>;
-
   @useResult
   $Res call({@JsonKey(name: 'secure') bool secure});
 }
@@ -51,7 +49,6 @@ class _$MidtransCreditCardRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -76,7 +73,6 @@ abstract class _$$_MidtransCreditCardRequestDTOCopyWith<$Res>
           _$_MidtransCreditCardRequestDTO value,
           $Res Function(_$_MidtransCreditCardRequestDTO) then) =
       __$$_MidtransCreditCardRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({@JsonKey(name: 'secure') bool secure});
@@ -163,7 +159,6 @@ abstract class _MidtransCreditCardRequestDTO
   @override
   @JsonKey(name: 'secure')
   bool get secure;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransCreditCardRequestDTOCopyWith<_$_MidtransCreditCardRequestDTO>
