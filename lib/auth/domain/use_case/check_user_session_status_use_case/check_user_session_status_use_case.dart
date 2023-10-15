@@ -1,4 +1,5 @@
 import 'package:ika_smansara/auth/auth.dart';
+import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -16,9 +17,16 @@ class CheckUserSessionStatusUseCase {
         sessionIdFromLocal.sessionId ?? '',
       );
 
-      if (sessionIdFromRemote.data?.id == sessionIdFromLocal.sessionId) {
-        return const AuthStatus(authStatus: true);
-      }
+      return sessionIdFromRemote.fold(
+        (responseFailure) {
+          return AuthStatus(
+            authMessage: responseFailure.message ?? Constants.blankString,
+          );
+        },
+        (responseSuccess) async {
+          return const AuthStatus(authStatus: true);
+        },
+      );
     }
 
     return const AuthStatus();

@@ -21,6 +21,7 @@ AuthStatus _$AuthStatusFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthStatus {
   bool? get authStatus => throw _privateConstructorUsedError;
+  String? get authMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $AuthStatusCopyWith<$Res> {
           AuthStatus value, $Res Function(AuthStatus) then) =
       _$AuthStatusCopyWithImpl<$Res, AuthStatus>;
   @useResult
-  $Res call({bool? authStatus});
+  $Res call({bool? authStatus, String? authMessage});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$AuthStatusCopyWithImpl<$Res, $Val extends AuthStatus>
   @override
   $Res call({
     Object? authStatus = freezed,
+    Object? authMessage = freezed,
   }) {
     return _then(_value.copyWith(
       authStatus: freezed == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      authMessage: freezed == authMessage
+          ? _value.authMessage
+          : authMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$_AuthStatusCopyWith<$Res>
       __$$_AuthStatusCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? authStatus});
+  $Res call({bool? authStatus, String? authMessage});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$_AuthStatusCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authStatus = freezed,
+    Object? authMessage = freezed,
   }) {
     return _then(_$_AuthStatus(
       authStatus: freezed == authStatus
           ? _value.authStatus
           : authStatus // ignore: cast_nullable_to_non_nullable
               as bool?,
+      authMessage: freezed == authMessage
+          ? _value.authMessage
+          : authMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,7 +108,7 @@ class __$$_AuthStatusCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthStatus implements _AuthStatus {
-  const _$_AuthStatus({this.authStatus = false});
+  const _$_AuthStatus({this.authStatus = false, this.authMessage = ''});
 
   factory _$_AuthStatus.fromJson(Map<String, dynamic> json) =>
       _$$_AuthStatusFromJson(json);
@@ -105,10 +116,13 @@ class _$_AuthStatus implements _AuthStatus {
   @override
   @JsonKey()
   final bool? authStatus;
+  @override
+  @JsonKey()
+  final String? authMessage;
 
   @override
   String toString() {
-    return 'AuthStatus(authStatus: $authStatus)';
+    return 'AuthStatus(authStatus: $authStatus, authMessage: $authMessage)';
   }
 
   @override
@@ -117,12 +131,14 @@ class _$_AuthStatus implements _AuthStatus {
         (other.runtimeType == runtimeType &&
             other is _$_AuthStatus &&
             (identical(other.authStatus, authStatus) ||
-                other.authStatus == authStatus));
+                other.authStatus == authStatus) &&
+            (identical(other.authMessage, authMessage) ||
+                other.authMessage == authMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, authStatus);
+  int get hashCode => Object.hash(runtimeType, authStatus, authMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +155,16 @@ class _$_AuthStatus implements _AuthStatus {
 }
 
 abstract class _AuthStatus implements AuthStatus {
-  const factory _AuthStatus({final bool? authStatus}) = _$_AuthStatus;
+  const factory _AuthStatus(
+      {final bool? authStatus, final String? authMessage}) = _$_AuthStatus;
 
   factory _AuthStatus.fromJson(Map<String, dynamic> json) =
       _$_AuthStatus.fromJson;
 
   @override
   bool? get authStatus;
+  @override
+  String? get authMessage;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStatusCopyWith<_$_AuthStatus> get copyWith =>

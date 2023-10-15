@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -10,40 +13,27 @@ class AuthRepositoryImpl implements AuthRepository {
   final ApiServices _apiServices;
 
   @override
-  Future<Resource<EmailSessionResponse>> createEmailSession(
+  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
+      createEmailSession(
     EmailSessionRequest emailSessionRequest,
   ) async {
-    Resource<EmailSessionResponse> result;
+    final responseCreateEmailSession = await _apiServices.createEmailSession(
+      emailSessionRequest.toEmailSessionRequestDTO(),
+    );
 
-    try {
-      final responseCreateEmailSession = await _apiServices.createEmailSession(
-        emailSessionRequest.toEmailSessionRequestDTO(),
+    if (responseCreateEmailSession.isSuccessful) {
+      return Right(
+        EmailSessionSuccessResponseDTO.fromJson(
+          responseCreateEmailSession.body as Map<String, dynamic>,
+        ).toEmailSessionSuccessResponse(),
       );
-
-      if (responseCreateEmailSession.isSuccessful) {
-        result = Resource.success(
-          EmailSessionResponseDTO.fromJson(
-            responseCreateEmailSession.body as Map<String, dynamic>,
-          ).toEmailSessionResponse(),
-        );
-      } else {
-        result = Resource.error(
-          EmailSessionResponseDTO.fromJson(
-                responseCreateEmailSession.body as Map<String, dynamic>,
-              ).toEmailSessionResponse().message ??
-              'Error!!',
-          const EmailSessionResponse(),
-        );
-      }
-    } catch (e) {
-      Constants.logger.e(e.toString());
-      result = Resource.error(
-        e.toString(),
-        const EmailSessionResponse(),
+    } else {
+      return Left(
+        EmailSessionFailureResponseDTO.fromJson(
+          responseCreateEmailSession.error! as Map<String, dynamic>,
+        ).toEmailSessionFailureResponse(),
       );
     }
-
-    return result;
   }
 
   @override
@@ -60,40 +50,27 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Resource<EmailSessionResponse>> getEmailSession(
+  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
+      getEmailSession(
     String? sessionId,
   ) async {
-    Resource<EmailSessionResponse> result;
+    final responseGetEmailSession = await _apiServices.getEmailSession(
+      sessionId ?? '',
+    );
 
-    try {
-      final responseCreateEmailSession = await _apiServices.getEmailSession(
-        sessionId ?? '',
+    if (responseGetEmailSession.isSuccessful) {
+      return Right(
+        EmailSessionSuccessResponseDTO.fromJson(
+          responseGetEmailSession.body as Map<String, dynamic>,
+        ).toEmailSessionSuccessResponse(),
       );
-
-      if (responseCreateEmailSession.isSuccessful) {
-        result = Resource.success(
-          EmailSessionResponseDTO.fromJson(
-            responseCreateEmailSession.body as Map<String, dynamic>,
-          ).toEmailSessionResponse(),
-        );
-      } else {
-        result = Resource.error(
-          EmailSessionResponseDTO.fromJson(
-                responseCreateEmailSession.body as Map<String, dynamic>,
-              ).toEmailSessionResponse().message ??
-              'Error!!',
-          const EmailSessionResponse(),
-        );
-      }
-    } catch (e) {
-      Constants.logger.e(e.toString());
-      result = Resource.error(
-        e.toString(),
-        const EmailSessionResponse(),
+    } else {
+      return Left(
+        EmailSessionFailureResponseDTO.fromJson(
+          responseGetEmailSession.error! as Map<String, dynamic>,
+        ).toEmailSessionFailureResponse(),
       );
     }
-
-    return result;
   }
 
   @override

@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_session_response_dto.dart';
+part of 'email_session_success_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionResponseDTO _$$_EmailSessionResponseDTOFromJson(
+_$_EmailSessionSuccessResponseDTO _$$_EmailSessionSuccessResponseDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailSessionResponseDTO(
+    _$_EmailSessionSuccessResponseDTO(
       id: json[r'$id'] as String?,
       createAt: json[r'$createdAt'] as String?,
       userId: json['userId'] as String?,
@@ -33,15 +33,11 @@ _$_EmailSessionResponseDTO _$$_EmailSessionResponseDTOFromJson(
       deviceModel: json['deviceModel'] as String?,
       countryCode: json['countryCode'] as String?,
       countryName: json['countryName'] as String?,
-      current: json['current'] as String?,
-      message: json['message'] as String?,
-      code: json['code'] as int?,
-      type: json['type'] as String?,
-      version: json['version'] as String?,
+      current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_EmailSessionResponseDTOToJson(
-        _$_EmailSessionResponseDTO instance) =>
+Map<String, dynamic> _$$_EmailSessionSuccessResponseDTOToJson(
+        _$_EmailSessionSuccessResponseDTO instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createAt,
@@ -68,8 +64,4 @@ Map<String, dynamic> _$$_EmailSessionResponseDTOToJson(
       'countryCode': instance.countryCode,
       'countryName': instance.countryName,
       'current': instance.current,
-      'message': instance.message,
-      'code': instance.code,
-      'type': instance.type,
-      'version': instance.version,
     };

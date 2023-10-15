@@ -7,8 +7,10 @@ extension EmailSessionRequestExtension on EmailSessionRequest {
       );
 }
 
-extension EmailSessionResponseDTOExtension on EmailSessionResponseDTO {
-  EmailSessionResponse toEmailSessionResponse() => EmailSessionResponse(
+extension EmailSessionSuccessResponseDTOExtension
+    on EmailSessionSuccessResponseDTO {
+  EmailSessionSuccessResponse toEmailSessionSuccessResponse() =>
+      EmailSessionSuccessResponse(
         id: id,
         createAt: createAt,
         userId: userId,
@@ -34,6 +36,13 @@ extension EmailSessionResponseDTOExtension on EmailSessionResponseDTO {
         countryCode: countryCode,
         countryName: countryName,
         current: current,
+      );
+}
+
+extension EmailSessionFailureResponseDTOExtension
+    on EmailSessionFailureResponseDTO {
+  EmailSessionFailureResponse toEmailSessionFailureResponse() =>
+      EmailSessionFailureResponse(
         message: message,
         code: code,
         type: type,

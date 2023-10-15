@@ -1,4 +1,4 @@
-// ignore_for_file: strict_raw_type, inference_failure_on_instance_creation
+// ignore_for_file: strict_raw_type, inference_failure_on_instance_creation, unused_element
 
 import 'dart:async';
 
@@ -17,6 +17,8 @@ class RegisterFormBloc extends FormBloc<String, String> {
         isAlumnus,
       ],
     );
+
+    password.addValidators([_passwordMin8Chars(password)]);
 
     confirmPassword
       ..addValidators([FieldBlocValidators.confirmPassword(password)])
@@ -39,6 +41,16 @@ class RegisterFormBloc extends FormBloc<String, String> {
     phone
       ..addValidators([_phoneNumberFormat(phone)])
       ..subscribeToFieldBlocs([phone]);
+  }
+
+  Validator<String> _passwordMin8Chars(TextFieldBloc? passwordField) {
+    return (String? password) {
+      if (password == null || password.isEmpty || password.runes.length >= 8) {
+        return null;
+      }
+
+      return 'Password Min 8 Chars';
+    };
   }
 
   Validator<String> _phoneNumberFormat(TextFieldBloc phoneField) {
@@ -97,14 +109,12 @@ class RegisterFormBloc extends FormBloc<String, String> {
   final password = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
     ],
   );
 
   final confirmPassword = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
     ],
   );
 

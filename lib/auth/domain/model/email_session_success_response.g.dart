@@ -1,16 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_session_response.dart';
+part of 'email_session_success_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
+_$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailSessionResponse(
-      id: json['id'] as String?,
-      createAt: json['createAt'] as String?,
+    _$_EmailSessionSuccessResponse(
+      id: json[r'$id'] as String?,
+      createAt: json[r'$createdAt'] as String?,
       userId: json['userId'] as String?,
       expire: json['expire'] as String?,
       provider: json['provider'] as String?,
@@ -20,7 +20,7 @@ _$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
       providerRefreshToken: json['providerRefreshToken'] as String?,
       ip: json['ip'] as String?,
       osCode: json['osCode'] as String?,
-      onName: json['onName'] as String?,
+      onName: json['osName'] as String?,
       osVersion: json['osVersion'] as String?,
       clientType: json['clientType'] as String?,
       clientCode: json['clientCode'] as String?,
@@ -33,18 +33,14 @@ _$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
       deviceModel: json['deviceModel'] as String?,
       countryCode: json['countryCode'] as String?,
       countryName: json['countryName'] as String?,
-      current: json['current'] as String?,
-      message: json['message'] as String?,
-      code: json['code'] as int?,
-      type: json['type'] as String?,
-      version: json['version'] as String?,
+      current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_EmailSessionResponseToJson(
-        _$_EmailSessionResponse instance) =>
+Map<String, dynamic> _$$_EmailSessionSuccessResponseToJson(
+        _$_EmailSessionSuccessResponse instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'createAt': instance.createAt,
+      r'$id': instance.id,
+      r'$createdAt': instance.createAt,
       'userId': instance.userId,
       'expire': instance.expire,
       'provider': instance.provider,
@@ -54,7 +50,7 @@ Map<String, dynamic> _$$_EmailSessionResponseToJson(
       'providerRefreshToken': instance.providerRefreshToken,
       'ip': instance.ip,
       'osCode': instance.osCode,
-      'onName': instance.onName,
+      'osName': instance.onName,
       'osVersion': instance.osVersion,
       'clientType': instance.clientType,
       'clientCode': instance.clientCode,
@@ -68,8 +64,4 @@ Map<String, dynamic> _$$_EmailSessionResponseToJson(
       'countryCode': instance.countryCode,
       'countryName': instance.countryName,
       'current': instance.current,
-      'message': instance.message,
-      'code': instance.code,
-      'type': instance.type,
-      'version': instance.version,
     };

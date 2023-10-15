@@ -38,7 +38,7 @@ final class _$ApiServices extends ApiServices {
     final Uri $url = Uri.parse('account/sessions/email');
     final Map<String, String> $headers = {
       'Accept': 'application/json',
-      'X-Appwrite-Project': '64aa86334bd6c9d9678f',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
     };
     final $body = emailSessionRequestDTO;
     final Request $request = Request(

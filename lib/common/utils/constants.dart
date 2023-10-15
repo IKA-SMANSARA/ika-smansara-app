@@ -8,7 +8,7 @@ class Constants {
   static const paymentGatewayBaseURLNamed = 'BASE URL PAYMENT GATEWAY';
   static const paymentGatewayNetworkModuleNamed =
       'PAYMENT GATEWAY NETWORK MODULE';
-  static const baseURL = 'https://baas.pasarjepara.com/v1/';
+  static const baseURL = 'https://cloud.appwrite.io/v1';
 
   // Dummy Counter APP Source Data
   static const projectId = '64aa86334bd6c9d9678f';
@@ -19,17 +19,11 @@ class Constants {
   static const documentId = '64aa8891b1513662c4bd';
 
   // Source Data REAL
-  static const ikaSmansaraProjectId = '64b4bb7323bcd1713f24';
+  static const ikaSmansaraProjectId = '6526850f77b1a0e42833';
   static const ikaSmansaraApiKey =
-      '2a832c8860c2f642be52d71f87470b05ca9ff9b53cac21be5b4ea46acfeb9dbc17b3a80987e045fb0efb13103735b6bc709dda70b145ff9384b429def5fd14301f07ef9e040329253ed5549bbbf27b2c8d7659fa8018ff6d4844d89872c632f93a33d045f2b137a071fc74d83c8a0fda84a1e726185467898c8c546e5387be35';
-  static const ikaSmansaraDatabaseId = '64bbf6b93db88b5aa9f8';
-  static const ikaSmansaraAdminBankAccountCollectionId = '64bc05eac895c2cfa229';
-  static const ikaSmansaraUserDonationHistoryCollectionId =
-      '64bbf979c2bca4af0cc8';
-  static const ikaSmansaraTransactionsCollectionId = '64bbf84ce2396e2860e3';
-  static const ikaSmansaraUsersDataCollectionId = '64bbf7d0b126323dfdbc';
-  static const ikaSmansaraCampaignDonationsCollectionId =
-      '64bbf6f650ef22d15fb6';
+      '02bc64055f82bc9b5f3a98dd5403be59234729bdf9efe3d9bb8210b2c0d133c76347938a33ae6e19c79025b8fb6de7fa843fc2037f5675f8ac7abc2322daec06d069f0b7cd8a18cb6bf04e1c47bfc219fc5cd8b841d88f314bc982f5ad0544c29887e74b1fb7031e332acb3d88f4ae2351eeae3682629bfc468cff41e6290610';
+  static const ikaSmansaraDatabaseId = '652bc7f26602bddc2f4a';
+  static const ikaSmansaraUserProfileCollectionId = '652bc80fe2fdeb1e3893';
 
   // Attributes
   static const accept = 'Accept';
@@ -45,17 +39,8 @@ class Constants {
       'BH7TgdBEdeyIbhc15HLEZhvQ28R67tn5N9lfoyiyF6gSwzy8zX1AkVmTaOZs16pnAwyXVNz6O3bvWfDco2O0Rw8';
   static const paymentGateWayURL =
       'https://app.sandbox.midtrans.com/snap/v1/transactions';
-  static const merchantCode = 'G472325854';
   static const apiKeyPaymentGateway = 'SB-Mid-server-ywOX8MSEs8NRE8ISA_tn-M0A';
-  static const merchantCodeKey = 'merchantCode';
-  static const merchantOrderIdDummy = 'ikasmansara002';
-  static const merchantOrderIdKey = 'merchantOrderId';
-  static const signatureKey = 'signature';
-  static const mockUrlReturn = 'https://ikasmansara.page.link/return';
-  static const mockUrlCallback = 'https://ikasmansara.page.link/callback';
   static const blankString = '';
-  static const idCountryCode = 'ID';
-  static const defaultExpiryPeriod = 20;
   static const amountValueKey = 'amount value';
   static const sessionUserIdBoxName = 'session-user-id';
   static const sessionUserIdKeyName = 'sessionUserId';

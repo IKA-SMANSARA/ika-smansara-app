@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'email_session_response_dto.dart';
+part of 'email_session_success_response_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-EmailSessionResponseDTO _$EmailSessionResponseDTOFromJson(
+EmailSessionSuccessResponseDTO _$EmailSessionSuccessResponseDTOFromJson(
     Map<String, dynamic> json) {
-  return _EmailSessionResponseDTO.fromJson(json);
+  return _EmailSessionSuccessResponseDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EmailSessionResponseDTO {
+mixin _$EmailSessionSuccessResponseDTO {
   @JsonKey(name: '\$id')
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: '\$createdAt')
@@ -70,27 +70,21 @@ mixin _$EmailSessionResponseDTO {
   @JsonKey(name: 'countryName')
   String? get countryName => throw _privateConstructorUsedError;
   @JsonKey(name: 'current')
-  String? get current => throw _privateConstructorUsedError;
-  @JsonKey(name: 'message')
-  String? get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
-  @JsonKey(name: 'type')
-  String? get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'version')
-  String? get version => throw _privateConstructorUsedError;
+  bool? get current => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EmailSessionResponseDTOCopyWith<EmailSessionResponseDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EmailSessionSuccessResponseDTOCopyWith<EmailSessionSuccessResponseDTO>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmailSessionResponseDTOCopyWith<$Res> {
-  factory $EmailSessionResponseDTOCopyWith(EmailSessionResponseDTO value,
-          $Res Function(EmailSessionResponseDTO) then) =
-      _$EmailSessionResponseDTOCopyWithImpl<$Res, EmailSessionResponseDTO>;
+abstract class $EmailSessionSuccessResponseDTOCopyWith<$Res> {
+  factory $EmailSessionSuccessResponseDTOCopyWith(
+          EmailSessionSuccessResponseDTO value,
+          $Res Function(EmailSessionSuccessResponseDTO) then) =
+      _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
+          EmailSessionSuccessResponseDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String? id,
@@ -117,18 +111,14 @@ abstract class $EmailSessionResponseDTOCopyWith<$Res> {
       @JsonKey(name: 'deviceModel') String? deviceModel,
       @JsonKey(name: 'countryCode') String? countryCode,
       @JsonKey(name: 'countryName') String? countryName,
-      @JsonKey(name: 'current') String? current,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'type') String? type,
-      @JsonKey(name: 'version') String? version});
+      @JsonKey(name: 'current') bool? current});
 }
 
 /// @nodoc
-class _$EmailSessionResponseDTOCopyWithImpl<$Res,
-        $Val extends EmailSessionResponseDTO>
-    implements $EmailSessionResponseDTOCopyWith<$Res> {
-  _$EmailSessionResponseDTOCopyWithImpl(this._value, this._then);
+class _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
+        $Val extends EmailSessionSuccessResponseDTO>
+    implements $EmailSessionSuccessResponseDTOCopyWith<$Res> {
+  _$EmailSessionSuccessResponseDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -163,10 +153,6 @@ class _$EmailSessionResponseDTOCopyWithImpl<$Res,
     Object? countryCode = freezed,
     Object? countryName = freezed,
     Object? current = freezed,
-    Object? message = freezed,
-    Object? code = freezed,
-    Object? type = freezed,
-    Object? version = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -268,33 +254,18 @@ class _$EmailSessionResponseDTOCopyWithImpl<$Res,
       current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_EmailSessionResponseDTOCopyWith<$Res>
-    implements $EmailSessionResponseDTOCopyWith<$Res> {
-  factory _$$_EmailSessionResponseDTOCopyWith(_$_EmailSessionResponseDTO value,
-          $Res Function(_$_EmailSessionResponseDTO) then) =
-      __$$_EmailSessionResponseDTOCopyWithImpl<$Res>;
+abstract class _$$_EmailSessionSuccessResponseDTOCopyWith<$Res>
+    implements $EmailSessionSuccessResponseDTOCopyWith<$Res> {
+  factory _$$_EmailSessionSuccessResponseDTOCopyWith(
+          _$_EmailSessionSuccessResponseDTO value,
+          $Res Function(_$_EmailSessionSuccessResponseDTO) then) =
+      __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -322,20 +293,17 @@ abstract class _$$_EmailSessionResponseDTOCopyWith<$Res>
       @JsonKey(name: 'deviceModel') String? deviceModel,
       @JsonKey(name: 'countryCode') String? countryCode,
       @JsonKey(name: 'countryName') String? countryName,
-      @JsonKey(name: 'current') String? current,
-      @JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'type') String? type,
-      @JsonKey(name: 'version') String? version});
+      @JsonKey(name: 'current') bool? current});
 }
 
 /// @nodoc
-class __$$_EmailSessionResponseDTOCopyWithImpl<$Res>
-    extends _$EmailSessionResponseDTOCopyWithImpl<$Res,
-        _$_EmailSessionResponseDTO>
-    implements _$$_EmailSessionResponseDTOCopyWith<$Res> {
-  __$$_EmailSessionResponseDTOCopyWithImpl(_$_EmailSessionResponseDTO _value,
-      $Res Function(_$_EmailSessionResponseDTO) _then)
+class __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>
+    extends _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
+        _$_EmailSessionSuccessResponseDTO>
+    implements _$$_EmailSessionSuccessResponseDTOCopyWith<$Res> {
+  __$$_EmailSessionSuccessResponseDTOCopyWithImpl(
+      _$_EmailSessionSuccessResponseDTO _value,
+      $Res Function(_$_EmailSessionSuccessResponseDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -366,12 +334,8 @@ class __$$_EmailSessionResponseDTOCopyWithImpl<$Res>
     Object? countryCode = freezed,
     Object? countryName = freezed,
     Object? current = freezed,
-    Object? message = freezed,
-    Object? code = freezed,
-    Object? type = freezed,
-    Object? version = freezed,
   }) {
-    return _then(_$_EmailSessionResponseDTO(
+    return _then(_$_EmailSessionSuccessResponseDTO(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -471,31 +435,16 @@ class __$$_EmailSessionResponseDTOCopyWithImpl<$Res>
       current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailSessionResponseDTO implements _EmailSessionResponseDTO {
-  const _$_EmailSessionResponseDTO(
+class _$_EmailSessionSuccessResponseDTO
+    implements _EmailSessionSuccessResponseDTO {
+  const _$_EmailSessionSuccessResponseDTO(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createAt,
       @JsonKey(name: 'userId') this.userId,
@@ -520,14 +469,11 @@ class _$_EmailSessionResponseDTO implements _EmailSessionResponseDTO {
       @JsonKey(name: 'deviceModel') this.deviceModel,
       @JsonKey(name: 'countryCode') this.countryCode,
       @JsonKey(name: 'countryName') this.countryName,
-      @JsonKey(name: 'current') this.current,
-      @JsonKey(name: 'message') this.message,
-      @JsonKey(name: 'code') this.code,
-      @JsonKey(name: 'type') this.type,
-      @JsonKey(name: 'version') this.version});
+      @JsonKey(name: 'current') this.current});
 
-  factory _$_EmailSessionResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_EmailSessionResponseDTOFromJson(json);
+  factory _$_EmailSessionSuccessResponseDTO.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_EmailSessionSuccessResponseDTOFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -603,30 +549,18 @@ class _$_EmailSessionResponseDTO implements _EmailSessionResponseDTO {
   final String? countryName;
   @override
   @JsonKey(name: 'current')
-  final String? current;
-  @override
-  @JsonKey(name: 'message')
-  final String? message;
-  @override
-  @JsonKey(name: 'code')
-  final int? code;
-  @override
-  @JsonKey(name: 'type')
-  final String? type;
-  @override
-  @JsonKey(name: 'version')
-  final String? version;
+  final bool? current;
 
   @override
   String toString() {
-    return 'EmailSessionResponseDTO(id: $id, createAt: $createAt, userId: $userId, expire: $expire, provider: $provider, providerUid: $providerUid, providerAccessToken: $providerAccessToken, providerTokenExpiry: $providerTokenExpiry, providerRefreshToken: $providerRefreshToken, ip: $ip, osCode: $osCode, onName: $onName, osVersion: $osVersion, clientType: $clientType, clientCode: $clientCode, clientName: $clientName, clientVersion: $clientVersion, clientEngine: $clientEngine, clientEngineVersion: $clientEngineVersion, deviceName: $deviceName, deviceBrand: $deviceBrand, deviceModel: $deviceModel, countryCode: $countryCode, countryName: $countryName, current: $current, message: $message, code: $code, type: $type, version: $version)';
+    return 'EmailSessionSuccessResponseDTO(id: $id, createAt: $createAt, userId: $userId, expire: $expire, provider: $provider, providerUid: $providerUid, providerAccessToken: $providerAccessToken, providerTokenExpiry: $providerTokenExpiry, providerRefreshToken: $providerRefreshToken, ip: $ip, osCode: $osCode, onName: $onName, osVersion: $osVersion, clientType: $clientType, clientCode: $clientCode, clientName: $clientName, clientVersion: $clientVersion, clientEngine: $clientEngine, clientEngineVersion: $clientEngineVersion, deviceName: $deviceName, deviceBrand: $deviceBrand, deviceModel: $deviceModel, countryCode: $countryCode, countryName: $countryName, current: $current)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailSessionResponseDTO &&
+            other is _$_EmailSessionSuccessResponseDTO &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
@@ -669,11 +603,7 @@ class _$_EmailSessionResponseDTO implements _EmailSessionResponseDTO {
                 other.countryCode == countryCode) &&
             (identical(other.countryName, countryName) ||
                 other.countryName == countryName) &&
-            (identical(other.current, current) || other.current == current) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.version, version) || other.version == version));
+            (identical(other.current, current) || other.current == current));
   }
 
   @JsonKey(ignore: true)
@@ -704,31 +634,27 @@ class _$_EmailSessionResponseDTO implements _EmailSessionResponseDTO {
         deviceModel,
         countryCode,
         countryName,
-        current,
-        message,
-        code,
-        type,
-        version
+        current
       ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailSessionResponseDTOCopyWith<_$_EmailSessionResponseDTO>
-      get copyWith =>
-          __$$_EmailSessionResponseDTOCopyWithImpl<_$_EmailSessionResponseDTO>(
-              this, _$identity);
+  _$$_EmailSessionSuccessResponseDTOCopyWith<_$_EmailSessionSuccessResponseDTO>
+      get copyWith => __$$_EmailSessionSuccessResponseDTOCopyWithImpl<
+          _$_EmailSessionSuccessResponseDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailSessionResponseDTOToJson(
+    return _$$_EmailSessionSuccessResponseDTOToJson(
       this,
     );
   }
 }
 
-abstract class _EmailSessionResponseDTO implements EmailSessionResponseDTO {
-  const factory _EmailSessionResponseDTO(
+abstract class _EmailSessionSuccessResponseDTO
+    implements EmailSessionSuccessResponseDTO {
+  const factory _EmailSessionSuccessResponseDTO(
       {@JsonKey(name: '\$id') final String? id,
       @JsonKey(name: '\$createdAt') final String? createAt,
       @JsonKey(name: 'userId') final String? userId,
@@ -753,15 +679,11 @@ abstract class _EmailSessionResponseDTO implements EmailSessionResponseDTO {
       @JsonKey(name: 'deviceModel') final String? deviceModel,
       @JsonKey(name: 'countryCode') final String? countryCode,
       @JsonKey(name: 'countryName') final String? countryName,
-      @JsonKey(name: 'current') final String? current,
-      @JsonKey(name: 'message') final String? message,
-      @JsonKey(name: 'code') final int? code,
-      @JsonKey(name: 'type') final String? type,
-      @JsonKey(name: 'version')
-      final String? version}) = _$_EmailSessionResponseDTO;
+      @JsonKey(name: 'current')
+      final bool? current}) = _$_EmailSessionSuccessResponseDTO;
 
-  factory _EmailSessionResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_EmailSessionResponseDTO.fromJson;
+  factory _EmailSessionSuccessResponseDTO.fromJson(Map<String, dynamic> json) =
+      _$_EmailSessionSuccessResponseDTO.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -837,21 +759,9 @@ abstract class _EmailSessionResponseDTO implements EmailSessionResponseDTO {
   String? get countryName;
   @override
   @JsonKey(name: 'current')
-  String? get current;
-  @override
-  @JsonKey(name: 'message')
-  String? get message;
-  @override
-  @JsonKey(name: 'code')
-  int? get code;
-  @override
-  @JsonKey(name: 'type')
-  String? get type;
-  @override
-  @JsonKey(name: 'version')
-  String? get version;
+  bool? get current;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailSessionResponseDTOCopyWith<_$_EmailSessionResponseDTO>
+  _$$_EmailSessionSuccessResponseDTOCopyWith<_$_EmailSessionSuccessResponseDTO>
       get copyWith => throw _privateConstructorUsedError;
 }

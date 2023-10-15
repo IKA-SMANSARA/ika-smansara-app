@@ -12,6 +12,7 @@ dependencies:
   cached_network_image: ^3.2.3
   chopper: ^7.0.1
   crypto: ^3.0.3
+  dartz: ^0.10.1
   expandable_text: ^2.3.0
   firebase_analytics: ^10.4.4
   firebase_app_check: ^0.1.5+1

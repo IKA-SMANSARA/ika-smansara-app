@@ -25,14 +25,19 @@ class UserLoginUseCase {
       emailSessionRequest,
     );
 
-    if (response.data != null) {
-      await _saveIdEmailSessionToLocalUseCase(
-        response.data?.id ?? Constants.blankString,
-      );
+    return response.fold(
+      (responseFailure) {
+        return AuthStatus(
+          authMessage: responseFailure.message ?? Constants.blankString,
+        );
+      },
+      (responseSuccess) async {
+        await _saveIdEmailSessionToLocalUseCase(
+          responseSuccess.id ?? Constants.blankString,
+        );
 
-      return const AuthStatus(authStatus: true);
-    } else {
-      return const AuthStatus();
-    }
+        return const AuthStatus(authStatus: true);
+      },
+    );
   }
 }

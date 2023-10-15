@@ -26,7 +26,7 @@ abstract class ApiServices extends ChopperService {
     path: 'account/sessions/email',
     headers: {
       Constants.accept: Constants.applicationJson,
-      Constants.xAppwriteProject: Constants.projectId,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
     },
   )
   Future<Response> createEmailSession(
