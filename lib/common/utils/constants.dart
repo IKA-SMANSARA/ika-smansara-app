@@ -64,4 +64,5 @@ class Constants {
   static const passwordKey = 'password';
   static const idCampaignKey = 'id campaign';
   static const categoryNameKey = 'category name key';
+  static const myDonationIdKey = 'my donation id key';
 }
