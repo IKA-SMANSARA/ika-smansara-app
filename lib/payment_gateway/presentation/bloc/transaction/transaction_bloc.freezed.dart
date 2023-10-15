@@ -22,7 +22,6 @@ mixin _$TransactionEvent {
     required TResult Function(String? grossAmount, String? orderId) fetchData,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,

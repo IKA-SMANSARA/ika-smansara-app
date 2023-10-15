@@ -23,12 +23,10 @@ MidtransTransactionRequest _$MidtransTransactionRequestFromJson(
 mixin _$MidtransTransactionRequest {
   MidtransTransactionDetailsRequest? get midtransTransactionDetailsRequest =>
       throw _privateConstructorUsedError;
-
   MidtransCreditCardRequest? get midtransCreditCardRequest =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionRequestCopyWith<MidtransTransactionRequest>
       get copyWith => throw _privateConstructorUsedError;
@@ -40,7 +38,6 @@ abstract class $MidtransTransactionRequestCopyWith<$Res> {
           $Res Function(MidtransTransactionRequest) then) =
       _$MidtransTransactionRequestCopyWithImpl<$Res,
           MidtransTransactionRequest>;
-
   @useResult
   $Res call(
       {MidtransTransactionDetailsRequest? midtransTransactionDetailsRequest,
@@ -48,7 +45,6 @@ abstract class $MidtransTransactionRequestCopyWith<$Res> {
 
   $MidtransTransactionDetailsRequestCopyWith<$Res>?
       get midtransTransactionDetailsRequest;
-
   $MidtransCreditCardRequestCopyWith<$Res>? get midtransCreditCardRequest;
 }
 
@@ -60,7 +56,6 @@ class _$MidtransTransactionRequestCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -119,7 +114,6 @@ abstract class _$$_MidtransTransactionRequestCopyWith<$Res>
           _$_MidtransTransactionRequest value,
           $Res Function(_$_MidtransTransactionRequest) then) =
       __$$_MidtransTransactionRequestCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -129,7 +123,6 @@ abstract class _$$_MidtransTransactionRequestCopyWith<$Res>
   @override
   $MidtransTransactionDetailsRequestCopyWith<$Res>?
       get midtransTransactionDetailsRequest;
-
   @override
   $MidtransCreditCardRequestCopyWith<$Res>? get midtransCreditCardRequest;
 }
@@ -230,10 +223,8 @@ abstract class _MidtransTransactionRequest
 
   @override
   MidtransTransactionDetailsRequest? get midtransTransactionDetailsRequest;
-
   @override
   MidtransCreditCardRequest? get midtransCreditCardRequest;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionRequestCopyWith<_$_MidtransTransactionRequest>

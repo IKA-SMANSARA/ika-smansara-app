@@ -23,12 +23,10 @@ MidtransTransactionDetailsRequestDTO
 mixin _$MidtransTransactionDetailsRequestDTO {
   @JsonKey(name: 'order_id')
   String? get orderId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'gross_amount')
   String? get grossAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionDetailsRequestDTOCopyWith<
           MidtransTransactionDetailsRequestDTO>
@@ -42,7 +40,6 @@ abstract class $MidtransTransactionDetailsRequestDTOCopyWith<$Res> {
           $Res Function(MidtransTransactionDetailsRequestDTO) then) =
       _$MidtransTransactionDetailsRequestDTOCopyWithImpl<$Res,
           MidtransTransactionDetailsRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'order_id') String? orderId,
@@ -57,7 +54,6 @@ class _$MidtransTransactionDetailsRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -87,7 +83,6 @@ abstract class _$$_MidtransTransactionDetailsRequestDTOCopyWith<$Res>
           _$_MidtransTransactionDetailsRequestDTO value,
           $Res Function(_$_MidtransTransactionDetailsRequestDTO) then) =
       __$$_MidtransTransactionDetailsRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -192,11 +187,9 @@ abstract class _MidtransTransactionDetailsRequestDTO
   @override
   @JsonKey(name: 'order_id')
   String? get orderId;
-
   @override
   @JsonKey(name: 'gross_amount')
   String? get grossAmount;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionDetailsRequestDTOCopyWith<

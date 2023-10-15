@@ -25,13 +25,11 @@ mixin _$MidtransTransactionRequestDTO {
   MidtransTransactionDetailsRequestDTO?
       get midtransTransactionDetailsRequestDTO =>
           throw _privateConstructorUsedError;
-
   @JsonKey(name: 'credit_card')
   MidtransCreditCardRequestDTO? get midtransCreditCardRequestDTO =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MidtransTransactionRequestDTOCopyWith<MidtransTransactionRequestDTO>
       get copyWith => throw _privateConstructorUsedError;
@@ -44,7 +42,6 @@ abstract class $MidtransTransactionRequestDTOCopyWith<$Res> {
           $Res Function(MidtransTransactionRequestDTO) then) =
       _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
           MidtransTransactionRequestDTO>;
-
   @useResult
   $Res call(
       {@JsonKey(name: 'transaction_details')
@@ -55,7 +52,6 @@ abstract class $MidtransTransactionRequestDTOCopyWith<$Res> {
 
   $MidtransTransactionDetailsRequestDTOCopyWith<$Res>?
       get midtransTransactionDetailsRequestDTO;
-
   $MidtransCreditCardRequestDTOCopyWith<$Res>? get midtransCreditCardRequestDTO;
 }
 
@@ -67,7 +63,6 @@ class _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -128,7 +123,6 @@ abstract class _$$_MidtransTransactionRequestDTOCopyWith<$Res>
           _$_MidtransTransactionRequestDTO value,
           $Res Function(_$_MidtransTransactionRequestDTO) then) =
       __$$_MidtransTransactionRequestDTOCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -141,7 +135,6 @@ abstract class _$$_MidtransTransactionRequestDTOCopyWith<$Res>
   @override
   $MidtransTransactionDetailsRequestDTOCopyWith<$Res>?
       get midtransTransactionDetailsRequestDTO;
-
   @override
   $MidtransCreditCardRequestDTOCopyWith<$Res>? get midtransCreditCardRequestDTO;
 }
@@ -254,11 +247,9 @@ abstract class _MidtransTransactionRequestDTO
   @JsonKey(name: 'transaction_details')
   MidtransTransactionDetailsRequestDTO?
       get midtransTransactionDetailsRequestDTO;
-
   @override
   @JsonKey(name: 'credit_card')
   MidtransCreditCardRequestDTO? get midtransCreditCardRequestDTO;
-
   @override
   @JsonKey(ignore: true)
   _$$_MidtransTransactionRequestDTOCopyWith<_$_MidtransTransactionRequestDTO>
