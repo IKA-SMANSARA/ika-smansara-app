@@ -9,10 +9,10 @@ part 'email_session_failure_response.g.dart';
 @freezed
 class EmailSessionFailureResponse with _$EmailSessionFailureResponse {
   const factory EmailSessionFailureResponse({
-    @JsonKey(name: 'message') String? message,
-    @JsonKey(name: 'code') int? code,
-    @JsonKey(name: 'type') String? type,
-    @JsonKey(name: 'version') String? version,
+    String? message,
+    int? code,
+    String? type,
+    String? version,
   }) = _EmailSessionFailureResponse;
 
   factory EmailSessionFailureResponse.fromJson(Map<String, dynamic> json) =>

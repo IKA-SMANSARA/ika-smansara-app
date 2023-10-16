@@ -32,6 +32,8 @@ class Constants {
   static const xAppwriteProject = 'X-Appwrite-Project';
   static const xAppwriteKey = 'X-Appwrite-Key';
   static const contentType = 'Content-Type';
+  static const xAppwriteResponseFormat = 'X-Appwrite-Response-Format';
+  static const xAppwriteResponseFormatValue = '1.4.0';
 
   // Others
   static const fcmTokenBoxName = 'fcmTokenBox';

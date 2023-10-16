@@ -7,6 +7,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
+  appwrite: ^11.0.0
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
   cached_network_image: ^3.2.3
@@ -48,6 +49,7 @@ dependencies:
   json_annotation: ^4.8.1
   logger: ^2.0.1
   logging: ^1.2.0
+  package_info_plus: ^4.2.0
   path: ^1.8.3
   path_provider: ^2.0.15
   url_launcher: ^6.1.12

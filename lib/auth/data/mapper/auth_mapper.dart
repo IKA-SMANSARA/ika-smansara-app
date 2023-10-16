@@ -49,3 +49,13 @@ extension EmailSessionFailureResponseDTOExtension
         version: version,
       );
 }
+
+extension EmailRegisterRequestExtension on EmailRegisterRequest {
+  EmailRegisterRequestDTO toEmailRegisterRequestDTO() =>
+      EmailRegisterRequestDTO(
+        userId: userId,
+        email: email,
+        password: password,
+        name: name,
+      );
+}

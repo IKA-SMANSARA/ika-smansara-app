@@ -12,23 +12,19 @@ class CheckUserSessionStatusUseCase {
     final sessionIdFromLocal =
         await _authRepository.readIdEmailSessionFromLocal();
 
-    if (sessionIdFromLocal.sessionId != null) {
-      final sessionIdFromRemote = await _authRepository.getEmailSession(
-        sessionIdFromLocal.sessionId ?? '',
-      );
+    final sessionIdFromRemote = await _authRepository.getEmailSession(
+      sessionIdFromLocal.sessionId ?? '',
+    );
 
-      return sessionIdFromRemote.fold(
-        (responseFailure) {
-          return AuthStatus(
-            authMessage: responseFailure.message ?? Constants.blankString,
-          );
-        },
-        (responseSuccess) async {
-          return const AuthStatus(authStatus: true);
-        },
-      );
-    }
-
-    return const AuthStatus();
+    return sessionIdFromRemote.fold(
+      (responseFailure) {
+        return AuthStatus(
+          authMessage: responseFailure.message ?? Constants.blankString,
+        );
+      },
+      (responseSuccess) {
+        return const AuthStatus(authStatus: true);
+      },
+    );
   }
 }

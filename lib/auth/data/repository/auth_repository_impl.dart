@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
+import 'package:ika_smansara/common/data/mapper/user_mapper.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthRepository)
@@ -13,8 +12,7 @@ class AuthRepositoryImpl implements AuthRepository {
   final ApiServices _apiServices;
 
   @override
-  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
-      createEmailSession(
+  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> createEmailSession(
     EmailSessionRequest emailSessionRequest,
   ) async {
     final responseCreateEmailSession = await _apiServices.createEmailSession(
@@ -29,9 +27,9 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     } else {
       return Left(
-        EmailSessionFailureResponseDTO.fromJson(
+        ErrorResponseDTO.fromJson(
           responseCreateEmailSession.error! as Map<String, dynamic>,
-        ).toEmailSessionFailureResponse(),
+        ).toErrorResponse(),
       );
     }
   }
@@ -50,8 +48,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
-      getEmailSession(
+  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> getEmailSession(
     String? sessionId,
   ) async {
     final responseGetEmailSession = await _apiServices.getEmailSession(
@@ -66,9 +63,9 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     } else {
       return Left(
-        EmailSessionFailureResponseDTO.fromJson(
+        ErrorResponseDTO.fromJson(
           responseGetEmailSession.error! as Map<String, dynamic>,
-        ).toEmailSessionFailureResponse(),
+        ).toErrorResponse(),
       );
     }
   }
@@ -80,5 +77,28 @@ class AuthRepositoryImpl implements AuthRepository {
     final sessionId = await lazyBox.get(Constants.sessionUserIdKeyName);
 
     return SessionId(sessionId: sessionId.toString());
+  }
+
+  @override
+  Future<Either<ErrorResponse, UserResponse>> userRegister(
+    EmailRegisterRequest emailRegisterRequest,
+  ) async {
+    final responseUserRegister = await _apiServices.userRegister(
+      emailRegisterRequest.toEmailRegisterRequestDTO(),
+    );
+
+    if (responseUserRegister.isSuccessful) {
+      return Right(
+        UserResponseDTO.fromJson(
+          responseUserRegister.body as Map<String, dynamic>,
+        ).toUserResponse(),
+      );
+    } else {
+      return Left(
+        ErrorResponseDTO.fromJson(
+          responseUserRegister.error! as Map<String, dynamic>,
+        ).toErrorResponse(),
+      );
+    }
   }
 }

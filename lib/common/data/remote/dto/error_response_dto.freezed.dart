@@ -23,7 +23,7 @@ mixin _$ErrorResponseDTO {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'code')
-  String? get code => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'version')
@@ -43,7 +43,7 @@ abstract class $ErrorResponseDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'code') int? code,
       @JsonKey(name: 'type') String? type,
       @JsonKey(name: 'version') String? version});
 }
@@ -74,7 +74,7 @@ class _$ErrorResponseDTOCopyWithImpl<$Res, $Val extends ErrorResponseDTO>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$$_ErrorResponseDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'code') int? code,
       @JsonKey(name: 'type') String? type,
       @JsonKey(name: 'version') String? version});
 }
@@ -126,7 +126,7 @@ class __$$_ErrorResponseDTOCopyWithImpl<$Res>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$_ErrorResponseDTO implements _ErrorResponseDTO {
   final String? message;
   @override
   @JsonKey(name: 'code')
-  final String? code;
+  final int? code;
   @override
   @JsonKey(name: 'type')
   final String? type;
@@ -201,7 +201,7 @@ class _$_ErrorResponseDTO implements _ErrorResponseDTO {
 abstract class _ErrorResponseDTO implements ErrorResponseDTO {
   const factory _ErrorResponseDTO(
       {@JsonKey(name: 'message') final String? message,
-      @JsonKey(name: 'code') final String? code,
+      @JsonKey(name: 'code') final int? code,
       @JsonKey(name: 'type') final String? type,
       @JsonKey(name: 'version') final String? version}) = _$_ErrorResponseDTO;
 
@@ -213,7 +213,7 @@ abstract class _ErrorResponseDTO implements ErrorResponseDTO {
   String? get message;
   @override
   @JsonKey(name: 'code')
-  String? get code;
+  int? get code;
   @override
   @JsonKey(name: 'type')
   String? get type;

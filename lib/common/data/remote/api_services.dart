@@ -1,6 +1,7 @@
 // ignore_for_file: strict_raw_type
 
 import 'package:chopper/chopper.dart';
+import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/auth/data/remote/dto/email_session_request_dto.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
@@ -16,7 +17,9 @@ abstract class ApiServices extends ChopperService {
     path: 'account/sessions/{sessionId}',
     headers: {
       Constants.accept: Constants.applicationJson,
-      Constants.xAppwriteProject: Constants.projectId,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
     },
   )
   Future<Response> getEmailSession(@Path('sessionId') String sessionId);
@@ -27,10 +30,26 @@ abstract class ApiServices extends ChopperService {
     headers: {
       Constants.accept: Constants.applicationJson,
       Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
     },
   )
   Future<Response> createEmailSession(
     @Body() EmailSessionRequestDTO emailSessionRequestDTO,
+  );
+
+  // register user
+  @Post(
+    path: 'account',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+    },
+  )
+  Future<Response> userRegister(
+    @Body() EmailRegisterRequestDTO emailRegisterRequestDTO,
   );
 
   // get counter data
@@ -41,6 +60,8 @@ abstract class ApiServices extends ChopperService {
       Constants.accept: Constants.applicationJson,
       Constants.xAppwriteKey: Constants.apiKey,
       Constants.xAppwriteProject: Constants.projectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
     },
   )
   Future<Response> getCounter(@Path('documentId') String documentId);

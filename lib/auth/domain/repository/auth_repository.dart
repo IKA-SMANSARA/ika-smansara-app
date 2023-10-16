@@ -3,8 +3,7 @@ import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 
 abstract class AuthRepository {
-  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
-      createEmailSession(
+  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> createEmailSession(
     EmailSessionRequest emailSessionRequest,
   );
 
@@ -14,6 +13,11 @@ abstract class AuthRepository {
 
   Future<SessionId> readIdEmailSessionFromLocal();
 
-  Future<Either<EmailSessionFailureResponse, EmailSessionSuccessResponse>>
-      getEmailSession(String? sessionId);
+  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> getEmailSession(
+    String? sessionId,
+  );
+
+  Future<Either<ErrorResponse, UserResponse>> userRegister(
+    EmailRegisterRequest emailRegisterRequest,
+  );
 }

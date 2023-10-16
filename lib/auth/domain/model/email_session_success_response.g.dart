@@ -9,8 +9,8 @@ part of 'email_session_success_response.dart';
 _$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
         Map<String, dynamic> json) =>
     _$_EmailSessionSuccessResponse(
-      id: json[r'$id'] as String?,
-      createAt: json[r'$createdAt'] as String?,
+      id: json['id'] as String?,
+      createAt: json['createAt'] as String?,
       userId: json['userId'] as String?,
       expire: json['expire'] as String?,
       provider: json['provider'] as String?,
@@ -20,7 +20,7 @@ _$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
       providerRefreshToken: json['providerRefreshToken'] as String?,
       ip: json['ip'] as String?,
       osCode: json['osCode'] as String?,
-      onName: json['osName'] as String?,
+      onName: json['onName'] as String?,
       osVersion: json['osVersion'] as String?,
       clientType: json['clientType'] as String?,
       clientCode: json['clientCode'] as String?,
@@ -39,8 +39,8 @@ _$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
 Map<String, dynamic> _$$_EmailSessionSuccessResponseToJson(
         _$_EmailSessionSuccessResponse instance) =>
     <String, dynamic>{
-      r'$id': instance.id,
-      r'$createdAt': instance.createAt,
+      'id': instance.id,
+      'createAt': instance.createAt,
       'userId': instance.userId,
       'expire': instance.expire,
       'provider': instance.provider,
@@ -50,7 +50,7 @@ Map<String, dynamic> _$$_EmailSessionSuccessResponseToJson(
       'providerRefreshToken': instance.providerRefreshToken,
       'ip': instance.ip,
       'osCode': instance.osCode,
-      'osName': instance.onName,
+      'onName': instance.onName,
       'osVersion': instance.osVersion,
       'clientType': instance.clientType,
       'clientCode': instance.clientCode,

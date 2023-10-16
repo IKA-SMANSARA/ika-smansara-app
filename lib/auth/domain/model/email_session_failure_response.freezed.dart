@@ -21,13 +21,9 @@ EmailSessionFailureResponse _$EmailSessionFailureResponseFromJson(
 
 /// @nodoc
 mixin _$EmailSessionFailureResponse {
-  @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'code')
   int? get code => throw _privateConstructorUsedError;
-  @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'version')
   String? get version => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,11 +40,7 @@ abstract class $EmailSessionFailureResponseCopyWith<$Res> {
       _$EmailSessionFailureResponseCopyWithImpl<$Res,
           EmailSessionFailureResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'type') String? type,
-      @JsonKey(name: 'version') String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
@@ -100,11 +92,7 @@ abstract class _$$_EmailSessionFailureResponseCopyWith<$Res>
       __$$_EmailSessionFailureResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') int? code,
-      @JsonKey(name: 'type') String? type,
-      @JsonKey(name: 'version') String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
@@ -150,25 +138,18 @@ class __$$_EmailSessionFailureResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EmailSessionFailureResponse implements _EmailSessionFailureResponse {
   const _$_EmailSessionFailureResponse(
-      {@JsonKey(name: 'message') this.message,
-      @JsonKey(name: 'code') this.code,
-      @JsonKey(name: 'type') this.type,
-      @JsonKey(name: 'version') this.version});
+      {this.message, this.code, this.type, this.version});
 
   factory _$_EmailSessionFailureResponse.fromJson(Map<String, dynamic> json) =>
       _$$_EmailSessionFailureResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'message')
   final String? message;
   @override
-  @JsonKey(name: 'code')
   final int? code;
   @override
-  @JsonKey(name: 'type')
   final String? type;
   @override
-  @JsonKey(name: 'version')
   final String? version;
 
   @override
@@ -209,26 +190,21 @@ class _$_EmailSessionFailureResponse implements _EmailSessionFailureResponse {
 abstract class _EmailSessionFailureResponse
     implements EmailSessionFailureResponse {
   const factory _EmailSessionFailureResponse(
-          {@JsonKey(name: 'message') final String? message,
-          @JsonKey(name: 'code') final int? code,
-          @JsonKey(name: 'type') final String? type,
-          @JsonKey(name: 'version') final String? version}) =
-      _$_EmailSessionFailureResponse;
+      {final String? message,
+      final int? code,
+      final String? type,
+      final String? version}) = _$_EmailSessionFailureResponse;
 
   factory _EmailSessionFailureResponse.fromJson(Map<String, dynamic> json) =
       _$_EmailSessionFailureResponse.fromJson;
 
   @override
-  @JsonKey(name: 'message')
   String? get message;
   @override
-  @JsonKey(name: 'code')
   int? get code;
   @override
-  @JsonKey(name: 'type')
   String? get type;
   @override
-  @JsonKey(name: 'version')
   String? get version;
   @override
   @JsonKey(ignore: true)
