@@ -2,7 +2,6 @@
 
 import 'package:chopper/chopper.dart';
 import 'package:ika_smansara/auth/auth.dart';
-import 'package:ika_smansara/auth/data/remote/dto/email_session_request_dto.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 
@@ -22,7 +21,10 @@ abstract class ApiServices extends ChopperService {
       Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
     },
   )
-  Future<Response> getEmailSession(@Path('sessionId') String sessionId);
+  Future<Response> getEmailSession(
+    @Path('sessionId') String sessionId,
+    @Header('Cookie') String cookieValue,
+  );
 
   // create email session / login
   @Post(

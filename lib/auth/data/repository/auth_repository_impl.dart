@@ -19,6 +19,15 @@ class AuthRepositoryImpl implements AuthRepository {
       emailSessionRequest.toEmailSessionRequestDTO(),
     );
 
+    Constants.logger.w(responseCreateEmailSession.headers.entries.first.value);
+
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user-cookie');
+    await lazyBox.put(
+      'cookie',
+      responseCreateEmailSession.headers.entries.first.value,
+    );
+
     if (responseCreateEmailSession.isSuccessful) {
       return Right(
         EmailSessionSuccessResponseDTO.fromJson(
@@ -51,8 +60,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<ErrorResponse, EmailSessionSuccessResponse>> getEmailSession(
     String? sessionId,
   ) async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user-cookie');
+    final cookie = await lazyBox.get('cookie');
+
     final responseGetEmailSession = await _apiServices.getEmailSession(
       sessionId ?? '',
+      cookie.toString(),
     );
 
     if (responseGetEmailSession.isSuccessful) {

@@ -6,8 +6,8 @@ part of 'api_services.dart';
 // ChopperGenerator
 // **************************************************************************
 
-// ignore_for_file: type=lint
-final class _$ApiServices extends ApiServices {
+// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
+class _$ApiServices extends ApiServices {
   _$ApiServices([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
@@ -17,9 +17,13 @@ final class _$ApiServices extends ApiServices {
   final definitionType = ApiServices;
 
   @override
-  Future<Response<dynamic>> getEmailSession(String sessionId) {
+  Future<Response<dynamic>> getEmailSession(
+    String sessionId,
+    String cookieValue,
+  ) {
     final Uri $url = Uri.parse('account/sessions/${sessionId}');
     final Map<String, String> $headers = {
+      'Cookie': cookieValue,
       'Accept': 'application/json',
       'X-Appwrite-Project': '6526850f77b1a0e42833',
       'Content-Type': 'application/json',

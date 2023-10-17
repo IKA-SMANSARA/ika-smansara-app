@@ -19,7 +19,7 @@ class AppRoutes {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: routeWithSession(),
+    initialLocation: Routes.login,
     debugLogDiagnostics: true,
     routerNeglect: true,
     navigatorKey: _rootNavigatorKey,
