@@ -21,17 +21,15 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserResponse {
   String? get id => throw _privateConstructorUsedError;
-  String? get createAt => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
-  String? get hash => throw _privateConstructorUsedError;
   String? get registration => throw _privateConstructorUsedError;
-  bool? get status => throw _privateConstructorUsedError;
-  String? get label => throw _privateConstructorUsedError;
-  String? get passwordUpdate => throw _privateConstructorUsedError;
+  bool get status => throw _privateConstructorUsedError;
+  String? get labels => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
+  String? get accessedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,17 +45,15 @@ abstract class $UserResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String? createAt,
+      String? createdAt,
       String? updatedAt,
       String? name,
-      String? password,
-      String? hash,
       String? registration,
-      bool? status,
-      String? label,
-      String? passwordUpdate,
+      bool status,
+      String? labels,
       String? email,
-      String? phone});
+      String? phone,
+      String? accessedAt});
 }
 
 /// @nodoc
@@ -74,26 +70,24 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
   @override
   $Res call({
     Object? id = freezed,
-    Object? createAt = freezed,
+    Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? name = freezed,
-    Object? password = freezed,
-    Object? hash = freezed,
     Object? registration = freezed,
-    Object? status = freezed,
-    Object? label = freezed,
-    Object? passwordUpdate = freezed,
+    Object? status = null,
+    Object? labels = freezed,
     Object? email = freezed,
     Object? phone = freezed,
+    Object? accessedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
@@ -103,29 +97,17 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as String?,
       registration: freezed == registration
           ? _value.registration
           : registration // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      label: freezed == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passwordUpdate: freezed == passwordUpdate
-          ? _value.passwordUpdate
-          : passwordUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+      labels: freezed == labels
+          ? _value.labels
+          : labels // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -134,6 +116,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      accessedAt: freezed == accessedAt
+          ? _value.accessedAt
+          : accessedAt // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -149,17 +135,15 @@ abstract class _$$_UserResponseCopyWith<$Res>
   @useResult
   $Res call(
       {String? id,
-      String? createAt,
+      String? createdAt,
       String? updatedAt,
       String? name,
-      String? password,
-      String? hash,
       String? registration,
-      bool? status,
-      String? label,
-      String? passwordUpdate,
+      bool status,
+      String? labels,
       String? email,
-      String? phone});
+      String? phone,
+      String? accessedAt});
 }
 
 /// @nodoc
@@ -174,26 +158,24 @@ class __$$_UserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? createAt = freezed,
+    Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? name = freezed,
-    Object? password = freezed,
-    Object? hash = freezed,
     Object? registration = freezed,
-    Object? status = freezed,
-    Object? label = freezed,
-    Object? passwordUpdate = freezed,
+    Object? status = null,
+    Object? labels = freezed,
     Object? email = freezed,
     Object? phone = freezed,
+    Object? accessedAt = freezed,
   }) {
     return _then(_$_UserResponse(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
@@ -203,29 +185,17 @@ class __$$_UserResponseCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as String?,
       registration: freezed == registration
           ? _value.registration
           : registration // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      label: freezed == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String?,
-      passwordUpdate: freezed == passwordUpdate
-          ? _value.passwordUpdate
-          : passwordUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
+      labels: freezed == labels
+          ? _value.labels
+          : labels // ignore: cast_nullable_to_non_nullable
               as String?,
       email: freezed == email
           ? _value.email
@@ -235,6 +205,10 @@ class __$$_UserResponseCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
+      accessedAt: freezed == accessedAt
+          ? _value.accessedAt
+          : accessedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -242,19 +216,17 @@ class __$$_UserResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserResponse implements _UserResponse {
-  const _$_UserResponse(
+  _$_UserResponse(
       {this.id,
-      this.createAt,
+      this.createdAt,
       this.updatedAt,
       this.name,
-      this.password,
-      this.hash,
       this.registration,
-      this.status,
-      this.label,
-      this.passwordUpdate,
+      this.status = false,
+      this.labels,
       this.email,
-      this.phone});
+      this.phone,
+      this.accessedAt});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_UserResponseFromJson(json);
@@ -262,31 +234,28 @@ class _$_UserResponse implements _UserResponse {
   @override
   final String? id;
   @override
-  final String? createAt;
+  final String? createdAt;
   @override
   final String? updatedAt;
   @override
   final String? name;
   @override
-  final String? password;
-  @override
-  final String? hash;
-  @override
   final String? registration;
   @override
-  final bool? status;
+  @JsonKey()
+  final bool status;
   @override
-  final String? label;
-  @override
-  final String? passwordUpdate;
+  final String? labels;
   @override
   final String? email;
   @override
   final String? phone;
+  @override
+  final String? accessedAt;
 
   @override
   String toString() {
-    return 'UserResponse(id: $id, createAt: $createAt, updatedAt: $updatedAt, name: $name, password: $password, hash: $hash, registration: $registration, status: $status, label: $label, passwordUpdate: $passwordUpdate, email: $email, phone: $phone)';
+    return 'UserResponse(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, name: $name, registration: $registration, status: $status, labels: $labels, email: $email, phone: $phone, accessedAt: $accessedAt)';
   }
 
   @override
@@ -295,40 +264,25 @@ class _$_UserResponse implements _UserResponse {
         (other.runtimeType == runtimeType &&
             other is _$_UserResponse &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.createAt, createAt) ||
-                other.createAt == createAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.hash, hash) || other.hash == hash) &&
             (identical(other.registration, registration) ||
                 other.registration == registration) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.passwordUpdate, passwordUpdate) ||
-                other.passwordUpdate == passwordUpdate) &&
+            (identical(other.labels, labels) || other.labels == labels) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.accessedAt, accessedAt) ||
+                other.accessedAt == accessedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      createAt,
-      updatedAt,
-      name,
-      password,
-      hash,
-      registration,
-      status,
-      label,
-      passwordUpdate,
-      email,
-      phone);
+  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt, name,
+      registration, status, labels, email, phone, accessedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -345,19 +299,17 @@ class _$_UserResponse implements _UserResponse {
 }
 
 abstract class _UserResponse implements UserResponse {
-  const factory _UserResponse(
+  factory _UserResponse(
       {final String? id,
-      final String? createAt,
+      final String? createdAt,
       final String? updatedAt,
       final String? name,
-      final String? password,
-      final String? hash,
       final String? registration,
-      final bool? status,
-      final String? label,
-      final String? passwordUpdate,
+      final bool status,
+      final String? labels,
       final String? email,
-      final String? phone}) = _$_UserResponse;
+      final String? phone,
+      final String? accessedAt}) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
@@ -365,27 +317,23 @@ abstract class _UserResponse implements UserResponse {
   @override
   String? get id;
   @override
-  String? get createAt;
+  String? get createdAt;
   @override
   String? get updatedAt;
   @override
   String? get name;
   @override
-  String? get password;
-  @override
-  String? get hash;
-  @override
   String? get registration;
   @override
-  bool? get status;
+  bool get status;
   @override
-  String? get label;
-  @override
-  String? get passwordUpdate;
+  String? get labels;
   @override
   String? get email;
   @override
   String? get phone;
+  @override
+  String? get accessedAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>

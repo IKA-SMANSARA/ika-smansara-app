@@ -1,16 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_session_success_response_dto.dart';
+part of 'session_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionSuccessResponseDTO _$$_EmailSessionSuccessResponseDTOFromJson(
+_$_SessionResponseDTO _$$_SessionResponseDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailSessionSuccessResponseDTO(
+    _$_SessionResponseDTO(
       id: json[r'$id'] as String?,
-      createAt: json[r'$createdAt'] as String?,
+      createdAt: json[r'$createdAt'] as String?,
       userId: json['userId'] as String?,
       expire: json['expire'] as String?,
       provider: json['provider'] as String?,
@@ -36,11 +36,11 @@ _$_EmailSessionSuccessResponseDTO _$$_EmailSessionSuccessResponseDTOFromJson(
       current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_EmailSessionSuccessResponseDTOToJson(
-        _$_EmailSessionSuccessResponseDTO instance) =>
+Map<String, dynamic> _$$_SessionResponseDTOToJson(
+        _$_SessionResponseDTO instance) =>
     <String, dynamic>{
       r'$id': instance.id,
-      r'$createdAt': instance.createAt,
+      r'$createdAt': instance.createdAt,
       'userId': instance.userId,
       'expire': instance.expire,
       'provider': instance.provider,

@@ -3,24 +3,21 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_response.freezed.dart';
-
 part 'user_response.g.dart';
 
 @freezed
 class UserResponse with _$UserResponse {
-  const factory UserResponse({
+  factory UserResponse({
     String? id,
-    String? createAt,
+    String? createdAt,
     String? updatedAt,
     String? name,
-    String? password,
-    String? hash,
     String? registration,
-    bool? status,
-    String? label,
-    String? passwordUpdate,
+    @Default(false) bool status,
+    String? labels,
     String? email,
     String? phone,
+    String? accessedAt,
   }) = _UserResponse;
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>

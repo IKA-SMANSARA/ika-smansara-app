@@ -12,14 +12,12 @@ class AuthRepositoryImpl implements AuthRepository {
   final ApiServices _apiServices;
 
   @override
-  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> createEmailSession(
+  Future<Either<ErrorResponse, SessionResponse>> createEmailSession(
     EmailSessionRequest emailSessionRequest,
   ) async {
     final responseCreateEmailSession = await _apiServices.createEmailSession(
       emailSessionRequest.toEmailSessionRequestDTO(),
     );
-
-    Constants.logger.w(responseCreateEmailSession.headers.entries.first.value);
 
     // ignore: inference_failure_on_function_invocation
     final lazyBox = await Hive.openLazyBox('user-cookie');
@@ -30,9 +28,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (responseCreateEmailSession.isSuccessful) {
       return Right(
-        EmailSessionSuccessResponseDTO.fromJson(
+        SessionResponseDTO.fromJson(
           responseCreateEmailSession.body as Map<String, dynamic>,
-        ).toEmailSessionSuccessResponse(),
+        ).toSessionResponse(),
       );
     } else {
       return Left(
@@ -57,7 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<ErrorResponse, EmailSessionSuccessResponse>> getEmailSession(
+  Future<Either<ErrorResponse, SessionResponse>> getEmailSession(
     String? sessionId,
   ) async {
     // ignore: inference_failure_on_function_invocation
@@ -71,9 +69,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (responseGetEmailSession.isSuccessful) {
       return Right(
-        EmailSessionSuccessResponseDTO.fromJson(
+        SessionResponseDTO.fromJson(
           responseGetEmailSession.body as Map<String, dynamic>,
-        ).toEmailSessionSuccessResponse(),
+        ).toSessionResponse(),
       );
     } else {
       return Left(

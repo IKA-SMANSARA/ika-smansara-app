@@ -81,6 +81,31 @@ class _$ApiServices extends ApiServices {
   }
 
   @override
+  Future<Response<dynamic>> saveUserProfileDoc(
+    String databaseId,
+    String collectionId,
+    UserRegisterDocRequestDTO userRegisterDocRequestDTO,
+  ) {
+    final Uri $url = Uri.parse(
+        'databases/${databaseId}/collections/${collectionId}/documents');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
+      'Content-Type': 'application/json',
+      'X-Appwrite-Response-Format': '1.4.0',
+    };
+    final $body = userRegisterDocRequestDTO;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> getCounter(String documentId) {
     final Uri $url = Uri.parse(
         'databases/64aa86f05fa0d48d76ff/collections/64aa87186f6e663fc87a/documents/${documentId}');

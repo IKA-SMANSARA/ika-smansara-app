@@ -2,15 +2,14 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'email_session_success_response_dto.freezed.dart';
-
-part 'email_session_success_response_dto.g.dart';
+part 'session_response_dto.freezed.dart';
+part 'session_response_dto.g.dart';
 
 @freezed
-class EmailSessionSuccessResponseDTO with _$EmailSessionSuccessResponseDTO {
-  const factory EmailSessionSuccessResponseDTO({
+class SessionResponseDTO with _$SessionResponseDTO {
+  factory SessionResponseDTO({
     @JsonKey(name: '\$id') String? id,
-    @JsonKey(name: '\$createdAt') String? createAt,
+    @JsonKey(name: '\$createdAt') String? createdAt,
     @JsonKey(name: 'userId') String? userId,
     @JsonKey(name: 'expire') String? expire,
     @JsonKey(name: 'provider') String? provider,
@@ -34,8 +33,8 @@ class EmailSessionSuccessResponseDTO with _$EmailSessionSuccessResponseDTO {
     @JsonKey(name: 'countryCode') String? countryCode,
     @JsonKey(name: 'countryName') String? countryName,
     @JsonKey(name: 'current') bool? current,
-  }) = _EmailSessionSuccessResponseDTO;
+  }) = _SessionResponseDTO;
 
-  factory EmailSessionSuccessResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$EmailSessionSuccessResponseDTOFromJson(json);
+  factory SessionResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$SessionResponseDTOFromJson(json);
 }

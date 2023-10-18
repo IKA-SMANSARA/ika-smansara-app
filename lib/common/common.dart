@@ -1,11 +1,16 @@
 export 'data/mapper/error_mapper.dart';
+export 'data/mapper/session_mapper.dart';
 export 'data/remote/api_services.dart';
+export 'data/remote/dto/document_response_dto.dart';
 export 'data/remote/dto/error_response_dto.dart';
+export 'data/remote/dto/session_response_dto.dart';
 export 'data/remote/dto/user_response_dto.dart';
 export 'di/api_interface_network_module.dart';
 export 'di/injection.dart';
 export 'di/network_module.dart';
+export 'domain/model/document_response.dart';
 export 'domain/model/error_response.dart';
+export 'domain/model/session_response.dart';
 export 'domain/model/user_response.dart';
 export 'presentation/component/custom_loading_dialog.dart';
 export 'presentation/component/not_found_page.dart';

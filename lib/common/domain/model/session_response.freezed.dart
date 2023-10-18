@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'email_session_success_response_dto.dart';
+part of 'session_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,111 +14,82 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-EmailSessionSuccessResponseDTO _$EmailSessionSuccessResponseDTOFromJson(
-    Map<String, dynamic> json) {
-  return _EmailSessionSuccessResponseDTO.fromJson(json);
+SessionResponse _$SessionResponseFromJson(Map<String, dynamic> json) {
+  return _SessionResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EmailSessionSuccessResponseDTO {
-  @JsonKey(name: '\$id')
+mixin _$SessionResponse {
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: '\$createdAt')
-  String? get createAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'userId')
+  String? get createdAt => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'expire')
   String? get expire => throw _privateConstructorUsedError;
-  @JsonKey(name: 'provider')
   String? get provider => throw _privateConstructorUsedError;
-  @JsonKey(name: 'providerUid')
   String? get providerUid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'providerAccessToken')
   String? get providerAccessToken => throw _privateConstructorUsedError;
-  @JsonKey(name: 'providerTokenExpiry')
   String? get providerTokenExpiry => throw _privateConstructorUsedError;
-  @JsonKey(name: 'providerRefreshToken')
   String? get providerRefreshToken => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ip')
   String? get ip => throw _privateConstructorUsedError;
-  @JsonKey(name: 'osCode')
   String? get osCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'osName')
   String? get onName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'osVersion')
   String? get osVersion => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientType')
   String? get clientType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientCode')
   String? get clientCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientName')
   String? get clientName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientVersion')
   String? get clientVersion => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientEngine')
   String? get clientEngine => throw _privateConstructorUsedError;
-  @JsonKey(name: 'clientEngineVersion')
   String? get clientEngineVersion => throw _privateConstructorUsedError;
-  @JsonKey(name: 'deviceName')
   String? get deviceName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'deviceBrand')
   String? get deviceBrand => throw _privateConstructorUsedError;
-  @JsonKey(name: 'deviceModel')
   String? get deviceModel => throw _privateConstructorUsedError;
-  @JsonKey(name: 'countryCode')
   String? get countryCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'countryName')
   String? get countryName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'current')
   bool? get current => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EmailSessionSuccessResponseDTOCopyWith<EmailSessionSuccessResponseDTO>
-      get copyWith => throw _privateConstructorUsedError;
+  $SessionResponseCopyWith<SessionResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmailSessionSuccessResponseDTOCopyWith<$Res> {
-  factory $EmailSessionSuccessResponseDTOCopyWith(
-          EmailSessionSuccessResponseDTO value,
-          $Res Function(EmailSessionSuccessResponseDTO) then) =
-      _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
-          EmailSessionSuccessResponseDTO>;
+abstract class $SessionResponseCopyWith<$Res> {
+  factory $SessionResponseCopyWith(
+          SessionResponse value, $Res Function(SessionResponse) then) =
+      _$SessionResponseCopyWithImpl<$Res, SessionResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: '\$id') String? id,
-      @JsonKey(name: '\$createdAt') String? createAt,
-      @JsonKey(name: 'userId') String? userId,
-      @JsonKey(name: 'expire') String? expire,
-      @JsonKey(name: 'provider') String? provider,
-      @JsonKey(name: 'providerUid') String? providerUid,
-      @JsonKey(name: 'providerAccessToken') String? providerAccessToken,
-      @JsonKey(name: 'providerTokenExpiry') String? providerTokenExpiry,
-      @JsonKey(name: 'providerRefreshToken') String? providerRefreshToken,
-      @JsonKey(name: 'ip') String? ip,
-      @JsonKey(name: 'osCode') String? osCode,
-      @JsonKey(name: 'osName') String? onName,
-      @JsonKey(name: 'osVersion') String? osVersion,
-      @JsonKey(name: 'clientType') String? clientType,
-      @JsonKey(name: 'clientCode') String? clientCode,
-      @JsonKey(name: 'clientName') String? clientName,
-      @JsonKey(name: 'clientVersion') String? clientVersion,
-      @JsonKey(name: 'clientEngine') String? clientEngine,
-      @JsonKey(name: 'clientEngineVersion') String? clientEngineVersion,
-      @JsonKey(name: 'deviceName') String? deviceName,
-      @JsonKey(name: 'deviceBrand') String? deviceBrand,
-      @JsonKey(name: 'deviceModel') String? deviceModel,
-      @JsonKey(name: 'countryCode') String? countryCode,
-      @JsonKey(name: 'countryName') String? countryName,
-      @JsonKey(name: 'current') bool? current});
+      {String? id,
+      String? createdAt,
+      String? userId,
+      String? expire,
+      String? provider,
+      String? providerUid,
+      String? providerAccessToken,
+      String? providerTokenExpiry,
+      String? providerRefreshToken,
+      String? ip,
+      String? osCode,
+      String? onName,
+      String? osVersion,
+      String? clientType,
+      String? clientCode,
+      String? clientName,
+      String? clientVersion,
+      String? clientEngine,
+      String? clientEngineVersion,
+      String? deviceName,
+      String? deviceBrand,
+      String? deviceModel,
+      String? countryCode,
+      String? countryName,
+      bool? current});
 }
 
 /// @nodoc
-class _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
-        $Val extends EmailSessionSuccessResponseDTO>
-    implements $EmailSessionSuccessResponseDTOCopyWith<$Res> {
-  _$EmailSessionSuccessResponseDTOCopyWithImpl(this._value, this._then);
+class _$SessionResponseCopyWithImpl<$Res, $Val extends SessionResponse>
+    implements $SessionResponseCopyWith<$Res> {
+  _$SessionResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -129,7 +100,7 @@ class _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = freezed,
-    Object? createAt = freezed,
+    Object? createdAt = freezed,
     Object? userId = freezed,
     Object? expire = freezed,
     Object? provider = freezed,
@@ -159,9 +130,9 @@ class _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
       userId: freezed == userId
           ? _value.userId
@@ -260,57 +231,54 @@ class _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EmailSessionSuccessResponseDTOCopyWith<$Res>
-    implements $EmailSessionSuccessResponseDTOCopyWith<$Res> {
-  factory _$$_EmailSessionSuccessResponseDTOCopyWith(
-          _$_EmailSessionSuccessResponseDTO value,
-          $Res Function(_$_EmailSessionSuccessResponseDTO) then) =
-      __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>;
+abstract class _$$_SessionResponseCopyWith<$Res>
+    implements $SessionResponseCopyWith<$Res> {
+  factory _$$_SessionResponseCopyWith(
+          _$_SessionResponse value, $Res Function(_$_SessionResponse) then) =
+      __$$_SessionResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '\$id') String? id,
-      @JsonKey(name: '\$createdAt') String? createAt,
-      @JsonKey(name: 'userId') String? userId,
-      @JsonKey(name: 'expire') String? expire,
-      @JsonKey(name: 'provider') String? provider,
-      @JsonKey(name: 'providerUid') String? providerUid,
-      @JsonKey(name: 'providerAccessToken') String? providerAccessToken,
-      @JsonKey(name: 'providerTokenExpiry') String? providerTokenExpiry,
-      @JsonKey(name: 'providerRefreshToken') String? providerRefreshToken,
-      @JsonKey(name: 'ip') String? ip,
-      @JsonKey(name: 'osCode') String? osCode,
-      @JsonKey(name: 'osName') String? onName,
-      @JsonKey(name: 'osVersion') String? osVersion,
-      @JsonKey(name: 'clientType') String? clientType,
-      @JsonKey(name: 'clientCode') String? clientCode,
-      @JsonKey(name: 'clientName') String? clientName,
-      @JsonKey(name: 'clientVersion') String? clientVersion,
-      @JsonKey(name: 'clientEngine') String? clientEngine,
-      @JsonKey(name: 'clientEngineVersion') String? clientEngineVersion,
-      @JsonKey(name: 'deviceName') String? deviceName,
-      @JsonKey(name: 'deviceBrand') String? deviceBrand,
-      @JsonKey(name: 'deviceModel') String? deviceModel,
-      @JsonKey(name: 'countryCode') String? countryCode,
-      @JsonKey(name: 'countryName') String? countryName,
-      @JsonKey(name: 'current') bool? current});
+      {String? id,
+      String? createdAt,
+      String? userId,
+      String? expire,
+      String? provider,
+      String? providerUid,
+      String? providerAccessToken,
+      String? providerTokenExpiry,
+      String? providerRefreshToken,
+      String? ip,
+      String? osCode,
+      String? onName,
+      String? osVersion,
+      String? clientType,
+      String? clientCode,
+      String? clientName,
+      String? clientVersion,
+      String? clientEngine,
+      String? clientEngineVersion,
+      String? deviceName,
+      String? deviceBrand,
+      String? deviceModel,
+      String? countryCode,
+      String? countryName,
+      bool? current});
 }
 
 /// @nodoc
-class __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>
-    extends _$EmailSessionSuccessResponseDTOCopyWithImpl<$Res,
-        _$_EmailSessionSuccessResponseDTO>
-    implements _$$_EmailSessionSuccessResponseDTOCopyWith<$Res> {
-  __$$_EmailSessionSuccessResponseDTOCopyWithImpl(
-      _$_EmailSessionSuccessResponseDTO _value,
-      $Res Function(_$_EmailSessionSuccessResponseDTO) _then)
+class __$$_SessionResponseCopyWithImpl<$Res>
+    extends _$SessionResponseCopyWithImpl<$Res, _$_SessionResponse>
+    implements _$$_SessionResponseCopyWith<$Res> {
+  __$$_SessionResponseCopyWithImpl(
+      _$_SessionResponse _value, $Res Function(_$_SessionResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? createAt = freezed,
+    Object? createdAt = freezed,
     Object? userId = freezed,
     Object? expire = freezed,
     Object? provider = freezed,
@@ -335,14 +303,14 @@ class __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>
     Object? countryName = freezed,
     Object? current = freezed,
   }) {
-    return _then(_$_EmailSessionSuccessResponseDTO(
+    return _then(_$_SessionResponse(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      createAt: freezed == createAt
-          ? _value.createAt
-          : createAt // ignore: cast_nullable_to_non_nullable
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
       userId: freezed == userId
           ? _value.userId
@@ -442,128 +410,101 @@ class __$$_EmailSessionSuccessResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailSessionSuccessResponseDTO
-    implements _EmailSessionSuccessResponseDTO {
-  const _$_EmailSessionSuccessResponseDTO(
-      {@JsonKey(name: '\$id') this.id,
-      @JsonKey(name: '\$createdAt') this.createAt,
-      @JsonKey(name: 'userId') this.userId,
-      @JsonKey(name: 'expire') this.expire,
-      @JsonKey(name: 'provider') this.provider,
-      @JsonKey(name: 'providerUid') this.providerUid,
-      @JsonKey(name: 'providerAccessToken') this.providerAccessToken,
-      @JsonKey(name: 'providerTokenExpiry') this.providerTokenExpiry,
-      @JsonKey(name: 'providerRefreshToken') this.providerRefreshToken,
-      @JsonKey(name: 'ip') this.ip,
-      @JsonKey(name: 'osCode') this.osCode,
-      @JsonKey(name: 'osName') this.onName,
-      @JsonKey(name: 'osVersion') this.osVersion,
-      @JsonKey(name: 'clientType') this.clientType,
-      @JsonKey(name: 'clientCode') this.clientCode,
-      @JsonKey(name: 'clientName') this.clientName,
-      @JsonKey(name: 'clientVersion') this.clientVersion,
-      @JsonKey(name: 'clientEngine') this.clientEngine,
-      @JsonKey(name: 'clientEngineVersion') this.clientEngineVersion,
-      @JsonKey(name: 'deviceName') this.deviceName,
-      @JsonKey(name: 'deviceBrand') this.deviceBrand,
-      @JsonKey(name: 'deviceModel') this.deviceModel,
-      @JsonKey(name: 'countryCode') this.countryCode,
-      @JsonKey(name: 'countryName') this.countryName,
-      @JsonKey(name: 'current') this.current});
+class _$_SessionResponse implements _SessionResponse {
+  _$_SessionResponse(
+      {this.id,
+      this.createdAt,
+      this.userId,
+      this.expire,
+      this.provider,
+      this.providerUid,
+      this.providerAccessToken,
+      this.providerTokenExpiry,
+      this.providerRefreshToken,
+      this.ip,
+      this.osCode,
+      this.onName,
+      this.osVersion,
+      this.clientType,
+      this.clientCode,
+      this.clientName,
+      this.clientVersion,
+      this.clientEngine,
+      this.clientEngineVersion,
+      this.deviceName,
+      this.deviceBrand,
+      this.deviceModel,
+      this.countryCode,
+      this.countryName,
+      this.current});
 
-  factory _$_EmailSessionSuccessResponseDTO.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_EmailSessionSuccessResponseDTOFromJson(json);
+  factory _$_SessionResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_SessionResponseFromJson(json);
 
   @override
-  @JsonKey(name: '\$id')
   final String? id;
   @override
-  @JsonKey(name: '\$createdAt')
-  final String? createAt;
+  final String? createdAt;
   @override
-  @JsonKey(name: 'userId')
   final String? userId;
   @override
-  @JsonKey(name: 'expire')
   final String? expire;
   @override
-  @JsonKey(name: 'provider')
   final String? provider;
   @override
-  @JsonKey(name: 'providerUid')
   final String? providerUid;
   @override
-  @JsonKey(name: 'providerAccessToken')
   final String? providerAccessToken;
   @override
-  @JsonKey(name: 'providerTokenExpiry')
   final String? providerTokenExpiry;
   @override
-  @JsonKey(name: 'providerRefreshToken')
   final String? providerRefreshToken;
   @override
-  @JsonKey(name: 'ip')
   final String? ip;
   @override
-  @JsonKey(name: 'osCode')
   final String? osCode;
   @override
-  @JsonKey(name: 'osName')
   final String? onName;
   @override
-  @JsonKey(name: 'osVersion')
   final String? osVersion;
   @override
-  @JsonKey(name: 'clientType')
   final String? clientType;
   @override
-  @JsonKey(name: 'clientCode')
   final String? clientCode;
   @override
-  @JsonKey(name: 'clientName')
   final String? clientName;
   @override
-  @JsonKey(name: 'clientVersion')
   final String? clientVersion;
   @override
-  @JsonKey(name: 'clientEngine')
   final String? clientEngine;
   @override
-  @JsonKey(name: 'clientEngineVersion')
   final String? clientEngineVersion;
   @override
-  @JsonKey(name: 'deviceName')
   final String? deviceName;
   @override
-  @JsonKey(name: 'deviceBrand')
   final String? deviceBrand;
   @override
-  @JsonKey(name: 'deviceModel')
   final String? deviceModel;
   @override
-  @JsonKey(name: 'countryCode')
   final String? countryCode;
   @override
-  @JsonKey(name: 'countryName')
   final String? countryName;
   @override
-  @JsonKey(name: 'current')
   final bool? current;
 
   @override
   String toString() {
-    return 'EmailSessionSuccessResponseDTO(id: $id, createAt: $createAt, userId: $userId, expire: $expire, provider: $provider, providerUid: $providerUid, providerAccessToken: $providerAccessToken, providerTokenExpiry: $providerTokenExpiry, providerRefreshToken: $providerRefreshToken, ip: $ip, osCode: $osCode, onName: $onName, osVersion: $osVersion, clientType: $clientType, clientCode: $clientCode, clientName: $clientName, clientVersion: $clientVersion, clientEngine: $clientEngine, clientEngineVersion: $clientEngineVersion, deviceName: $deviceName, deviceBrand: $deviceBrand, deviceModel: $deviceModel, countryCode: $countryCode, countryName: $countryName, current: $current)';
+    return 'SessionResponse(id: $id, createdAt: $createdAt, userId: $userId, expire: $expire, provider: $provider, providerUid: $providerUid, providerAccessToken: $providerAccessToken, providerTokenExpiry: $providerTokenExpiry, providerRefreshToken: $providerRefreshToken, ip: $ip, osCode: $osCode, onName: $onName, osVersion: $osVersion, clientType: $clientType, clientCode: $clientCode, clientName: $clientName, clientVersion: $clientVersion, clientEngine: $clientEngine, clientEngineVersion: $clientEngineVersion, deviceName: $deviceName, deviceBrand: $deviceBrand, deviceModel: $deviceModel, countryCode: $countryCode, countryName: $countryName, current: $current)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailSessionSuccessResponseDTO &&
+            other is _$_SessionResponse &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.createAt, createAt) ||
-                other.createAt == createAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.expire, expire) || other.expire == expire) &&
             (identical(other.provider, provider) ||
@@ -611,7 +552,7 @@ class _$_EmailSessionSuccessResponseDTO
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
-        createAt,
+        createdAt,
         userId,
         expire,
         provider,
@@ -640,128 +581,100 @@ class _$_EmailSessionSuccessResponseDTO
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailSessionSuccessResponseDTOCopyWith<_$_EmailSessionSuccessResponseDTO>
-      get copyWith => __$$_EmailSessionSuccessResponseDTOCopyWithImpl<
-          _$_EmailSessionSuccessResponseDTO>(this, _$identity);
+  _$$_SessionResponseCopyWith<_$_SessionResponse> get copyWith =>
+      __$$_SessionResponseCopyWithImpl<_$_SessionResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailSessionSuccessResponseDTOToJson(
+    return _$$_SessionResponseToJson(
       this,
     );
   }
 }
 
-abstract class _EmailSessionSuccessResponseDTO
-    implements EmailSessionSuccessResponseDTO {
-  const factory _EmailSessionSuccessResponseDTO(
-      {@JsonKey(name: '\$id') final String? id,
-      @JsonKey(name: '\$createdAt') final String? createAt,
-      @JsonKey(name: 'userId') final String? userId,
-      @JsonKey(name: 'expire') final String? expire,
-      @JsonKey(name: 'provider') final String? provider,
-      @JsonKey(name: 'providerUid') final String? providerUid,
-      @JsonKey(name: 'providerAccessToken') final String? providerAccessToken,
-      @JsonKey(name: 'providerTokenExpiry') final String? providerTokenExpiry,
-      @JsonKey(name: 'providerRefreshToken') final String? providerRefreshToken,
-      @JsonKey(name: 'ip') final String? ip,
-      @JsonKey(name: 'osCode') final String? osCode,
-      @JsonKey(name: 'osName') final String? onName,
-      @JsonKey(name: 'osVersion') final String? osVersion,
-      @JsonKey(name: 'clientType') final String? clientType,
-      @JsonKey(name: 'clientCode') final String? clientCode,
-      @JsonKey(name: 'clientName') final String? clientName,
-      @JsonKey(name: 'clientVersion') final String? clientVersion,
-      @JsonKey(name: 'clientEngine') final String? clientEngine,
-      @JsonKey(name: 'clientEngineVersion') final String? clientEngineVersion,
-      @JsonKey(name: 'deviceName') final String? deviceName,
-      @JsonKey(name: 'deviceBrand') final String? deviceBrand,
-      @JsonKey(name: 'deviceModel') final String? deviceModel,
-      @JsonKey(name: 'countryCode') final String? countryCode,
-      @JsonKey(name: 'countryName') final String? countryName,
-      @JsonKey(name: 'current')
-      final bool? current}) = _$_EmailSessionSuccessResponseDTO;
+abstract class _SessionResponse implements SessionResponse {
+  factory _SessionResponse(
+      {final String? id,
+      final String? createdAt,
+      final String? userId,
+      final String? expire,
+      final String? provider,
+      final String? providerUid,
+      final String? providerAccessToken,
+      final String? providerTokenExpiry,
+      final String? providerRefreshToken,
+      final String? ip,
+      final String? osCode,
+      final String? onName,
+      final String? osVersion,
+      final String? clientType,
+      final String? clientCode,
+      final String? clientName,
+      final String? clientVersion,
+      final String? clientEngine,
+      final String? clientEngineVersion,
+      final String? deviceName,
+      final String? deviceBrand,
+      final String? deviceModel,
+      final String? countryCode,
+      final String? countryName,
+      final bool? current}) = _$_SessionResponse;
 
-  factory _EmailSessionSuccessResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_EmailSessionSuccessResponseDTO.fromJson;
+  factory _SessionResponse.fromJson(Map<String, dynamic> json) =
+      _$_SessionResponse.fromJson;
 
   @override
-  @JsonKey(name: '\$id')
   String? get id;
   @override
-  @JsonKey(name: '\$createdAt')
-  String? get createAt;
+  String? get createdAt;
   @override
-  @JsonKey(name: 'userId')
   String? get userId;
   @override
-  @JsonKey(name: 'expire')
   String? get expire;
   @override
-  @JsonKey(name: 'provider')
   String? get provider;
   @override
-  @JsonKey(name: 'providerUid')
   String? get providerUid;
   @override
-  @JsonKey(name: 'providerAccessToken')
   String? get providerAccessToken;
   @override
-  @JsonKey(name: 'providerTokenExpiry')
   String? get providerTokenExpiry;
   @override
-  @JsonKey(name: 'providerRefreshToken')
   String? get providerRefreshToken;
   @override
-  @JsonKey(name: 'ip')
   String? get ip;
   @override
-  @JsonKey(name: 'osCode')
   String? get osCode;
   @override
-  @JsonKey(name: 'osName')
   String? get onName;
   @override
-  @JsonKey(name: 'osVersion')
   String? get osVersion;
   @override
-  @JsonKey(name: 'clientType')
   String? get clientType;
   @override
-  @JsonKey(name: 'clientCode')
   String? get clientCode;
   @override
-  @JsonKey(name: 'clientName')
   String? get clientName;
   @override
-  @JsonKey(name: 'clientVersion')
   String? get clientVersion;
   @override
-  @JsonKey(name: 'clientEngine')
   String? get clientEngine;
   @override
-  @JsonKey(name: 'clientEngineVersion')
   String? get clientEngineVersion;
   @override
-  @JsonKey(name: 'deviceName')
   String? get deviceName;
   @override
-  @JsonKey(name: 'deviceBrand')
   String? get deviceBrand;
   @override
-  @JsonKey(name: 'deviceModel')
   String? get deviceModel;
   @override
-  @JsonKey(name: 'countryCode')
   String? get countryCode;
   @override
-  @JsonKey(name: 'countryName')
   String? get countryName;
   @override
-  @JsonKey(name: 'current')
   bool? get current;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailSessionSuccessResponseDTOCopyWith<_$_EmailSessionSuccessResponseDTO>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_SessionResponseCopyWith<_$_SessionResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -2,14 +2,12 @@ import 'package:ika_smansara/common/common.dart';
 
 extension UserResponseDTOExtension on UserResponseDTO {
   UserResponse toUserResponse() => UserResponse(
-        createAt: createAt,
+        accessedAt: accessedAt,
+        createdAt: createdAt,
         email: email,
-        hash: hash,
         id: id,
-        label: label,
+        labels: labels,
         name: name,
-        password: password,
-        passwordUpdate: passwordUpdate,
         phone: phone,
         registration: registration,
         status: status,

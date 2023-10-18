@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
+import 'package:ika_smansara/register/register.dart';
 
 part 'api_services.chopper.dart';
 
@@ -52,6 +53,22 @@ abstract class ApiServices extends ChopperService {
   )
   Future<Response> userRegister(
     @Body() EmailRegisterRequestDTO emailRegisterRequestDTO,
+  );
+
+  // register user : save user profile doc
+  @Post(
+    path: 'databases/{databaseId}/collections/{collectionId}/documents',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+    },
+  )
+  Future<Response> saveUserProfileDoc(
+    @Path('databaseId') String databaseId,
+    @Path('collectionId') String collectionId,
+    @Body() UserRegisterDocRequestDTO userRegisterDocRequestDTO,
   );
 
   // get counter data

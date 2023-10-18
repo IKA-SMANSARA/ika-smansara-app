@@ -2,15 +2,14 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'email_session_success_response.freezed.dart';
-
-part 'email_session_success_response.g.dart';
+part 'session_response.freezed.dart';
+part 'session_response.g.dart';
 
 @freezed
-class EmailSessionSuccessResponse with _$EmailSessionSuccessResponse {
-  const factory EmailSessionSuccessResponse({
+class SessionResponse with _$SessionResponse {
+  factory SessionResponse({
     String? id,
-    String? createAt,
+    String? createdAt,
     String? userId,
     String? expire,
     String? provider,
@@ -34,8 +33,8 @@ class EmailSessionSuccessResponse with _$EmailSessionSuccessResponse {
     String? countryCode,
     String? countryName,
     bool? current,
-  }) = _EmailSessionSuccessResponse;
+  }) = _SessionResponse;
 
-  factory EmailSessionSuccessResponse.fromJson(Map<String, dynamic> json) =>
-      _$EmailSessionSuccessResponseFromJson(json);
+  factory SessionResponse.fromJson(Map<String, dynamic> json) =>
+      _$SessionResponseFromJson(json);
 }

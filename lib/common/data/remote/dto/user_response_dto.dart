@@ -3,24 +3,21 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_response_dto.freezed.dart';
-
 part 'user_response_dto.g.dart';
 
 @freezed
 class UserResponseDTO with _$UserResponseDTO {
-  const factory UserResponseDTO({
+  factory UserResponseDTO({
     @JsonKey(name: '\$id') String? id,
-    @JsonKey(name: '\$createdAt') String? createAt,
+    @JsonKey(name: '\$createdAt') String? createdAt,
     @JsonKey(name: '\$updatedAt') String? updatedAt,
     @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'password') String? password,
-    @JsonKey(name: 'hash') String? hash,
     @JsonKey(name: 'registration') String? registration,
-    @JsonKey(name: 'status') bool? status,
-    @JsonKey(name: 'label') String? label,
-    @JsonKey(name: 'passwordUpdate') String? passwordUpdate,
+    @JsonKey(name: 'status') @Default(false) bool status,
+    @JsonKey(name: 'labels') String? labels,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'phone') String? phone,
+    @JsonKey(name: 'accessedAt') String? accessedAt,
   }) = _UserResponseDTO;
 
   factory UserResponseDTO.fromJson(Map<String, dynamic> json) =>

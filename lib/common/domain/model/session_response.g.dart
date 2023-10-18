@@ -1,16 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_session_success_response.dart';
+part of 'session_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
-        Map<String, dynamic> json) =>
-    _$_EmailSessionSuccessResponse(
+_$_SessionResponse _$$_SessionResponseFromJson(Map<String, dynamic> json) =>
+    _$_SessionResponse(
       id: json['id'] as String?,
-      createAt: json['createAt'] as String?,
+      createdAt: json['createdAt'] as String?,
       userId: json['userId'] as String?,
       expire: json['expire'] as String?,
       provider: json['provider'] as String?,
@@ -36,11 +35,10 @@ _$_EmailSessionSuccessResponse _$$_EmailSessionSuccessResponseFromJson(
       current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_EmailSessionSuccessResponseToJson(
-        _$_EmailSessionSuccessResponse instance) =>
+Map<String, dynamic> _$$_SessionResponseToJson(_$_SessionResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'createAt': instance.createAt,
+      'createdAt': instance.createdAt,
       'userId': instance.userId,
       'expire': instance.expire,
       'provider': instance.provider,

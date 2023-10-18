@@ -73,17 +73,21 @@ class RegisterForm extends StatelessWidget {
                     l10n.fullNameFieldTitle,
                   ),
                 ),
-                TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  minLines: 1,
-                  maxLines: 5,
-                  textFieldBloc: registerFormBloc.address,
-                  keyboardType: TextInputType.streetAddress,
-                  autofillHints: const [AutofillHints.fullStreetAddress],
-                  textInputAction: TextInputAction.next,
-                  decoration: buildInputDecoration(
-                    l10n.addressFieldTitle,
-                    l10n.addressFieldTitle,
+                SizedBox(
+                  height: 200.h,
+                  child: TextFieldBlocBuilder(
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    maxLines: null,
+                    expands: true,
+                    textFieldBloc: registerFormBloc.address,
+                    keyboardType: TextInputType.streetAddress,
+                    textAlignVertical: TextAlignVertical.top,
+                    autofillHints: const [AutofillHints.fullStreetAddress],
+                    textInputAction: TextInputAction.next,
+                    decoration: buildInputDecoration(
+                      l10n.addressFieldTitle,
+                      l10n.addressFieldTitle,
+                    ),
                   ),
                 ),
                 TextFieldBlocBuilder(
@@ -170,7 +174,7 @@ class RegisterForm extends StatelessWidget {
           color: Colors.black87,
         ),
       ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 6.w),
+      contentPadding: EdgeInsets.all(6.w),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.r),
         borderSide: const BorderSide(
