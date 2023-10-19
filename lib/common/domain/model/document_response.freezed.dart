@@ -25,7 +25,7 @@ mixin _$DocumentResponse {
   String? get databaseId => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
-  String? get permissions => throw _privateConstructorUsedError;
+  List<String>? get permissions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $DocumentResponseCopyWith<$Res> {
       String? databaseId,
       String? createdAt,
       String? updatedAt,
-      String? permissions});
+      List<String>? permissions});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class _$DocumentResponseCopyWithImpl<$Res, $Val extends DocumentResponse>
       permissions: freezed == permissions
           ? _value.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -111,7 +111,7 @@ abstract class _$$_DocumentResponseCopyWith<$Res>
       String? databaseId,
       String? createdAt,
       String? updatedAt,
-      String? permissions});
+      List<String>? permissions});
 }
 
 /// @nodoc
@@ -154,9 +154,9 @@ class __$$_DocumentResponseCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
       permissions: freezed == permissions
-          ? _value.permissions
+          ? _value._permissions
           : permissions // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ));
   }
 }
@@ -170,7 +170,8 @@ class _$_DocumentResponse implements _DocumentResponse {
       this.databaseId,
       this.createdAt,
       this.updatedAt,
-      this.permissions});
+      final List<String>? permissions = const []})
+      : _permissions = permissions;
 
   factory _$_DocumentResponse.fromJson(Map<String, dynamic> json) =>
       _$$_DocumentResponseFromJson(json);
@@ -185,8 +186,16 @@ class _$_DocumentResponse implements _DocumentResponse {
   final String? createdAt;
   @override
   final String? updatedAt;
+  final List<String>? _permissions;
   @override
-  final String? permissions;
+  @JsonKey()
+  List<String>? get permissions {
+    final value = _permissions;
+    if (value == null) return null;
+    if (_permissions is EqualUnmodifiableListView) return _permissions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -207,14 +216,14 @@ class _$_DocumentResponse implements _DocumentResponse {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.permissions, permissions) ||
-                other.permissions == permissions));
+            const DeepCollectionEquality()
+                .equals(other._permissions, _permissions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, collectionId, databaseId,
-      createdAt, updatedAt, permissions);
+      createdAt, updatedAt, const DeepCollectionEquality().hash(_permissions));
 
   @JsonKey(ignore: true)
   @override
@@ -237,7 +246,7 @@ abstract class _DocumentResponse implements DocumentResponse {
       final String? databaseId,
       final String? createdAt,
       final String? updatedAt,
-      final String? permissions}) = _$_DocumentResponse;
+      final List<String>? permissions}) = _$_DocumentResponse;
 
   factory _DocumentResponse.fromJson(Map<String, dynamic> json) =
       _$_DocumentResponse.fromJson;
@@ -253,7 +262,7 @@ abstract class _DocumentResponse implements DocumentResponse {
   @override
   String? get updatedAt;
   @override
-  String? get permissions;
+  List<String>? get permissions;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentResponseCopyWith<_$_DocumentResponse> get copyWith =>

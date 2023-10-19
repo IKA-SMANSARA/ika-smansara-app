@@ -13,7 +13,7 @@ class DocumentResponse with _$DocumentResponse {
     String? databaseId,
     String? createdAt,
     String? updatedAt,
-    String? permissions,
+    @Default([]) List<String>? permissions,
   }) = _DocumentResponse;
 
   factory DocumentResponse.fromJson(Map<String, dynamic> json) =>

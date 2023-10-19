@@ -14,7 +14,10 @@ _$_DocumentResponseDTO _$$_DocumentResponseDTOFromJson(
       databaseId: json[r'$databaseId'] as String?,
       createdAt: json[r'$createdAt'] as String?,
       updatedAt: json[r'$updatedAt'] as String?,
-      permissions: json[r'$permissions'] as String?,
+      permissions: (json[r'$permissions'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_DocumentResponseDTOToJson(

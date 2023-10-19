@@ -54,7 +54,7 @@ class LoginFormBloc extends FormBloc<String, String> {
   @override
   FutureOr<void> onSubmitting() async {
     await _userLoginUseCase(email.value, password.value).then(
-      (response) async {
+      (response) {
         final authStatus = response.authStatus ?? false;
         if (authStatus) {
           emitSuccess();

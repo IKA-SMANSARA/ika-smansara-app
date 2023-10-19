@@ -68,6 +68,7 @@ abstract class ApiServices extends ChopperService {
   Future<Response> saveUserProfileDoc(
     @Path('databaseId') String databaseId,
     @Path('collectionId') String collectionId,
+    @Header('Cookie') String cookieValue,
     @Body() UserRegisterDocRequestDTO userRegisterDocRequestDTO,
   );
 

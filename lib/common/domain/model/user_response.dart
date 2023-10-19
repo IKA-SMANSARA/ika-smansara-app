@@ -14,7 +14,7 @@ class UserResponse with _$UserResponse {
     String? name,
     String? registration,
     @Default(false) bool status,
-    String? labels,
+    @Default([]) List<String>? labels,
     String? email,
     String? phone,
     String? accessedAt,

@@ -14,7 +14,7 @@ class UserResponseDTO with _$UserResponseDTO {
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'registration') String? registration,
     @JsonKey(name: 'status') @Default(false) bool status,
-    @JsonKey(name: 'labels') String? labels,
+    @JsonKey(name: 'labels') @Default([]) List<String>? labels,
     @JsonKey(name: 'email') String? email,
     @JsonKey(name: 'phone') String? phone,
     @JsonKey(name: 'accessedAt') String? accessedAt,

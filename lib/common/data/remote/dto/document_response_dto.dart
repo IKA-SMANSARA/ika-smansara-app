@@ -13,7 +13,7 @@ class DocumentResponseDTO with _$DocumentResponseDTO {
     @JsonKey(name: '\$databaseId') String? databaseId,
     @JsonKey(name: '\$createdAt') String? createdAt,
     @JsonKey(name: '\$updatedAt') String? updatedAt,
-    @JsonKey(name: '\$permissions') String? permissions,
+    @JsonKey(name: '\$permissions') @Default([]) List<String>? permissions,
   }) = _DocumentResponseDTO;
 
   factory DocumentResponseDTO.fromJson(Map<String, dynamic> json) =>

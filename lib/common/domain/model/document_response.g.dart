@@ -13,7 +13,10 @@ _$_DocumentResponse _$$_DocumentResponseFromJson(Map<String, dynamic> json) =>
       databaseId: json['databaseId'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      permissions: json['permissions'] as String?,
+      permissions: (json['permissions'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_DocumentResponseToJson(_$_DocumentResponse instance) =>

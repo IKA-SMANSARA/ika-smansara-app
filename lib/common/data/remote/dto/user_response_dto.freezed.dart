@@ -33,7 +33,7 @@ mixin _$UserResponseDTO {
   @JsonKey(name: 'status')
   bool get status => throw _privateConstructorUsedError;
   @JsonKey(name: 'labels')
-  String? get labels => throw _privateConstructorUsedError;
+  List<String>? get labels => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String? get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone')
@@ -60,7 +60,7 @@ abstract class $UserResponseDTOCopyWith<$Res> {
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'registration') String? registration,
       @JsonKey(name: 'status') bool status,
-      @JsonKey(name: 'labels') String? labels,
+      @JsonKey(name: 'labels') List<String>? labels,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phone,
       @JsonKey(name: 'accessedAt') String? accessedAt});
@@ -118,7 +118,7 @@ class _$UserResponseDTOCopyWithImpl<$Res, $Val extends UserResponseDTO>
       labels: freezed == labels
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -150,7 +150,7 @@ abstract class _$$_UserResponseDTOCopyWith<$Res>
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'registration') String? registration,
       @JsonKey(name: 'status') bool status,
-      @JsonKey(name: 'labels') String? labels,
+      @JsonKey(name: 'labels') List<String>? labels,
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'phone') String? phone,
       @JsonKey(name: 'accessedAt') String? accessedAt});
@@ -204,9 +204,9 @@ class __$$_UserResponseDTOCopyWithImpl<$Res>
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
       labels: freezed == labels
-          ? _value.labels
+          ? _value._labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -233,10 +233,11 @@ class _$_UserResponseDTO implements _UserResponseDTO {
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'registration') this.registration,
       @JsonKey(name: 'status') this.status = false,
-      @JsonKey(name: 'labels') this.labels,
+      @JsonKey(name: 'labels') final List<String>? labels = const [],
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'phone') this.phone,
-      @JsonKey(name: 'accessedAt') this.accessedAt});
+      @JsonKey(name: 'accessedAt') this.accessedAt})
+      : _labels = labels;
 
   factory _$_UserResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$$_UserResponseDTOFromJson(json);
@@ -259,9 +260,17 @@ class _$_UserResponseDTO implements _UserResponseDTO {
   @override
   @JsonKey(name: 'status')
   final bool status;
+  final List<String>? _labels;
   @override
   @JsonKey(name: 'labels')
-  final String? labels;
+  List<String>? get labels {
+    final value = _labels;
+    if (value == null) return null;
+    if (_labels is EqualUnmodifiableListView) return _labels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey(name: 'email')
   final String? email;
@@ -291,7 +300,7 @@ class _$_UserResponseDTO implements _UserResponseDTO {
             (identical(other.registration, registration) ||
                 other.registration == registration) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.labels, labels) || other.labels == labels) &&
+            const DeepCollectionEquality().equals(other._labels, _labels) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.accessedAt, accessedAt) ||
@@ -300,8 +309,18 @@ class _$_UserResponseDTO implements _UserResponseDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt, name,
-      registration, status, labels, email, phone, accessedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createdAt,
+      updatedAt,
+      name,
+      registration,
+      status,
+      const DeepCollectionEquality().hash(_labels),
+      email,
+      phone,
+      accessedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -325,7 +344,7 @@ abstract class _UserResponseDTO implements UserResponseDTO {
           @JsonKey(name: 'name') final String? name,
           @JsonKey(name: 'registration') final String? registration,
           @JsonKey(name: 'status') final bool status,
-          @JsonKey(name: 'labels') final String? labels,
+          @JsonKey(name: 'labels') final List<String>? labels,
           @JsonKey(name: 'email') final String? email,
           @JsonKey(name: 'phone') final String? phone,
           @JsonKey(name: 'accessedAt') final String? accessedAt}) =
@@ -354,7 +373,7 @@ abstract class _UserResponseDTO implements UserResponseDTO {
   bool get status;
   @override
   @JsonKey(name: 'labels')
-  String? get labels;
+  List<String>? get labels;
   @override
   @JsonKey(name: 'email')
   String? get email;

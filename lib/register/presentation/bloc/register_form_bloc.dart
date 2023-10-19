@@ -3,6 +3,8 @@
 import 'dart:async';
 
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:ika_smansara/common/di/injection.dart';
+import 'package:ika_smansara/register/register.dart';
 
 class RegisterFormBloc extends FormBloc<String, String> {
   RegisterFormBloc() {
@@ -131,10 +133,28 @@ class RegisterFormBloc extends FormBloc<String, String> {
     return super.close();
   }
 
+  final _saveUserProfileDocUseCase = getIt<SaveUserProfileDocUseCase>();
+
   @override
   FutureOr<void> onSubmitting() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await _saveUserProfileDocUseCase(
+      address: address.value,
+      email: email.value,
+      graduateYear: graduateYear.value,
+      isAlumnus: isAlumnus.value,
+      name: fullName.value,
+      password: confirmPassword.value,
+      phone: phone.value,
+    ).then(
+      (value) {
+        final status = value.registerStatus ?? false;
 
-    emitSuccess();
+        if (status) {
+          emitSuccess();
+        } else {
+          emitFailure(failureResponse: value.registerMessage);
+        }
+      },
+    );
   }
 }

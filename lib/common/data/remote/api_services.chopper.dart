@@ -84,11 +84,13 @@ class _$ApiServices extends ApiServices {
   Future<Response<dynamic>> saveUserProfileDoc(
     String databaseId,
     String collectionId,
+    String cookieValue,
     UserRegisterDocRequestDTO userRegisterDocRequestDTO,
   ) {
     final Uri $url = Uri.parse(
         'databases/${databaseId}/collections/${collectionId}/documents');
     final Map<String, String> $headers = {
+      'Cookie': cookieValue,
       'Accept': 'application/json',
       'X-Appwrite-Project': '6526850f77b1a0e42833',
       'Content-Type': 'application/json',

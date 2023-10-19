@@ -24,7 +24,7 @@ class RegisterForm extends StatelessWidget {
               CustomLoadingDialog.show(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('submitting'),
+                  content: Text('submitting data profile'),
                 ),
               );
             },

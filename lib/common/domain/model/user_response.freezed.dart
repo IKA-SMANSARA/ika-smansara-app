@@ -26,7 +26,7 @@ mixin _$UserResponse {
   String? get name => throw _privateConstructorUsedError;
   String? get registration => throw _privateConstructorUsedError;
   bool get status => throw _privateConstructorUsedError;
-  String? get labels => throw _privateConstructorUsedError;
+  List<String>? get labels => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get accessedAt => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $UserResponseCopyWith<$Res> {
       String? name,
       String? registration,
       bool status,
-      String? labels,
+      List<String>? labels,
       String? email,
       String? phone,
       String? accessedAt});
@@ -108,7 +108,7 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       labels: freezed == labels
           ? _value.labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ abstract class _$$_UserResponseCopyWith<$Res>
       String? name,
       String? registration,
       bool status,
-      String? labels,
+      List<String>? labels,
       String? email,
       String? phone,
       String? accessedAt});
@@ -194,9 +194,9 @@ class __$$_UserResponseCopyWithImpl<$Res>
           : status // ignore: cast_nullable_to_non_nullable
               as bool,
       labels: freezed == labels
-          ? _value.labels
+          ? _value._labels
           : labels // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -223,10 +223,11 @@ class _$_UserResponse implements _UserResponse {
       this.name,
       this.registration,
       this.status = false,
-      this.labels,
+      final List<String>? labels = const [],
       this.email,
       this.phone,
-      this.accessedAt});
+      this.accessedAt})
+      : _labels = labels;
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_UserResponseFromJson(json);
@@ -244,8 +245,17 @@ class _$_UserResponse implements _UserResponse {
   @override
   @JsonKey()
   final bool status;
+  final List<String>? _labels;
   @override
-  final String? labels;
+  @JsonKey()
+  List<String>? get labels {
+    final value = _labels;
+    if (value == null) return null;
+    if (_labels is EqualUnmodifiableListView) return _labels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? email;
   @override
@@ -272,7 +282,7 @@ class _$_UserResponse implements _UserResponse {
             (identical(other.registration, registration) ||
                 other.registration == registration) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.labels, labels) || other.labels == labels) &&
+            const DeepCollectionEquality().equals(other._labels, _labels) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.accessedAt, accessedAt) ||
@@ -281,8 +291,18 @@ class _$_UserResponse implements _UserResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createdAt, updatedAt, name,
-      registration, status, labels, email, phone, accessedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createdAt,
+      updatedAt,
+      name,
+      registration,
+      status,
+      const DeepCollectionEquality().hash(_labels),
+      email,
+      phone,
+      accessedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -306,7 +326,7 @@ abstract class _UserResponse implements UserResponse {
       final String? name,
       final String? registration,
       final bool status,
-      final String? labels,
+      final List<String>? labels,
       final String? email,
       final String? phone,
       final String? accessedAt}) = _$_UserResponse;
@@ -327,7 +347,7 @@ abstract class _UserResponse implements UserResponse {
   @override
   bool get status;
   @override
-  String? get labels;
+  List<String>? get labels;
   @override
   String? get email;
   @override

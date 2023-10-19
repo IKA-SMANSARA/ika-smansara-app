@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:hive/hive.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/common/data/mapper/document_mapper.dart';
 import 'package:ika_smansara/register/data/mapper/register_mapper.dart';
@@ -15,9 +16,14 @@ class RegisterRepositoryImpl implements RegisterRepository {
   Future<Either<ErrorResponse, DocumentResponse>> saveUserProfileDoc(
     UserRegisterDocRequest userRegisterDocRequest,
   ) async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user-cookie');
+    final cookie = await lazyBox.get('cookie');
+
     final responseSaveUserProfileDoc = await _apiServices.saveUserProfileDoc(
-      Constants.databaseId,
-      Constants.collectionId,
+      Constants.ikaSmansaraDatabaseId,
+      Constants.ikaSmansaraUserProfileCollectionId,
+      cookie.toString(),
       userRegisterDocRequest.toUserRegisterDocRequestDTO(),
     );
 

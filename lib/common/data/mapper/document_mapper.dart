@@ -6,7 +6,7 @@ extension DocumentResponseDTOExtension on DocumentResponseDTO {
         createdAt: createdAt,
         databaseId: databaseId,
         id: id,
-        permissions: permissions,
+        permissions: permissions?.toList(),
         updatedAt: updatedAt,
       );
 }

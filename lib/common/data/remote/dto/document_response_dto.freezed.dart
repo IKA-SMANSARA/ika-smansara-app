@@ -31,7 +31,7 @@ mixin _$DocumentResponseDTO {
   @JsonKey(name: '\$updatedAt')
   String? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: '\$permissions')
-  String? get permissions => throw _privateConstructorUsedError;
+  List<String>? get permissions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $DocumentResponseDTOCopyWith<$Res> {
       @JsonKey(name: '\$databaseId') String? databaseId,
       @JsonKey(name: '\$createdAt') String? createdAt,
       @JsonKey(name: '\$updatedAt') String? updatedAt,
-      @JsonKey(name: '\$permissions') String? permissions});
+      @JsonKey(name: '\$permissions') List<String>? permissions});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$DocumentResponseDTOCopyWithImpl<$Res, $Val extends DocumentResponseDTO>
       permissions: freezed == permissions
           ? _value.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -117,7 +117,7 @@ abstract class _$$_DocumentResponseDTOCopyWith<$Res>
       @JsonKey(name: '\$databaseId') String? databaseId,
       @JsonKey(name: '\$createdAt') String? createdAt,
       @JsonKey(name: '\$updatedAt') String? updatedAt,
-      @JsonKey(name: '\$permissions') String? permissions});
+      @JsonKey(name: '\$permissions') List<String>? permissions});
 }
 
 /// @nodoc
@@ -160,9 +160,9 @@ class __$$_DocumentResponseDTOCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
       permissions: freezed == permissions
-          ? _value.permissions
+          ? _value._permissions
           : permissions // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ));
   }
 }
@@ -176,7 +176,9 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
       @JsonKey(name: '\$databaseId') this.databaseId,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
-      @JsonKey(name: '\$permissions') this.permissions});
+      @JsonKey(name: '\$permissions')
+      final List<String>? permissions = const []})
+      : _permissions = permissions;
 
   factory _$_DocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$$_DocumentResponseDTOFromJson(json);
@@ -196,9 +198,16 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
   @override
   @JsonKey(name: '\$updatedAt')
   final String? updatedAt;
+  final List<String>? _permissions;
   @override
   @JsonKey(name: '\$permissions')
-  final String? permissions;
+  List<String>? get permissions {
+    final value = _permissions;
+    if (value == null) return null;
+    if (_permissions is EqualUnmodifiableListView) return _permissions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -219,14 +228,14 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.permissions, permissions) ||
-                other.permissions == permissions));
+            const DeepCollectionEquality()
+                .equals(other._permissions, _permissions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, collectionId, databaseId,
-      createdAt, updatedAt, permissions);
+      createdAt, updatedAt, const DeepCollectionEquality().hash(_permissions));
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +259,7 @@ abstract class _DocumentResponseDTO implements DocumentResponseDTO {
           @JsonKey(name: '\$databaseId') final String? databaseId,
           @JsonKey(name: '\$createdAt') final String? createdAt,
           @JsonKey(name: '\$updatedAt') final String? updatedAt,
-          @JsonKey(name: '\$permissions') final String? permissions}) =
+          @JsonKey(name: '\$permissions') final List<String>? permissions}) =
       _$_DocumentResponseDTO;
 
   factory _DocumentResponseDTO.fromJson(Map<String, dynamic> json) =
@@ -273,7 +282,7 @@ abstract class _DocumentResponseDTO implements DocumentResponseDTO {
   String? get updatedAt;
   @override
   @JsonKey(name: '\$permissions')
-  String? get permissions;
+  List<String>? get permissions;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentResponseDTOCopyWith<_$_DocumentResponseDTO> get copyWith =>
