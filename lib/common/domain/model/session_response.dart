@@ -1,14 +1,15 @@
+// ignore_for_file: invalid_annotation_target, use_raw_strings
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'email_session_response.freezed.dart';
-
-part 'email_session_response.g.dart';
+part 'session_response.freezed.dart';
+part 'session_response.g.dart';
 
 @freezed
-class EmailSessionResponse with _$EmailSessionResponse {
-  const factory EmailSessionResponse({
+class SessionResponse with _$SessionResponse {
+  factory SessionResponse({
     String? id,
-    String? createAt,
+    String? createdAt,
     String? userId,
     String? expire,
     String? provider,
@@ -31,13 +32,9 @@ class EmailSessionResponse with _$EmailSessionResponse {
     String? deviceModel,
     String? countryCode,
     String? countryName,
-    String? current,
-    String? message,
-    int? code,
-    String? type,
-    String? version,
-  }) = _EmailSessionResponse;
+    bool? current,
+  }) = _SessionResponse;
 
-  factory EmailSessionResponse.fromJson(Map<String, dynamic> json) =>
-      _$EmailSessionResponseFromJson(json);
+  factory SessionResponse.fromJson(Map<String, dynamic> json) =>
+      _$SessionResponseFromJson(json);
 }

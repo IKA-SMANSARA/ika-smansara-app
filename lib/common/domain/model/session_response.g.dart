@@ -1,16 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_session_response.dart';
+part of 'session_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
-        Map<String, dynamic> json) =>
-    _$_EmailSessionResponse(
+_$_SessionResponse _$$_SessionResponseFromJson(Map<String, dynamic> json) =>
+    _$_SessionResponse(
       id: json['id'] as String?,
-      createAt: json['createAt'] as String?,
+      createdAt: json['createdAt'] as String?,
       userId: json['userId'] as String?,
       expire: json['expire'] as String?,
       provider: json['provider'] as String?,
@@ -33,18 +32,13 @@ _$_EmailSessionResponse _$$_EmailSessionResponseFromJson(
       deviceModel: json['deviceModel'] as String?,
       countryCode: json['countryCode'] as String?,
       countryName: json['countryName'] as String?,
-      current: json['current'] as String?,
-      message: json['message'] as String?,
-      code: json['code'] as int?,
-      type: json['type'] as String?,
-      version: json['version'] as String?,
+      current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_EmailSessionResponseToJson(
-        _$_EmailSessionResponse instance) =>
+Map<String, dynamic> _$$_SessionResponseToJson(_$_SessionResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'createAt': instance.createAt,
+      'createdAt': instance.createdAt,
       'userId': instance.userId,
       'expire': instance.expire,
       'provider': instance.provider,
@@ -68,8 +62,4 @@ Map<String, dynamic> _$$_EmailSessionResponseToJson(
       'countryCode': instance.countryCode,
       'countryName': instance.countryName,
       'current': instance.current,
-      'message': instance.message,
-      'code': instance.code,
-      'type': instance.type,
-      'version': instance.version,
     };

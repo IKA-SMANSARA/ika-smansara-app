@@ -13,73 +13,70 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return BlocProvider(
-      create: (_) => LoginFormBloc(),
-      child: Builder(
-        builder: (context) {
-          final loginFormBloc = context.read<LoginFormBloc>();
+    return Builder(
+      builder: (context) {
+        final loginFormBloc = context.read<LoginFormBloc>();
 
-          return FormBlocListener<LoginFormBloc, String, String>(
-            onSubmitting: (context, state) {
-              CustomLoadingDialog.show(context);
-            },
-            onSubmissionFailed: (context, state) {
-              CustomLoadingDialog.hide(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('login failed'),
-                ),
-              );
-            },
-            onSuccess: (context, state) {
-              CustomLoadingDialog.hide(context);
-              context.go(Routes.home);
-            },
-            onFailure: (context, state) {
-              CustomLoadingDialog.hide(context);
+        return FormBlocListener<LoginFormBloc, String, String>(
+          onSubmitting: (context, state) {
+            CustomLoadingDialog.show(context);
+          },
+          onSubmissionFailed: (context, state) {
+            CustomLoadingDialog.hide(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('login failed'),
+              ),
+            );
+          },
+          onSuccess: (context, state) {
+            CustomLoadingDialog.hide(context);
+            context.go(Routes.home);
+          },
+          onFailure: (context, state) {
+            CustomLoadingDialog.hide(context);
 
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.failureResponse ?? 'Failure!'),
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.failureResponse ?? 'Failure!'),
+              ),
+            );
+          },
+          child: Column(
+            children: [
+              TextFieldBlocBuilder(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                textFieldBloc: loginFormBloc.email,
+                keyboardType: TextInputType.emailAddress,
+                autofillHints: const [AutofillHints.email],
+                textInputAction: TextInputAction.next,
+                decoration: buildInputDecoration(
+                  l10n.emailFieldTitle,
+                  l10n.emailFieldTitle,
                 ),
-              );
-            },
-            child: Column(
-              children: [
-                TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  textFieldBloc: loginFormBloc.email,
-                  keyboardType: TextInputType.emailAddress,
-                  autofillHints: const [AutofillHints.email],
-                  textInputAction: TextInputAction.next,
-                  decoration: buildInputDecoration(
-                    l10n.emailFieldTitle,
-                    l10n.emailFieldTitle,
-                  ),
+              ),
+              TextFieldBlocBuilder(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                textFieldBloc: loginFormBloc.password,
+                keyboardType: TextInputType.visiblePassword,
+                suffixButton: SuffixButton.obscureText,
+                autofillHints: const [AutofillHints.password],
+                textInputAction: TextInputAction.next,
+                decoration: buildInputDecoration(
+                  l10n.passwordFieldTitle,
+                  l10n.passwordFieldTitle,
                 ),
-                TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  textFieldBloc: loginFormBloc.password,
-                  keyboardType: TextInputType.visiblePassword,
-                  suffixButton: SuffixButton.obscureText,
-                  autofillHints: const [AutofillHints.password],
-                  textInputAction: TextInputAction.next,
-                  decoration: buildInputDecoration(
-                    l10n.passwordFieldTitle,
-                    l10n.passwordFieldTitle,
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                child: LoginButton(
+                  onSubmitted: loginFormBloc.submit,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  child: LoginButton(
-                    onSubmitted: loginFormBloc.submit,
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

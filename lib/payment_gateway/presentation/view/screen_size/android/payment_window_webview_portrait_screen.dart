@@ -4,6 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
 import 'package:ika_smansara/common/utils/constants.dart';
+import 'package:ika_smansara/common/utils/extension.dart';
 import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/transaction_bloc.dart';
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
@@ -30,10 +31,11 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                 return const CircularProgressIndicator();
               }
               if (state is Loading) {
+                final donationRandomID = getRandomOrderIdNumber('donationID');
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
                         amountValue,
-                        'ORDER-${DateTime.now().millisecondsSinceEpoch}',
+                        'ORDER-$donationRandomID',
                       ),
                     );
                 return const CircularProgressIndicator();
@@ -57,7 +59,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                   ),
                   shouldOverrideUrlLoading:
                       (controller, navigationAction) async {
-                        Constants.logger.w(navigationAction.request.url);
+                    Constants.logger.w(navigationAction.request.url);
                     if (navigationAction.request.url?.host == 'example.com') {
                       context.go(Routes.paymentGateway);
                       return NavigationActionPolicy.CANCEL;

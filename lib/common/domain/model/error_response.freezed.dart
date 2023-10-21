@@ -21,7 +21,7 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ErrorResponse {
   String? get message => throw _privateConstructorUsedError;
-  String? get code => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   String? get version => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $ErrorResponseCopyWith<$Res> {
           ErrorResponse value, $Res Function(ErrorResponse) then) =
       _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
   @useResult
-  $Res call({String? message, String? code, String? type, String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_ErrorResponseCopyWith<$Res>
       __$$_ErrorResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, String? code, String? type, String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -138,7 +138,7 @@ class _$_ErrorResponse implements _ErrorResponse {
   @override
   final String? message;
   @override
-  final String? code;
+  final int? code;
   @override
   final String? type;
   @override
@@ -181,7 +181,7 @@ class _$_ErrorResponse implements _ErrorResponse {
 abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
       {final String? message,
-      final String? code,
+      final int? code,
       final String? type,
       final String? version}) = _$_ErrorResponse;
 
@@ -191,7 +191,7 @@ abstract class _ErrorResponse implements ErrorResponse {
   @override
   String? get message;
   @override
-  String? get code;
+  int? get code;
   @override
   String? get type;
   @override

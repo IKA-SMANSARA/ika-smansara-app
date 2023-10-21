@@ -10,7 +10,7 @@ part 'error_response_dto.g.dart';
 class ErrorResponseDTO with _$ErrorResponseDTO {
   const factory ErrorResponseDTO({
     @JsonKey(name: 'message') String? message,
-    @JsonKey(name: 'code') String? code,
+    @JsonKey(name: 'code') int? code,
     @JsonKey(name: 'type') String? type,
     @JsonKey(name: 'version') String? version,
   }) = _ErrorResponseDTO;

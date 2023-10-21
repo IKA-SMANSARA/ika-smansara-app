@@ -2,15 +2,14 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'email_session_response_dto.freezed.dart';
-
-part 'email_session_response_dto.g.dart';
+part 'session_response_dto.freezed.dart';
+part 'session_response_dto.g.dart';
 
 @freezed
-class EmailSessionResponseDTO with _$EmailSessionResponseDTO {
-  const factory EmailSessionResponseDTO({
+class SessionResponseDTO with _$SessionResponseDTO {
+  factory SessionResponseDTO({
     @JsonKey(name: '\$id') String? id,
-    @JsonKey(name: '\$createdAt') String? createAt,
+    @JsonKey(name: '\$createdAt') String? createdAt,
     @JsonKey(name: 'userId') String? userId,
     @JsonKey(name: 'expire') String? expire,
     @JsonKey(name: 'provider') String? provider,
@@ -33,13 +32,9 @@ class EmailSessionResponseDTO with _$EmailSessionResponseDTO {
     @JsonKey(name: 'deviceModel') String? deviceModel,
     @JsonKey(name: 'countryCode') String? countryCode,
     @JsonKey(name: 'countryName') String? countryName,
-    @JsonKey(name: 'current') String? current,
-    @JsonKey(name: 'message') String? message,
-    @JsonKey(name: 'code') int? code,
-    @JsonKey(name: 'type') String? type,
-    @JsonKey(name: 'version') String? version,
-  }) = _EmailSessionResponseDTO;
+    @JsonKey(name: 'current') bool? current,
+  }) = _SessionResponseDTO;
 
-  factory EmailSessionResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$EmailSessionResponseDTOFromJson(json);
+  factory SessionResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$SessionResponseDTOFromJson(json);
 }

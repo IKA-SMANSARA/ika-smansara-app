@@ -9,7 +9,7 @@ part of 'error_response_dto.dart';
 _$_ErrorResponseDTO _$$_ErrorResponseDTOFromJson(Map<String, dynamic> json) =>
     _$_ErrorResponseDTO(
       message: json['message'] as String?,
-      code: json['code'] as String?,
+      code: json['code'] as int?,
       type: json['type'] as String?,
       version: json['version'] as String?,
     );
