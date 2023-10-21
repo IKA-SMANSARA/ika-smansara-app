@@ -16,37 +16,41 @@ import 'package:ika_smansara/auth/data/repository/auth_repository_impl.dart'
     as _i7;
 import 'package:ika_smansara/auth/domain/use_case/check_user_session_status_use_case/check_user_session_status_use_case.dart'
     as _i8;
+import 'package:ika_smansara/auth/domain/use_case/get_id_email_session_from_local_use_case/get_id_email_session_from_local_use_case.dart'
+    as _i12;
 import 'package:ika_smansara/auth/domain/use_case/save_id_email_session_to_local_use_case/save_id_email_session_to_local_use_case.dart'
-    as _i16;
+    as _i17;
 import 'package:ika_smansara/auth/domain/use_case/user_login_use_case/user_login_use_case.dart'
-    as _i19;
-import 'package:ika_smansara/auth/domain/use_case/user_register_use_case/user_register_use_case.dart'
     as _i20;
+import 'package:ika_smansara/auth/domain/use_case/user_logout_use_case/user_logout_use_case.dart'
+    as _i21;
+import 'package:ika_smansara/auth/domain/use_case/user_register_use_case/user_register_use_case.dart'
+    as _i22;
 import 'package:ika_smansara/common/common.dart' as _i4;
 import 'package:ika_smansara/common/di/api_interface_network_module.dart'
-    as _i21;
-import 'package:ika_smansara/common/di/network_module.dart' as _i22;
+    as _i23;
+import 'package:ika_smansara/common/di/network_module.dart' as _i24;
 import 'package:ika_smansara/counter/counter.dart' as _i9;
 import 'package:ika_smansara/counter/data/repository/counter_repository_impl.dart'
     as _i10;
 import 'package:ika_smansara/counter/domain/use_case/get_counter_data_use_case/get_counter_data_use_case.dart'
     as _i11;
 import 'package:ika_smansara/counter/domain/use_case/update_counter_data_use_case/update_counter_data_use_case.dart'
-    as _i18;
+    as _i19;
 import 'package:ika_smansara/payment_gateway/data/repository/payment_gateway_repository_impl.dart'
-    as _i12;
+    as _i13;
 import 'package:ika_smansara/payment_gateway/di/api_interface_payment_gateway_network_module.dart'
-    as _i23;
+    as _i25;
 import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
-    as _i24;
+    as _i26;
 import 'package:ika_smansara/payment_gateway/domain/use_case/request_acquiring_transaction_token_use_case/request_acquiring_transaction_token_use_case.dart'
-    as _i15;
+    as _i16;
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart' as _i5;
 import 'package:ika_smansara/register/data/repository/register_repository_impl.dart'
-    as _i14;
+    as _i15;
 import 'package:ika_smansara/register/domain/use_case/save_user_profile_doc_use_case/save_user_profile_doc_use_case.dart'
-    as _i17;
-import 'package:ika_smansara/register/register.dart' as _i13;
+    as _i18;
+import 'package:ika_smansara/register/register.dart' as _i14;
 import 'package:injectable/injectable.dart' as _i2;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -94,34 +98,38 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i10.CounterRepositoryImpl(gh<_i4.ApiServices>()));
     gh.factory<_i11.GetCounterDataUseCase>(
         () => _i11.GetCounterDataUseCase(gh<_i9.CounterRepository>()));
+    gh.factory<_i12.GetIdEmailSessionFromLocalUseCase>(
+        () => _i12.GetIdEmailSessionFromLocalUseCase(gh<_i6.AuthRepository>()));
     gh.factory<_i5.PaymentGatewayRepository>(() =>
-        _i12.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()));
-    gh.factory<_i13.RegisterRepository>(
-        () => _i14.RegisterRepositoryImpl(gh<_i4.ApiServices>()));
-    gh.factory<_i15.RequestAcquiringTransactionTokenUseCase>(() =>
-        _i15.RequestAcquiringTransactionTokenUseCase(
+        _i13.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()));
+    gh.factory<_i14.RegisterRepository>(
+        () => _i15.RegisterRepositoryImpl(gh<_i4.ApiServices>()));
+    gh.factory<_i16.RequestAcquiringTransactionTokenUseCase>(() =>
+        _i16.RequestAcquiringTransactionTokenUseCase(
             gh<_i5.PaymentGatewayRepository>()));
-    gh.factory<_i16.SaveIdEmailSessionToLocalUseCase>(
-        () => _i16.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()));
-    gh.factory<_i17.SaveUserProfileDocUseCase>(
-        () => _i17.SaveUserProfileDocUseCase(gh<_i13.RegisterRepository>()));
-    gh.factory<_i18.UpdateCounterDataUseCase>(
-        () => _i18.UpdateCounterDataUseCase(gh<_i9.CounterRepository>()));
-    gh.factory<_i19.UserLoginUseCase>(() => _i19.UserLoginUseCase(
+    gh.factory<_i17.SaveIdEmailSessionToLocalUseCase>(
+        () => _i17.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()));
+    gh.factory<_i18.SaveUserProfileDocUseCase>(
+        () => _i18.SaveUserProfileDocUseCase(gh<_i14.RegisterRepository>()));
+    gh.factory<_i19.UpdateCounterDataUseCase>(
+        () => _i19.UpdateCounterDataUseCase(gh<_i9.CounterRepository>()));
+    gh.factory<_i20.UserLoginUseCase>(() => _i20.UserLoginUseCase(
           gh<_i6.AuthRepository>(),
           gh<_i6.SaveIdEmailSessionToLocalUseCase>(),
         ));
-    gh.factory<_i20.UserRegisterUseCase>(
-        () => _i20.UserRegisterUseCase(gh<_i6.AuthRepository>()));
+    gh.factory<_i21.UserLogoutUseCase>(
+        () => _i21.UserLogoutUseCase(gh<_i6.AuthRepository>()));
+    gh.factory<_i22.UserRegisterUseCase>(
+        () => _i22.UserRegisterUseCase(gh<_i6.AuthRepository>()));
     return this;
   }
 }
 
-class _$ApiInterfaceNetworkModule extends _i21.ApiInterfaceNetworkModule {}
+class _$ApiInterfaceNetworkModule extends _i23.ApiInterfaceNetworkModule {}
 
-class _$NetworkModule extends _i22.NetworkModule {}
+class _$NetworkModule extends _i24.NetworkModule {}
 
 class _$ApiInterfacePaymentGatewayNetworkModule
-    extends _i23.ApiInterfacePaymentGatewayNetworkModule {}
+    extends _i25.ApiInterfacePaymentGatewayNetworkModule {}
 
-class _$PaymentGatewayNetworkModule extends _i24.PaymentGatewayNetworkModule {}
+class _$PaymentGatewayNetworkModule extends _i26.PaymentGatewayNetworkModule {}

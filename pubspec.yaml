@@ -7,7 +7,6 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  appwrite: ^11.0.0
   bloc: ^8.1.2
   bloc_concurrency: ^0.2.2
   cached_network_image: ^3.2.3
@@ -75,7 +74,7 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: "launcher_icon"
-  image_path: "assets/images/icon.png"
+  image_path: "assets/images/logo_icon_ika.png"
   min_sdk_android: 21
 
 flutter:

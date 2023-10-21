@@ -60,6 +60,28 @@ class _$ApiServices extends ApiServices {
   }
 
   @override
+  Future<Response<dynamic>> deleteEmailSession(
+    String sessionId,
+    String cookieValue,
+  ) {
+    final Uri $url = Uri.parse('account/sessions/${sessionId}');
+    final Map<String, String> $headers = {
+      'Cookie': cookieValue,
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
+      'Content-Type': 'application/json',
+      'X-Appwrite-Response-Format': '1.4.0',
+    };
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> userRegister(
       EmailRegisterRequestDTO emailRegisterRequestDTO) {
     final Uri $url = Uri.parse('account');

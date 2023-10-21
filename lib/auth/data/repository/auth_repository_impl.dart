@@ -83,6 +83,30 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<Either<ErrorResponse, int>> deleteEmailSession(
+    String? sessionId,
+  ) async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user-cookie');
+    final cookie = await lazyBox.get('cookie');
+
+    final responseDeleteEmailSession = await _apiServices.deleteEmailSession(
+      sessionId ?? '',
+      cookie.toString(),
+    );
+
+    if (responseDeleteEmailSession.isSuccessful) {
+      return Right(responseDeleteEmailSession.statusCode);
+    } else {
+      return Left(
+        ErrorResponseDTO.fromJson(
+          responseDeleteEmailSession.error! as Map<String, dynamic>,
+        ).toErrorResponse(),
+      );
+    }
+  }
+
+  @override
   Future<SessionId> readIdEmailSessionFromLocal() async {
     // ignore: inference_failure_on_function_invocation
     final lazyBox = await Hive.openLazyBox(Constants.sessionUserIdBoxName);

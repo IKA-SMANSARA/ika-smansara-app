@@ -20,4 +20,8 @@ abstract class AuthRepository {
   Future<Either<ErrorResponse, UserResponse>> userRegister(
     EmailRegisterRequest emailRegisterRequest,
   );
+
+  Future<Either<ErrorResponse, int>> deleteEmailSession(
+    String? sessionId,
+  );
 }

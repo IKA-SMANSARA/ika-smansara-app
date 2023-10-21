@@ -41,6 +41,21 @@ abstract class ApiServices extends ChopperService {
     @Body() EmailSessionRequestDTO emailSessionRequestDTO,
   );
 
+  // delete email session / logout
+  @Delete(
+    path: 'account/sessions/{sessionId}',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+    },
+  )
+  Future<Response> deleteEmailSession(
+    @Path('sessionId') String sessionId,
+    @Header('Cookie') String cookieValue,
+  );
+
   // register user
   @Post(
     path: 'account',
