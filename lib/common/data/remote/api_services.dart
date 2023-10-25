@@ -11,6 +11,19 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+  // get account
+  @Get(
+    path: 'account',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+    },
+  )
+  Future<Response> getAccount(
+    @Header('Cookie') String cookieValue,
+  );
 
   // get email session
   @Get(

@@ -7,10 +7,14 @@ class UserLoginUseCase {
   UserLoginUseCase(
     this._authRepository,
     this._saveIdEmailSessionToLocalUseCase,
+    this._getUserAccountDetailUseCase,
+    this._saveLabelUserToLocalUseCase,
   );
 
   final AuthRepository _authRepository;
   final SaveIdEmailSessionToLocalUseCase _saveIdEmailSessionToLocalUseCase;
+  final GetUserAccountDetailUseCase _getUserAccountDetailUseCase;
+  final SaveLabelUserToLocalUseCase _saveLabelUserToLocalUseCase;
 
   Future<AuthStatus> call(
     String email,
@@ -31,12 +35,29 @@ class UserLoginUseCase {
           authMessage: responseFailure.message ?? Constants.blankString,
         );
       },
-      (responseSuccess) async {
-        await _saveIdEmailSessionToLocalUseCase(
-          responseSuccess.id ?? Constants.blankString,
-        );
+      (responseSuccess) {
+        return _getUserAccountDetailUseCase().then(
+          (value) {
+            return value.fold(
+              (failure) {
+                return AuthStatus(
+                  authMessage: failure.message ?? Constants.blankString,
+                );
+              },
+              (success) async {
+                await _saveIdEmailSessionToLocalUseCase(
+                  responseSuccess.id ?? Constants.blankString,
+                );
 
-        return const AuthStatus(authStatus: true);
+                await _saveLabelUserToLocalUseCase(
+                  success.labels?.first ?? Constants.blankString,
+                );
+
+                return const AuthStatus(authStatus: true);
+              },
+            );
+          },
+        );
       },
     );
   }

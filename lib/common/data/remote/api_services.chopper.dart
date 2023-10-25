@@ -17,6 +17,25 @@ class _$ApiServices extends ApiServices {
   final definitionType = ApiServices;
 
   @override
+  Future<Response<dynamic>> getAccount(String cookieValue) {
+    final Uri $url = Uri.parse('account');
+    final Map<String, String> $headers = {
+      'Cookie': cookieValue,
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
+      'Content-Type': 'application/json',
+      'X-Appwrite-Response-Format': '1.4.0',
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> getEmailSession(
     String sessionId,
     String cookieValue,

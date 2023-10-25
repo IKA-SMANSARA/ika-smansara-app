@@ -24,4 +24,10 @@ abstract class AuthRepository {
   Future<Either<ErrorResponse, int>> deleteEmailSession(
     String? sessionId,
   );
+
+  Future<void> saveUserLabelToLocal(String? userLabel);
+
+  Future<UserLabel> readUserLabelFromLocal();
+
+  Future<Either<ErrorResponse, UserResponse>> getUserAccountDetail();
 }
