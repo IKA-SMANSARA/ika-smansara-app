@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 
-class AccountUserProfile extends StatelessWidget {
-  const AccountUserProfile({super.key});
+class AccountAdminProfile extends StatelessWidget {
+  const AccountAdminProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,14 @@ class AccountUserProfile extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
+              ),
+            ),
+            Text(
+              'Admin',
+              style: GoogleFonts.inter(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
               ),
             ),
           ],

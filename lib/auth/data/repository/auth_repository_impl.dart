@@ -55,6 +55,16 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> saveUserLabelToLocal(
+    String? userLabel,
+  ) async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user_label');
+    final saveUserLabel = lazyBox.put('user_label', userLabel);
+    return saveUserLabel;
+  }
+
+  @override
   Future<Either<ErrorResponse, SessionResponse>> getEmailSession(
     String? sessionId,
   ) async {
@@ -116,6 +126,15 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<UserLabel> readUserLabelFromLocal() async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user_label');
+    final userLabel = await lazyBox.get('user_label');
+
+    return UserLabel(userLabel: userLabel.toString());
+  }
+
+  @override
   Future<Either<ErrorResponse, UserResponse>> userRegister(
     EmailRegisterRequest emailRegisterRequest,
   ) async {
@@ -133,6 +152,28 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(
         ErrorResponseDTO.fromJson(
           responseUserRegister.error! as Map<String, dynamic>,
+        ).toErrorResponse(),
+      );
+    }
+  }
+
+  @override
+  Future<Either<ErrorResponse, UserResponse>> getUserAccountDetail() async {
+    // ignore: inference_failure_on_function_invocation
+    final lazyBox = await Hive.openLazyBox('user-cookie');
+    final cookie = await lazyBox.get('cookie');
+    final responseAccount = await _apiServices.getAccount(cookie.toString());
+
+    if (responseAccount.isSuccessful) {
+      return Right(
+        UserResponseDTO.fromJson(
+          responseAccount.body as Map<String, dynamic>,
+        ).toUserResponse(),
+      );
+    } else {
+      return Left(
+        ErrorResponseDTO.fromJson(
+          responseAccount.error! as Map<String, dynamic>,
         ).toErrorResponse(),
       );
     }
