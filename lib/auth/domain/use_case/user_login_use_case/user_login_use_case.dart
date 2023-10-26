@@ -49,9 +49,15 @@ class UserLoginUseCase {
                   responseSuccess.id ?? Constants.blankString,
                 );
 
-                await _saveLabelUserToLocalUseCase(
-                  success.labels?.first ?? Constants.blankString,
-                );
+                if (success.labels?.isNotEmpty != null) {
+                  await _saveLabelUserToLocalUseCase(
+                    success.labels?.firstOrNull ?? Constants.blankString,
+                  );
+                } else {
+                  await _saveLabelUserToLocalUseCase(
+                    Constants.blankString,
+                  );
+                }
 
                 return const AuthStatus(authStatus: true);
               },
