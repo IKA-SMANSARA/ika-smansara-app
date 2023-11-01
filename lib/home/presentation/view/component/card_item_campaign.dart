@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
@@ -63,44 +64,36 @@ class CardItemCampaign extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 8.h,
-                          bottom: 4.h,
+                      Gap(8.h),
+                      Text(
+                        l10n.collectedTitle,
+                        style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 10.sp,
                         ),
-                        child: Text(
-                          l10n.collectedTitle,
-                          style: GoogleFonts.inter(
-                            color: Colors.black,
-                            fontSize: 10.sp,
+                      ),
+                      Gap(4.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Rp.$campaignDonationCollected',
+                            style: GoogleFonts.inter(
+                              color: Colors.blue,
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 4.h,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Rp.$campaignDonationCollected',
-                              style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
+                          Text(
+                            campaignDuration ?? '',
+                            style: GoogleFonts.inter(
+                              color: Colors.black,
+                              fontSize: 10.sp,
                             ),
-                            Text(
-                              campaignDuration ?? '',
-                              style: GoogleFonts.inter(
-                                color: Colors.black,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                      Gap(4.h),
                       LinearProgressIndicator(
                         value: campaignProgressIndicator,
                       ),

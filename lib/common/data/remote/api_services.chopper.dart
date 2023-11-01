@@ -17,6 +17,48 @@ class _$ApiServices extends ApiServices {
   final definitionType = ApiServices;
 
   @override
+  Future<Response<dynamic>> getCategories() {
+    final Uri $url = Uri.parse(
+        'database/652bc7f26602bddc2f4a/collections/6533be7558e38f4d949d/documents');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
+      'Content-Type': 'application/json',
+      'X-Appwrite-Response-Format': '1.4.0',
+      'X-Appwrite-Key':
+          '02bc64055f82bc9b5f3a98dd5403be59234729bdf9efe3d9bb8210b2c0d133c76347938a33ae6e19c79025b8fb6de7fa843fc2037f5675f8ac7abc2322daec06d069f0b7cd8a18cb6bf04e1c47bfc219fc5cd8b841d88f314bc982f5ad0544c29887e74b1fb7031e332acb3d88f4ae2351eeae3682629bfc468cff41e6290610',
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> getCarousel() {
+    final Uri $url = Uri.parse(
+        'database/652bc7f26602bddc2f4a/collections/653a5e0cd286c5903643/documents');
+    final Map<String, String> $headers = {
+      'Accept': 'application/json',
+      'X-Appwrite-Project': '6526850f77b1a0e42833',
+      'Content-Type': 'application/json',
+      'X-Appwrite-Response-Format': '1.4.0',
+      'X-Appwrite-Key':
+          '02bc64055f82bc9b5f3a98dd5403be59234729bdf9efe3d9bb8210b2c0d133c76347938a33ae6e19c79025b8fb6de7fa843fc2037f5675f8ac7abc2322daec06d069f0b7cd8a18cb6bf04e1c47bfc219fc5cd8b841d88f314bc982f5ad0544c29887e74b1fb7031e332acb3d88f4ae2351eeae3682629bfc468cff41e6290610',
+    };
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+      headers: $headers,
+    );
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
   Future<Response<dynamic>> getAccount(String cookieValue) {
     final Uri $url = Uri.parse('account');
     final Map<String, String> $headers = {

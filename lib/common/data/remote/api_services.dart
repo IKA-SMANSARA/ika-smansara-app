@@ -11,6 +11,34 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+  // get categories
+  @Get(
+    path:
+        'database/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCategoriesCollectionId}/documents',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> getCategories();
+
+  // get carousel
+  @Get(
+    path:
+        'database/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCarouselCollectionId}/documents',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> getCarousel();
+
   // get account
   @Get(
     path: 'account',
