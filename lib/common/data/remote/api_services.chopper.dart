@@ -19,7 +19,7 @@ class _$ApiServices extends ApiServices {
   @override
   Future<Response<dynamic>> getCategories() {
     final Uri $url = Uri.parse(
-        'database/652bc7f26602bddc2f4a/collections/6533be7558e38f4d949d/documents');
+        'databases/652bc7f26602bddc2f4a/collections/6533be7558e38f4d949d/documents');
     final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Project': '6526850f77b1a0e42833',
@@ -40,7 +40,7 @@ class _$ApiServices extends ApiServices {
   @override
   Future<Response<dynamic>> getCarousel() {
     final Uri $url = Uri.parse(
-        'database/652bc7f26602bddc2f4a/collections/653a5e0cd286c5903643/documents');
+        'databases/652bc7f26602bddc2f4a/collections/653a5e0cd286c5903643/documents');
     final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Project': '6526850f77b1a0e42833',

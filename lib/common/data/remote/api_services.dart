@@ -14,7 +14,7 @@ abstract class ApiServices extends ChopperService {
   // get categories
   @Get(
     path:
-        'database/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCategoriesCollectionId}/documents',
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCategoriesCollectionId}/documents',
     headers: {
       Constants.accept: Constants.applicationJson,
       Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
@@ -28,7 +28,7 @@ abstract class ApiServices extends ChopperService {
   // get carousel
   @Get(
     path:
-        'database/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCarouselCollectionId}/documents',
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCarouselCollectionId}/documents',
     headers: {
       Constants.accept: Constants.applicationJson,
       Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
