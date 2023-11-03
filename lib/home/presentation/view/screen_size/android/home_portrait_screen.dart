@@ -21,8 +21,15 @@ class HomePortraitScreen extends StatelessWidget {
               height: 150.h,
               decoration: const BoxDecoration(color: Color(0xFF104993)),
             ),
-            BlocProvider(
-              create: (_) => CategoriesBloc(),
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) => CategoriesBloc(),
+                ),
+                BlocProvider(
+                  create: (_) => CarouselBloc(),
+                ),
+              ],
               child: Column(
                 children: [
                   Padding(

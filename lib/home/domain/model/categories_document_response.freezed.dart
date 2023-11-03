@@ -21,9 +21,7 @@ CategoriesDocumentResponse _$CategoriesDocumentResponseFromJson(
 
 /// @nodoc
 mixin _$CategoriesDocumentResponse {
-  @JsonKey(name: 'total')
   int? get total => throw _privateConstructorUsedError;
-  @JsonKey(name: 'documents')
   List<CategoryItemResponse>? get documents =>
       throw _privateConstructorUsedError;
 
@@ -40,9 +38,7 @@ abstract class $CategoriesDocumentResponseCopyWith<$Res> {
       _$CategoriesDocumentResponseCopyWithImpl<$Res,
           CategoriesDocumentResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CategoryItemResponse>? documents});
+  $Res call({int? total, List<CategoryItemResponse>? documents});
 }
 
 /// @nodoc
@@ -84,9 +80,7 @@ abstract class _$$_CategoriesDocumentResponseCopyWith<$Res>
       __$$_CategoriesDocumentResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CategoryItemResponse>? documents});
+  $Res call({int? total, List<CategoryItemResponse>? documents});
 }
 
 /// @nodoc
@@ -122,19 +116,16 @@ class __$$_CategoriesDocumentResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
   _$_CategoriesDocumentResponse(
-      {@JsonKey(name: 'total') this.total,
-      @JsonKey(name: 'documents') final List<CategoryItemResponse>? documents})
+      {this.total, final List<CategoryItemResponse>? documents})
       : _documents = documents;
 
   factory _$_CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CategoriesDocumentResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'total')
   final int? total;
   final List<CategoryItemResponse>? _documents;
   @override
-  @JsonKey(name: 'documents')
   List<CategoryItemResponse>? get documents {
     final value = _documents;
     if (value == null) return null;
@@ -181,19 +172,15 @@ class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
 abstract class _CategoriesDocumentResponse
     implements CategoriesDocumentResponse {
   factory _CategoriesDocumentResponse(
-          {@JsonKey(name: 'total') final int? total,
-          @JsonKey(name: 'documents')
-          final List<CategoryItemResponse>? documents}) =
+          {final int? total, final List<CategoryItemResponse>? documents}) =
       _$_CategoriesDocumentResponse;
 
   factory _CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =
       _$_CategoriesDocumentResponse.fromJson;
 
   @override
-  @JsonKey(name: 'total')
   int? get total;
   @override
-  @JsonKey(name: 'documents')
   List<CategoryItemResponse>? get documents;
   @override
   @JsonKey(ignore: true)

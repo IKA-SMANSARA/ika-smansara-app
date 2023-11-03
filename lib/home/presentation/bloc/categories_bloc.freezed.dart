@@ -281,52 +281,54 @@ abstract class _FetchData implements CategoriesEvent {
 mixin _$CategoriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() initialCategories,
     required TResult Function(List<CategoryItemResponse>? listCategoryItem)
-        success,
-    required TResult Function(String? errorMessage) error,
-    required TResult Function() loading,
+        successCategories,
+    required TResult Function(String? errorMessage) errorCategories,
+    required TResult Function() loadingCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult? Function(String? errorMessage)? error,
-    TResult? Function()? loading,
+    TResult? Function()? initialCategories,
+    TResult? Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult? Function(String? errorMessage)? errorCategories,
+    TResult? Function()? loadingCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult Function(String? errorMessage)? error,
-    TResult Function()? loading,
+    TResult Function()? initialCategories,
+    TResult Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult Function(String? errorMessage)? errorCategories,
+    TResult Function()? loadingCategories,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-    required TResult Function(Loading value) loading,
+    required TResult Function(InitialCategories value) initialCategories,
+    required TResult Function(SuccessCategories value) successCategories,
+    required TResult Function(ErrorCategories value) errorCategories,
+    required TResult Function(LoadingCategories value) loadingCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(InitialCategories value)? initialCategories,
+    TResult? Function(SuccessCategories value)? successCategories,
+    TResult? Function(ErrorCategories value)? errorCategories,
+    TResult? Function(LoadingCategories value)? loadingCategories,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    TResult Function(Loading value)? loading,
+    TResult Function(InitialCategories value)? initialCategories,
+    TResult Function(SuccessCategories value)? successCategories,
+    TResult Function(ErrorCategories value)? errorCategories,
+    TResult Function(LoadingCategories value)? loadingCategories,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -351,33 +353,35 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialCategoriesCopyWith<$Res> {
+  factory _$$InitialCategoriesCopyWith(
+          _$InitialCategories value, $Res Function(_$InitialCategories) then) =
+      __$$InitialCategoriesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$CategoriesStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialCategoriesCopyWithImpl<$Res>
+    extends _$CategoriesStateCopyWithImpl<$Res, _$InitialCategories>
+    implements _$$InitialCategoriesCopyWith<$Res> {
+  __$$InitialCategoriesCopyWithImpl(
+      _$InitialCategories _value, $Res Function(_$InitialCategories) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialCategories implements InitialCategories {
+  const _$InitialCategories();
 
   @override
   String toString() {
-    return 'CategoriesState.initial()';
+    return 'CategoriesState.initialCategories()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialCategories);
   }
 
   @override
@@ -386,37 +390,39 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() initialCategories,
     required TResult Function(List<CategoryItemResponse>? listCategoryItem)
-        success,
-    required TResult Function(String? errorMessage) error,
-    required TResult Function() loading,
+        successCategories,
+    required TResult Function(String? errorMessage) errorCategories,
+    required TResult Function() loadingCategories,
   }) {
-    return initial();
+    return initialCategories();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult? Function(String? errorMessage)? error,
-    TResult? Function()? loading,
+    TResult? Function()? initialCategories,
+    TResult? Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult? Function(String? errorMessage)? errorCategories,
+    TResult? Function()? loadingCategories,
   }) {
-    return initial?.call();
+    return initialCategories?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult Function(String? errorMessage)? error,
-    TResult Function()? loading,
+    TResult Function()? initialCategories,
+    TResult Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult Function(String? errorMessage)? errorCategories,
+    TResult Function()? loadingCategories,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (initialCategories != null) {
+      return initialCategories();
     }
     return orElse();
   }
@@ -424,58 +430,60 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-    required TResult Function(Loading value) loading,
+    required TResult Function(InitialCategories value) initialCategories,
+    required TResult Function(SuccessCategories value) successCategories,
+    required TResult Function(ErrorCategories value) errorCategories,
+    required TResult Function(LoadingCategories value) loadingCategories,
   }) {
-    return initial(this);
+    return initialCategories(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(InitialCategories value)? initialCategories,
+    TResult? Function(SuccessCategories value)? successCategories,
+    TResult? Function(ErrorCategories value)? errorCategories,
+    TResult? Function(LoadingCategories value)? loadingCategories,
   }) {
-    return initial?.call(this);
+    return initialCategories?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    TResult Function(Loading value)? loading,
+    TResult Function(InitialCategories value)? initialCategories,
+    TResult Function(SuccessCategories value)? successCategories,
+    TResult Function(ErrorCategories value)? errorCategories,
+    TResult Function(LoadingCategories value)? loadingCategories,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (initialCategories != null) {
+      return initialCategories(this);
     }
     return orElse();
   }
 }
 
-abstract class Initial implements CategoriesState {
-  const factory Initial() = _$Initial;
+abstract class InitialCategories implements CategoriesState {
+  const factory InitialCategories() = _$InitialCategories;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessCategoriesCopyWith<$Res> {
+  factory _$$SuccessCategoriesCopyWith(
+          _$SuccessCategories value, $Res Function(_$SuccessCategories) then) =
+      __$$SuccessCategoriesCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CategoryItemResponse>? listCategoryItem});
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$CategoriesStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessCategoriesCopyWithImpl<$Res>
+    extends _$CategoriesStateCopyWithImpl<$Res, _$SuccessCategories>
+    implements _$$SuccessCategoriesCopyWith<$Res> {
+  __$$SuccessCategoriesCopyWithImpl(
+      _$SuccessCategories _value, $Res Function(_$SuccessCategories) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +491,7 @@ class __$$SuccessCopyWithImpl<$Res>
   $Res call({
     Object? listCategoryItem = freezed,
   }) {
-    return _then(_$Success(
+    return _then(_$SuccessCategories(
       listCategoryItem: freezed == listCategoryItem
           ? _value._listCategoryItem
           : listCategoryItem // ignore: cast_nullable_to_non_nullable
@@ -494,8 +502,8 @@ class __$$SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success(
+class _$SuccessCategories implements SuccessCategories {
+  const _$SuccessCategories(
       {final List<CategoryItemResponse>? listCategoryItem = const []})
       : _listCategoryItem = listCategoryItem;
 
@@ -513,14 +521,14 @@ class _$Success implements Success {
 
   @override
   String toString() {
-    return 'CategoriesState.success(listCategoryItem: $listCategoryItem)';
+    return 'CategoriesState.successCategories(listCategoryItem: $listCategoryItem)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Success &&
+            other is _$SuccessCategories &&
             const DeepCollectionEquality()
                 .equals(other._listCategoryItem, _listCategoryItem));
   }
@@ -532,43 +540,45 @@ class _$Success implements Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessCopyWith<_$Success> get copyWith =>
-      __$$SuccessCopyWithImpl<_$Success>(this, _$identity);
+  _$$SuccessCategoriesCopyWith<_$SuccessCategories> get copyWith =>
+      __$$SuccessCategoriesCopyWithImpl<_$SuccessCategories>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() initialCategories,
     required TResult Function(List<CategoryItemResponse>? listCategoryItem)
-        success,
-    required TResult Function(String? errorMessage) error,
-    required TResult Function() loading,
+        successCategories,
+    required TResult Function(String? errorMessage) errorCategories,
+    required TResult Function() loadingCategories,
   }) {
-    return success(listCategoryItem);
+    return successCategories(listCategoryItem);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult? Function(String? errorMessage)? error,
-    TResult? Function()? loading,
+    TResult? Function()? initialCategories,
+    TResult? Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult? Function(String? errorMessage)? errorCategories,
+    TResult? Function()? loadingCategories,
   }) {
-    return success?.call(listCategoryItem);
+    return successCategories?.call(listCategoryItem);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult Function(String? errorMessage)? error,
-    TResult Function()? loading,
+    TResult Function()? initialCategories,
+    TResult Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult Function(String? errorMessage)? errorCategories,
+    TResult Function()? loadingCategories,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(listCategoryItem);
+    if (successCategories != null) {
+      return successCategories(listCategoryItem);
     }
     return orElse();
   }
@@ -576,64 +586,67 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-    required TResult Function(Loading value) loading,
+    required TResult Function(InitialCategories value) initialCategories,
+    required TResult Function(SuccessCategories value) successCategories,
+    required TResult Function(ErrorCategories value) errorCategories,
+    required TResult Function(LoadingCategories value) loadingCategories,
   }) {
-    return success(this);
+    return successCategories(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(InitialCategories value)? initialCategories,
+    TResult? Function(SuccessCategories value)? successCategories,
+    TResult? Function(ErrorCategories value)? errorCategories,
+    TResult? Function(LoadingCategories value)? loadingCategories,
   }) {
-    return success?.call(this);
+    return successCategories?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    TResult Function(Loading value)? loading,
+    TResult Function(InitialCategories value)? initialCategories,
+    TResult Function(SuccessCategories value)? successCategories,
+    TResult Function(ErrorCategories value)? errorCategories,
+    TResult Function(LoadingCategories value)? loadingCategories,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (successCategories != null) {
+      return successCategories(this);
     }
     return orElse();
   }
 }
 
-abstract class Success implements CategoriesState {
-  const factory Success({final List<CategoryItemResponse>? listCategoryItem}) =
-      _$Success;
+abstract class SuccessCategories implements CategoriesState {
+  const factory SuccessCategories(
+          {final List<CategoryItemResponse>? listCategoryItem}) =
+      _$SuccessCategories;
 
   List<CategoryItemResponse>? get listCategoryItem;
   @JsonKey(ignore: true)
-  _$$SuccessCopyWith<_$Success> get copyWith =>
+  _$$SuccessCategoriesCopyWith<_$SuccessCategories> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorCategoriesCopyWith<$Res> {
+  factory _$$ErrorCategoriesCopyWith(
+          _$ErrorCategories value, $Res Function(_$ErrorCategories) then) =
+      __$$ErrorCategoriesCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$CategoriesStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorCategoriesCopyWithImpl<$Res>
+    extends _$CategoriesStateCopyWithImpl<$Res, _$ErrorCategories>
+    implements _$$ErrorCategoriesCopyWith<$Res> {
+  __$$ErrorCategoriesCopyWithImpl(
+      _$ErrorCategories _value, $Res Function(_$ErrorCategories) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -641,7 +654,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorCategories(
       freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -652,22 +665,22 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.errorMessage);
+class _$ErrorCategories implements ErrorCategories {
+  const _$ErrorCategories(this.errorMessage);
 
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'CategoriesState.error(errorMessage: $errorMessage)';
+    return 'CategoriesState.errorCategories(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorCategories &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -678,43 +691,45 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorCategoriesCopyWith<_$ErrorCategories> get copyWith =>
+      __$$ErrorCategoriesCopyWithImpl<_$ErrorCategories>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() initialCategories,
     required TResult Function(List<CategoryItemResponse>? listCategoryItem)
-        success,
-    required TResult Function(String? errorMessage) error,
-    required TResult Function() loading,
+        successCategories,
+    required TResult Function(String? errorMessage) errorCategories,
+    required TResult Function() loadingCategories,
   }) {
-    return error(errorMessage);
+    return errorCategories(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult? Function(String? errorMessage)? error,
-    TResult? Function()? loading,
+    TResult? Function()? initialCategories,
+    TResult? Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult? Function(String? errorMessage)? errorCategories,
+    TResult? Function()? loadingCategories,
   }) {
-    return error?.call(errorMessage);
+    return errorCategories?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult Function(String? errorMessage)? error,
-    TResult Function()? loading,
+    TResult Function()? initialCategories,
+    TResult Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult Function(String? errorMessage)? errorCategories,
+    TResult Function()? loadingCategories,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(errorMessage);
+    if (errorCategories != null) {
+      return errorCategories(errorMessage);
     }
     return orElse();
   }
@@ -722,77 +737,80 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-    required TResult Function(Loading value) loading,
+    required TResult Function(InitialCategories value) initialCategories,
+    required TResult Function(SuccessCategories value) successCategories,
+    required TResult Function(ErrorCategories value) errorCategories,
+    required TResult Function(LoadingCategories value) loadingCategories,
   }) {
-    return error(this);
+    return errorCategories(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(InitialCategories value)? initialCategories,
+    TResult? Function(SuccessCategories value)? successCategories,
+    TResult? Function(ErrorCategories value)? errorCategories,
+    TResult? Function(LoadingCategories value)? loadingCategories,
   }) {
-    return error?.call(this);
+    return errorCategories?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    TResult Function(Loading value)? loading,
+    TResult Function(InitialCategories value)? initialCategories,
+    TResult Function(SuccessCategories value)? successCategories,
+    TResult Function(ErrorCategories value)? errorCategories,
+    TResult Function(LoadingCategories value)? loadingCategories,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (errorCategories != null) {
+      return errorCategories(this);
     }
     return orElse();
   }
 }
 
-abstract class Error implements CategoriesState {
-  const factory Error(final String? errorMessage) = _$Error;
+abstract class ErrorCategories implements CategoriesState {
+  const factory ErrorCategories(final String? errorMessage) = _$ErrorCategories;
 
   String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorCategoriesCopyWith<_$ErrorCategories> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingCategoriesCopyWith<$Res> {
+  factory _$$LoadingCategoriesCopyWith(
+          _$LoadingCategories value, $Res Function(_$LoadingCategories) then) =
+      __$$LoadingCategoriesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$CategoriesStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingCategoriesCopyWithImpl<$Res>
+    extends _$CategoriesStateCopyWithImpl<$Res, _$LoadingCategories>
+    implements _$$LoadingCategoriesCopyWith<$Res> {
+  __$$LoadingCategoriesCopyWithImpl(
+      _$LoadingCategories _value, $Res Function(_$LoadingCategories) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingCategories implements LoadingCategories {
+  const _$LoadingCategories();
 
   @override
   String toString() {
-    return 'CategoriesState.loading()';
+    return 'CategoriesState.loadingCategories()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingCategories);
   }
 
   @override
@@ -801,37 +819,39 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() initialCategories,
     required TResult Function(List<CategoryItemResponse>? listCategoryItem)
-        success,
-    required TResult Function(String? errorMessage) error,
-    required TResult Function() loading,
+        successCategories,
+    required TResult Function(String? errorMessage) errorCategories,
+    required TResult Function() loadingCategories,
   }) {
-    return loading();
+    return loadingCategories();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult? Function(String? errorMessage)? error,
-    TResult? Function()? loading,
+    TResult? Function()? initialCategories,
+    TResult? Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult? Function(String? errorMessage)? errorCategories,
+    TResult? Function()? loadingCategories,
   }) {
-    return loading?.call();
+    return loadingCategories?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<CategoryItemResponse>? listCategoryItem)? success,
-    TResult Function(String? errorMessage)? error,
-    TResult Function()? loading,
+    TResult Function()? initialCategories,
+    TResult Function(List<CategoryItemResponse>? listCategoryItem)?
+        successCategories,
+    TResult Function(String? errorMessage)? errorCategories,
+    TResult Function()? loadingCategories,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (loadingCategories != null) {
+      return loadingCategories();
     }
     return orElse();
   }
@@ -839,41 +859,41 @@ class _$Loading implements Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Success value) success,
-    required TResult Function(Error value) error,
-    required TResult Function(Loading value) loading,
+    required TResult Function(InitialCategories value) initialCategories,
+    required TResult Function(SuccessCategories value) successCategories,
+    required TResult Function(ErrorCategories value) errorCategories,
+    required TResult Function(LoadingCategories value) loadingCategories,
   }) {
-    return loading(this);
+    return loadingCategories(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Success value)? success,
-    TResult? Function(Error value)? error,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(InitialCategories value)? initialCategories,
+    TResult? Function(SuccessCategories value)? successCategories,
+    TResult? Function(ErrorCategories value)? errorCategories,
+    TResult? Function(LoadingCategories value)? loadingCategories,
   }) {
-    return loading?.call(this);
+    return loadingCategories?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
-    TResult Function(Loading value)? loading,
+    TResult Function(InitialCategories value)? initialCategories,
+    TResult Function(SuccessCategories value)? successCategories,
+    TResult Function(ErrorCategories value)? errorCategories,
+    TResult Function(LoadingCategories value)? loadingCategories,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (loadingCategories != null) {
+      return loadingCategories(this);
     }
     return orElse();
   }
 }
 
-abstract class Loading implements CategoriesState {
-  const factory Loading() = _$Loading;
+abstract class LoadingCategories implements CategoriesState {
+  const factory LoadingCategories() = _$LoadingCategories;
 }

@@ -9,8 +9,8 @@ part 'categories_document_response.g.dart';
 @freezed
 class CategoriesDocumentResponse with _$CategoriesDocumentResponse {
   factory CategoriesDocumentResponse({
-    @JsonKey(name: 'total') int? total,
-    @JsonKey(name: 'documents') List<CategoryItemResponse>? documents,
+    int? total,
+    List<CategoryItemResponse>? documents,
   }) = _CategoriesDocumentResponse;
 
   factory CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =>

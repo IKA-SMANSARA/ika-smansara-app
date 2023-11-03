@@ -8,8 +8,8 @@ part 'category_item_response.g.dart';
 @freezed
 class CategoryItemResponse with _$CategoryItemResponse {
   factory CategoryItemResponse({
-    @JsonKey(name: 'nameCategory') String? nameCategory,
-    @JsonKey(name: 'categoryIcon') String? categoryIcon,
+    String? nameCategory,
+    String? categoryIcon,
   }) = _CategoryItemResponse;
 
   factory CategoryItemResponse.fromJson(Map<String, dynamic> json) =>

@@ -20,7 +20,6 @@ CarouselItemResponse _$CarouselItemResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CarouselItemResponse {
-  @JsonKey(name: 'imageUrl')
   String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $CarouselItemResponseCopyWith<$Res> {
           $Res Function(CarouselItemResponse) then) =
       _$CarouselItemResponseCopyWithImpl<$Res, CarouselItemResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'imageUrl') String? imageUrl});
+  $Res call({String? imageUrl});
 }
 
 /// @nodoc
@@ -71,7 +70,7 @@ abstract class _$$_CarouselItemResponseCopyWith<$Res>
       __$$_CarouselItemResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'imageUrl') String? imageUrl});
+  $Res call({String? imageUrl});
 }
 
 /// @nodoc
@@ -99,13 +98,12 @@ class __$$_CarouselItemResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CarouselItemResponse implements _CarouselItemResponse {
-  _$_CarouselItemResponse({@JsonKey(name: 'imageUrl') this.imageUrl});
+  _$_CarouselItemResponse({this.imageUrl});
 
   factory _$_CarouselItemResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CarouselItemResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'imageUrl')
   final String? imageUrl;
 
   @override
@@ -142,15 +140,13 @@ class _$_CarouselItemResponse implements _CarouselItemResponse {
 }
 
 abstract class _CarouselItemResponse implements CarouselItemResponse {
-  factory _CarouselItemResponse(
-          {@JsonKey(name: 'imageUrl') final String? imageUrl}) =
+  factory _CarouselItemResponse({final String? imageUrl}) =
       _$_CarouselItemResponse;
 
   factory _CarouselItemResponse.fromJson(Map<String, dynamic> json) =
       _$_CarouselItemResponse.fromJson;
 
   @override
-  @JsonKey(name: 'imageUrl')
   String? get imageUrl;
   @override
   @JsonKey(ignore: true)

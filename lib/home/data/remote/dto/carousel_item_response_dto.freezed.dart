@@ -21,6 +21,8 @@ CarouselItemResponseDTO _$CarouselItemResponseDTOFromJson(
 
 /// @nodoc
 mixin _$CarouselItemResponseDTO {
+  @JsonKey(name: 'imageUrl')
+  String? get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: '\$id')
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: '\$createdAt')
@@ -33,8 +35,6 @@ mixin _$CarouselItemResponseDTO {
   String? get collectionId => throw _privateConstructorUsedError;
   @JsonKey(name: '\$permissions')
   List<String>? get permissions => throw _privateConstructorUsedError;
-  @JsonKey(name: 'imageUrl')
-  String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,13 +49,13 @@ abstract class $CarouselItemResponseDTOCopyWith<$Res> {
       _$CarouselItemResponseDTOCopyWithImpl<$Res, CarouselItemResponseDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: '\$id') String? id,
+      {@JsonKey(name: 'imageUrl') String? imageUrl,
+      @JsonKey(name: '\$id') String? id,
       @JsonKey(name: '\$createdAt') String? createdAt,
       @JsonKey(name: '\$updatedAt') String? updatedAt,
       @JsonKey(name: '\$databaseId') String? databaseId,
       @JsonKey(name: '\$collectionId') String? collectionId,
-      @JsonKey(name: '\$permissions') List<String>? permissions,
-      @JsonKey(name: 'imageUrl') String? imageUrl});
+      @JsonKey(name: '\$permissions') List<String>? permissions});
 }
 
 /// @nodoc
@@ -72,15 +72,19 @@ class _$CarouselItemResponseDTOCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? imageUrl = freezed,
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? databaseId = freezed,
     Object? collectionId = freezed,
     Object? permissions = freezed,
-    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -105,10 +109,6 @@ class _$CarouselItemResponseDTOCopyWithImpl<$Res,
           ? _value.permissions
           : permissions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -122,13 +122,13 @@ abstract class _$$_CarouselItemResponseDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '\$id') String? id,
+      {@JsonKey(name: 'imageUrl') String? imageUrl,
+      @JsonKey(name: '\$id') String? id,
       @JsonKey(name: '\$createdAt') String? createdAt,
       @JsonKey(name: '\$updatedAt') String? updatedAt,
       @JsonKey(name: '\$databaseId') String? databaseId,
       @JsonKey(name: '\$collectionId') String? collectionId,
-      @JsonKey(name: '\$permissions') List<String>? permissions,
-      @JsonKey(name: 'imageUrl') String? imageUrl});
+      @JsonKey(name: '\$permissions') List<String>? permissions});
 }
 
 /// @nodoc
@@ -143,15 +143,19 @@ class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? imageUrl = freezed,
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? databaseId = freezed,
     Object? collectionId = freezed,
     Object? permissions = freezed,
-    Object? imageUrl = freezed,
   }) {
     return _then(_$_CarouselItemResponseDTO(
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -176,10 +180,6 @@ class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
           ? _value._permissions
           : permissions // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -188,18 +188,21 @@ class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
   _$_CarouselItemResponseDTO(
-      {@JsonKey(name: '\$id') this.id,
+      {@JsonKey(name: 'imageUrl') this.imageUrl,
+      @JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
       @JsonKey(name: '\$databaseId') this.databaseId,
       @JsonKey(name: '\$collectionId') this.collectionId,
-      @JsonKey(name: '\$permissions') final List<String>? permissions,
-      @JsonKey(name: 'imageUrl') this.imageUrl})
+      @JsonKey(name: '\$permissions') final List<String>? permissions})
       : _permissions = permissions;
 
   factory _$_CarouselItemResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$$_CarouselItemResponseDTOFromJson(json);
 
+  @override
+  @JsonKey(name: 'imageUrl')
+  final String? imageUrl;
   @override
   @JsonKey(name: '\$id')
   final String? id;
@@ -227,12 +230,8 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
   }
 
   @override
-  @JsonKey(name: 'imageUrl')
-  final String? imageUrl;
-
-  @override
   String toString() {
-    return 'CarouselItemResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, imageUrl: $imageUrl)';
+    return 'CarouselItemResponseDTO(imageUrl: $imageUrl, id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions)';
   }
 
   @override
@@ -240,6 +239,8 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CarouselItemResponseDTO &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -250,22 +251,20 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
             const DeepCollectionEquality()
-                .equals(other._permissions, _permissions) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                .equals(other._permissions, _permissions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      imageUrl,
       id,
       createdAt,
       updatedAt,
       databaseId,
       collectionId,
-      const DeepCollectionEquality().hash(_permissions),
-      imageUrl);
+      const DeepCollectionEquality().hash(_permissions));
 
   @JsonKey(ignore: true)
   @override
@@ -285,18 +284,21 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
 
 abstract class _CarouselItemResponseDTO implements CarouselItemResponseDTO {
   factory _CarouselItemResponseDTO(
-          {@JsonKey(name: '\$id') final String? id,
+          {@JsonKey(name: 'imageUrl') final String? imageUrl,
+          @JsonKey(name: '\$id') final String? id,
           @JsonKey(name: '\$createdAt') final String? createdAt,
           @JsonKey(name: '\$updatedAt') final String? updatedAt,
           @JsonKey(name: '\$databaseId') final String? databaseId,
           @JsonKey(name: '\$collectionId') final String? collectionId,
-          @JsonKey(name: '\$permissions') final List<String>? permissions,
-          @JsonKey(name: 'imageUrl') final String? imageUrl}) =
+          @JsonKey(name: '\$permissions') final List<String>? permissions}) =
       _$_CarouselItemResponseDTO;
 
   factory _CarouselItemResponseDTO.fromJson(Map<String, dynamic> json) =
       _$_CarouselItemResponseDTO.fromJson;
 
+  @override
+  @JsonKey(name: 'imageUrl')
+  String? get imageUrl;
   @override
   @JsonKey(name: '\$id')
   String? get id;
@@ -315,9 +317,6 @@ abstract class _CarouselItemResponseDTO implements CarouselItemResponseDTO {
   @override
   @JsonKey(name: '\$permissions')
   List<String>? get permissions;
-  @override
-  @JsonKey(name: 'imageUrl')
-  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_CarouselItemResponseDTOCopyWith<_$_CarouselItemResponseDTO>

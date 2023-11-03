@@ -10,8 +10,8 @@ part 'carousel_document_response.g.dart';
 class CarouselDocumentResponse with _$CarouselDocumentResponse {
 
   factory CarouselDocumentResponse({
-    @JsonKey(name: 'total') int? total,
-    @JsonKey(name: 'documents') List<CarouselItemResponse>? documents,
+    int? total,
+    List<CarouselItemResponse>? documents,
   }) = _CarouselDocumentResponse;
 
   factory CarouselDocumentResponse.fromJson(Map<String, dynamic> json) => _$CarouselDocumentResponseFromJson(json);

@@ -8,7 +8,7 @@ part 'carousel_item_response.g.dart';
 @freezed
 class CarouselItemResponse with _$CarouselItemResponse {
   factory CarouselItemResponse({
-    @JsonKey(name: 'imageUrl') String? imageUrl,
+    String? imageUrl,
   }) = _CarouselItemResponse;
 
   factory CarouselItemResponse.fromJson(Map<String, dynamic> json) =>

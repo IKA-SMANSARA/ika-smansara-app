@@ -14,7 +14,7 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       builder: (context, state) {
-        if (state is Loading) {
+        if (state is LoadingCategories) {
           context.read<CategoriesBloc>().add(
                 const CategoriesEvent.fetchData(),
               );
@@ -24,11 +24,11 @@ class Categories extends StatelessWidget {
           );
         }
 
-        if (state is Error) {
+        if (state is ErrorCategories) {
           return Center(child: Text(state.errorMessage.toString()));
         }
 
-        if (state is Success) {
+        if (state is SuccessCategories) {
           return GridView.builder(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -58,7 +58,7 @@ class Categories extends StatelessWidget {
           );
         }
 
-        // started bloc
+        // started state
         context.read<CategoriesBloc>().add(const CategoriesEvent.started());
 
         return const Center(

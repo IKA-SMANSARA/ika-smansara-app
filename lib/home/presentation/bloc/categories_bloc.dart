@@ -8,26 +8,30 @@ part 'categories_state.dart';
 part 'categories_bloc.freezed.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
-  CategoriesBloc() : super(const Initial()) {
+  CategoriesBloc() : super(const InitialCategories()) {
     on<CategoriesEvent>(
       (event, emit) async {
         await event.when(
           started: () {
             // init loading first
-            emit(const CategoriesState.loading());
+            emit(const CategoriesState.loadingCategories());
           },
           fetchData: () async {
             // fetching data
-            await _getCategoriesUseCase().then((value) {
-              value.fold(
-                (error) => emit(
-                  CategoriesState.error(error.message),
-                ),
-                (success) => emit(
-                  CategoriesState.success(listCategoryItem: success.documents),
-                ),
-              );
-            });
+            await _getCategoriesUseCase().then(
+              (value) {
+                value.fold(
+                  (error) => emit(
+                    CategoriesState.errorCategories(error.message),
+                  ),
+                  (success) => emit(
+                    CategoriesState.successCategories(
+                      listCategoryItem: success.documents,
+                    ),
+                  ),
+                );
+              },
+            );
           },
         );
       },

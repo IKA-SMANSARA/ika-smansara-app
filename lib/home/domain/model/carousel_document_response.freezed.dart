@@ -21,9 +21,7 @@ CarouselDocumentResponse _$CarouselDocumentResponseFromJson(
 
 /// @nodoc
 mixin _$CarouselDocumentResponse {
-  @JsonKey(name: 'total')
   int? get total => throw _privateConstructorUsedError;
-  @JsonKey(name: 'documents')
   List<CarouselItemResponse>? get documents =>
       throw _privateConstructorUsedError;
 
@@ -39,9 +37,7 @@ abstract class $CarouselDocumentResponseCopyWith<$Res> {
           $Res Function(CarouselDocumentResponse) then) =
       _$CarouselDocumentResponseCopyWithImpl<$Res, CarouselDocumentResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CarouselItemResponse>? documents});
+  $Res call({int? total, List<CarouselItemResponse>? documents});
 }
 
 /// @nodoc
@@ -83,9 +79,7 @@ abstract class _$$_CarouselDocumentResponseCopyWith<$Res>
       __$$_CarouselDocumentResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CarouselItemResponse>? documents});
+  $Res call({int? total, List<CarouselItemResponse>? documents});
 }
 
 /// @nodoc
@@ -120,19 +114,16 @@ class __$$_CarouselDocumentResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
   _$_CarouselDocumentResponse(
-      {@JsonKey(name: 'total') this.total,
-      @JsonKey(name: 'documents') final List<CarouselItemResponse>? documents})
+      {this.total, final List<CarouselItemResponse>? documents})
       : _documents = documents;
 
   factory _$_CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CarouselDocumentResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'total')
   final int? total;
   final List<CarouselItemResponse>? _documents;
   @override
-  @JsonKey(name: 'documents')
   List<CarouselItemResponse>? get documents {
     final value = _documents;
     if (value == null) return null;
@@ -178,19 +169,15 @@ class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
 
 abstract class _CarouselDocumentResponse implements CarouselDocumentResponse {
   factory _CarouselDocumentResponse(
-          {@JsonKey(name: 'total') final int? total,
-          @JsonKey(name: 'documents')
-          final List<CarouselItemResponse>? documents}) =
+          {final int? total, final List<CarouselItemResponse>? documents}) =
       _$_CarouselDocumentResponse;
 
   factory _CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =
       _$_CarouselDocumentResponse.fromJson;
 
   @override
-  @JsonKey(name: 'total')
   int? get total;
   @override
-  @JsonKey(name: 'documents')
   List<CarouselItemResponse>? get documents;
   @override
   @JsonKey(ignore: true)

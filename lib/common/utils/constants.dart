@@ -26,6 +26,7 @@ class Constants {
   static const ikaSmansaraUserProfileCollectionId = '652bc80fe2fdeb1e3893';
   static const ikaSmansaraCategoriesCollectionId = '6533be7558e38f4d949d';
   static const ikaSmansaraCarouselCollectionId = '653a5e0cd286c5903643';
+  static const ikaSmansaraCampaignsCollectionId = '6533c53f27828417727d';
 
   // Attributes
   static const accept = 'Accept';

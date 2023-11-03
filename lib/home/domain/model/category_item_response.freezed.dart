@@ -20,9 +20,7 @@ CategoryItemResponse _$CategoryItemResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryItemResponse {
-  @JsonKey(name: 'nameCategory')
   String? get nameCategory => throw _privateConstructorUsedError;
-  @JsonKey(name: 'categoryIcon')
   String? get categoryIcon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,9 +35,7 @@ abstract class $CategoryItemResponseCopyWith<$Res> {
           $Res Function(CategoryItemResponse) then) =
       _$CategoryItemResponseCopyWithImpl<$Res, CategoryItemResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'nameCategory') String? nameCategory,
-      @JsonKey(name: 'categoryIcon') String? categoryIcon});
+  $Res call({String? nameCategory, String? categoryIcon});
 }
 
 /// @nodoc
@@ -80,9 +76,7 @@ abstract class _$$_CategoryItemResponseCopyWith<$Res>
       __$$_CategoryItemResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'nameCategory') String? nameCategory,
-      @JsonKey(name: 'categoryIcon') String? categoryIcon});
+  $Res call({String? nameCategory, String? categoryIcon});
 }
 
 /// @nodoc
@@ -115,18 +109,14 @@ class __$$_CategoryItemResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CategoryItemResponse implements _CategoryItemResponse {
-  _$_CategoryItemResponse(
-      {@JsonKey(name: 'nameCategory') this.nameCategory,
-      @JsonKey(name: 'categoryIcon') this.categoryIcon});
+  _$_CategoryItemResponse({this.nameCategory, this.categoryIcon});
 
   factory _$_CategoryItemResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryItemResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'nameCategory')
   final String? nameCategory;
   @override
-  @JsonKey(name: 'categoryIcon')
   final String? categoryIcon;
 
   @override
@@ -166,18 +156,15 @@ class _$_CategoryItemResponse implements _CategoryItemResponse {
 
 abstract class _CategoryItemResponse implements CategoryItemResponse {
   factory _CategoryItemResponse(
-          {@JsonKey(name: 'nameCategory') final String? nameCategory,
-          @JsonKey(name: 'categoryIcon') final String? categoryIcon}) =
-      _$_CategoryItemResponse;
+      {final String? nameCategory,
+      final String? categoryIcon}) = _$_CategoryItemResponse;
 
   factory _CategoryItemResponse.fromJson(Map<String, dynamic> json) =
       _$_CategoryItemResponse.fromJson;
 
   @override
-  @JsonKey(name: 'nameCategory')
   String? get nameCategory;
   @override
-  @JsonKey(name: 'categoryIcon')
   String? get categoryIcon;
   @override
   @JsonKey(ignore: true)
