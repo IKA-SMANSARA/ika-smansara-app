@@ -31,3 +31,29 @@ extension CategoriesDocumentResponseDTOExtension
             documents?.map((data) => data.toCategoryItemResponse()).toList(),
       );
 }
+
+extension CampaignItemResponseDTOExtension on CampaignItemResponseDTO {
+  CampaignItemResponse toCampaignItemResponse() => CampaignItemResponse(
+        id: id,
+        backerCount: backerCount,
+        campaignDescription: campaignDescription,
+        campaignName: campaignName,
+        categories: categories,
+        dateEndCampaign: dateEndCampaign,
+        dateStartCampaign: dateStartCampaign,
+        goalAmount: goalAmount,
+        isActive: isActive,
+        isDeleted: isDeleted,
+        photoThumbnail: photoThumbnail,
+      );
+}
+
+extension CampaignsDocumentResponseDTOExtension
+    on CampaignsDocumentResponseDTO {
+  CampaignsDocumentResponse toCampaignsDocumentResponse() =>
+      CampaignsDocumentResponse(
+        total: total,
+        documents:
+            documents?.map((data) => data.toCampaignItemResponse()).toList(),
+      );
+}

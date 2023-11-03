@@ -10,7 +10,7 @@ part 'categories_document_response.g.dart';
 class CategoriesDocumentResponse with _$CategoriesDocumentResponse {
   factory CategoriesDocumentResponse({
     int? total,
-    List<CategoryItemResponse>? documents,
+    @Default([]) List<CategoryItemResponse>? documents,
   }) = _CategoriesDocumentResponse;
 
   factory CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =>

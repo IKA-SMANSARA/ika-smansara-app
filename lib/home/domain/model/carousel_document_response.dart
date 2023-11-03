@@ -11,7 +11,7 @@ class CarouselDocumentResponse with _$CarouselDocumentResponse {
 
   factory CarouselDocumentResponse({
     int? total,
-    List<CarouselItemResponse>? documents,
+    @Default([]) List<CarouselItemResponse>? documents,
   }) = _CarouselDocumentResponse;
 
   factory CarouselDocumentResponse.fromJson(Map<String, dynamic> json) => _$CarouselDocumentResponseFromJson(json);
