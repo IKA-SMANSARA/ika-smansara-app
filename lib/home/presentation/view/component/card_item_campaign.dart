@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
@@ -26,24 +27,35 @@ class CardItemCampaign extends StatelessWidget {
     final l10n = context.l10n;
     return GestureDetector(
       onTap: onPress,
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.w),
+      child: Container(
+        width: 300.w,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white12,
+          ),
+          borderRadius: BorderRadius.circular(8.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
-        child: Stack(
+        child: Column(
           children: [
             AspectRatio(
-              aspectRatio: 4 / 3,
+              aspectRatio: 16 / 9,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.w),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.r),
+                  topRight: Radius.circular(8.r),
+                ),
                 child: campaignImage ?? const Placeholder(),
               ),
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
+            Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(8.r),
@@ -63,47 +75,40 @@ class CardItemCampaign extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 8.h,
-                          bottom: 4.h,
+                      Gap(8.h),
+                      Text(
+                        l10n.collectedTitle,
+                        style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 10.sp,
                         ),
-                        child: Text(
-                          l10n.collectedTitle,
-                          style: GoogleFonts.inter(
-                            color: Colors.black,
-                            fontSize: 10.sp,
+                      ),
+                      Gap(4.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Rp.$campaignDonationCollected',
+                            style: GoogleFonts.inter(
+                              color: Colors.blue,
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 4.h,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Rp.$campaignDonationCollected',
-                              style: GoogleFonts.inter(
-                                color: Colors.blue,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
+                          Text(
+                            campaignDuration ?? '',
+                            style: GoogleFonts.inter(
+                              color: Colors.black,
+                              fontSize: 10.sp,
                             ),
-                            Text(
-                              campaignDuration ?? '',
-                              style: GoogleFonts.inter(
-                                color: Colors.black,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                      Gap(4.h),
                       LinearProgressIndicator(
                         value: campaignProgressIndicator,
                       ),
+                      Gap(4.h),
                     ],
                   ),
                 ),

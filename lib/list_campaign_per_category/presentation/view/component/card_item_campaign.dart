@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardItemCampaign extends StatelessWidget {
@@ -40,9 +41,7 @@ class CardItemCampaign extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 8.w,
-                  ),
+                  Gap(8.w),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,9 +70,7 @@ class CardItemCampaign extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
+                            Gap(4.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

@@ -1,125 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ika_smansara/common/common.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/common/presentation/routes/routes.dart';
+import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:ika_smansara/home/home.dart';
-import 'package:ika_smansara/l10n/l10n.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return GridView.count(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
-      crossAxisCount: 4,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      children: [
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.scholarshipTitle.toUpperCase(),
+    return BlocBuilder<CategoriesBloc, CategoriesState>(
+      builder: (context, state) {
+        if (state is LoadingCategories) {
+          context.read<CategoriesBloc>().add(
+                const CategoriesEvent.fetchData(),
+              );
+
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (state is ErrorCategories) {
+          return Center(child: Text(state.errorMessage.toString()));
+        }
+
+        if (state is SuccessCategories) {
+          return GridView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+            ),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: state.listCategoryItem?.length,
+            itemBuilder: (context, index) {
+              final category = state.listCategoryItem?[index];
+              return CategoryItem(
+                onPress: () => context.pushNamed(
+                  Routes.listCampaignPerCategory,
+                  queryParameters: {
+                    Constants.categoryNameKey:
+                        category?.nameCategory?.toUpperCase(),
+                  },
+                ),
+                categoryIcon: SvgPicture.network(
+                  category?.categoryIcon ?? '',
+                  placeholderBuilder: (context) =>
+                      const CircularProgressIndicator(),
+                ),
+                categoryTitle: category?.nameCategory?.toUpperCase(),
+              );
             },
-          ),
-          categoryIcon: Assets.images.graduationCap.svg(),
-          categoryTitle: l10n.scholarshipTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.yatamadhuafaTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.childSafeZone.svg(),
-          categoryTitle: l10n.yatamadhuafaTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.educationTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.classroom.svg(),
-          categoryTitle: l10n.educationTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.orphanageTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.house.svg(),
-          categoryTitle: l10n.orphanageTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.humanityTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.trust.svg(),
-          categoryTitle: l10n.humanityTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey:
-                  l10n.naturaldisastersTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.factoryBreakdown.svg(),
-          categoryTitle: l10n.naturaldisastersTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.worshipplaceTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.pray1.svg(),
-          categoryTitle: l10n.worshipplaceTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.neighborhoodTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.oakTree.svg(),
-          categoryTitle: l10n.neighborhoodTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.disabilityTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.wheelchair1.svg(),
-          categoryTitle: l10n.disabilityTitle.toUpperCase(),
-        ),
-        CategoryItem(
-          onPress: () => context.pushNamed(
-            Routes.listCampaignPerCategory,
-            queryParameters: {
-              Constants.categoryNameKey: l10n.medicalhealthTitle.toUpperCase(),
-            },
-          ),
-          categoryIcon: Assets.images.heartWithPulse.svg(),
-          categoryTitle: l10n.medicalhealthTitle.toUpperCase(),
-        ),
-      ],
+          );
+        }
+
+        // started state
+        context.read<CategoriesBloc>().add(const CategoriesEvent.started());
+
+        return const Center(
+          child: Text('Network Error!'),
+        );
+      },
     );
   }
 }

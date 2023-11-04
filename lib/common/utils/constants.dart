@@ -24,6 +24,9 @@ class Constants {
       '02bc64055f82bc9b5f3a98dd5403be59234729bdf9efe3d9bb8210b2c0d133c76347938a33ae6e19c79025b8fb6de7fa843fc2037f5675f8ac7abc2322daec06d069f0b7cd8a18cb6bf04e1c47bfc219fc5cd8b841d88f314bc982f5ad0544c29887e74b1fb7031e332acb3d88f4ae2351eeae3682629bfc468cff41e6290610';
   static const ikaSmansaraDatabaseId = '652bc7f26602bddc2f4a';
   static const ikaSmansaraUserProfileCollectionId = '652bc80fe2fdeb1e3893';
+  static const ikaSmansaraCategoriesCollectionId = '6533be7558e38f4d949d';
+  static const ikaSmansaraCarouselCollectionId = '653a5e0cd286c5903643';
+  static const ikaSmansaraCampaignsCollectionId = '6533c53f27828417727d';
 
   // Attributes
   static const accept = 'Accept';
