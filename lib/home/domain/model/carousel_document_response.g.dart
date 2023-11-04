@@ -11,8 +11,10 @@ _$_CarouselDocumentResponse _$$_CarouselDocumentResponseFromJson(
     _$_CarouselDocumentResponse(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
-          ?.map((e) => CarouselItemResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) =>
+                  CarouselItemResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_CarouselDocumentResponseToJson(

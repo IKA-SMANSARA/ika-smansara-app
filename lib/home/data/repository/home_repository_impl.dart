@@ -47,4 +47,24 @@ class HomeRepositoryImpl implements HomeRepository {
       );
     }
   }
+
+  @override
+  Future<Either<ErrorResponse, CampaignsDocumentResponse>>
+      getAllCampaigns() async {
+    final responseGetAllCampaigns = await _apiServices.getAllCampaigns();
+
+    if (responseGetAllCampaigns.isSuccessful) {
+      return Right(
+        CampaignsDocumentResponseDTO.fromJson(
+          responseGetAllCampaigns.body as Map<String, dynamic>,
+        ).toCampaignsDocumentResponse(),
+      );
+    } else {
+      return Left(
+        ErrorResponseDTO.fromJson(
+          responseGetAllCampaigns.error! as Map<String, dynamic>,
+        ).toErrorResponse(),
+      );
+    }
+  }
 }

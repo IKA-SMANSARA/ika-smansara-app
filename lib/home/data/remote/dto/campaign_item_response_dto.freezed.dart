@@ -39,6 +39,8 @@ mixin _$CampaignItemResponseDTO {
   String? get campaignDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'goalAmount')
   int? get goalAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'currentAmount')
+  int? get currentAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'dateStartCampaign')
   String? get dateStartCampaign => throw _privateConstructorUsedError;
   @JsonKey(name: 'dateEndCampaign')
@@ -76,6 +78,7 @@ abstract class $CampaignItemResponseDTOCopyWith<$Res> {
       @JsonKey(name: 'campaignName') String? campaignName,
       @JsonKey(name: 'campaignDescription') String? campaignDescription,
       @JsonKey(name: 'goalAmount') int? goalAmount,
+      @JsonKey(name: 'currentAmount') int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') bool? isDeleted,
@@ -108,6 +111,7 @@ class _$CampaignItemResponseDTOCopyWithImpl<$Res,
     Object? campaignName = freezed,
     Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
+    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -152,6 +156,10 @@ class _$CampaignItemResponseDTOCopyWithImpl<$Res,
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -203,6 +211,7 @@ abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
       @JsonKey(name: 'campaignName') String? campaignName,
       @JsonKey(name: 'campaignDescription') String? campaignDescription,
       @JsonKey(name: 'goalAmount') int? goalAmount,
+      @JsonKey(name: 'currentAmount') int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') bool? isDeleted,
@@ -233,6 +242,7 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
     Object? campaignName = freezed,
     Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
+    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -277,6 +287,10 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -323,6 +337,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
       @JsonKey(name: 'campaignName') this.campaignName,
       @JsonKey(name: 'campaignDescription') this.campaignDescription,
       @JsonKey(name: 'goalAmount') this.goalAmount,
+      @JsonKey(name: 'currentAmount') this.currentAmount,
       @JsonKey(name: 'dateStartCampaign') this.dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') this.dateEndCampaign,
       @JsonKey(name: 'isDeleted') this.isDeleted,
@@ -372,6 +387,9 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   @JsonKey(name: 'goalAmount')
   final int? goalAmount;
   @override
+  @JsonKey(name: 'currentAmount')
+  final int? currentAmount;
+  @override
   @JsonKey(name: 'dateStartCampaign')
   final String? dateStartCampaign;
   @override
@@ -402,7 +420,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
 
   @override
   String toString() {
-    return 'CampaignItemResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
+    return 'CampaignItemResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, currentAmount: $currentAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
   }
 
   @override
@@ -427,6 +445,8 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
                 other.campaignDescription == campaignDescription) &&
             (identical(other.goalAmount, goalAmount) ||
                 other.goalAmount == goalAmount) &&
+            (identical(other.currentAmount, currentAmount) ||
+                other.currentAmount == currentAmount) &&
             (identical(other.dateStartCampaign, dateStartCampaign) ||
                 other.dateStartCampaign == dateStartCampaign) &&
             (identical(other.dateEndCampaign, dateEndCampaign) ||
@@ -456,6 +476,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
       campaignName,
       campaignDescription,
       goalAmount,
+      currentAmount,
       dateStartCampaign,
       dateEndCampaign,
       isDeleted,
@@ -491,6 +512,7 @@ abstract class _CampaignItemResponseDTO implements CampaignItemResponseDTO {
       @JsonKey(name: 'campaignName') final String? campaignName,
       @JsonKey(name: 'campaignDescription') final String? campaignDescription,
       @JsonKey(name: 'goalAmount') final int? goalAmount,
+      @JsonKey(name: 'currentAmount') final int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') final String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') final String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') final bool? isDeleted,
@@ -530,6 +552,9 @@ abstract class _CampaignItemResponseDTO implements CampaignItemResponseDTO {
   @override
   @JsonKey(name: 'goalAmount')
   int? get goalAmount;
+  @override
+  @JsonKey(name: 'currentAmount')
+  int? get currentAmount;
   @override
   @JsonKey(name: 'dateStartCampaign')
   String? get dateStartCampaign;

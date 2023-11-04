@@ -27,24 +27,35 @@ class CardItemCampaign extends StatelessWidget {
     final l10n = context.l10n;
     return GestureDetector(
       onTap: onPress,
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.w),
+      child: Container(
+        width: 300.w,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white12,
+          ),
+          borderRadius: BorderRadius.circular(8.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
-        child: Stack(
+        child: Column(
           children: [
             AspectRatio(
-              aspectRatio: 4 / 3,
+              aspectRatio: 16 / 9,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.w),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.r),
+                  topRight: Radius.circular(8.r),
+                ),
                 child: campaignImage ?? const Placeholder(),
               ),
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
+            Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(8.r),
@@ -97,6 +108,7 @@ class CardItemCampaign extends StatelessWidget {
                       LinearProgressIndicator(
                         value: campaignProgressIndicator,
                       ),
+                      Gap(4.h),
                     ],
                   ),
                 ),

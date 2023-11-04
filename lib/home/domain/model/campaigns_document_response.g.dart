@@ -11,8 +11,10 @@ _$_CampaignsDocumentResponse _$$_CampaignsDocumentResponseFromJson(
     _$_CampaignsDocumentResponse(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
-          ?.map((e) => CampaignItemResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+              ?.map((e) =>
+                  CampaignItemResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_CampaignsDocumentResponseToJson(

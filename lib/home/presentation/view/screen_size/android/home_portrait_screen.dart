@@ -3,6 +3,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/home/home.dart';
+import 'package:ika_smansara/home/presentation/bloc/campaigns_bloc.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 
 class HomePortraitScreen extends StatelessWidget {
@@ -28,6 +29,9 @@ class HomePortraitScreen extends StatelessWidget {
                 ),
                 BlocProvider(
                   create: (_) => CarouselBloc(),
+                ),
+                BlocProvider(
+                  create: (_) => CampaignsBloc(),
                 ),
               ],
               child: Column(

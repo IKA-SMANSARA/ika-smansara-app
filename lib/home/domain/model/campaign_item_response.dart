@@ -10,6 +10,7 @@ class CampaignItemResponse with _$CampaignItemResponse {
     String? campaignName,
     String? campaignDescription,
     int? goalAmount,
+    int? currentAmount,
     String? dateStartCampaign,
     String? dateEndCampaign,
     @Default(false) bool? isDeleted,

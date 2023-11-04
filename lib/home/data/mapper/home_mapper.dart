@@ -45,6 +45,7 @@ extension CampaignItemResponseDTOExtension on CampaignItemResponseDTO {
         isActive: isActive,
         isDeleted: isDeleted,
         photoThumbnail: photoThumbnail,
+        currentAmount: currentAmount,
       );
 }
 

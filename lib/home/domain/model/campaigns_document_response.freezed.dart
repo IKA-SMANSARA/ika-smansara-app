@@ -21,9 +21,7 @@ CampaignsDocumentResponse _$CampaignsDocumentResponseFromJson(
 
 /// @nodoc
 mixin _$CampaignsDocumentResponse {
-  @JsonKey(name: 'total')
   int? get total => throw _privateConstructorUsedError;
-  @JsonKey(name: 'documents')
   List<CampaignItemResponse>? get documents =>
       throw _privateConstructorUsedError;
 
@@ -39,9 +37,7 @@ abstract class $CampaignsDocumentResponseCopyWith<$Res> {
           $Res Function(CampaignsDocumentResponse) then) =
       _$CampaignsDocumentResponseCopyWithImpl<$Res, CampaignsDocumentResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CampaignItemResponse>? documents});
+  $Res call({int? total, List<CampaignItemResponse>? documents});
 }
 
 /// @nodoc
@@ -83,9 +79,7 @@ abstract class _$$_CampaignsDocumentResponseCopyWith<$Res>
       __$$_CampaignsDocumentResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CampaignItemResponse>? documents});
+  $Res call({int? total, List<CampaignItemResponse>? documents});
 }
 
 /// @nodoc
@@ -121,19 +115,17 @@ class __$$_CampaignsDocumentResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CampaignsDocumentResponse implements _CampaignsDocumentResponse {
   _$_CampaignsDocumentResponse(
-      {@JsonKey(name: 'total') this.total,
-      @JsonKey(name: 'documents') final List<CampaignItemResponse>? documents})
+      {this.total, final List<CampaignItemResponse>? documents = const []})
       : _documents = documents;
 
   factory _$_CampaignsDocumentResponse.fromJson(Map<String, dynamic> json) =>
       _$$_CampaignsDocumentResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'total')
   final int? total;
   final List<CampaignItemResponse>? _documents;
   @override
-  @JsonKey(name: 'documents')
+  @JsonKey()
   List<CampaignItemResponse>? get documents {
     final value = _documents;
     if (value == null) return null;
@@ -179,19 +171,15 @@ class _$_CampaignsDocumentResponse implements _CampaignsDocumentResponse {
 
 abstract class _CampaignsDocumentResponse implements CampaignsDocumentResponse {
   factory _CampaignsDocumentResponse(
-          {@JsonKey(name: 'total') final int? total,
-          @JsonKey(name: 'documents')
-          final List<CampaignItemResponse>? documents}) =
+          {final int? total, final List<CampaignItemResponse>? documents}) =
       _$_CampaignsDocumentResponse;
 
   factory _CampaignsDocumentResponse.fromJson(Map<String, dynamic> json) =
       _$_CampaignsDocumentResponse.fromJson;
 
   @override
-  @JsonKey(name: 'total')
   int? get total;
   @override
-  @JsonKey(name: 'documents')
   List<CampaignItemResponse>? get documents;
   @override
   @JsonKey(ignore: true)

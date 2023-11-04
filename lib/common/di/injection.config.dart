@@ -36,8 +36,8 @@ import 'package:ika_smansara/auth/domain/use_case/user_register_use_case/user_re
     as _i26;
 import 'package:ika_smansara/common/common.dart' as _i4;
 import 'package:ika_smansara/common/di/api_interface_network_module.dart'
-    as _i31;
-import 'package:ika_smansara/common/di/network_module.dart' as _i32;
+    as _i32;
+import 'package:ika_smansara/common/di/network_module.dart' as _i33;
 import 'package:ika_smansara/counter/counter.dart' as _i8;
 import 'package:ika_smansara/counter/data/repository/counter_repository_impl.dart'
     as _i9;
@@ -47,17 +47,19 @@ import 'package:ika_smansara/counter/domain/use_case/update_counter_data_use_cas
     as _i23;
 import 'package:ika_smansara/home/data/repository/home_repository_impl.dart'
     as _i15;
-import 'package:ika_smansara/home/domain/use_case/get_carousel_use_case/get_carousel_use_case.dart'
+import 'package:ika_smansara/home/domain/use_case/get_all_campaigns_use_case/get_all_campaigns_use_case.dart'
     as _i29;
-import 'package:ika_smansara/home/domain/use_case/get_categories_use_case/get_categories_use_case.dart'
+import 'package:ika_smansara/home/domain/use_case/get_carousel_use_case/get_carousel_use_case.dart'
     as _i30;
+import 'package:ika_smansara/home/domain/use_case/get_categories_use_case/get_categories_use_case.dart'
+    as _i31;
 import 'package:ika_smansara/home/home.dart' as _i14;
 import 'package:ika_smansara/payment_gateway/data/repository/payment_gateway_repository_impl.dart'
     as _i16;
 import 'package:ika_smansara/payment_gateway/di/api_interface_payment_gateway_network_module.dart'
-    as _i33;
-import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
     as _i34;
+import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
+    as _i35;
 import 'package:ika_smansara/payment_gateway/domain/use_case/request_acquiring_transaction_token_use_case/request_acquiring_transaction_token_use_case.dart'
     as _i19;
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart' as _i5;
@@ -79,26 +81,26 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    final networkModule = _$NetworkModule();
     final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
+    final networkModule = _$NetworkModule();
     final apiInterfaceNetworkModule = _$ApiInterfaceNetworkModule();
     final apiInterfacePaymentGatewayNetworkModule =
         _$ApiInterfacePaymentGatewayNetworkModule();
     gh.factory<String>(
-      () => networkModule.baseURL,
-      instanceName: 'BASEURL',
-    );
-    gh.factory<String>(
       () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
       instanceName: 'BASEURLPAYMENTGATEWAY',
     );
+    gh.factory<String>(
+      () => networkModule.baseURL,
+      instanceName: 'BASEURL',
+    );
+    gh.lazySingleton<_i3.ChopperClient>(
+        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
     gh.lazySingleton<_i3.ChopperClient>(
       () => paymentGatewayNetworkModule
           .chopperClient(gh<String>(instanceName: 'BASEURLPAYMENTGATEWAY')),
       instanceName: 'PAYMENTGATEWAYNETWORKMODULE',
     );
-    gh.lazySingleton<_i3.ChopperClient>(
-        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
     gh.lazySingleton<_i4.ApiServices>(
         () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()));
     gh.lazySingleton<_i5.ApiServicesPaymentGateway>(() =>
@@ -153,19 +155,21 @@ extension GetItInjectableX on _i1.GetIt {
               gh<_i6.AuthRepository>(),
               gh<_i6.GetIdEmailSessionFromLocalUseCase>(),
             ));
-    gh.factory<_i29.GetCarouselUseCase>(
-        () => _i29.GetCarouselUseCase(gh<_i14.HomeRepository>()));
-    gh.factory<_i30.GetCategoriesUseCase>(
-        () => _i30.GetCategoriesUseCase(gh<_i14.HomeRepository>()));
+    gh.factory<_i29.GetAllCampaignsUseCase>(
+        () => _i29.GetAllCampaignsUseCase(gh<_i14.HomeRepository>()));
+    gh.factory<_i30.GetCarouselUseCase>(
+        () => _i30.GetCarouselUseCase(gh<_i14.HomeRepository>()));
+    gh.factory<_i31.GetCategoriesUseCase>(
+        () => _i31.GetCategoriesUseCase(gh<_i14.HomeRepository>()));
     return this;
   }
 }
 
-class _$ApiInterfaceNetworkModule extends _i31.ApiInterfaceNetworkModule {}
+class _$ApiInterfaceNetworkModule extends _i32.ApiInterfaceNetworkModule {}
 
-class _$NetworkModule extends _i32.NetworkModule {}
+class _$NetworkModule extends _i33.NetworkModule {}
 
 class _$ApiInterfacePaymentGatewayNetworkModule
-    extends _i33.ApiInterfacePaymentGatewayNetworkModule {}
+    extends _i34.ApiInterfacePaymentGatewayNetworkModule {}
 
-class _$PaymentGatewayNetworkModule extends _i34.PaymentGatewayNetworkModule {}
+class _$PaymentGatewayNetworkModule extends _i35.PaymentGatewayNetworkModule {}

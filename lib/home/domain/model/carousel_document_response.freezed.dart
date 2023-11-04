@@ -114,7 +114,7 @@ class __$$_CarouselDocumentResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
   _$_CarouselDocumentResponse(
-      {this.total, final List<CarouselItemResponse>? documents})
+      {this.total, final List<CarouselItemResponse>? documents = const []})
       : _documents = documents;
 
   factory _$_CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =>
@@ -124,6 +124,7 @@ class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
   final int? total;
   final List<CarouselItemResponse>? _documents;
   @override
+  @JsonKey()
   List<CarouselItemResponse>? get documents {
     final value = _documents;
     if (value == null) return null;

@@ -116,7 +116,7 @@ class __$$_CategoriesDocumentResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
   _$_CategoriesDocumentResponse(
-      {this.total, final List<CategoryItemResponse>? documents})
+      {this.total, final List<CategoryItemResponse>? documents = const []})
       : _documents = documents;
 
   factory _$_CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =>
@@ -126,6 +126,7 @@ class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
   final int? total;
   final List<CategoryItemResponse>? _documents;
   @override
+  @JsonKey()
   List<CategoryItemResponse>? get documents {
     final value = _documents;
     if (value == null) return null;

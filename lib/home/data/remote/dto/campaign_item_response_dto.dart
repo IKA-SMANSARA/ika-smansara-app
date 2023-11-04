@@ -17,6 +17,7 @@ class CampaignItemResponseDTO with _$CampaignItemResponseDTO {
     @JsonKey(name: 'campaignName') String? campaignName,
     @JsonKey(name: 'campaignDescription') String? campaignDescription,
     @JsonKey(name: 'goalAmount') int? goalAmount,
+    @JsonKey(name: 'currentAmount') int? currentAmount,
     @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
     @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
     @JsonKey(name: 'isDeleted') bool? isDeleted,

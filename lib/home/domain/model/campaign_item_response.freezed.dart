@@ -24,6 +24,7 @@ mixin _$CampaignItemResponse {
   String? get campaignName => throw _privateConstructorUsedError;
   String? get campaignDescription => throw _privateConstructorUsedError;
   int? get goalAmount => throw _privateConstructorUsedError;
+  int? get currentAmount => throw _privateConstructorUsedError;
   String? get dateStartCampaign => throw _privateConstructorUsedError;
   String? get dateEndCampaign => throw _privateConstructorUsedError;
   bool? get isDeleted => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $CampaignItemResponseCopyWith<$Res> {
       String? campaignName,
       String? campaignDescription,
       int? goalAmount,
+      int? currentAmount,
       String? dateStartCampaign,
       String? dateEndCampaign,
       bool? isDeleted,
@@ -76,6 +78,7 @@ class _$CampaignItemResponseCopyWithImpl<$Res,
     Object? campaignName = freezed,
     Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
+    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -100,6 +103,10 @@ class _$CampaignItemResponseCopyWithImpl<$Res,
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -146,6 +153,7 @@ abstract class _$$_CampaignItemResponseCopyWith<$Res>
       String? campaignName,
       String? campaignDescription,
       int? goalAmount,
+      int? currentAmount,
       String? dateStartCampaign,
       String? dateEndCampaign,
       bool? isDeleted,
@@ -170,6 +178,7 @@ class __$$_CampaignItemResponseCopyWithImpl<$Res>
     Object? campaignName = freezed,
     Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
+    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -194,6 +203,10 @@ class __$$_CampaignItemResponseCopyWithImpl<$Res>
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -235,6 +248,7 @@ class _$_CampaignItemResponse implements _CampaignItemResponse {
       this.campaignName,
       this.campaignDescription,
       this.goalAmount,
+      this.currentAmount,
       this.dateStartCampaign,
       this.dateEndCampaign,
       this.isDeleted = false,
@@ -255,6 +269,8 @@ class _$_CampaignItemResponse implements _CampaignItemResponse {
   final String? campaignDescription;
   @override
   final int? goalAmount;
+  @override
+  final int? currentAmount;
   @override
   final String? dateStartCampaign;
   @override
@@ -282,7 +298,7 @@ class _$_CampaignItemResponse implements _CampaignItemResponse {
 
   @override
   String toString() {
-    return 'CampaignItemResponse(id: $id, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
+    return 'CampaignItemResponse(id: $id, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, currentAmount: $currentAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
   }
 
   @override
@@ -297,6 +313,8 @@ class _$_CampaignItemResponse implements _CampaignItemResponse {
                 other.campaignDescription == campaignDescription) &&
             (identical(other.goalAmount, goalAmount) ||
                 other.goalAmount == goalAmount) &&
+            (identical(other.currentAmount, currentAmount) ||
+                other.currentAmount == currentAmount) &&
             (identical(other.dateStartCampaign, dateStartCampaign) ||
                 other.dateStartCampaign == dateStartCampaign) &&
             (identical(other.dateEndCampaign, dateEndCampaign) ||
@@ -321,6 +339,7 @@ class _$_CampaignItemResponse implements _CampaignItemResponse {
       campaignName,
       campaignDescription,
       goalAmount,
+      currentAmount,
       dateStartCampaign,
       dateEndCampaign,
       isDeleted,
@@ -350,6 +369,7 @@ abstract class _CampaignItemResponse implements CampaignItemResponse {
       final String? campaignName,
       final String? campaignDescription,
       final int? goalAmount,
+      final int? currentAmount,
       final String? dateStartCampaign,
       final String? dateEndCampaign,
       final bool? isDeleted,
@@ -369,6 +389,8 @@ abstract class _CampaignItemResponse implements CampaignItemResponse {
   String? get campaignDescription;
   @override
   int? get goalAmount;
+  @override
+  int? get currentAmount;
   @override
   String? get dateStartCampaign;
   @override
