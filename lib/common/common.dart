@@ -1,6 +1,8 @@
 export 'data/mapper/error_mapper.dart';
 export 'data/mapper/session_mapper.dart';
 export 'data/remote/api_services.dart';
+export 'data/remote/dto/campaign_document_response_dto.dart';
+export 'data/remote/dto/campaigns_collections_response_dto.dart';
 export 'data/remote/dto/document_response_dto.dart';
 export 'data/remote/dto/error_response_dto.dart';
 export 'data/remote/dto/session_response_dto.dart';

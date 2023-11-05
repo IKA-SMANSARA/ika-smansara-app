@@ -1,12 +1,10 @@
 export 'data/mapper/home_mapper.dart';
-export 'data/remote/dto/campaign_item_response_dto.dart';
-export 'data/remote/dto/campaigns_document_response_dto.dart';
 export 'data/remote/dto/carousel_document_response_dto.dart';
 export 'data/remote/dto/carousel_item_response_dto.dart';
 export 'data/remote/dto/categories_document_response_dto.dart';
 export 'data/remote/dto/category_item_response_dto.dart';
-export 'domain/model/campaign_item_response.dart';
-export 'domain/model/campaigns_document_response.dart';
+export 'domain/model/campaign_document_response.dart';
+export 'domain/model/campaigns_collections_response.dart';
 export 'domain/model/carousel_document_response.dart';
 export 'domain/model/carousel_item_response.dart';
 export 'domain/model/categories_document_response.dart';

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'campaign_item_response_dto.dart';
+part of 'campaign_document_response_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CampaignItemResponseDTO _$CampaignItemResponseDTOFromJson(
+CampaignDocumentResponseDTO _$CampaignDocumentResponseDTOFromJson(
     Map<String, dynamic> json) {
   return _CampaignItemResponseDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CampaignItemResponseDTO {
+mixin _$CampaignDocumentResponseDTO {
   @JsonKey(name: '\$id')
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: '\$createdAt')
@@ -58,15 +58,17 @@ mixin _$CampaignItemResponseDTO {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CampaignItemResponseDTOCopyWith<CampaignItemResponseDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CampaignDocumentResponseDTOCopyWith<CampaignDocumentResponseDTO>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CampaignItemResponseDTOCopyWith<$Res> {
-  factory $CampaignItemResponseDTOCopyWith(CampaignItemResponseDTO value,
-          $Res Function(CampaignItemResponseDTO) then) =
-      _$CampaignItemResponseDTOCopyWithImpl<$Res, CampaignItemResponseDTO>;
+abstract class $CampaignDocumentResponseDTOCopyWith<$Res> {
+  factory $CampaignDocumentResponseDTOCopyWith(
+          CampaignDocumentResponseDTO value,
+          $Res Function(CampaignDocumentResponseDTO) then) =
+      _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
+          CampaignDocumentResponseDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String? id,
@@ -89,10 +91,10 @@ abstract class $CampaignItemResponseDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CampaignItemResponseDTOCopyWithImpl<$Res,
-        $Val extends CampaignItemResponseDTO>
-    implements $CampaignItemResponseDTOCopyWith<$Res> {
-  _$CampaignItemResponseDTOCopyWithImpl(this._value, this._then);
+class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
+        $Val extends CampaignDocumentResponseDTO>
+    implements $CampaignDocumentResponseDTOCopyWith<$Res> {
+  _$CampaignDocumentResponseDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -195,7 +197,7 @@ class _$CampaignItemResponseDTOCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
-    implements $CampaignItemResponseDTOCopyWith<$Res> {
+    implements $CampaignDocumentResponseDTOCopyWith<$Res> {
   factory _$$_CampaignItemResponseDTOCopyWith(_$_CampaignItemResponseDTO value,
           $Res Function(_$_CampaignItemResponseDTO) then) =
       __$$_CampaignItemResponseDTOCopyWithImpl<$Res>;
@@ -223,7 +225,7 @@ abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
-    extends _$CampaignItemResponseDTOCopyWithImpl<$Res,
+    extends _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
         _$_CampaignItemResponseDTO>
     implements _$$_CampaignItemResponseDTOCopyWith<$Res> {
   __$$_CampaignItemResponseDTOCopyWithImpl(_$_CampaignItemResponseDTO _value,
@@ -420,7 +422,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
 
   @override
   String toString() {
-    return 'CampaignItemResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, currentAmount: $currentAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
+    return 'CampaignDocumentResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, currentAmount: $currentAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
   }
 
   @override
@@ -501,7 +503,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   }
 }
 
-abstract class _CampaignItemResponseDTO implements CampaignItemResponseDTO {
+abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
   factory _CampaignItemResponseDTO(
       {@JsonKey(name: '\$id') final String? id,
       @JsonKey(name: '\$createdAt') final String? createdAt,

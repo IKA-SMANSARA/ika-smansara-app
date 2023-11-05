@@ -95,11 +95,17 @@ class CardVerticalListView extends StatelessWidget {
                             ),
                             campaignTitle:
                                 state.listCampaigns?[index].campaignName,
-                            campaignDonationCollected: state
-                                .listCampaigns?[index].currentAmount
-                                .toString(),
-                            campaignDuration: '5 hari lagi',
-                            campaignProgressIndicator: 0.65,
+                            campaignDonationCollected: currencyFormatter(
+                              state.listCampaigns?[index].currentAmount ?? 0,
+                            ),
+                            campaignDuration: getRemainingDays(
+                              state.listCampaigns?[index].dateEndCampaign,
+                            ),
+                            campaignProgressIndicator:
+                                getCampaignProgressIndicatorValue(
+                              state.listCampaigns?[index].goalAmount ?? 0,
+                              state.listCampaigns?[index].currentAmount ?? 0,
+                            ),
                             campaignImage: Image.network(
                               state.listCampaigns?[index].photoThumbnail ?? '',
                               fit: BoxFit.cover,

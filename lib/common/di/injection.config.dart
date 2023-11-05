@@ -81,86 +81,86 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
     final networkModule = _$NetworkModule();
+    final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
     final apiInterfaceNetworkModule = _$ApiInterfaceNetworkModule();
     final apiInterfacePaymentGatewayNetworkModule =
         _$ApiInterfacePaymentGatewayNetworkModule();
     gh.factory<String>(
-      () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
-      instanceName: 'BASEURLPAYMENTGATEWAY',
-    );
-    gh.factory<String>(
       () => networkModule.baseURL,
       instanceName: 'BASEURL',
     );
-    gh.lazySingleton<_i3.ChopperClient>(
-        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
+    gh.factory<String>(
+      () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
+      instanceName: 'BASEURLPAYMENTGATEWAY',
+    );
     gh.lazySingleton<_i3.ChopperClient>(
       () => paymentGatewayNetworkModule
           .chopperClient(gh<String>(instanceName: 'BASEURLPAYMENTGATEWAY')),
       instanceName: 'PAYMENTGATEWAYNETWORKMODULE',
     );
+    gh.lazySingleton<_i3.ChopperClient>(
+        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')),);
     gh.lazySingleton<_i4.ApiServices>(
-        () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()));
+        () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()),);
     gh.lazySingleton<_i5.ApiServicesPaymentGateway>(() =>
         apiInterfacePaymentGatewayNetworkModule.apiServicesPaymentGateway(
             gh<_i3.ChopperClient>(
-                instanceName: 'PAYMENTGATEWAYNETWORKMODULE')));
+                instanceName: 'PAYMENTGATEWAYNETWORKMODULE',),),);
     gh.factory<_i6.AuthRepository>(
-        () => _i7.AuthRepositoryImpl(gh<_i4.ApiServices>()));
+        () => _i7.AuthRepositoryImpl(gh<_i4.ApiServices>()),);
     gh.factory<_i8.CounterRepository>(
-        () => _i9.CounterRepositoryImpl(gh<_i4.ApiServices>()));
+        () => _i9.CounterRepositoryImpl(gh<_i4.ApiServices>()),);
     gh.factory<_i10.GetCounterDataUseCase>(
-        () => _i10.GetCounterDataUseCase(gh<_i8.CounterRepository>()));
+        () => _i10.GetCounterDataUseCase(gh<_i8.CounterRepository>()),);
     gh.factory<_i11.GetIdEmailSessionFromLocalUseCase>(
-        () => _i11.GetIdEmailSessionFromLocalUseCase(gh<_i6.AuthRepository>()));
+        () => _i11.GetIdEmailSessionFromLocalUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i12.GetLabelUserFromLocalUseCase>(
-        () => _i12.GetLabelUserFromLocalUseCase(gh<_i6.AuthRepository>()));
+        () => _i12.GetLabelUserFromLocalUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i13.GetUserAccountDetailUseCase>(
-        () => _i13.GetUserAccountDetailUseCase(gh<_i6.AuthRepository>()));
+        () => _i13.GetUserAccountDetailUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i14.HomeRepository>(
-        () => _i15.HomeRepositoryImpl(gh<_i4.ApiServices>()));
+        () => _i15.HomeRepositoryImpl(gh<_i4.ApiServices>()),);
     gh.factory<_i5.PaymentGatewayRepository>(() =>
-        _i16.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()));
+        _i16.PaymentGatewayRepositoryImpl(gh<_i5.ApiServicesPaymentGateway>()),);
     gh.factory<_i17.RegisterRepository>(
-        () => _i18.RegisterRepositoryImpl(gh<_i4.ApiServices>()));
+        () => _i18.RegisterRepositoryImpl(gh<_i4.ApiServices>()),);
     gh.factory<_i19.RequestAcquiringTransactionTokenUseCase>(() =>
         _i19.RequestAcquiringTransactionTokenUseCase(
-            gh<_i5.PaymentGatewayRepository>()));
+            gh<_i5.PaymentGatewayRepository>(),),);
     gh.factory<_i20.SaveIdEmailSessionToLocalUseCase>(
-        () => _i20.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()));
+        () => _i20.SaveIdEmailSessionToLocalUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i21.SaveLabelUserToLocalUseCase>(
-        () => _i21.SaveLabelUserToLocalUseCase(gh<_i6.AuthRepository>()));
+        () => _i21.SaveLabelUserToLocalUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i22.SaveUserProfileDocUseCase>(
-        () => _i22.SaveUserProfileDocUseCase(gh<_i17.RegisterRepository>()));
+        () => _i22.SaveUserProfileDocUseCase(gh<_i17.RegisterRepository>()),);
     gh.factory<_i23.UpdateCounterDataUseCase>(
-        () => _i23.UpdateCounterDataUseCase(gh<_i8.CounterRepository>()));
+        () => _i23.UpdateCounterDataUseCase(gh<_i8.CounterRepository>()),);
     gh.factory<_i24.UserLoginUseCase>(() => _i24.UserLoginUseCase(
           gh<_i6.AuthRepository>(),
           gh<_i6.SaveIdEmailSessionToLocalUseCase>(),
           gh<_i6.GetUserAccountDetailUseCase>(),
           gh<_i6.SaveLabelUserToLocalUseCase>(),
-        ));
+        ),);
     gh.factory<_i25.UserLogoutUseCase>(() => _i25.UserLogoutUseCase(
           gh<_i6.AuthRepository>(),
           gh<_i6.GetIdEmailSessionFromLocalUseCase>(),
-        ));
+        ),);
     gh.factory<_i26.UserRegisterUseCase>(
-        () => _i26.UserRegisterUseCase(gh<_i6.AuthRepository>()));
+        () => _i26.UserRegisterUseCase(gh<_i6.AuthRepository>()),);
     gh.factory<_i27.CheckUserIsAdminUseCase>(() =>
-        _i27.CheckUserIsAdminUseCase(gh<_i6.GetLabelUserFromLocalUseCase>()));
+        _i27.CheckUserIsAdminUseCase(gh<_i6.GetLabelUserFromLocalUseCase>()),);
     gh.factory<_i28.CheckUserSessionStatusUseCase>(
         () => _i28.CheckUserSessionStatusUseCase(
               gh<_i6.AuthRepository>(),
               gh<_i6.GetIdEmailSessionFromLocalUseCase>(),
-            ));
+            ),);
     gh.factory<_i29.GetAllCampaignsUseCase>(
-        () => _i29.GetAllCampaignsUseCase(gh<_i14.HomeRepository>()));
+        () => _i29.GetAllCampaignsUseCase(gh<_i14.HomeRepository>()),);
     gh.factory<_i30.GetCarouselUseCase>(
-        () => _i30.GetCarouselUseCase(gh<_i14.HomeRepository>()));
+        () => _i30.GetCarouselUseCase(gh<_i14.HomeRepository>()),);
     gh.factory<_i31.GetCategoriesUseCase>(
-        () => _i31.GetCategoriesUseCase(gh<_i14.HomeRepository>()));
+        () => _i31.GetCategoriesUseCase(gh<_i14.HomeRepository>()),);
     return this;
   }
 }

@@ -11,6 +11,22 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+  // get all campaigns by categories
+  @Get(
+    path:
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCampaignsCollectionId}/documents',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> getAllCampaignsByCategories(
+    @Query('queries[]') String? queries,
+  );
+
   // get all campaigns
   @Get(
     path:

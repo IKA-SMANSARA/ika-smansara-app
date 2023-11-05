@@ -44,7 +44,7 @@ class Categories extends StatelessWidget {
                   Routes.listCampaignPerCategory,
                   queryParameters: {
                     Constants.categoryNameKey:
-                        category?.nameCategory?.toUpperCase(),
+                        category?.nameCategory,
                   },
                 ),
                 categoryIcon: SvgPicture.network(

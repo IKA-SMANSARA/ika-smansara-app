@@ -7,5 +7,5 @@ abstract class HomeRepository {
 
   Future<Either<ErrorResponse, CategoriesDocumentResponse>> getCategories();
 
-  Future<Either<ErrorResponse, CampaignsDocumentResponse>> getAllCampaigns();
+  Future<Either<ErrorResponse, CampaignsCollectionsResponse>> getAllCampaigns();
 }

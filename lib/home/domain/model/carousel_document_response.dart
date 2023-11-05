@@ -8,11 +8,11 @@ part 'carousel_document_response.g.dart';
 
 @freezed
 class CarouselDocumentResponse with _$CarouselDocumentResponse {
-
   factory CarouselDocumentResponse({
     int? total,
     @Default([]) List<CarouselItemResponse>? documents,
   }) = _CarouselDocumentResponse;
 
-  factory CarouselDocumentResponse.fromJson(Map<String, dynamic> json) => _$CarouselDocumentResponseFromJson(json);
+  factory CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =>
+      _$CarouselDocumentResponseFromJson(json);
 }

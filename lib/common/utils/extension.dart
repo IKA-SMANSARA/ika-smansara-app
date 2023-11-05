@@ -1,3 +1,4 @@
+import 'package:currency_formatter/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:logging/logging.dart';
@@ -20,4 +21,47 @@ String getRandomOrderIdNumber(String? name) {
   final merchantOrderId =
       'IKA-SMANSARA-${name?.trim()}-${DateTime.now().millisecondsSinceEpoch}';
   return merchantOrderId;
+}
+
+double getCampaignProgressIndicatorValue(
+  int goalAmount,
+  int currentAmount,
+) {
+  return (currentAmount / goalAmount) * 100 / 100;
+}
+
+String currencyFormatter(int number) {
+  const idrCurrencySettings = CurrencyFormat(
+    symbol: 'Rp',
+    thousandSeparator: '.',
+    decimalSeparator: ',',
+  );
+
+  return CurrencyFormatter.format(
+    number,
+    idrCurrencySettings,
+    decimal: 0,
+  );
+}
+
+String getRemainingDays(String? dateEndCampaign) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final today = DateTime.now();
+
+    final difference = timestamp.difference(today);
+
+    final remainingDays = difference.inDays;
+
+    if (remainingDays != 0) {
+      return '$remainingDays hari lagi';
+    } else {
+      return '0 hari lagi';
+    }
+  } else {
+    return '0 hari lagi';
+  }
 }

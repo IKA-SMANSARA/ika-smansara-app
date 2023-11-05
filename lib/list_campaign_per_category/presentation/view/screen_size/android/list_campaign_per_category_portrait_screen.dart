@@ -18,7 +18,7 @@ class ListCampaignPerCategoryPortraitScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF104993),
         title: Text(
-          categoryName,
+          categoryName.toUpperCase(),
           style: GoogleFonts.inter(
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
