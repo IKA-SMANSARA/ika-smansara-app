@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'campaigns_document_response_dto.dart';
+part of 'campaigns_collections_response_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,43 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CampaignsDocumentResponseDTO _$CampaignsDocumentResponseDTOFromJson(
+CampaignsCollectionsResponseDTO _$CampaignsCollectionsResponseDTOFromJson(
     Map<String, dynamic> json) {
   return _CampaignsDocumentResponseDTO.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CampaignsDocumentResponseDTO {
+mixin _$CampaignsCollectionsResponseDTO {
   @JsonKey(name: 'total')
   int? get total => throw _privateConstructorUsedError;
   @JsonKey(name: 'documents')
-  List<CampaignItemResponseDTO>? get documents =>
+  List<CampaignDocumentResponseDTO>? get documents =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CampaignsDocumentResponseDTOCopyWith<CampaignsDocumentResponseDTO>
+  $CampaignsCollectionsResponseDTOCopyWith<CampaignsCollectionsResponseDTO>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CampaignsDocumentResponseDTOCopyWith<$Res> {
-  factory $CampaignsDocumentResponseDTOCopyWith(
-          CampaignsDocumentResponseDTO value,
-          $Res Function(CampaignsDocumentResponseDTO) then) =
-      _$CampaignsDocumentResponseDTOCopyWithImpl<$Res,
-          CampaignsDocumentResponseDTO>;
+abstract class $CampaignsCollectionsResponseDTOCopyWith<$Res> {
+  factory $CampaignsCollectionsResponseDTOCopyWith(
+          CampaignsCollectionsResponseDTO value,
+          $Res Function(CampaignsCollectionsResponseDTO) then) =
+      _$CampaignsCollectionsResponseDTOCopyWithImpl<$Res,
+          CampaignsCollectionsResponseDTO>;
   @useResult
   $Res call(
       {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CampaignItemResponseDTO>? documents});
+      @JsonKey(name: 'documents')
+      List<CampaignDocumentResponseDTO>? documents});
 }
 
 /// @nodoc
-class _$CampaignsDocumentResponseDTOCopyWithImpl<$Res,
-        $Val extends CampaignsDocumentResponseDTO>
-    implements $CampaignsDocumentResponseDTOCopyWith<$Res> {
-  _$CampaignsDocumentResponseDTOCopyWithImpl(this._value, this._then);
+class _$CampaignsCollectionsResponseDTOCopyWithImpl<$Res,
+        $Val extends CampaignsCollectionsResponseDTO>
+    implements $CampaignsCollectionsResponseDTOCopyWith<$Res> {
+  _$CampaignsCollectionsResponseDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -71,14 +72,14 @@ class _$CampaignsDocumentResponseDTOCopyWithImpl<$Res,
       documents: freezed == documents
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
-              as List<CampaignItemResponseDTO>?,
+              as List<CampaignDocumentResponseDTO>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$_CampaignsDocumentResponseDTOCopyWith<$Res>
-    implements $CampaignsDocumentResponseDTOCopyWith<$Res> {
+    implements $CampaignsCollectionsResponseDTOCopyWith<$Res> {
   factory _$$_CampaignsDocumentResponseDTOCopyWith(
           _$_CampaignsDocumentResponseDTO value,
           $Res Function(_$_CampaignsDocumentResponseDTO) then) =
@@ -87,12 +88,13 @@ abstract class _$$_CampaignsDocumentResponseDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'total') int? total,
-      @JsonKey(name: 'documents') List<CampaignItemResponseDTO>? documents});
+      @JsonKey(name: 'documents')
+      List<CampaignDocumentResponseDTO>? documents});
 }
 
 /// @nodoc
 class __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>
-    extends _$CampaignsDocumentResponseDTOCopyWithImpl<$Res,
+    extends _$CampaignsCollectionsResponseDTOCopyWithImpl<$Res,
         _$_CampaignsDocumentResponseDTO>
     implements _$$_CampaignsDocumentResponseDTOCopyWith<$Res> {
   __$$_CampaignsDocumentResponseDTOCopyWithImpl(
@@ -114,7 +116,7 @@ class __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>
       documents: freezed == documents
           ? _value._documents
           : documents // ignore: cast_nullable_to_non_nullable
-              as List<CampaignItemResponseDTO>?,
+              as List<CampaignDocumentResponseDTO>?,
     ));
   }
 }
@@ -125,7 +127,7 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
   _$_CampaignsDocumentResponseDTO(
       {@JsonKey(name: 'total') this.total,
       @JsonKey(name: 'documents')
-      final List<CampaignItemResponseDTO>? documents})
+      final List<CampaignDocumentResponseDTO>? documents})
       : _documents = documents;
 
   factory _$_CampaignsDocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
@@ -134,10 +136,10 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
   @override
   @JsonKey(name: 'total')
   final int? total;
-  final List<CampaignItemResponseDTO>? _documents;
+  final List<CampaignDocumentResponseDTO>? _documents;
   @override
   @JsonKey(name: 'documents')
-  List<CampaignItemResponseDTO>? get documents {
+  List<CampaignDocumentResponseDTO>? get documents {
     final value = _documents;
     if (value == null) return null;
     if (_documents is EqualUnmodifiableListView) return _documents;
@@ -147,7 +149,7 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
 
   @override
   String toString() {
-    return 'CampaignsDocumentResponseDTO(total: $total, documents: $documents)';
+    return 'CampaignsCollectionsResponseDTO(total: $total, documents: $documents)';
   }
 
   @override
@@ -181,11 +183,11 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
 }
 
 abstract class _CampaignsDocumentResponseDTO
-    implements CampaignsDocumentResponseDTO {
+    implements CampaignsCollectionsResponseDTO {
   factory _CampaignsDocumentResponseDTO(
           {@JsonKey(name: 'total') final int? total,
           @JsonKey(name: 'documents')
-          final List<CampaignItemResponseDTO>? documents}) =
+          final List<CampaignDocumentResponseDTO>? documents}) =
       _$_CampaignsDocumentResponseDTO;
 
   factory _CampaignsDocumentResponseDTO.fromJson(Map<String, dynamic> json) =
@@ -196,7 +198,7 @@ abstract class _CampaignsDocumentResponseDTO
   int? get total;
   @override
   @JsonKey(name: 'documents')
-  List<CampaignItemResponseDTO>? get documents;
+  List<CampaignDocumentResponseDTO>? get documents;
   @override
   @JsonKey(ignore: true)
   _$$_CampaignsDocumentResponseDTOCopyWith<_$_CampaignsDocumentResponseDTO>

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'campaigns_document_response_dto.dart';
+part of 'campaigns_collections_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -12,7 +12,7 @@ _$_CampaignsDocumentResponseDTO _$$_CampaignsDocumentResponseDTOFromJson(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
           ?.map((e) =>
-              CampaignItemResponseDTO.fromJson(e as Map<String, dynamic>))
+              CampaignDocumentResponseDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

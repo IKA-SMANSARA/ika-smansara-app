@@ -69,6 +69,8 @@ class CardItemCampaign extends StatelessWidget {
                     children: [
                       Text(
                         campaignTitle ?? '',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                         style: GoogleFonts.inter(
                           color: Colors.black,
                           fontSize: 10.sp,
@@ -88,7 +90,7 @@ class CardItemCampaign extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Rp.$campaignDonationCollected',
+                            campaignDonationCollected ?? '',
                             style: GoogleFonts.inter(
                               color: Colors.blue,
                               fontSize: 11.sp,

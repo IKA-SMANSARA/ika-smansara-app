@@ -9,6 +9,6 @@ class GetAllCampaignsUseCase {
 
   final HomeRepository _homeRepository;
 
-  Future<Either<ErrorResponse, CampaignsDocumentResponse>> call() =>
+  Future<Either<ErrorResponse, CampaignsCollectionsResponse>> call() =>
       _homeRepository.getAllCampaigns();
 }

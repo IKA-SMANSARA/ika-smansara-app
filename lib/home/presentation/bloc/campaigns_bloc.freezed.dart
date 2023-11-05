@@ -282,7 +282,7 @@ mixin _$CampaignsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialCampaigns,
-    required TResult Function(List<CampaignItemResponse>? listCampaigns)
+    required TResult Function(List<CampaignDocumentResponse>? listCampaigns)
         successCampaigns,
     required TResult Function(String? errorMessage) errorCampaigns,
     required TResult Function() loadingCampaigns,
@@ -291,7 +291,7 @@ mixin _$CampaignsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialCampaigns,
-    TResult? Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult? Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult? Function(String? errorMessage)? errorCampaigns,
     TResult? Function()? loadingCampaigns,
@@ -300,7 +300,7 @@ mixin _$CampaignsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialCampaigns,
-    TResult Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult Function(String? errorMessage)? errorCampaigns,
     TResult Function()? loadingCampaigns,
@@ -391,7 +391,7 @@ class _$InitialCampaigns implements InitialCampaigns {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialCampaigns,
-    required TResult Function(List<CampaignItemResponse>? listCampaigns)
+    required TResult Function(List<CampaignDocumentResponse>? listCampaigns)
         successCampaigns,
     required TResult Function(String? errorMessage) errorCampaigns,
     required TResult Function() loadingCampaigns,
@@ -403,7 +403,7 @@ class _$InitialCampaigns implements InitialCampaigns {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialCampaigns,
-    TResult? Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult? Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult? Function(String? errorMessage)? errorCampaigns,
     TResult? Function()? loadingCampaigns,
@@ -415,7 +415,7 @@ class _$InitialCampaigns implements InitialCampaigns {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialCampaigns,
-    TResult Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult Function(String? errorMessage)? errorCampaigns,
     TResult Function()? loadingCampaigns,
@@ -475,7 +475,7 @@ abstract class _$$SuccessCampaignsCopyWith<$Res> {
           _$SuccessCampaigns value, $Res Function(_$SuccessCampaigns) then) =
       __$$SuccessCampaignsCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CampaignItemResponse>? listCampaigns});
+  $Res call({List<CampaignDocumentResponse>? listCampaigns});
 }
 
 /// @nodoc
@@ -495,7 +495,7 @@ class __$$SuccessCampaignsCopyWithImpl<$Res>
       listCampaigns: freezed == listCampaigns
           ? _value._listCampaigns
           : listCampaigns // ignore: cast_nullable_to_non_nullable
-              as List<CampaignItemResponse>?,
+              as List<CampaignDocumentResponse>?,
     ));
   }
 }
@@ -504,13 +504,13 @@ class __$$SuccessCampaignsCopyWithImpl<$Res>
 
 class _$SuccessCampaigns implements SuccessCampaigns {
   const _$SuccessCampaigns(
-      {final List<CampaignItemResponse>? listCampaigns = const []})
+      {final List<CampaignDocumentResponse>? listCampaigns = const []})
       : _listCampaigns = listCampaigns;
 
-  final List<CampaignItemResponse>? _listCampaigns;
+  final List<CampaignDocumentResponse>? _listCampaigns;
   @override
   @JsonKey()
-  List<CampaignItemResponse>? get listCampaigns {
+  List<CampaignDocumentResponse>? get listCampaigns {
     final value = _listCampaigns;
     if (value == null) return null;
     if (_listCampaigns is EqualUnmodifiableListView) return _listCampaigns;
@@ -546,7 +546,7 @@ class _$SuccessCampaigns implements SuccessCampaigns {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialCampaigns,
-    required TResult Function(List<CampaignItemResponse>? listCampaigns)
+    required TResult Function(List<CampaignDocumentResponse>? listCampaigns)
         successCampaigns,
     required TResult Function(String? errorMessage) errorCampaigns,
     required TResult Function() loadingCampaigns,
@@ -558,7 +558,7 @@ class _$SuccessCampaigns implements SuccessCampaigns {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialCampaigns,
-    TResult? Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult? Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult? Function(String? errorMessage)? errorCampaigns,
     TResult? Function()? loadingCampaigns,
@@ -570,7 +570,7 @@ class _$SuccessCampaigns implements SuccessCampaigns {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialCampaigns,
-    TResult Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult Function(String? errorMessage)? errorCampaigns,
     TResult Function()? loadingCampaigns,
@@ -622,9 +622,10 @@ class _$SuccessCampaigns implements SuccessCampaigns {
 
 abstract class SuccessCampaigns implements CampaignsState {
   const factory SuccessCampaigns(
-      {final List<CampaignItemResponse>? listCampaigns}) = _$SuccessCampaigns;
+          {final List<CampaignDocumentResponse>? listCampaigns}) =
+      _$SuccessCampaigns;
 
-  List<CampaignItemResponse>? get listCampaigns;
+  List<CampaignDocumentResponse>? get listCampaigns;
   @JsonKey(ignore: true)
   _$$SuccessCampaignsCopyWith<_$SuccessCampaigns> get copyWith =>
       throw _privateConstructorUsedError;
@@ -696,7 +697,7 @@ class _$ErrorCampaigns implements ErrorCampaigns {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialCampaigns,
-    required TResult Function(List<CampaignItemResponse>? listCampaigns)
+    required TResult Function(List<CampaignDocumentResponse>? listCampaigns)
         successCampaigns,
     required TResult Function(String? errorMessage) errorCampaigns,
     required TResult Function() loadingCampaigns,
@@ -708,7 +709,7 @@ class _$ErrorCampaigns implements ErrorCampaigns {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialCampaigns,
-    TResult? Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult? Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult? Function(String? errorMessage)? errorCampaigns,
     TResult? Function()? loadingCampaigns,
@@ -720,7 +721,7 @@ class _$ErrorCampaigns implements ErrorCampaigns {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialCampaigns,
-    TResult Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult Function(String? errorMessage)? errorCampaigns,
     TResult Function()? loadingCampaigns,
@@ -818,7 +819,7 @@ class _$LoadingCampaigns implements LoadingCampaigns {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialCampaigns,
-    required TResult Function(List<CampaignItemResponse>? listCampaigns)
+    required TResult Function(List<CampaignDocumentResponse>? listCampaigns)
         successCampaigns,
     required TResult Function(String? errorMessage) errorCampaigns,
     required TResult Function() loadingCampaigns,
@@ -830,7 +831,7 @@ class _$LoadingCampaigns implements LoadingCampaigns {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialCampaigns,
-    TResult? Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult? Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult? Function(String? errorMessage)? errorCampaigns,
     TResult? Function()? loadingCampaigns,
@@ -842,7 +843,7 @@ class _$LoadingCampaigns implements LoadingCampaigns {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialCampaigns,
-    TResult Function(List<CampaignItemResponse>? listCampaigns)?
+    TResult Function(List<CampaignDocumentResponse>? listCampaigns)?
         successCampaigns,
     TResult Function(String? errorMessage)? errorCampaigns,
     TResult Function()? loadingCampaigns,

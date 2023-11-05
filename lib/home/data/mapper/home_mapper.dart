@@ -1,3 +1,4 @@
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/home/home.dart';
 
 extension CarouselItemResponseDTOExtension on CarouselItemResponseDTO {
@@ -32,27 +33,21 @@ extension CategoriesDocumentResponseDTOExtension
       );
 }
 
-extension CampaignItemResponseDTOExtension on CampaignItemResponseDTO {
-  CampaignItemResponse toCampaignItemResponse() => CampaignItemResponse(
+extension CampaignDocumentResponseDTOExtension on CampaignDocumentResponseDTO {
+  CampaignDocumentResponse toCampaignItemResponse() => CampaignDocumentResponse(
         id: id,
-        backerCount: backerCount,
-        campaignDescription: campaignDescription,
         campaignName: campaignName,
-        categories: categories,
         dateEndCampaign: dateEndCampaign,
-        dateStartCampaign: dateStartCampaign,
         goalAmount: goalAmount,
-        isActive: isActive,
-        isDeleted: isDeleted,
         photoThumbnail: photoThumbnail,
         currentAmount: currentAmount,
       );
 }
 
-extension CampaignsDocumentResponseDTOExtension
-    on CampaignsDocumentResponseDTO {
-  CampaignsDocumentResponse toCampaignsDocumentResponse() =>
-      CampaignsDocumentResponse(
+extension CampaignsCollectionsResponseDTOExtension
+    on CampaignsCollectionsResponseDTO {
+  CampaignsCollectionsResponse toCampaignsCollectionsResponse() =>
+      CampaignsCollectionsResponse(
         total: total,
         documents:
             documents?.map((data) => data.toCampaignItemResponse()).toList(),

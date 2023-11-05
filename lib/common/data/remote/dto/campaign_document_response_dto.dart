@@ -2,12 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'campaign_item_response_dto.freezed.dart';
-part 'campaign_item_response_dto.g.dart';
+part 'campaign_document_response_dto.freezed.dart';
+part 'campaign_document_response_dto.g.dart';
 
 @freezed
-class CampaignItemResponseDTO with _$CampaignItemResponseDTO {
-  factory CampaignItemResponseDTO({
+class CampaignDocumentResponseDTO with _$CampaignDocumentResponseDTO {
+  factory CampaignDocumentResponseDTO({
     @JsonKey(name: '\$id') String? id,
     @JsonKey(name: '\$createdAt') String? createdAt,
     @JsonKey(name: '\$updatedAt') String? updatedAt,
@@ -27,6 +27,6 @@ class CampaignItemResponseDTO with _$CampaignItemResponseDTO {
     @JsonKey(name: 'categories') List<String>? categories,
   }) = _CampaignItemResponseDTO;
 
-  factory CampaignItemResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$CampaignItemResponseDTOFromJson(json);
+  factory CampaignDocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$CampaignDocumentResponseDTOFromJson(json);
 }

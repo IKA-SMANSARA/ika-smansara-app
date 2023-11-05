@@ -49,15 +49,15 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<ErrorResponse, CampaignsDocumentResponse>>
+  Future<Either<ErrorResponse, CampaignsCollectionsResponse>>
       getAllCampaigns() async {
     final responseGetAllCampaigns = await _apiServices.getAllCampaigns();
 
     if (responseGetAllCampaigns.isSuccessful) {
       return Right(
-        CampaignsDocumentResponseDTO.fromJson(
+        CampaignsCollectionsResponseDTO.fromJson(
           responseGetAllCampaigns.body as Map<String, dynamic>,
-        ).toCampaignsDocumentResponse(),
+        ).toCampaignsCollectionsResponse(),
       );
     } else {
       return Left(

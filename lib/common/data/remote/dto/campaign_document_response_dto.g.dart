@@ -1,35 +1,46 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'campaign_item_response.dart';
+part of 'campaign_document_response_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CampaignItemResponse _$$_CampaignItemResponseFromJson(
+_$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_CampaignItemResponse(
-      id: json['id'] as String?,
+    _$_CampaignItemResponseDTO(
+      id: json[r'$id'] as String?,
+      createdAt: json[r'$createdAt'] as String?,
+      updatedAt: json[r'$updatedAt'] as String?,
+      databaseId: json[r'$databaseId'] as String?,
+      collectionId: json[r'$collectionId'] as String?,
+      permissions: (json[r'$permissions'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       campaignName: json['campaignName'] as String?,
       campaignDescription: json['campaignDescription'] as String?,
       goalAmount: json['goalAmount'] as int?,
       currentAmount: json['currentAmount'] as int?,
       dateStartCampaign: json['dateStartCampaign'] as String?,
       dateEndCampaign: json['dateEndCampaign'] as String?,
-      isDeleted: json['isDeleted'] as bool? ?? false,
-      isActive: json['isActive'] as bool? ?? false,
+      isDeleted: json['isDeleted'] as bool?,
+      isActive: json['isActive'] as bool?,
       photoThumbnail: json['photoThumbnail'] as String?,
       backerCount: json['backerCount'] as int?,
       categories: (json['categories'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+          ?.map((e) => e as String)
+          .toList(),
     );
 
-Map<String, dynamic> _$$_CampaignItemResponseToJson(
-        _$_CampaignItemResponse instance) =>
+Map<String, dynamic> _$$_CampaignItemResponseDTOToJson(
+        _$_CampaignItemResponseDTO instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      r'$id': instance.id,
+      r'$createdAt': instance.createdAt,
+      r'$updatedAt': instance.updatedAt,
+      r'$databaseId': instance.databaseId,
+      r'$collectionId': instance.collectionId,
+      r'$permissions': instance.permissions,
       'campaignName': instance.campaignName,
       'campaignDescription': instance.campaignDescription,
       'goalAmount': instance.goalAmount,
