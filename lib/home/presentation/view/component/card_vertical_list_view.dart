@@ -41,7 +41,7 @@ class CardVerticalListView extends StatelessWidget {
                   onTap: () => context.pushNamed(
                     Routes.listCampaignPerCategory,
                     queryParameters: {
-                      Constants.categoryNameKey: listTitle,
+                      Constants.categoryNameKey: Constants.blankString,
                     },
                   ),
                   child: Text(

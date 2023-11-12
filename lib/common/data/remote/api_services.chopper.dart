@@ -42,9 +42,12 @@ class _$ApiServices extends ApiServices {
   }
 
   @override
-  Future<Response<dynamic>> getAllCampaigns() {
+  Future<Response<dynamic>> getAllCampaigns(String? queries) {
     final Uri $url = Uri.parse(
         'databases/652bc7f26602bddc2f4a/collections/6533c53f27828417727d/documents');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'queries[]': queries
+    };
     final Map<String, String> $headers = {
       'Accept': 'application/json',
       'X-Appwrite-Project': '6526850f77b1a0e42833',
@@ -57,6 +60,7 @@ class _$ApiServices extends ApiServices {
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
       headers: $headers,
     );
     return client.send<dynamic, dynamic>($request);

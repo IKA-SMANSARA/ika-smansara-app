@@ -51,7 +51,9 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Either<ErrorResponse, CampaignsCollectionsResponse>>
       getAllCampaigns() async {
-    final responseGetAllCampaigns = await _apiServices.getAllCampaigns();
+    final responseGetAllCampaigns = await _apiServices.getAllCampaigns(
+      'equal("isActive", [true])&queries[]=equal("isDeleted", [false])',
+    );
 
     if (responseGetAllCampaigns.isSuccessful) {
       return Right(

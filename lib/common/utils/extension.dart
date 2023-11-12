@@ -65,3 +65,11 @@ String getRemainingDays(String? dateEndCampaign) {
     return '0 hari lagi';
   }
 }
+
+bool enableInfiniteScrollStatus({int? listLength = 0}) {
+  if (listLength != 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
