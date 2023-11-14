@@ -11,6 +11,7 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+
   // get all campaigns by categories
   @Get(
     path:
@@ -39,7 +40,9 @@ abstract class ApiServices extends ChopperService {
       Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
     },
   )
-  Future<Response> getAllCampaigns();
+  Future<Response> getAllCampaigns(
+    @Query('queries[]') String? queries,
+  );
 
   // get categories
   @Get(
