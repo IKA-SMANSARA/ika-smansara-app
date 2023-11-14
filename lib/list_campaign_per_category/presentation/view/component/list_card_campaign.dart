@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,9 +57,13 @@ class ListCardCampaign extends StatelessWidget {
                     },
                   ),
                   campaignTitle: state.listCampaigns?[index].campaignName,
-                  campaignImage: Image.network(
-                    state.listCampaigns?[index].photoThumbnail ?? '',
+                  campaignImage: CachedNetworkImage(
+                    imageUrl: state.listCampaigns?[index].photoThumbnail ?? '',
                     fit: BoxFit.cover,
+                    placeholder: (context, url) =>
+                        const LinearProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                   donationAmount: currencyFormatter(
                     state.listCampaigns?[index].currentAmount ?? 0,
@@ -66,8 +71,7 @@ class ListCardCampaign extends StatelessWidget {
                   donationDuration: getRemainingDays(
                     state.listCampaigns?[index].dateEndCampaign,
                   ),
-                  campaignProgressIndicator:
-                      getCampaignProgressIndicatorValue(
+                  campaignProgressIndicator: getCampaignProgressIndicatorValue(
                     state.listCampaigns?[index].goalAmount ?? 0,
                     state.listCampaigns?[index].currentAmount ?? 0,
                   ),

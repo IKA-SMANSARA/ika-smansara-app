@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
@@ -38,8 +39,12 @@ class CardCarousel extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    state.listCarouselItem?[itemIndex].imageUrl ?? '',
+                  child: CachedNetworkImage(
+                    imageUrl: state.listCarouselItem?[itemIndex].imageUrl ?? '',
+                    placeholder: (context, url) =>
+                        const LinearProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               );
