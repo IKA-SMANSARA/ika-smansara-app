@@ -1,4 +1,3 @@
-// ignore: lines_longer_than_80_chars
 // ignore_for_file: use_raw_strings, invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
