@@ -14,8 +14,8 @@ _$_DetailCampaignDocumentResponse _$$_DetailCampaignDocumentResponseFromJson(
       goalAmount: json['goalAmount'] as int?,
       dateStartCampaign: json['dateStartCampaign'] as String?,
       dateEndCampaign: json['dateEndCampaign'] as String?,
-      isDeleted: json['isDeleted'] as bool?,
-      isActive: json['isActive'] as bool?,
+      isDeleted: json['isDeleted'] as bool? ?? false,
+      isActive: json['isActive'] as bool? ?? false,
       photoThumbnail: json['photoThumbnail'] as String?,
       backerCount: json['backerCount'] as int?,
       categories: (json['categories'] as List<dynamic>?)

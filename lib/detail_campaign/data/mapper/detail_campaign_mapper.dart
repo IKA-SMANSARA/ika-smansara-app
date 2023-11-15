@@ -15,5 +15,6 @@ extension DetailCampaignDocumentResponseDTOExtension
         id: id,
         isActive: isActive,
         isDeleted: isDeleted,
+        photoThumbnail: photoThumbnail,
       );
 }

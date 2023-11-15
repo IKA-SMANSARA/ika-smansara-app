@@ -316,7 +316,7 @@ mixin _$DetailCampaignState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)
         success,
     required TResult Function(String? errorMessage) error,
   }) =>
@@ -326,7 +326,7 @@ mixin _$DetailCampaignState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult? Function(String? errorMessage)? error,
   }) =>
@@ -336,7 +336,7 @@ mixin _$DetailCampaignState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult Function(String? errorMessage)? error,
     required TResult orElse(),
@@ -426,7 +426,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)
         success,
     required TResult Function(String? errorMessage) error,
   }) {
@@ -439,7 +439,7 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult? Function(String? errorMessage)? error,
   }) {
@@ -452,7 +452,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult Function(String? errorMessage)? error,
     required TResult orElse(),
@@ -544,7 +544,7 @@ class _$Loading implements Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)
         success,
     required TResult Function(String? errorMessage) error,
   }) {
@@ -557,7 +557,7 @@ class _$Loading implements Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult? Function(String? errorMessage)? error,
   }) {
@@ -570,7 +570,7 @@ class _$Loading implements Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult Function(String? errorMessage)? error,
     required TResult orElse(),
@@ -628,9 +628,9 @@ abstract class _$$SuccessCopyWith<$Res> {
   factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
       __$$SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({DetailCampaignDocumentResponse? detailCampaignDocumentResponse});
+  $Res call({DetailCampaignDocumentResponse detailCampaignDocumentResponse});
 
-  $DetailCampaignDocumentResponseCopyWith<$Res>?
+  $DetailCampaignDocumentResponseCopyWith<$Res>
       get detailCampaignDocumentResponse;
 }
 
@@ -644,26 +644,22 @@ class __$$SuccessCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? detailCampaignDocumentResponse = freezed,
+    Object? detailCampaignDocumentResponse = null,
   }) {
     return _then(_$Success(
-      freezed == detailCampaignDocumentResponse
+      null == detailCampaignDocumentResponse
           ? _value.detailCampaignDocumentResponse
           : detailCampaignDocumentResponse // ignore: cast_nullable_to_non_nullable
-              as DetailCampaignDocumentResponse?,
+              as DetailCampaignDocumentResponse,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $DetailCampaignDocumentResponseCopyWith<$Res>?
+  $DetailCampaignDocumentResponseCopyWith<$Res>
       get detailCampaignDocumentResponse {
-    if (_value.detailCampaignDocumentResponse == null) {
-      return null;
-    }
-
     return $DetailCampaignDocumentResponseCopyWith<$Res>(
-        _value.detailCampaignDocumentResponse!, (value) {
+        _value.detailCampaignDocumentResponse, (value) {
       return _then(_value.copyWith(detailCampaignDocumentResponse: value));
     });
   }
@@ -675,7 +671,7 @@ class _$Success implements Success {
   const _$Success(this.detailCampaignDocumentResponse);
 
   @override
-  final DetailCampaignDocumentResponse? detailCampaignDocumentResponse;
+  final DetailCampaignDocumentResponse detailCampaignDocumentResponse;
 
   @override
   String toString() {
@@ -708,7 +704,7 @@ class _$Success implements Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)
         success,
     required TResult Function(String? errorMessage) error,
   }) {
@@ -721,7 +717,7 @@ class _$Success implements Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult? Function(String? errorMessage)? error,
   }) {
@@ -734,7 +730,7 @@ class _$Success implements Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult Function(String? errorMessage)? error,
     required TResult orElse(),
@@ -785,10 +781,10 @@ class _$Success implements Success {
 
 abstract class Success implements DetailCampaignState {
   const factory Success(
-      final DetailCampaignDocumentResponse?
-          detailCampaignDocumentResponse) = _$Success;
+          final DetailCampaignDocumentResponse detailCampaignDocumentResponse) =
+      _$Success;
 
-  DetailCampaignDocumentResponse? get detailCampaignDocumentResponse;
+  DetailCampaignDocumentResponse get detailCampaignDocumentResponse;
   @JsonKey(ignore: true)
   _$$SuccessCopyWith<_$Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -860,7 +856,7 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)
         success,
     required TResult Function(String? errorMessage) error,
   }) {
@@ -873,7 +869,7 @@ class _$Error implements Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult? Function(String? errorMessage)? error,
   }) {
@@ -886,7 +882,7 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            DetailCampaignDocumentResponse? detailCampaignDocumentResponse)?
+            DetailCampaignDocumentResponse detailCampaignDocumentResponse)?
         success,
     TResult Function(String? errorMessage)? error,
     required TResult orElse(),

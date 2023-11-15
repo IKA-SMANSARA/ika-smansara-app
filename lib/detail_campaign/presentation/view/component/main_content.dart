@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 
 class MainContent extends StatelessWidget {
-  const MainContent({super.key});
+  const MainContent({required this.detailCampaignDocumentResponse, super.key});
+
+  final DetailCampaignDocumentResponse detailCampaignDocumentResponse;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class MainContent extends StatelessWidget {
           ),
         ],
         title: Text(
-          'Detail Campaign',
+          detailCampaignDocumentResponse.campaignName?.toUpperCase() ?? '',
           style: GoogleFonts.inter(
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
@@ -33,10 +36,11 @@ class MainContent extends StatelessWidget {
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
           children: [
-            Assets.images.children.image(
+            CachedNetworkImage(
+              imageUrl: detailCampaignDocumentResponse.photoThumbnail ?? '',
               fit: BoxFit.cover,
-              height: 200.h,
-              width: double.infinity,
+              placeholder: (context, url) => const LinearProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -48,7 +52,7 @@ class MainContent extends StatelessWidget {
                       vertical: 8.h,
                     ),
                     child: Text(
-                      'SEDEKAH JUMAT BERKAH UNTUK ANAK YATIM DAN DHUAFA',
+                      detailCampaignDocumentResponse.campaignName ?? '',
                       style: GoogleFonts.inter(
                         color: Colors.black,
                         fontSize: 14.sp,
@@ -75,7 +79,11 @@ class MainContent extends StatelessWidget {
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: 'Rp. 36.0000.000',
+                                text: currencyFormatter(
+                                  detailCampaignDocumentResponse
+                                          .currentAmount ??
+                                      0,
+                                ),
                                 style: GoogleFonts.inter(
                                   color: const Color(0xFFD52014),
                                   fontSize: 12.sp,
@@ -91,7 +99,10 @@ class MainContent extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: 'Rp. 136.0000.000',
+                                text: currencyFormatter(
+                                  detailCampaignDocumentResponse.goalAmount ??
+                                      0,
+                                ),
                                 style: GoogleFonts.inter(
                                   color: const Color(0xFF104993),
                                   fontSize: 12.sp,
@@ -102,7 +113,9 @@ class MainContent extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '25 hari lagi',
+                          getRemainingDays(
+                            detailCampaignDocumentResponse.dateEndCampaign,
+                          ),
                           style: GoogleFonts.inter(
                             color: Colors.black,
                             fontSize: 10.sp,
@@ -112,8 +125,11 @@ class MainContent extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const LinearProgressIndicator(
-                    value: 0.56,
+                  LinearProgressIndicator(
+                    value: getCampaignProgressIndicatorValue(
+                      detailCampaignDocumentResponse.goalAmount ?? 0,
+                      detailCampaignDocumentResponse.currentAmount ?? 0,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -127,7 +143,9 @@ class MainContent extends StatelessWidget {
                               size: 16.sp,
                             ),
                             Text(
-                              ' 505',
+                              detailCampaignDocumentResponse.backerCount
+                                      ?.toString() ??
+                                  '0',
                               style: GoogleFonts.inter(
                                 color: Colors.black,
                                 fontSize: 12.sp,
@@ -276,7 +294,7 @@ class MainContent extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.h),
                     child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+                      detailCampaignDocumentResponse.campaignDescription ?? '',
                       style: GoogleFonts.inter(
                         color: Colors.black,
                         fontSize: 12.sp,
