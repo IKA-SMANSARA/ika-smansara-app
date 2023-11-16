@@ -5,6 +5,7 @@ export 'domain/model/detail_campaign_document_response.dart';
 export 'domain/repository/detail_campaign_repository.dart';
 export 'domain/use_case/get_detail_campaign_use_case/get_detail_campaign_use_case.dart';
 export 'presentation/bloc/detail_campaign_bloc.dart';
+export 'presentation/view/component/detail_amount_donation.dart';
 export 'presentation/view/component/donate_button.dart';
 export 'presentation/view/component/donatur_card.dart';
 export 'presentation/view/component/donatur_list_header.dart';

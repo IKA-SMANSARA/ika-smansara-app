@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,15 +16,15 @@ class MainContent extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF104993),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.share,
-              color: Colors.white,
-            ),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: const Icon(
+        //       Icons.share,
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        // ],
         title: Text(
           detailCampaignDocumentResponse.campaignName?.toUpperCase() ?? '',
           style: GoogleFonts.inter(
@@ -131,151 +132,10 @@ class MainContent extends StatelessWidget {
                       detailCampaignDocumentResponse.currentAmount ?? 0,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.person,
-                              size: 16.sp,
-                            ),
-                            Text(
-                              detailCampaignDocumentResponse.backerCount
-                                      ?.toString() ??
-                                  '0',
-                              style: GoogleFonts.inter(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              ' orang telah berdonasi',
-                              style: GoogleFonts.inter(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Rincian Dana ',
-                              style: GoogleFonts.inter(
-                                color: Colors.black,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              size: 16.sp,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.h),
-                    child: Container(
-                      decoration: ShapeDecoration(
-                        color: const Color(0x7FD9D9D9),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.h),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Dana untuk penggalang dana',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Text(
-                                  'Rp. 9.000.000',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Biaya transaksi pihak ketiga',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                Text(
-                                  '- Rp. 500.000',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
-                            const Divider(
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Dana Bersih',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                Text(
-                                  'Rp. 8.500.000',
-                                  style: GoogleFonts.inter(
-                                    color: Colors.black,
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 4.h,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  DetailAmountDonation(
+                    backerCount:
+                        detailCampaignDocumentResponse.backerCount.toString() ??
+                            '0',
                   ),
                   const Divider(
                     color: Color(0xFFD9D9D9),
@@ -293,7 +153,7 @@ class MainContent extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: Text(
+                    child: ExpandableText(
                       detailCampaignDocumentResponse.campaignDescription ?? '',
                       style: GoogleFonts.inter(
                         color: Colors.black,
@@ -301,16 +161,32 @@ class MainContent extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                       textAlign: TextAlign.justify,
+                      expandText: 'Baca selengkapnya',
+                      collapseOnTextTap: true,
+                      expandOnTextTap: true,
+                      linkColor: const Color(0xFF104993),
+                      animation: true,
+                      maxLines: 4,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 8.h),
-                    child: const DonaturListHeader(),
+                    child: DonaturListHeader(
+                      backerCount:
+                          detailCampaignDocumentResponse.backerCount ?? 0,
+                    ),
                   ),
-                  const DonaturShortList(),
+                  DonaturShortList(
+                    backerCount:
+                        detailCampaignDocumentResponse.backerCount ?? 0,
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
-                    child: const DonateButton(),
+                    child: DonateButton(
+                      campaignStatus:
+                          detailCampaignDocumentResponse.isActive ?? false,
+                      documentId: detailCampaignDocumentResponse.id ?? '',
+                    ),
                   ),
                 ],
               ),
