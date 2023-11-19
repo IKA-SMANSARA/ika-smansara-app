@@ -6,17 +6,17 @@ part of 'email_register_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailRegisterRequest _$$_EmailRegisterRequestFromJson(
+_$EmailRegisterRequestImpl _$$EmailRegisterRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailRegisterRequest(
+    _$EmailRegisterRequestImpl(
       userId: json['userId'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_EmailRegisterRequestToJson(
-        _$_EmailRegisterRequest instance) =>
+Map<String, dynamic> _$$EmailRegisterRequestImplToJson(
+        _$EmailRegisterRequestImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'email': instance.email,

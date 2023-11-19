@@ -25,6 +25,10 @@ mixin _$MidtransTransactionRequest {
       throw _privateConstructorUsedError;
   MidtransCreditCardRequest? get midtransCreditCardRequest =>
       throw _privateConstructorUsedError;
+  List<MidtransItemRequest>? get midtransItemDetailsRequest =>
+      throw _privateConstructorUsedError;
+  MidtransCustomerDetailsRequest? get midtransCustomerDetailsRequest =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,11 +45,15 @@ abstract class $MidtransTransactionRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {MidtransTransactionDetailsRequest? midtransTransactionDetailsRequest,
-      MidtransCreditCardRequest? midtransCreditCardRequest});
+      MidtransCreditCardRequest? midtransCreditCardRequest,
+      List<MidtransItemRequest>? midtransItemDetailsRequest,
+      MidtransCustomerDetailsRequest? midtransCustomerDetailsRequest});
 
   $MidtransTransactionDetailsRequestCopyWith<$Res>?
       get midtransTransactionDetailsRequest;
   $MidtransCreditCardRequestCopyWith<$Res>? get midtransCreditCardRequest;
+  $MidtransCustomerDetailsRequestCopyWith<$Res>?
+      get midtransCustomerDetailsRequest;
 }
 
 /// @nodoc
@@ -64,6 +72,8 @@ class _$MidtransTransactionRequestCopyWithImpl<$Res,
   $Res call({
     Object? midtransTransactionDetailsRequest = freezed,
     Object? midtransCreditCardRequest = freezed,
+    Object? midtransItemDetailsRequest = freezed,
+    Object? midtransCustomerDetailsRequest = freezed,
   }) {
     return _then(_value.copyWith(
       midtransTransactionDetailsRequest: freezed ==
@@ -75,6 +85,14 @@ class _$MidtransTransactionRequestCopyWithImpl<$Res,
           ? _value.midtransCreditCardRequest
           : midtransCreditCardRequest // ignore: cast_nullable_to_non_nullable
               as MidtransCreditCardRequest?,
+      midtransItemDetailsRequest: freezed == midtransItemDetailsRequest
+          ? _value.midtransItemDetailsRequest
+          : midtransItemDetailsRequest // ignore: cast_nullable_to_non_nullable
+              as List<MidtransItemRequest>?,
+      midtransCustomerDetailsRequest: freezed == midtransCustomerDetailsRequest
+          ? _value.midtransCustomerDetailsRequest
+          : midtransCustomerDetailsRequest // ignore: cast_nullable_to_non_nullable
+              as MidtransCustomerDetailsRequest?,
     ) as $Val);
   }
 
@@ -105,36 +123,56 @@ class _$MidtransTransactionRequestCopyWithImpl<$Res,
       return _then(_value.copyWith(midtransCreditCardRequest: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MidtransCustomerDetailsRequestCopyWith<$Res>?
+      get midtransCustomerDetailsRequest {
+    if (_value.midtransCustomerDetailsRequest == null) {
+      return null;
+    }
+
+    return $MidtransCustomerDetailsRequestCopyWith<$Res>(
+        _value.midtransCustomerDetailsRequest!, (value) {
+      return _then(
+          _value.copyWith(midtransCustomerDetailsRequest: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_MidtransTransactionRequestCopyWith<$Res>
+abstract class _$$MidtransTransactionRequestImplCopyWith<$Res>
     implements $MidtransTransactionRequestCopyWith<$Res> {
-  factory _$$_MidtransTransactionRequestCopyWith(
-          _$_MidtransTransactionRequest value,
-          $Res Function(_$_MidtransTransactionRequest) then) =
-      __$$_MidtransTransactionRequestCopyWithImpl<$Res>;
+  factory _$$MidtransTransactionRequestImplCopyWith(
+          _$MidtransTransactionRequestImpl value,
+          $Res Function(_$MidtransTransactionRequestImpl) then) =
+      __$$MidtransTransactionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {MidtransTransactionDetailsRequest? midtransTransactionDetailsRequest,
-      MidtransCreditCardRequest? midtransCreditCardRequest});
+      MidtransCreditCardRequest? midtransCreditCardRequest,
+      List<MidtransItemRequest>? midtransItemDetailsRequest,
+      MidtransCustomerDetailsRequest? midtransCustomerDetailsRequest});
 
   @override
   $MidtransTransactionDetailsRequestCopyWith<$Res>?
       get midtransTransactionDetailsRequest;
   @override
   $MidtransCreditCardRequestCopyWith<$Res>? get midtransCreditCardRequest;
+  @override
+  $MidtransCustomerDetailsRequestCopyWith<$Res>?
+      get midtransCustomerDetailsRequest;
 }
 
 /// @nodoc
-class __$$_MidtransTransactionRequestCopyWithImpl<$Res>
+class __$$MidtransTransactionRequestImplCopyWithImpl<$Res>
     extends _$MidtransTransactionRequestCopyWithImpl<$Res,
-        _$_MidtransTransactionRequest>
-    implements _$$_MidtransTransactionRequestCopyWith<$Res> {
-  __$$_MidtransTransactionRequestCopyWithImpl(
-      _$_MidtransTransactionRequest _value,
-      $Res Function(_$_MidtransTransactionRequest) _then)
+        _$MidtransTransactionRequestImpl>
+    implements _$$MidtransTransactionRequestImplCopyWith<$Res> {
+  __$$MidtransTransactionRequestImplCopyWithImpl(
+      _$MidtransTransactionRequestImpl _value,
+      $Res Function(_$MidtransTransactionRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,8 +180,10 @@ class __$$_MidtransTransactionRequestCopyWithImpl<$Res>
   $Res call({
     Object? midtransTransactionDetailsRequest = freezed,
     Object? midtransCreditCardRequest = freezed,
+    Object? midtransItemDetailsRequest = freezed,
+    Object? midtransCustomerDetailsRequest = freezed,
   }) {
-    return _then(_$_MidtransTransactionRequest(
+    return _then(_$MidtransTransactionRequestImpl(
       midtransTransactionDetailsRequest: freezed ==
               midtransTransactionDetailsRequest
           ? _value.midtransTransactionDetailsRequest
@@ -153,58 +193,95 @@ class __$$_MidtransTransactionRequestCopyWithImpl<$Res>
           ? _value.midtransCreditCardRequest
           : midtransCreditCardRequest // ignore: cast_nullable_to_non_nullable
               as MidtransCreditCardRequest?,
+      midtransItemDetailsRequest: freezed == midtransItemDetailsRequest
+          ? _value._midtransItemDetailsRequest
+          : midtransItemDetailsRequest // ignore: cast_nullable_to_non_nullable
+              as List<MidtransItemRequest>?,
+      midtransCustomerDetailsRequest: freezed == midtransCustomerDetailsRequest
+          ? _value.midtransCustomerDetailsRequest
+          : midtransCustomerDetailsRequest // ignore: cast_nullable_to_non_nullable
+              as MidtransCustomerDetailsRequest?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransTransactionRequest implements _MidtransTransactionRequest {
-  const _$_MidtransTransactionRequest(
-      {this.midtransTransactionDetailsRequest, this.midtransCreditCardRequest});
+class _$MidtransTransactionRequestImpl implements _MidtransTransactionRequest {
+  const _$MidtransTransactionRequestImpl(
+      {this.midtransTransactionDetailsRequest,
+      this.midtransCreditCardRequest,
+      final List<MidtransItemRequest>? midtransItemDetailsRequest,
+      this.midtransCustomerDetailsRequest})
+      : _midtransItemDetailsRequest = midtransItemDetailsRequest;
 
-  factory _$_MidtransTransactionRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_MidtransTransactionRequestFromJson(json);
+  factory _$MidtransTransactionRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MidtransTransactionRequestImplFromJson(json);
 
   @override
   final MidtransTransactionDetailsRequest? midtransTransactionDetailsRequest;
   @override
   final MidtransCreditCardRequest? midtransCreditCardRequest;
+  final List<MidtransItemRequest>? _midtransItemDetailsRequest;
+  @override
+  List<MidtransItemRequest>? get midtransItemDetailsRequest {
+    final value = _midtransItemDetailsRequest;
+    if (value == null) return null;
+    if (_midtransItemDetailsRequest is EqualUnmodifiableListView)
+      return _midtransItemDetailsRequest;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final MidtransCustomerDetailsRequest? midtransCustomerDetailsRequest;
 
   @override
   String toString() {
-    return 'MidtransTransactionRequest(midtransTransactionDetailsRequest: $midtransTransactionDetailsRequest, midtransCreditCardRequest: $midtransCreditCardRequest)';
+    return 'MidtransTransactionRequest(midtransTransactionDetailsRequest: $midtransTransactionDetailsRequest, midtransCreditCardRequest: $midtransCreditCardRequest, midtransItemDetailsRequest: $midtransItemDetailsRequest, midtransCustomerDetailsRequest: $midtransCustomerDetailsRequest)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransTransactionRequest &&
+            other is _$MidtransTransactionRequestImpl &&
             (identical(other.midtransTransactionDetailsRequest,
                     midtransTransactionDetailsRequest) ||
                 other.midtransTransactionDetailsRequest ==
                     midtransTransactionDetailsRequest) &&
             (identical(other.midtransCreditCardRequest,
                     midtransCreditCardRequest) ||
-                other.midtransCreditCardRequest == midtransCreditCardRequest));
+                other.midtransCreditCardRequest == midtransCreditCardRequest) &&
+            const DeepCollectionEquality().equals(
+                other._midtransItemDetailsRequest,
+                _midtransItemDetailsRequest) &&
+            (identical(other.midtransCustomerDetailsRequest,
+                    midtransCustomerDetailsRequest) ||
+                other.midtransCustomerDetailsRequest ==
+                    midtransCustomerDetailsRequest));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      midtransTransactionDetailsRequest, midtransCreditCardRequest);
+  int get hashCode => Object.hash(
+      runtimeType,
+      midtransTransactionDetailsRequest,
+      midtransCreditCardRequest,
+      const DeepCollectionEquality().hash(_midtransItemDetailsRequest),
+      midtransCustomerDetailsRequest);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransTransactionRequestCopyWith<_$_MidtransTransactionRequest>
-      get copyWith => __$$_MidtransTransactionRequestCopyWithImpl<
-          _$_MidtransTransactionRequest>(this, _$identity);
+  _$$MidtransTransactionRequestImplCopyWith<_$MidtransTransactionRequestImpl>
+      get copyWith => __$$MidtransTransactionRequestImplCopyWithImpl<
+          _$MidtransTransactionRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransTransactionRequestToJson(
+    return _$$MidtransTransactionRequestImplToJson(
       this,
     );
   }
@@ -213,20 +290,26 @@ class _$_MidtransTransactionRequest implements _MidtransTransactionRequest {
 abstract class _MidtransTransactionRequest
     implements MidtransTransactionRequest {
   const factory _MidtransTransactionRequest(
-          {final MidtransTransactionDetailsRequest?
-              midtransTransactionDetailsRequest,
-          final MidtransCreditCardRequest? midtransCreditCardRequest}) =
-      _$_MidtransTransactionRequest;
+      {final MidtransTransactionDetailsRequest?
+          midtransTransactionDetailsRequest,
+      final MidtransCreditCardRequest? midtransCreditCardRequest,
+      final List<MidtransItemRequest>? midtransItemDetailsRequest,
+      final MidtransCustomerDetailsRequest?
+          midtransCustomerDetailsRequest}) = _$MidtransTransactionRequestImpl;
 
   factory _MidtransTransactionRequest.fromJson(Map<String, dynamic> json) =
-      _$_MidtransTransactionRequest.fromJson;
+      _$MidtransTransactionRequestImpl.fromJson;
 
   @override
   MidtransTransactionDetailsRequest? get midtransTransactionDetailsRequest;
   @override
   MidtransCreditCardRequest? get midtransCreditCardRequest;
   @override
+  List<MidtransItemRequest>? get midtransItemDetailsRequest;
+  @override
+  MidtransCustomerDetailsRequest? get midtransCustomerDetailsRequest;
+  @override
   @JsonKey(ignore: true)
-  _$$_MidtransTransactionRequestCopyWith<_$_MidtransTransactionRequest>
+  _$$MidtransTransactionRequestImplCopyWith<_$MidtransTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

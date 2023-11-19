@@ -72,25 +72,25 @@ class _$CategoriesDocumentResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CategoriesDocumentResponseCopyWith<$Res>
+abstract class _$$CategoriesDocumentResponseImplCopyWith<$Res>
     implements $CategoriesDocumentResponseCopyWith<$Res> {
-  factory _$$_CategoriesDocumentResponseCopyWith(
-          _$_CategoriesDocumentResponse value,
-          $Res Function(_$_CategoriesDocumentResponse) then) =
-      __$$_CategoriesDocumentResponseCopyWithImpl<$Res>;
+  factory _$$CategoriesDocumentResponseImplCopyWith(
+          _$CategoriesDocumentResponseImpl value,
+          $Res Function(_$CategoriesDocumentResponseImpl) then) =
+      __$$CategoriesDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? total, List<CategoryItemResponse>? documents});
 }
 
 /// @nodoc
-class __$$_CategoriesDocumentResponseCopyWithImpl<$Res>
+class __$$CategoriesDocumentResponseImplCopyWithImpl<$Res>
     extends _$CategoriesDocumentResponseCopyWithImpl<$Res,
-        _$_CategoriesDocumentResponse>
-    implements _$$_CategoriesDocumentResponseCopyWith<$Res> {
-  __$$_CategoriesDocumentResponseCopyWithImpl(
-      _$_CategoriesDocumentResponse _value,
-      $Res Function(_$_CategoriesDocumentResponse) _then)
+        _$CategoriesDocumentResponseImpl>
+    implements _$$CategoriesDocumentResponseImplCopyWith<$Res> {
+  __$$CategoriesDocumentResponseImplCopyWithImpl(
+      _$CategoriesDocumentResponseImpl _value,
+      $Res Function(_$CategoriesDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_CategoriesDocumentResponseCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CategoriesDocumentResponse(
+    return _then(_$CategoriesDocumentResponseImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -114,13 +114,14 @@ class __$$_CategoriesDocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
-  _$_CategoriesDocumentResponse(
+class _$CategoriesDocumentResponseImpl implements _CategoriesDocumentResponse {
+  _$CategoriesDocumentResponseImpl(
       {this.total, final List<CategoryItemResponse>? documents = const []})
       : _documents = documents;
 
-  factory _$_CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoriesDocumentResponseFromJson(json);
+  factory _$CategoriesDocumentResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CategoriesDocumentResponseImplFromJson(json);
 
   @override
   final int? total;
@@ -144,7 +145,7 @@ class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoriesDocumentResponse &&
+            other is _$CategoriesDocumentResponseImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -158,13 +159,13 @@ class _$_CategoriesDocumentResponse implements _CategoriesDocumentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoriesDocumentResponseCopyWith<_$_CategoriesDocumentResponse>
-      get copyWith => __$$_CategoriesDocumentResponseCopyWithImpl<
-          _$_CategoriesDocumentResponse>(this, _$identity);
+  _$$CategoriesDocumentResponseImplCopyWith<_$CategoriesDocumentResponseImpl>
+      get copyWith => __$$CategoriesDocumentResponseImplCopyWithImpl<
+          _$CategoriesDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoriesDocumentResponseToJson(
+    return _$$CategoriesDocumentResponseImplToJson(
       this,
     );
   }
@@ -174,10 +175,10 @@ abstract class _CategoriesDocumentResponse
     implements CategoriesDocumentResponse {
   factory _CategoriesDocumentResponse(
           {final int? total, final List<CategoryItemResponse>? documents}) =
-      _$_CategoriesDocumentResponse;
+      _$CategoriesDocumentResponseImpl;
 
   factory _CategoriesDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_CategoriesDocumentResponse.fromJson;
+      _$CategoriesDocumentResponseImpl.fromJson;
 
   @override
   int? get total;
@@ -185,6 +186,6 @@ abstract class _CategoriesDocumentResponse
   List<CategoryItemResponse>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoriesDocumentResponseCopyWith<_$_CategoriesDocumentResponse>
+  _$$CategoriesDocumentResponseImplCopyWith<_$CategoriesDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,19 +19,23 @@ mixin _$TransactionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? grossAmount, String? orderId) fetchData,
+    required TResult Function(
+            String? grossAmount, String? orderId, String? campaignId)
+        fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? grossAmount, String? orderId)? fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? grossAmount, String? orderId)? fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,24 +79,25 @@ class _$TransactionEventCopyWithImpl<$Res, $Val extends TransactionEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$TransactionEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$TransactionEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -102,7 +107,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -112,7 +117,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? grossAmount, String? orderId) fetchData,
+    required TResult Function(
+            String? grossAmount, String? orderId, String? campaignId)
+        fetchData,
   }) {
     return started();
   }
@@ -121,7 +128,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? grossAmount, String? orderId)? fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
   }) {
     return started?.call();
   }
@@ -130,7 +138,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? grossAmount, String? orderId)? fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,24 +181,24 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements TransactionEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FetchDataCopyWith<$Res> {
-  factory _$$_FetchDataCopyWith(
-          _$_FetchData value, $Res Function(_$_FetchData) then) =
-      __$$_FetchDataCopyWithImpl<$Res>;
+abstract class _$$FetchDataImplCopyWith<$Res> {
+  factory _$$FetchDataImplCopyWith(
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? grossAmount, String? orderId});
+  $Res call({String? grossAmount, String? orderId, String? campaignId});
 }
 
 /// @nodoc
-class __$$_FetchDataCopyWithImpl<$Res>
-    extends _$TransactionEventCopyWithImpl<$Res, _$_FetchData>
-    implements _$$_FetchDataCopyWith<$Res> {
-  __$$_FetchDataCopyWithImpl(
-      _$_FetchData _value, $Res Function(_$_FetchData) _then)
+class __$$FetchDataImplCopyWithImpl<$Res>
+    extends _$TransactionEventCopyWithImpl<$Res, _$FetchDataImpl>
+    implements _$$FetchDataImplCopyWith<$Res> {
+  __$$FetchDataImplCopyWithImpl(
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -197,8 +206,9 @@ class __$$_FetchDataCopyWithImpl<$Res>
   $Res call({
     Object? grossAmount = freezed,
     Object? orderId = freezed,
+    Object? campaignId = freezed,
   }) {
-    return _then(_$_FetchData(
+    return _then(_$FetchDataImpl(
       freezed == grossAmount
           ? _value.grossAmount
           : grossAmount // ignore: cast_nullable_to_non_nullable
@@ -207,71 +217,84 @@ class __$$_FetchDataCopyWithImpl<$Res>
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
               as String?,
+      freezed == campaignId
+          ? _value.campaignId
+          : campaignId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_FetchData implements _FetchData {
-  const _$_FetchData(this.grossAmount, this.orderId);
+class _$FetchDataImpl implements _FetchData {
+  const _$FetchDataImpl(this.grossAmount, this.orderId, this.campaignId);
 
   @override
   final String? grossAmount;
   @override
   final String? orderId;
+  @override
+  final String? campaignId;
 
   @override
   String toString() {
-    return 'TransactionEvent.fetchData(grossAmount: $grossAmount, orderId: $orderId)';
+    return 'TransactionEvent.fetchData(grossAmount: $grossAmount, orderId: $orderId, campaignId: $campaignId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchData &&
+            other is _$FetchDataImpl &&
             (identical(other.grossAmount, grossAmount) ||
                 other.grossAmount == grossAmount) &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.campaignId, campaignId) ||
+                other.campaignId == campaignId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, grossAmount, orderId);
+  int get hashCode =>
+      Object.hash(runtimeType, grossAmount, orderId, campaignId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
-      __$$_FetchDataCopyWithImpl<_$_FetchData>(this, _$identity);
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
+      __$$FetchDataImplCopyWithImpl<_$FetchDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String? grossAmount, String? orderId) fetchData,
+    required TResult Function(
+            String? grossAmount, String? orderId, String? campaignId)
+        fetchData,
   }) {
-    return fetchData(grossAmount, orderId);
+    return fetchData(grossAmount, orderId, campaignId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String? grossAmount, String? orderId)? fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
   }) {
-    return fetchData?.call(grossAmount, orderId);
+    return fetchData?.call(grossAmount, orderId, campaignId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String? grossAmount, String? orderId)? fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
-      return fetchData(grossAmount, orderId);
+      return fetchData(grossAmount, orderId, campaignId);
     }
     return orElse();
   }
@@ -309,13 +332,14 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements TransactionEvent {
-  const factory _FetchData(final String? grossAmount, final String? orderId) =
-      _$_FetchData;
+  const factory _FetchData(final String? grossAmount, final String? orderId,
+      final String? campaignId) = _$FetchDataImpl;
 
   String? get grossAmount;
   String? get orderId;
+  String? get campaignId;
   @JsonKey(ignore: true)
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -392,23 +416,25 @@ class _$TransactionStateCopyWithImpl<$Res, $Val extends TransactionState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -418,7 +444,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -500,27 +526,29 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements TransactionState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -530,7 +558,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -612,22 +640,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements TransactionState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -635,7 +665,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -646,8 +676,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.errorMessage);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.errorMessage);
 
   @override
   final String? errorMessage;
@@ -661,7 +691,7 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -672,8 +702,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -751,26 +781,29 @@ class _$Error implements Error {
 }
 
 abstract class Error implements TransactionState {
-  const factory Error(final String? errorMessage) = _$Error;
+  const factory Error(final String? errorMessage) = _$ErrorImpl;
 
   String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? redirectUrl});
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -778,7 +811,7 @@ class __$$SuccessCopyWithImpl<$Res>
   $Res call({
     Object? redirectUrl = freezed,
   }) {
-    return _then(_$Success(
+    return _then(_$SuccessImpl(
       freezed == redirectUrl
           ? _value.redirectUrl
           : redirectUrl // ignore: cast_nullable_to_non_nullable
@@ -789,8 +822,8 @@ class __$$SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success(this.redirectUrl);
+class _$SuccessImpl implements Success {
+  const _$SuccessImpl(this.redirectUrl);
 
   @override
   final String? redirectUrl;
@@ -804,7 +837,7 @@ class _$Success implements Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Success &&
+            other is _$SuccessImpl &&
             (identical(other.redirectUrl, redirectUrl) ||
                 other.redirectUrl == redirectUrl));
   }
@@ -815,8 +848,8 @@ class _$Success implements Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessCopyWith<_$Success> get copyWith =>
-      __$$SuccessCopyWithImpl<_$Success>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -894,10 +927,10 @@ class _$Success implements Success {
 }
 
 abstract class Success implements TransactionState {
-  const factory Success(final String? redirectUrl) = _$Success;
+  const factory Success(final String? redirectUrl) = _$SuccessImpl;
 
   String? get redirectUrl;
   @JsonKey(ignore: true)
-  _$$SuccessCopyWith<_$Success> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,6 +13,10 @@ class MidtransTransactionRequestDTO with _$MidtransTransactionRequestDTO {
     MidtransTransactionDetailsRequestDTO? midtransTransactionDetailsRequestDTO,
     @JsonKey(name: 'credit_card')
     MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO,
+    @JsonKey(name: 'item_details')
+    List<MidtransItemRequestDTO>? midtransItemDetailsRequestDTO,
+    @JsonKey(name: 'customer_details')
+    MidtransCustomerDetailsRequestDTO? midtransCustomerDetailsRequestDTO,
   }) = _MidtransTransactionRequestDTO;
 
   factory MidtransTransactionRequestDTO.fromJson(Map<String, dynamic> json) =>

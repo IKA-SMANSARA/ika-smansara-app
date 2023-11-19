@@ -144,12 +144,12 @@ class _$DetailCampaignDocumentResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DetailCampaignDocumentResponseCopyWith<$Res>
+abstract class _$$DetailCampaignDocumentResponseImplCopyWith<$Res>
     implements $DetailCampaignDocumentResponseCopyWith<$Res> {
-  factory _$$_DetailCampaignDocumentResponseCopyWith(
-          _$_DetailCampaignDocumentResponse value,
-          $Res Function(_$_DetailCampaignDocumentResponse) then) =
-      __$$_DetailCampaignDocumentResponseCopyWithImpl<$Res>;
+  factory _$$DetailCampaignDocumentResponseImplCopyWith(
+          _$DetailCampaignDocumentResponseImpl value,
+          $Res Function(_$DetailCampaignDocumentResponseImpl) then) =
+      __$$DetailCampaignDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -168,13 +168,13 @@ abstract class _$$_DetailCampaignDocumentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DetailCampaignDocumentResponseCopyWithImpl<$Res>
+class __$$DetailCampaignDocumentResponseImplCopyWithImpl<$Res>
     extends _$DetailCampaignDocumentResponseCopyWithImpl<$Res,
-        _$_DetailCampaignDocumentResponse>
-    implements _$$_DetailCampaignDocumentResponseCopyWith<$Res> {
-  __$$_DetailCampaignDocumentResponseCopyWithImpl(
-      _$_DetailCampaignDocumentResponse _value,
-      $Res Function(_$_DetailCampaignDocumentResponse) _then)
+        _$DetailCampaignDocumentResponseImpl>
+    implements _$$DetailCampaignDocumentResponseImplCopyWith<$Res> {
+  __$$DetailCampaignDocumentResponseImplCopyWithImpl(
+      _$DetailCampaignDocumentResponseImpl _value,
+      $Res Function(_$DetailCampaignDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -193,7 +193,7 @@ class __$$_DetailCampaignDocumentResponseCopyWithImpl<$Res>
     Object? currentAmount = freezed,
     Object? campaignDescription = freezed,
   }) {
-    return _then(_$_DetailCampaignDocumentResponse(
+    return _then(_$DetailCampaignDocumentResponseImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -248,9 +248,9 @@ class __$$_DetailCampaignDocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DetailCampaignDocumentResponse
+class _$DetailCampaignDocumentResponseImpl
     implements _DetailCampaignDocumentResponse {
-  _$_DetailCampaignDocumentResponse(
+  _$DetailCampaignDocumentResponseImpl(
       {this.id,
       this.campaignName,
       this.goalAmount,
@@ -265,9 +265,9 @@ class _$_DetailCampaignDocumentResponse
       this.campaignDescription})
       : _categories = categories;
 
-  factory _$_DetailCampaignDocumentResponse.fromJson(
+  factory _$DetailCampaignDocumentResponseImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_DetailCampaignDocumentResponseFromJson(json);
+      _$$DetailCampaignDocumentResponseImplFromJson(json);
 
   @override
   final String? id;
@@ -313,7 +313,7 @@ class _$_DetailCampaignDocumentResponse
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DetailCampaignDocumentResponse &&
+            other is _$DetailCampaignDocumentResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.campaignName, campaignName) ||
                 other.campaignName == campaignName) &&
@@ -359,13 +359,14 @@ class _$_DetailCampaignDocumentResponse
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DetailCampaignDocumentResponseCopyWith<_$_DetailCampaignDocumentResponse>
-      get copyWith => __$$_DetailCampaignDocumentResponseCopyWithImpl<
-          _$_DetailCampaignDocumentResponse>(this, _$identity);
+  _$$DetailCampaignDocumentResponseImplCopyWith<
+          _$DetailCampaignDocumentResponseImpl>
+      get copyWith => __$$DetailCampaignDocumentResponseImplCopyWithImpl<
+          _$DetailCampaignDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DetailCampaignDocumentResponseToJson(
+    return _$$DetailCampaignDocumentResponseImplToJson(
       this,
     );
   }
@@ -374,21 +375,22 @@ class _$_DetailCampaignDocumentResponse
 abstract class _DetailCampaignDocumentResponse
     implements DetailCampaignDocumentResponse {
   factory _DetailCampaignDocumentResponse(
-      {final String? id,
-      final String? campaignName,
-      final int? goalAmount,
-      final String? dateStartCampaign,
-      final String? dateEndCampaign,
-      final bool? isDeleted,
-      final bool? isActive,
-      final String? photoThumbnail,
-      final int? backerCount,
-      final List<String>? categories,
-      final int? currentAmount,
-      final String? campaignDescription}) = _$_DetailCampaignDocumentResponse;
+          {final String? id,
+          final String? campaignName,
+          final int? goalAmount,
+          final String? dateStartCampaign,
+          final String? dateEndCampaign,
+          final bool? isDeleted,
+          final bool? isActive,
+          final String? photoThumbnail,
+          final int? backerCount,
+          final List<String>? categories,
+          final int? currentAmount,
+          final String? campaignDescription}) =
+      _$DetailCampaignDocumentResponseImpl;
 
   factory _DetailCampaignDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_DetailCampaignDocumentResponse.fromJson;
+      _$DetailCampaignDocumentResponseImpl.fromJson;
 
   @override
   String? get id;
@@ -416,6 +418,7 @@ abstract class _DetailCampaignDocumentResponse
   String? get campaignDescription;
   @override
   @JsonKey(ignore: true)
-  _$$_DetailCampaignDocumentResponseCopyWith<_$_DetailCampaignDocumentResponse>
+  _$$DetailCampaignDocumentResponseImplCopyWith<
+          _$DetailCampaignDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

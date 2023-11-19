@@ -6,9 +6,9 @@ part of 'carousel_item_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CarouselItemResponseDTO _$$_CarouselItemResponseDTOFromJson(
+_$CarouselItemResponseDTOImpl _$$CarouselItemResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CarouselItemResponseDTO(
+    _$CarouselItemResponseDTOImpl(
       imageUrl: json['imageUrl'] as String?,
       id: json[r'$id'] as String?,
       createdAt: json[r'$createdAt'] as String?,
@@ -20,8 +20,8 @@ _$_CarouselItemResponseDTO _$$_CarouselItemResponseDTOFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_CarouselItemResponseDTOToJson(
-        _$_CarouselItemResponseDTO instance) =>
+Map<String, dynamic> _$$CarouselItemResponseDTOImplToJson(
+        _$CarouselItemResponseDTOImpl instance) =>
     <String, dynamic>{
       'imageUrl': instance.imageUrl,
       r'$id': instance.id,

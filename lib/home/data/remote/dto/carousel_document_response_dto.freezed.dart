@@ -77,12 +77,12 @@ class _$CarouselDocumentResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CarouselDocumentResponseDTOCopyWith<$Res>
+abstract class _$$CarouselDocumentResponseDTOImplCopyWith<$Res>
     implements $CarouselDocumentResponseDTOCopyWith<$Res> {
-  factory _$$_CarouselDocumentResponseDTOCopyWith(
-          _$_CarouselDocumentResponseDTO value,
-          $Res Function(_$_CarouselDocumentResponseDTO) then) =
-      __$$_CarouselDocumentResponseDTOCopyWithImpl<$Res>;
+  factory _$$CarouselDocumentResponseDTOImplCopyWith(
+          _$CarouselDocumentResponseDTOImpl value,
+          $Res Function(_$CarouselDocumentResponseDTOImpl) then) =
+      __$$CarouselDocumentResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -91,13 +91,13 @@ abstract class _$$_CarouselDocumentResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CarouselDocumentResponseDTOCopyWithImpl<$Res>
+class __$$CarouselDocumentResponseDTOImplCopyWithImpl<$Res>
     extends _$CarouselDocumentResponseDTOCopyWithImpl<$Res,
-        _$_CarouselDocumentResponseDTO>
-    implements _$$_CarouselDocumentResponseDTOCopyWith<$Res> {
-  __$$_CarouselDocumentResponseDTOCopyWithImpl(
-      _$_CarouselDocumentResponseDTO _value,
-      $Res Function(_$_CarouselDocumentResponseDTO) _then)
+        _$CarouselDocumentResponseDTOImpl>
+    implements _$$CarouselDocumentResponseDTOImplCopyWith<$Res> {
+  __$$CarouselDocumentResponseDTOImplCopyWithImpl(
+      _$CarouselDocumentResponseDTOImpl _value,
+      $Res Function(_$CarouselDocumentResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_CarouselDocumentResponseDTOCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CarouselDocumentResponseDTO(
+    return _then(_$CarouselDocumentResponseDTOImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -121,15 +121,17 @@ class __$$_CarouselDocumentResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CarouselDocumentResponseDTO implements _CarouselDocumentResponseDTO {
-  _$_CarouselDocumentResponseDTO(
+class _$CarouselDocumentResponseDTOImpl
+    implements _CarouselDocumentResponseDTO {
+  _$CarouselDocumentResponseDTOImpl(
       {@JsonKey(name: 'total') this.total,
       @JsonKey(name: 'documents')
       final List<CarouselItemResponseDTO>? documents})
       : _documents = documents;
 
-  factory _$_CarouselDocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CarouselDocumentResponseDTOFromJson(json);
+  factory _$CarouselDocumentResponseDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CarouselDocumentResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'total')
@@ -154,7 +156,7 @@ class _$_CarouselDocumentResponseDTO implements _CarouselDocumentResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CarouselDocumentResponseDTO &&
+            other is _$CarouselDocumentResponseDTOImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -168,13 +170,13 @@ class _$_CarouselDocumentResponseDTO implements _CarouselDocumentResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CarouselDocumentResponseDTOCopyWith<_$_CarouselDocumentResponseDTO>
-      get copyWith => __$$_CarouselDocumentResponseDTOCopyWithImpl<
-          _$_CarouselDocumentResponseDTO>(this, _$identity);
+  _$$CarouselDocumentResponseDTOImplCopyWith<_$CarouselDocumentResponseDTOImpl>
+      get copyWith => __$$CarouselDocumentResponseDTOImplCopyWithImpl<
+          _$CarouselDocumentResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CarouselDocumentResponseDTOToJson(
+    return _$$CarouselDocumentResponseDTOImplToJson(
       this,
     );
   }
@@ -186,10 +188,10 @@ abstract class _CarouselDocumentResponseDTO
           {@JsonKey(name: 'total') final int? total,
           @JsonKey(name: 'documents')
           final List<CarouselItemResponseDTO>? documents}) =
-      _$_CarouselDocumentResponseDTO;
+      _$CarouselDocumentResponseDTOImpl;
 
   factory _CarouselDocumentResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CarouselDocumentResponseDTO.fromJson;
+      _$CarouselDocumentResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'total')
@@ -199,6 +201,6 @@ abstract class _CarouselDocumentResponseDTO
   List<CarouselItemResponseDTO>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CarouselDocumentResponseDTOCopyWith<_$_CarouselDocumentResponseDTO>
+  _$$CarouselDocumentResponseDTOImplCopyWith<_$CarouselDocumentResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

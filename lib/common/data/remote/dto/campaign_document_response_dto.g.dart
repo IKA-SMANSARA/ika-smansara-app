@@ -6,9 +6,9 @@ part of 'campaign_document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
+_$CampaignItemResponseDTOImpl _$$CampaignItemResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CampaignItemResponseDTO(
+    _$CampaignItemResponseDTOImpl(
       id: json[r'$id'] as String?,
       createdAt: json[r'$createdAt'] as String?,
       updatedAt: json[r'$updatedAt'] as String?,
@@ -32,8 +32,8 @@ _$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_CampaignItemResponseDTOToJson(
-        _$_CampaignItemResponseDTO instance) =>
+Map<String, dynamic> _$$CampaignItemResponseDTOImplToJson(
+        _$CampaignItemResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createdAt,

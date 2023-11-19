@@ -75,24 +75,25 @@ class _$CampaignsEventCopyWithImpl<$Res, $Val extends CampaignsEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CampaignsEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$CampaignsEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -102,7 +103,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -172,24 +173,24 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements CampaignsEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FetchDataCopyWith<$Res> {
-  factory _$$_FetchDataCopyWith(
-          _$_FetchData value, $Res Function(_$_FetchData) then) =
-      __$$_FetchDataCopyWithImpl<$Res>;
+abstract class _$$FetchDataImplCopyWith<$Res> {
+  factory _$$FetchDataImplCopyWith(
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? categoryName});
 }
 
 /// @nodoc
-class __$$_FetchDataCopyWithImpl<$Res>
-    extends _$CampaignsEventCopyWithImpl<$Res, _$_FetchData>
-    implements _$$_FetchDataCopyWith<$Res> {
-  __$$_FetchDataCopyWithImpl(
-      _$_FetchData _value, $Res Function(_$_FetchData) _then)
+class __$$FetchDataImplCopyWithImpl<$Res>
+    extends _$CampaignsEventCopyWithImpl<$Res, _$FetchDataImpl>
+    implements _$$FetchDataImplCopyWith<$Res> {
+  __$$FetchDataImplCopyWithImpl(
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -197,7 +198,7 @@ class __$$_FetchDataCopyWithImpl<$Res>
   $Res call({
     Object? categoryName = freezed,
   }) {
-    return _then(_$_FetchData(
+    return _then(_$FetchDataImpl(
       freezed == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -208,8 +209,8 @@ class __$$_FetchDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchData implements _FetchData {
-  const _$_FetchData(this.categoryName);
+class _$FetchDataImpl implements _FetchData {
+  const _$FetchDataImpl(this.categoryName);
 
   @override
   final String? categoryName;
@@ -223,7 +224,7 @@ class _$_FetchData implements _FetchData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchData &&
+            other is _$FetchDataImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName));
   }
@@ -234,8 +235,8 @@ class _$_FetchData implements _FetchData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
-      __$$_FetchDataCopyWithImpl<_$_FetchData>(this, _$identity);
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
+      __$$FetchDataImplCopyWithImpl<_$FetchDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -301,11 +302,11 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements CampaignsEvent {
-  const factory _FetchData(final String? categoryName) = _$_FetchData;
+  const factory _FetchData(final String? categoryName) = _$FetchDataImpl;
 
   String? get categoryName;
   @JsonKey(ignore: true)
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -385,25 +386,25 @@ class _$CampaignsStateCopyWithImpl<$Res, $Val extends CampaignsState>
 }
 
 /// @nodoc
-abstract class _$$InitialCampaignCopyWith<$Res> {
-  factory _$$InitialCampaignCopyWith(
-          _$InitialCampaign value, $Res Function(_$InitialCampaign) then) =
-      __$$InitialCampaignCopyWithImpl<$Res>;
+abstract class _$$InitialCampaignImplCopyWith<$Res> {
+  factory _$$InitialCampaignImplCopyWith(_$InitialCampaignImpl value,
+          $Res Function(_$InitialCampaignImpl) then) =
+      __$$InitialCampaignImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCampaignCopyWithImpl<$Res>
-    extends _$CampaignsStateCopyWithImpl<$Res, _$InitialCampaign>
-    implements _$$InitialCampaignCopyWith<$Res> {
-  __$$InitialCampaignCopyWithImpl(
-      _$InitialCampaign _value, $Res Function(_$InitialCampaign) _then)
+class __$$InitialCampaignImplCopyWithImpl<$Res>
+    extends _$CampaignsStateCopyWithImpl<$Res, _$InitialCampaignImpl>
+    implements _$$InitialCampaignImplCopyWith<$Res> {
+  __$$InitialCampaignImplCopyWithImpl(
+      _$InitialCampaignImpl _value, $Res Function(_$InitialCampaignImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialCampaign implements InitialCampaign {
-  const _$InitialCampaign();
+class _$InitialCampaignImpl implements InitialCampaign {
+  const _$InitialCampaignImpl();
 
   @override
   String toString() {
@@ -413,7 +414,7 @@ class _$InitialCampaign implements InitialCampaign {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialCampaign);
+        (other.runtimeType == runtimeType && other is _$InitialCampaignImpl);
   }
 
   @override
@@ -498,24 +499,24 @@ class _$InitialCampaign implements InitialCampaign {
 }
 
 abstract class InitialCampaign implements CampaignsState {
-  const factory InitialCampaign() = _$InitialCampaign;
+  const factory InitialCampaign() = _$InitialCampaignImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessCampaignCopyWith<$Res> {
-  factory _$$SuccessCampaignCopyWith(
-          _$SuccessCampaign value, $Res Function(_$SuccessCampaign) then) =
-      __$$SuccessCampaignCopyWithImpl<$Res>;
+abstract class _$$SuccessCampaignImplCopyWith<$Res> {
+  factory _$$SuccessCampaignImplCopyWith(_$SuccessCampaignImpl value,
+          $Res Function(_$SuccessCampaignImpl) then) =
+      __$$SuccessCampaignImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CampaignDocumentResponse>? listCampaigns});
 }
 
 /// @nodoc
-class __$$SuccessCampaignCopyWithImpl<$Res>
-    extends _$CampaignsStateCopyWithImpl<$Res, _$SuccessCampaign>
-    implements _$$SuccessCampaignCopyWith<$Res> {
-  __$$SuccessCampaignCopyWithImpl(
-      _$SuccessCampaign _value, $Res Function(_$SuccessCampaign) _then)
+class __$$SuccessCampaignImplCopyWithImpl<$Res>
+    extends _$CampaignsStateCopyWithImpl<$Res, _$SuccessCampaignImpl>
+    implements _$$SuccessCampaignImplCopyWith<$Res> {
+  __$$SuccessCampaignImplCopyWithImpl(
+      _$SuccessCampaignImpl _value, $Res Function(_$SuccessCampaignImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -523,7 +524,7 @@ class __$$SuccessCampaignCopyWithImpl<$Res>
   $Res call({
     Object? listCampaigns = freezed,
   }) {
-    return _then(_$SuccessCampaign(
+    return _then(_$SuccessCampaignImpl(
       listCampaigns: freezed == listCampaigns
           ? _value._listCampaigns
           : listCampaigns // ignore: cast_nullable_to_non_nullable
@@ -534,8 +535,8 @@ class __$$SuccessCampaignCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessCampaign implements SuccessCampaign {
-  const _$SuccessCampaign(
+class _$SuccessCampaignImpl implements SuccessCampaign {
+  const _$SuccessCampaignImpl(
       {final List<CampaignDocumentResponse>? listCampaigns = const []})
       : _listCampaigns = listCampaigns;
 
@@ -559,7 +560,7 @@ class _$SuccessCampaign implements SuccessCampaign {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessCampaign &&
+            other is _$SuccessCampaignImpl &&
             const DeepCollectionEquality()
                 .equals(other._listCampaigns, _listCampaigns));
   }
@@ -571,8 +572,9 @@ class _$SuccessCampaign implements SuccessCampaign {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessCampaignCopyWith<_$SuccessCampaign> get copyWith =>
-      __$$SuccessCampaignCopyWithImpl<_$SuccessCampaign>(this, _$identity);
+  _$$SuccessCampaignImplCopyWith<_$SuccessCampaignImpl> get copyWith =>
+      __$$SuccessCampaignImplCopyWithImpl<_$SuccessCampaignImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -655,29 +657,29 @@ class _$SuccessCampaign implements SuccessCampaign {
 abstract class SuccessCampaign implements CampaignsState {
   const factory SuccessCampaign(
           {final List<CampaignDocumentResponse>? listCampaigns}) =
-      _$SuccessCampaign;
+      _$SuccessCampaignImpl;
 
   List<CampaignDocumentResponse>? get listCampaigns;
   @JsonKey(ignore: true)
-  _$$SuccessCampaignCopyWith<_$SuccessCampaign> get copyWith =>
+  _$$SuccessCampaignImplCopyWith<_$SuccessCampaignImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorCampaignCopyWith<$Res> {
-  factory _$$ErrorCampaignCopyWith(
-          _$ErrorCampaign value, $Res Function(_$ErrorCampaign) then) =
-      __$$ErrorCampaignCopyWithImpl<$Res>;
+abstract class _$$ErrorCampaignImplCopyWith<$Res> {
+  factory _$$ErrorCampaignImplCopyWith(
+          _$ErrorCampaignImpl value, $Res Function(_$ErrorCampaignImpl) then) =
+      __$$ErrorCampaignImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$ErrorCampaignCopyWithImpl<$Res>
-    extends _$CampaignsStateCopyWithImpl<$Res, _$ErrorCampaign>
-    implements _$$ErrorCampaignCopyWith<$Res> {
-  __$$ErrorCampaignCopyWithImpl(
-      _$ErrorCampaign _value, $Res Function(_$ErrorCampaign) _then)
+class __$$ErrorCampaignImplCopyWithImpl<$Res>
+    extends _$CampaignsStateCopyWithImpl<$Res, _$ErrorCampaignImpl>
+    implements _$$ErrorCampaignImplCopyWith<$Res> {
+  __$$ErrorCampaignImplCopyWithImpl(
+      _$ErrorCampaignImpl _value, $Res Function(_$ErrorCampaignImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -685,7 +687,7 @@ class __$$ErrorCampaignCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$ErrorCampaign(
+    return _then(_$ErrorCampaignImpl(
       freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -696,8 +698,8 @@ class __$$ErrorCampaignCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorCampaign implements ErrorCampaign {
-  const _$ErrorCampaign(this.errorMessage);
+class _$ErrorCampaignImpl implements ErrorCampaign {
+  const _$ErrorCampaignImpl(this.errorMessage);
 
   @override
   final String? errorMessage;
@@ -711,7 +713,7 @@ class _$ErrorCampaign implements ErrorCampaign {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorCampaign &&
+            other is _$ErrorCampaignImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -722,8 +724,8 @@ class _$ErrorCampaign implements ErrorCampaign {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCampaignCopyWith<_$ErrorCampaign> get copyWith =>
-      __$$ErrorCampaignCopyWithImpl<_$ErrorCampaign>(this, _$identity);
+  _$$ErrorCampaignImplCopyWith<_$ErrorCampaignImpl> get copyWith =>
+      __$$ErrorCampaignImplCopyWithImpl<_$ErrorCampaignImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -804,34 +806,34 @@ class _$ErrorCampaign implements ErrorCampaign {
 }
 
 abstract class ErrorCampaign implements CampaignsState {
-  const factory ErrorCampaign(final String? errorMessage) = _$ErrorCampaign;
+  const factory ErrorCampaign(final String? errorMessage) = _$ErrorCampaignImpl;
 
   String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$ErrorCampaignCopyWith<_$ErrorCampaign> get copyWith =>
+  _$$ErrorCampaignImplCopyWith<_$ErrorCampaignImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingCampaignCopyWith<$Res> {
-  factory _$$LoadingCampaignCopyWith(
-          _$LoadingCampaign value, $Res Function(_$LoadingCampaign) then) =
-      __$$LoadingCampaignCopyWithImpl<$Res>;
+abstract class _$$LoadingCampaignImplCopyWith<$Res> {
+  factory _$$LoadingCampaignImplCopyWith(_$LoadingCampaignImpl value,
+          $Res Function(_$LoadingCampaignImpl) then) =
+      __$$LoadingCampaignImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCampaignCopyWithImpl<$Res>
-    extends _$CampaignsStateCopyWithImpl<$Res, _$LoadingCampaign>
-    implements _$$LoadingCampaignCopyWith<$Res> {
-  __$$LoadingCampaignCopyWithImpl(
-      _$LoadingCampaign _value, $Res Function(_$LoadingCampaign) _then)
+class __$$LoadingCampaignImplCopyWithImpl<$Res>
+    extends _$CampaignsStateCopyWithImpl<$Res, _$LoadingCampaignImpl>
+    implements _$$LoadingCampaignImplCopyWith<$Res> {
+  __$$LoadingCampaignImplCopyWithImpl(
+      _$LoadingCampaignImpl _value, $Res Function(_$LoadingCampaignImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingCampaign implements LoadingCampaign {
-  const _$LoadingCampaign();
+class _$LoadingCampaignImpl implements LoadingCampaign {
+  const _$LoadingCampaignImpl();
 
   @override
   String toString() {
@@ -841,7 +843,7 @@ class _$LoadingCampaign implements LoadingCampaign {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingCampaign);
+        (other.runtimeType == runtimeType && other is _$LoadingCampaignImpl);
   }
 
   @override
@@ -926,5 +928,5 @@ class _$LoadingCampaign implements LoadingCampaign {
 }
 
 abstract class LoadingCampaign implements CampaignsState {
-  const factory LoadingCampaign() = _$LoadingCampaign;
+  const factory LoadingCampaign() = _$LoadingCampaignImpl;
 }

@@ -6,12 +6,12 @@ part of 'admin_status.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AdminStatus _$$_AdminStatusFromJson(Map<String, dynamic> json) =>
-    _$_AdminStatus(
+_$AdminStatusImpl _$$AdminStatusImplFromJson(Map<String, dynamic> json) =>
+    _$AdminStatusImpl(
       adminStatus: json['adminStatus'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_AdminStatusToJson(_$_AdminStatus instance) =>
+Map<String, dynamic> _$$AdminStatusImplToJson(_$AdminStatusImpl instance) =>
     <String, dynamic>{
       'adminStatus': instance.adminStatus,
     };

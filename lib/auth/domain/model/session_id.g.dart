@@ -6,11 +6,12 @@ part of 'session_id.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SessionId _$$_SessionIdFromJson(Map<String, dynamic> json) => _$_SessionId(
+_$SessionIdImpl _$$SessionIdImplFromJson(Map<String, dynamic> json) =>
+    _$SessionIdImpl(
       sessionId: json['sessionId'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_SessionIdToJson(_$_SessionId instance) =>
+Map<String, dynamic> _$$SessionIdImplToJson(_$SessionIdImpl instance) =>
     <String, dynamic>{
       'sessionId': instance.sessionId,
     };

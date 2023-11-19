@@ -62,22 +62,22 @@ class _$AdminStatusCopyWithImpl<$Res, $Val extends AdminStatus>
 }
 
 /// @nodoc
-abstract class _$$_AdminStatusCopyWith<$Res>
+abstract class _$$AdminStatusImplCopyWith<$Res>
     implements $AdminStatusCopyWith<$Res> {
-  factory _$$_AdminStatusCopyWith(
-          _$_AdminStatus value, $Res Function(_$_AdminStatus) then) =
-      __$$_AdminStatusCopyWithImpl<$Res>;
+  factory _$$AdminStatusImplCopyWith(
+          _$AdminStatusImpl value, $Res Function(_$AdminStatusImpl) then) =
+      __$$AdminStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? adminStatus});
 }
 
 /// @nodoc
-class __$$_AdminStatusCopyWithImpl<$Res>
-    extends _$AdminStatusCopyWithImpl<$Res, _$_AdminStatus>
-    implements _$$_AdminStatusCopyWith<$Res> {
-  __$$_AdminStatusCopyWithImpl(
-      _$_AdminStatus _value, $Res Function(_$_AdminStatus) _then)
+class __$$AdminStatusImplCopyWithImpl<$Res>
+    extends _$AdminStatusCopyWithImpl<$Res, _$AdminStatusImpl>
+    implements _$$AdminStatusImplCopyWith<$Res> {
+  __$$AdminStatusImplCopyWithImpl(
+      _$AdminStatusImpl _value, $Res Function(_$AdminStatusImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_AdminStatusCopyWithImpl<$Res>
   $Res call({
     Object? adminStatus = freezed,
   }) {
-    return _then(_$_AdminStatus(
+    return _then(_$AdminStatusImpl(
       adminStatus: freezed == adminStatus
           ? _value.adminStatus
           : adminStatus // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_AdminStatusCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AdminStatus implements _AdminStatus {
-  _$_AdminStatus({this.adminStatus = false});
+class _$AdminStatusImpl implements _AdminStatus {
+  _$AdminStatusImpl({this.adminStatus = false});
 
-  factory _$_AdminStatus.fromJson(Map<String, dynamic> json) =>
-      _$$_AdminStatusFromJson(json);
+  factory _$AdminStatusImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdminStatusImplFromJson(json);
 
   @override
   @JsonKey()
@@ -115,7 +115,7 @@ class _$_AdminStatus implements _AdminStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AdminStatus &&
+            other is _$AdminStatusImpl &&
             (identical(other.adminStatus, adminStatus) ||
                 other.adminStatus == adminStatus));
   }
@@ -127,27 +127,27 @@ class _$_AdminStatus implements _AdminStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminStatusCopyWith<_$_AdminStatus> get copyWith =>
-      __$$_AdminStatusCopyWithImpl<_$_AdminStatus>(this, _$identity);
+  _$$AdminStatusImplCopyWith<_$AdminStatusImpl> get copyWith =>
+      __$$AdminStatusImplCopyWithImpl<_$AdminStatusImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AdminStatusToJson(
+    return _$$AdminStatusImplToJson(
       this,
     );
   }
 }
 
 abstract class _AdminStatus implements AdminStatus {
-  factory _AdminStatus({final bool? adminStatus}) = _$_AdminStatus;
+  factory _AdminStatus({final bool? adminStatus}) = _$AdminStatusImpl;
 
   factory _AdminStatus.fromJson(Map<String, dynamic> json) =
-      _$_AdminStatus.fromJson;
+      _$AdminStatusImpl.fromJson;
 
   @override
   bool? get adminStatus;
   @override
   @JsonKey(ignore: true)
-  _$$_AdminStatusCopyWith<_$_AdminStatus> get copyWith =>
+  _$$AdminStatusImplCopyWith<_$AdminStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

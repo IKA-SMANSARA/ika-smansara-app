@@ -71,24 +71,25 @@ class _$CarouselDocumentResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CarouselDocumentResponseCopyWith<$Res>
+abstract class _$$CarouselDocumentResponseImplCopyWith<$Res>
     implements $CarouselDocumentResponseCopyWith<$Res> {
-  factory _$$_CarouselDocumentResponseCopyWith(
-          _$_CarouselDocumentResponse value,
-          $Res Function(_$_CarouselDocumentResponse) then) =
-      __$$_CarouselDocumentResponseCopyWithImpl<$Res>;
+  factory _$$CarouselDocumentResponseImplCopyWith(
+          _$CarouselDocumentResponseImpl value,
+          $Res Function(_$CarouselDocumentResponseImpl) then) =
+      __$$CarouselDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? total, List<CarouselItemResponse>? documents});
 }
 
 /// @nodoc
-class __$$_CarouselDocumentResponseCopyWithImpl<$Res>
+class __$$CarouselDocumentResponseImplCopyWithImpl<$Res>
     extends _$CarouselDocumentResponseCopyWithImpl<$Res,
-        _$_CarouselDocumentResponse>
-    implements _$$_CarouselDocumentResponseCopyWith<$Res> {
-  __$$_CarouselDocumentResponseCopyWithImpl(_$_CarouselDocumentResponse _value,
-      $Res Function(_$_CarouselDocumentResponse) _then)
+        _$CarouselDocumentResponseImpl>
+    implements _$$CarouselDocumentResponseImplCopyWith<$Res> {
+  __$$CarouselDocumentResponseImplCopyWithImpl(
+      _$CarouselDocumentResponseImpl _value,
+      $Res Function(_$CarouselDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_CarouselDocumentResponseCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CarouselDocumentResponse(
+    return _then(_$CarouselDocumentResponseImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -112,13 +113,13 @@ class __$$_CarouselDocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
-  _$_CarouselDocumentResponse(
+class _$CarouselDocumentResponseImpl implements _CarouselDocumentResponse {
+  _$CarouselDocumentResponseImpl(
       {this.total, final List<CarouselItemResponse>? documents = const []})
       : _documents = documents;
 
-  factory _$_CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CarouselDocumentResponseFromJson(json);
+  factory _$CarouselDocumentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CarouselDocumentResponseImplFromJson(json);
 
   @override
   final int? total;
@@ -142,7 +143,7 @@ class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CarouselDocumentResponse &&
+            other is _$CarouselDocumentResponseImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -156,13 +157,13 @@ class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CarouselDocumentResponseCopyWith<_$_CarouselDocumentResponse>
-      get copyWith => __$$_CarouselDocumentResponseCopyWithImpl<
-          _$_CarouselDocumentResponse>(this, _$identity);
+  _$$CarouselDocumentResponseImplCopyWith<_$CarouselDocumentResponseImpl>
+      get copyWith => __$$CarouselDocumentResponseImplCopyWithImpl<
+          _$CarouselDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CarouselDocumentResponseToJson(
+    return _$$CarouselDocumentResponseImplToJson(
       this,
     );
   }
@@ -171,10 +172,10 @@ class _$_CarouselDocumentResponse implements _CarouselDocumentResponse {
 abstract class _CarouselDocumentResponse implements CarouselDocumentResponse {
   factory _CarouselDocumentResponse(
           {final int? total, final List<CarouselItemResponse>? documents}) =
-      _$_CarouselDocumentResponse;
+      _$CarouselDocumentResponseImpl;
 
   factory _CarouselDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_CarouselDocumentResponse.fromJson;
+      _$CarouselDocumentResponseImpl.fromJson;
 
   @override
   int? get total;
@@ -182,6 +183,6 @@ abstract class _CarouselDocumentResponse implements CarouselDocumentResponse {
   List<CarouselItemResponse>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CarouselDocumentResponseCopyWith<_$_CarouselDocumentResponse>
+  _$$CarouselDocumentResponseImplCopyWith<_$CarouselDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

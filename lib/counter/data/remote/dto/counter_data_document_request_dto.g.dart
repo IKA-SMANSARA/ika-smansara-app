@@ -6,14 +6,14 @@ part of 'counter_data_document_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CounterDataDocumentRequestDTO _$$_CounterDataDocumentRequestDTOFromJson(
-        Map<String, dynamic> json) =>
-    _$_CounterDataDocumentRequestDTO(
-      counterValue: json['counter-value'] as String?,
-    );
+_$CounterDataDocumentRequestDTOImpl
+    _$$CounterDataDocumentRequestDTOImplFromJson(Map<String, dynamic> json) =>
+        _$CounterDataDocumentRequestDTOImpl(
+          counterValue: json['counter-value'] as String?,
+        );
 
-Map<String, dynamic> _$$_CounterDataDocumentRequestDTOToJson(
-        _$_CounterDataDocumentRequestDTO instance) =>
+Map<String, dynamic> _$$CounterDataDocumentRequestDTOImplToJson(
+        _$CounterDataDocumentRequestDTOImpl instance) =>
     <String, dynamic>{
       'counter-value': instance.counterValue,
     };

@@ -6,15 +6,15 @@ part of 'category_item_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CategoryItemResponse _$$_CategoryItemResponseFromJson(
+_$CategoryItemResponseImpl _$$CategoryItemResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CategoryItemResponse(
+    _$CategoryItemResponseImpl(
       nameCategory: json['nameCategory'] as String?,
       categoryIcon: json['categoryIcon'] as String?,
     );
 
-Map<String, dynamic> _$$_CategoryItemResponseToJson(
-        _$_CategoryItemResponse instance) =>
+Map<String, dynamic> _$$CategoryItemResponseImplToJson(
+        _$CategoryItemResponseImpl instance) =>
     <String, dynamic>{
       'nameCategory': instance.nameCategory,
       'categoryIcon': instance.categoryIcon,

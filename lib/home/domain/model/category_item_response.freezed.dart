@@ -69,22 +69,22 @@ class _$CategoryItemResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CategoryItemResponseCopyWith<$Res>
+abstract class _$$CategoryItemResponseImplCopyWith<$Res>
     implements $CategoryItemResponseCopyWith<$Res> {
-  factory _$$_CategoryItemResponseCopyWith(_$_CategoryItemResponse value,
-          $Res Function(_$_CategoryItemResponse) then) =
-      __$$_CategoryItemResponseCopyWithImpl<$Res>;
+  factory _$$CategoryItemResponseImplCopyWith(_$CategoryItemResponseImpl value,
+          $Res Function(_$CategoryItemResponseImpl) then) =
+      __$$CategoryItemResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? nameCategory, String? categoryIcon});
 }
 
 /// @nodoc
-class __$$_CategoryItemResponseCopyWithImpl<$Res>
-    extends _$CategoryItemResponseCopyWithImpl<$Res, _$_CategoryItemResponse>
-    implements _$$_CategoryItemResponseCopyWith<$Res> {
-  __$$_CategoryItemResponseCopyWithImpl(_$_CategoryItemResponse _value,
-      $Res Function(_$_CategoryItemResponse) _then)
+class __$$CategoryItemResponseImplCopyWithImpl<$Res>
+    extends _$CategoryItemResponseCopyWithImpl<$Res, _$CategoryItemResponseImpl>
+    implements _$$CategoryItemResponseImplCopyWith<$Res> {
+  __$$CategoryItemResponseImplCopyWithImpl(_$CategoryItemResponseImpl _value,
+      $Res Function(_$CategoryItemResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_CategoryItemResponseCopyWithImpl<$Res>
     Object? nameCategory = freezed,
     Object? categoryIcon = freezed,
   }) {
-    return _then(_$_CategoryItemResponse(
+    return _then(_$CategoryItemResponseImpl(
       nameCategory: freezed == nameCategory
           ? _value.nameCategory
           : nameCategory // ignore: cast_nullable_to_non_nullable
@@ -108,11 +108,11 @@ class __$$_CategoryItemResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryItemResponse implements _CategoryItemResponse {
-  _$_CategoryItemResponse({this.nameCategory, this.categoryIcon});
+class _$CategoryItemResponseImpl implements _CategoryItemResponse {
+  _$CategoryItemResponseImpl({this.nameCategory, this.categoryIcon});
 
-  factory _$_CategoryItemResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryItemResponseFromJson(json);
+  factory _$CategoryItemResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryItemResponseImplFromJson(json);
 
   @override
   final String? nameCategory;
@@ -128,7 +128,7 @@ class _$_CategoryItemResponse implements _CategoryItemResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryItemResponse &&
+            other is _$CategoryItemResponseImpl &&
             (identical(other.nameCategory, nameCategory) ||
                 other.nameCategory == nameCategory) &&
             (identical(other.categoryIcon, categoryIcon) ||
@@ -142,13 +142,14 @@ class _$_CategoryItemResponse implements _CategoryItemResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryItemResponseCopyWith<_$_CategoryItemResponse> get copyWith =>
-      __$$_CategoryItemResponseCopyWithImpl<_$_CategoryItemResponse>(
-          this, _$identity);
+  _$$CategoryItemResponseImplCopyWith<_$CategoryItemResponseImpl>
+      get copyWith =>
+          __$$CategoryItemResponseImplCopyWithImpl<_$CategoryItemResponseImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryItemResponseToJson(
+    return _$$CategoryItemResponseImplToJson(
       this,
     );
   }
@@ -157,10 +158,10 @@ class _$_CategoryItemResponse implements _CategoryItemResponse {
 abstract class _CategoryItemResponse implements CategoryItemResponse {
   factory _CategoryItemResponse(
       {final String? nameCategory,
-      final String? categoryIcon}) = _$_CategoryItemResponse;
+      final String? categoryIcon}) = _$CategoryItemResponseImpl;
 
   factory _CategoryItemResponse.fromJson(Map<String, dynamic> json) =
-      _$_CategoryItemResponse.fromJson;
+      _$CategoryItemResponseImpl.fromJson;
 
   @override
   String? get nameCategory;
@@ -168,6 +169,6 @@ abstract class _CategoryItemResponse implements CategoryItemResponse {
   String? get categoryIcon;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryItemResponseCopyWith<_$_CategoryItemResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CategoryItemResponseImplCopyWith<_$CategoryItemResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

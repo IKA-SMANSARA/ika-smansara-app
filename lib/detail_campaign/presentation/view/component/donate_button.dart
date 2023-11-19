@@ -26,6 +26,9 @@ class DonateButton extends StatelessWidget {
           ? null
           : () => context.pushNamed(
                 Routes.paymentGateway,
+                queryParameters: {
+                  Constants.idCampaignKey: documentId,
+                },
               ),
       child: Text(
         'Kirim Donasi',

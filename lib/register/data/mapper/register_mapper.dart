@@ -13,6 +13,7 @@ extension UserProfileDocRequestExtension on UserProfileDocRequest {
         name: name,
         phone: phone,
         updateAt: updateAt,
+        authKey: authKey,
       );
 }
 

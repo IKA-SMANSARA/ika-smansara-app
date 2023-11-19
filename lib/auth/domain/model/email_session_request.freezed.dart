@@ -68,22 +68,22 @@ class _$EmailSessionRequestCopyWithImpl<$Res, $Val extends EmailSessionRequest>
 }
 
 /// @nodoc
-abstract class _$$_EmailSessionRequestCopyWith<$Res>
+abstract class _$$EmailSessionRequestImplCopyWith<$Res>
     implements $EmailSessionRequestCopyWith<$Res> {
-  factory _$$_EmailSessionRequestCopyWith(_$_EmailSessionRequest value,
-          $Res Function(_$_EmailSessionRequest) then) =
-      __$$_EmailSessionRequestCopyWithImpl<$Res>;
+  factory _$$EmailSessionRequestImplCopyWith(_$EmailSessionRequestImpl value,
+          $Res Function(_$EmailSessionRequestImpl) then) =
+      __$$EmailSessionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? email, String? password});
 }
 
 /// @nodoc
-class __$$_EmailSessionRequestCopyWithImpl<$Res>
-    extends _$EmailSessionRequestCopyWithImpl<$Res, _$_EmailSessionRequest>
-    implements _$$_EmailSessionRequestCopyWith<$Res> {
-  __$$_EmailSessionRequestCopyWithImpl(_$_EmailSessionRequest _value,
-      $Res Function(_$_EmailSessionRequest) _then)
+class __$$EmailSessionRequestImplCopyWithImpl<$Res>
+    extends _$EmailSessionRequestCopyWithImpl<$Res, _$EmailSessionRequestImpl>
+    implements _$$EmailSessionRequestImplCopyWith<$Res> {
+  __$$EmailSessionRequestImplCopyWithImpl(_$EmailSessionRequestImpl _value,
+      $Res Function(_$EmailSessionRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_EmailSessionRequestCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_$_EmailSessionRequest(
+    return _then(_$EmailSessionRequestImpl(
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_EmailSessionRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailSessionRequest implements _EmailSessionRequest {
-  const _$_EmailSessionRequest({this.email, this.password});
+class _$EmailSessionRequestImpl implements _EmailSessionRequest {
+  const _$EmailSessionRequestImpl({this.email, this.password});
 
-  factory _$_EmailSessionRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_EmailSessionRequestFromJson(json);
+  factory _$EmailSessionRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmailSessionRequestImplFromJson(json);
 
   @override
   final String? email;
@@ -127,7 +127,7 @@ class _$_EmailSessionRequest implements _EmailSessionRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailSessionRequest &&
+            other is _$EmailSessionRequestImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -140,13 +140,13 @@ class _$_EmailSessionRequest implements _EmailSessionRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailSessionRequestCopyWith<_$_EmailSessionRequest> get copyWith =>
-      __$$_EmailSessionRequestCopyWithImpl<_$_EmailSessionRequest>(
+  _$$EmailSessionRequestImplCopyWith<_$EmailSessionRequestImpl> get copyWith =>
+      __$$EmailSessionRequestImplCopyWithImpl<_$EmailSessionRequestImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailSessionRequestToJson(
+    return _$$EmailSessionRequestImplToJson(
       this,
     );
   }
@@ -154,10 +154,11 @@ class _$_EmailSessionRequest implements _EmailSessionRequest {
 
 abstract class _EmailSessionRequest implements EmailSessionRequest {
   const factory _EmailSessionRequest(
-      {final String? email, final String? password}) = _$_EmailSessionRequest;
+      {final String? email,
+      final String? password}) = _$EmailSessionRequestImpl;
 
   factory _EmailSessionRequest.fromJson(Map<String, dynamic> json) =
-      _$_EmailSessionRequest.fromJson;
+      _$EmailSessionRequestImpl.fromJson;
 
   @override
   String? get email;
@@ -165,6 +166,6 @@ abstract class _EmailSessionRequest implements EmailSessionRequest {
   String? get password;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailSessionRequestCopyWith<_$_EmailSessionRequest> get copyWith =>
+  _$$EmailSessionRequestImplCopyWith<_$EmailSessionRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

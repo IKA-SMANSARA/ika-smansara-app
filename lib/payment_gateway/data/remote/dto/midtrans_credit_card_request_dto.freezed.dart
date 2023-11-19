@@ -67,25 +67,25 @@ class _$MidtransCreditCardRequestDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MidtransCreditCardRequestDTOCopyWith<$Res>
+abstract class _$$MidtransCreditCardRequestDTOImplCopyWith<$Res>
     implements $MidtransCreditCardRequestDTOCopyWith<$Res> {
-  factory _$$_MidtransCreditCardRequestDTOCopyWith(
-          _$_MidtransCreditCardRequestDTO value,
-          $Res Function(_$_MidtransCreditCardRequestDTO) then) =
-      __$$_MidtransCreditCardRequestDTOCopyWithImpl<$Res>;
+  factory _$$MidtransCreditCardRequestDTOImplCopyWith(
+          _$MidtransCreditCardRequestDTOImpl value,
+          $Res Function(_$MidtransCreditCardRequestDTOImpl) then) =
+      __$$MidtransCreditCardRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'secure') bool secure});
 }
 
 /// @nodoc
-class __$$_MidtransCreditCardRequestDTOCopyWithImpl<$Res>
+class __$$MidtransCreditCardRequestDTOImplCopyWithImpl<$Res>
     extends _$MidtransCreditCardRequestDTOCopyWithImpl<$Res,
-        _$_MidtransCreditCardRequestDTO>
-    implements _$$_MidtransCreditCardRequestDTOCopyWith<$Res> {
-  __$$_MidtransCreditCardRequestDTOCopyWithImpl(
-      _$_MidtransCreditCardRequestDTO _value,
-      $Res Function(_$_MidtransCreditCardRequestDTO) _then)
+        _$MidtransCreditCardRequestDTOImpl>
+    implements _$$MidtransCreditCardRequestDTOImplCopyWith<$Res> {
+  __$$MidtransCreditCardRequestDTOImplCopyWithImpl(
+      _$MidtransCreditCardRequestDTOImpl _value,
+      $Res Function(_$MidtransCreditCardRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_MidtransCreditCardRequestDTOCopyWithImpl<$Res>
   $Res call({
     Object? secure = null,
   }) {
-    return _then(_$_MidtransCreditCardRequestDTO(
+    return _then(_$MidtransCreditCardRequestDTOImpl(
       secure: null == secure
           ? _value.secure
           : secure // ignore: cast_nullable_to_non_nullable
@@ -104,12 +104,14 @@ class __$$_MidtransCreditCardRequestDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransCreditCardRequestDTO implements _MidtransCreditCardRequestDTO {
-  const _$_MidtransCreditCardRequestDTO(
+class _$MidtransCreditCardRequestDTOImpl
+    implements _MidtransCreditCardRequestDTO {
+  const _$MidtransCreditCardRequestDTOImpl(
       {@JsonKey(name: 'secure') this.secure = true});
 
-  factory _$_MidtransCreditCardRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_MidtransCreditCardRequestDTOFromJson(json);
+  factory _$MidtransCreditCardRequestDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MidtransCreditCardRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'secure')
@@ -124,7 +126,7 @@ class _$_MidtransCreditCardRequestDTO implements _MidtransCreditCardRequestDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransCreditCardRequestDTO &&
+            other is _$MidtransCreditCardRequestDTOImpl &&
             (identical(other.secure, secure) || other.secure == secure));
   }
 
@@ -135,13 +137,14 @@ class _$_MidtransCreditCardRequestDTO implements _MidtransCreditCardRequestDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransCreditCardRequestDTOCopyWith<_$_MidtransCreditCardRequestDTO>
-      get copyWith => __$$_MidtransCreditCardRequestDTOCopyWithImpl<
-          _$_MidtransCreditCardRequestDTO>(this, _$identity);
+  _$$MidtransCreditCardRequestDTOImplCopyWith<
+          _$MidtransCreditCardRequestDTOImpl>
+      get copyWith => __$$MidtransCreditCardRequestDTOImplCopyWithImpl<
+          _$MidtransCreditCardRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransCreditCardRequestDTOToJson(
+    return _$$MidtransCreditCardRequestDTOImplToJson(
       this,
     );
   }
@@ -151,16 +154,17 @@ abstract class _MidtransCreditCardRequestDTO
     implements MidtransCreditCardRequestDTO {
   const factory _MidtransCreditCardRequestDTO(
           {@JsonKey(name: 'secure') final bool secure}) =
-      _$_MidtransCreditCardRequestDTO;
+      _$MidtransCreditCardRequestDTOImpl;
 
   factory _MidtransCreditCardRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_MidtransCreditCardRequestDTO.fromJson;
+      _$MidtransCreditCardRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'secure')
   bool get secure;
   @override
   @JsonKey(ignore: true)
-  _$$_MidtransCreditCardRequestDTOCopyWith<_$_MidtransCreditCardRequestDTO>
+  _$$MidtransCreditCardRequestDTOImplCopyWith<
+          _$MidtransCreditCardRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

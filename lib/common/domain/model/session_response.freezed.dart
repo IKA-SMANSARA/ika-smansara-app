@@ -231,11 +231,11 @@ class _$SessionResponseCopyWithImpl<$Res, $Val extends SessionResponse>
 }
 
 /// @nodoc
-abstract class _$$_SessionResponseCopyWith<$Res>
+abstract class _$$SessionResponseImplCopyWith<$Res>
     implements $SessionResponseCopyWith<$Res> {
-  factory _$$_SessionResponseCopyWith(
-          _$_SessionResponse value, $Res Function(_$_SessionResponse) then) =
-      __$$_SessionResponseCopyWithImpl<$Res>;
+  factory _$$SessionResponseImplCopyWith(_$SessionResponseImpl value,
+          $Res Function(_$SessionResponseImpl) then) =
+      __$$SessionResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -267,11 +267,11 @@ abstract class _$$_SessionResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SessionResponseCopyWithImpl<$Res>
-    extends _$SessionResponseCopyWithImpl<$Res, _$_SessionResponse>
-    implements _$$_SessionResponseCopyWith<$Res> {
-  __$$_SessionResponseCopyWithImpl(
-      _$_SessionResponse _value, $Res Function(_$_SessionResponse) _then)
+class __$$SessionResponseImplCopyWithImpl<$Res>
+    extends _$SessionResponseCopyWithImpl<$Res, _$SessionResponseImpl>
+    implements _$$SessionResponseImplCopyWith<$Res> {
+  __$$SessionResponseImplCopyWithImpl(
+      _$SessionResponseImpl _value, $Res Function(_$SessionResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -303,7 +303,7 @@ class __$$_SessionResponseCopyWithImpl<$Res>
     Object? countryName = freezed,
     Object? current = freezed,
   }) {
-    return _then(_$_SessionResponse(
+    return _then(_$SessionResponseImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -410,8 +410,8 @@ class __$$_SessionResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SessionResponse implements _SessionResponse {
-  _$_SessionResponse(
+class _$SessionResponseImpl implements _SessionResponse {
+  _$SessionResponseImpl(
       {this.id,
       this.createdAt,
       this.userId,
@@ -438,8 +438,8 @@ class _$_SessionResponse implements _SessionResponse {
       this.countryName,
       this.current});
 
-  factory _$_SessionResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_SessionResponseFromJson(json);
+  factory _$SessionResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionResponseImplFromJson(json);
 
   @override
   final String? id;
@@ -501,7 +501,7 @@ class _$_SessionResponse implements _SessionResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SessionResponse &&
+            other is _$SessionResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -581,12 +581,13 @@ class _$_SessionResponse implements _SessionResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SessionResponseCopyWith<_$_SessionResponse> get copyWith =>
-      __$$_SessionResponseCopyWithImpl<_$_SessionResponse>(this, _$identity);
+  _$$SessionResponseImplCopyWith<_$SessionResponseImpl> get copyWith =>
+      __$$SessionResponseImplCopyWithImpl<_$SessionResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SessionResponseToJson(
+    return _$$SessionResponseImplToJson(
       this,
     );
   }
@@ -618,10 +619,10 @@ abstract class _SessionResponse implements SessionResponse {
       final String? deviceModel,
       final String? countryCode,
       final String? countryName,
-      final bool? current}) = _$_SessionResponse;
+      final bool? current}) = _$SessionResponseImpl;
 
   factory _SessionResponse.fromJson(Map<String, dynamic> json) =
-      _$_SessionResponse.fromJson;
+      _$SessionResponseImpl.fromJson;
 
   @override
   String? get id;
@@ -675,6 +676,6 @@ abstract class _SessionResponse implements SessionResponse {
   bool? get current;
   @override
   @JsonKey(ignore: true)
-  _$$_SessionResponseCopyWith<_$_SessionResponse> get copyWith =>
+  _$$SessionResponseImplCopyWith<_$SessionResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

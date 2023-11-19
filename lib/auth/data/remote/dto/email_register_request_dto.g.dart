@@ -6,17 +6,17 @@ part of 'email_register_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailRegisterRequestDTO _$$_EmailRegisterRequestDTOFromJson(
+_$EmailRegisterRequestDTOImpl _$$EmailRegisterRequestDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailRegisterRequestDTO(
+    _$EmailRegisterRequestDTOImpl(
       userId: json['userId'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_EmailRegisterRequestDTOToJson(
-        _$_EmailRegisterRequestDTO instance) =>
+Map<String, dynamic> _$$EmailRegisterRequestDTOImplToJson(
+        _$EmailRegisterRequestDTOImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'email': instance.email,

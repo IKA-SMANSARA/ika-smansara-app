@@ -73,25 +73,25 @@ class _$CampaignsCollectionsResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CampaignsCollectionsResponseCopyWith<$Res>
+abstract class _$$CampaignsCollectionsResponseImplCopyWith<$Res>
     implements $CampaignsCollectionsResponseCopyWith<$Res> {
-  factory _$$_CampaignsCollectionsResponseCopyWith(
-          _$_CampaignsCollectionsResponse value,
-          $Res Function(_$_CampaignsCollectionsResponse) then) =
-      __$$_CampaignsCollectionsResponseCopyWithImpl<$Res>;
+  factory _$$CampaignsCollectionsResponseImplCopyWith(
+          _$CampaignsCollectionsResponseImpl value,
+          $Res Function(_$CampaignsCollectionsResponseImpl) then) =
+      __$$CampaignsCollectionsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? total, List<CampaignDocumentResponse>? documents});
 }
 
 /// @nodoc
-class __$$_CampaignsCollectionsResponseCopyWithImpl<$Res>
+class __$$CampaignsCollectionsResponseImplCopyWithImpl<$Res>
     extends _$CampaignsCollectionsResponseCopyWithImpl<$Res,
-        _$_CampaignsCollectionsResponse>
-    implements _$$_CampaignsCollectionsResponseCopyWith<$Res> {
-  __$$_CampaignsCollectionsResponseCopyWithImpl(
-      _$_CampaignsCollectionsResponse _value,
-      $Res Function(_$_CampaignsCollectionsResponse) _then)
+        _$CampaignsCollectionsResponseImpl>
+    implements _$$CampaignsCollectionsResponseImplCopyWith<$Res> {
+  __$$CampaignsCollectionsResponseImplCopyWithImpl(
+      _$CampaignsCollectionsResponseImpl _value,
+      $Res Function(_$CampaignsCollectionsResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_CampaignsCollectionsResponseCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CampaignsCollectionsResponse(
+    return _then(_$CampaignsCollectionsResponseImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -115,13 +115,15 @@ class __$$_CampaignsCollectionsResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CampaignsCollectionsResponse implements _CampaignsCollectionsResponse {
-  _$_CampaignsCollectionsResponse(
+class _$CampaignsCollectionsResponseImpl
+    implements _CampaignsCollectionsResponse {
+  _$CampaignsCollectionsResponseImpl(
       {this.total, final List<CampaignDocumentResponse>? documents = const []})
       : _documents = documents;
 
-  factory _$_CampaignsCollectionsResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CampaignsCollectionsResponseFromJson(json);
+  factory _$CampaignsCollectionsResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CampaignsCollectionsResponseImplFromJson(json);
 
   @override
   final int? total;
@@ -145,7 +147,7 @@ class _$_CampaignsCollectionsResponse implements _CampaignsCollectionsResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CampaignsCollectionsResponse &&
+            other is _$CampaignsCollectionsResponseImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -159,13 +161,14 @@ class _$_CampaignsCollectionsResponse implements _CampaignsCollectionsResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CampaignsCollectionsResponseCopyWith<_$_CampaignsCollectionsResponse>
-      get copyWith => __$$_CampaignsCollectionsResponseCopyWithImpl<
-          _$_CampaignsCollectionsResponse>(this, _$identity);
+  _$$CampaignsCollectionsResponseImplCopyWith<
+          _$CampaignsCollectionsResponseImpl>
+      get copyWith => __$$CampaignsCollectionsResponseImplCopyWithImpl<
+          _$CampaignsCollectionsResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CampaignsCollectionsResponseToJson(
+    return _$$CampaignsCollectionsResponseImplToJson(
       this,
     );
   }
@@ -175,10 +178,10 @@ abstract class _CampaignsCollectionsResponse
     implements CampaignsCollectionsResponse {
   factory _CampaignsCollectionsResponse(
           {final int? total, final List<CampaignDocumentResponse>? documents}) =
-      _$_CampaignsCollectionsResponse;
+      _$CampaignsCollectionsResponseImpl;
 
   factory _CampaignsCollectionsResponse.fromJson(Map<String, dynamic> json) =
-      _$_CampaignsCollectionsResponse.fromJson;
+      _$CampaignsCollectionsResponseImpl.fromJson;
 
   @override
   int? get total;
@@ -186,6 +189,7 @@ abstract class _CampaignsCollectionsResponse
   List<CampaignDocumentResponse>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CampaignsCollectionsResponseCopyWith<_$_CampaignsCollectionsResponse>
+  _$$CampaignsCollectionsResponseImplCopyWith<
+          _$CampaignsCollectionsResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

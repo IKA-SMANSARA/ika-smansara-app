@@ -102,7 +102,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
-          ?.requestPermission();
+          ?.requestNotificationsPermission();
     }
   }
 

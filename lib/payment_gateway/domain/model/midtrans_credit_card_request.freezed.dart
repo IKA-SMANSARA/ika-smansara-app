@@ -64,25 +64,25 @@ class _$MidtransCreditCardRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MidtransCreditCardRequestCopyWith<$Res>
+abstract class _$$MidtransCreditCardRequestImplCopyWith<$Res>
     implements $MidtransCreditCardRequestCopyWith<$Res> {
-  factory _$$_MidtransCreditCardRequestCopyWith(
-          _$_MidtransCreditCardRequest value,
-          $Res Function(_$_MidtransCreditCardRequest) then) =
-      __$$_MidtransCreditCardRequestCopyWithImpl<$Res>;
+  factory _$$MidtransCreditCardRequestImplCopyWith(
+          _$MidtransCreditCardRequestImpl value,
+          $Res Function(_$MidtransCreditCardRequestImpl) then) =
+      __$$MidtransCreditCardRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool secure});
 }
 
 /// @nodoc
-class __$$_MidtransCreditCardRequestCopyWithImpl<$Res>
+class __$$MidtransCreditCardRequestImplCopyWithImpl<$Res>
     extends _$MidtransCreditCardRequestCopyWithImpl<$Res,
-        _$_MidtransCreditCardRequest>
-    implements _$$_MidtransCreditCardRequestCopyWith<$Res> {
-  __$$_MidtransCreditCardRequestCopyWithImpl(
-      _$_MidtransCreditCardRequest _value,
-      $Res Function(_$_MidtransCreditCardRequest) _then)
+        _$MidtransCreditCardRequestImpl>
+    implements _$$MidtransCreditCardRequestImplCopyWith<$Res> {
+  __$$MidtransCreditCardRequestImplCopyWithImpl(
+      _$MidtransCreditCardRequestImpl _value,
+      $Res Function(_$MidtransCreditCardRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +90,7 @@ class __$$_MidtransCreditCardRequestCopyWithImpl<$Res>
   $Res call({
     Object? secure = null,
   }) {
-    return _then(_$_MidtransCreditCardRequest(
+    return _then(_$MidtransCreditCardRequestImpl(
       secure: null == secure
           ? _value.secure
           : secure // ignore: cast_nullable_to_non_nullable
@@ -101,11 +101,11 @@ class __$$_MidtransCreditCardRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransCreditCardRequest implements _MidtransCreditCardRequest {
-  const _$_MidtransCreditCardRequest({this.secure = true});
+class _$MidtransCreditCardRequestImpl implements _MidtransCreditCardRequest {
+  const _$MidtransCreditCardRequestImpl({this.secure = true});
 
-  factory _$_MidtransCreditCardRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_MidtransCreditCardRequestFromJson(json);
+  factory _$MidtransCreditCardRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MidtransCreditCardRequestImplFromJson(json);
 
   @override
   @JsonKey()
@@ -120,7 +120,7 @@ class _$_MidtransCreditCardRequest implements _MidtransCreditCardRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransCreditCardRequest &&
+            other is _$MidtransCreditCardRequestImpl &&
             (identical(other.secure, secure) || other.secure == secure));
   }
 
@@ -131,13 +131,13 @@ class _$_MidtransCreditCardRequest implements _MidtransCreditCardRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransCreditCardRequestCopyWith<_$_MidtransCreditCardRequest>
-      get copyWith => __$$_MidtransCreditCardRequestCopyWithImpl<
-          _$_MidtransCreditCardRequest>(this, _$identity);
+  _$$MidtransCreditCardRequestImplCopyWith<_$MidtransCreditCardRequestImpl>
+      get copyWith => __$$MidtransCreditCardRequestImplCopyWithImpl<
+          _$MidtransCreditCardRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransCreditCardRequestToJson(
+    return _$$MidtransCreditCardRequestImplToJson(
       this,
     );
   }
@@ -145,15 +145,15 @@ class _$_MidtransCreditCardRequest implements _MidtransCreditCardRequest {
 
 abstract class _MidtransCreditCardRequest implements MidtransCreditCardRequest {
   const factory _MidtransCreditCardRequest({final bool secure}) =
-      _$_MidtransCreditCardRequest;
+      _$MidtransCreditCardRequestImpl;
 
   factory _MidtransCreditCardRequest.fromJson(Map<String, dynamic> json) =
-      _$_MidtransCreditCardRequest.fromJson;
+      _$MidtransCreditCardRequestImpl.fromJson;
 
   @override
   bool get secure;
   @override
   @JsonKey(ignore: true)
-  _$$_MidtransCreditCardRequestCopyWith<_$_MidtransCreditCardRequest>
+  _$$MidtransCreditCardRequestImplCopyWith<_$MidtransCreditCardRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

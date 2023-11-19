@@ -6,9 +6,10 @@ part of 'detail_campaign_document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DetailCampaignDocumentResponseDTO
-    _$$_DetailCampaignDocumentResponseDTOFromJson(Map<String, dynamic> json) =>
-        _$_DetailCampaignDocumentResponseDTO(
+_$DetailCampaignDocumentResponseDTOImpl
+    _$$DetailCampaignDocumentResponseDTOImplFromJson(
+            Map<String, dynamic> json) =>
+        _$DetailCampaignDocumentResponseDTOImpl(
           id: json[r'$id'] as String?,
           createdAt: json[r'$createdAt'] as String?,
           updatedAt: json[r'$updatedAt'] as String?,
@@ -32,8 +33,8 @@ _$_DetailCampaignDocumentResponseDTO
           campaignDescription: json['campaignDescription'] as String?,
         );
 
-Map<String, dynamic> _$$_DetailCampaignDocumentResponseDTOToJson(
-        _$_DetailCampaignDocumentResponseDTO instance) =>
+Map<String, dynamic> _$$DetailCampaignDocumentResponseDTOImplToJson(
+        _$DetailCampaignDocumentResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createdAt,

@@ -9,11 +9,13 @@ import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/trans
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
+    required this.campaignId,
     required this.amountValue,
     super.key,
   });
 
   final String? amountValue;
+  final String? campaignId;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,12 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                 return const CircularProgressIndicator();
               }
               if (state is Loading) {
-                final donationRandomID = getRandomOrderIdNumber('donationID');
+                final donationRandomID = getRandomOrderIdNumber(campaignId);
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
                         amountValue,
                         'ORDER-$donationRandomID',
+                        campaignId,
                       ),
                     );
                 return const CircularProgressIndicator();

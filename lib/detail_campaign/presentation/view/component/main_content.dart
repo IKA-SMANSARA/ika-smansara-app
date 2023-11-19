@@ -134,8 +134,7 @@ class MainContent extends StatelessWidget {
                   ),
                   DetailAmountDonation(
                     backerCount:
-                        detailCampaignDocumentResponse.backerCount.toString() ??
-                            '0',
+                        detailCampaignDocumentResponse.backerCount.toString(),
                   ),
                   const Divider(
                     color: Color(0xFFD9D9D9),

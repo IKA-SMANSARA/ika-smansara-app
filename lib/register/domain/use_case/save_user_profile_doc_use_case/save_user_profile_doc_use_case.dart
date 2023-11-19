@@ -30,17 +30,6 @@ class SaveUserProfileDocUseCase {
 
     return userRegisterUseCase(emailRegisterRequest).then(
       (responseSuccess) {
-        final userProfileDocRequest = UserProfileDocRequest(
-          address: address,
-          email: email,
-          graduateYear: graduateYear,
-          isAlumni: isAlumnus,
-          name: name,
-          phone: phone,
-          createAt: DateTime.now().toString(),
-          updateAt: DateTime.now().toString(),
-        );
-
         return responseSuccess.fold(
           (error) {
             return RegisterStatus(
@@ -49,6 +38,17 @@ class SaveUserProfileDocUseCase {
           },
           (success) {
             final userId = success.id;
+            final userProfileDocRequest = UserProfileDocRequest(
+              address: address,
+              email: email,
+              graduateYear: graduateYear,
+              isAlumni: isAlumnus,
+              name: name,
+              phone: phone,
+              createAt: DateTime.now().toString(),
+              updateAt: DateTime.now().toString(),
+              authKey: userId,
+            );
             final userRegisterDocRequest = UserRegisterDocRequest(
               documentId: Constants.uniqueId,
               data: userProfileDocRequest,

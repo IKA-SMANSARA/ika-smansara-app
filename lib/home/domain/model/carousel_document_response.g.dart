@@ -6,9 +6,9 @@ part of 'carousel_document_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CarouselDocumentResponse _$$_CarouselDocumentResponseFromJson(
+_$CarouselDocumentResponseImpl _$$CarouselDocumentResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CarouselDocumentResponse(
+    _$CarouselDocumentResponseImpl(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
               ?.map((e) =>
@@ -17,8 +17,8 @@ _$_CarouselDocumentResponse _$$_CarouselDocumentResponseFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_CarouselDocumentResponseToJson(
-        _$_CarouselDocumentResponse instance) =>
+Map<String, dynamic> _$$CarouselDocumentResponseImplToJson(
+        _$CarouselDocumentResponseImpl instance) =>
     <String, dynamic>{
       'total': instance.total,
       'documents': instance.documents,

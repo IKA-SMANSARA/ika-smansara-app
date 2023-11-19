@@ -6,9 +6,9 @@ part of 'campaigns_collections_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CampaignsCollectionsResponse _$$_CampaignsCollectionsResponseFromJson(
+_$CampaignsCollectionsResponseImpl _$$CampaignsCollectionsResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CampaignsCollectionsResponse(
+    _$CampaignsCollectionsResponseImpl(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
               ?.map((e) =>
@@ -17,8 +17,8 @@ _$_CampaignsCollectionsResponse _$$_CampaignsCollectionsResponseFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_CampaignsCollectionsResponseToJson(
-        _$_CampaignsCollectionsResponse instance) =>
+Map<String, dynamic> _$$CampaignsCollectionsResponseImplToJson(
+        _$CampaignsCollectionsResponseImpl instance) =>
     <String, dynamic>{
       'total': instance.total,
       'documents': instance.documents,

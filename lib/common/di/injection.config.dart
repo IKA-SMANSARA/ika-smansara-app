@@ -4,8 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
@@ -36,8 +35,8 @@ import 'package:ika_smansara/auth/domain/use_case/user_register_use_case/user_re
     as _i31;
 import 'package:ika_smansara/common/common.dart' as _i4;
 import 'package:ika_smansara/common/di/api_interface_network_module.dart'
-    as _i38;
-import 'package:ika_smansara/common/di/network_module.dart' as _i39;
+    as _i40;
+import 'package:ika_smansara/common/di/network_module.dart' as _i38;
 import 'package:ika_smansara/counter/counter.dart' as _i8;
 import 'package:ika_smansara/counter/data/repository/counter_repository_impl.dart'
     as _i9;
@@ -68,9 +67,9 @@ import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_catego
 import 'package:ika_smansara/payment_gateway/data/repository/payment_gateway_repository_impl.dart'
     as _i21;
 import 'package:ika_smansara/payment_gateway/di/api_interface_payment_gateway_network_module.dart'
-    as _i40;
-import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
     as _i41;
+import 'package:ika_smansara/payment_gateway/di/payment_gateway_network_module.dart'
+    as _i39;
 import 'package:ika_smansara/payment_gateway/domain/use_case/request_acquiring_transaction_token_use_case/request_acquiring_transaction_token_use_case.dart'
     as _i24;
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart' as _i5;
@@ -82,7 +81,7 @@ import 'package:ika_smansara/register/register.dart' as _i22;
 import 'package:injectable/injectable.dart' as _i2;
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -185,11 +184,11 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$ApiInterfaceNetworkModule extends _i38.ApiInterfaceNetworkModule {}
+class _$NetworkModule extends _i38.NetworkModule {}
 
-class _$NetworkModule extends _i39.NetworkModule {}
+class _$PaymentGatewayNetworkModule extends _i39.PaymentGatewayNetworkModule {}
+
+class _$ApiInterfaceNetworkModule extends _i40.ApiInterfaceNetworkModule {}
 
 class _$ApiInterfacePaymentGatewayNetworkModule
-    extends _i40.ApiInterfacePaymentGatewayNetworkModule {}
-
-class _$PaymentGatewayNetworkModule extends _i41.PaymentGatewayNetworkModule {}
+    extends _i41.ApiInterfacePaymentGatewayNetworkModule {}

@@ -11,6 +11,8 @@ class MidtransTransactionRequest with _$MidtransTransactionRequest {
   const factory MidtransTransactionRequest({
     MidtransTransactionDetailsRequest? midtransTransactionDetailsRequest,
     MidtransCreditCardRequest? midtransCreditCardRequest,
+    List<MidtransItemRequest>? midtransItemDetailsRequest,
+    MidtransCustomerDetailsRequest? midtransCustomerDetailsRequest,
   }) = _MidtransTransactionRequest;
 
   factory MidtransTransactionRequest.fromJson(Map<String, dynamic> json) =>

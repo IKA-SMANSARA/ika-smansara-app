@@ -19,11 +19,13 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           fetchData: (
             grossAmount,
             orderId,
+            campaignId,
           ) async {
             // fetching data
             await _requestAcquiringTransactionTokenUseCase(
               grossAmount,
               orderId,
+              campaignId,
             ).then(
               (response) {
                 response.when(

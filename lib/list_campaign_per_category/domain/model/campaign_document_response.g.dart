@@ -6,9 +6,9 @@ part of 'campaign_document_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CampaignDocumentResponse _$$_CampaignDocumentResponseFromJson(
+_$CampaignDocumentResponseImpl _$$CampaignDocumentResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CampaignDocumentResponse(
+    _$CampaignDocumentResponseImpl(
       id: json['id'] as String?,
       campaignName: json['campaignName'] as String?,
       goalAmount: json['goalAmount'] as int?,
@@ -17,8 +17,8 @@ _$_CampaignDocumentResponse _$$_CampaignDocumentResponseFromJson(
       photoThumbnail: json['photoThumbnail'] as String?,
     );
 
-Map<String, dynamic> _$$_CampaignDocumentResponseToJson(
-        _$_CampaignDocumentResponse instance) =>
+Map<String, dynamic> _$$CampaignDocumentResponseImplToJson(
+        _$CampaignDocumentResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'campaignName': instance.campaignName,

@@ -6,11 +6,12 @@ part of 'user_label.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserLabel _$$_UserLabelFromJson(Map<String, dynamic> json) => _$_UserLabel(
+_$UserLabelImpl _$$UserLabelImplFromJson(Map<String, dynamic> json) =>
+    _$UserLabelImpl(
       userLabel: json['userLabel'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_UserLabelToJson(_$_UserLabel instance) =>
+Map<String, dynamic> _$$UserLabelImplToJson(_$UserLabelImpl instance) =>
     <String, dynamic>{
       'userLabel': instance.userLabel,
     };

@@ -136,11 +136,11 @@ class _$UserResponseDTOCopyWithImpl<$Res, $Val extends UserResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_UserResponseDTOCopyWith<$Res>
+abstract class _$$UserResponseDTOImplCopyWith<$Res>
     implements $UserResponseDTOCopyWith<$Res> {
-  factory _$$_UserResponseDTOCopyWith(
-          _$_UserResponseDTO value, $Res Function(_$_UserResponseDTO) then) =
-      __$$_UserResponseDTOCopyWithImpl<$Res>;
+  factory _$$UserResponseDTOImplCopyWith(_$UserResponseDTOImpl value,
+          $Res Function(_$UserResponseDTOImpl) then) =
+      __$$UserResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,11 +157,11 @@ abstract class _$$_UserResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserResponseDTOCopyWithImpl<$Res>
-    extends _$UserResponseDTOCopyWithImpl<$Res, _$_UserResponseDTO>
-    implements _$$_UserResponseDTOCopyWith<$Res> {
-  __$$_UserResponseDTOCopyWithImpl(
-      _$_UserResponseDTO _value, $Res Function(_$_UserResponseDTO) _then)
+class __$$UserResponseDTOImplCopyWithImpl<$Res>
+    extends _$UserResponseDTOCopyWithImpl<$Res, _$UserResponseDTOImpl>
+    implements _$$UserResponseDTOImplCopyWith<$Res> {
+  __$$UserResponseDTOImplCopyWithImpl(
+      _$UserResponseDTOImpl _value, $Res Function(_$UserResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -178,7 +178,7 @@ class __$$_UserResponseDTOCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? accessedAt = freezed,
   }) {
-    return _then(_$_UserResponseDTO(
+    return _then(_$UserResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -225,8 +225,8 @@ class __$$_UserResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserResponseDTO implements _UserResponseDTO {
-  _$_UserResponseDTO(
+class _$UserResponseDTOImpl implements _UserResponseDTO {
+  _$UserResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
@@ -239,8 +239,8 @@ class _$_UserResponseDTO implements _UserResponseDTO {
       @JsonKey(name: 'accessedAt') this.accessedAt})
       : _labels = labels;
 
-  factory _$_UserResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UserResponseDTOFromJson(json);
+  factory _$UserResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -290,7 +290,7 @@ class _$_UserResponseDTO implements _UserResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserResponseDTO &&
+            other is _$UserResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -325,12 +325,13 @@ class _$_UserResponseDTO implements _UserResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserResponseDTOCopyWith<_$_UserResponseDTO> get copyWith =>
-      __$$_UserResponseDTOCopyWithImpl<_$_UserResponseDTO>(this, _$identity);
+  _$$UserResponseDTOImplCopyWith<_$UserResponseDTOImpl> get copyWith =>
+      __$$UserResponseDTOImplCopyWithImpl<_$UserResponseDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserResponseDTOToJson(
+    return _$$UserResponseDTOImplToJson(
       this,
     );
   }
@@ -348,10 +349,10 @@ abstract class _UserResponseDTO implements UserResponseDTO {
           @JsonKey(name: 'email') final String? email,
           @JsonKey(name: 'phone') final String? phone,
           @JsonKey(name: 'accessedAt') final String? accessedAt}) =
-      _$_UserResponseDTO;
+      _$UserResponseDTOImpl;
 
   factory _UserResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_UserResponseDTO.fromJson;
+      _$UserResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -385,6 +386,6 @@ abstract class _UserResponseDTO implements UserResponseDTO {
   String? get accessedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_UserResponseDTOCopyWith<_$_UserResponseDTO> get copyWith =>
+  _$$UserResponseDTOImplCopyWith<_$UserResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

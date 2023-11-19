@@ -81,22 +81,22 @@ class _$EmailRegisterRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EmailRegisterRequestCopyWith<$Res>
+abstract class _$$EmailRegisterRequestImplCopyWith<$Res>
     implements $EmailRegisterRequestCopyWith<$Res> {
-  factory _$$_EmailRegisterRequestCopyWith(_$_EmailRegisterRequest value,
-          $Res Function(_$_EmailRegisterRequest) then) =
-      __$$_EmailRegisterRequestCopyWithImpl<$Res>;
+  factory _$$EmailRegisterRequestImplCopyWith(_$EmailRegisterRequestImpl value,
+          $Res Function(_$EmailRegisterRequestImpl) then) =
+      __$$EmailRegisterRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? userId, String? email, String? password, String? name});
 }
 
 /// @nodoc
-class __$$_EmailRegisterRequestCopyWithImpl<$Res>
-    extends _$EmailRegisterRequestCopyWithImpl<$Res, _$_EmailRegisterRequest>
-    implements _$$_EmailRegisterRequestCopyWith<$Res> {
-  __$$_EmailRegisterRequestCopyWithImpl(_$_EmailRegisterRequest _value,
-      $Res Function(_$_EmailRegisterRequest) _then)
+class __$$EmailRegisterRequestImplCopyWithImpl<$Res>
+    extends _$EmailRegisterRequestCopyWithImpl<$Res, _$EmailRegisterRequestImpl>
+    implements _$$EmailRegisterRequestImplCopyWith<$Res> {
+  __$$EmailRegisterRequestImplCopyWithImpl(_$EmailRegisterRequestImpl _value,
+      $Res Function(_$EmailRegisterRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_EmailRegisterRequestCopyWithImpl<$Res>
     Object? password = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_EmailRegisterRequest(
+    return _then(_$EmailRegisterRequestImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -130,12 +130,12 @@ class __$$_EmailRegisterRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailRegisterRequest implements _EmailRegisterRequest {
-  const _$_EmailRegisterRequest(
+class _$EmailRegisterRequestImpl implements _EmailRegisterRequest {
+  const _$EmailRegisterRequestImpl(
       {this.userId, this.email, this.password, this.name});
 
-  factory _$_EmailRegisterRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_EmailRegisterRequestFromJson(json);
+  factory _$EmailRegisterRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmailRegisterRequestImplFromJson(json);
 
   @override
   final String? userId;
@@ -155,7 +155,7 @@ class _$_EmailRegisterRequest implements _EmailRegisterRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailRegisterRequest &&
+            other is _$EmailRegisterRequestImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
@@ -170,13 +170,14 @@ class _$_EmailRegisterRequest implements _EmailRegisterRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailRegisterRequestCopyWith<_$_EmailRegisterRequest> get copyWith =>
-      __$$_EmailRegisterRequestCopyWithImpl<_$_EmailRegisterRequest>(
-          this, _$identity);
+  _$$EmailRegisterRequestImplCopyWith<_$EmailRegisterRequestImpl>
+      get copyWith =>
+          __$$EmailRegisterRequestImplCopyWithImpl<_$EmailRegisterRequestImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailRegisterRequestToJson(
+    return _$$EmailRegisterRequestImplToJson(
       this,
     );
   }
@@ -187,10 +188,10 @@ abstract class _EmailRegisterRequest implements EmailRegisterRequest {
       {final String? userId,
       final String? email,
       final String? password,
-      final String? name}) = _$_EmailRegisterRequest;
+      final String? name}) = _$EmailRegisterRequestImpl;
 
   factory _EmailRegisterRequest.fromJson(Map<String, dynamic> json) =
-      _$_EmailRegisterRequest.fromJson;
+      _$EmailRegisterRequestImpl.fromJson;
 
   @override
   String? get userId;
@@ -202,6 +203,6 @@ abstract class _EmailRegisterRequest implements EmailRegisterRequest {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailRegisterRequestCopyWith<_$_EmailRegisterRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EmailRegisterRequestImplCopyWith<_$EmailRegisterRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

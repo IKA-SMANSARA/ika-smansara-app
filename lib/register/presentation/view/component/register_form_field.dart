@@ -7,8 +7,8 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 import 'package:ika_smansara/register/register.dart';
 
-class RegisterForm extends StatelessWidget {
-  const RegisterForm({super.key});
+class RegisterFormField extends StatelessWidget {
+  const RegisterFormField({super.key});
 
   @override
   Widget build(BuildContext context) {

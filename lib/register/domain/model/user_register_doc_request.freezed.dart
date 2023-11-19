@@ -93,11 +93,12 @@ class _$UserRegisterDocRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserRegisterDocRequestCopyWith<$Res>
+abstract class _$$UserRegisterDocRequestImplCopyWith<$Res>
     implements $UserRegisterDocRequestCopyWith<$Res> {
-  factory _$$_UserRegisterDocRequestCopyWith(_$_UserRegisterDocRequest value,
-          $Res Function(_$_UserRegisterDocRequest) then) =
-      __$$_UserRegisterDocRequestCopyWithImpl<$Res>;
+  factory _$$UserRegisterDocRequestImplCopyWith(
+          _$UserRegisterDocRequestImpl value,
+          $Res Function(_$UserRegisterDocRequestImpl) then) =
+      __$$UserRegisterDocRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,12 +111,13 @@ abstract class _$$_UserRegisterDocRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserRegisterDocRequestCopyWithImpl<$Res>
+class __$$UserRegisterDocRequestImplCopyWithImpl<$Res>
     extends _$UserRegisterDocRequestCopyWithImpl<$Res,
-        _$_UserRegisterDocRequest>
-    implements _$$_UserRegisterDocRequestCopyWith<$Res> {
-  __$$_UserRegisterDocRequestCopyWithImpl(_$_UserRegisterDocRequest _value,
-      $Res Function(_$_UserRegisterDocRequest) _then)
+        _$UserRegisterDocRequestImpl>
+    implements _$$UserRegisterDocRequestImplCopyWith<$Res> {
+  __$$UserRegisterDocRequestImplCopyWithImpl(
+      _$UserRegisterDocRequestImpl _value,
+      $Res Function(_$UserRegisterDocRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +127,7 @@ class __$$_UserRegisterDocRequestCopyWithImpl<$Res>
     Object? data = freezed,
     Object? permissions = null,
   }) {
-    return _then(_$_UserRegisterDocRequest(
+    return _then(_$UserRegisterDocRequestImpl(
       documentId: freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -144,13 +146,13 @@ class __$$_UserRegisterDocRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserRegisterDocRequest implements _UserRegisterDocRequest {
-  _$_UserRegisterDocRequest(
+class _$UserRegisterDocRequestImpl implements _UserRegisterDocRequest {
+  _$UserRegisterDocRequestImpl(
       {this.documentId, this.data, final List<String> permissions = const []})
       : _permissions = permissions;
 
-  factory _$_UserRegisterDocRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_UserRegisterDocRequestFromJson(json);
+  factory _$UserRegisterDocRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserRegisterDocRequestImplFromJson(json);
 
   @override
   final String? documentId;
@@ -174,7 +176,7 @@ class _$_UserRegisterDocRequest implements _UserRegisterDocRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserRegisterDocRequest &&
+            other is _$UserRegisterDocRequestImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId) &&
             (identical(other.data, data) || other.data == data) &&
@@ -190,13 +192,13 @@ class _$_UserRegisterDocRequest implements _UserRegisterDocRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserRegisterDocRequestCopyWith<_$_UserRegisterDocRequest> get copyWith =>
-      __$$_UserRegisterDocRequestCopyWithImpl<_$_UserRegisterDocRequest>(
-          this, _$identity);
+  _$$UserRegisterDocRequestImplCopyWith<_$UserRegisterDocRequestImpl>
+      get copyWith => __$$UserRegisterDocRequestImplCopyWithImpl<
+          _$UserRegisterDocRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserRegisterDocRequestToJson(
+    return _$$UserRegisterDocRequestImplToJson(
       this,
     );
   }
@@ -206,10 +208,10 @@ abstract class _UserRegisterDocRequest implements UserRegisterDocRequest {
   factory _UserRegisterDocRequest(
       {final String? documentId,
       final UserProfileDocRequest? data,
-      final List<String> permissions}) = _$_UserRegisterDocRequest;
+      final List<String> permissions}) = _$UserRegisterDocRequestImpl;
 
   factory _UserRegisterDocRequest.fromJson(Map<String, dynamic> json) =
-      _$_UserRegisterDocRequest.fromJson;
+      _$UserRegisterDocRequestImpl.fromJson;
 
   @override
   String? get documentId;
@@ -219,6 +221,6 @@ abstract class _UserRegisterDocRequest implements UserRegisterDocRequest {
   List<String> get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_UserRegisterDocRequestCopyWith<_$_UserRegisterDocRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserRegisterDocRequestImplCopyWith<_$UserRegisterDocRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

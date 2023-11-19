@@ -28,6 +28,12 @@ mixin _$MidtransTransactionRequestDTO {
   @JsonKey(name: 'credit_card')
   MidtransCreditCardRequestDTO? get midtransCreditCardRequestDTO =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'item_details')
+  List<MidtransItemRequestDTO>? get midtransItemDetailsRequestDTO =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'customer_details')
+  MidtransCustomerDetailsRequestDTO? get midtransCustomerDetailsRequestDTO =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,11 +54,17 @@ abstract class $MidtransTransactionRequestDTOCopyWith<$Res> {
       MidtransTransactionDetailsRequestDTO?
           midtransTransactionDetailsRequestDTO,
       @JsonKey(name: 'credit_card')
-      MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO});
+      MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO,
+      @JsonKey(name: 'item_details')
+      List<MidtransItemRequestDTO>? midtransItemDetailsRequestDTO,
+      @JsonKey(name: 'customer_details')
+      MidtransCustomerDetailsRequestDTO? midtransCustomerDetailsRequestDTO});
 
   $MidtransTransactionDetailsRequestDTOCopyWith<$Res>?
       get midtransTransactionDetailsRequestDTO;
   $MidtransCreditCardRequestDTOCopyWith<$Res>? get midtransCreditCardRequestDTO;
+  $MidtransCustomerDetailsRequestDTOCopyWith<$Res>?
+      get midtransCustomerDetailsRequestDTO;
 }
 
 /// @nodoc
@@ -71,6 +83,8 @@ class _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
   $Res call({
     Object? midtransTransactionDetailsRequestDTO = freezed,
     Object? midtransCreditCardRequestDTO = freezed,
+    Object? midtransItemDetailsRequestDTO = freezed,
+    Object? midtransCustomerDetailsRequestDTO = freezed,
   }) {
     return _then(_value.copyWith(
       midtransTransactionDetailsRequestDTO: freezed ==
@@ -82,6 +96,15 @@ class _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
           ? _value.midtransCreditCardRequestDTO
           : midtransCreditCardRequestDTO // ignore: cast_nullable_to_non_nullable
               as MidtransCreditCardRequestDTO?,
+      midtransItemDetailsRequestDTO: freezed == midtransItemDetailsRequestDTO
+          ? _value.midtransItemDetailsRequestDTO
+          : midtransItemDetailsRequestDTO // ignore: cast_nullable_to_non_nullable
+              as List<MidtransItemRequestDTO>?,
+      midtransCustomerDetailsRequestDTO: freezed ==
+              midtransCustomerDetailsRequestDTO
+          ? _value.midtransCustomerDetailsRequestDTO
+          : midtransCustomerDetailsRequestDTO // ignore: cast_nullable_to_non_nullable
+              as MidtransCustomerDetailsRequestDTO?,
     ) as $Val);
   }
 
@@ -114,15 +137,30 @@ class _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
           _value.copyWith(midtransCreditCardRequestDTO: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MidtransCustomerDetailsRequestDTOCopyWith<$Res>?
+      get midtransCustomerDetailsRequestDTO {
+    if (_value.midtransCustomerDetailsRequestDTO == null) {
+      return null;
+    }
+
+    return $MidtransCustomerDetailsRequestDTOCopyWith<$Res>(
+        _value.midtransCustomerDetailsRequestDTO!, (value) {
+      return _then(
+          _value.copyWith(midtransCustomerDetailsRequestDTO: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_MidtransTransactionRequestDTOCopyWith<$Res>
+abstract class _$$MidtransTransactionRequestDTOImplCopyWith<$Res>
     implements $MidtransTransactionRequestDTOCopyWith<$Res> {
-  factory _$$_MidtransTransactionRequestDTOCopyWith(
-          _$_MidtransTransactionRequestDTO value,
-          $Res Function(_$_MidtransTransactionRequestDTO) then) =
-      __$$_MidtransTransactionRequestDTOCopyWithImpl<$Res>;
+  factory _$$MidtransTransactionRequestDTOImplCopyWith(
+          _$MidtransTransactionRequestDTOImpl value,
+          $Res Function(_$MidtransTransactionRequestDTOImpl) then) =
+      __$$MidtransTransactionRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -130,23 +168,30 @@ abstract class _$$_MidtransTransactionRequestDTOCopyWith<$Res>
       MidtransTransactionDetailsRequestDTO?
           midtransTransactionDetailsRequestDTO,
       @JsonKey(name: 'credit_card')
-      MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO});
+      MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO,
+      @JsonKey(name: 'item_details')
+      List<MidtransItemRequestDTO>? midtransItemDetailsRequestDTO,
+      @JsonKey(name: 'customer_details')
+      MidtransCustomerDetailsRequestDTO? midtransCustomerDetailsRequestDTO});
 
   @override
   $MidtransTransactionDetailsRequestDTOCopyWith<$Res>?
       get midtransTransactionDetailsRequestDTO;
   @override
   $MidtransCreditCardRequestDTOCopyWith<$Res>? get midtransCreditCardRequestDTO;
+  @override
+  $MidtransCustomerDetailsRequestDTOCopyWith<$Res>?
+      get midtransCustomerDetailsRequestDTO;
 }
 
 /// @nodoc
-class __$$_MidtransTransactionRequestDTOCopyWithImpl<$Res>
+class __$$MidtransTransactionRequestDTOImplCopyWithImpl<$Res>
     extends _$MidtransTransactionRequestDTOCopyWithImpl<$Res,
-        _$_MidtransTransactionRequestDTO>
-    implements _$$_MidtransTransactionRequestDTOCopyWith<$Res> {
-  __$$_MidtransTransactionRequestDTOCopyWithImpl(
-      _$_MidtransTransactionRequestDTO _value,
-      $Res Function(_$_MidtransTransactionRequestDTO) _then)
+        _$MidtransTransactionRequestDTOImpl>
+    implements _$$MidtransTransactionRequestDTOImplCopyWith<$Res> {
+  __$$MidtransTransactionRequestDTOImplCopyWithImpl(
+      _$MidtransTransactionRequestDTOImpl _value,
+      $Res Function(_$MidtransTransactionRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,8 +199,10 @@ class __$$_MidtransTransactionRequestDTOCopyWithImpl<$Res>
   $Res call({
     Object? midtransTransactionDetailsRequestDTO = freezed,
     Object? midtransCreditCardRequestDTO = freezed,
+    Object? midtransItemDetailsRequestDTO = freezed,
+    Object? midtransCustomerDetailsRequestDTO = freezed,
   }) {
-    return _then(_$_MidtransTransactionRequestDTO(
+    return _then(_$MidtransTransactionRequestDTOImpl(
       midtransTransactionDetailsRequestDTO: freezed ==
               midtransTransactionDetailsRequestDTO
           ? _value.midtransTransactionDetailsRequestDTO
@@ -165,22 +212,36 @@ class __$$_MidtransTransactionRequestDTOCopyWithImpl<$Res>
           ? _value.midtransCreditCardRequestDTO
           : midtransCreditCardRequestDTO // ignore: cast_nullable_to_non_nullable
               as MidtransCreditCardRequestDTO?,
+      midtransItemDetailsRequestDTO: freezed == midtransItemDetailsRequestDTO
+          ? _value._midtransItemDetailsRequestDTO
+          : midtransItemDetailsRequestDTO // ignore: cast_nullable_to_non_nullable
+              as List<MidtransItemRequestDTO>?,
+      midtransCustomerDetailsRequestDTO: freezed ==
+              midtransCustomerDetailsRequestDTO
+          ? _value.midtransCustomerDetailsRequestDTO
+          : midtransCustomerDetailsRequestDTO // ignore: cast_nullable_to_non_nullable
+              as MidtransCustomerDetailsRequestDTO?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransTransactionRequestDTO
+class _$MidtransTransactionRequestDTOImpl
     implements _MidtransTransactionRequestDTO {
-  const _$_MidtransTransactionRequestDTO(
+  const _$MidtransTransactionRequestDTOImpl(
       {@JsonKey(name: 'transaction_details')
       this.midtransTransactionDetailsRequestDTO,
-      @JsonKey(name: 'credit_card') this.midtransCreditCardRequestDTO});
+      @JsonKey(name: 'credit_card') this.midtransCreditCardRequestDTO,
+      @JsonKey(name: 'item_details')
+      final List<MidtransItemRequestDTO>? midtransItemDetailsRequestDTO,
+      @JsonKey(name: 'customer_details')
+      this.midtransCustomerDetailsRequestDTO})
+      : _midtransItemDetailsRequestDTO = midtransItemDetailsRequestDTO;
 
-  factory _$_MidtransTransactionRequestDTO.fromJson(
+  factory _$MidtransTransactionRequestDTOImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_MidtransTransactionRequestDTOFromJson(json);
+      _$$MidtransTransactionRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'transaction_details')
@@ -189,17 +250,32 @@ class _$_MidtransTransactionRequestDTO
   @override
   @JsonKey(name: 'credit_card')
   final MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO;
+  final List<MidtransItemRequestDTO>? _midtransItemDetailsRequestDTO;
+  @override
+  @JsonKey(name: 'item_details')
+  List<MidtransItemRequestDTO>? get midtransItemDetailsRequestDTO {
+    final value = _midtransItemDetailsRequestDTO;
+    if (value == null) return null;
+    if (_midtransItemDetailsRequestDTO is EqualUnmodifiableListView)
+      return _midtransItemDetailsRequestDTO;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'customer_details')
+  final MidtransCustomerDetailsRequestDTO? midtransCustomerDetailsRequestDTO;
 
   @override
   String toString() {
-    return 'MidtransTransactionRequestDTO(midtransTransactionDetailsRequestDTO: $midtransTransactionDetailsRequestDTO, midtransCreditCardRequestDTO: $midtransCreditCardRequestDTO)';
+    return 'MidtransTransactionRequestDTO(midtransTransactionDetailsRequestDTO: $midtransTransactionDetailsRequestDTO, midtransCreditCardRequestDTO: $midtransCreditCardRequestDTO, midtransItemDetailsRequestDTO: $midtransItemDetailsRequestDTO, midtransCustomerDetailsRequestDTO: $midtransCustomerDetailsRequestDTO)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransTransactionRequestDTO &&
+            other is _$MidtransTransactionRequestDTOImpl &&
             (identical(other.midtransTransactionDetailsRequestDTO,
                     midtransTransactionDetailsRequestDTO) ||
                 other.midtransTransactionDetailsRequestDTO ==
@@ -207,24 +283,36 @@ class _$_MidtransTransactionRequestDTO
             (identical(other.midtransCreditCardRequestDTO,
                     midtransCreditCardRequestDTO) ||
                 other.midtransCreditCardRequestDTO ==
-                    midtransCreditCardRequestDTO));
+                    midtransCreditCardRequestDTO) &&
+            const DeepCollectionEquality().equals(
+                other._midtransItemDetailsRequestDTO,
+                _midtransItemDetailsRequestDTO) &&
+            (identical(other.midtransCustomerDetailsRequestDTO,
+                    midtransCustomerDetailsRequestDTO) ||
+                other.midtransCustomerDetailsRequestDTO ==
+                    midtransCustomerDetailsRequestDTO));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      midtransTransactionDetailsRequestDTO, midtransCreditCardRequestDTO);
+  int get hashCode => Object.hash(
+      runtimeType,
+      midtransTransactionDetailsRequestDTO,
+      midtransCreditCardRequestDTO,
+      const DeepCollectionEquality().hash(_midtransItemDetailsRequestDTO),
+      midtransCustomerDetailsRequestDTO);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransTransactionRequestDTOCopyWith<_$_MidtransTransactionRequestDTO>
-      get copyWith => __$$_MidtransTransactionRequestDTOCopyWithImpl<
-          _$_MidtransTransactionRequestDTO>(this, _$identity);
+  _$$MidtransTransactionRequestDTOImplCopyWith<
+          _$MidtransTransactionRequestDTOImpl>
+      get copyWith => __$$MidtransTransactionRequestDTOImplCopyWithImpl<
+          _$MidtransTransactionRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransTransactionRequestDTOToJson(
+    return _$$MidtransTransactionRequestDTOImplToJson(
       this,
     );
   }
@@ -237,11 +325,16 @@ abstract class _MidtransTransactionRequestDTO
           final MidtransTransactionDetailsRequestDTO?
               midtransTransactionDetailsRequestDTO,
           @JsonKey(name: 'credit_card')
-          final MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO}) =
-      _$_MidtransTransactionRequestDTO;
+          final MidtransCreditCardRequestDTO? midtransCreditCardRequestDTO,
+          @JsonKey(name: 'item_details')
+          final List<MidtransItemRequestDTO>? midtransItemDetailsRequestDTO,
+          @JsonKey(name: 'customer_details')
+          final MidtransCustomerDetailsRequestDTO?
+              midtransCustomerDetailsRequestDTO}) =
+      _$MidtransTransactionRequestDTOImpl;
 
   factory _MidtransTransactionRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_MidtransTransactionRequestDTO.fromJson;
+      _$MidtransTransactionRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'transaction_details')
@@ -251,7 +344,14 @@ abstract class _MidtransTransactionRequestDTO
   @JsonKey(name: 'credit_card')
   MidtransCreditCardRequestDTO? get midtransCreditCardRequestDTO;
   @override
+  @JsonKey(name: 'item_details')
+  List<MidtransItemRequestDTO>? get midtransItemDetailsRequestDTO;
+  @override
+  @JsonKey(name: 'customer_details')
+  MidtransCustomerDetailsRequestDTO? get midtransCustomerDetailsRequestDTO;
+  @override
   @JsonKey(ignore: true)
-  _$$_MidtransTransactionRequestDTOCopyWith<_$_MidtransTransactionRequestDTO>
+  _$$MidtransTransactionRequestDTOImplCopyWith<
+          _$MidtransTransactionRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

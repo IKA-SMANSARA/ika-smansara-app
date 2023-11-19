@@ -196,11 +196,12 @@ class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
+abstract class _$$CampaignItemResponseDTOImplCopyWith<$Res>
     implements $CampaignDocumentResponseDTOCopyWith<$Res> {
-  factory _$$_CampaignItemResponseDTOCopyWith(_$_CampaignItemResponseDTO value,
-          $Res Function(_$_CampaignItemResponseDTO) then) =
-      __$$_CampaignItemResponseDTOCopyWithImpl<$Res>;
+  factory _$$CampaignItemResponseDTOImplCopyWith(
+          _$CampaignItemResponseDTOImpl value,
+          $Res Function(_$CampaignItemResponseDTOImpl) then) =
+      __$$CampaignItemResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -224,12 +225,13 @@ abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
+class __$$CampaignItemResponseDTOImplCopyWithImpl<$Res>
     extends _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
-        _$_CampaignItemResponseDTO>
-    implements _$$_CampaignItemResponseDTOCopyWith<$Res> {
-  __$$_CampaignItemResponseDTOCopyWithImpl(_$_CampaignItemResponseDTO _value,
-      $Res Function(_$_CampaignItemResponseDTO) _then)
+        _$CampaignItemResponseDTOImpl>
+    implements _$$CampaignItemResponseDTOImplCopyWith<$Res> {
+  __$$CampaignItemResponseDTOImplCopyWithImpl(
+      _$CampaignItemResponseDTOImpl _value,
+      $Res Function(_$CampaignItemResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,7 +255,7 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
     Object? backerCount = freezed,
     Object? categories = freezed,
   }) {
-    return _then(_$_CampaignItemResponseDTO(
+    return _then(_$CampaignItemResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -328,8 +330,8 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
-  _$_CampaignItemResponseDTO(
+class _$CampaignItemResponseDTOImpl implements _CampaignItemResponseDTO {
+  _$CampaignItemResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
@@ -350,8 +352,8 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
       : _permissions = permissions,
         _categories = categories;
 
-  factory _$_CampaignItemResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CampaignItemResponseDTOFromJson(json);
+  factory _$CampaignItemResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CampaignItemResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -429,7 +431,7 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CampaignItemResponseDTO &&
+            other is _$CampaignItemResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -490,14 +492,13 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CampaignItemResponseDTOCopyWith<_$_CampaignItemResponseDTO>
-      get copyWith =>
-          __$$_CampaignItemResponseDTOCopyWithImpl<_$_CampaignItemResponseDTO>(
-              this, _$identity);
+  _$$CampaignItemResponseDTOImplCopyWith<_$CampaignItemResponseDTOImpl>
+      get copyWith => __$$CampaignItemResponseDTOImplCopyWithImpl<
+          _$CampaignItemResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CampaignItemResponseDTOToJson(
+    return _$$CampaignItemResponseDTOImplToJson(
       this,
     );
   }
@@ -522,10 +523,10 @@ abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
       @JsonKey(name: 'photoThumbnail') final String? photoThumbnail,
       @JsonKey(name: 'backerCount') final int? backerCount,
       @JsonKey(name: 'categories')
-      final List<String>? categories}) = _$_CampaignItemResponseDTO;
+      final List<String>? categories}) = _$CampaignItemResponseDTOImpl;
 
   factory _CampaignItemResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CampaignItemResponseDTO.fromJson;
+      _$CampaignItemResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -580,6 +581,6 @@ abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
   List<String>? get categories;
   @override
   @JsonKey(ignore: true)
-  _$$_CampaignItemResponseDTOCopyWith<_$_CampaignItemResponseDTO>
+  _$$CampaignItemResponseDTOImplCopyWith<_$CampaignItemResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

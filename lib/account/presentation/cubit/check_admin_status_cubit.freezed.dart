@@ -76,23 +76,25 @@ class _$CheckAdminStatusStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$IsAdminCopyWith<$Res> {
-  factory _$$IsAdminCopyWith(_$IsAdmin value, $Res Function(_$IsAdmin) then) =
-      __$$IsAdminCopyWithImpl<$Res>;
+abstract class _$$IsAdminImplCopyWith<$Res> {
+  factory _$$IsAdminImplCopyWith(
+          _$IsAdminImpl value, $Res Function(_$IsAdminImpl) then) =
+      __$$IsAdminImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IsAdminCopyWithImpl<$Res>
-    extends _$CheckAdminStatusStateCopyWithImpl<$Res, _$IsAdmin>
-    implements _$$IsAdminCopyWith<$Res> {
-  __$$IsAdminCopyWithImpl(_$IsAdmin _value, $Res Function(_$IsAdmin) _then)
+class __$$IsAdminImplCopyWithImpl<$Res>
+    extends _$CheckAdminStatusStateCopyWithImpl<$Res, _$IsAdminImpl>
+    implements _$$IsAdminImplCopyWith<$Res> {
+  __$$IsAdminImplCopyWithImpl(
+      _$IsAdminImpl _value, $Res Function(_$IsAdminImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$IsAdmin implements IsAdmin {
-  const _$IsAdmin();
+class _$IsAdminImpl implements IsAdmin {
+  const _$IsAdminImpl();
 
   @override
   String toString() {
@@ -102,7 +104,7 @@ class _$IsAdmin implements IsAdmin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IsAdmin);
+        (other.runtimeType == runtimeType && other is _$IsAdminImpl);
   }
 
   @override
@@ -172,27 +174,29 @@ class _$IsAdmin implements IsAdmin {
 }
 
 abstract class IsAdmin implements CheckAdminStatusState {
-  const factory IsAdmin() = _$IsAdmin;
+  const factory IsAdmin() = _$IsAdminImpl;
 }
 
 /// @nodoc
-abstract class _$$IsUserCopyWith<$Res> {
-  factory _$$IsUserCopyWith(_$IsUser value, $Res Function(_$IsUser) then) =
-      __$$IsUserCopyWithImpl<$Res>;
+abstract class _$$IsUserImplCopyWith<$Res> {
+  factory _$$IsUserImplCopyWith(
+          _$IsUserImpl value, $Res Function(_$IsUserImpl) then) =
+      __$$IsUserImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$IsUserCopyWithImpl<$Res>
-    extends _$CheckAdminStatusStateCopyWithImpl<$Res, _$IsUser>
-    implements _$$IsUserCopyWith<$Res> {
-  __$$IsUserCopyWithImpl(_$IsUser _value, $Res Function(_$IsUser) _then)
+class __$$IsUserImplCopyWithImpl<$Res>
+    extends _$CheckAdminStatusStateCopyWithImpl<$Res, _$IsUserImpl>
+    implements _$$IsUserImplCopyWith<$Res> {
+  __$$IsUserImplCopyWithImpl(
+      _$IsUserImpl _value, $Res Function(_$IsUserImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$IsUser implements IsUser {
-  const _$IsUser();
+class _$IsUserImpl implements IsUser {
+  const _$IsUserImpl();
 
   @override
   String toString() {
@@ -202,7 +206,7 @@ class _$IsUser implements IsUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IsUser);
+        (other.runtimeType == runtimeType && other is _$IsUserImpl);
   }
 
   @override
@@ -272,5 +276,5 @@ class _$IsUser implements IsUser {
 }
 
 abstract class IsUser implements CheckAdminStatusState {
-  const factory IsUser() = _$IsUser;
+  const factory IsUser() = _$IsUserImpl;
 }

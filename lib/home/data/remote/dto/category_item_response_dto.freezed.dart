@@ -122,11 +122,12 @@ class _$CategoryItemResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CategoryItemResponseDTOCopyWith<$Res>
+abstract class _$$CategoryItemResponseDTOImplCopyWith<$Res>
     implements $CategoryItemResponseDTOCopyWith<$Res> {
-  factory _$$_CategoryItemResponseDTOCopyWith(_$_CategoryItemResponseDTO value,
-          $Res Function(_$_CategoryItemResponseDTO) then) =
-      __$$_CategoryItemResponseDTOCopyWithImpl<$Res>;
+  factory _$$CategoryItemResponseDTOImplCopyWith(
+          _$CategoryItemResponseDTOImpl value,
+          $Res Function(_$CategoryItemResponseDTOImpl) then) =
+      __$$CategoryItemResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -141,12 +142,13 @@ abstract class _$$_CategoryItemResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategoryItemResponseDTOCopyWithImpl<$Res>
+class __$$CategoryItemResponseDTOImplCopyWithImpl<$Res>
     extends _$CategoryItemResponseDTOCopyWithImpl<$Res,
-        _$_CategoryItemResponseDTO>
-    implements _$$_CategoryItemResponseDTOCopyWith<$Res> {
-  __$$_CategoryItemResponseDTOCopyWithImpl(_$_CategoryItemResponseDTO _value,
-      $Res Function(_$_CategoryItemResponseDTO) _then)
+        _$CategoryItemResponseDTOImpl>
+    implements _$$CategoryItemResponseDTOImplCopyWith<$Res> {
+  __$$CategoryItemResponseDTOImplCopyWithImpl(
+      _$CategoryItemResponseDTOImpl _value,
+      $Res Function(_$CategoryItemResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -161,7 +163,7 @@ class __$$_CategoryItemResponseDTOCopyWithImpl<$Res>
     Object? nameCategory = freezed,
     Object? categoryIcon = freezed,
   }) {
-    return _then(_$_CategoryItemResponseDTO(
+    return _then(_$CategoryItemResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -200,8 +202,8 @@ class __$$_CategoryItemResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryItemResponseDTO implements _CategoryItemResponseDTO {
-  _$_CategoryItemResponseDTO(
+class _$CategoryItemResponseDTOImpl implements _CategoryItemResponseDTO {
+  _$CategoryItemResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
@@ -212,8 +214,8 @@ class _$_CategoryItemResponseDTO implements _CategoryItemResponseDTO {
       @JsonKey(name: 'categoryIcon') this.categoryIcon})
       : _permissions = permissions;
 
-  factory _$_CategoryItemResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryItemResponseDTOFromJson(json);
+  factory _$CategoryItemResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryItemResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -257,7 +259,7 @@ class _$_CategoryItemResponseDTO implements _CategoryItemResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryItemResponseDTO &&
+            other is _$CategoryItemResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -291,14 +293,13 @@ class _$_CategoryItemResponseDTO implements _CategoryItemResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryItemResponseDTOCopyWith<_$_CategoryItemResponseDTO>
-      get copyWith =>
-          __$$_CategoryItemResponseDTOCopyWithImpl<_$_CategoryItemResponseDTO>(
-              this, _$identity);
+  _$$CategoryItemResponseDTOImplCopyWith<_$CategoryItemResponseDTOImpl>
+      get copyWith => __$$CategoryItemResponseDTOImplCopyWithImpl<
+          _$CategoryItemResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryItemResponseDTOToJson(
+    return _$$CategoryItemResponseDTOImplToJson(
       this,
     );
   }
@@ -314,10 +315,10 @@ abstract class _CategoryItemResponseDTO implements CategoryItemResponseDTO {
           @JsonKey(name: '\$permissions') final List<String>? permissions,
           @JsonKey(name: 'nameCategory') final String? nameCategory,
           @JsonKey(name: 'categoryIcon') final String? categoryIcon}) =
-      _$_CategoryItemResponseDTO;
+      _$CategoryItemResponseDTOImpl;
 
   factory _CategoryItemResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CategoryItemResponseDTO.fromJson;
+      _$CategoryItemResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -345,6 +346,6 @@ abstract class _CategoryItemResponseDTO implements CategoryItemResponseDTO {
   String? get categoryIcon;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryItemResponseDTOCopyWith<_$_CategoryItemResponseDTO>
+  _$$CategoryItemResponseDTOImplCopyWith<_$CategoryItemResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

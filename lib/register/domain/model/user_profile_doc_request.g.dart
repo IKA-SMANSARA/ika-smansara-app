@@ -6,9 +6,9 @@ part of 'user_profile_doc_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserProfileDocRequest _$$_UserProfileDocRequestFromJson(
+_$UserProfileDocRequestImpl _$$UserProfileDocRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserProfileDocRequest(
+    _$UserProfileDocRequestImpl(
       name: json['name'] as String?,
       email: json['email'] as String?,
       address: json['address'] as String?,
@@ -19,10 +19,11 @@ _$_UserProfileDocRequest _$$_UserProfileDocRequestFromJson(
       updateAt: json['updateAt'] as String?,
       isAdmin: json['isAdmin'] as bool? ?? false,
       isDeleted: json['isDeleted'] as bool? ?? false,
+      authKey: json['authKey'] as String?,
     );
 
-Map<String, dynamic> _$$_UserProfileDocRequestToJson(
-        _$_UserProfileDocRequest instance) =>
+Map<String, dynamic> _$$UserProfileDocRequestImplToJson(
+        _$UserProfileDocRequestImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_UserProfileDocRequestToJson(
       'updateAt': instance.updateAt,
       'isAdmin': instance.isAdmin,
       'isDeleted': instance.isDeleted,
+      'authKey': instance.authKey,
     };

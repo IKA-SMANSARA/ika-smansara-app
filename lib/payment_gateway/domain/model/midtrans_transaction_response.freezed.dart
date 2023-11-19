@@ -72,25 +72,25 @@ class _$MidtransTransactionResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MidtransTransactionResponseCopyWith<$Res>
+abstract class _$$MidtransTransactionResponseImplCopyWith<$Res>
     implements $MidtransTransactionResponseCopyWith<$Res> {
-  factory _$$_MidtransTransactionResponseCopyWith(
-          _$_MidtransTransactionResponse value,
-          $Res Function(_$_MidtransTransactionResponse) then) =
-      __$$_MidtransTransactionResponseCopyWithImpl<$Res>;
+  factory _$$MidtransTransactionResponseImplCopyWith(
+          _$MidtransTransactionResponseImpl value,
+          $Res Function(_$MidtransTransactionResponseImpl) then) =
+      __$$MidtransTransactionResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? token, String? redirectUrl});
 }
 
 /// @nodoc
-class __$$_MidtransTransactionResponseCopyWithImpl<$Res>
+class __$$MidtransTransactionResponseImplCopyWithImpl<$Res>
     extends _$MidtransTransactionResponseCopyWithImpl<$Res,
-        _$_MidtransTransactionResponse>
-    implements _$$_MidtransTransactionResponseCopyWith<$Res> {
-  __$$_MidtransTransactionResponseCopyWithImpl(
-      _$_MidtransTransactionResponse _value,
-      $Res Function(_$_MidtransTransactionResponse) _then)
+        _$MidtransTransactionResponseImpl>
+    implements _$$MidtransTransactionResponseImplCopyWith<$Res> {
+  __$$MidtransTransactionResponseImplCopyWithImpl(
+      _$MidtransTransactionResponseImpl _value,
+      $Res Function(_$MidtransTransactionResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_MidtransTransactionResponseCopyWithImpl<$Res>
     Object? token = freezed,
     Object? redirectUrl = freezed,
   }) {
-    return _then(_$_MidtransTransactionResponse(
+    return _then(_$MidtransTransactionResponseImpl(
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -114,11 +114,13 @@ class __$$_MidtransTransactionResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransTransactionResponse implements _MidtransTransactionResponse {
-  const _$_MidtransTransactionResponse({this.token, this.redirectUrl});
+class _$MidtransTransactionResponseImpl
+    implements _MidtransTransactionResponse {
+  const _$MidtransTransactionResponseImpl({this.token, this.redirectUrl});
 
-  factory _$_MidtransTransactionResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_MidtransTransactionResponseFromJson(json);
+  factory _$MidtransTransactionResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$MidtransTransactionResponseImplFromJson(json);
 
   @override
   final String? token;
@@ -134,7 +136,7 @@ class _$_MidtransTransactionResponse implements _MidtransTransactionResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransTransactionResponse &&
+            other is _$MidtransTransactionResponseImpl &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.redirectUrl, redirectUrl) ||
                 other.redirectUrl == redirectUrl));
@@ -147,13 +149,13 @@ class _$_MidtransTransactionResponse implements _MidtransTransactionResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransTransactionResponseCopyWith<_$_MidtransTransactionResponse>
-      get copyWith => __$$_MidtransTransactionResponseCopyWithImpl<
-          _$_MidtransTransactionResponse>(this, _$identity);
+  _$$MidtransTransactionResponseImplCopyWith<_$MidtransTransactionResponseImpl>
+      get copyWith => __$$MidtransTransactionResponseImplCopyWithImpl<
+          _$MidtransTransactionResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransTransactionResponseToJson(
+    return _$$MidtransTransactionResponseImplToJson(
       this,
     );
   }
@@ -163,10 +165,10 @@ abstract class _MidtransTransactionResponse
     implements MidtransTransactionResponse {
   const factory _MidtransTransactionResponse(
       {final String? token,
-      final String? redirectUrl}) = _$_MidtransTransactionResponse;
+      final String? redirectUrl}) = _$MidtransTransactionResponseImpl;
 
   factory _MidtransTransactionResponse.fromJson(Map<String, dynamic> json) =
-      _$_MidtransTransactionResponse.fromJson;
+      _$MidtransTransactionResponseImpl.fromJson;
 
   @override
   String? get token;
@@ -174,6 +176,6 @@ abstract class _MidtransTransactionResponse
   String? get redirectUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_MidtransTransactionResponseCopyWith<_$_MidtransTransactionResponse>
+  _$$MidtransTransactionResponseImplCopyWith<_$MidtransTransactionResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -10,7 +10,7 @@ class MidtransTransactionDetailsRequestDTO
     with _$MidtransTransactionDetailsRequestDTO {
   const factory MidtransTransactionDetailsRequestDTO({
     @JsonKey(name: 'order_id') String? orderId,
-    @JsonKey(name: 'gross_amount') String? grossAmount,
+    @JsonKey(name: 'gross_amount') int? grossAmount,
   }) = _MidtransTransactionDetailsRequestDTO;
 
   factory MidtransTransactionDetailsRequestDTO.fromJson(

@@ -110,7 +110,11 @@ class AppRoutes {
         name: Routes.paymentGateway,
         path: Routes.paymentGateway,
         parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PaymentGatewayPage(),
+        builder: (context, state) {
+          return PaymentGatewayPage(
+            idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
+          );
+        },
       ),
       GoRoute(
         name: Routes.paymentWindowWebView,
@@ -119,6 +123,7 @@ class AppRoutes {
         builder: (context, state) {
           return PaymentWindowWebViewPage(
             amountValue: state.uri.queryParameters[Constants.amountValueKey],
+            campaignId: state.uri.queryParameters[Constants.idCampaignKey],
           );
         },
       ),

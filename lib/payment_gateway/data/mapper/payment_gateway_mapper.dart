@@ -1,5 +1,24 @@
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
+extension MidtransCustomerDetailsRequestDTOExtension
+    on MidtransCustomerDetailsRequestDTO {
+  MidtransCustomerDetailsRequest toMidtransCustomerDetailsRequest() =>
+      MidtransCustomerDetailsRequest(
+        firstName: firstName,
+        email: email,
+        phone: phone,
+      );
+}
+
+extension MidtransCustomerDetailsExtension on MidtransCustomerDetailsRequest {
+  MidtransCustomerDetailsRequestDTO toMidtransCustomerDetailsRequestDTO() =>
+      MidtransCustomerDetailsRequestDTO(
+        firstName: firstName,
+        email: email,
+        phone: phone,
+      );
+}
+
 extension MidtransCreditCardRequestDTOExtension
     on MidtransCreditCardRequestDTO {
   MidtransCreditCardRequest toMidtransCreditCardRequest() =>
@@ -34,6 +53,24 @@ extension MidtransTransactionDetailsRequestExtension
           );
 }
 
+extension MidtransItemRequestDTOExtension on MidtransItemRequestDTO {
+  MidtransItemRequest toMidtransItemRequest() => MidtransItemRequest(
+        id: id,
+        price: price,
+        quantity: quantity,
+        name: name,
+      );
+}
+
+extension MidtransItemRequestExtension on MidtransItemRequest {
+  MidtransItemRequestDTO toMidtransItemRequestDTO() => MidtransItemRequestDTO(
+        id: id,
+        price: price,
+        quantity: quantity,
+        name: name,
+      );
+}
+
 extension MidtransTransactionRequestDTOExtension
     on MidtransTransactionRequestDTO {
   MidtransTransactionRequest toMidtransTransactionRequest() =>
@@ -42,6 +79,11 @@ extension MidtransTransactionRequestDTOExtension
             ?.toMidtransTransactionDetailsRequest(),
         midtransCreditCardRequest:
             midtransCreditCardRequestDTO?.toMidtransCreditCardRequest(),
+        midtransItemDetailsRequest: midtransItemDetailsRequestDTO
+            ?.map((data) => data.toMidtransItemRequest())
+            .toList(),
+        midtransCustomerDetailsRequest: midtransCustomerDetailsRequestDTO
+            ?.toMidtransCustomerDetailsRequest(),
       );
 }
 
@@ -52,6 +94,11 @@ extension MidtransTransactionRequestExtension on MidtransTransactionRequest {
             ?.toMidtransTransactionDetailsRequestDTO(),
         midtransCreditCardRequestDTO:
             midtransCreditCardRequest?.toMidtransCreditCardRequestDTO(),
+        midtransItemDetailsRequestDTO: midtransItemDetailsRequest
+            ?.map((data) => data.toMidtransItemRequestDTO())
+            .toList(),
+        midtransCustomerDetailsRequestDTO: midtransCustomerDetailsRequest
+            ?.toMidtransCustomerDetailsRequestDTO(),
       );
 }
 

@@ -7,8 +7,8 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
 import 'package:ika_smansara/login/login.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+class LoginFormField extends StatelessWidget {
+  const LoginFormField({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,9 +6,9 @@ part of 'category_item_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CategoryItemResponseDTO _$$_CategoryItemResponseDTOFromJson(
+_$CategoryItemResponseDTOImpl _$$CategoryItemResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CategoryItemResponseDTO(
+    _$CategoryItemResponseDTOImpl(
       id: json[r'$id'] as String?,
       createdAt: json[r'$createdAt'] as String?,
       updatedAt: json[r'$updatedAt'] as String?,
@@ -21,8 +21,8 @@ _$_CategoryItemResponseDTO _$$_CategoryItemResponseDTOFromJson(
       categoryIcon: json['categoryIcon'] as String?,
     );
 
-Map<String, dynamic> _$$_CategoryItemResponseDTOToJson(
-        _$_CategoryItemResponseDTO instance) =>
+Map<String, dynamic> _$$CategoryItemResponseDTOImplToJson(
+        _$CategoryItemResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createdAt,

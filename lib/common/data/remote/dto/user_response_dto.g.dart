@@ -6,8 +6,9 @@ part of 'user_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserResponseDTO _$$_UserResponseDTOFromJson(Map<String, dynamic> json) =>
-    _$_UserResponseDTO(
+_$UserResponseDTOImpl _$$UserResponseDTOImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserResponseDTOImpl(
       id: json[r'$id'] as String?,
       createdAt: json[r'$createdAt'] as String?,
       updatedAt: json[r'$updatedAt'] as String?,
@@ -23,7 +24,8 @@ _$_UserResponseDTO _$$_UserResponseDTOFromJson(Map<String, dynamic> json) =>
       accessedAt: json['accessedAt'] as String?,
     );
 
-Map<String, dynamic> _$$_UserResponseDTOToJson(_$_UserResponseDTO instance) =>
+Map<String, dynamic> _$$UserResponseDTOImplToJson(
+        _$UserResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createdAt,

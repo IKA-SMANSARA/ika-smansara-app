@@ -100,12 +100,12 @@ class _$CampaignDocumentResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CampaignDocumentResponseCopyWith<$Res>
+abstract class _$$CampaignDocumentResponseImplCopyWith<$Res>
     implements $CampaignDocumentResponseCopyWith<$Res> {
-  factory _$$_CampaignDocumentResponseCopyWith(
-          _$_CampaignDocumentResponse value,
-          $Res Function(_$_CampaignDocumentResponse) then) =
-      __$$_CampaignDocumentResponseCopyWithImpl<$Res>;
+  factory _$$CampaignDocumentResponseImplCopyWith(
+          _$CampaignDocumentResponseImpl value,
+          $Res Function(_$CampaignDocumentResponseImpl) then) =
+      __$$CampaignDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -118,12 +118,13 @@ abstract class _$$_CampaignDocumentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CampaignDocumentResponseCopyWithImpl<$Res>
+class __$$CampaignDocumentResponseImplCopyWithImpl<$Res>
     extends _$CampaignDocumentResponseCopyWithImpl<$Res,
-        _$_CampaignDocumentResponse>
-    implements _$$_CampaignDocumentResponseCopyWith<$Res> {
-  __$$_CampaignDocumentResponseCopyWithImpl(_$_CampaignDocumentResponse _value,
-      $Res Function(_$_CampaignDocumentResponse) _then)
+        _$CampaignDocumentResponseImpl>
+    implements _$$CampaignDocumentResponseImplCopyWith<$Res> {
+  __$$CampaignDocumentResponseImplCopyWithImpl(
+      _$CampaignDocumentResponseImpl _value,
+      $Res Function(_$CampaignDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -136,7 +137,7 @@ class __$$_CampaignDocumentResponseCopyWithImpl<$Res>
     Object? dateEndCampaign = freezed,
     Object? photoThumbnail = freezed,
   }) {
-    return _then(_$_CampaignDocumentResponse(
+    return _then(_$CampaignDocumentResponseImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -167,8 +168,8 @@ class __$$_CampaignDocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CampaignDocumentResponse implements _CampaignDocumentResponse {
-  _$_CampaignDocumentResponse(
+class _$CampaignDocumentResponseImpl implements _CampaignDocumentResponse {
+  _$CampaignDocumentResponseImpl(
       {this.id,
       this.campaignName,
       this.goalAmount,
@@ -176,8 +177,8 @@ class _$_CampaignDocumentResponse implements _CampaignDocumentResponse {
       this.dateEndCampaign,
       this.photoThumbnail});
 
-  factory _$_CampaignDocumentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CampaignDocumentResponseFromJson(json);
+  factory _$CampaignDocumentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CampaignDocumentResponseImplFromJson(json);
 
   @override
   final String? id;
@@ -201,7 +202,7 @@ class _$_CampaignDocumentResponse implements _CampaignDocumentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CampaignDocumentResponse &&
+            other is _$CampaignDocumentResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.campaignName, campaignName) ||
                 other.campaignName == campaignName) &&
@@ -223,13 +224,13 @@ class _$_CampaignDocumentResponse implements _CampaignDocumentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CampaignDocumentResponseCopyWith<_$_CampaignDocumentResponse>
-      get copyWith => __$$_CampaignDocumentResponseCopyWithImpl<
-          _$_CampaignDocumentResponse>(this, _$identity);
+  _$$CampaignDocumentResponseImplCopyWith<_$CampaignDocumentResponseImpl>
+      get copyWith => __$$CampaignDocumentResponseImplCopyWithImpl<
+          _$CampaignDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CampaignDocumentResponseToJson(
+    return _$$CampaignDocumentResponseImplToJson(
       this,
     );
   }
@@ -242,10 +243,10 @@ abstract class _CampaignDocumentResponse implements CampaignDocumentResponse {
       final int? goalAmount,
       final int? currentAmount,
       final String? dateEndCampaign,
-      final String? photoThumbnail}) = _$_CampaignDocumentResponse;
+      final String? photoThumbnail}) = _$CampaignDocumentResponseImpl;
 
   factory _CampaignDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_CampaignDocumentResponse.fromJson;
+      _$CampaignDocumentResponseImpl.fromJson;
 
   @override
   String? get id;
@@ -261,6 +262,6 @@ abstract class _CampaignDocumentResponse implements CampaignDocumentResponse {
   String? get photoThumbnail;
   @override
   @JsonKey(ignore: true)
-  _$$_CampaignDocumentResponseCopyWith<_$_CampaignDocumentResponse>
+  _$$CampaignDocumentResponseImplCopyWith<_$CampaignDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

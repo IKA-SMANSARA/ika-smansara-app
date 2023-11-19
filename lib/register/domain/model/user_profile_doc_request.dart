@@ -18,6 +18,7 @@ class UserProfileDocRequest with _$UserProfileDocRequest {
     String? updateAt,
     @Default(false) bool isAdmin,
     @Default(false) bool isDeleted,
+    String? authKey,
   }) = _UserProfileDocRequest;
 
   factory UserProfileDocRequest.fromJson(Map<String, dynamic> json) =>

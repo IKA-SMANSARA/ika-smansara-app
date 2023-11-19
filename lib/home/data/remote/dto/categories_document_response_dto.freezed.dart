@@ -77,12 +77,12 @@ class _$CategoriesDocumentResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CategoriesDocumentResponseDTOCopyWith<$Res>
+abstract class _$$CategoriesDocumentResponseDTOImplCopyWith<$Res>
     implements $CategoriesDocumentResponseDTOCopyWith<$Res> {
-  factory _$$_CategoriesDocumentResponseDTOCopyWith(
-          _$_CategoriesDocumentResponseDTO value,
-          $Res Function(_$_CategoriesDocumentResponseDTO) then) =
-      __$$_CategoriesDocumentResponseDTOCopyWithImpl<$Res>;
+  factory _$$CategoriesDocumentResponseDTOImplCopyWith(
+          _$CategoriesDocumentResponseDTOImpl value,
+          $Res Function(_$CategoriesDocumentResponseDTOImpl) then) =
+      __$$CategoriesDocumentResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -91,13 +91,13 @@ abstract class _$$_CategoriesDocumentResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategoriesDocumentResponseDTOCopyWithImpl<$Res>
+class __$$CategoriesDocumentResponseDTOImplCopyWithImpl<$Res>
     extends _$CategoriesDocumentResponseDTOCopyWithImpl<$Res,
-        _$_CategoriesDocumentResponseDTO>
-    implements _$$_CategoriesDocumentResponseDTOCopyWith<$Res> {
-  __$$_CategoriesDocumentResponseDTOCopyWithImpl(
-      _$_CategoriesDocumentResponseDTO _value,
-      $Res Function(_$_CategoriesDocumentResponseDTO) _then)
+        _$CategoriesDocumentResponseDTOImpl>
+    implements _$$CategoriesDocumentResponseDTOImplCopyWith<$Res> {
+  __$$CategoriesDocumentResponseDTOImplCopyWithImpl(
+      _$CategoriesDocumentResponseDTOImpl _value,
+      $Res Function(_$CategoriesDocumentResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_CategoriesDocumentResponseDTOCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CategoriesDocumentResponseDTO(
+    return _then(_$CategoriesDocumentResponseDTOImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -121,17 +121,17 @@ class __$$_CategoriesDocumentResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoriesDocumentResponseDTO
+class _$CategoriesDocumentResponseDTOImpl
     implements _CategoriesDocumentResponseDTO {
-  _$_CategoriesDocumentResponseDTO(
+  _$CategoriesDocumentResponseDTOImpl(
       {@JsonKey(name: 'total') this.total,
       @JsonKey(name: 'documents')
       final List<CategoryItemResponseDTO>? documents})
       : _documents = documents;
 
-  factory _$_CategoriesDocumentResponseDTO.fromJson(
+  factory _$CategoriesDocumentResponseDTOImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_CategoriesDocumentResponseDTOFromJson(json);
+      _$$CategoriesDocumentResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'total')
@@ -156,7 +156,7 @@ class _$_CategoriesDocumentResponseDTO
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoriesDocumentResponseDTO &&
+            other is _$CategoriesDocumentResponseDTOImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -170,13 +170,14 @@ class _$_CategoriesDocumentResponseDTO
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoriesDocumentResponseDTOCopyWith<_$_CategoriesDocumentResponseDTO>
-      get copyWith => __$$_CategoriesDocumentResponseDTOCopyWithImpl<
-          _$_CategoriesDocumentResponseDTO>(this, _$identity);
+  _$$CategoriesDocumentResponseDTOImplCopyWith<
+          _$CategoriesDocumentResponseDTOImpl>
+      get copyWith => __$$CategoriesDocumentResponseDTOImplCopyWithImpl<
+          _$CategoriesDocumentResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoriesDocumentResponseDTOToJson(
+    return _$$CategoriesDocumentResponseDTOImplToJson(
       this,
     );
   }
@@ -188,10 +189,10 @@ abstract class _CategoriesDocumentResponseDTO
           {@JsonKey(name: 'total') final int? total,
           @JsonKey(name: 'documents')
           final List<CategoryItemResponseDTO>? documents}) =
-      _$_CategoriesDocumentResponseDTO;
+      _$CategoriesDocumentResponseDTOImpl;
 
   factory _CategoriesDocumentResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CategoriesDocumentResponseDTO.fromJson;
+      _$CategoriesDocumentResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'total')
@@ -201,6 +202,7 @@ abstract class _CategoriesDocumentResponseDTO
   List<CategoryItemResponseDTO>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoriesDocumentResponseDTOCopyWith<_$_CategoriesDocumentResponseDTO>
+  _$$CategoriesDocumentResponseDTOImplCopyWith<
+          _$CategoriesDocumentResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -18,6 +18,7 @@ class UserProfileDocRequestDTO with _$UserProfileDocRequestDTO {
     @JsonKey(name: 'updateAt') String? updateAt,
     @JsonKey(name: 'isAdmin') @Default(false) bool isAdmin,
     @JsonKey(name: 'isDeleted') @Default(false) bool isDeleted,
+    @JsonKey(name: 'auth_key') String? authKey,
   }) = _UserProfileDocRequestDTO;
 
   factory UserProfileDocRequestDTO.fromJson(Map<String, dynamic> json) =>
