@@ -1,5 +1,4 @@
 export 'data/mapper/detail_campaign_mapper.dart';
-export 'data/remote/dto/detail_campaign_document_response_dto.dart';
 export 'data/repository/detail_campaign_repository_impl.dart';
 export 'domain/model/detail_campaign_document_response.dart';
 export 'domain/repository/detail_campaign_repository.dart';

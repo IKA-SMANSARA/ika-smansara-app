@@ -1,7 +1,8 @@
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 
 extension DetailCampaignDocumentResponseDTOExtension
-    on DetailCampaignDocumentResponseDTO {
+    on CampaignDocumentResponseDTO {
   DetailCampaignDocumentResponse toDetailCampaignDocumentResponse() =>
       DetailCampaignDocumentResponse(
         backerCount: backerCount,

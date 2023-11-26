@@ -17,7 +17,7 @@ class DetailCampaignRepositoryImpl implements DetailCampaignRepository {
 
     if (responseDetailCampaign.isSuccessful) {
       return Right(
-        DetailCampaignDocumentResponseDTO.fromJson(
+        CampaignDocumentResponseDTO.fromJson(
           responseDetailCampaign.body as Map<String, dynamic>,
         ).toDetailCampaignDocumentResponse(),
       );

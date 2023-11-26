@@ -15,9 +15,7 @@ class CampaignDocumentResponseDTO with _$CampaignDocumentResponseDTO {
     @JsonKey(name: '\$collectionId') String? collectionId,
     @JsonKey(name: '\$permissions') List<String>? permissions,
     @JsonKey(name: 'campaignName') String? campaignName,
-    @JsonKey(name: 'campaignDescription') String? campaignDescription,
     @JsonKey(name: 'goalAmount') int? goalAmount,
-    @JsonKey(name: 'currentAmount') int? currentAmount,
     @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
     @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
     @JsonKey(name: 'isDeleted') bool? isDeleted,
@@ -25,6 +23,8 @@ class CampaignDocumentResponseDTO with _$CampaignDocumentResponseDTO {
     @JsonKey(name: 'photoThumbnail') String? photoThumbnail,
     @JsonKey(name: 'backerCount') int? backerCount,
     @JsonKey(name: 'categories') List<String>? categories,
+    @JsonKey(name: 'currentAmount') int? currentAmount,
+    @JsonKey(name: 'campaignDescription') String? campaignDescription,
   }) = _CampaignItemResponseDTO;
 
   factory CampaignDocumentResponseDTO.fromJson(Map<String, dynamic> json) =>

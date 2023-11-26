@@ -1,4 +1,85 @@
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
+
+extension TransactionDocumentRequestDTOExtension
+    on TransactionDocumentRequestDTO {
+  TransactionDocumentRequest toTransactionDocumentRequest() =>
+      TransactionDocumentRequest(
+        documentId: documentId,
+        data: data?.toTransactionDataDocumentRequest(),
+        permissions: permissions,
+      );
+}
+
+extension TransactionDocumentRequestExtension on TransactionDocumentRequest {
+  TransactionDocumentRequestDTO toTransactionDocumentRequestDTO() =>
+      TransactionDocumentRequestDTO(
+        documentId: documentId,
+        data: data?.toTransactionDataDocumentRequestDTO(),
+        permissions: permissions,
+      );
+}
+
+extension TransactionDataDocumentRequestExtension
+    on TransactionDataDocumentRequest {
+  TransactionDataDocumentRequestDTO toTransactionDataDocumentRequestDTO() =>
+      TransactionDataDocumentRequestDTO(
+        amount: amount,
+        campaignId: campaignId,
+        orderId: orderId,
+        paymentStatus: paymentStatus,
+        userId: userId,
+      );
+}
+
+extension TransactionDataDocumentRequestDTOExtension
+    on TransactionDataDocumentRequestDTO {
+  TransactionDataDocumentRequest toTransactionDataDocumentRequest() =>
+      TransactionDataDocumentRequest(
+        amount: amount,
+        campaignId: campaignId,
+        orderId: orderId,
+        paymentStatus: paymentStatus,
+        userId: userId,
+      );
+}
+
+extension CampaignDocumentDataContentRequestDTOExtension
+    on CampaignDocumentDataContentRequestDTO {
+  CampaignDocumentDataContentRequest toCampaignDocumentDataContentRequest() =>
+      CampaignDocumentDataContentRequest(
+        backerCount: backerCount,
+        currentAmount: currentAmount,
+      );
+}
+
+extension CampaignDocumentDataContentRequestExtension
+    on CampaignDocumentDataContentRequest {
+  CampaignDocumentDataContentRequestDTO
+      toCampaignDocumentDataContentRequestDTO() =>
+          CampaignDocumentDataContentRequestDTO(
+            backerCount: backerCount,
+            currentAmount: currentAmount,
+          );
+}
+
+extension CampaignDocumentUpdateContentRequestDTOExtension
+    on CampaignDocumentUpdateContentRequestDTO {
+  CampaignDocumentUpdateContentRequest
+      toCampaignDocumentUpdateContentRequest() =>
+          CampaignDocumentUpdateContentRequest(
+            data: data?.toCampaignDocumentDataContentRequest(),
+          );
+}
+
+extension CampaignDocumentUpdateContentRequestExtension
+    on CampaignDocumentUpdateContentRequest {
+  CampaignDocumentUpdateContentRequestDTO
+      toCampaignDocumentUpdateContentRequestDTO() =>
+          CampaignDocumentUpdateContentRequestDTO(
+            data: data?.toCampaignDocumentDataContentRequestDTO(),
+          );
+}
 
 extension MidtransCustomerDetailsRequestDTOExtension
     on MidtransCustomerDetailsRequestDTO {
@@ -116,5 +197,24 @@ extension MidtransTransactionResponseExtension on MidtransTransactionResponse {
       MidtransTransactionResponseDTO(
         token: token,
         redirectUrl: redirectUrl,
+      );
+}
+
+extension DetailCampaignDocumentResponseDTOExtension
+    on CampaignDocumentResponseDTO {
+  DetailCampaignDocumentResponse toDetailCampaignDocumentResponse() =>
+      DetailCampaignDocumentResponse(
+        backerCount: backerCount,
+        campaignDescription: campaignDescription,
+        campaignName: campaignName,
+        categories: categories,
+        currentAmount: currentAmount,
+        dateEndCampaign: dateEndCampaign,
+        dateStartCampaign: dateStartCampaign,
+        goalAmount: goalAmount,
+        id: id,
+        isActive: isActive,
+        isDeleted: isDeleted,
+        photoThumbnail: photoThumbnail,
       );
 }

@@ -22,6 +22,9 @@ mixin _$TransactionEvent {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
+    required TResult Function(String? grossAmount, String? orderId,
+            String? campaignId, String? statusPayment)
+        saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +32,9 @@ mixin _$TransactionEvent {
     TResult? Function()? started,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +42,9 @@ mixin _$TransactionEvent {
     TResult Function()? started,
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,18 +52,21 @@ mixin _$TransactionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SaveTransactionData value) saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SaveTransactionData value)? saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SaveTransactionData value)? saveTransactionData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +132,9 @@ class _$StartedImpl implements _Started {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
+    required TResult Function(String? grossAmount, String? orderId,
+            String? campaignId, String? statusPayment)
+        saveTransactionData,
   }) {
     return started();
   }
@@ -130,6 +145,9 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
   }) {
     return started?.call();
   }
@@ -140,6 +158,9 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -153,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SaveTransactionData value) saveTransactionData,
   }) {
     return started(this);
   }
@@ -162,6 +184,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SaveTransactionData value)? saveTransactionData,
   }) {
     return started?.call(this);
   }
@@ -171,6 +194,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SaveTransactionData value)? saveTransactionData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -271,6 +295,9 @@ class _$FetchDataImpl implements _FetchData {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
+    required TResult Function(String? grossAmount, String? orderId,
+            String? campaignId, String? statusPayment)
+        saveTransactionData,
   }) {
     return fetchData(grossAmount, orderId, campaignId);
   }
@@ -281,6 +308,9 @@ class _$FetchDataImpl implements _FetchData {
     TResult? Function()? started,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
   }) {
     return fetchData?.call(grossAmount, orderId, campaignId);
   }
@@ -291,6 +321,9 @@ class _$FetchDataImpl implements _FetchData {
     TResult Function()? started,
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -304,6 +337,7 @@ class _$FetchDataImpl implements _FetchData {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SaveTransactionData value) saveTransactionData,
   }) {
     return fetchData(this);
   }
@@ -313,6 +347,7 @@ class _$FetchDataImpl implements _FetchData {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SaveTransactionData value)? saveTransactionData,
   }) {
     return fetchData?.call(this);
   }
@@ -322,6 +357,7 @@ class _$FetchDataImpl implements _FetchData {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SaveTransactionData value)? saveTransactionData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -340,6 +376,198 @@ abstract class _FetchData implements TransactionEvent {
   String? get campaignId;
   @JsonKey(ignore: true)
   _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveTransactionDataImplCopyWith<$Res> {
+  factory _$$SaveTransactionDataImplCopyWith(_$SaveTransactionDataImpl value,
+          $Res Function(_$SaveTransactionDataImpl) then) =
+      __$$SaveTransactionDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String? grossAmount,
+      String? orderId,
+      String? campaignId,
+      String? statusPayment});
+}
+
+/// @nodoc
+class __$$SaveTransactionDataImplCopyWithImpl<$Res>
+    extends _$TransactionEventCopyWithImpl<$Res, _$SaveTransactionDataImpl>
+    implements _$$SaveTransactionDataImplCopyWith<$Res> {
+  __$$SaveTransactionDataImplCopyWithImpl(_$SaveTransactionDataImpl _value,
+      $Res Function(_$SaveTransactionDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? grossAmount = freezed,
+    Object? orderId = freezed,
+    Object? campaignId = freezed,
+    Object? statusPayment = freezed,
+  }) {
+    return _then(_$SaveTransactionDataImpl(
+      freezed == grossAmount
+          ? _value.grossAmount
+          : grossAmount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == campaignId
+          ? _value.campaignId
+          : campaignId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == statusPayment
+          ? _value.statusPayment
+          : statusPayment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveTransactionDataImpl implements _SaveTransactionData {
+  const _$SaveTransactionDataImpl(
+      this.grossAmount, this.orderId, this.campaignId, this.statusPayment);
+
+  @override
+  final String? grossAmount;
+  @override
+  final String? orderId;
+  @override
+  final String? campaignId;
+  @override
+  final String? statusPayment;
+
+  @override
+  String toString() {
+    return 'TransactionEvent.saveTransactionData(grossAmount: $grossAmount, orderId: $orderId, campaignId: $campaignId, statusPayment: $statusPayment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveTransactionDataImpl &&
+            (identical(other.grossAmount, grossAmount) ||
+                other.grossAmount == grossAmount) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.campaignId, campaignId) ||
+                other.campaignId == campaignId) &&
+            (identical(other.statusPayment, statusPayment) ||
+                other.statusPayment == statusPayment));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, grossAmount, orderId, campaignId, statusPayment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveTransactionDataImplCopyWith<_$SaveTransactionDataImpl> get copyWith =>
+      __$$SaveTransactionDataImplCopyWithImpl<_$SaveTransactionDataImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(
+            String? grossAmount, String? orderId, String? campaignId)
+        fetchData,
+    required TResult Function(String? grossAmount, String? orderId,
+            String? campaignId, String? statusPayment)
+        saveTransactionData,
+  }) {
+    return saveTransactionData(grossAmount, orderId, campaignId, statusPayment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
+    TResult? Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
+  }) {
+    return saveTransactionData?.call(
+        grossAmount, orderId, campaignId, statusPayment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId)?
+        fetchData,
+    TResult Function(String? grossAmount, String? orderId, String? campaignId,
+            String? statusPayment)?
+        saveTransactionData,
+    required TResult orElse(),
+  }) {
+    if (saveTransactionData != null) {
+      return saveTransactionData(
+          grossAmount, orderId, campaignId, statusPayment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FetchData value) fetchData,
+    required TResult Function(_SaveTransactionData value) saveTransactionData,
+  }) {
+    return saveTransactionData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchData value)? fetchData,
+    TResult? Function(_SaveTransactionData value)? saveTransactionData,
+  }) {
+    return saveTransactionData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FetchData value)? fetchData,
+    TResult Function(_SaveTransactionData value)? saveTransactionData,
+    required TResult orElse(),
+  }) {
+    if (saveTransactionData != null) {
+      return saveTransactionData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveTransactionData implements TransactionEvent {
+  const factory _SaveTransactionData(
+      final String? grossAmount,
+      final String? orderId,
+      final String? campaignId,
+      final String? statusPayment) = _$SaveTransactionDataImpl;
+
+  String? get grossAmount;
+  String? get orderId;
+  String? get campaignId;
+  String? get statusPayment;
+  @JsonKey(ignore: true)
+  _$$SaveTransactionDataImplCopyWith<_$SaveTransactionDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

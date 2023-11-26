@@ -18,9 +18,7 @@ _$CampaignItemResponseDTOImpl _$$CampaignItemResponseDTOImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       campaignName: json['campaignName'] as String?,
-      campaignDescription: json['campaignDescription'] as String?,
       goalAmount: json['goalAmount'] as int?,
-      currentAmount: json['currentAmount'] as int?,
       dateStartCampaign: json['dateStartCampaign'] as String?,
       dateEndCampaign: json['dateEndCampaign'] as String?,
       isDeleted: json['isDeleted'] as bool?,
@@ -30,6 +28,8 @@ _$CampaignItemResponseDTOImpl _$$CampaignItemResponseDTOImplFromJson(
       categories: (json['categories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      currentAmount: json['currentAmount'] as int?,
+      campaignDescription: json['campaignDescription'] as String?,
     );
 
 Map<String, dynamic> _$$CampaignItemResponseDTOImplToJson(
@@ -42,9 +42,7 @@ Map<String, dynamic> _$$CampaignItemResponseDTOImplToJson(
       r'$collectionId': instance.collectionId,
       r'$permissions': instance.permissions,
       'campaignName': instance.campaignName,
-      'campaignDescription': instance.campaignDescription,
       'goalAmount': instance.goalAmount,
-      'currentAmount': instance.currentAmount,
       'dateStartCampaign': instance.dateStartCampaign,
       'dateEndCampaign': instance.dateEndCampaign,
       'isDeleted': instance.isDeleted,
@@ -52,4 +50,6 @@ Map<String, dynamic> _$$CampaignItemResponseDTOImplToJson(
       'photoThumbnail': instance.photoThumbnail,
       'backerCount': instance.backerCount,
       'categories': instance.categories,
+      'currentAmount': instance.currentAmount,
+      'campaignDescription': instance.campaignDescription,
     };

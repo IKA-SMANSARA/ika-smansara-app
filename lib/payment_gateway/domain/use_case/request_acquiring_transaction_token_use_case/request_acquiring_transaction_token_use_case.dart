@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/detail_campaign/domain/use_case/get_detail_campaign_use_case/get_detail_campaign_use_case.dart';
@@ -10,7 +11,7 @@ class RequestAcquiringTransactionTokenUseCase {
 
   final PaymentGatewayRepository _paymentGatewayRepository;
 
-  Future<Resource<MidtransTransactionResponse>> call(
+  Future<Either<ErrorResponse, MidtransTransactionResponse>> call(
     String? grossAmount,
     String? orderId,
     String? campaignId,

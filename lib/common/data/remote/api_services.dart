@@ -4,6 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
+import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
 part 'api_services.chopper.dart';
@@ -11,6 +12,39 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+  // update document transaction
+  @Post(
+    path:
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraTransactionsCollectionId}/documents',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> saveTransactionDetail(
+    @Body() TransactionDocumentRequestDTO transactionDocumentRequestDTO,
+  );
+  // path detail campaigns
+  @Patch(
+    path:
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraCampaignsCollectionId}/documents/{documentId}',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> updateCampaignDetail(
+    @Path('documentId') String documentId,
+    @Body()
+    CampaignDocumentUpdateContentRequestDTO
+        campaignDocumentUpdateContentRequestDTO,
+  );
   // get detail campaigns
   @Get(
     path:
