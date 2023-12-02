@@ -63,22 +63,22 @@ class _$CarouselItemResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CarouselItemResponseCopyWith<$Res>
+abstract class _$$CarouselItemResponseImplCopyWith<$Res>
     implements $CarouselItemResponseCopyWith<$Res> {
-  factory _$$_CarouselItemResponseCopyWith(_$_CarouselItemResponse value,
-          $Res Function(_$_CarouselItemResponse) then) =
-      __$$_CarouselItemResponseCopyWithImpl<$Res>;
+  factory _$$CarouselItemResponseImplCopyWith(_$CarouselItemResponseImpl value,
+          $Res Function(_$CarouselItemResponseImpl) then) =
+      __$$CarouselItemResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? imageUrl});
 }
 
 /// @nodoc
-class __$$_CarouselItemResponseCopyWithImpl<$Res>
-    extends _$CarouselItemResponseCopyWithImpl<$Res, _$_CarouselItemResponse>
-    implements _$$_CarouselItemResponseCopyWith<$Res> {
-  __$$_CarouselItemResponseCopyWithImpl(_$_CarouselItemResponse _value,
-      $Res Function(_$_CarouselItemResponse) _then)
+class __$$CarouselItemResponseImplCopyWithImpl<$Res>
+    extends _$CarouselItemResponseCopyWithImpl<$Res, _$CarouselItemResponseImpl>
+    implements _$$CarouselItemResponseImplCopyWith<$Res> {
+  __$$CarouselItemResponseImplCopyWithImpl(_$CarouselItemResponseImpl _value,
+      $Res Function(_$CarouselItemResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_CarouselItemResponseCopyWithImpl<$Res>
   $Res call({
     Object? imageUrl = freezed,
   }) {
-    return _then(_$_CarouselItemResponse(
+    return _then(_$CarouselItemResponseImpl(
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -97,11 +97,11 @@ class __$$_CarouselItemResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CarouselItemResponse implements _CarouselItemResponse {
-  _$_CarouselItemResponse({this.imageUrl});
+class _$CarouselItemResponseImpl implements _CarouselItemResponse {
+  _$CarouselItemResponseImpl({this.imageUrl});
 
-  factory _$_CarouselItemResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CarouselItemResponseFromJson(json);
+  factory _$CarouselItemResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CarouselItemResponseImplFromJson(json);
 
   @override
   final String? imageUrl;
@@ -115,7 +115,7 @@ class _$_CarouselItemResponse implements _CarouselItemResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CarouselItemResponse &&
+            other is _$CarouselItemResponseImpl &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
@@ -127,13 +127,14 @@ class _$_CarouselItemResponse implements _CarouselItemResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CarouselItemResponseCopyWith<_$_CarouselItemResponse> get copyWith =>
-      __$$_CarouselItemResponseCopyWithImpl<_$_CarouselItemResponse>(
-          this, _$identity);
+  _$$CarouselItemResponseImplCopyWith<_$CarouselItemResponseImpl>
+      get copyWith =>
+          __$$CarouselItemResponseImplCopyWithImpl<_$CarouselItemResponseImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CarouselItemResponseToJson(
+    return _$$CarouselItemResponseImplToJson(
       this,
     );
   }
@@ -141,15 +142,15 @@ class _$_CarouselItemResponse implements _CarouselItemResponse {
 
 abstract class _CarouselItemResponse implements CarouselItemResponse {
   factory _CarouselItemResponse({final String? imageUrl}) =
-      _$_CarouselItemResponse;
+      _$CarouselItemResponseImpl;
 
   factory _CarouselItemResponse.fromJson(Map<String, dynamic> json) =
-      _$_CarouselItemResponse.fromJson;
+      _$CarouselItemResponseImpl.fromJson;
 
   @override
   String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_CarouselItemResponseCopyWith<_$_CarouselItemResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CarouselItemResponseImplCopyWith<_$CarouselItemResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

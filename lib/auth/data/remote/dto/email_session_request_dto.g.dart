@@ -6,15 +6,15 @@ part of 'email_session_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EmailSessionRequestDTO _$$_EmailSessionRequestDTOFromJson(
+_$EmailSessionRequestDTOImpl _$$EmailSessionRequestDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_EmailSessionRequestDTO(
+    _$EmailSessionRequestDTOImpl(
       email: json['email'] as String?,
       password: json['password'] as String?,
     );
 
-Map<String, dynamic> _$$_EmailSessionRequestDTOToJson(
-        _$_EmailSessionRequestDTO instance) =>
+Map<String, dynamic> _$$EmailSessionRequestDTOImplToJson(
+        _$EmailSessionRequestDTOImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,

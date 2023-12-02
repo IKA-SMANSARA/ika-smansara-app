@@ -9,11 +9,13 @@ import 'package:ika_smansara/payment_gateway/presentation/bloc/transaction/trans
 
 class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
+    required this.campaignId,
     required this.amountValue,
     super.key,
   });
 
   final String? amountValue;
+  final String? campaignId;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,8 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
           create: (_) => TransactionBloc(),
           child: BlocBuilder<TransactionBloc, TransactionState>(
             builder: (context, state) {
+              final donationRandomID = getRandomOrderIdNumber(campaignId);
+
               if (state is Initial) {
                 context
                     .read<TransactionBloc>()
@@ -31,11 +35,11 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                 return const CircularProgressIndicator();
               }
               if (state is Loading) {
-                final donationRandomID = getRandomOrderIdNumber('donationID');
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
                         amountValue,
                         'ORDER-$donationRandomID',
+                        campaignId,
                       ),
                     );
                 return const CircularProgressIndicator();
@@ -61,13 +65,27 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                       (controller, navigationAction) async {
                     Constants.logger.w(navigationAction.request.url);
                     if (navigationAction.request.url?.host == 'example.com') {
-                      context.go(Routes.paymentGateway);
+                      final statusPayment = navigationAction
+                          .request.url?.queryParametersAll.values.last.first;
+
+                      // save transaction data
+                      context.read<TransactionBloc>().add(
+                            TransactionEvent.saveTransactionData(
+                              amountValue,
+                              'ORDER-$donationRandomID',
+                              campaignId,
+                              statusPayment,
+                            ),
+                          );
+
+                      context.go(Routes.home);
                       return NavigationActionPolicy.CANCEL;
                     }
                     return NavigationActionPolicy.ALLOW;
                   },
                 );
               }
+
               if (state is Error) {
                 return Text(state.errorMessage ?? '');
               }

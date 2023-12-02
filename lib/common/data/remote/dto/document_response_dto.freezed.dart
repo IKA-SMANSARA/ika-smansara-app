@@ -104,11 +104,11 @@ class _$DocumentResponseDTOCopyWithImpl<$Res, $Val extends DocumentResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_DocumentResponseDTOCopyWith<$Res>
+abstract class _$$DocumentResponseDTOImplCopyWith<$Res>
     implements $DocumentResponseDTOCopyWith<$Res> {
-  factory _$$_DocumentResponseDTOCopyWith(_$_DocumentResponseDTO value,
-          $Res Function(_$_DocumentResponseDTO) then) =
-      __$$_DocumentResponseDTOCopyWithImpl<$Res>;
+  factory _$$DocumentResponseDTOImplCopyWith(_$DocumentResponseDTOImpl value,
+          $Res Function(_$DocumentResponseDTOImpl) then) =
+      __$$DocumentResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +121,11 @@ abstract class _$$_DocumentResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DocumentResponseDTOCopyWithImpl<$Res>
-    extends _$DocumentResponseDTOCopyWithImpl<$Res, _$_DocumentResponseDTO>
-    implements _$$_DocumentResponseDTOCopyWith<$Res> {
-  __$$_DocumentResponseDTOCopyWithImpl(_$_DocumentResponseDTO _value,
-      $Res Function(_$_DocumentResponseDTO) _then)
+class __$$DocumentResponseDTOImplCopyWithImpl<$Res>
+    extends _$DocumentResponseDTOCopyWithImpl<$Res, _$DocumentResponseDTOImpl>
+    implements _$$DocumentResponseDTOImplCopyWith<$Res> {
+  __$$DocumentResponseDTOImplCopyWithImpl(_$DocumentResponseDTOImpl _value,
+      $Res Function(_$DocumentResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +138,7 @@ class __$$_DocumentResponseDTOCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? permissions = freezed,
   }) {
-    return _then(_$_DocumentResponseDTO(
+    return _then(_$DocumentResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,8 +169,8 @@ class __$$_DocumentResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DocumentResponseDTO implements _DocumentResponseDTO {
-  _$_DocumentResponseDTO(
+class _$DocumentResponseDTOImpl implements _DocumentResponseDTO {
+  _$DocumentResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$collectionId') this.collectionId,
       @JsonKey(name: '\$databaseId') this.databaseId,
@@ -180,8 +180,8 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
       final List<String>? permissions = const []})
       : _permissions = permissions;
 
-  factory _$_DocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentResponseDTOFromJson(json);
+  factory _$DocumentResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DocumentResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -218,7 +218,7 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DocumentResponseDTO &&
+            other is _$DocumentResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -240,13 +240,13 @@ class _$_DocumentResponseDTO implements _DocumentResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentResponseDTOCopyWith<_$_DocumentResponseDTO> get copyWith =>
-      __$$_DocumentResponseDTOCopyWithImpl<_$_DocumentResponseDTO>(
+  _$$DocumentResponseDTOImplCopyWith<_$DocumentResponseDTOImpl> get copyWith =>
+      __$$DocumentResponseDTOImplCopyWithImpl<_$DocumentResponseDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentResponseDTOToJson(
+    return _$$DocumentResponseDTOImplToJson(
       this,
     );
   }
@@ -260,10 +260,10 @@ abstract class _DocumentResponseDTO implements DocumentResponseDTO {
           @JsonKey(name: '\$createdAt') final String? createdAt,
           @JsonKey(name: '\$updatedAt') final String? updatedAt,
           @JsonKey(name: '\$permissions') final List<String>? permissions}) =
-      _$_DocumentResponseDTO;
+      _$DocumentResponseDTOImpl;
 
   factory _DocumentResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_DocumentResponseDTO.fromJson;
+      _$DocumentResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -285,6 +285,6 @@ abstract class _DocumentResponseDTO implements DocumentResponseDTO {
   List<String>? get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentResponseDTOCopyWith<_$_DocumentResponseDTO> get copyWith =>
+  _$$DocumentResponseDTOImplCopyWith<_$DocumentResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

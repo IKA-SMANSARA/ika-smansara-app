@@ -256,11 +256,11 @@ class _$SessionResponseDTOCopyWithImpl<$Res, $Val extends SessionResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_SessionResponseDTOCopyWith<$Res>
+abstract class _$$SessionResponseDTOImplCopyWith<$Res>
     implements $SessionResponseDTOCopyWith<$Res> {
-  factory _$$_SessionResponseDTOCopyWith(_$_SessionResponseDTO value,
-          $Res Function(_$_SessionResponseDTO) then) =
-      __$$_SessionResponseDTOCopyWithImpl<$Res>;
+  factory _$$SessionResponseDTOImplCopyWith(_$SessionResponseDTOImpl value,
+          $Res Function(_$SessionResponseDTOImpl) then) =
+      __$$SessionResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -292,11 +292,11 @@ abstract class _$$_SessionResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SessionResponseDTOCopyWithImpl<$Res>
-    extends _$SessionResponseDTOCopyWithImpl<$Res, _$_SessionResponseDTO>
-    implements _$$_SessionResponseDTOCopyWith<$Res> {
-  __$$_SessionResponseDTOCopyWithImpl(
-      _$_SessionResponseDTO _value, $Res Function(_$_SessionResponseDTO) _then)
+class __$$SessionResponseDTOImplCopyWithImpl<$Res>
+    extends _$SessionResponseDTOCopyWithImpl<$Res, _$SessionResponseDTOImpl>
+    implements _$$SessionResponseDTOImplCopyWith<$Res> {
+  __$$SessionResponseDTOImplCopyWithImpl(_$SessionResponseDTOImpl _value,
+      $Res Function(_$SessionResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -328,7 +328,7 @@ class __$$_SessionResponseDTOCopyWithImpl<$Res>
     Object? countryName = freezed,
     Object? current = freezed,
   }) {
-    return _then(_$_SessionResponseDTO(
+    return _then(_$SessionResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -435,8 +435,8 @@ class __$$_SessionResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SessionResponseDTO implements _SessionResponseDTO {
-  _$_SessionResponseDTO(
+class _$SessionResponseDTOImpl implements _SessionResponseDTO {
+  _$SessionResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: 'userId') this.userId,
@@ -463,8 +463,8 @@ class _$_SessionResponseDTO implements _SessionResponseDTO {
       @JsonKey(name: 'countryName') this.countryName,
       @JsonKey(name: 'current') this.current});
 
-  factory _$_SessionResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_SessionResponseDTOFromJson(json);
+  factory _$SessionResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -551,7 +551,7 @@ class _$_SessionResponseDTO implements _SessionResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SessionResponseDTO &&
+            other is _$SessionResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -631,13 +631,13 @@ class _$_SessionResponseDTO implements _SessionResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SessionResponseDTOCopyWith<_$_SessionResponseDTO> get copyWith =>
-      __$$_SessionResponseDTOCopyWithImpl<_$_SessionResponseDTO>(
+  _$$SessionResponseDTOImplCopyWith<_$SessionResponseDTOImpl> get copyWith =>
+      __$$SessionResponseDTOImplCopyWithImpl<_$SessionResponseDTOImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SessionResponseDTOToJson(
+    return _$$SessionResponseDTOImplToJson(
       this,
     );
   }
@@ -669,10 +669,11 @@ abstract class _SessionResponseDTO implements SessionResponseDTO {
       @JsonKey(name: 'deviceModel') final String? deviceModel,
       @JsonKey(name: 'countryCode') final String? countryCode,
       @JsonKey(name: 'countryName') final String? countryName,
-      @JsonKey(name: 'current') final bool? current}) = _$_SessionResponseDTO;
+      @JsonKey(name: 'current')
+      final bool? current}) = _$SessionResponseDTOImpl;
 
   factory _SessionResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_SessionResponseDTO.fromJson;
+      _$SessionResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -751,6 +752,6 @@ abstract class _SessionResponseDTO implements SessionResponseDTO {
   bool? get current;
   @override
   @JsonKey(ignore: true)
-  _$$_SessionResponseDTOCopyWith<_$_SessionResponseDTO> get copyWith =>
+  _$$SessionResponseDTOImplCopyWith<_$SessionResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

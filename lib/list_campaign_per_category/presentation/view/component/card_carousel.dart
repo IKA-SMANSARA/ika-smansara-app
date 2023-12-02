@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
@@ -46,8 +47,13 @@ class CardCarousel extends StatelessWidget {
               itemBuilder: (context, itemIndex, pageViewIndex) {
                 return SizedBox(
                   width: double.infinity,
-                  child: Image.network(
-                    state.listCampaigns?[itemIndex].photoThumbnail ?? '',
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        state.listCampaigns?[itemIndex].photoThumbnail ?? '',
+                    placeholder: (context, url) =>
+                        const LinearProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 );
               },

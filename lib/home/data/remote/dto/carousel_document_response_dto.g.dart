@@ -6,9 +6,9 @@ part of 'carousel_document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CarouselDocumentResponseDTO _$$_CarouselDocumentResponseDTOFromJson(
+_$CarouselDocumentResponseDTOImpl _$$CarouselDocumentResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CarouselDocumentResponseDTO(
+    _$CarouselDocumentResponseDTOImpl(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
           ?.map((e) =>
@@ -16,8 +16,8 @@ _$_CarouselDocumentResponseDTO _$$_CarouselDocumentResponseDTOFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_CarouselDocumentResponseDTOToJson(
-        _$_CarouselDocumentResponseDTO instance) =>
+Map<String, dynamic> _$$CarouselDocumentResponseDTOImplToJson(
+        _$CarouselDocumentResponseDTOImpl instance) =>
     <String, dynamic>{
       'total': instance.total,
       'documents': instance.documents,

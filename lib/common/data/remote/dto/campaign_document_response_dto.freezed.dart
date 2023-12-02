@@ -35,12 +35,8 @@ mixin _$CampaignDocumentResponseDTO {
   List<String>? get permissions => throw _privateConstructorUsedError;
   @JsonKey(name: 'campaignName')
   String? get campaignName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'campaignDescription')
-  String? get campaignDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'goalAmount')
   int? get goalAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'currentAmount')
-  int? get currentAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'dateStartCampaign')
   String? get dateStartCampaign => throw _privateConstructorUsedError;
   @JsonKey(name: 'dateEndCampaign')
@@ -55,6 +51,10 @@ mixin _$CampaignDocumentResponseDTO {
   int? get backerCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'categories')
   List<String>? get categories => throw _privateConstructorUsedError;
+  @JsonKey(name: 'currentAmount')
+  int? get currentAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'campaignDescription')
+  String? get campaignDescription => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,16 +78,16 @@ abstract class $CampaignDocumentResponseDTOCopyWith<$Res> {
       @JsonKey(name: '\$collectionId') String? collectionId,
       @JsonKey(name: '\$permissions') List<String>? permissions,
       @JsonKey(name: 'campaignName') String? campaignName,
-      @JsonKey(name: 'campaignDescription') String? campaignDescription,
       @JsonKey(name: 'goalAmount') int? goalAmount,
-      @JsonKey(name: 'currentAmount') int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') bool? isDeleted,
       @JsonKey(name: 'isActive') bool? isActive,
       @JsonKey(name: 'photoThumbnail') String? photoThumbnail,
       @JsonKey(name: 'backerCount') int? backerCount,
-      @JsonKey(name: 'categories') List<String>? categories});
+      @JsonKey(name: 'categories') List<String>? categories,
+      @JsonKey(name: 'currentAmount') int? currentAmount,
+      @JsonKey(name: 'campaignDescription') String? campaignDescription});
 }
 
 /// @nodoc
@@ -111,9 +111,7 @@ class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
     Object? collectionId = freezed,
     Object? permissions = freezed,
     Object? campaignName = freezed,
-    Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
-    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -121,6 +119,8 @@ class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
     Object? photoThumbnail = freezed,
     Object? backerCount = freezed,
     Object? categories = freezed,
+    Object? currentAmount = freezed,
+    Object? campaignDescription = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -151,17 +151,9 @@ class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
           ? _value.campaignName
           : campaignName // ignore: cast_nullable_to_non_nullable
               as String?,
-      campaignDescription: freezed == campaignDescription
-          ? _value.campaignDescription
-          : campaignDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currentAmount: freezed == currentAmount
-          ? _value.currentAmount
-          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -191,16 +183,25 @@ class _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      campaignDescription: freezed == campaignDescription
+          ? _value.campaignDescription
+          : campaignDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
+abstract class _$$CampaignItemResponseDTOImplCopyWith<$Res>
     implements $CampaignDocumentResponseDTOCopyWith<$Res> {
-  factory _$$_CampaignItemResponseDTOCopyWith(_$_CampaignItemResponseDTO value,
-          $Res Function(_$_CampaignItemResponseDTO) then) =
-      __$$_CampaignItemResponseDTOCopyWithImpl<$Res>;
+  factory _$$CampaignItemResponseDTOImplCopyWith(
+          _$CampaignItemResponseDTOImpl value,
+          $Res Function(_$CampaignItemResponseDTOImpl) then) =
+      __$$CampaignItemResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -211,25 +212,26 @@ abstract class _$$_CampaignItemResponseDTOCopyWith<$Res>
       @JsonKey(name: '\$collectionId') String? collectionId,
       @JsonKey(name: '\$permissions') List<String>? permissions,
       @JsonKey(name: 'campaignName') String? campaignName,
-      @JsonKey(name: 'campaignDescription') String? campaignDescription,
       @JsonKey(name: 'goalAmount') int? goalAmount,
-      @JsonKey(name: 'currentAmount') int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') bool? isDeleted,
       @JsonKey(name: 'isActive') bool? isActive,
       @JsonKey(name: 'photoThumbnail') String? photoThumbnail,
       @JsonKey(name: 'backerCount') int? backerCount,
-      @JsonKey(name: 'categories') List<String>? categories});
+      @JsonKey(name: 'categories') List<String>? categories,
+      @JsonKey(name: 'currentAmount') int? currentAmount,
+      @JsonKey(name: 'campaignDescription') String? campaignDescription});
 }
 
 /// @nodoc
-class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
+class __$$CampaignItemResponseDTOImplCopyWithImpl<$Res>
     extends _$CampaignDocumentResponseDTOCopyWithImpl<$Res,
-        _$_CampaignItemResponseDTO>
-    implements _$$_CampaignItemResponseDTOCopyWith<$Res> {
-  __$$_CampaignItemResponseDTOCopyWithImpl(_$_CampaignItemResponseDTO _value,
-      $Res Function(_$_CampaignItemResponseDTO) _then)
+        _$CampaignItemResponseDTOImpl>
+    implements _$$CampaignItemResponseDTOImplCopyWith<$Res> {
+  __$$CampaignItemResponseDTOImplCopyWithImpl(
+      _$CampaignItemResponseDTOImpl _value,
+      $Res Function(_$CampaignItemResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -242,9 +244,7 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
     Object? collectionId = freezed,
     Object? permissions = freezed,
     Object? campaignName = freezed,
-    Object? campaignDescription = freezed,
     Object? goalAmount = freezed,
-    Object? currentAmount = freezed,
     Object? dateStartCampaign = freezed,
     Object? dateEndCampaign = freezed,
     Object? isDeleted = freezed,
@@ -252,8 +252,10 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
     Object? photoThumbnail = freezed,
     Object? backerCount = freezed,
     Object? categories = freezed,
+    Object? currentAmount = freezed,
+    Object? campaignDescription = freezed,
   }) {
-    return _then(_$_CampaignItemResponseDTO(
+    return _then(_$CampaignItemResponseDTOImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -282,17 +284,9 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
           ? _value.campaignName
           : campaignName // ignore: cast_nullable_to_non_nullable
               as String?,
-      campaignDescription: freezed == campaignDescription
-          ? _value.campaignDescription
-          : campaignDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
       goalAmount: freezed == goalAmount
           ? _value.goalAmount
           : goalAmount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      currentAmount: freezed == currentAmount
-          ? _value.currentAmount
-          : currentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
       dateStartCampaign: freezed == dateStartCampaign
           ? _value.dateStartCampaign
@@ -322,14 +316,22 @@ class __$$_CampaignItemResponseDTOCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      currentAmount: freezed == currentAmount
+          ? _value.currentAmount
+          : currentAmount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      campaignDescription: freezed == campaignDescription
+          ? _value.campaignDescription
+          : campaignDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
-  _$_CampaignItemResponseDTO(
+class _$CampaignItemResponseDTOImpl implements _CampaignItemResponseDTO {
+  _$CampaignItemResponseDTOImpl(
       {@JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
       @JsonKey(name: '\$updatedAt') this.updatedAt,
@@ -337,21 +339,21 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
       @JsonKey(name: '\$collectionId') this.collectionId,
       @JsonKey(name: '\$permissions') final List<String>? permissions,
       @JsonKey(name: 'campaignName') this.campaignName,
-      @JsonKey(name: 'campaignDescription') this.campaignDescription,
       @JsonKey(name: 'goalAmount') this.goalAmount,
-      @JsonKey(name: 'currentAmount') this.currentAmount,
       @JsonKey(name: 'dateStartCampaign') this.dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') this.dateEndCampaign,
       @JsonKey(name: 'isDeleted') this.isDeleted,
       @JsonKey(name: 'isActive') this.isActive,
       @JsonKey(name: 'photoThumbnail') this.photoThumbnail,
       @JsonKey(name: 'backerCount') this.backerCount,
-      @JsonKey(name: 'categories') final List<String>? categories})
+      @JsonKey(name: 'categories') final List<String>? categories,
+      @JsonKey(name: 'currentAmount') this.currentAmount,
+      @JsonKey(name: 'campaignDescription') this.campaignDescription})
       : _permissions = permissions,
         _categories = categories;
 
-  factory _$_CampaignItemResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CampaignItemResponseDTOFromJson(json);
+  factory _$CampaignItemResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CampaignItemResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: '\$id')
@@ -383,14 +385,8 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   @JsonKey(name: 'campaignName')
   final String? campaignName;
   @override
-  @JsonKey(name: 'campaignDescription')
-  final String? campaignDescription;
-  @override
   @JsonKey(name: 'goalAmount')
   final int? goalAmount;
-  @override
-  @JsonKey(name: 'currentAmount')
-  final int? currentAmount;
   @override
   @JsonKey(name: 'dateStartCampaign')
   final String? dateStartCampaign;
@@ -421,15 +417,22 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
   }
 
   @override
+  @JsonKey(name: 'currentAmount')
+  final int? currentAmount;
+  @override
+  @JsonKey(name: 'campaignDescription')
+  final String? campaignDescription;
+
+  @override
   String toString() {
-    return 'CampaignDocumentResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, campaignDescription: $campaignDescription, goalAmount: $goalAmount, currentAmount: $currentAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories)';
+    return 'CampaignDocumentResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, campaignName: $campaignName, goalAmount: $goalAmount, dateStartCampaign: $dateStartCampaign, dateEndCampaign: $dateEndCampaign, isDeleted: $isDeleted, isActive: $isActive, photoThumbnail: $photoThumbnail, backerCount: $backerCount, categories: $categories, currentAmount: $currentAmount, campaignDescription: $campaignDescription)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CampaignItemResponseDTO &&
+            other is _$CampaignItemResponseDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -443,12 +446,8 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
                 .equals(other._permissions, _permissions) &&
             (identical(other.campaignName, campaignName) ||
                 other.campaignName == campaignName) &&
-            (identical(other.campaignDescription, campaignDescription) ||
-                other.campaignDescription == campaignDescription) &&
             (identical(other.goalAmount, goalAmount) ||
                 other.goalAmount == goalAmount) &&
-            (identical(other.currentAmount, currentAmount) ||
-                other.currentAmount == currentAmount) &&
             (identical(other.dateStartCampaign, dateStartCampaign) ||
                 other.dateStartCampaign == dateStartCampaign) &&
             (identical(other.dateEndCampaign, dateEndCampaign) ||
@@ -462,7 +461,11 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
             (identical(other.backerCount, backerCount) ||
                 other.backerCount == backerCount) &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+                .equals(other._categories, _categories) &&
+            (identical(other.currentAmount, currentAmount) ||
+                other.currentAmount == currentAmount) &&
+            (identical(other.campaignDescription, campaignDescription) ||
+                other.campaignDescription == campaignDescription));
   }
 
   @JsonKey(ignore: true)
@@ -476,28 +479,27 @@ class _$_CampaignItemResponseDTO implements _CampaignItemResponseDTO {
       collectionId,
       const DeepCollectionEquality().hash(_permissions),
       campaignName,
-      campaignDescription,
       goalAmount,
-      currentAmount,
       dateStartCampaign,
       dateEndCampaign,
       isDeleted,
       isActive,
       photoThumbnail,
       backerCount,
-      const DeepCollectionEquality().hash(_categories));
+      const DeepCollectionEquality().hash(_categories),
+      currentAmount,
+      campaignDescription);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CampaignItemResponseDTOCopyWith<_$_CampaignItemResponseDTO>
-      get copyWith =>
-          __$$_CampaignItemResponseDTOCopyWithImpl<_$_CampaignItemResponseDTO>(
-              this, _$identity);
+  _$$CampaignItemResponseDTOImplCopyWith<_$CampaignItemResponseDTOImpl>
+      get copyWith => __$$CampaignItemResponseDTOImplCopyWithImpl<
+          _$CampaignItemResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CampaignItemResponseDTOToJson(
+    return _$$CampaignItemResponseDTOImplToJson(
       this,
     );
   }
@@ -512,20 +514,20 @@ abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
       @JsonKey(name: '\$collectionId') final String? collectionId,
       @JsonKey(name: '\$permissions') final List<String>? permissions,
       @JsonKey(name: 'campaignName') final String? campaignName,
-      @JsonKey(name: 'campaignDescription') final String? campaignDescription,
       @JsonKey(name: 'goalAmount') final int? goalAmount,
-      @JsonKey(name: 'currentAmount') final int? currentAmount,
       @JsonKey(name: 'dateStartCampaign') final String? dateStartCampaign,
       @JsonKey(name: 'dateEndCampaign') final String? dateEndCampaign,
       @JsonKey(name: 'isDeleted') final bool? isDeleted,
       @JsonKey(name: 'isActive') final bool? isActive,
       @JsonKey(name: 'photoThumbnail') final String? photoThumbnail,
       @JsonKey(name: 'backerCount') final int? backerCount,
-      @JsonKey(name: 'categories')
-      final List<String>? categories}) = _$_CampaignItemResponseDTO;
+      @JsonKey(name: 'categories') final List<String>? categories,
+      @JsonKey(name: 'currentAmount') final int? currentAmount,
+      @JsonKey(name: 'campaignDescription')
+      final String? campaignDescription}) = _$CampaignItemResponseDTOImpl;
 
   factory _CampaignItemResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CampaignItemResponseDTO.fromJson;
+      _$CampaignItemResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: '\$id')
@@ -549,14 +551,8 @@ abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
   @JsonKey(name: 'campaignName')
   String? get campaignName;
   @override
-  @JsonKey(name: 'campaignDescription')
-  String? get campaignDescription;
-  @override
   @JsonKey(name: 'goalAmount')
   int? get goalAmount;
-  @override
-  @JsonKey(name: 'currentAmount')
-  int? get currentAmount;
   @override
   @JsonKey(name: 'dateStartCampaign')
   String? get dateStartCampaign;
@@ -579,7 +575,13 @@ abstract class _CampaignItemResponseDTO implements CampaignDocumentResponseDTO {
   @JsonKey(name: 'categories')
   List<String>? get categories;
   @override
+  @JsonKey(name: 'currentAmount')
+  int? get currentAmount;
+  @override
+  @JsonKey(name: 'campaignDescription')
+  String? get campaignDescription;
+  @override
   @JsonKey(ignore: true)
-  _$$_CampaignItemResponseDTOCopyWith<_$_CampaignItemResponseDTO>
+  _$$CampaignItemResponseDTOImplCopyWith<_$CampaignItemResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

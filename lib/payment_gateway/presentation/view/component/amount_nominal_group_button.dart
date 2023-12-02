@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
 class AmountNominalGroupButton extends StatelessWidget {
@@ -11,11 +12,11 @@ class AmountNominalGroupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GroupButton<String>(
-      buttons: const [
-        'Rp. 50.000',
-        'Rp. 100.000',
-        'Rp. 150.000',
-        'Rp. 200.000',
+      buttons: [
+        currencyFormatter(50000),
+        currencyFormatter(100000),
+        currencyFormatter(150000),
+        currencyFormatter(200000),
       ],
       enableDeselect: true,
       maxSelected: 1,

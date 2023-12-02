@@ -78,12 +78,12 @@ class _$CampaignsCollectionsResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CampaignsDocumentResponseDTOCopyWith<$Res>
+abstract class _$$CampaignsDocumentResponseDTOImplCopyWith<$Res>
     implements $CampaignsCollectionsResponseDTOCopyWith<$Res> {
-  factory _$$_CampaignsDocumentResponseDTOCopyWith(
-          _$_CampaignsDocumentResponseDTO value,
-          $Res Function(_$_CampaignsDocumentResponseDTO) then) =
-      __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>;
+  factory _$$CampaignsDocumentResponseDTOImplCopyWith(
+          _$CampaignsDocumentResponseDTOImpl value,
+          $Res Function(_$CampaignsDocumentResponseDTOImpl) then) =
+      __$$CampaignsDocumentResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,13 +93,13 @@ abstract class _$$_CampaignsDocumentResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>
+class __$$CampaignsDocumentResponseDTOImplCopyWithImpl<$Res>
     extends _$CampaignsCollectionsResponseDTOCopyWithImpl<$Res,
-        _$_CampaignsDocumentResponseDTO>
-    implements _$$_CampaignsDocumentResponseDTOCopyWith<$Res> {
-  __$$_CampaignsDocumentResponseDTOCopyWithImpl(
-      _$_CampaignsDocumentResponseDTO _value,
-      $Res Function(_$_CampaignsDocumentResponseDTO) _then)
+        _$CampaignsDocumentResponseDTOImpl>
+    implements _$$CampaignsDocumentResponseDTOImplCopyWith<$Res> {
+  __$$CampaignsDocumentResponseDTOImplCopyWithImpl(
+      _$CampaignsDocumentResponseDTOImpl _value,
+      $Res Function(_$CampaignsDocumentResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +108,7 @@ class __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>
     Object? total = freezed,
     Object? documents = freezed,
   }) {
-    return _then(_$_CampaignsDocumentResponseDTO(
+    return _then(_$CampaignsDocumentResponseDTOImpl(
       total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -123,15 +123,17 @@ class __$$_CampaignsDocumentResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
-  _$_CampaignsDocumentResponseDTO(
+class _$CampaignsDocumentResponseDTOImpl
+    implements _CampaignsDocumentResponseDTO {
+  _$CampaignsDocumentResponseDTOImpl(
       {@JsonKey(name: 'total') this.total,
       @JsonKey(name: 'documents')
       final List<CampaignDocumentResponseDTO>? documents})
       : _documents = documents;
 
-  factory _$_CampaignsDocumentResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CampaignsDocumentResponseDTOFromJson(json);
+  factory _$CampaignsDocumentResponseDTOImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CampaignsDocumentResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'total')
@@ -156,7 +158,7 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CampaignsDocumentResponseDTO &&
+            other is _$CampaignsDocumentResponseDTOImpl &&
             (identical(other.total, total) || other.total == total) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
@@ -170,13 +172,14 @@ class _$_CampaignsDocumentResponseDTO implements _CampaignsDocumentResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CampaignsDocumentResponseDTOCopyWith<_$_CampaignsDocumentResponseDTO>
-      get copyWith => __$$_CampaignsDocumentResponseDTOCopyWithImpl<
-          _$_CampaignsDocumentResponseDTO>(this, _$identity);
+  _$$CampaignsDocumentResponseDTOImplCopyWith<
+          _$CampaignsDocumentResponseDTOImpl>
+      get copyWith => __$$CampaignsDocumentResponseDTOImplCopyWithImpl<
+          _$CampaignsDocumentResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CampaignsDocumentResponseDTOToJson(
+    return _$$CampaignsDocumentResponseDTOImplToJson(
       this,
     );
   }
@@ -188,10 +191,10 @@ abstract class _CampaignsDocumentResponseDTO
           {@JsonKey(name: 'total') final int? total,
           @JsonKey(name: 'documents')
           final List<CampaignDocumentResponseDTO>? documents}) =
-      _$_CampaignsDocumentResponseDTO;
+      _$CampaignsDocumentResponseDTOImpl;
 
   factory _CampaignsDocumentResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CampaignsDocumentResponseDTO.fromJson;
+      _$CampaignsDocumentResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'total')
@@ -201,6 +204,7 @@ abstract class _CampaignsDocumentResponseDTO
   List<CampaignDocumentResponseDTO>? get documents;
   @override
   @JsonKey(ignore: true)
-  _$$_CampaignsDocumentResponseDTOCopyWith<_$_CampaignsDocumentResponseDTO>
+  _$$CampaignsDocumentResponseDTOImplCopyWith<
+          _$CampaignsDocumentResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

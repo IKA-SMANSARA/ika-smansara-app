@@ -114,11 +114,12 @@ class _$CarouselItemResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CarouselItemResponseDTOCopyWith<$Res>
+abstract class _$$CarouselItemResponseDTOImplCopyWith<$Res>
     implements $CarouselItemResponseDTOCopyWith<$Res> {
-  factory _$$_CarouselItemResponseDTOCopyWith(_$_CarouselItemResponseDTO value,
-          $Res Function(_$_CarouselItemResponseDTO) then) =
-      __$$_CarouselItemResponseDTOCopyWithImpl<$Res>;
+  factory _$$CarouselItemResponseDTOImplCopyWith(
+          _$CarouselItemResponseDTOImpl value,
+          $Res Function(_$CarouselItemResponseDTOImpl) then) =
+      __$$CarouselItemResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -132,12 +133,13 @@ abstract class _$$_CarouselItemResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
+class __$$CarouselItemResponseDTOImplCopyWithImpl<$Res>
     extends _$CarouselItemResponseDTOCopyWithImpl<$Res,
-        _$_CarouselItemResponseDTO>
-    implements _$$_CarouselItemResponseDTOCopyWith<$Res> {
-  __$$_CarouselItemResponseDTOCopyWithImpl(_$_CarouselItemResponseDTO _value,
-      $Res Function(_$_CarouselItemResponseDTO) _then)
+        _$CarouselItemResponseDTOImpl>
+    implements _$$CarouselItemResponseDTOImplCopyWith<$Res> {
+  __$$CarouselItemResponseDTOImplCopyWithImpl(
+      _$CarouselItemResponseDTOImpl _value,
+      $Res Function(_$CarouselItemResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,7 +153,7 @@ class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
     Object? collectionId = freezed,
     Object? permissions = freezed,
   }) {
-    return _then(_$_CarouselItemResponseDTO(
+    return _then(_$CarouselItemResponseDTOImpl(
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -186,8 +188,8 @@ class __$$_CarouselItemResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
-  _$_CarouselItemResponseDTO(
+class _$CarouselItemResponseDTOImpl implements _CarouselItemResponseDTO {
+  _$CarouselItemResponseDTOImpl(
       {@JsonKey(name: 'imageUrl') this.imageUrl,
       @JsonKey(name: '\$id') this.id,
       @JsonKey(name: '\$createdAt') this.createdAt,
@@ -197,8 +199,8 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
       @JsonKey(name: '\$permissions') final List<String>? permissions})
       : _permissions = permissions;
 
-  factory _$_CarouselItemResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CarouselItemResponseDTOFromJson(json);
+  factory _$CarouselItemResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CarouselItemResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'imageUrl')
@@ -238,7 +240,7 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CarouselItemResponseDTO &&
+            other is _$CarouselItemResponseDTOImpl &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.id, id) || other.id == id) &&
@@ -269,14 +271,13 @@ class _$_CarouselItemResponseDTO implements _CarouselItemResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CarouselItemResponseDTOCopyWith<_$_CarouselItemResponseDTO>
-      get copyWith =>
-          __$$_CarouselItemResponseDTOCopyWithImpl<_$_CarouselItemResponseDTO>(
-              this, _$identity);
+  _$$CarouselItemResponseDTOImplCopyWith<_$CarouselItemResponseDTOImpl>
+      get copyWith => __$$CarouselItemResponseDTOImplCopyWithImpl<
+          _$CarouselItemResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CarouselItemResponseDTOToJson(
+    return _$$CarouselItemResponseDTOImplToJson(
       this,
     );
   }
@@ -291,10 +292,10 @@ abstract class _CarouselItemResponseDTO implements CarouselItemResponseDTO {
           @JsonKey(name: '\$databaseId') final String? databaseId,
           @JsonKey(name: '\$collectionId') final String? collectionId,
           @JsonKey(name: '\$permissions') final List<String>? permissions}) =
-      _$_CarouselItemResponseDTO;
+      _$CarouselItemResponseDTOImpl;
 
   factory _CarouselItemResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_CarouselItemResponseDTO.fromJson;
+      _$CarouselItemResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'imageUrl')
@@ -319,6 +320,6 @@ abstract class _CarouselItemResponseDTO implements CarouselItemResponseDTO {
   List<String>? get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_CarouselItemResponseDTOCopyWith<_$_CarouselItemResponseDTO>
+  _$$CarouselItemResponseDTOImplCopyWith<_$CarouselItemResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

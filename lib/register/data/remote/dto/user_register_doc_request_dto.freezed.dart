@@ -96,12 +96,12 @@ class _$UserRegisterDocRequestDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserRegisterDocRequestDTOCopyWith<$Res>
+abstract class _$$UserRegisterDocRequestDTOImplCopyWith<$Res>
     implements $UserRegisterDocRequestDTOCopyWith<$Res> {
-  factory _$$_UserRegisterDocRequestDTOCopyWith(
-          _$_UserRegisterDocRequestDTO value,
-          $Res Function(_$_UserRegisterDocRequestDTO) then) =
-      __$$_UserRegisterDocRequestDTOCopyWithImpl<$Res>;
+  factory _$$UserRegisterDocRequestDTOImplCopyWith(
+          _$UserRegisterDocRequestDTOImpl value,
+          $Res Function(_$UserRegisterDocRequestDTOImpl) then) =
+      __$$UserRegisterDocRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,13 +114,13 @@ abstract class _$$_UserRegisterDocRequestDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserRegisterDocRequestDTOCopyWithImpl<$Res>
+class __$$UserRegisterDocRequestDTOImplCopyWithImpl<$Res>
     extends _$UserRegisterDocRequestDTOCopyWithImpl<$Res,
-        _$_UserRegisterDocRequestDTO>
-    implements _$$_UserRegisterDocRequestDTOCopyWith<$Res> {
-  __$$_UserRegisterDocRequestDTOCopyWithImpl(
-      _$_UserRegisterDocRequestDTO _value,
-      $Res Function(_$_UserRegisterDocRequestDTO) _then)
+        _$UserRegisterDocRequestDTOImpl>
+    implements _$$UserRegisterDocRequestDTOImplCopyWith<$Res> {
+  __$$UserRegisterDocRequestDTOImplCopyWithImpl(
+      _$UserRegisterDocRequestDTOImpl _value,
+      $Res Function(_$UserRegisterDocRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +130,7 @@ class __$$_UserRegisterDocRequestDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? permissions = null,
   }) {
-    return _then(_$_UserRegisterDocRequestDTO(
+    return _then(_$UserRegisterDocRequestDTOImpl(
       documentId: freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -149,15 +149,15 @@ class __$$_UserRegisterDocRequestDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserRegisterDocRequestDTO implements _UserRegisterDocRequestDTO {
-  _$_UserRegisterDocRequestDTO(
+class _$UserRegisterDocRequestDTOImpl implements _UserRegisterDocRequestDTO {
+  _$UserRegisterDocRequestDTOImpl(
       {@JsonKey(name: 'documentId') this.documentId,
       @JsonKey(name: 'data') this.data,
       @JsonKey(name: 'permissions') final List<String> permissions = const []})
       : _permissions = permissions;
 
-  factory _$_UserRegisterDocRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UserRegisterDocRequestDTOFromJson(json);
+  factory _$UserRegisterDocRequestDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserRegisterDocRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'documentId')
@@ -183,7 +183,7 @@ class _$_UserRegisterDocRequestDTO implements _UserRegisterDocRequestDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserRegisterDocRequestDTO &&
+            other is _$UserRegisterDocRequestDTOImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId) &&
             (identical(other.data, data) || other.data == data) &&
@@ -199,13 +199,13 @@ class _$_UserRegisterDocRequestDTO implements _UserRegisterDocRequestDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserRegisterDocRequestDTOCopyWith<_$_UserRegisterDocRequestDTO>
-      get copyWith => __$$_UserRegisterDocRequestDTOCopyWithImpl<
-          _$_UserRegisterDocRequestDTO>(this, _$identity);
+  _$$UserRegisterDocRequestDTOImplCopyWith<_$UserRegisterDocRequestDTOImpl>
+      get copyWith => __$$UserRegisterDocRequestDTOImplCopyWithImpl<
+          _$UserRegisterDocRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserRegisterDocRequestDTOToJson(
+    return _$$UserRegisterDocRequestDTOImplToJson(
       this,
     );
   }
@@ -216,10 +216,10 @@ abstract class _UserRegisterDocRequestDTO implements UserRegisterDocRequestDTO {
           {@JsonKey(name: 'documentId') final String? documentId,
           @JsonKey(name: 'data') final UserProfileDocRequestDTO? data,
           @JsonKey(name: 'permissions') final List<String> permissions}) =
-      _$_UserRegisterDocRequestDTO;
+      _$UserRegisterDocRequestDTOImpl;
 
   factory _UserRegisterDocRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_UserRegisterDocRequestDTO.fromJson;
+      _$UserRegisterDocRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'documentId')
@@ -232,6 +232,6 @@ abstract class _UserRegisterDocRequestDTO implements UserRegisterDocRequestDTO {
   List<String> get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_UserRegisterDocRequestDTOCopyWith<_$_UserRegisterDocRequestDTO>
+  _$$UserRegisterDocRequestDTOImplCopyWith<_$UserRegisterDocRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

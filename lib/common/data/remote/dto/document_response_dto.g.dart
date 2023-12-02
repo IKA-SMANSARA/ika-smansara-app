@@ -6,9 +6,9 @@ part of 'document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DocumentResponseDTO _$$_DocumentResponseDTOFromJson(
+_$DocumentResponseDTOImpl _$$DocumentResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DocumentResponseDTO(
+    _$DocumentResponseDTOImpl(
       id: json[r'$id'] as String?,
       collectionId: json[r'$collectionId'] as String?,
       databaseId: json[r'$databaseId'] as String?,
@@ -20,8 +20,8 @@ _$_DocumentResponseDTO _$$_DocumentResponseDTOFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_DocumentResponseDTOToJson(
-        _$_DocumentResponseDTO instance) =>
+Map<String, dynamic> _$$DocumentResponseDTOImplToJson(
+        _$DocumentResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$collectionId': instance.collectionId,

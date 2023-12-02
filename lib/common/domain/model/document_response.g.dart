@@ -6,8 +6,9 @@ part of 'document_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DocumentResponse _$$_DocumentResponseFromJson(Map<String, dynamic> json) =>
-    _$_DocumentResponse(
+_$DocumentResponseImpl _$$DocumentResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DocumentResponseImpl(
       id: json['id'] as String?,
       collectionId: json['collectionId'] as String?,
       databaseId: json['databaseId'] as String?,
@@ -19,7 +20,8 @@ _$_DocumentResponse _$$_DocumentResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_DocumentResponseToJson(_$_DocumentResponse instance) =>
+Map<String, dynamic> _$$DocumentResponseImplToJson(
+        _$DocumentResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

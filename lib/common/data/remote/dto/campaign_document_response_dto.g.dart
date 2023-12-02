@@ -6,9 +6,9 @@ part of 'campaign_document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
+_$CampaignItemResponseDTOImpl _$$CampaignItemResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CampaignItemResponseDTO(
+    _$CampaignItemResponseDTOImpl(
       id: json[r'$id'] as String?,
       createdAt: json[r'$createdAt'] as String?,
       updatedAt: json[r'$updatedAt'] as String?,
@@ -18,9 +18,7 @@ _$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
           ?.map((e) => e as String)
           .toList(),
       campaignName: json['campaignName'] as String?,
-      campaignDescription: json['campaignDescription'] as String?,
       goalAmount: json['goalAmount'] as int?,
-      currentAmount: json['currentAmount'] as int?,
       dateStartCampaign: json['dateStartCampaign'] as String?,
       dateEndCampaign: json['dateEndCampaign'] as String?,
       isDeleted: json['isDeleted'] as bool?,
@@ -30,10 +28,12 @@ _$_CampaignItemResponseDTO _$$_CampaignItemResponseDTOFromJson(
       categories: (json['categories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      currentAmount: json['currentAmount'] as int?,
+      campaignDescription: json['campaignDescription'] as String?,
     );
 
-Map<String, dynamic> _$$_CampaignItemResponseDTOToJson(
-        _$_CampaignItemResponseDTO instance) =>
+Map<String, dynamic> _$$CampaignItemResponseDTOImplToJson(
+        _$CampaignItemResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$createdAt': instance.createdAt,
@@ -42,9 +42,7 @@ Map<String, dynamic> _$$_CampaignItemResponseDTOToJson(
       r'$collectionId': instance.collectionId,
       r'$permissions': instance.permissions,
       'campaignName': instance.campaignName,
-      'campaignDescription': instance.campaignDescription,
       'goalAmount': instance.goalAmount,
-      'currentAmount': instance.currentAmount,
       'dateStartCampaign': instance.dateStartCampaign,
       'dateEndCampaign': instance.dateEndCampaign,
       'isDeleted': instance.isDeleted,
@@ -52,4 +50,6 @@ Map<String, dynamic> _$$_CampaignItemResponseDTOToJson(
       'photoThumbnail': instance.photoThumbnail,
       'backerCount': instance.backerCount,
       'categories': instance.categories,
+      'currentAmount': instance.currentAmount,
+      'campaignDescription': instance.campaignDescription,
     };

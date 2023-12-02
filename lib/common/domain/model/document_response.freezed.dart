@@ -98,11 +98,11 @@ class _$DocumentResponseCopyWithImpl<$Res, $Val extends DocumentResponse>
 }
 
 /// @nodoc
-abstract class _$$_DocumentResponseCopyWith<$Res>
+abstract class _$$DocumentResponseImplCopyWith<$Res>
     implements $DocumentResponseCopyWith<$Res> {
-  factory _$$_DocumentResponseCopyWith(
-          _$_DocumentResponse value, $Res Function(_$_DocumentResponse) then) =
-      __$$_DocumentResponseCopyWithImpl<$Res>;
+  factory _$$DocumentResponseImplCopyWith(_$DocumentResponseImpl value,
+          $Res Function(_$DocumentResponseImpl) then) =
+      __$$DocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_DocumentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DocumentResponseCopyWithImpl<$Res>
-    extends _$DocumentResponseCopyWithImpl<$Res, _$_DocumentResponse>
-    implements _$$_DocumentResponseCopyWith<$Res> {
-  __$$_DocumentResponseCopyWithImpl(
-      _$_DocumentResponse _value, $Res Function(_$_DocumentResponse) _then)
+class __$$DocumentResponseImplCopyWithImpl<$Res>
+    extends _$DocumentResponseCopyWithImpl<$Res, _$DocumentResponseImpl>
+    implements _$$DocumentResponseImplCopyWith<$Res> {
+  __$$DocumentResponseImplCopyWithImpl(_$DocumentResponseImpl _value,
+      $Res Function(_$DocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_DocumentResponseCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? permissions = freezed,
   }) {
-    return _then(_$_DocumentResponse(
+    return _then(_$DocumentResponseImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -163,8 +163,8 @@ class __$$_DocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DocumentResponse implements _DocumentResponse {
-  _$_DocumentResponse(
+class _$DocumentResponseImpl implements _DocumentResponse {
+  _$DocumentResponseImpl(
       {this.id,
       this.collectionId,
       this.databaseId,
@@ -173,8 +173,8 @@ class _$_DocumentResponse implements _DocumentResponse {
       final List<String>? permissions = const []})
       : _permissions = permissions;
 
-  factory _$_DocumentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentResponseFromJson(json);
+  factory _$DocumentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DocumentResponseImplFromJson(json);
 
   @override
   final String? id;
@@ -206,7 +206,7 @@ class _$_DocumentResponse implements _DocumentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DocumentResponse &&
+            other is _$DocumentResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -228,12 +228,13 @@ class _$_DocumentResponse implements _DocumentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentResponseCopyWith<_$_DocumentResponse> get copyWith =>
-      __$$_DocumentResponseCopyWithImpl<_$_DocumentResponse>(this, _$identity);
+  _$$DocumentResponseImplCopyWith<_$DocumentResponseImpl> get copyWith =>
+      __$$DocumentResponseImplCopyWithImpl<_$DocumentResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentResponseToJson(
+    return _$$DocumentResponseImplToJson(
       this,
     );
   }
@@ -246,10 +247,10 @@ abstract class _DocumentResponse implements DocumentResponse {
       final String? databaseId,
       final String? createdAt,
       final String? updatedAt,
-      final List<String>? permissions}) = _$_DocumentResponse;
+      final List<String>? permissions}) = _$DocumentResponseImpl;
 
   factory _DocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_DocumentResponse.fromJson;
+      _$DocumentResponseImpl.fromJson;
 
   @override
   String? get id;
@@ -265,6 +266,6 @@ abstract class _DocumentResponse implements DocumentResponse {
   List<String>? get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentResponseCopyWith<_$_DocumentResponse> get copyWith =>
+  _$$DocumentResponseImplCopyWith<_$DocumentResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

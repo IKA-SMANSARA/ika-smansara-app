@@ -75,24 +75,25 @@ class _$CarouselEventCopyWithImpl<$Res, $Val extends CarouselEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$CarouselEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -102,7 +103,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -172,29 +173,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements CarouselEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FetchDataCopyWith<$Res> {
-  factory _$$_FetchDataCopyWith(
-          _$_FetchData value, $Res Function(_$_FetchData) then) =
-      __$$_FetchDataCopyWithImpl<$Res>;
+abstract class _$$FetchDataImplCopyWith<$Res> {
+  factory _$$FetchDataImplCopyWith(
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchDataCopyWithImpl<$Res>
-    extends _$CarouselEventCopyWithImpl<$Res, _$_FetchData>
-    implements _$$_FetchDataCopyWith<$Res> {
-  __$$_FetchDataCopyWithImpl(
-      _$_FetchData _value, $Res Function(_$_FetchData) _then)
+class __$$FetchDataImplCopyWithImpl<$Res>
+    extends _$CarouselEventCopyWithImpl<$Res, _$FetchDataImpl>
+    implements _$$FetchDataImplCopyWith<$Res> {
+  __$$FetchDataImplCopyWithImpl(
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FetchData implements _FetchData {
-  const _$_FetchData();
+class _$FetchDataImpl implements _FetchData {
+  const _$FetchDataImpl();
 
   @override
   String toString() {
@@ -204,7 +205,7 @@ class _$_FetchData implements _FetchData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchData);
+        (other.runtimeType == runtimeType && other is _$FetchDataImpl);
   }
 
   @override
@@ -274,7 +275,7 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements CarouselEvent {
-  const factory _FetchData() = _$_FetchData;
+  const factory _FetchData() = _$FetchDataImpl;
 }
 
 /// @nodoc
@@ -353,25 +354,25 @@ class _$CarouselStateCopyWithImpl<$Res, $Val extends CarouselState>
 }
 
 /// @nodoc
-abstract class _$$InitialCarouselCopyWith<$Res> {
-  factory _$$InitialCarouselCopyWith(
-          _$InitialCarousel value, $Res Function(_$InitialCarousel) then) =
-      __$$InitialCarouselCopyWithImpl<$Res>;
+abstract class _$$InitialCarouselImplCopyWith<$Res> {
+  factory _$$InitialCarouselImplCopyWith(_$InitialCarouselImpl value,
+          $Res Function(_$InitialCarouselImpl) then) =
+      __$$InitialCarouselImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCarouselCopyWithImpl<$Res>
-    extends _$CarouselStateCopyWithImpl<$Res, _$InitialCarousel>
-    implements _$$InitialCarouselCopyWith<$Res> {
-  __$$InitialCarouselCopyWithImpl(
-      _$InitialCarousel _value, $Res Function(_$InitialCarousel) _then)
+class __$$InitialCarouselImplCopyWithImpl<$Res>
+    extends _$CarouselStateCopyWithImpl<$Res, _$InitialCarouselImpl>
+    implements _$$InitialCarouselImplCopyWith<$Res> {
+  __$$InitialCarouselImplCopyWithImpl(
+      _$InitialCarouselImpl _value, $Res Function(_$InitialCarouselImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialCarousel implements InitialCarousel {
-  const _$InitialCarousel();
+class _$InitialCarouselImpl implements InitialCarousel {
+  const _$InitialCarouselImpl();
 
   @override
   String toString() {
@@ -381,7 +382,7 @@ class _$InitialCarousel implements InitialCarousel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialCarousel);
+        (other.runtimeType == runtimeType && other is _$InitialCarouselImpl);
   }
 
   @override
@@ -466,24 +467,24 @@ class _$InitialCarousel implements InitialCarousel {
 }
 
 abstract class InitialCarousel implements CarouselState {
-  const factory InitialCarousel() = _$InitialCarousel;
+  const factory InitialCarousel() = _$InitialCarouselImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessCarouselCopyWith<$Res> {
-  factory _$$SuccessCarouselCopyWith(
-          _$SuccessCarousel value, $Res Function(_$SuccessCarousel) then) =
-      __$$SuccessCarouselCopyWithImpl<$Res>;
+abstract class _$$SuccessCarouselImplCopyWith<$Res> {
+  factory _$$SuccessCarouselImplCopyWith(_$SuccessCarouselImpl value,
+          $Res Function(_$SuccessCarouselImpl) then) =
+      __$$SuccessCarouselImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CarouselItemResponse>? listCarouselItem});
 }
 
 /// @nodoc
-class __$$SuccessCarouselCopyWithImpl<$Res>
-    extends _$CarouselStateCopyWithImpl<$Res, _$SuccessCarousel>
-    implements _$$SuccessCarouselCopyWith<$Res> {
-  __$$SuccessCarouselCopyWithImpl(
-      _$SuccessCarousel _value, $Res Function(_$SuccessCarousel) _then)
+class __$$SuccessCarouselImplCopyWithImpl<$Res>
+    extends _$CarouselStateCopyWithImpl<$Res, _$SuccessCarouselImpl>
+    implements _$$SuccessCarouselImplCopyWith<$Res> {
+  __$$SuccessCarouselImplCopyWithImpl(
+      _$SuccessCarouselImpl _value, $Res Function(_$SuccessCarouselImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -491,7 +492,7 @@ class __$$SuccessCarouselCopyWithImpl<$Res>
   $Res call({
     Object? listCarouselItem = freezed,
   }) {
-    return _then(_$SuccessCarousel(
+    return _then(_$SuccessCarouselImpl(
       listCarouselItem: freezed == listCarouselItem
           ? _value._listCarouselItem
           : listCarouselItem // ignore: cast_nullable_to_non_nullable
@@ -502,8 +503,8 @@ class __$$SuccessCarouselCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessCarousel implements SuccessCarousel {
-  const _$SuccessCarousel(
+class _$SuccessCarouselImpl implements SuccessCarousel {
+  const _$SuccessCarouselImpl(
       {final List<CarouselItemResponse>? listCarouselItem = const []})
       : _listCarouselItem = listCarouselItem;
 
@@ -528,7 +529,7 @@ class _$SuccessCarousel implements SuccessCarousel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessCarousel &&
+            other is _$SuccessCarouselImpl &&
             const DeepCollectionEquality()
                 .equals(other._listCarouselItem, _listCarouselItem));
   }
@@ -540,8 +541,9 @@ class _$SuccessCarousel implements SuccessCarousel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessCarouselCopyWith<_$SuccessCarousel> get copyWith =>
-      __$$SuccessCarouselCopyWithImpl<_$SuccessCarousel>(this, _$identity);
+  _$$SuccessCarouselImplCopyWith<_$SuccessCarouselImpl> get copyWith =>
+      __$$SuccessCarouselImplCopyWithImpl<_$SuccessCarouselImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -623,29 +625,30 @@ class _$SuccessCarousel implements SuccessCarousel {
 
 abstract class SuccessCarousel implements CarouselState {
   const factory SuccessCarousel(
-      {final List<CarouselItemResponse>? listCarouselItem}) = _$SuccessCarousel;
+          {final List<CarouselItemResponse>? listCarouselItem}) =
+      _$SuccessCarouselImpl;
 
   List<CarouselItemResponse>? get listCarouselItem;
   @JsonKey(ignore: true)
-  _$$SuccessCarouselCopyWith<_$SuccessCarousel> get copyWith =>
+  _$$SuccessCarouselImplCopyWith<_$SuccessCarouselImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorCarouselCopyWith<$Res> {
-  factory _$$ErrorCarouselCopyWith(
-          _$ErrorCarousel value, $Res Function(_$ErrorCarousel) then) =
-      __$$ErrorCarouselCopyWithImpl<$Res>;
+abstract class _$$ErrorCarouselImplCopyWith<$Res> {
+  factory _$$ErrorCarouselImplCopyWith(
+          _$ErrorCarouselImpl value, $Res Function(_$ErrorCarouselImpl) then) =
+      __$$ErrorCarouselImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$ErrorCarouselCopyWithImpl<$Res>
-    extends _$CarouselStateCopyWithImpl<$Res, _$ErrorCarousel>
-    implements _$$ErrorCarouselCopyWith<$Res> {
-  __$$ErrorCarouselCopyWithImpl(
-      _$ErrorCarousel _value, $Res Function(_$ErrorCarousel) _then)
+class __$$ErrorCarouselImplCopyWithImpl<$Res>
+    extends _$CarouselStateCopyWithImpl<$Res, _$ErrorCarouselImpl>
+    implements _$$ErrorCarouselImplCopyWith<$Res> {
+  __$$ErrorCarouselImplCopyWithImpl(
+      _$ErrorCarouselImpl _value, $Res Function(_$ErrorCarouselImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -653,7 +656,7 @@ class __$$ErrorCarouselCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$ErrorCarousel(
+    return _then(_$ErrorCarouselImpl(
       freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -664,8 +667,8 @@ class __$$ErrorCarouselCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorCarousel implements ErrorCarousel {
-  const _$ErrorCarousel(this.errorMessage);
+class _$ErrorCarouselImpl implements ErrorCarousel {
+  const _$ErrorCarouselImpl(this.errorMessage);
 
   @override
   final String? errorMessage;
@@ -679,7 +682,7 @@ class _$ErrorCarousel implements ErrorCarousel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorCarousel &&
+            other is _$ErrorCarouselImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -690,8 +693,8 @@ class _$ErrorCarousel implements ErrorCarousel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCarouselCopyWith<_$ErrorCarousel> get copyWith =>
-      __$$ErrorCarouselCopyWithImpl<_$ErrorCarousel>(this, _$identity);
+  _$$ErrorCarouselImplCopyWith<_$ErrorCarouselImpl> get copyWith =>
+      __$$ErrorCarouselImplCopyWithImpl<_$ErrorCarouselImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -772,34 +775,34 @@ class _$ErrorCarousel implements ErrorCarousel {
 }
 
 abstract class ErrorCarousel implements CarouselState {
-  const factory ErrorCarousel(final String? errorMessage) = _$ErrorCarousel;
+  const factory ErrorCarousel(final String? errorMessage) = _$ErrorCarouselImpl;
 
   String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$ErrorCarouselCopyWith<_$ErrorCarousel> get copyWith =>
+  _$$ErrorCarouselImplCopyWith<_$ErrorCarouselImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingCarouselCopyWith<$Res> {
-  factory _$$LoadingCarouselCopyWith(
-          _$LoadingCarousel value, $Res Function(_$LoadingCarousel) then) =
-      __$$LoadingCarouselCopyWithImpl<$Res>;
+abstract class _$$LoadingCarouselImplCopyWith<$Res> {
+  factory _$$LoadingCarouselImplCopyWith(_$LoadingCarouselImpl value,
+          $Res Function(_$LoadingCarouselImpl) then) =
+      __$$LoadingCarouselImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCarouselCopyWithImpl<$Res>
-    extends _$CarouselStateCopyWithImpl<$Res, _$LoadingCarousel>
-    implements _$$LoadingCarouselCopyWith<$Res> {
-  __$$LoadingCarouselCopyWithImpl(
-      _$LoadingCarousel _value, $Res Function(_$LoadingCarousel) _then)
+class __$$LoadingCarouselImplCopyWithImpl<$Res>
+    extends _$CarouselStateCopyWithImpl<$Res, _$LoadingCarouselImpl>
+    implements _$$LoadingCarouselImplCopyWith<$Res> {
+  __$$LoadingCarouselImplCopyWithImpl(
+      _$LoadingCarouselImpl _value, $Res Function(_$LoadingCarouselImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingCarousel implements LoadingCarousel {
-  const _$LoadingCarousel();
+class _$LoadingCarouselImpl implements LoadingCarousel {
+  const _$LoadingCarouselImpl();
 
   @override
   String toString() {
@@ -809,7 +812,7 @@ class _$LoadingCarousel implements LoadingCarousel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingCarousel);
+        (other.runtimeType == runtimeType && other is _$LoadingCarouselImpl);
   }
 
   @override
@@ -894,5 +897,5 @@ class _$LoadingCarousel implements LoadingCarousel {
 }
 
 abstract class LoadingCarousel implements CarouselState {
-  const factory LoadingCarousel() = _$LoadingCarousel;
+  const factory LoadingCarousel() = _$LoadingCarouselImpl;
 }

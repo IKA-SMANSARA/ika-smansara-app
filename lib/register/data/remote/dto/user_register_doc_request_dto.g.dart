@@ -6,9 +6,9 @@ part of 'user_register_doc_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserRegisterDocRequestDTO _$$_UserRegisterDocRequestDTOFromJson(
+_$UserRegisterDocRequestDTOImpl _$$UserRegisterDocRequestDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserRegisterDocRequestDTO(
+    _$UserRegisterDocRequestDTOImpl(
       documentId: json['documentId'] as String?,
       data: json['data'] == null
           ? null
@@ -20,8 +20,8 @@ _$_UserRegisterDocRequestDTO _$$_UserRegisterDocRequestDTOFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_UserRegisterDocRequestDTOToJson(
-        _$_UserRegisterDocRequestDTO instance) =>
+Map<String, dynamic> _$$UserRegisterDocRequestDTOImplToJson(
+        _$UserRegisterDocRequestDTOImpl instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'data': instance.data,

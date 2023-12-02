@@ -6,14 +6,14 @@ part of 'midtrans_credit_card_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MidtransCreditCardRequestDTO _$$_MidtransCreditCardRequestDTOFromJson(
+_$MidtransCreditCardRequestDTOImpl _$$MidtransCreditCardRequestDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_MidtransCreditCardRequestDTO(
+    _$MidtransCreditCardRequestDTOImpl(
       secure: json['secure'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$_MidtransCreditCardRequestDTOToJson(
-        _$_MidtransCreditCardRequestDTO instance) =>
+Map<String, dynamic> _$$MidtransCreditCardRequestDTOImplToJson(
+        _$MidtransCreditCardRequestDTOImpl instance) =>
     <String, dynamic>{
       'secure': instance.secure,
     };

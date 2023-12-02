@@ -6,14 +6,14 @@ part of 'carousel_item_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CarouselItemResponse _$$_CarouselItemResponseFromJson(
+_$CarouselItemResponseImpl _$$CarouselItemResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CarouselItemResponse(
+    _$CarouselItemResponseImpl(
       imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_CarouselItemResponseToJson(
-        _$_CarouselItemResponse instance) =>
+Map<String, dynamic> _$$CarouselItemResponseImplToJson(
+        _$CarouselItemResponseImpl instance) =>
     <String, dynamic>{
       'imageUrl': instance.imageUrl,
     };

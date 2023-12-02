@@ -68,22 +68,22 @@ class _$RegisterStatusCopyWithImpl<$Res, $Val extends RegisterStatus>
 }
 
 /// @nodoc
-abstract class _$$_RegisterStatusCopyWith<$Res>
+abstract class _$$RegisterStatusImplCopyWith<$Res>
     implements $RegisterStatusCopyWith<$Res> {
-  factory _$$_RegisterStatusCopyWith(
-          _$_RegisterStatus value, $Res Function(_$_RegisterStatus) then) =
-      __$$_RegisterStatusCopyWithImpl<$Res>;
+  factory _$$RegisterStatusImplCopyWith(_$RegisterStatusImpl value,
+          $Res Function(_$RegisterStatusImpl) then) =
+      __$$RegisterStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? registerStatus, String? registerMessage});
 }
 
 /// @nodoc
-class __$$_RegisterStatusCopyWithImpl<$Res>
-    extends _$RegisterStatusCopyWithImpl<$Res, _$_RegisterStatus>
-    implements _$$_RegisterStatusCopyWith<$Res> {
-  __$$_RegisterStatusCopyWithImpl(
-      _$_RegisterStatus _value, $Res Function(_$_RegisterStatus) _then)
+class __$$RegisterStatusImplCopyWithImpl<$Res>
+    extends _$RegisterStatusCopyWithImpl<$Res, _$RegisterStatusImpl>
+    implements _$$RegisterStatusImplCopyWith<$Res> {
+  __$$RegisterStatusImplCopyWithImpl(
+      _$RegisterStatusImpl _value, $Res Function(_$RegisterStatusImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_RegisterStatusCopyWithImpl<$Res>
     Object? registerStatus = freezed,
     Object? registerMessage = freezed,
   }) {
-    return _then(_$_RegisterStatus(
+    return _then(_$RegisterStatusImpl(
       registerStatus: freezed == registerStatus
           ? _value.registerStatus
           : registerStatus // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,12 @@ class __$$_RegisterStatusCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RegisterStatus implements _RegisterStatus {
-  _$_RegisterStatus({this.registerStatus = false, this.registerMessage = ''});
+class _$RegisterStatusImpl implements _RegisterStatus {
+  _$RegisterStatusImpl(
+      {this.registerStatus = false, this.registerMessage = ''});
 
-  factory _$_RegisterStatus.fromJson(Map<String, dynamic> json) =>
-      _$$_RegisterStatusFromJson(json);
+  factory _$RegisterStatusImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RegisterStatusImplFromJson(json);
 
   @override
   @JsonKey()
@@ -129,7 +130,7 @@ class _$_RegisterStatus implements _RegisterStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegisterStatus &&
+            other is _$RegisterStatusImpl &&
             (identical(other.registerStatus, registerStatus) ||
                 other.registerStatus == registerStatus) &&
             (identical(other.registerMessage, registerMessage) ||
@@ -143,12 +144,13 @@ class _$_RegisterStatus implements _RegisterStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegisterStatusCopyWith<_$_RegisterStatus> get copyWith =>
-      __$$_RegisterStatusCopyWithImpl<_$_RegisterStatus>(this, _$identity);
+  _$$RegisterStatusImplCopyWith<_$RegisterStatusImpl> get copyWith =>
+      __$$RegisterStatusImplCopyWithImpl<_$RegisterStatusImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RegisterStatusToJson(
+    return _$$RegisterStatusImplToJson(
       this,
     );
   }
@@ -157,10 +159,10 @@ class _$_RegisterStatus implements _RegisterStatus {
 abstract class _RegisterStatus implements RegisterStatus {
   factory _RegisterStatus(
       {final bool? registerStatus,
-      final String? registerMessage}) = _$_RegisterStatus;
+      final String? registerMessage}) = _$RegisterStatusImpl;
 
   factory _RegisterStatus.fromJson(Map<String, dynamic> json) =
-      _$_RegisterStatus.fromJson;
+      _$RegisterStatusImpl.fromJson;
 
   @override
   bool? get registerStatus;
@@ -168,6 +170,6 @@ abstract class _RegisterStatus implements RegisterStatus {
   String? get registerMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_RegisterStatusCopyWith<_$_RegisterStatus> get copyWith =>
+  _$$RegisterStatusImplCopyWith<_$RegisterStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

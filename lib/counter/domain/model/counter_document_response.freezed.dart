@@ -107,11 +107,12 @@ class _$CounterDocumentResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CounterDocumentResponseCopyWith<$Res>
+abstract class _$$CounterDocumentResponseImplCopyWith<$Res>
     implements $CounterDocumentResponseCopyWith<$Res> {
-  factory _$$_CounterDocumentResponseCopyWith(_$_CounterDocumentResponse value,
-          $Res Function(_$_CounterDocumentResponse) then) =
-      __$$_CounterDocumentResponseCopyWithImpl<$Res>;
+  factory _$$CounterDocumentResponseImplCopyWith(
+          _$CounterDocumentResponseImpl value,
+          $Res Function(_$CounterDocumentResponseImpl) then) =
+      __$$CounterDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -125,12 +126,13 @@ abstract class _$$_CounterDocumentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CounterDocumentResponseCopyWithImpl<$Res>
+class __$$CounterDocumentResponseImplCopyWithImpl<$Res>
     extends _$CounterDocumentResponseCopyWithImpl<$Res,
-        _$_CounterDocumentResponse>
-    implements _$$_CounterDocumentResponseCopyWith<$Res> {
-  __$$_CounterDocumentResponseCopyWithImpl(_$_CounterDocumentResponse _value,
-      $Res Function(_$_CounterDocumentResponse) _then)
+        _$CounterDocumentResponseImpl>
+    implements _$$CounterDocumentResponseImplCopyWith<$Res> {
+  __$$CounterDocumentResponseImplCopyWithImpl(
+      _$CounterDocumentResponseImpl _value,
+      $Res Function(_$CounterDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +146,7 @@ class __$$_CounterDocumentResponseCopyWithImpl<$Res>
     Object? permissions = freezed,
     Object? counterValue = freezed,
   }) {
-    return _then(_$_CounterDocumentResponse(
+    return _then(_$CounterDocumentResponseImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -179,8 +181,8 @@ class __$$_CounterDocumentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CounterDocumentResponse implements _CounterDocumentResponse {
-  const _$_CounterDocumentResponse(
+class _$CounterDocumentResponseImpl implements _CounterDocumentResponse {
+  const _$CounterDocumentResponseImpl(
       {this.id,
       this.collectionId,
       this.databaseId,
@@ -190,8 +192,8 @@ class _$_CounterDocumentResponse implements _CounterDocumentResponse {
       this.counterValue})
       : _permissions = permissions;
 
-  factory _$_CounterDocumentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CounterDocumentResponseFromJson(json);
+  factory _$CounterDocumentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CounterDocumentResponseImplFromJson(json);
 
   @override
   final String? id;
@@ -225,7 +227,7 @@ class _$_CounterDocumentResponse implements _CounterDocumentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CounterDocumentResponse &&
+            other is _$CounterDocumentResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.collectionId, collectionId) ||
                 other.collectionId == collectionId) &&
@@ -256,14 +258,13 @@ class _$_CounterDocumentResponse implements _CounterDocumentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CounterDocumentResponseCopyWith<_$_CounterDocumentResponse>
-      get copyWith =>
-          __$$_CounterDocumentResponseCopyWithImpl<_$_CounterDocumentResponse>(
-              this, _$identity);
+  _$$CounterDocumentResponseImplCopyWith<_$CounterDocumentResponseImpl>
+      get copyWith => __$$CounterDocumentResponseImplCopyWithImpl<
+          _$CounterDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CounterDocumentResponseToJson(
+    return _$$CounterDocumentResponseImplToJson(
       this,
     );
   }
@@ -277,10 +278,10 @@ abstract class _CounterDocumentResponse implements CounterDocumentResponse {
       final String? createdAt,
       final String? updatedAt,
       final List<String?>? permissions,
-      final String? counterValue}) = _$_CounterDocumentResponse;
+      final String? counterValue}) = _$CounterDocumentResponseImpl;
 
   factory _CounterDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$_CounterDocumentResponse.fromJson;
+      _$CounterDocumentResponseImpl.fromJson;
 
   @override
   String? get id;
@@ -298,6 +299,6 @@ abstract class _CounterDocumentResponse implements CounterDocumentResponse {
   String? get counterValue;
   @override
   @JsonKey(ignore: true)
-  _$$_CounterDocumentResponseCopyWith<_$_CounterDocumentResponse>
+  _$$CounterDocumentResponseImplCopyWith<_$CounterDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

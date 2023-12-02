@@ -6,9 +6,9 @@ part of 'categories_document_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CategoriesDocumentResponse _$$_CategoriesDocumentResponseFromJson(
+_$CategoriesDocumentResponseImpl _$$CategoriesDocumentResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CategoriesDocumentResponse(
+    _$CategoriesDocumentResponseImpl(
       total: json['total'] as int?,
       documents: (json['documents'] as List<dynamic>?)
               ?.map((e) =>
@@ -17,8 +17,8 @@ _$_CategoriesDocumentResponse _$$_CategoriesDocumentResponseFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_CategoriesDocumentResponseToJson(
-        _$_CategoriesDocumentResponse instance) =>
+Map<String, dynamic> _$$CategoriesDocumentResponseImplToJson(
+        _$CategoriesDocumentResponseImpl instance) =>
     <String, dynamic>{
       'total': instance.total,
       'documents': instance.documents,

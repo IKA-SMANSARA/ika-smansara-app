@@ -61,21 +61,22 @@ class _$SessionIdCopyWithImpl<$Res, $Val extends SessionId>
 }
 
 /// @nodoc
-abstract class _$$_SessionIdCopyWith<$Res> implements $SessionIdCopyWith<$Res> {
-  factory _$$_SessionIdCopyWith(
-          _$_SessionId value, $Res Function(_$_SessionId) then) =
-      __$$_SessionIdCopyWithImpl<$Res>;
+abstract class _$$SessionIdImplCopyWith<$Res>
+    implements $SessionIdCopyWith<$Res> {
+  factory _$$SessionIdImplCopyWith(
+          _$SessionIdImpl value, $Res Function(_$SessionIdImpl) then) =
+      __$$SessionIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? sessionId});
 }
 
 /// @nodoc
-class __$$_SessionIdCopyWithImpl<$Res>
-    extends _$SessionIdCopyWithImpl<$Res, _$_SessionId>
-    implements _$$_SessionIdCopyWith<$Res> {
-  __$$_SessionIdCopyWithImpl(
-      _$_SessionId _value, $Res Function(_$_SessionId) _then)
+class __$$SessionIdImplCopyWithImpl<$Res>
+    extends _$SessionIdCopyWithImpl<$Res, _$SessionIdImpl>
+    implements _$$SessionIdImplCopyWith<$Res> {
+  __$$SessionIdImplCopyWithImpl(
+      _$SessionIdImpl _value, $Res Function(_$SessionIdImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_SessionIdCopyWithImpl<$Res>
   $Res call({
     Object? sessionId = freezed,
   }) {
-    return _then(_$_SessionId(
+    return _then(_$SessionIdImpl(
       sessionId: freezed == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -94,11 +95,11 @@ class __$$_SessionIdCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SessionId implements _SessionId {
-  const _$_SessionId({this.sessionId = ''});
+class _$SessionIdImpl implements _SessionId {
+  const _$SessionIdImpl({this.sessionId = ''});
 
-  factory _$_SessionId.fromJson(Map<String, dynamic> json) =>
-      _$$_SessionIdFromJson(json);
+  factory _$SessionIdImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionIdImplFromJson(json);
 
   @override
   @JsonKey()
@@ -113,7 +114,7 @@ class _$_SessionId implements _SessionId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SessionId &&
+            other is _$SessionIdImpl &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId));
   }
@@ -125,27 +126,27 @@ class _$_SessionId implements _SessionId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SessionIdCopyWith<_$_SessionId> get copyWith =>
-      __$$_SessionIdCopyWithImpl<_$_SessionId>(this, _$identity);
+  _$$SessionIdImplCopyWith<_$SessionIdImpl> get copyWith =>
+      __$$SessionIdImplCopyWithImpl<_$SessionIdImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SessionIdToJson(
+    return _$$SessionIdImplToJson(
       this,
     );
   }
 }
 
 abstract class _SessionId implements SessionId {
-  const factory _SessionId({final String? sessionId}) = _$_SessionId;
+  const factory _SessionId({final String? sessionId}) = _$SessionIdImpl;
 
   factory _SessionId.fromJson(Map<String, dynamic> json) =
-      _$_SessionId.fromJson;
+      _$SessionIdImpl.fromJson;
 
   @override
   String? get sessionId;
   @override
   @JsonKey(ignore: true)
-  _$$_SessionIdCopyWith<_$_SessionId> get copyWith =>
+  _$$SessionIdImplCopyWith<_$SessionIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

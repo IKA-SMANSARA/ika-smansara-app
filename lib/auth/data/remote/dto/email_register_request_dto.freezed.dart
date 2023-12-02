@@ -90,11 +90,12 @@ class _$EmailRegisterRequestDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EmailRegisterRequestDTOCopyWith<$Res>
+abstract class _$$EmailRegisterRequestDTOImplCopyWith<$Res>
     implements $EmailRegisterRequestDTOCopyWith<$Res> {
-  factory _$$_EmailRegisterRequestDTOCopyWith(_$_EmailRegisterRequestDTO value,
-          $Res Function(_$_EmailRegisterRequestDTO) then) =
-      __$$_EmailRegisterRequestDTOCopyWithImpl<$Res>;
+  factory _$$EmailRegisterRequestDTOImplCopyWith(
+          _$EmailRegisterRequestDTOImpl value,
+          $Res Function(_$EmailRegisterRequestDTOImpl) then) =
+      __$$EmailRegisterRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,12 +106,13 @@ abstract class _$$_EmailRegisterRequestDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EmailRegisterRequestDTOCopyWithImpl<$Res>
+class __$$EmailRegisterRequestDTOImplCopyWithImpl<$Res>
     extends _$EmailRegisterRequestDTOCopyWithImpl<$Res,
-        _$_EmailRegisterRequestDTO>
-    implements _$$_EmailRegisterRequestDTOCopyWith<$Res> {
-  __$$_EmailRegisterRequestDTOCopyWithImpl(_$_EmailRegisterRequestDTO _value,
-      $Res Function(_$_EmailRegisterRequestDTO) _then)
+        _$EmailRegisterRequestDTOImpl>
+    implements _$$EmailRegisterRequestDTOImplCopyWith<$Res> {
+  __$$EmailRegisterRequestDTOImplCopyWithImpl(
+      _$EmailRegisterRequestDTOImpl _value,
+      $Res Function(_$EmailRegisterRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +123,7 @@ class __$$_EmailRegisterRequestDTOCopyWithImpl<$Res>
     Object? password = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_EmailRegisterRequestDTO(
+    return _then(_$EmailRegisterRequestDTOImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -144,15 +146,15 @@ class __$$_EmailRegisterRequestDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailRegisterRequestDTO implements _EmailRegisterRequestDTO {
-  const _$_EmailRegisterRequestDTO(
+class _$EmailRegisterRequestDTOImpl implements _EmailRegisterRequestDTO {
+  const _$EmailRegisterRequestDTOImpl(
       {@JsonKey(name: 'userId') this.userId,
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'password') this.password,
       @JsonKey(name: 'name') this.name});
 
-  factory _$_EmailRegisterRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_EmailRegisterRequestDTOFromJson(json);
+  factory _$EmailRegisterRequestDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmailRegisterRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'userId')
@@ -176,7 +178,7 @@ class _$_EmailRegisterRequestDTO implements _EmailRegisterRequestDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailRegisterRequestDTO &&
+            other is _$EmailRegisterRequestDTOImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
@@ -191,14 +193,13 @@ class _$_EmailRegisterRequestDTO implements _EmailRegisterRequestDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailRegisterRequestDTOCopyWith<_$_EmailRegisterRequestDTO>
-      get copyWith =>
-          __$$_EmailRegisterRequestDTOCopyWithImpl<_$_EmailRegisterRequestDTO>(
-              this, _$identity);
+  _$$EmailRegisterRequestDTOImplCopyWith<_$EmailRegisterRequestDTOImpl>
+      get copyWith => __$$EmailRegisterRequestDTOImplCopyWithImpl<
+          _$EmailRegisterRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailRegisterRequestDTOToJson(
+    return _$$EmailRegisterRequestDTOImplToJson(
       this,
     );
   }
@@ -206,13 +207,14 @@ class _$_EmailRegisterRequestDTO implements _EmailRegisterRequestDTO {
 
 abstract class _EmailRegisterRequestDTO implements EmailRegisterRequestDTO {
   const factory _EmailRegisterRequestDTO(
-      {@JsonKey(name: 'userId') final String? userId,
-      @JsonKey(name: 'email') final String? email,
-      @JsonKey(name: 'password') final String? password,
-      @JsonKey(name: 'name') final String? name}) = _$_EmailRegisterRequestDTO;
+          {@JsonKey(name: 'userId') final String? userId,
+          @JsonKey(name: 'email') final String? email,
+          @JsonKey(name: 'password') final String? password,
+          @JsonKey(name: 'name') final String? name}) =
+      _$EmailRegisterRequestDTOImpl;
 
   factory _EmailRegisterRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_EmailRegisterRequestDTO.fromJson;
+      _$EmailRegisterRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'userId')
@@ -228,6 +230,6 @@ abstract class _EmailRegisterRequestDTO implements EmailRegisterRequestDTO {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailRegisterRequestDTOCopyWith<_$_EmailRegisterRequestDTO>
+  _$$EmailRegisterRequestDTOImplCopyWith<_$EmailRegisterRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

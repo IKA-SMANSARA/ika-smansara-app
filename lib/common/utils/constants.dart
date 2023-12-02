@@ -27,6 +27,7 @@ class Constants {
   static const ikaSmansaraCategoriesCollectionId = '6533be7558e38f4d949d';
   static const ikaSmansaraCarouselCollectionId = '653a5e0cd286c5903643';
   static const ikaSmansaraCampaignsCollectionId = '6533c53f27828417727d';
+  static const ikaSmansaraTransactionsCollectionId = '655a30ce2d322d7aa3d8';
 
   // Attributes
   static const accept = 'Accept';
@@ -55,4 +56,5 @@ class Constants {
   static const idCampaignKey = 'id campaign';
   static const categoryNameKey = 'category name key';
   static const myDonationIdKey = 'my donation id key';
+  static const nameCampaignKey = 'name campaign';
 }

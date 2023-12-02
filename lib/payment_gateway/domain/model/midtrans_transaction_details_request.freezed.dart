@@ -22,7 +22,7 @@ MidtransTransactionDetailsRequest _$MidtransTransactionDetailsRequestFromJson(
 /// @nodoc
 mixin _$MidtransTransactionDetailsRequest {
   String? get orderId => throw _privateConstructorUsedError;
-  String? get grossAmount => throw _privateConstructorUsedError;
+  int? get grossAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,7 @@ abstract class $MidtransTransactionDetailsRequestCopyWith<$Res> {
       _$MidtransTransactionDetailsRequestCopyWithImpl<$Res,
           MidtransTransactionDetailsRequest>;
   @useResult
-  $Res call({String? orderId, String? grossAmount});
+  $Res call({String? orderId, int? grossAmount});
 }
 
 /// @nodoc
@@ -66,31 +66,31 @@ class _$MidtransTransactionDetailsRequestCopyWithImpl<$Res,
       grossAmount: freezed == grossAmount
           ? _value.grossAmount
           : grossAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_MidtransTransactionDetailsRequestCopyWith<$Res>
+abstract class _$$MidtransTransactionDetailsRequestImplCopyWith<$Res>
     implements $MidtransTransactionDetailsRequestCopyWith<$Res> {
-  factory _$$_MidtransTransactionDetailsRequestCopyWith(
-          _$_MidtransTransactionDetailsRequest value,
-          $Res Function(_$_MidtransTransactionDetailsRequest) then) =
-      __$$_MidtransTransactionDetailsRequestCopyWithImpl<$Res>;
+  factory _$$MidtransTransactionDetailsRequestImplCopyWith(
+          _$MidtransTransactionDetailsRequestImpl value,
+          $Res Function(_$MidtransTransactionDetailsRequestImpl) then) =
+      __$$MidtransTransactionDetailsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? orderId, String? grossAmount});
+  $Res call({String? orderId, int? grossAmount});
 }
 
 /// @nodoc
-class __$$_MidtransTransactionDetailsRequestCopyWithImpl<$Res>
+class __$$MidtransTransactionDetailsRequestImplCopyWithImpl<$Res>
     extends _$MidtransTransactionDetailsRequestCopyWithImpl<$Res,
-        _$_MidtransTransactionDetailsRequest>
-    implements _$$_MidtransTransactionDetailsRequestCopyWith<$Res> {
-  __$$_MidtransTransactionDetailsRequestCopyWithImpl(
-      _$_MidtransTransactionDetailsRequest _value,
-      $Res Function(_$_MidtransTransactionDetailsRequest) _then)
+        _$MidtransTransactionDetailsRequestImpl>
+    implements _$$MidtransTransactionDetailsRequestImplCopyWith<$Res> {
+  __$$MidtransTransactionDetailsRequestImplCopyWithImpl(
+      _$MidtransTransactionDetailsRequestImpl _value,
+      $Res Function(_$MidtransTransactionDetailsRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_MidtransTransactionDetailsRequestCopyWithImpl<$Res>
     Object? orderId = freezed,
     Object? grossAmount = freezed,
   }) {
-    return _then(_$_MidtransTransactionDetailsRequest(
+    return _then(_$MidtransTransactionDetailsRequestImpl(
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -107,25 +107,26 @@ class __$$_MidtransTransactionDetailsRequestCopyWithImpl<$Res>
       grossAmount: freezed == grossAmount
           ? _value.grossAmount
           : grossAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransTransactionDetailsRequest
+class _$MidtransTransactionDetailsRequestImpl
     implements _MidtransTransactionDetailsRequest {
-  const _$_MidtransTransactionDetailsRequest({this.orderId, this.grossAmount});
+  const _$MidtransTransactionDetailsRequestImpl(
+      {this.orderId, this.grossAmount});
 
-  factory _$_MidtransTransactionDetailsRequest.fromJson(
+  factory _$MidtransTransactionDetailsRequestImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_MidtransTransactionDetailsRequestFromJson(json);
+      _$$MidtransTransactionDetailsRequestImplFromJson(json);
 
   @override
   final String? orderId;
   @override
-  final String? grossAmount;
+  final int? grossAmount;
 
   @override
   String toString() {
@@ -136,7 +137,7 @@ class _$_MidtransTransactionDetailsRequest
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransTransactionDetailsRequest &&
+            other is _$MidtransTransactionDetailsRequestImpl &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.grossAmount, grossAmount) ||
                 other.grossAmount == grossAmount));
@@ -149,14 +150,14 @@ class _$_MidtransTransactionDetailsRequest
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransTransactionDetailsRequestCopyWith<
-          _$_MidtransTransactionDetailsRequest>
-      get copyWith => __$$_MidtransTransactionDetailsRequestCopyWithImpl<
-          _$_MidtransTransactionDetailsRequest>(this, _$identity);
+  _$$MidtransTransactionDetailsRequestImplCopyWith<
+          _$MidtransTransactionDetailsRequestImpl>
+      get copyWith => __$$MidtransTransactionDetailsRequestImplCopyWithImpl<
+          _$MidtransTransactionDetailsRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransTransactionDetailsRequestToJson(
+    return _$$MidtransTransactionDetailsRequestImplToJson(
       this,
     );
   }
@@ -166,19 +167,19 @@ abstract class _MidtransTransactionDetailsRequest
     implements MidtransTransactionDetailsRequest {
   const factory _MidtransTransactionDetailsRequest(
       {final String? orderId,
-      final String? grossAmount}) = _$_MidtransTransactionDetailsRequest;
+      final int? grossAmount}) = _$MidtransTransactionDetailsRequestImpl;
 
   factory _MidtransTransactionDetailsRequest.fromJson(
           Map<String, dynamic> json) =
-      _$_MidtransTransactionDetailsRequest.fromJson;
+      _$MidtransTransactionDetailsRequestImpl.fromJson;
 
   @override
   String? get orderId;
   @override
-  String? get grossAmount;
+  int? get grossAmount;
   @override
   @JsonKey(ignore: true)
-  _$$_MidtransTransactionDetailsRequestCopyWith<
-          _$_MidtransTransactionDetailsRequest>
+  _$$MidtransTransactionDetailsRequestImplCopyWith<
+          _$MidtransTransactionDetailsRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

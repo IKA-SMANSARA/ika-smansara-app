@@ -19,7 +19,7 @@ void setupLogging() {
 
 String getRandomOrderIdNumber(String? name) {
   final merchantOrderId =
-      'IKA-SMANSARA-${name?.trim()}-${DateTime.now().millisecondsSinceEpoch}';
+      '${name?.trim()}-${DateTime.now().millisecondsSinceEpoch}';
   return merchantOrderId;
 }
 
@@ -30,7 +30,7 @@ double getCampaignProgressIndicatorValue(
   return (currentAmount / goalAmount) * 100 / 100;
 }
 
-String currencyFormatter(int number) {
+String currencyFormatter(dynamic number) {
   const idrCurrencySettings = CurrencyFormat(
     symbol: 'Rp',
     thousandSeparator: '.',

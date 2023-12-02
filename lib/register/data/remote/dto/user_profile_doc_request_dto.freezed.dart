@@ -41,6 +41,8 @@ mixin _$UserProfileDocRequestDTO {
   bool get isAdmin => throw _privateConstructorUsedError;
   @JsonKey(name: 'isDeleted')
   bool get isDeleted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'auth_key')
+  String? get authKey => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,7 +66,8 @@ abstract class $UserProfileDocRequestDTOCopyWith<$Res> {
       @JsonKey(name: 'createAt') String? createAt,
       @JsonKey(name: 'updateAt') String? updateAt,
       @JsonKey(name: 'isAdmin') bool isAdmin,
-      @JsonKey(name: 'isDeleted') bool isDeleted});
+      @JsonKey(name: 'isDeleted') bool isDeleted,
+      @JsonKey(name: 'auth_key') String? authKey});
 }
 
 /// @nodoc
@@ -91,6 +94,7 @@ class _$UserProfileDocRequestDTOCopyWithImpl<$Res,
     Object? updateAt = freezed,
     Object? isAdmin = null,
     Object? isDeleted = null,
+    Object? authKey = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -133,17 +137,21 @@ class _$UserProfileDocRequestDTOCopyWithImpl<$Res,
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      authKey: freezed == authKey
+          ? _value.authKey
+          : authKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserProfileDocRequestDTOCopyWith<$Res>
+abstract class _$$UserProfileDocRequestDTOImplCopyWith<$Res>
     implements $UserProfileDocRequestDTOCopyWith<$Res> {
-  factory _$$_UserProfileDocRequestDTOCopyWith(
-          _$_UserProfileDocRequestDTO value,
-          $Res Function(_$_UserProfileDocRequestDTO) then) =
-      __$$_UserProfileDocRequestDTOCopyWithImpl<$Res>;
+  factory _$$UserProfileDocRequestDTOImplCopyWith(
+          _$UserProfileDocRequestDTOImpl value,
+          $Res Function(_$UserProfileDocRequestDTOImpl) then) =
+      __$$UserProfileDocRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -156,16 +164,18 @@ abstract class _$$_UserProfileDocRequestDTOCopyWith<$Res>
       @JsonKey(name: 'createAt') String? createAt,
       @JsonKey(name: 'updateAt') String? updateAt,
       @JsonKey(name: 'isAdmin') bool isAdmin,
-      @JsonKey(name: 'isDeleted') bool isDeleted});
+      @JsonKey(name: 'isDeleted') bool isDeleted,
+      @JsonKey(name: 'auth_key') String? authKey});
 }
 
 /// @nodoc
-class __$$_UserProfileDocRequestDTOCopyWithImpl<$Res>
+class __$$UserProfileDocRequestDTOImplCopyWithImpl<$Res>
     extends _$UserProfileDocRequestDTOCopyWithImpl<$Res,
-        _$_UserProfileDocRequestDTO>
-    implements _$$_UserProfileDocRequestDTOCopyWith<$Res> {
-  __$$_UserProfileDocRequestDTOCopyWithImpl(_$_UserProfileDocRequestDTO _value,
-      $Res Function(_$_UserProfileDocRequestDTO) _then)
+        _$UserProfileDocRequestDTOImpl>
+    implements _$$UserProfileDocRequestDTOImplCopyWith<$Res> {
+  __$$UserProfileDocRequestDTOImplCopyWithImpl(
+      _$UserProfileDocRequestDTOImpl _value,
+      $Res Function(_$UserProfileDocRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -181,8 +191,9 @@ class __$$_UserProfileDocRequestDTOCopyWithImpl<$Res>
     Object? updateAt = freezed,
     Object? isAdmin = null,
     Object? isDeleted = null,
+    Object? authKey = freezed,
   }) {
-    return _then(_$_UserProfileDocRequestDTO(
+    return _then(_$UserProfileDocRequestDTOImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -223,14 +234,18 @@ class __$$_UserProfileDocRequestDTOCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      authKey: freezed == authKey
+          ? _value.authKey
+          : authKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserProfileDocRequestDTO implements _UserProfileDocRequestDTO {
-  const _$_UserProfileDocRequestDTO(
+class _$UserProfileDocRequestDTOImpl implements _UserProfileDocRequestDTO {
+  const _$UserProfileDocRequestDTOImpl(
       {@JsonKey(name: 'name') this.name,
       @JsonKey(name: 'email') this.email,
       @JsonKey(name: 'address') this.address,
@@ -240,10 +255,11 @@ class _$_UserProfileDocRequestDTO implements _UserProfileDocRequestDTO {
       @JsonKey(name: 'createAt') this.createAt,
       @JsonKey(name: 'updateAt') this.updateAt,
       @JsonKey(name: 'isAdmin') this.isAdmin = false,
-      @JsonKey(name: 'isDeleted') this.isDeleted = false});
+      @JsonKey(name: 'isDeleted') this.isDeleted = false,
+      @JsonKey(name: 'auth_key') this.authKey});
 
-  factory _$_UserProfileDocRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_UserProfileDocRequestDTOFromJson(json);
+  factory _$UserProfileDocRequestDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserProfileDocRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -275,17 +291,20 @@ class _$_UserProfileDocRequestDTO implements _UserProfileDocRequestDTO {
   @override
   @JsonKey(name: 'isDeleted')
   final bool isDeleted;
+  @override
+  @JsonKey(name: 'auth_key')
+  final String? authKey;
 
   @override
   String toString() {
-    return 'UserProfileDocRequestDTO(name: $name, email: $email, address: $address, phone: $phone, isAlumni: $isAlumni, graduateYear: $graduateYear, createAt: $createAt, updateAt: $updateAt, isAdmin: $isAdmin, isDeleted: $isDeleted)';
+    return 'UserProfileDocRequestDTO(name: $name, email: $email, address: $address, phone: $phone, isAlumni: $isAlumni, graduateYear: $graduateYear, createAt: $createAt, updateAt: $updateAt, isAdmin: $isAdmin, isDeleted: $isDeleted, authKey: $authKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserProfileDocRequestDTO &&
+            other is _$UserProfileDocRequestDTOImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.address, address) || other.address == address) &&
@@ -300,24 +319,25 @@ class _$_UserProfileDocRequestDTO implements _UserProfileDocRequestDTO {
                 other.updateAt == updateAt) &&
             (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.authKey, authKey) || other.authKey == authKey));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, email, address, phone,
-      isAlumni, graduateYear, createAt, updateAt, isAdmin, isDeleted);
+      isAlumni, graduateYear, createAt, updateAt, isAdmin, isDeleted, authKey);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserProfileDocRequestDTOCopyWith<_$_UserProfileDocRequestDTO>
-      get copyWith => __$$_UserProfileDocRequestDTOCopyWithImpl<
-          _$_UserProfileDocRequestDTO>(this, _$identity);
+  _$$UserProfileDocRequestDTOImplCopyWith<_$UserProfileDocRequestDTOImpl>
+      get copyWith => __$$UserProfileDocRequestDTOImplCopyWithImpl<
+          _$UserProfileDocRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserProfileDocRequestDTOToJson(
+    return _$$UserProfileDocRequestDTOImplToJson(
       this,
     );
   }
@@ -334,11 +354,12 @@ abstract class _UserProfileDocRequestDTO implements UserProfileDocRequestDTO {
           @JsonKey(name: 'createAt') final String? createAt,
           @JsonKey(name: 'updateAt') final String? updateAt,
           @JsonKey(name: 'isAdmin') final bool isAdmin,
-          @JsonKey(name: 'isDeleted') final bool isDeleted}) =
-      _$_UserProfileDocRequestDTO;
+          @JsonKey(name: 'isDeleted') final bool isDeleted,
+          @JsonKey(name: 'auth_key') final String? authKey}) =
+      _$UserProfileDocRequestDTOImpl;
 
   factory _UserProfileDocRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_UserProfileDocRequestDTO.fromJson;
+      _$UserProfileDocRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'name')
@@ -371,7 +392,10 @@ abstract class _UserProfileDocRequestDTO implements UserProfileDocRequestDTO {
   @JsonKey(name: 'isDeleted')
   bool get isDeleted;
   @override
+  @JsonKey(name: 'auth_key')
+  String? get authKey;
+  @override
   @JsonKey(ignore: true)
-  _$$_UserProfileDocRequestDTOCopyWith<_$_UserProfileDocRequestDTO>
+  _$$UserProfileDocRequestDTOImplCopyWith<_$UserProfileDocRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -31,6 +31,7 @@ mixin _$UserProfileDocRequest {
   String? get updateAt => throw _privateConstructorUsedError;
   bool get isAdmin => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
+  String? get authKey => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $UserProfileDocRequestCopyWith<$Res> {
       String? createAt,
       String? updateAt,
       bool isAdmin,
-      bool isDeleted});
+      bool isDeleted,
+      String? authKey});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$UserProfileDocRequestCopyWithImpl<$Res,
     Object? updateAt = freezed,
     Object? isAdmin = null,
     Object? isDeleted = null,
+    Object? authKey = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -123,16 +126,21 @@ class _$UserProfileDocRequestCopyWithImpl<$Res,
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      authKey: freezed == authKey
+          ? _value.authKey
+          : authKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserProfileDocRequestCopyWith<$Res>
+abstract class _$$UserProfileDocRequestImplCopyWith<$Res>
     implements $UserProfileDocRequestCopyWith<$Res> {
-  factory _$$_UserProfileDocRequestCopyWith(_$_UserProfileDocRequest value,
-          $Res Function(_$_UserProfileDocRequest) then) =
-      __$$_UserProfileDocRequestCopyWithImpl<$Res>;
+  factory _$$UserProfileDocRequestImplCopyWith(
+          _$UserProfileDocRequestImpl value,
+          $Res Function(_$UserProfileDocRequestImpl) then) =
+      __$$UserProfileDocRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -145,15 +153,17 @@ abstract class _$$_UserProfileDocRequestCopyWith<$Res>
       String? createAt,
       String? updateAt,
       bool isAdmin,
-      bool isDeleted});
+      bool isDeleted,
+      String? authKey});
 }
 
 /// @nodoc
-class __$$_UserProfileDocRequestCopyWithImpl<$Res>
-    extends _$UserProfileDocRequestCopyWithImpl<$Res, _$_UserProfileDocRequest>
-    implements _$$_UserProfileDocRequestCopyWith<$Res> {
-  __$$_UserProfileDocRequestCopyWithImpl(_$_UserProfileDocRequest _value,
-      $Res Function(_$_UserProfileDocRequest) _then)
+class __$$UserProfileDocRequestImplCopyWithImpl<$Res>
+    extends _$UserProfileDocRequestCopyWithImpl<$Res,
+        _$UserProfileDocRequestImpl>
+    implements _$$UserProfileDocRequestImplCopyWith<$Res> {
+  __$$UserProfileDocRequestImplCopyWithImpl(_$UserProfileDocRequestImpl _value,
+      $Res Function(_$UserProfileDocRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -169,8 +179,9 @@ class __$$_UserProfileDocRequestCopyWithImpl<$Res>
     Object? updateAt = freezed,
     Object? isAdmin = null,
     Object? isDeleted = null,
+    Object? authKey = freezed,
   }) {
-    return _then(_$_UserProfileDocRequest(
+    return _then(_$UserProfileDocRequestImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -211,14 +222,18 @@ class __$$_UserProfileDocRequestCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      authKey: freezed == authKey
+          ? _value.authKey
+          : authKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserProfileDocRequest implements _UserProfileDocRequest {
-  const _$_UserProfileDocRequest(
+class _$UserProfileDocRequestImpl implements _UserProfileDocRequest {
+  const _$UserProfileDocRequestImpl(
       {this.name,
       this.email,
       this.address,
@@ -228,10 +243,11 @@ class _$_UserProfileDocRequest implements _UserProfileDocRequest {
       this.createAt,
       this.updateAt,
       this.isAdmin = false,
-      this.isDeleted = false});
+      this.isDeleted = false,
+      this.authKey});
 
-  factory _$_UserProfileDocRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_UserProfileDocRequestFromJson(json);
+  factory _$UserProfileDocRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserProfileDocRequestImplFromJson(json);
 
   @override
   final String? name;
@@ -257,17 +273,19 @@ class _$_UserProfileDocRequest implements _UserProfileDocRequest {
   @override
   @JsonKey()
   final bool isDeleted;
+  @override
+  final String? authKey;
 
   @override
   String toString() {
-    return 'UserProfileDocRequest(name: $name, email: $email, address: $address, phone: $phone, isAlumni: $isAlumni, graduateYear: $graduateYear, createAt: $createAt, updateAt: $updateAt, isAdmin: $isAdmin, isDeleted: $isDeleted)';
+    return 'UserProfileDocRequest(name: $name, email: $email, address: $address, phone: $phone, isAlumni: $isAlumni, graduateYear: $graduateYear, createAt: $createAt, updateAt: $updateAt, isAdmin: $isAdmin, isDeleted: $isDeleted, authKey: $authKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserProfileDocRequest &&
+            other is _$UserProfileDocRequestImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.address, address) || other.address == address) &&
@@ -282,24 +300,25 @@ class _$_UserProfileDocRequest implements _UserProfileDocRequest {
                 other.updateAt == updateAt) &&
             (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.authKey, authKey) || other.authKey == authKey));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, email, address, phone,
-      isAlumni, graduateYear, createAt, updateAt, isAdmin, isDeleted);
+      isAlumni, graduateYear, createAt, updateAt, isAdmin, isDeleted, authKey);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserProfileDocRequestCopyWith<_$_UserProfileDocRequest> get copyWith =>
-      __$$_UserProfileDocRequestCopyWithImpl<_$_UserProfileDocRequest>(
-          this, _$identity);
+  _$$UserProfileDocRequestImplCopyWith<_$UserProfileDocRequestImpl>
+      get copyWith => __$$UserProfileDocRequestImplCopyWithImpl<
+          _$UserProfileDocRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserProfileDocRequestToJson(
+    return _$$UserProfileDocRequestImplToJson(
       this,
     );
   }
@@ -316,10 +335,11 @@ abstract class _UserProfileDocRequest implements UserProfileDocRequest {
       final String? createAt,
       final String? updateAt,
       final bool isAdmin,
-      final bool isDeleted}) = _$_UserProfileDocRequest;
+      final bool isDeleted,
+      final String? authKey}) = _$UserProfileDocRequestImpl;
 
   factory _UserProfileDocRequest.fromJson(Map<String, dynamic> json) =
-      _$_UserProfileDocRequest.fromJson;
+      _$UserProfileDocRequestImpl.fromJson;
 
   @override
   String? get name;
@@ -342,7 +362,9 @@ abstract class _UserProfileDocRequest implements UserProfileDocRequest {
   @override
   bool get isDeleted;
   @override
+  String? get authKey;
+  @override
   @JsonKey(ignore: true)
-  _$$_UserProfileDocRequestCopyWith<_$_UserProfileDocRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserProfileDocRequestImplCopyWith<_$UserProfileDocRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

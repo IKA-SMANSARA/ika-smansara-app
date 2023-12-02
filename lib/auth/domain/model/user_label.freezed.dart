@@ -61,21 +61,22 @@ class _$UserLabelCopyWithImpl<$Res, $Val extends UserLabel>
 }
 
 /// @nodoc
-abstract class _$$_UserLabelCopyWith<$Res> implements $UserLabelCopyWith<$Res> {
-  factory _$$_UserLabelCopyWith(
-          _$_UserLabel value, $Res Function(_$_UserLabel) then) =
-      __$$_UserLabelCopyWithImpl<$Res>;
+abstract class _$$UserLabelImplCopyWith<$Res>
+    implements $UserLabelCopyWith<$Res> {
+  factory _$$UserLabelImplCopyWith(
+          _$UserLabelImpl value, $Res Function(_$UserLabelImpl) then) =
+      __$$UserLabelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? userLabel});
 }
 
 /// @nodoc
-class __$$_UserLabelCopyWithImpl<$Res>
-    extends _$UserLabelCopyWithImpl<$Res, _$_UserLabel>
-    implements _$$_UserLabelCopyWith<$Res> {
-  __$$_UserLabelCopyWithImpl(
-      _$_UserLabel _value, $Res Function(_$_UserLabel) _then)
+class __$$UserLabelImplCopyWithImpl<$Res>
+    extends _$UserLabelCopyWithImpl<$Res, _$UserLabelImpl>
+    implements _$$UserLabelImplCopyWith<$Res> {
+  __$$UserLabelImplCopyWithImpl(
+      _$UserLabelImpl _value, $Res Function(_$UserLabelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_UserLabelCopyWithImpl<$Res>
   $Res call({
     Object? userLabel = freezed,
   }) {
-    return _then(_$_UserLabel(
+    return _then(_$UserLabelImpl(
       userLabel: freezed == userLabel
           ? _value.userLabel
           : userLabel // ignore: cast_nullable_to_non_nullable
@@ -94,11 +95,11 @@ class __$$_UserLabelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserLabel implements _UserLabel {
-  _$_UserLabel({this.userLabel = ''});
+class _$UserLabelImpl implements _UserLabel {
+  _$UserLabelImpl({this.userLabel = ''});
 
-  factory _$_UserLabel.fromJson(Map<String, dynamic> json) =>
-      _$$_UserLabelFromJson(json);
+  factory _$UserLabelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserLabelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -113,7 +114,7 @@ class _$_UserLabel implements _UserLabel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserLabel &&
+            other is _$UserLabelImpl &&
             (identical(other.userLabel, userLabel) ||
                 other.userLabel == userLabel));
   }
@@ -125,27 +126,27 @@ class _$_UserLabel implements _UserLabel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserLabelCopyWith<_$_UserLabel> get copyWith =>
-      __$$_UserLabelCopyWithImpl<_$_UserLabel>(this, _$identity);
+  _$$UserLabelImplCopyWith<_$UserLabelImpl> get copyWith =>
+      __$$UserLabelImplCopyWithImpl<_$UserLabelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserLabelToJson(
+    return _$$UserLabelImplToJson(
       this,
     );
   }
 }
 
 abstract class _UserLabel implements UserLabel {
-  factory _UserLabel({final String? userLabel}) = _$_UserLabel;
+  factory _UserLabel({final String? userLabel}) = _$UserLabelImpl;
 
   factory _UserLabel.fromJson(Map<String, dynamic> json) =
-      _$_UserLabel.fromJson;
+      _$UserLabelImpl.fromJson;
 
   @override
   String? get userLabel;
   @override
   @JsonKey(ignore: true)
-  _$$_UserLabelCopyWith<_$_UserLabel> get copyWith =>
+  _$$UserLabelImplCopyWith<_$UserLabelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

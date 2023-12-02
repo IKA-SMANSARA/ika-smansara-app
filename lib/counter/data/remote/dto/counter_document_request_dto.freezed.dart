@@ -96,12 +96,12 @@ class _$CounterDocumentRequestDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CounterDocumentRequestDTOCopyWith<$Res>
+abstract class _$$CounterDocumentRequestDTOImplCopyWith<$Res>
     implements $CounterDocumentRequestDTOCopyWith<$Res> {
-  factory _$$_CounterDocumentRequestDTOCopyWith(
-          _$_CounterDocumentRequestDTO value,
-          $Res Function(_$_CounterDocumentRequestDTO) then) =
-      __$$_CounterDocumentRequestDTOCopyWithImpl<$Res>;
+  factory _$$CounterDocumentRequestDTOImplCopyWith(
+          _$CounterDocumentRequestDTOImpl value,
+          $Res Function(_$CounterDocumentRequestDTOImpl) then) =
+      __$$CounterDocumentRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,13 +114,13 @@ abstract class _$$_CounterDocumentRequestDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CounterDocumentRequestDTOCopyWithImpl<$Res>
+class __$$CounterDocumentRequestDTOImplCopyWithImpl<$Res>
     extends _$CounterDocumentRequestDTOCopyWithImpl<$Res,
-        _$_CounterDocumentRequestDTO>
-    implements _$$_CounterDocumentRequestDTOCopyWith<$Res> {
-  __$$_CounterDocumentRequestDTOCopyWithImpl(
-      _$_CounterDocumentRequestDTO _value,
-      $Res Function(_$_CounterDocumentRequestDTO) _then)
+        _$CounterDocumentRequestDTOImpl>
+    implements _$$CounterDocumentRequestDTOImplCopyWith<$Res> {
+  __$$CounterDocumentRequestDTOImplCopyWithImpl(
+      _$CounterDocumentRequestDTOImpl _value,
+      $Res Function(_$CounterDocumentRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +130,7 @@ class __$$_CounterDocumentRequestDTOCopyWithImpl<$Res>
     Object? data = freezed,
     Object? permissions = freezed,
   }) {
-    return _then(_$_CounterDocumentRequestDTO(
+    return _then(_$CounterDocumentRequestDTOImpl(
       documentId: freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -149,15 +149,15 @@ class __$$_CounterDocumentRequestDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CounterDocumentRequestDTO implements _CounterDocumentRequestDTO {
-  const _$_CounterDocumentRequestDTO(
+class _$CounterDocumentRequestDTOImpl implements _CounterDocumentRequestDTO {
+  const _$CounterDocumentRequestDTOImpl(
       {@JsonKey(name: 'documentId') this.documentId,
       @JsonKey(name: 'data') this.data,
       @JsonKey(name: 'permissions') final List<String?>? permissions})
       : _permissions = permissions;
 
-  factory _$_CounterDocumentRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_CounterDocumentRequestDTOFromJson(json);
+  factory _$CounterDocumentRequestDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CounterDocumentRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'documentId')
@@ -185,7 +185,7 @@ class _$_CounterDocumentRequestDTO implements _CounterDocumentRequestDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CounterDocumentRequestDTO &&
+            other is _$CounterDocumentRequestDTOImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId) &&
             (identical(other.data, data) || other.data == data) &&
@@ -201,13 +201,13 @@ class _$_CounterDocumentRequestDTO implements _CounterDocumentRequestDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CounterDocumentRequestDTOCopyWith<_$_CounterDocumentRequestDTO>
-      get copyWith => __$$_CounterDocumentRequestDTOCopyWithImpl<
-          _$_CounterDocumentRequestDTO>(this, _$identity);
+  _$$CounterDocumentRequestDTOImplCopyWith<_$CounterDocumentRequestDTOImpl>
+      get copyWith => __$$CounterDocumentRequestDTOImplCopyWithImpl<
+          _$CounterDocumentRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CounterDocumentRequestDTOToJson(
+    return _$$CounterDocumentRequestDTOImplToJson(
       this,
     );
   }
@@ -218,10 +218,10 @@ abstract class _CounterDocumentRequestDTO implements CounterDocumentRequestDTO {
           {@JsonKey(name: 'documentId') final String? documentId,
           @JsonKey(name: 'data') final CounterDataDocumentRequestDTO? data,
           @JsonKey(name: 'permissions') final List<String?>? permissions}) =
-      _$_CounterDocumentRequestDTO;
+      _$CounterDocumentRequestDTOImpl;
 
   factory _CounterDocumentRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_CounterDocumentRequestDTO.fromJson;
+      _$CounterDocumentRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'documentId')
@@ -234,6 +234,6 @@ abstract class _CounterDocumentRequestDTO implements CounterDocumentRequestDTO {
   List<String?>? get permissions;
   @override
   @JsonKey(ignore: true)
-  _$$_CounterDocumentRequestDTOCopyWith<_$_CounterDocumentRequestDTO>
+  _$$CounterDocumentRequestDTOImplCopyWith<_$CounterDocumentRequestDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

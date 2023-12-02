@@ -6,9 +6,9 @@ part of 'user_profile_doc_request_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserProfileDocRequestDTO _$$_UserProfileDocRequestDTOFromJson(
+_$UserProfileDocRequestDTOImpl _$$UserProfileDocRequestDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserProfileDocRequestDTO(
+    _$UserProfileDocRequestDTOImpl(
       name: json['name'] as String?,
       email: json['email'] as String?,
       address: json['address'] as String?,
@@ -19,10 +19,11 @@ _$_UserProfileDocRequestDTO _$$_UserProfileDocRequestDTOFromJson(
       updateAt: json['updateAt'] as String?,
       isAdmin: json['isAdmin'] as bool? ?? false,
       isDeleted: json['isDeleted'] as bool? ?? false,
+      authKey: json['auth_key'] as String?,
     );
 
-Map<String, dynamic> _$$_UserProfileDocRequestDTOToJson(
-        _$_UserProfileDocRequestDTO instance) =>
+Map<String, dynamic> _$$UserProfileDocRequestDTOImplToJson(
+        _$UserProfileDocRequestDTOImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_UserProfileDocRequestDTOToJson(
       'updateAt': instance.updateAt,
       'isAdmin': instance.isAdmin,
       'isDeleted': instance.isDeleted,
+      'auth_key': instance.authKey,
     };

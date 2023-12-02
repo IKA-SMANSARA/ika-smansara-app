@@ -6,15 +6,15 @@ part of 'midtrans_transaction_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MidtransTransactionResponse _$$_MidtransTransactionResponseFromJson(
+_$MidtransTransactionResponseImpl _$$MidtransTransactionResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_MidtransTransactionResponse(
+    _$MidtransTransactionResponseImpl(
       token: json['token'] as String?,
       redirectUrl: json['redirectUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_MidtransTransactionResponseToJson(
-        _$_MidtransTransactionResponse instance) =>
+Map<String, dynamic> _$$MidtransTransactionResponseImplToJson(
+        _$MidtransTransactionResponseImpl instance) =>
     <String, dynamic>{
       'token': instance.token,
       'redirectUrl': instance.redirectUrl,

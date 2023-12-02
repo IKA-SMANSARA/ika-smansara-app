@@ -6,8 +6,9 @@ part of 'session_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SessionResponse _$$_SessionResponseFromJson(Map<String, dynamic> json) =>
-    _$_SessionResponse(
+_$SessionResponseImpl _$$SessionResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SessionResponseImpl(
       id: json['id'] as String?,
       createdAt: json['createdAt'] as String?,
       userId: json['userId'] as String?,
@@ -35,7 +36,8 @@ _$_SessionResponse _$$_SessionResponseFromJson(Map<String, dynamic> json) =>
       current: json['current'] as bool?,
     );
 
-Map<String, dynamic> _$$_SessionResponseToJson(_$_SessionResponse instance) =>
+Map<String, dynamic> _$$SessionResponseImplToJson(
+        _$SessionResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'createdAt': instance.createdAt,

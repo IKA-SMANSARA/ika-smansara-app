@@ -74,11 +74,12 @@ class _$EmailSessionRequestDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EmailSessionRequestDTOCopyWith<$Res>
+abstract class _$$EmailSessionRequestDTOImplCopyWith<$Res>
     implements $EmailSessionRequestDTOCopyWith<$Res> {
-  factory _$$_EmailSessionRequestDTOCopyWith(_$_EmailSessionRequestDTO value,
-          $Res Function(_$_EmailSessionRequestDTO) then) =
-      __$$_EmailSessionRequestDTOCopyWithImpl<$Res>;
+  factory _$$EmailSessionRequestDTOImplCopyWith(
+          _$EmailSessionRequestDTOImpl value,
+          $Res Function(_$EmailSessionRequestDTOImpl) then) =
+      __$$EmailSessionRequestDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,12 +88,13 @@ abstract class _$$_EmailSessionRequestDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EmailSessionRequestDTOCopyWithImpl<$Res>
+class __$$EmailSessionRequestDTOImplCopyWithImpl<$Res>
     extends _$EmailSessionRequestDTOCopyWithImpl<$Res,
-        _$_EmailSessionRequestDTO>
-    implements _$$_EmailSessionRequestDTOCopyWith<$Res> {
-  __$$_EmailSessionRequestDTOCopyWithImpl(_$_EmailSessionRequestDTO _value,
-      $Res Function(_$_EmailSessionRequestDTO) _then)
+        _$EmailSessionRequestDTOImpl>
+    implements _$$EmailSessionRequestDTOImplCopyWith<$Res> {
+  __$$EmailSessionRequestDTOImplCopyWithImpl(
+      _$EmailSessionRequestDTOImpl _value,
+      $Res Function(_$EmailSessionRequestDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +103,7 @@ class __$$_EmailSessionRequestDTOCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_$_EmailSessionRequestDTO(
+    return _then(_$EmailSessionRequestDTOImpl(
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -116,13 +118,13 @@ class __$$_EmailSessionRequestDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EmailSessionRequestDTO implements _EmailSessionRequestDTO {
-  const _$_EmailSessionRequestDTO(
+class _$EmailSessionRequestDTOImpl implements _EmailSessionRequestDTO {
+  const _$EmailSessionRequestDTOImpl(
       {@JsonKey(name: 'email') this.email,
       @JsonKey(name: 'password') this.password});
 
-  factory _$_EmailSessionRequestDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_EmailSessionRequestDTOFromJson(json);
+  factory _$EmailSessionRequestDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EmailSessionRequestDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'email')
@@ -140,7 +142,7 @@ class _$_EmailSessionRequestDTO implements _EmailSessionRequestDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailSessionRequestDTO &&
+            other is _$EmailSessionRequestDTOImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -153,13 +155,13 @@ class _$_EmailSessionRequestDTO implements _EmailSessionRequestDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailSessionRequestDTOCopyWith<_$_EmailSessionRequestDTO> get copyWith =>
-      __$$_EmailSessionRequestDTOCopyWithImpl<_$_EmailSessionRequestDTO>(
-          this, _$identity);
+  _$$EmailSessionRequestDTOImplCopyWith<_$EmailSessionRequestDTOImpl>
+      get copyWith => __$$EmailSessionRequestDTOImplCopyWithImpl<
+          _$EmailSessionRequestDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EmailSessionRequestDTOToJson(
+    return _$$EmailSessionRequestDTOImplToJson(
       this,
     );
   }
@@ -169,10 +171,10 @@ abstract class _EmailSessionRequestDTO implements EmailSessionRequestDTO {
   const factory _EmailSessionRequestDTO(
           {@JsonKey(name: 'email') final String? email,
           @JsonKey(name: 'password') final String? password}) =
-      _$_EmailSessionRequestDTO;
+      _$EmailSessionRequestDTOImpl;
 
   factory _EmailSessionRequestDTO.fromJson(Map<String, dynamic> json) =
-      _$_EmailSessionRequestDTO.fromJson;
+      _$EmailSessionRequestDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'email')
@@ -182,6 +184,6 @@ abstract class _EmailSessionRequestDTO implements EmailSessionRequestDTO {
   String? get password;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailSessionRequestDTOCopyWith<_$_EmailSessionRequestDTO> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EmailSessionRequestDTOImplCopyWith<_$EmailSessionRequestDTOImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

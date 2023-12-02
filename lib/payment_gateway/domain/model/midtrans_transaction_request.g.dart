@@ -6,9 +6,9 @@ part of 'midtrans_transaction_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MidtransTransactionRequest _$$_MidtransTransactionRequestFromJson(
+_$MidtransTransactionRequestImpl _$$MidtransTransactionRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_MidtransTransactionRequest(
+    _$MidtransTransactionRequestImpl(
       midtransTransactionDetailsRequest:
           json['midtransTransactionDetailsRequest'] == null
               ? null
@@ -19,12 +19,23 @@ _$_MidtransTransactionRequest _$$_MidtransTransactionRequestFromJson(
           ? null
           : MidtransCreditCardRequest.fromJson(
               json['midtransCreditCardRequest'] as Map<String, dynamic>),
+      midtransItemDetailsRequest: (json['midtransItemDetailsRequest']
+              as List<dynamic>?)
+          ?.map((e) => MidtransItemRequest.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      midtransCustomerDetailsRequest: json['midtransCustomerDetailsRequest'] ==
+              null
+          ? null
+          : MidtransCustomerDetailsRequest.fromJson(
+              json['midtransCustomerDetailsRequest'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MidtransTransactionRequestToJson(
-        _$_MidtransTransactionRequest instance) =>
+Map<String, dynamic> _$$MidtransTransactionRequestImplToJson(
+        _$MidtransTransactionRequestImpl instance) =>
     <String, dynamic>{
       'midtransTransactionDetailsRequest':
           instance.midtransTransactionDetailsRequest,
       'midtransCreditCardRequest': instance.midtransCreditCardRequest,
+      'midtransItemDetailsRequest': instance.midtransItemDetailsRequest,
+      'midtransCustomerDetailsRequest': instance.midtransCustomerDetailsRequest,
     };
