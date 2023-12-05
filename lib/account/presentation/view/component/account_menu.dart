@@ -16,8 +16,8 @@ class AccountMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
+    return InkWell(
+      onTap: onPress,
       child: Column(
         children: [
           Padding(

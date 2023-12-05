@@ -7,5 +7,13 @@ class TransactionEvent with _$TransactionEvent {
   const factory TransactionEvent.fetchData(
     String? grossAmount,
     String? orderId,
+    String? campaignId,
   ) = _FetchData;
+
+  const factory TransactionEvent.saveTransactionData(
+    String? grossAmount,
+    String? orderId,
+    String? campaignId,
+    String? statusPayment,
+  ) = _SaveTransactionData;
 }

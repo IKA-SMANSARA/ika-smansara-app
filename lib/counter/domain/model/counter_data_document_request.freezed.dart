@@ -65,25 +65,25 @@ class _$CounterDataDocumentRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CounterDataDocumentRequestCopyWith<$Res>
+abstract class _$$CounterDataDocumentRequestImplCopyWith<$Res>
     implements $CounterDataDocumentRequestCopyWith<$Res> {
-  factory _$$_CounterDataDocumentRequestCopyWith(
-          _$_CounterDataDocumentRequest value,
-          $Res Function(_$_CounterDataDocumentRequest) then) =
-      __$$_CounterDataDocumentRequestCopyWithImpl<$Res>;
+  factory _$$CounterDataDocumentRequestImplCopyWith(
+          _$CounterDataDocumentRequestImpl value,
+          $Res Function(_$CounterDataDocumentRequestImpl) then) =
+      __$$CounterDataDocumentRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? counterValue});
 }
 
 /// @nodoc
-class __$$_CounterDataDocumentRequestCopyWithImpl<$Res>
+class __$$CounterDataDocumentRequestImplCopyWithImpl<$Res>
     extends _$CounterDataDocumentRequestCopyWithImpl<$Res,
-        _$_CounterDataDocumentRequest>
-    implements _$$_CounterDataDocumentRequestCopyWith<$Res> {
-  __$$_CounterDataDocumentRequestCopyWithImpl(
-      _$_CounterDataDocumentRequest _value,
-      $Res Function(_$_CounterDataDocumentRequest) _then)
+        _$CounterDataDocumentRequestImpl>
+    implements _$$CounterDataDocumentRequestImplCopyWith<$Res> {
+  __$$CounterDataDocumentRequestImplCopyWithImpl(
+      _$CounterDataDocumentRequestImpl _value,
+      $Res Function(_$CounterDataDocumentRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +91,7 @@ class __$$_CounterDataDocumentRequestCopyWithImpl<$Res>
   $Res call({
     Object? counterValue = freezed,
   }) {
-    return _then(_$_CounterDataDocumentRequest(
+    return _then(_$CounterDataDocumentRequestImpl(
       counterValue: freezed == counterValue
           ? _value.counterValue
           : counterValue // ignore: cast_nullable_to_non_nullable
@@ -102,11 +102,12 @@ class __$$_CounterDataDocumentRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CounterDataDocumentRequest implements _CounterDataDocumentRequest {
-  const _$_CounterDataDocumentRequest({this.counterValue});
+class _$CounterDataDocumentRequestImpl implements _CounterDataDocumentRequest {
+  const _$CounterDataDocumentRequestImpl({this.counterValue});
 
-  factory _$_CounterDataDocumentRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_CounterDataDocumentRequestFromJson(json);
+  factory _$CounterDataDocumentRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$CounterDataDocumentRequestImplFromJson(json);
 
   @override
   final String? counterValue;
@@ -120,7 +121,7 @@ class _$_CounterDataDocumentRequest implements _CounterDataDocumentRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CounterDataDocumentRequest &&
+            other is _$CounterDataDocumentRequestImpl &&
             (identical(other.counterValue, counterValue) ||
                 other.counterValue == counterValue));
   }
@@ -132,13 +133,13 @@ class _$_CounterDataDocumentRequest implements _CounterDataDocumentRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CounterDataDocumentRequestCopyWith<_$_CounterDataDocumentRequest>
-      get copyWith => __$$_CounterDataDocumentRequestCopyWithImpl<
-          _$_CounterDataDocumentRequest>(this, _$identity);
+  _$$CounterDataDocumentRequestImplCopyWith<_$CounterDataDocumentRequestImpl>
+      get copyWith => __$$CounterDataDocumentRequestImplCopyWithImpl<
+          _$CounterDataDocumentRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CounterDataDocumentRequestToJson(
+    return _$$CounterDataDocumentRequestImplToJson(
       this,
     );
   }
@@ -147,15 +148,15 @@ class _$_CounterDataDocumentRequest implements _CounterDataDocumentRequest {
 abstract class _CounterDataDocumentRequest
     implements CounterDataDocumentRequest {
   const factory _CounterDataDocumentRequest({final String? counterValue}) =
-      _$_CounterDataDocumentRequest;
+      _$CounterDataDocumentRequestImpl;
 
   factory _CounterDataDocumentRequest.fromJson(Map<String, dynamic> json) =
-      _$_CounterDataDocumentRequest.fromJson;
+      _$CounterDataDocumentRequestImpl.fromJson;
 
   @override
   String? get counterValue;
   @override
   @JsonKey(ignore: true)
-  _$$_CounterDataDocumentRequestCopyWith<_$_CounterDataDocumentRequest>
+  _$$CounterDataDocumentRequestImplCopyWith<_$CounterDataDocumentRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

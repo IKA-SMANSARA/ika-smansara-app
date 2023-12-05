@@ -6,9 +6,9 @@ part of 'counter_document_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CounterDocumentResponse _$$_CounterDocumentResponseFromJson(
+_$CounterDocumentResponseImpl _$$CounterDocumentResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CounterDocumentResponse(
+    _$CounterDocumentResponseImpl(
       id: json['id'] as String?,
       collectionId: json['collectionId'] as String?,
       databaseId: json['databaseId'] as String?,
@@ -20,8 +20,8 @@ _$_CounterDocumentResponse _$$_CounterDocumentResponseFromJson(
       counterValue: json['counterValue'] as String?,
     );
 
-Map<String, dynamic> _$$_CounterDocumentResponseToJson(
-        _$_CounterDocumentResponse instance) =>
+Map<String, dynamic> _$$CounterDocumentResponseImplToJson(
+        _$CounterDocumentResponseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'collectionId': instance.collectionId,

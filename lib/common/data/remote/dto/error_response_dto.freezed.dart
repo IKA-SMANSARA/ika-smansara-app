@@ -23,7 +23,7 @@ mixin _$ErrorResponseDTO {
   @JsonKey(name: 'message')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'code')
-  String? get code => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'version')
@@ -43,7 +43,7 @@ abstract class $ErrorResponseDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'code') int? code,
       @JsonKey(name: 'type') String? type,
       @JsonKey(name: 'version') String? version});
 }
@@ -74,7 +74,7 @@ class _$ErrorResponseDTOCopyWithImpl<$Res, $Val extends ErrorResponseDTO>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -88,26 +88,26 @@ class _$ErrorResponseDTOCopyWithImpl<$Res, $Val extends ErrorResponseDTO>
 }
 
 /// @nodoc
-abstract class _$$_ErrorResponseDTOCopyWith<$Res>
+abstract class _$$ErrorResponseDTOImplCopyWith<$Res>
     implements $ErrorResponseDTOCopyWith<$Res> {
-  factory _$$_ErrorResponseDTOCopyWith(
-          _$_ErrorResponseDTO value, $Res Function(_$_ErrorResponseDTO) then) =
-      __$$_ErrorResponseDTOCopyWithImpl<$Res>;
+  factory _$$ErrorResponseDTOImplCopyWith(_$ErrorResponseDTOImpl value,
+          $Res Function(_$ErrorResponseDTOImpl) then) =
+      __$$ErrorResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'message') String? message,
-      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'code') int? code,
       @JsonKey(name: 'type') String? type,
       @JsonKey(name: 'version') String? version});
 }
 
 /// @nodoc
-class __$$_ErrorResponseDTOCopyWithImpl<$Res>
-    extends _$ErrorResponseDTOCopyWithImpl<$Res, _$_ErrorResponseDTO>
-    implements _$$_ErrorResponseDTOCopyWith<$Res> {
-  __$$_ErrorResponseDTOCopyWithImpl(
-      _$_ErrorResponseDTO _value, $Res Function(_$_ErrorResponseDTO) _then)
+class __$$ErrorResponseDTOImplCopyWithImpl<$Res>
+    extends _$ErrorResponseDTOCopyWithImpl<$Res, _$ErrorResponseDTOImpl>
+    implements _$$ErrorResponseDTOImplCopyWith<$Res> {
+  __$$ErrorResponseDTOImplCopyWithImpl(_$ErrorResponseDTOImpl _value,
+      $Res Function(_$ErrorResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_ErrorResponseDTOCopyWithImpl<$Res>
     Object? type = freezed,
     Object? version = freezed,
   }) {
-    return _then(_$_ErrorResponseDTO(
+    return _then(_$ErrorResponseDTOImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ class __$$_ErrorResponseDTOCopyWithImpl<$Res>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -141,22 +141,22 @@ class __$$_ErrorResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ErrorResponseDTO implements _ErrorResponseDTO {
-  const _$_ErrorResponseDTO(
+class _$ErrorResponseDTOImpl implements _ErrorResponseDTO {
+  const _$ErrorResponseDTOImpl(
       {@JsonKey(name: 'message') this.message,
       @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'type') this.type,
       @JsonKey(name: 'version') this.version});
 
-  factory _$_ErrorResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ErrorResponseDTOFromJson(json);
+  factory _$ErrorResponseDTOImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'message')
   final String? message;
   @override
   @JsonKey(name: 'code')
-  final String? code;
+  final int? code;
   @override
   @JsonKey(name: 'type')
   final String? type;
@@ -173,7 +173,7 @@ class _$_ErrorResponseDTO implements _ErrorResponseDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorResponseDTO &&
+            other is _$ErrorResponseDTOImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.type, type) || other.type == type) &&
@@ -187,12 +187,13 @@ class _$_ErrorResponseDTO implements _ErrorResponseDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorResponseDTOCopyWith<_$_ErrorResponseDTO> get copyWith =>
-      __$$_ErrorResponseDTOCopyWithImpl<_$_ErrorResponseDTO>(this, _$identity);
+  _$$ErrorResponseDTOImplCopyWith<_$ErrorResponseDTOImpl> get copyWith =>
+      __$$ErrorResponseDTOImplCopyWithImpl<_$ErrorResponseDTOImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ErrorResponseDTOToJson(
+    return _$$ErrorResponseDTOImplToJson(
       this,
     );
   }
@@ -200,20 +201,21 @@ class _$_ErrorResponseDTO implements _ErrorResponseDTO {
 
 abstract class _ErrorResponseDTO implements ErrorResponseDTO {
   const factory _ErrorResponseDTO(
-      {@JsonKey(name: 'message') final String? message,
-      @JsonKey(name: 'code') final String? code,
-      @JsonKey(name: 'type') final String? type,
-      @JsonKey(name: 'version') final String? version}) = _$_ErrorResponseDTO;
+          {@JsonKey(name: 'message') final String? message,
+          @JsonKey(name: 'code') final int? code,
+          @JsonKey(name: 'type') final String? type,
+          @JsonKey(name: 'version') final String? version}) =
+      _$ErrorResponseDTOImpl;
 
   factory _ErrorResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_ErrorResponseDTO.fromJson;
+      _$ErrorResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'message')
   String? get message;
   @override
   @JsonKey(name: 'code')
-  String? get code;
+  int? get code;
   @override
   @JsonKey(name: 'type')
   String? get type;
@@ -222,6 +224,6 @@ abstract class _ErrorResponseDTO implements ErrorResponseDTO {
   String? get version;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorResponseDTOCopyWith<_$_ErrorResponseDTO> get copyWith =>
+  _$$ErrorResponseDTOImplCopyWith<_$ErrorResponseDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

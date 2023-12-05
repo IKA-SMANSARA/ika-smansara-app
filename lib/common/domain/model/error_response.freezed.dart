@@ -21,7 +21,7 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ErrorResponse {
   String? get message => throw _privateConstructorUsedError;
-  String? get code => throw _privateConstructorUsedError;
+  int? get code => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   String? get version => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $ErrorResponseCopyWith<$Res> {
           ErrorResponse value, $Res Function(ErrorResponse) then) =
       _$ErrorResponseCopyWithImpl<$Res, ErrorResponse>;
   @useResult
-  $Res call({String? message, String? code, String? type, String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -80,22 +80,22 @@ class _$ErrorResponseCopyWithImpl<$Res, $Val extends ErrorResponse>
 }
 
 /// @nodoc
-abstract class _$$_ErrorResponseCopyWith<$Res>
+abstract class _$$ErrorResponseImplCopyWith<$Res>
     implements $ErrorResponseCopyWith<$Res> {
-  factory _$$_ErrorResponseCopyWith(
-          _$_ErrorResponse value, $Res Function(_$_ErrorResponse) then) =
-      __$$_ErrorResponseCopyWithImpl<$Res>;
+  factory _$$ErrorResponseImplCopyWith(
+          _$ErrorResponseImpl value, $Res Function(_$ErrorResponseImpl) then) =
+      __$$ErrorResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? message, String? code, String? type, String? version});
+  $Res call({String? message, int? code, String? type, String? version});
 }
 
 /// @nodoc
-class __$$_ErrorResponseCopyWithImpl<$Res>
-    extends _$ErrorResponseCopyWithImpl<$Res, _$_ErrorResponse>
-    implements _$$_ErrorResponseCopyWith<$Res> {
-  __$$_ErrorResponseCopyWithImpl(
-      _$_ErrorResponse _value, $Res Function(_$_ErrorResponse) _then)
+class __$$ErrorResponseImplCopyWithImpl<$Res>
+    extends _$ErrorResponseCopyWithImpl<$Res, _$ErrorResponseImpl>
+    implements _$$ErrorResponseImplCopyWith<$Res> {
+  __$$ErrorResponseImplCopyWithImpl(
+      _$ErrorResponseImpl _value, $Res Function(_$ErrorResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
     Object? type = freezed,
     Object? version = freezed,
   }) {
-    return _then(_$_ErrorResponse(
+    return _then(_$ErrorResponseImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -129,16 +129,16 @@ class __$$_ErrorResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ErrorResponse implements _ErrorResponse {
-  const _$_ErrorResponse({this.message, this.code, this.type, this.version});
+class _$ErrorResponseImpl implements _ErrorResponse {
+  const _$ErrorResponseImpl({this.message, this.code, this.type, this.version});
 
-  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ErrorResponseFromJson(json);
+  factory _$ErrorResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ErrorResponseImplFromJson(json);
 
   @override
   final String? message;
   @override
-  final String? code;
+  final int? code;
   @override
   final String? type;
   @override
@@ -153,7 +153,7 @@ class _$_ErrorResponse implements _ErrorResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorResponse &&
+            other is _$ErrorResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.type, type) || other.type == type) &&
@@ -167,12 +167,12 @@ class _$_ErrorResponse implements _ErrorResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
-      __$$_ErrorResponseCopyWithImpl<_$_ErrorResponse>(this, _$identity);
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
+      __$$ErrorResponseImplCopyWithImpl<_$ErrorResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ErrorResponseToJson(
+    return _$$ErrorResponseImplToJson(
       this,
     );
   }
@@ -181,23 +181,23 @@ class _$_ErrorResponse implements _ErrorResponse {
 abstract class _ErrorResponse implements ErrorResponse {
   const factory _ErrorResponse(
       {final String? message,
-      final String? code,
+      final int? code,
       final String? type,
-      final String? version}) = _$_ErrorResponse;
+      final String? version}) = _$ErrorResponseImpl;
 
   factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
-      _$_ErrorResponse.fromJson;
+      _$ErrorResponseImpl.fromJson;
 
   @override
   String? get message;
   @override
-  String? get code;
+  int? get code;
   @override
   String? get type;
   @override
   String? get version;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorResponseCopyWith<_$_ErrorResponse> get copyWith =>
+  _$$ErrorResponseImplCopyWith<_$ErrorResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

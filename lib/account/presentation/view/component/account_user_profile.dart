@@ -34,14 +34,6 @@ class AccountUserProfile extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              'Admin',
-              style: GoogleFonts.inter(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
-            ),
           ],
         ),
       ),

@@ -1,26 +1,36 @@
 import 'package:ika_smansara/auth/auth.dart';
+import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class CheckUserSessionStatusUseCase {
-  CheckUserSessionStatusUseCase(this._authRepository);
+  CheckUserSessionStatusUseCase(
+    this._authRepository,
+    this._getIdEmailSessionFromLocalUseCase,
+  );
 
   final AuthRepository _authRepository;
+  final GetIdEmailSessionFromLocalUseCase _getIdEmailSessionFromLocalUseCase;
 
   Future<AuthStatus> call() async {
-    final sessionIdFromLocal =
-        await _authRepository.readIdEmailSessionFromLocal();
+    return _getIdEmailSessionFromLocalUseCase().then(
+      (value) async {
+        final sessionIdFromLocal = value.sessionId ?? '';
+        final sessionIdFromRemote = await _authRepository.getEmailSession(
+          sessionIdFromLocal,
+        );
 
-    if (sessionIdFromLocal.sessionId != null) {
-      final sessionIdFromRemote = await _authRepository.getEmailSession(
-        sessionIdFromLocal.sessionId ?? '',
-      );
-
-      if (sessionIdFromRemote.data?.id == sessionIdFromLocal.sessionId) {
-        return const AuthStatus(authStatus: true);
-      }
-    }
-
-    return const AuthStatus();
+        return sessionIdFromRemote.fold(
+          (responseFailure) {
+            return AuthStatus(
+              authMessage: responseFailure.message ?? Constants.blankString,
+            );
+          },
+          (responseSuccess) {
+            return const AuthStatus(authStatus: true);
+          },
+        );
+      },
+    );
   }
 }

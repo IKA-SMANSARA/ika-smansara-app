@@ -87,24 +87,25 @@ class _$CounterEventCopyWithImpl<$Res, $Val extends CounterEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CounterEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -196,24 +197,24 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements CounterEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FetchDataCopyWith<$Res> {
-  factory _$$_FetchDataCopyWith(
-          _$_FetchData value, $Res Function(_$_FetchData) then) =
-      __$$_FetchDataCopyWithImpl<$Res>;
+abstract class _$$FetchDataImplCopyWith<$Res> {
+  factory _$$FetchDataImplCopyWith(
+          _$FetchDataImpl value, $Res Function(_$FetchDataImpl) then) =
+      __$$FetchDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? documentId});
 }
 
 /// @nodoc
-class __$$_FetchDataCopyWithImpl<$Res>
-    extends _$CounterEventCopyWithImpl<$Res, _$_FetchData>
-    implements _$$_FetchDataCopyWith<$Res> {
-  __$$_FetchDataCopyWithImpl(
-      _$_FetchData _value, $Res Function(_$_FetchData) _then)
+class __$$FetchDataImplCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res, _$FetchDataImpl>
+    implements _$$FetchDataImplCopyWith<$Res> {
+  __$$FetchDataImplCopyWithImpl(
+      _$FetchDataImpl _value, $Res Function(_$FetchDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -221,7 +222,7 @@ class __$$_FetchDataCopyWithImpl<$Res>
   $Res call({
     Object? documentId = freezed,
   }) {
-    return _then(_$_FetchData(
+    return _then(_$FetchDataImpl(
       documentId: freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -232,8 +233,8 @@ class __$$_FetchDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchData implements _FetchData {
-  const _$_FetchData({this.documentId = ''});
+class _$FetchDataImpl implements _FetchData {
+  const _$FetchDataImpl({this.documentId = ''});
 
   @override
   @JsonKey()
@@ -248,7 +249,7 @@ class _$_FetchData implements _FetchData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchData &&
+            other is _$FetchDataImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId));
   }
@@ -259,8 +260,8 @@ class _$_FetchData implements _FetchData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
-      __$$_FetchDataCopyWithImpl<_$_FetchData>(this, _$identity);
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
+      __$$FetchDataImplCopyWithImpl<_$FetchDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -338,29 +339,29 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements CounterEvent {
-  const factory _FetchData({final String? documentId}) = _$_FetchData;
+  const factory _FetchData({final String? documentId}) = _$FetchDataImpl;
 
   String? get documentId;
   @JsonKey(ignore: true)
-  _$$_FetchDataCopyWith<_$_FetchData> get copyWith =>
+  _$$FetchDataImplCopyWith<_$FetchDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_IncrementCopyWith<$Res> {
-  factory _$$_IncrementCopyWith(
-          _$_Increment value, $Res Function(_$_Increment) then) =
-      __$$_IncrementCopyWithImpl<$Res>;
+abstract class _$$IncrementImplCopyWith<$Res> {
+  factory _$$IncrementImplCopyWith(
+          _$IncrementImpl value, $Res Function(_$IncrementImpl) then) =
+      __$$IncrementImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? documentId});
 }
 
 /// @nodoc
-class __$$_IncrementCopyWithImpl<$Res>
-    extends _$CounterEventCopyWithImpl<$Res, _$_Increment>
-    implements _$$_IncrementCopyWith<$Res> {
-  __$$_IncrementCopyWithImpl(
-      _$_Increment _value, $Res Function(_$_Increment) _then)
+class __$$IncrementImplCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res, _$IncrementImpl>
+    implements _$$IncrementImplCopyWith<$Res> {
+  __$$IncrementImplCopyWithImpl(
+      _$IncrementImpl _value, $Res Function(_$IncrementImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -368,7 +369,7 @@ class __$$_IncrementCopyWithImpl<$Res>
   $Res call({
     Object? documentId = freezed,
   }) {
-    return _then(_$_Increment(
+    return _then(_$IncrementImpl(
       freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -379,8 +380,8 @@ class __$$_IncrementCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Increment implements _Increment {
-  const _$_Increment(this.documentId);
+class _$IncrementImpl implements _Increment {
+  const _$IncrementImpl(this.documentId);
 
   @override
   final String? documentId;
@@ -394,7 +395,7 @@ class _$_Increment implements _Increment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Increment &&
+            other is _$IncrementImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId));
   }
@@ -405,8 +406,8 @@ class _$_Increment implements _Increment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IncrementCopyWith<_$_Increment> get copyWith =>
-      __$$_IncrementCopyWithImpl<_$_Increment>(this, _$identity);
+  _$$IncrementImplCopyWith<_$IncrementImpl> get copyWith =>
+      __$$IncrementImplCopyWithImpl<_$IncrementImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -484,29 +485,29 @@ class _$_Increment implements _Increment {
 }
 
 abstract class _Increment implements CounterEvent {
-  const factory _Increment(final String? documentId) = _$_Increment;
+  const factory _Increment(final String? documentId) = _$IncrementImpl;
 
   String? get documentId;
   @JsonKey(ignore: true)
-  _$$_IncrementCopyWith<_$_Increment> get copyWith =>
+  _$$IncrementImplCopyWith<_$IncrementImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DecrementCopyWith<$Res> {
-  factory _$$_DecrementCopyWith(
-          _$_Decrement value, $Res Function(_$_Decrement) then) =
-      __$$_DecrementCopyWithImpl<$Res>;
+abstract class _$$DecrementImplCopyWith<$Res> {
+  factory _$$DecrementImplCopyWith(
+          _$DecrementImpl value, $Res Function(_$DecrementImpl) then) =
+      __$$DecrementImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? documentId});
 }
 
 /// @nodoc
-class __$$_DecrementCopyWithImpl<$Res>
-    extends _$CounterEventCopyWithImpl<$Res, _$_Decrement>
-    implements _$$_DecrementCopyWith<$Res> {
-  __$$_DecrementCopyWithImpl(
-      _$_Decrement _value, $Res Function(_$_Decrement) _then)
+class __$$DecrementImplCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res, _$DecrementImpl>
+    implements _$$DecrementImplCopyWith<$Res> {
+  __$$DecrementImplCopyWithImpl(
+      _$DecrementImpl _value, $Res Function(_$DecrementImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -514,7 +515,7 @@ class __$$_DecrementCopyWithImpl<$Res>
   $Res call({
     Object? documentId = freezed,
   }) {
-    return _then(_$_Decrement(
+    return _then(_$DecrementImpl(
       freezed == documentId
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
@@ -525,8 +526,8 @@ class __$$_DecrementCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Decrement implements _Decrement {
-  const _$_Decrement(this.documentId);
+class _$DecrementImpl implements _Decrement {
+  const _$DecrementImpl(this.documentId);
 
   @override
   final String? documentId;
@@ -540,7 +541,7 @@ class _$_Decrement implements _Decrement {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Decrement &&
+            other is _$DecrementImpl &&
             (identical(other.documentId, documentId) ||
                 other.documentId == documentId));
   }
@@ -551,8 +552,8 @@ class _$_Decrement implements _Decrement {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DecrementCopyWith<_$_Decrement> get copyWith =>
-      __$$_DecrementCopyWithImpl<_$_Decrement>(this, _$identity);
+  _$$DecrementImplCopyWith<_$DecrementImpl> get copyWith =>
+      __$$DecrementImplCopyWithImpl<_$DecrementImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -630,11 +631,11 @@ class _$_Decrement implements _Decrement {
 }
 
 abstract class _Decrement implements CounterEvent {
-  const factory _Decrement(final String? documentId) = _$_Decrement;
+  const factory _Decrement(final String? documentId) = _$DecrementImpl;
 
   String? get documentId;
   @JsonKey(ignore: true)
-  _$$_DecrementCopyWith<_$_Decrement> get copyWith =>
+  _$$DecrementImplCopyWith<_$DecrementImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -705,23 +706,25 @@ class _$CounterStateCopyWithImpl<$Res, $Val extends CounterState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$CounterStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CounterStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -731,7 +734,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -807,22 +810,24 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements CounterState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? counterValue});
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$CounterStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$CounterStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -830,7 +835,7 @@ class __$$SuccessCopyWithImpl<$Res>
   $Res call({
     Object? counterValue = freezed,
   }) {
-    return _then(_$Success(
+    return _then(_$SuccessImpl(
       counterValue: freezed == counterValue
           ? _value.counterValue
           : counterValue // ignore: cast_nullable_to_non_nullable
@@ -841,8 +846,8 @@ class __$$SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success({this.counterValue = 0});
+class _$SuccessImpl implements Success {
+  const _$SuccessImpl({this.counterValue = 0});
 
   @override
   @JsonKey()
@@ -857,7 +862,7 @@ class _$Success implements Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Success &&
+            other is _$SuccessImpl &&
             (identical(other.counterValue, counterValue) ||
                 other.counterValue == counterValue));
   }
@@ -868,8 +873,8 @@ class _$Success implements Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessCopyWith<_$Success> get copyWith =>
-      __$$SuccessCopyWithImpl<_$Success>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -941,32 +946,34 @@ class _$Success implements Success {
 }
 
 abstract class Success implements CounterState {
-  const factory Success({final int? counterValue}) = _$Success;
+  const factory Success({final int? counterValue}) = _$SuccessImpl;
 
   int? get counterValue;
   @JsonKey(ignore: true)
-  _$$SuccessCopyWith<_$Success> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$CounterStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CounterStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -976,7 +983,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -1052,5 +1059,5 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements CounterState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }

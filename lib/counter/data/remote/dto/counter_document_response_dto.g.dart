@@ -6,9 +6,9 @@ part of 'counter_document_response_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CounterDocumentResponseDTO _$$_CounterDocumentResponseDTOFromJson(
+_$CounterDocumentResponseDTOImpl _$$CounterDocumentResponseDTOImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CounterDocumentResponseDTO(
+    _$CounterDocumentResponseDTOImpl(
       id: json[r'$id'] as String?,
       collectionId: json[r'$collectionId'] as String?,
       databaseId: json[r'$databaseId'] as String?,
@@ -20,8 +20,8 @@ _$_CounterDocumentResponseDTO _$$_CounterDocumentResponseDTOFromJson(
       counterValue: json['counter-value'] as String?,
     );
 
-Map<String, dynamic> _$$_CounterDocumentResponseDTOToJson(
-        _$_CounterDocumentResponseDTO instance) =>
+Map<String, dynamic> _$$CounterDocumentResponseDTOImplToJson(
+        _$CounterDocumentResponseDTOImpl instance) =>
     <String, dynamic>{
       r'$id': instance.id,
       r'$collectionId': instance.collectionId,

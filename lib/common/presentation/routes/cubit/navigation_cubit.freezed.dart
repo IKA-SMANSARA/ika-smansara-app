@@ -63,22 +63,22 @@ class _$NavigationStateCopyWithImpl<$Res, $Val extends NavigationState>
 }
 
 /// @nodoc
-abstract class _$$_NavigationStateCopyWith<$Res>
+abstract class _$$NavigationStateImplCopyWith<$Res>
     implements $NavigationStateCopyWith<$Res> {
-  factory _$$_NavigationStateCopyWith(
-          _$_NavigationState value, $Res Function(_$_NavigationState) then) =
-      __$$_NavigationStateCopyWithImpl<$Res>;
+  factory _$$NavigationStateImplCopyWith(_$NavigationStateImpl value,
+          $Res Function(_$NavigationStateImpl) then) =
+      __$$NavigationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String bottomNavItems, int index});
 }
 
 /// @nodoc
-class __$$_NavigationStateCopyWithImpl<$Res>
-    extends _$NavigationStateCopyWithImpl<$Res, _$_NavigationState>
-    implements _$$_NavigationStateCopyWith<$Res> {
-  __$$_NavigationStateCopyWithImpl(
-      _$_NavigationState _value, $Res Function(_$_NavigationState) _then)
+class __$$NavigationStateImplCopyWithImpl<$Res>
+    extends _$NavigationStateCopyWithImpl<$Res, _$NavigationStateImpl>
+    implements _$$NavigationStateImplCopyWith<$Res> {
+  __$$NavigationStateImplCopyWithImpl(
+      _$NavigationStateImpl _value, $Res Function(_$NavigationStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_NavigationStateCopyWithImpl<$Res>
     Object? bottomNavItems = null,
     Object? index = null,
   }) {
-    return _then(_$_NavigationState(
+    return _then(_$NavigationStateImpl(
       bottomNavItems: null == bottomNavItems
           ? _value.bottomNavItems
           : bottomNavItems // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,9 @@ class __$$_NavigationStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NavigationState implements _NavigationState {
-  const _$_NavigationState({this.bottomNavItems = Routes.home, this.index = 0});
+class _$NavigationStateImpl implements _NavigationState {
+  const _$NavigationStateImpl(
+      {this.bottomNavItems = Routes.home, this.index = 0});
 
   @override
   @JsonKey()
@@ -121,7 +122,7 @@ class _$_NavigationState implements _NavigationState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NavigationState &&
+            other is _$NavigationStateImpl &&
             (identical(other.bottomNavItems, bottomNavItems) ||
                 other.bottomNavItems == bottomNavItems) &&
             (identical(other.index, index) || other.index == index));
@@ -133,13 +134,14 @@ class _$_NavigationState implements _NavigationState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NavigationStateCopyWith<_$_NavigationState> get copyWith =>
-      __$$_NavigationStateCopyWithImpl<_$_NavigationState>(this, _$identity);
+  _$$NavigationStateImplCopyWith<_$NavigationStateImpl> get copyWith =>
+      __$$NavigationStateImplCopyWithImpl<_$NavigationStateImpl>(
+          this, _$identity);
 }
 
 abstract class _NavigationState implements NavigationState {
   const factory _NavigationState(
-      {final String bottomNavItems, final int index}) = _$_NavigationState;
+      {final String bottomNavItems, final int index}) = _$NavigationStateImpl;
 
   @override
   String get bottomNavItems;
@@ -147,6 +149,6 @@ abstract class _NavigationState implements NavigationState {
   int get index;
   @override
   @JsonKey(ignore: true)
-  _$$_NavigationStateCopyWith<_$_NavigationState> get copyWith =>
+  _$$NavigationStateImplCopyWith<_$NavigationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

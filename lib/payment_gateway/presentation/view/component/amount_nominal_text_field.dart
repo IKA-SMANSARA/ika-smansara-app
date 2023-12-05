@@ -11,13 +11,19 @@ class AmountNominalTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    amountNominal.text = context.read<AmountValueCubit>().state;
+
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 16.h,
       ),
       child: TextField(
         onChanged: (amount) {
-          context.read<AmountValueCubit>().updateAmountValue(amount);
+          if (amount == '') {
+            context.read<AmountValueCubit>().updateAmountValue('0');
+          } else {
+            context.read<AmountValueCubit>().updateAmountValue(amount);
+          }
         },
         style: GoogleFonts.inter(
           color: Colors.black,

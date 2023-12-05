@@ -8,7 +8,7 @@ part 'error_response.g.dart';
 class ErrorResponse with _$ErrorResponse {
   const factory ErrorResponse({
     String? message,
-    String? code,
+    int? code,
     String? type,
     String? version,
   }) = _ErrorResponse;

@@ -6,15 +6,16 @@ part of 'midtrans_transaction_details_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MidtransTransactionDetailsRequest
-    _$$_MidtransTransactionDetailsRequestFromJson(Map<String, dynamic> json) =>
-        _$_MidtransTransactionDetailsRequest(
+_$MidtransTransactionDetailsRequestImpl
+    _$$MidtransTransactionDetailsRequestImplFromJson(
+            Map<String, dynamic> json) =>
+        _$MidtransTransactionDetailsRequestImpl(
           orderId: json['orderId'] as String?,
-          grossAmount: json['grossAmount'] as String?,
+          grossAmount: json['grossAmount'] as int?,
         );
 
-Map<String, dynamic> _$$_MidtransTransactionDetailsRequestToJson(
-        _$_MidtransTransactionDetailsRequest instance) =>
+Map<String, dynamic> _$$MidtransTransactionDetailsRequestImplToJson(
+        _$MidtransTransactionDetailsRequestImpl instance) =>
     <String, dynamic>{
       'orderId': instance.orderId,
       'grossAmount': instance.grossAmount,

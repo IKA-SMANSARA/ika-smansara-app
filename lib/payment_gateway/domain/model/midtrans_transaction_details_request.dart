@@ -10,7 +10,7 @@ class MidtransTransactionDetailsRequest
     with _$MidtransTransactionDetailsRequest {
   const factory MidtransTransactionDetailsRequest({
     String? orderId,
-    String? grossAmount,
+    int? grossAmount,
   }) = _MidtransTransactionDetailsRequest;
 
   factory MidtransTransactionDetailsRequest.fromJson(

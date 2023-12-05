@@ -51,7 +51,7 @@ class RegisterPortraitScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h),
-              child: const RegisterForm(),
+              child: const RegisterFormField(),
             ),
           ],
         ),

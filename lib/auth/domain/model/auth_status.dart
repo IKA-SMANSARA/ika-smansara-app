@@ -7,6 +7,7 @@ part 'auth_status.g.dart';
 class AuthStatus with _$AuthStatus {
   const factory AuthStatus({
     @Default(false) bool? authStatus,
+    @Default('') String? authMessage,
   }) = _AuthStatus;
 
   factory AuthStatus.fromJson(Map<String, dynamic> json) =>

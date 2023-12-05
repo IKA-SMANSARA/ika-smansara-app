@@ -5,7 +5,7 @@ import 'package:ika_smansara/counter/counter.dart';
 void main() async {
   await configureDependencies();
 
-  final getCounterDataUseCase = getIt<GetCounterDataUseCase>();
+  // final getCounterDataUseCase = getIt<GetCounterDataUseCase>();
 
   group('CounterBloc', () {
     test('initial state is 0 and loading is true', () {

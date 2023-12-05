@@ -6,9 +6,9 @@ part of 'counter_document_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CounterDocumentRequest _$$_CounterDocumentRequestFromJson(
+_$CounterDocumentRequestImpl _$$CounterDocumentRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CounterDocumentRequest(
+    _$CounterDocumentRequestImpl(
       documentId: json['documentId'] as String?,
       data: json['data'] == null
           ? null
@@ -19,8 +19,8 @@ _$_CounterDocumentRequest _$$_CounterDocumentRequestFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_CounterDocumentRequestToJson(
-        _$_CounterDocumentRequest instance) =>
+Map<String, dynamic> _$$CounterDocumentRequestImplToJson(
+        _$CounterDocumentRequestImpl instance) =>
     <String, dynamic>{
       'documentId': instance.documentId,
       'data': instance.data,

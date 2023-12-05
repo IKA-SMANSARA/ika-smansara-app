@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:crypto/crypto.dart';
+import 'package:currency_formatter/currency_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/common/common.dart';
-import 'package:intl/intl.dart';
 import 'package:logging/logging.dart';
 
 void keyboardDismiss(BuildContext context) {
@@ -21,26 +17,59 @@ void setupLogging() {
   });
 }
 
-String getPaymentSignatureSHA256(int? amount) {
-  final datetime = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
-  final byte = utf8.encoder.convert(
-    '${Constants.merchantCode}$amount$datetime${Constants.apiKeyPaymentGateway}',
-  );
-  final signature = sha256.convert(byte).toString();
-  return signature;
-}
-
-String getPaymentSignatureMD5(String? merchantOrderId, int? amount) {
-  final byte = utf8.encoder.convert(
-    '${Constants.merchantCode}$merchantOrderId$amount${Constants.apiKeyPaymentGateway}',
-  );
-  final signature = md5.convert(byte).toString();
-  return signature;
-}
-
-String getMerchantOrderId(String? name) {
-  final randomSecure = Random.secure();
-  final randomInt = randomSecure.nextInt(999999999);
-  final merchantOrderId = 'IKA-SMANSARA-${name?.trim()}-$randomInt';
+String getRandomOrderIdNumber(String? name) {
+  final merchantOrderId =
+      '${name?.trim()}-${DateTime.now().millisecondsSinceEpoch}';
   return merchantOrderId;
+}
+
+double getCampaignProgressIndicatorValue(
+  int goalAmount,
+  int currentAmount,
+) {
+  return (currentAmount / goalAmount) * 100 / 100;
+}
+
+String currencyFormatter(dynamic number) {
+  const idrCurrencySettings = CurrencyFormat(
+    symbol: 'Rp',
+    thousandSeparator: '.',
+    decimalSeparator: ',',
+  );
+
+  return CurrencyFormatter.format(
+    number,
+    idrCurrencySettings,
+    decimal: 0,
+  );
+}
+
+String getRemainingDays(String? dateEndCampaign) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final today = DateTime.now();
+
+    final difference = timestamp.difference(today);
+
+    final remainingDays = difference.inDays;
+
+    if (remainingDays != 0) {
+      return '$remainingDays hari lagi';
+    } else {
+      return '0 hari lagi';
+    }
+  } else {
+    return '0 hari lagi';
+  }
+}
+
+bool enableInfiniteScrollStatus({int? listLength = 0}) {
+  if (listLength != 1) {
+    return true;
+  } else {
+    return false;
+  }
 }

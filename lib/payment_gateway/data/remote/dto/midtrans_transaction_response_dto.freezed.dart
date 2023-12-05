@@ -76,12 +76,12 @@ class _$MidtransTransactionResponseDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MidtransTransactionResponseDTOCopyWith<$Res>
+abstract class _$$MidtransTransactionResponseDTOImplCopyWith<$Res>
     implements $MidtransTransactionResponseDTOCopyWith<$Res> {
-  factory _$$_MidtransTransactionResponseDTOCopyWith(
-          _$_MidtransTransactionResponseDTO value,
-          $Res Function(_$_MidtransTransactionResponseDTO) then) =
-      __$$_MidtransTransactionResponseDTOCopyWithImpl<$Res>;
+  factory _$$MidtransTransactionResponseDTOImplCopyWith(
+          _$MidtransTransactionResponseDTOImpl value,
+          $Res Function(_$MidtransTransactionResponseDTOImpl) then) =
+      __$$MidtransTransactionResponseDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -90,13 +90,13 @@ abstract class _$$_MidtransTransactionResponseDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MidtransTransactionResponseDTOCopyWithImpl<$Res>
+class __$$MidtransTransactionResponseDTOImplCopyWithImpl<$Res>
     extends _$MidtransTransactionResponseDTOCopyWithImpl<$Res,
-        _$_MidtransTransactionResponseDTO>
-    implements _$$_MidtransTransactionResponseDTOCopyWith<$Res> {
-  __$$_MidtransTransactionResponseDTOCopyWithImpl(
-      _$_MidtransTransactionResponseDTO _value,
-      $Res Function(_$_MidtransTransactionResponseDTO) _then)
+        _$MidtransTransactionResponseDTOImpl>
+    implements _$$MidtransTransactionResponseDTOImplCopyWith<$Res> {
+  __$$MidtransTransactionResponseDTOImplCopyWithImpl(
+      _$MidtransTransactionResponseDTOImpl _value,
+      $Res Function(_$MidtransTransactionResponseDTOImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,7 +105,7 @@ class __$$_MidtransTransactionResponseDTOCopyWithImpl<$Res>
     Object? token = freezed,
     Object? redirectUrl = freezed,
   }) {
-    return _then(_$_MidtransTransactionResponseDTO(
+    return _then(_$MidtransTransactionResponseDTOImpl(
       token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -120,15 +120,15 @@ class __$$_MidtransTransactionResponseDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MidtransTransactionResponseDTO
+class _$MidtransTransactionResponseDTOImpl
     implements _MidtransTransactionResponseDTO {
-  const _$_MidtransTransactionResponseDTO(
+  const _$MidtransTransactionResponseDTOImpl(
       {@JsonKey(name: 'token') this.token,
       @JsonKey(name: 'redirect_url') this.redirectUrl});
 
-  factory _$_MidtransTransactionResponseDTO.fromJson(
+  factory _$MidtransTransactionResponseDTOImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_MidtransTransactionResponseDTOFromJson(json);
+      _$$MidtransTransactionResponseDTOImplFromJson(json);
 
   @override
   @JsonKey(name: 'token')
@@ -146,7 +146,7 @@ class _$_MidtransTransactionResponseDTO
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MidtransTransactionResponseDTO &&
+            other is _$MidtransTransactionResponseDTOImpl &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.redirectUrl, redirectUrl) ||
                 other.redirectUrl == redirectUrl));
@@ -159,13 +159,14 @@ class _$_MidtransTransactionResponseDTO
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MidtransTransactionResponseDTOCopyWith<_$_MidtransTransactionResponseDTO>
-      get copyWith => __$$_MidtransTransactionResponseDTOCopyWithImpl<
-          _$_MidtransTransactionResponseDTO>(this, _$identity);
+  _$$MidtransTransactionResponseDTOImplCopyWith<
+          _$MidtransTransactionResponseDTOImpl>
+      get copyWith => __$$MidtransTransactionResponseDTOImplCopyWithImpl<
+          _$MidtransTransactionResponseDTOImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MidtransTransactionResponseDTOToJson(
+    return _$$MidtransTransactionResponseDTOImplToJson(
       this,
     );
   }
@@ -176,10 +177,10 @@ abstract class _MidtransTransactionResponseDTO
   const factory _MidtransTransactionResponseDTO(
           {@JsonKey(name: 'token') final String? token,
           @JsonKey(name: 'redirect_url') final String? redirectUrl}) =
-      _$_MidtransTransactionResponseDTO;
+      _$MidtransTransactionResponseDTOImpl;
 
   factory _MidtransTransactionResponseDTO.fromJson(Map<String, dynamic> json) =
-      _$_MidtransTransactionResponseDTO.fromJson;
+      _$MidtransTransactionResponseDTOImpl.fromJson;
 
   @override
   @JsonKey(name: 'token')
@@ -189,6 +190,7 @@ abstract class _MidtransTransactionResponseDTO
   String? get redirectUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_MidtransTransactionResponseDTOCopyWith<_$_MidtransTransactionResponseDTO>
+  _$$MidtransTransactionResponseDTOImplCopyWith<
+          _$MidtransTransactionResponseDTOImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

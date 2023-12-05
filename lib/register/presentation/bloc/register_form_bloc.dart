@@ -1,8 +1,10 @@
-// ignore_for_file: strict_raw_type, inference_failure_on_instance_creation
+// ignore_for_file: strict_raw_type, inference_failure_on_instance_creation, unused_element
 
 import 'dart:async';
 
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:ika_smansara/common/di/injection.dart';
+import 'package:ika_smansara/register/register.dart';
 
 class RegisterFormBloc extends FormBloc<String, String> {
   RegisterFormBloc() {
@@ -17,6 +19,8 @@ class RegisterFormBloc extends FormBloc<String, String> {
         isAlumnus,
       ],
     );
+
+    password.addValidators([_passwordMin8Chars(password)]);
 
     confirmPassword
       ..addValidators([FieldBlocValidators.confirmPassword(password)])
@@ -39,6 +43,16 @@ class RegisterFormBloc extends FormBloc<String, String> {
     phone
       ..addValidators([_phoneNumberFormat(phone)])
       ..subscribeToFieldBlocs([phone]);
+  }
+
+  Validator<String> _passwordMin8Chars(TextFieldBloc? passwordField) {
+    return (String? password) {
+      if (password == null || password.isEmpty || password.runes.length >= 8) {
+        return null;
+      }
+
+      return 'Password Min 8 Chars';
+    };
   }
 
   Validator<String> _phoneNumberFormat(TextFieldBloc phoneField) {
@@ -97,14 +111,12 @@ class RegisterFormBloc extends FormBloc<String, String> {
   final password = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
     ],
   );
 
   final confirmPassword = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
-      FieldBlocValidators.passwordMin6Chars,
     ],
   );
 
@@ -121,10 +133,28 @@ class RegisterFormBloc extends FormBloc<String, String> {
     return super.close();
   }
 
+  final _saveUserProfileDocUseCase = getIt<SaveUserProfileDocUseCase>();
+
   @override
   FutureOr<void> onSubmitting() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await _saveUserProfileDocUseCase(
+      address: address.value,
+      email: email.value,
+      graduateYear: graduateYear.value,
+      isAlumnus: isAlumnus.value,
+      name: fullName.value,
+      password: confirmPassword.value,
+      phone: phone.value,
+    ).then(
+      (value) {
+        final status = value.registerStatus ?? false;
 
-    emitSuccess();
+        if (status) {
+          emitSuccess();
+        } else {
+          emitFailure(failureResponse: value.registerMessage);
+        }
+      },
+    );
   }
 }
