@@ -14,6 +14,8 @@ class TransactionDataDocumentRequestDTO
     @JsonKey(name: 'amount') int? amount,
     @JsonKey(name: 'paymentStatus') String? paymentStatus,
     @JsonKey(name: 'userId') String? userId,
+    @JsonKey(name: 'campaignName') String? campaignName,
+    @JsonKey(name: 'campaignImage') String? campaignImage,
   }) = _TransactionDataDocumentRequestDTO;
 
   factory TransactionDataDocumentRequestDTO.fromJson(

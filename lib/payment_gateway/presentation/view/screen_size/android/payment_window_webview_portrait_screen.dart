@@ -11,11 +11,15 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
     required this.campaignId,
     required this.amountValue,
+    required this.campaignName,
+    required this.campaignImage,
     super.key,
   });
 
   final String? amountValue;
   final String? campaignId;
+  final String? campaignName;
+  final String? campaignImage;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +79,8 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                               'ORDER-$donationRandomID',
                               campaignId,
                               statusPayment,
+                              campaignName,
+                              campaignImage,
                             ),
                           );
 

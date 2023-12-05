@@ -9,8 +9,8 @@ import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
-import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/list_my_donation/list_my_donation.dart';
+import 'package:ika_smansara/login/login.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
@@ -113,6 +113,9 @@ class AppRoutes {
         builder: (context, state) {
           return PaymentGatewayPage(
             idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
+            campaignImage:
+                state.uri.queryParameters[Constants.imageCampaignKey],
+            campaignName: state.uri.queryParameters[Constants.nameCampaignKey],
           );
         },
       ),
@@ -124,6 +127,9 @@ class AppRoutes {
           return PaymentWindowWebViewPage(
             amountValue: state.uri.queryParameters[Constants.amountValueKey],
             campaignId: state.uri.queryParameters[Constants.idCampaignKey],
+            campaignImage:
+                state.uri.queryParameters[Constants.imageCampaignKey],
+            campaignName: state.uri.queryParameters[Constants.nameCampaignKey],
           );
         },
       ),

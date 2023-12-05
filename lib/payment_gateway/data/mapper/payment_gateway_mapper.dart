@@ -29,6 +29,8 @@ extension TransactionDataDocumentRequestExtension
         orderId: orderId,
         paymentStatus: paymentStatus,
         userId: userId,
+        campaignImage: campaignImage,
+        campaignName: campaignName,
       );
 }
 
@@ -41,6 +43,8 @@ extension TransactionDataDocumentRequestDTOExtension
         orderId: orderId,
         paymentStatus: paymentStatus,
         userId: userId,
+        campaignImage: campaignImage,
+        campaignName: campaignName,
       );
 }
 

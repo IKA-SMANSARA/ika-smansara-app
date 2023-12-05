@@ -6,11 +6,15 @@ class PaymentWindowWebViewPage extends StatelessWidget {
   const PaymentWindowWebViewPage({
     required this.campaignId,
     required this.amountValue,
+    required this.campaignName,
+    required this.campaignImage,
     super.key,
   });
 
   final String? amountValue;
   final String? campaignId;
+  final String? campaignName;
+  final String? campaignImage;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,8 @@ class PaymentWindowWebViewPage extends StatelessWidget {
         androidScreen: PaymentWindowWebViewPortraitScreen(
           amountValue: amountValue ?? '1',
           campaignId: campaignId ?? '',
+          campaignImage: campaignImage ?? '',
+          campaignName: campaignName ?? '',
         ),
       ),
     );

@@ -26,6 +26,8 @@ mixin _$TransactionDataDocumentRequest {
   int? get amount => throw _privateConstructorUsedError;
   String? get paymentStatus => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
+  String? get campaignName => throw _privateConstructorUsedError;
+  String? get campaignImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,9 @@ abstract class $TransactionDataDocumentRequestCopyWith<$Res> {
       String? campaignId,
       int? amount,
       String? paymentStatus,
-      String? userId});
+      String? userId,
+      String? campaignName,
+      String? campaignImage});
 }
 
 /// @nodoc
@@ -68,6 +72,8 @@ class _$TransactionDataDocumentRequestCopyWithImpl<$Res,
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: freezed == orderId
@@ -90,6 +96,14 @@ class _$TransactionDataDocumentRequestCopyWithImpl<$Res,
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -108,7 +122,9 @@ abstract class _$$TransactionDataDocumentRequestImplCopyWith<$Res>
       String? campaignId,
       int? amount,
       String? paymentStatus,
-      String? userId});
+      String? userId,
+      String? campaignName,
+      String? campaignImage});
 }
 
 /// @nodoc
@@ -129,6 +145,8 @@ class __$$TransactionDataDocumentRequestImplCopyWithImpl<$Res>
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
   }) {
     return _then(_$TransactionDataDocumentRequestImpl(
       orderId: freezed == orderId
@@ -151,6 +169,14 @@ class __$$TransactionDataDocumentRequestImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -164,7 +190,9 @@ class _$TransactionDataDocumentRequestImpl
       this.campaignId,
       this.amount,
       this.paymentStatus,
-      this.userId});
+      this.userId,
+      this.campaignName,
+      this.campaignImage});
 
   factory _$TransactionDataDocumentRequestImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -180,10 +208,14 @@ class _$TransactionDataDocumentRequestImpl
   final String? paymentStatus;
   @override
   final String? userId;
+  @override
+  final String? campaignName;
+  @override
+  final String? campaignImage;
 
   @override
   String toString() {
-    return 'TransactionDataDocumentRequest(orderId: $orderId, campaignId: $campaignId, amount: $amount, paymentStatus: $paymentStatus, userId: $userId)';
+    return 'TransactionDataDocumentRequest(orderId: $orderId, campaignId: $campaignId, amount: $amount, paymentStatus: $paymentStatus, userId: $userId, campaignName: $campaignName, campaignImage: $campaignImage)';
   }
 
   @override
@@ -197,13 +229,17 @@ class _$TransactionDataDocumentRequestImpl
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.campaignName, campaignName) ||
+                other.campaignName == campaignName) &&
+            (identical(other.campaignImage, campaignImage) ||
+                other.campaignImage == campaignImage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, orderId, campaignId, amount, paymentStatus, userId);
+  int get hashCode => Object.hash(runtimeType, orderId, campaignId, amount,
+      paymentStatus, userId, campaignName, campaignImage);
 
   @JsonKey(ignore: true)
   @override
@@ -228,7 +264,9 @@ abstract class _TransactionDataDocumentRequest
       final String? campaignId,
       final int? amount,
       final String? paymentStatus,
-      final String? userId}) = _$TransactionDataDocumentRequestImpl;
+      final String? userId,
+      final String? campaignName,
+      final String? campaignImage}) = _$TransactionDataDocumentRequestImpl;
 
   factory _TransactionDataDocumentRequest.fromJson(Map<String, dynamic> json) =
       _$TransactionDataDocumentRequestImpl.fromJson;
@@ -243,6 +281,10 @@ abstract class _TransactionDataDocumentRequest
   String? get paymentStatus;
   @override
   String? get userId;
+  @override
+  String? get campaignName;
+  @override
+  String? get campaignImage;
   @override
   @JsonKey(ignore: true)
   _$$TransactionDataDocumentRequestImplCopyWith<

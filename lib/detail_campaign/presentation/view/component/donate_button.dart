@@ -8,11 +8,15 @@ class DonateButton extends StatelessWidget {
   const DonateButton({
     required this.campaignStatus,
     required this.documentId,
+    required this.campaignName,
+    required this.campaignImage,
     super.key,
   });
 
   final bool campaignStatus;
   final String documentId;
+  final String campaignName;
+  final String campaignImage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,8 @@ class DonateButton extends StatelessWidget {
                 Routes.paymentGateway,
                 queryParameters: {
                   Constants.idCampaignKey: documentId,
+                  Constants.nameCampaignKey: campaignName,
+                  Constants.imageCampaignKey: campaignImage,
                 },
               ),
       child: Text(

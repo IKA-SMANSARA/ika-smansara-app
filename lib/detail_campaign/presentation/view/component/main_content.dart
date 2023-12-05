@@ -185,6 +185,10 @@ class MainContent extends StatelessWidget {
                       campaignStatus:
                           detailCampaignDocumentResponse.isActive ?? false,
                       documentId: detailCampaignDocumentResponse.id ?? '',
+                      campaignName:
+                          detailCampaignDocumentResponse.campaignName ?? '',
+                      campaignImage:
+                          detailCampaignDocumentResponse.photoThumbnail ?? '',
                     ),
                   ),
                 ],

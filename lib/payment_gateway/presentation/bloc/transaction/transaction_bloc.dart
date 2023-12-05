@@ -22,6 +22,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
             orderId,
             campaignId,
             statusPayment,
+            campaignName,
+            campaignImage,
           ) async {
             await _getUserAccountDetailUseCase().then(
               (value) {
@@ -38,6 +40,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
                       campaignId,
                       statusPayment,
                       response.id,
+                      campaignName,
+                      campaignImage,
                     ).then(
                       (value) {
                         value.fold(
