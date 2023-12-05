@@ -10,7 +10,7 @@ import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
 import 'package:ika_smansara/login/login.dart';
-import 'package:ika_smansara/my_donation/my_donation.dart';
+import 'package:ika_smansara/list_my_donation/list_my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
