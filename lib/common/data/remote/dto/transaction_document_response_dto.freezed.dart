@@ -37,6 +37,10 @@ mixin _$TransactionDocumentResponseDTO {
   String? get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: 'campaignId')
   String? get campaignId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'campaignName')
+  String? get campaignName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'campaignImage')
+  String? get campaignImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'amount')
   int? get amount => throw _privateConstructorUsedError;
   @JsonKey(name: 'paymentStatus')
@@ -67,6 +71,8 @@ abstract class $TransactionDocumentResponseDTOCopyWith<$Res> {
       @JsonKey(name: '\$permissions') List<String>? permissions,
       @JsonKey(name: 'orderId') String? orderId,
       @JsonKey(name: 'campaignId') String? campaignId,
+      @JsonKey(name: 'campaignName') String? campaignName,
+      @JsonKey(name: 'campaignImage') String? campaignImage,
       @JsonKey(name: 'amount') int? amount,
       @JsonKey(name: 'paymentStatus') String? paymentStatus,
       @JsonKey(name: 'userId') String? userId});
@@ -94,6 +100,8 @@ class _$TransactionDocumentResponseDTOCopyWithImpl<$Res,
     Object? permissions = freezed,
     Object? orderId = freezed,
     Object? campaignId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
@@ -131,6 +139,14 @@ class _$TransactionDocumentResponseDTOCopyWithImpl<$Res,
           ? _value.campaignId
           : campaignId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -165,6 +181,8 @@ abstract class _$$TransactionDocumentResponseDTOImplCopyWith<$Res>
       @JsonKey(name: '\$permissions') List<String>? permissions,
       @JsonKey(name: 'orderId') String? orderId,
       @JsonKey(name: 'campaignId') String? campaignId,
+      @JsonKey(name: 'campaignName') String? campaignName,
+      @JsonKey(name: 'campaignImage') String? campaignImage,
       @JsonKey(name: 'amount') int? amount,
       @JsonKey(name: 'paymentStatus') String? paymentStatus,
       @JsonKey(name: 'userId') String? userId});
@@ -191,6 +209,8 @@ class __$$TransactionDocumentResponseDTOImplCopyWithImpl<$Res>
     Object? permissions = freezed,
     Object? orderId = freezed,
     Object? campaignId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
@@ -228,6 +248,14 @@ class __$$TransactionDocumentResponseDTOImplCopyWithImpl<$Res>
           ? _value.campaignId
           : campaignId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
       amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -257,6 +285,8 @@ class _$TransactionDocumentResponseDTOImpl
       @JsonKey(name: '\$permissions') final List<String>? permissions,
       @JsonKey(name: 'orderId') this.orderId,
       @JsonKey(name: 'campaignId') this.campaignId,
+      @JsonKey(name: 'campaignName') this.campaignName,
+      @JsonKey(name: 'campaignImage') this.campaignImage,
       @JsonKey(name: 'amount') this.amount,
       @JsonKey(name: 'paymentStatus') this.paymentStatus,
       @JsonKey(name: 'userId') this.userId})
@@ -299,6 +329,12 @@ class _$TransactionDocumentResponseDTOImpl
   @JsonKey(name: 'campaignId')
   final String? campaignId;
   @override
+  @JsonKey(name: 'campaignName')
+  final String? campaignName;
+  @override
+  @JsonKey(name: 'campaignImage')
+  final String? campaignImage;
+  @override
   @JsonKey(name: 'amount')
   final int? amount;
   @override
@@ -310,7 +346,7 @@ class _$TransactionDocumentResponseDTOImpl
 
   @override
   String toString() {
-    return 'TransactionDocumentResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, orderId: $orderId, campaignId: $campaignId, amount: $amount, paymentStatus: $paymentStatus, userId: $userId)';
+    return 'TransactionDocumentResponseDTO(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, databaseId: $databaseId, collectionId: $collectionId, permissions: $permissions, orderId: $orderId, campaignId: $campaignId, campaignName: $campaignName, campaignImage: $campaignImage, amount: $amount, paymentStatus: $paymentStatus, userId: $userId)';
   }
 
   @override
@@ -332,6 +368,10 @@ class _$TransactionDocumentResponseDTOImpl
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.campaignId, campaignId) ||
                 other.campaignId == campaignId) &&
+            (identical(other.campaignName, campaignName) ||
+                other.campaignName == campaignName) &&
+            (identical(other.campaignImage, campaignImage) ||
+                other.campaignImage == campaignImage) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
@@ -350,6 +390,8 @@ class _$TransactionDocumentResponseDTOImpl
       const DeepCollectionEquality().hash(_permissions),
       orderId,
       campaignId,
+      campaignName,
+      campaignImage,
       amount,
       paymentStatus,
       userId);
@@ -381,6 +423,8 @@ abstract class _TransactionDocumentResponseDTO
           @JsonKey(name: '\$permissions') final List<String>? permissions,
           @JsonKey(name: 'orderId') final String? orderId,
           @JsonKey(name: 'campaignId') final String? campaignId,
+          @JsonKey(name: 'campaignName') final String? campaignName,
+          @JsonKey(name: 'campaignImage') final String? campaignImage,
           @JsonKey(name: 'amount') final int? amount,
           @JsonKey(name: 'paymentStatus') final String? paymentStatus,
           @JsonKey(name: 'userId') final String? userId}) =
@@ -413,6 +457,12 @@ abstract class _TransactionDocumentResponseDTO
   @override
   @JsonKey(name: 'campaignId')
   String? get campaignId;
+  @override
+  @JsonKey(name: 'campaignName')
+  String? get campaignName;
+  @override
+  @JsonKey(name: 'campaignImage')
+  String? get campaignImage;
   @override
   @JsonKey(name: 'amount')
   int? get amount;

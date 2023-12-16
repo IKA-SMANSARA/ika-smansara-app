@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
@@ -28,39 +29,38 @@ class MyDonationPortraitScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Assets.images.donate.image(
-              fit: BoxFit.cover,
-              height: 160.h,
-              width: double.infinity,
-            ),
-            Padding(
-              padding: EdgeInsets.all(
-                16.w,
-              ),
-              child: Text(
-                l10n.donationHistoryTitle,
-                style: GoogleFonts.inter(
-                  color: Colors.black,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w700,
+      body: BlocProvider(
+        create: (_) => MyDonationsBloc(),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CardCarousel(),
+              Padding(
+                padding: EdgeInsets.all(
+                  16.w,
+                ),
+                child: Text(
+                  l10n.donationHistoryTitle,
+                  style: GoogleFonts.inter(
+                    color: Colors.black,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 4.h),
-              child: Divider(
-                color: Colors.blueGrey.withAlpha(150),
-                thickness: 0.5.h,
-                height: 0.5.h,
+              Padding(
+                padding: EdgeInsets.only(bottom: 4.h),
+                child: Divider(
+                  color: Colors.blueGrey.withAlpha(150),
+                  thickness: 0.5.h,
+                  height: 0.5.h,
+                ),
               ),
-            ),
-            const CardDonationHistoryListView(),
-          ],
+              const CardDonationHistoryListView(),
+            ],
+          ),
         ),
       ),
     );

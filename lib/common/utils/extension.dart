@@ -66,6 +66,28 @@ String getRemainingDays(String? dateEndCampaign) {
   }
 }
 
+String countDays(String? dateEndCampaign) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final today = DateTime.now();
+
+    final difference = today.difference(timestamp);
+
+    final remainingDays = difference.inDays;
+
+    if (remainingDays != 0) {
+      return '$remainingDays hari lalu';
+    } else {
+      return '0 hari lalu';
+    }
+  } else {
+    return '0 hari lalu';
+  }
+}
+
 bool enableInfiniteScrollStatus({int? listLength = 0}) {
   if (listLength != 1) {
     return true;

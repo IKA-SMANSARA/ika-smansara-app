@@ -72,7 +72,7 @@ class CardItemDonationHistory extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Rp. $donationAmount',
+                                  '$donationAmount',
                                   style: GoogleFonts.inter(
                                     color: const Color(0xFF104993),
                                     fontSize: 12.sp,
