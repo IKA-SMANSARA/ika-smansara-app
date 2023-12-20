@@ -50,7 +50,7 @@ class CardDonationHistoryListView extends StatelessWidget {
                     Routes.detailMyDonation,
                     queryParameters: {
                       Constants.myDonationIdKey:
-                          state.listDonation?[index].orderId,
+                          state.listDonation?[index].documentId,
                     },
                   ),
                   campaignTitle: state.listDonation?[index].campaignName,

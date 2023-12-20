@@ -29,7 +29,7 @@ class SaveTransactionUseCase {
     );
 
     final transactionDocumentRequest = TransactionDocumentRequest(
-      documentId: Constants.uniqueId,
+      documentId: orderId,
       data: transactionDataDocumentRequest,
       permissions: [
         'read("user:$userId")',

@@ -13,6 +13,7 @@ extension TransactionDocumentResponseDTOExtension
         paymentStatus: paymentStatus,
         userId: userId,
         createdAt: createdAt,
+        documentId: id,
       );
 }
 

@@ -12,6 +12,22 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiServices extends ChopperService {
   static ApiServices create([ChopperClient? client]) => _$ApiServices(client);
+  // get detail user history transaction
+  @Get(
+    path:
+        'databases/${Constants.ikaSmansaraDatabaseId}/collections/${Constants.ikaSmansaraTransactionsCollectionId}/documents/{documentId}',
+    headers: {
+      Constants.accept: Constants.applicationJson,
+      Constants.xAppwriteProject: Constants.ikaSmansaraProjectId,
+      Constants.contentType: Constants.applicationJson,
+      Constants.xAppwriteResponseFormat: Constants.xAppwriteResponseFormatValue,
+      Constants.xAppwriteKey: Constants.ikaSmansaraApiKey,
+    },
+  )
+  Future<Response> getUserTransactionHistoryDetail(
+    @Path('documentId') String documentId,
+  );
+
   // get list of user history transaction
   @Get(
     path:

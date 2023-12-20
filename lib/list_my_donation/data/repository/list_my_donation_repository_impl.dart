@@ -16,7 +16,7 @@ class ListMyDonationRepositoryImpl implements ListMyDonationRepository {
   }) async {
     final responseGetListMyDonation =
         await _apiServices.getUserTransactionHistory(
-      'search("userId", ["$userId"])',
+      'search("userId", ["$userId"])&queries[]=orderDesc("\$createdAt")',
     );
 
     if (responseGetListMyDonation.isSuccessful) {

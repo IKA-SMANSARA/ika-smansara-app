@@ -30,7 +30,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
           create: (_) => TransactionBloc(),
           child: BlocBuilder<TransactionBloc, TransactionState>(
             builder: (context, state) {
-              final donationRandomID = getRandomOrderIdNumber(campaignId);
+              final donationRandomID = getRandomOrderIdNumber();
 
               if (state is Initial) {
                 context
@@ -42,7 +42,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
                         amountValue,
-                        'ORDER-$donationRandomID',
+                        'ID-$donationRandomID',
                         campaignId,
                       ),
                     );
@@ -76,7 +76,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                       context.read<TransactionBloc>().add(
                             TransactionEvent.saveTransactionData(
                               amountValue,
-                              'ORDER-$donationRandomID',
+                              'ID-$donationRandomID',
                               campaignId,
                               statusPayment,
                               campaignName,
@@ -84,7 +84,12 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                             ),
                           );
 
-                      context.go(Routes.home);
+                      context.goNamed(
+                        Routes.detailMyDonation,
+                        queryParameters: {
+                          Constants.myDonationIdKey: 'ID-$donationRandomID',
+                        },
+                      );
                       return NavigationActionPolicy.CANCEL;
                     }
                     return NavigationActionPolicy.ALLOW;

@@ -14,6 +14,7 @@ class TransactionDocumentResponse with _$TransactionDocumentResponse {
     String? paymentStatus,
     String? userId,
     String? createdAt,
+    String? documentId,
   }) = _TransactionDocumentResponse;
 
   factory TransactionDocumentResponse.fromJson(Map<String, dynamic> json) =>

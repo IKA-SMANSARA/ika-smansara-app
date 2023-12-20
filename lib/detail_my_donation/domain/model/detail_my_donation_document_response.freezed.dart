@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'transaction_document_response.dart';
+part of 'detail_my_donation_document_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TransactionDocumentResponse _$TransactionDocumentResponseFromJson(
+DetailMyDonationDocumentResponse _$DetailMyDonationDocumentResponseFromJson(
     Map<String, dynamic> json) {
-  return _TransactionDocumentResponse.fromJson(json);
+  return _DetailMyDonationDocumentResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TransactionDocumentResponse {
+mixin _$DetailMyDonationDocumentResponse {
   String? get orderId => throw _privateConstructorUsedError;
   String? get campaignId => throw _privateConstructorUsedError;
   String? get campaignName => throw _privateConstructorUsedError;
@@ -29,21 +29,20 @@ mixin _$TransactionDocumentResponse {
   String? get paymentStatus => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
-  String? get documentId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TransactionDocumentResponseCopyWith<TransactionDocumentResponse>
+  $DetailMyDonationDocumentResponseCopyWith<DetailMyDonationDocumentResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TransactionDocumentResponseCopyWith<$Res> {
-  factory $TransactionDocumentResponseCopyWith(
-          TransactionDocumentResponse value,
-          $Res Function(TransactionDocumentResponse) then) =
-      _$TransactionDocumentResponseCopyWithImpl<$Res,
-          TransactionDocumentResponse>;
+abstract class $DetailMyDonationDocumentResponseCopyWith<$Res> {
+  factory $DetailMyDonationDocumentResponseCopyWith(
+          DetailMyDonationDocumentResponse value,
+          $Res Function(DetailMyDonationDocumentResponse) then) =
+      _$DetailMyDonationDocumentResponseCopyWithImpl<$Res,
+          DetailMyDonationDocumentResponse>;
   @useResult
   $Res call(
       {String? orderId,
@@ -53,15 +52,14 @@ abstract class $TransactionDocumentResponseCopyWith<$Res> {
       int? amount,
       String? paymentStatus,
       String? userId,
-      String? createdAt,
-      String? documentId});
+      String? createdAt});
 }
 
 /// @nodoc
-class _$TransactionDocumentResponseCopyWithImpl<$Res,
-        $Val extends TransactionDocumentResponse>
-    implements $TransactionDocumentResponseCopyWith<$Res> {
-  _$TransactionDocumentResponseCopyWithImpl(this._value, this._then);
+class _$DetailMyDonationDocumentResponseCopyWithImpl<$Res,
+        $Val extends DetailMyDonationDocumentResponse>
+    implements $DetailMyDonationDocumentResponseCopyWith<$Res> {
+  _$DetailMyDonationDocumentResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -79,7 +77,6 @@ class _$TransactionDocumentResponseCopyWithImpl<$Res,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
-    Object? documentId = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: freezed == orderId
@@ -114,21 +111,17 @@ class _$TransactionDocumentResponseCopyWithImpl<$Res,
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentId: freezed == documentId
-          ? _value.documentId
-          : documentId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TransactionDocumentResponseImplCopyWith<$Res>
-    implements $TransactionDocumentResponseCopyWith<$Res> {
-  factory _$$TransactionDocumentResponseImplCopyWith(
-          _$TransactionDocumentResponseImpl value,
-          $Res Function(_$TransactionDocumentResponseImpl) then) =
-      __$$TransactionDocumentResponseImplCopyWithImpl<$Res>;
+abstract class _$$DetailMyDonationDocumentResponseImplCopyWith<$Res>
+    implements $DetailMyDonationDocumentResponseCopyWith<$Res> {
+  factory _$$DetailMyDonationDocumentResponseImplCopyWith(
+          _$DetailMyDonationDocumentResponseImpl value,
+          $Res Function(_$DetailMyDonationDocumentResponseImpl) then) =
+      __$$DetailMyDonationDocumentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,18 +132,17 @@ abstract class _$$TransactionDocumentResponseImplCopyWith<$Res>
       int? amount,
       String? paymentStatus,
       String? userId,
-      String? createdAt,
-      String? documentId});
+      String? createdAt});
 }
 
 /// @nodoc
-class __$$TransactionDocumentResponseImplCopyWithImpl<$Res>
-    extends _$TransactionDocumentResponseCopyWithImpl<$Res,
-        _$TransactionDocumentResponseImpl>
-    implements _$$TransactionDocumentResponseImplCopyWith<$Res> {
-  __$$TransactionDocumentResponseImplCopyWithImpl(
-      _$TransactionDocumentResponseImpl _value,
-      $Res Function(_$TransactionDocumentResponseImpl) _then)
+class __$$DetailMyDonationDocumentResponseImplCopyWithImpl<$Res>
+    extends _$DetailMyDonationDocumentResponseCopyWithImpl<$Res,
+        _$DetailMyDonationDocumentResponseImpl>
+    implements _$$DetailMyDonationDocumentResponseImplCopyWith<$Res> {
+  __$$DetailMyDonationDocumentResponseImplCopyWithImpl(
+      _$DetailMyDonationDocumentResponseImpl _value,
+      $Res Function(_$DetailMyDonationDocumentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -164,9 +156,8 @@ class __$$TransactionDocumentResponseImplCopyWithImpl<$Res>
     Object? paymentStatus = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
-    Object? documentId = freezed,
   }) {
-    return _then(_$TransactionDocumentResponseImpl(
+    return _then(_$DetailMyDonationDocumentResponseImpl(
       orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -199,19 +190,15 @@ class __$$TransactionDocumentResponseImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentId: freezed == documentId
-          ? _value.documentId
-          : documentId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TransactionDocumentResponseImpl
-    implements _TransactionDocumentResponse {
-  _$TransactionDocumentResponseImpl(
+class _$DetailMyDonationDocumentResponseImpl
+    implements _DetailMyDonationDocumentResponse {
+  _$DetailMyDonationDocumentResponseImpl(
       {this.orderId,
       this.campaignId,
       this.campaignName,
@@ -219,12 +206,11 @@ class _$TransactionDocumentResponseImpl
       this.amount,
       this.paymentStatus,
       this.userId,
-      this.createdAt,
-      this.documentId});
+      this.createdAt});
 
-  factory _$TransactionDocumentResponseImpl.fromJson(
+  factory _$DetailMyDonationDocumentResponseImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$TransactionDocumentResponseImplFromJson(json);
+      _$$DetailMyDonationDocumentResponseImplFromJson(json);
 
   @override
   final String? orderId;
@@ -242,19 +228,17 @@ class _$TransactionDocumentResponseImpl
   final String? userId;
   @override
   final String? createdAt;
-  @override
-  final String? documentId;
 
   @override
   String toString() {
-    return 'TransactionDocumentResponse(orderId: $orderId, campaignId: $campaignId, campaignName: $campaignName, campaignImage: $campaignImage, amount: $amount, paymentStatus: $paymentStatus, userId: $userId, createdAt: $createdAt, documentId: $documentId)';
+    return 'DetailMyDonationDocumentResponse(orderId: $orderId, campaignId: $campaignId, campaignName: $campaignName, campaignImage: $campaignImage, amount: $amount, paymentStatus: $paymentStatus, userId: $userId, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TransactionDocumentResponseImpl &&
+            other is _$DetailMyDonationDocumentResponseImpl &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.campaignId, campaignId) ||
                 other.campaignId == campaignId) &&
@@ -267,43 +251,33 @@ class _$TransactionDocumentResponseImpl
                 other.paymentStatus == paymentStatus) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.documentId, documentId) ||
-                other.documentId == documentId));
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      orderId,
-      campaignId,
-      campaignName,
-      campaignImage,
-      amount,
-      paymentStatus,
-      userId,
-      createdAt,
-      documentId);
+  int get hashCode => Object.hash(runtimeType, orderId, campaignId,
+      campaignName, campaignImage, amount, paymentStatus, userId, createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TransactionDocumentResponseImplCopyWith<_$TransactionDocumentResponseImpl>
-      get copyWith => __$$TransactionDocumentResponseImplCopyWithImpl<
-          _$TransactionDocumentResponseImpl>(this, _$identity);
+  _$$DetailMyDonationDocumentResponseImplCopyWith<
+          _$DetailMyDonationDocumentResponseImpl>
+      get copyWith => __$$DetailMyDonationDocumentResponseImplCopyWithImpl<
+          _$DetailMyDonationDocumentResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TransactionDocumentResponseImplToJson(
+    return _$$DetailMyDonationDocumentResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _TransactionDocumentResponse
-    implements TransactionDocumentResponse {
-  factory _TransactionDocumentResponse(
+abstract class _DetailMyDonationDocumentResponse
+    implements DetailMyDonationDocumentResponse {
+  factory _DetailMyDonationDocumentResponse(
       {final String? orderId,
       final String? campaignId,
       final String? campaignName,
@@ -311,11 +285,11 @@ abstract class _TransactionDocumentResponse
       final int? amount,
       final String? paymentStatus,
       final String? userId,
-      final String? createdAt,
-      final String? documentId}) = _$TransactionDocumentResponseImpl;
+      final String? createdAt}) = _$DetailMyDonationDocumentResponseImpl;
 
-  factory _TransactionDocumentResponse.fromJson(Map<String, dynamic> json) =
-      _$TransactionDocumentResponseImpl.fromJson;
+  factory _DetailMyDonationDocumentResponse.fromJson(
+          Map<String, dynamic> json) =
+      _$DetailMyDonationDocumentResponseImpl.fromJson;
 
   @override
   String? get orderId;
@@ -334,9 +308,8 @@ abstract class _TransactionDocumentResponse
   @override
   String? get createdAt;
   @override
-  String? get documentId;
-  @override
   @JsonKey(ignore: true)
-  _$$TransactionDocumentResponseImplCopyWith<_$TransactionDocumentResponseImpl>
+  _$$DetailMyDonationDocumentResponseImplCopyWith<
+          _$DetailMyDonationDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -17,6 +17,7 @@ _$TransactionDocumentResponseImpl _$$TransactionDocumentResponseImplFromJson(
       paymentStatus: json['paymentStatus'] as String?,
       userId: json['userId'] as String?,
       createdAt: json['createdAt'] as String?,
+      documentId: json['documentId'] as String?,
     );
 
 Map<String, dynamic> _$$TransactionDocumentResponseImplToJson(
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$TransactionDocumentResponseImplToJson(
       'paymentStatus': instance.paymentStatus,
       'userId': instance.userId,
       'createdAt': instance.createdAt,
+      'documentId': instance.documentId,
     };
