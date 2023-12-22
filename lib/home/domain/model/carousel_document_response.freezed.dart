@@ -140,7 +140,7 @@ class _$CarouselDocumentResponseImpl implements _CarouselDocumentResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CarouselDocumentResponseImpl &&

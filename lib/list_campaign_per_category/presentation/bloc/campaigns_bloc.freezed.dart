@@ -101,7 +101,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -221,7 +221,7 @@ class _$FetchDataImpl implements _FetchData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchDataImpl &&
@@ -412,7 +412,7 @@ class _$InitialCampaignImpl implements InitialCampaign {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialCampaignImpl);
   }
@@ -557,7 +557,7 @@ class _$SuccessCampaignImpl implements SuccessCampaign {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessCampaignImpl &&
@@ -710,7 +710,7 @@ class _$ErrorCampaignImpl implements ErrorCampaign {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorCampaignImpl &&
@@ -841,7 +841,7 @@ class _$LoadingCampaignImpl implements LoadingCampaign {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingCampaignImpl);
   }

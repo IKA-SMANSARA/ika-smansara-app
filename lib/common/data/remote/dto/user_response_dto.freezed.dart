@@ -287,7 +287,7 @@ class _$UserResponseDTOImpl implements _UserResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserResponseDTOImpl &&

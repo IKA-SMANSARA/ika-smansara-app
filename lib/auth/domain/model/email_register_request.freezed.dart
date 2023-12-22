@@ -152,7 +152,7 @@ class _$EmailRegisterRequestImpl implements _EmailRegisterRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmailRegisterRequestImpl &&

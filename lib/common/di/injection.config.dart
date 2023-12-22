@@ -38,9 +38,9 @@ import 'package:ika_smansara/common/di/api_interface_network_module.dart'
     as _i48;
 import 'package:ika_smansara/common/di/api_interface_payment_gateway_network_module.dart'
     as _i49;
-import 'package:ika_smansara/common/di/network_module.dart' as _i46;
+import 'package:ika_smansara/common/di/network_module.dart' as _i47;
 import 'package:ika_smansara/common/di/payment_gateway_network_module.dart'
-    as _i47;
+    as _i46;
 import 'package:ika_smansara/counter/counter.dart' as _i7;
 import 'package:ika_smansara/counter/data/repository/counter_repository_impl.dart'
     as _i8;
@@ -106,26 +106,26 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
     final networkModule = _$NetworkModule();
+    final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
     final apiInterfaceNetworkModule = _$ApiInterfaceNetworkModule();
     final apiInterfacePaymentGatewayNetworkModule =
         _$ApiInterfacePaymentGatewayNetworkModule();
     gh.factory<String>(
-      () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
-      instanceName: 'BASEURLPAYMENTGATEWAY',
-    );
-    gh.factory<String>(
       () => networkModule.baseURL,
       instanceName: 'BASEURL',
     );
+    gh.factory<String>(
+      () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
+      instanceName: 'BASEURLPAYMENTGATEWAY',
+    );
+    gh.lazySingleton<_i3.ChopperClient>(
+        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
     gh.lazySingleton<_i3.ChopperClient>(
       () => paymentGatewayNetworkModule
           .chopperClient(gh<String>(instanceName: 'BASEURLPAYMENTGATEWAY')),
       instanceName: 'PAYMENTGATEWAYNETWORKMODULE',
     );
-    gh.lazySingleton<_i3.ChopperClient>(
-        () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
     gh.lazySingleton<_i4.ApiServices>(
         () => apiInterfaceNetworkModule.apiServices(gh<_i3.ChopperClient>()));
     gh.lazySingleton<_i4.ApiServicesPaymentGateway>(() =>
@@ -215,9 +215,9 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$NetworkModule extends _i46.NetworkModule {}
+class _$PaymentGatewayNetworkModule extends _i46.PaymentGatewayNetworkModule {}
 
-class _$PaymentGatewayNetworkModule extends _i47.PaymentGatewayNetworkModule {}
+class _$NetworkModule extends _i47.NetworkModule {}
 
 class _$ApiInterfaceNetworkModule extends _i48.ApiInterfaceNetworkModule {}
 
