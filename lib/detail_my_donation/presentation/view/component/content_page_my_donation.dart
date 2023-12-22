@@ -18,7 +18,7 @@ class ContentPageMyDonation extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.all(8.h),
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -34,6 +34,7 @@ class ContentPageMyDonation extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                 ),
+                textScaleFactor: 1.0,
               ),
             ],
           ),

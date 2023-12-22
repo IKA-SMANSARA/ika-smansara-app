@@ -1,5 +1,5 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
 class PaymentWindowWebViewPage extends StatelessWidget {
