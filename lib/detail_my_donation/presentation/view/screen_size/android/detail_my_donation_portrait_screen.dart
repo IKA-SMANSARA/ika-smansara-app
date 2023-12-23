@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/presentation/routes/routes.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 
 class DetailMyDonationPortraitScreen extends StatelessWidget {
@@ -21,6 +23,11 @@ class DetailMyDonationPortraitScreen extends StatelessWidget {
             fontSize: 16.sp,
             fontWeight: FontWeight.w700,
           ),
+        ),
+        leading: BackButton(
+          onPressed: () {
+            context.go(Routes.home);
+          },
         ),
       ),
       body: BlocProvider(

@@ -84,13 +84,19 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                             ),
                           );
 
-                      context.goNamed(
-                        Routes.detailMyDonation,
-                        queryParameters: {
-                          Constants.myDonationIdKey: 'ID-$donationRandomID',
+                      Future.delayed(
+                        const Duration(milliseconds: 1000),
+                        () {
+                          context.goNamed(
+                            Routes.detailMyDonation,
+                            queryParameters: {
+                              Constants.myDonationIdKey: 'ID-$donationRandomID',
+                            },
+                          );
+
+                          return NavigationActionPolicy.CANCEL;
                         },
                       );
-                      return NavigationActionPolicy.CANCEL;
                     }
                     return NavigationActionPolicy.ALLOW;
                   },
