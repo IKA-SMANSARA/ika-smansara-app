@@ -1,6 +1,5 @@
 import 'package:chopper/chopper.dart';
 import 'package:ika_smansara/common/common.dart';
-import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:injectable/injectable.dart';
 
 @module
