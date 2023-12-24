@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
+import 'package:ika_smansara/detail_campaign/presentation/bloc/list_backer_bloc.dart';
 
 class DetailCampaignPortraitScreen extends StatelessWidget {
   const DetailCampaignPortraitScreen({required this.idCampaign, super.key});
@@ -11,8 +12,15 @@ class DetailCampaignPortraitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => DetailCampaignBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => DetailCampaignBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ListBackerBloc(),
+        ),
+      ],
       child: BlocBuilder<DetailCampaignBloc, DetailCampaignState>(
         builder: (context, state) {
           if (state is Loading) {

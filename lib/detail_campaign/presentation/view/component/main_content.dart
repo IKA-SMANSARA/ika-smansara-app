@@ -176,6 +176,7 @@ class MainContent extends StatelessWidget {
                     ),
                   ),
                   DonaturShortList(
+                    documentId: detailCampaignDocumentResponse.id,
                     backerCount:
                         detailCampaignDocumentResponse.backerCount ?? 0,
                   ),
