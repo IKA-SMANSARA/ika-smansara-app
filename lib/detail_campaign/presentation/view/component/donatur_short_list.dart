@@ -23,7 +23,7 @@ class DonaturShortList extends StatelessWidget {
             context.read<ListBackerBloc>().add(
                   ListBackerEvent.fetchData(documentId),
                 );
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (state is ErrorListBacker) {

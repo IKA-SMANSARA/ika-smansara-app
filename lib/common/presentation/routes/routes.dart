@@ -15,6 +15,7 @@ class Routes {
   static const listCampaignPerCategory = '/list-campaign-per-category';
   static const paymentGateway = '/payment-gateway';
   static const paymentWindowWebView = '/payment-window-web-view';
+  static const listBacker = '/list-backer';
 
   static Widget errorWidget(BuildContext context, GoRouterState state) =>
       const NotFoundPage();

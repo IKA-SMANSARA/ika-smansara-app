@@ -58,4 +58,5 @@ class Constants {
   static const myDonationIdKey = 'my donation id key';
   static const nameCampaignKey = 'name campaign';
   static const imageCampaignKey = 'image campaign';
+  static const backerCountKey = 'backer count';
 }
