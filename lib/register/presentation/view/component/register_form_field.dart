@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -52,7 +51,7 @@ class RegisterFormField extends StatelessWidget {
             child: Column(
               children: [
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.email,
                   keyboardType: TextInputType.emailAddress,
                   autofillHints: const [AutofillHints.email],
@@ -63,7 +62,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.fullName,
                   keyboardType: TextInputType.name,
                   autofillHints: const [AutofillHints.name],
@@ -74,9 +73,9 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 200.h,
+                  height: 200,
                   child: TextFieldBlocBuilder(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     maxLines: null,
                     expands: true,
                     textFieldBloc: registerFormBloc.address,
@@ -91,7 +90,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.phone,
                   keyboardType: TextInputType.phone,
                   autofillHints: const [AutofillHints.telephoneNumber],
@@ -108,7 +107,7 @@ class RegisterFormField extends StatelessWidget {
                     child: Text(
                       'Apakah anda lulusan dari SMA Negeri 1 Jepara ?',
                       style: GoogleFonts.inter(
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
@@ -116,7 +115,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.graduateYear,
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
@@ -126,7 +125,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.password,
                   keyboardType: TextInputType.visiblePassword,
                   suffixButton: SuffixButton.obscureText,
@@ -138,7 +137,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 TextFieldBlocBuilder(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   textFieldBloc: registerFormBloc.confirmPassword,
                   keyboardType: TextInputType.visiblePassword,
                   suffixButton: SuffixButton.obscureText,
@@ -150,7 +149,7 @@ class RegisterFormField extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   child: RegisterButton(
                     onSubmitted: registerFormBloc.submit,
                   ),
@@ -169,26 +168,26 @@ class RegisterFormField extends StatelessWidget {
       label: Text(
         label,
         style: GoogleFonts.inter(
-          fontSize: 16.sp,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
           color: Colors.black87,
         ),
       ),
-      contentPadding: EdgeInsets.all(6.w),
+      contentPadding: const EdgeInsets.all(6),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xff4880FF),
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffff486a),
         ),
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffBBBCBC),
         ),
@@ -197,7 +196,7 @@ class RegisterFormField extends StatelessWidget {
       filled: true,
       hintText: hint,
       hintStyle: GoogleFonts.inter(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: Colors.black45,
         fontWeight: FontWeight.w400,
       ),

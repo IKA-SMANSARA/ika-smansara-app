@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
@@ -17,21 +16,21 @@ class ContentPageMyDonation extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(8.h),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Nomor Donasi',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
                 detailMyDonationDocumentResponse.orderId ?? '',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),
                 textScaleFactor: 1.0,
@@ -40,21 +39,21 @@ class ContentPageMyDonation extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(8.h),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Tanggal',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
                 formatDate(detailMyDonationDocumentResponse.createdAt ?? ''),
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -62,21 +61,21 @@ class ContentPageMyDonation extends StatelessWidget {
           ),
         ),
         // Padding(
-        //   padding: EdgeInsets.all(8.h),
+        //   padding: EdgeInsets.all(8),
         //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     mainAxisAlignment: MainAxisAlignmentaceBetween,
         //     children: [
         //       Text(
         //         'Metode Pembayaran',
         //         style: GoogleFonts.inter(
-        //           fontSize: 14.sp,
+        //           fontSize: 14,
         //           fontWeight: FontWeight.w400,
         //         ),
         //       ),
         //       Text(
         //         'GOPAY',
         //         style: GoogleFonts.inter(
-        //           fontSize: 14.sp,
+        //           fontSize: 14,
         //           fontWeight: FontWeight.w700,
         //         ),
         //       ),
@@ -84,14 +83,14 @@ class ContentPageMyDonation extends StatelessWidget {
         //   ),
         // ),
         Padding(
-          padding: EdgeInsets.all(8.h),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Jumlah Donasi',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -100,7 +99,7 @@ class ContentPageMyDonation extends StatelessWidget {
                   detailMyDonationDocumentResponse.amount ?? '',
                 ),
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -108,14 +107,14 @@ class ContentPageMyDonation extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(8.h),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'Status',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -123,7 +122,7 @@ class ContentPageMyDonation extends StatelessWidget {
                 detailMyDonationDocumentResponse.paymentStatus ?? '',
                 style: GoogleFonts.inter(
                   color: const Color(0xFF104993),
-                  fontSize: 14.sp,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),
               ),

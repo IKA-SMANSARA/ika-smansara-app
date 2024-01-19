@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -27,7 +26,7 @@ class DonaturListHeader extends StatelessWidget {
                   text: 'Donatur ',
                   style: GoogleFonts.inter(
                     color: Colors.black,
-                    fontSize: 14.sp,
+                    fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -35,7 +34,7 @@ class DonaturListHeader extends StatelessWidget {
                   text: ' ($backerCount)',
                   style: GoogleFonts.inter(
                     color: Colors.black,
-                    fontSize: 14.sp,
+                    fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -54,7 +53,7 @@ class DonaturListHeader extends StatelessWidget {
               'Lihat semua',
               style: GoogleFonts.inter(
                 color: const Color(0xFF104993),
-                fontSize: 12.sp,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),

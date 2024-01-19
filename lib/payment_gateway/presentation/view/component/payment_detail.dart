@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/utils/extension.dart';
@@ -23,11 +22,11 @@ class PaymentDetail extends StatelessWidget {
         Text(
           'Informasi Pembayaran Donasi',
           style: GoogleFonts.inter(
-            fontSize: 14.sp,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
         ),
-        Gap(8.h),
+        const Gap(8),
         BlocBuilder<DetailCampaignBloc, DetailCampaignState>(
           builder: (context, state) {
             if (state is Loading) {
@@ -52,9 +51,9 @@ class PaymentDetail extends StatelessWidget {
               return Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 4.h,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +61,7 @@ class PaymentDetail extends StatelessWidget {
                         Text(
                           'Nama Acara',
                           style: GoogleFonts.inter(
-                            fontSize: 14.sp,
+                            fontSize: 14,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -71,7 +70,7 @@ class PaymentDetail extends StatelessWidget {
                             state.detailCampaignDocumentResponse.campaignName ??
                                 '',
                             style: GoogleFonts.inter(
-                              fontSize: 12.sp,
+                              fontSize: 12,
                               fontWeight: FontWeight.w400,
                             ),
                             textAlign: TextAlign.end,
@@ -81,9 +80,9 @@ class PaymentDetail extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 4.h,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +90,7 @@ class PaymentDetail extends StatelessWidget {
                         Text(
                           'Total Donasi',
                           style: GoogleFonts.inter(
-                            fontSize: 16.sp,
+                            fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF104993),
                           ),
@@ -99,7 +98,7 @@ class PaymentDetail extends StatelessWidget {
                         Text(
                           currencyFormatter(amount),
                           style: GoogleFonts.inter(
-                            fontSize: 16.sp,
+                            fontSize: 16,
                             fontWeight: FontWeight.w700,
                           ),
                         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/account/account.dart';
 
 class IsAdminAccountScreen extends StatelessWidget {
@@ -13,14 +12,14 @@ class IsAdminAccountScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              height: 250.h,
+              height: 250,
               decoration: const BoxDecoration(color: Color(0xFF104993)),
             ),
             const AccountAdminProfile(),
-            Center(
+            const Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 230.h),
-                child: const CreateCampaignButton(),
+                padding: EdgeInsets.only(top: 230),
+                child: CreateCampaignButton(),
               ),
             ),
             const AccountAdminMenuList(),

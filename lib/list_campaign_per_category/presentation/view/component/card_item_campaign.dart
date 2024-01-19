@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,7 +25,7 @@ class CardItemCampaign extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: SizedBox(
-        height: 100.h,
+        height: 100,
         child: Column(
           children: [
             Expanded(
@@ -36,12 +35,12 @@ class CardItemCampaign extends StatelessWidget {
                     child: AspectRatio(
                       aspectRatio: 16 / 9,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.r),
+                        borderRadius: BorderRadius.circular(8),
                         child: campaignImage ?? const Placeholder(),
                       ),
                     ),
                   ),
-                  Gap(8.w),
+                  const Gap(8),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +52,7 @@ class CardItemCampaign extends StatelessWidget {
                           maxLines: 3,
                           style: GoogleFonts.inter(
                             color: Colors.black,
-                            fontSize: 12.sp,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -66,11 +65,11 @@ class CardItemCampaign extends StatelessWidget {
                               maxLines: 3,
                               style: GoogleFonts.inter(
                                 color: Colors.black,
-                                fontSize: 8.sp,
+                                fontSize: 8,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            Gap(4.h),
+                            const Gap(4),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -80,7 +79,7 @@ class CardItemCampaign extends StatelessWidget {
                                   maxLines: 3,
                                   style: GoogleFonts.inter(
                                     color: const Color(0xFF104993),
-                                    fontSize: 12.sp,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -90,14 +89,14 @@ class CardItemCampaign extends StatelessWidget {
                                   maxLines: 3,
                                   style: GoogleFonts.inter(
                                     color: Colors.black,
-                                    fontSize: 8.sp,
+                                    fontSize: 8,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 4.h,
+                            const SizedBox(
+                              height: 4,
                             ),
                             LinearProgressIndicator(
                               value: campaignProgressIndicator,
@@ -111,11 +110,11 @@ class CardItemCampaign extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Divider(
                 color: Colors.blueGrey.withAlpha(150),
-                thickness: 0.5.h,
-                height: 0.5.h,
+                thickness: 0.5,
+                height: 0.5,
               ),
             ),
           ],

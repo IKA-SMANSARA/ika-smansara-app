@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardItemDonationHistory extends StatelessWidget {
@@ -23,28 +22,28 @@ class CardItemDonationHistory extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: SizedBox(
-        height: 90.h,
+        height: 90,
         child: Column(
           children: [
             Expanded(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
                     Expanded(
                       child: AspectRatio(
                         aspectRatio: 16 / 9,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.w),
+                          borderRadius: BorderRadius.circular(8),
                           child: campaignImage ?? const Placeholder(),
                         ),
                       ),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 4.h,
-                          horizontal: 8.w,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 4,
+                          horizontal: 8,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +55,7 @@ class CardItemDonationHistory extends StatelessWidget {
                               maxLines: 3,
                               style: GoogleFonts.inter(
                                 color: Colors.black,
-                                fontSize: 12.sp,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -67,7 +66,7 @@ class CardItemDonationHistory extends StatelessWidget {
                                   createdDonationAt ?? '',
                                   style: GoogleFonts.inter(
                                     color: Colors.black,
-                                    fontSize: 10.sp,
+                                    fontSize: 10,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -75,7 +74,7 @@ class CardItemDonationHistory extends StatelessWidget {
                                   '$donationAmount',
                                   style: GoogleFonts.inter(
                                     color: const Color(0xFF104993),
-                                    fontSize: 12.sp,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -90,11 +89,11 @@ class CardItemDonationHistory extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.h),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Divider(
                 color: Colors.blueGrey.withAlpha(150),
-                thickness: 0.5.h,
-                height: 0.5.h,
+                thickness: 0.5,
+                height: 0.5,
               ),
             ),
           ],

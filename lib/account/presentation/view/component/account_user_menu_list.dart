@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
@@ -19,30 +18,30 @@ class AccountUserMenuList extends StatelessWidget {
       },
       builder: (context, state) {
         return Padding(
-          padding: EdgeInsets.only(top: 270.h),
+          padding: const EdgeInsets.only(top: 270),
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.h),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Divider(
                   color: Colors.blueGrey.withAlpha(150),
-                  thickness: 0.5.h,
-                  height: 0.5.h,
+                  thickness: 0.5,
+                  height: 0.5,
                 ),
               ),
               AccountMenu(
                 onPress: () {},
                 menuIcon: Assets.images.person.svg(
-                  width: 20.w,
-                  height: 20.h,
+                  width: 20,
+                  height: 20,
                 ),
                 menuTitle: 'Ubah Profile',
               ),
               AccountMenu(
                 onPress: () {},
                 menuIcon: Assets.images.about.svg(
-                  width: 20.w,
-                  height: 20.h,
+                  width: 20,
+                  height: 20,
                 ),
                 menuTitle: 'Tentang IKA SMANSARA',
               ),
@@ -51,8 +50,8 @@ class AccountUserMenuList extends StatelessWidget {
                   return context.read<LogoutCubit>().logout();
                 },
                 menuIcon: Assets.images.logout.svg(
-                  width: 20.w,
-                  height: 20.h,
+                  width: 20,
+                  height: 20,
                 ),
                 menuTitle: 'Keluar',
               ),

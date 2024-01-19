@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,16 +14,16 @@ class DetailAmountDonation extends StatelessWidget {
       tilePadding: EdgeInsets.zero,
       title: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.person,
-            size: 16.sp,
+            size: 16,
           ),
-          Gap(4.w),
+          const Gap(4),
           Text(
             backerCount,
             style: GoogleFonts.inter(
               color: Colors.black,
-              fontSize: 12.sp,
+              fontSize: 12,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -32,7 +31,7 @@ class DetailAmountDonation extends StatelessWidget {
             ' orang telah berdonasi',
             style: GoogleFonts.inter(
               color: Colors.black,
-              fontSize: 12.sp,
+              fontSize: 12,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -40,26 +39,26 @@ class DetailAmountDonation extends StatelessWidget {
       ),
       children: [
         // Padding(
-        //   padding: EdgeInsets.only(bottom: 8.h),
+        //   padding: EdgeInsets.only(bottom: 8),
         //   child: Container(
         //     decoration: ShapeDecoration(
         //       color: const Color(0x7FD9D9D9),
         //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(8.r),
+        //         borderRadius: BorderRadius.circular(8),
         //       ),
         //     ),
         //     child: Padding(
-        //       padding: EdgeInsets.all(8.h),
+        //       padding: EdgeInsets.all(8),
         //       child: Column(
         //         children: [
         //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //             mainAxisAlignment: MainAxisAlignmentaceBetween,
         //             children: [
         //               Text(
         //                 'Dana untuk penggalang dana',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w400,
         //                 ),
         //               ),
@@ -67,23 +66,23 @@ class DetailAmountDonation extends StatelessWidget {
         //                 'Rp. 9.000.000',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w400,
         //                 ),
         //               ),
         //             ],
         //           ),
         //           SizedBox(
-        //             height: 4.h,
+        //             height: 4,
         //           ),
         //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //             mainAxisAlignment: MainAxisAlignmentaceBetween,
         //             children: [
         //               Text(
         //                 'Biaya transaksi pihak ketiga',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w400,
         //                 ),
         //               ),
@@ -91,29 +90,29 @@ class DetailAmountDonation extends StatelessWidget {
         //                 '- Rp. 500.000',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w400,
         //                 ),
         //               ),
         //             ],
         //           ),
         //           SizedBox(
-        //             height: 4.h,
+        //             height: 4,
         //           ),
         //           const Divider(
         //             color: Colors.white,
         //           ),
         //           SizedBox(
-        //             height: 4.h,
+        //             height: 4,
         //           ),
         //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //             mainAxisAlignment: MainAxisAlignmentaceBetween,
         //             children: [
         //               Text(
         //                 'Dana Bersih',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w700,
         //                 ),
         //               ),
@@ -121,14 +120,14 @@ class DetailAmountDonation extends StatelessWidget {
         //                 'Rp. 8.500.000',
         //                 style: GoogleFonts.inter(
         //                   color: Colors.black,
-        //                   fontSize: 12.sp,
+        //                   fontSize: 12,
         //                   fontWeight: FontWeight.w700,
         //                 ),
         //               ),
         //             ],
         //           ),
         //           SizedBox(
-        //             height: 4.h,
+        //             height: 4,
         //           ),
         //         ],
         //       ),

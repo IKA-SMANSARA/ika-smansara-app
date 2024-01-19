@@ -1,7 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/app/app.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
@@ -27,23 +26,19 @@ class AppScreen extends StatelessWidget {
       builder: (context, message) {
         Constants.logger.d(message.notification?.title);
 
-        return ScreenUtilInit(
-          builder: (context, child) => MaterialApp.router(
-            routeInformationProvider: AppRoutes.router.routeInformationProvider,
-            routeInformationParser: AppRoutes.router.routeInformationParser,
-            routerDelegate: AppRoutes.router.routerDelegate,
-            theme: ThemeData(
-              appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-              colorScheme: ColorScheme.fromSwatch(
-                accentColor: const Color(0xFF13B9FF),
-              ),
-              useMaterial3: false,
+        return MaterialApp.router(
+          routeInformationProvider: AppRoutes.router.routeInformationProvider,
+          routeInformationParser: AppRoutes.router.routeInformationParser,
+          routerDelegate: AppRoutes.router.routerDelegate,
+          theme: ThemeData(
+            appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+            colorScheme: ColorScheme.fromSwatch(
+              accentColor: const Color(0xFF13B9FF),
             ),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
+            useMaterial3: false,
           ),
-          splitScreenMode: true,
-          minTextAdapt: true,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
         );
       },
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/utils/extension.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
@@ -15,17 +14,17 @@ class DonaturCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: EdgeInsets.all(8.h),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 SizedBox(
-                  height: 40.h,
+                  height: 40,
                   child: CircleAvatar(
-                    minRadius: 10.w,
-                    maxRadius: 30.w,
+                    minRadius: 10,
+                    maxRadius: 30,
                     backgroundImage: Assets.images.donate.provider(),
                   ),
                 ),
@@ -36,7 +35,7 @@ class DonaturCard extends StatelessWidget {
                       name ?? '-',
                       style: GoogleFonts.inter(
                         color: Colors.black,
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -44,7 +43,7 @@ class DonaturCard extends StatelessWidget {
                       countDays(createdAt ?? ''),
                       style: GoogleFonts.inter(
                         color: Colors.black,
-                        fontSize: 8.sp,
+                        fontSize: 8,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -58,7 +57,7 @@ class DonaturCard extends StatelessWidget {
               ),
               style: GoogleFonts.inter(
                 color: Colors.black,
-                fontSize: 12.sp,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),

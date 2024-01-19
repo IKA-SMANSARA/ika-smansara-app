@@ -15,6 +15,6 @@ class MidtransCustomerDetailsRequestDTO
   }) = _MidtransCustomerDetailsRequestDTO;
 
   factory MidtransCustomerDetailsRequestDTO.fromJson(
-          Map<String, dynamic> json) =>
+          Map<String, dynamic> json,) =>
       _$MidtransCustomerDetailsRequestDTOFromJson(json);
 }

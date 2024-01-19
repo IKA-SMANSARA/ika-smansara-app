@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
@@ -30,7 +29,7 @@ class Categories extends StatelessWidget {
 
         if (state is SuccessCategories) {
           return GridView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
             ),
@@ -43,8 +42,7 @@ class Categories extends StatelessWidget {
                 onPress: () => context.pushNamed(
                   Routes.listCampaignPerCategory,
                   queryParameters: {
-                    Constants.categoryNameKey:
-                        category?.nameCategory,
+                    Constants.categoryNameKey: category?.nameCategory,
                   },
                 ),
                 categoryIcon: SvgPicture.network(
