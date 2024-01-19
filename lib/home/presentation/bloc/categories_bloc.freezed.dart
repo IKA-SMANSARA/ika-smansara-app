@@ -101,7 +101,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -203,7 +203,7 @@ class _$FetchDataImpl implements _FetchData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$FetchDataImpl);
   }
@@ -380,7 +380,7 @@ class _$InitialCategoriesImpl implements InitialCategories {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialCategoriesImpl);
   }
@@ -526,7 +526,7 @@ class _$SuccessCategoriesImpl implements SuccessCategories {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessCategoriesImpl &&
@@ -679,7 +679,7 @@ class _$ErrorCategoriesImpl implements ErrorCategories {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorCategoriesImpl &&
@@ -812,7 +812,7 @@ class _$LoadingCategoriesImpl implements LoadingCategories {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingCategoriesImpl);
   }

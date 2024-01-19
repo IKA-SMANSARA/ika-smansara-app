@@ -10,9 +10,16 @@ import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/payment_gateway/presentation/view/component/title_wording.dart';
 
 class PaymentGatewayPortraitScreen extends StatelessWidget {
-  const PaymentGatewayPortraitScreen({required this.idCampaign, super.key});
+  const PaymentGatewayPortraitScreen({
+    required this.idCampaign,
+    required this.campaignName,
+    required this.campaignImage,
+    super.key,
+  });
 
   final String idCampaign;
+  final String? campaignName;
+  final String? campaignImage;
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +84,8 @@ class PaymentGatewayPortraitScreen extends StatelessWidget {
                       queryParameters: {
                         Constants.amountValueKey: state,
                         Constants.idCampaignKey: idCampaign,
+                        Constants.nameCampaignKey: campaignName,
+                        Constants.imageCampaignKey: campaignImage,
                       },
                     ),
                   ),

@@ -1,5 +1,5 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/common/presentation/utils/adaptive_responsive_utils/adaptive_screen.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 
 class DetailMyDonationPage extends StatelessWidget {

@@ -1,6 +1,6 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/account/account.dart';
-import 'package:ika_smansara/common/common.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});

@@ -11,11 +11,15 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
   const PaymentWindowWebViewPortraitScreen({
     required this.campaignId,
     required this.amountValue,
+    required this.campaignName,
+    required this.campaignImage,
     super.key,
   });
 
   final String? amountValue;
   final String? campaignId;
+  final String? campaignName;
+  final String? campaignImage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
           create: (_) => TransactionBloc(),
           child: BlocBuilder<TransactionBloc, TransactionState>(
             builder: (context, state) {
-              final donationRandomID = getRandomOrderIdNumber(campaignId);
+              final donationRandomID = getRandomOrderIdNumber();
 
               if (state is Initial) {
                 context
@@ -38,7 +42,7 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                 context.read<TransactionBloc>().add(
                       TransactionEvent.fetchData(
                         amountValue,
-                        'ORDER-$donationRandomID',
+                        'ID-$donationRandomID',
                         campaignId,
                       ),
                     );
@@ -72,14 +76,27 @@ class PaymentWindowWebViewPortraitScreen extends StatelessWidget {
                       context.read<TransactionBloc>().add(
                             TransactionEvent.saveTransactionData(
                               amountValue,
-                              'ORDER-$donationRandomID',
+                              'ID-$donationRandomID',
                               campaignId,
                               statusPayment,
+                              campaignName,
+                              campaignImage,
                             ),
                           );
 
-                      context.go(Routes.home);
-                      return NavigationActionPolicy.CANCEL;
+                      Future.delayed(
+                        const Duration(milliseconds: 1000),
+                        () {
+                          context.goNamed(
+                            Routes.detailMyDonation,
+                            queryParameters: {
+                              Constants.myDonationIdKey: 'ID-$donationRandomID',
+                            },
+                          );
+
+                          return NavigationActionPolicy.CANCEL;
+                        },
+                      );
                     }
                     return NavigationActionPolicy.ALLOW;
                   },

@@ -101,7 +101,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -203,7 +203,7 @@ class _$FetchDataImpl implements _FetchData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$FetchDataImpl);
   }
@@ -380,7 +380,7 @@ class _$InitialCarouselImpl implements InitialCarousel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialCarouselImpl);
   }
@@ -526,7 +526,7 @@ class _$SuccessCarouselImpl implements SuccessCarousel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessCarouselImpl &&
@@ -679,7 +679,7 @@ class _$ErrorCarouselImpl implements ErrorCarousel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorCarouselImpl &&
@@ -810,7 +810,7 @@ class _$LoadingCarouselImpl implements LoadingCarousel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingCarouselImpl);
   }

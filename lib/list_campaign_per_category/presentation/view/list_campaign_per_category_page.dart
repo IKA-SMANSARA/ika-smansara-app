@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/list_campaign_per_category/presentation/view/screen_size/android/list_campaign_per_category_portrait_screen.dart';

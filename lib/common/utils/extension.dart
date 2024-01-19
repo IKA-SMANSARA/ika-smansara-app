@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:currency_formatter/currency_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:logging/logging.dart';
 
@@ -17,9 +20,10 @@ void setupLogging() {
   });
 }
 
-String getRandomOrderIdNumber(String? name) {
+String getRandomOrderIdNumber() {
+  final randomInt = Random().nextInt(99999) + 1000;
   final merchantOrderId =
-      '${name?.trim()}-${DateTime.now().millisecondsSinceEpoch}';
+      '$randomInt-${DateTime.now().millisecondsSinceEpoch}';
   return merchantOrderId;
 }
 
@@ -66,10 +70,45 @@ String getRemainingDays(String? dateEndCampaign) {
   }
 }
 
+String countDays(String? dateEndCampaign) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final today = DateTime.now();
+
+    final difference = today.difference(timestamp);
+
+    final remainingDays = difference.inDays;
+
+    if (remainingDays != 0) {
+      return '$remainingDays hari lalu';
+    } else {
+      return '0 hari lalu';
+    }
+  } else {
+    return '0 hari lalu';
+  }
+}
+
 bool enableInfiniteScrollStatus({int? listLength = 0}) {
   if (listLength != 1) {
     return true;
   } else {
     return false;
+  }
+}
+
+String formatDate(String timestampString) {
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final formatter = DateFormat('d MMMM y', 'id');
+    final formattedDate = formatter.format(timestamp);
+
+    return formattedDate;
+  } else {
+    return 'Failed Date';
   }
 }

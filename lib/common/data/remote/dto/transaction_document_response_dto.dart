@@ -16,6 +16,8 @@ class TransactionDocumentResponseDTO with _$TransactionDocumentResponseDTO {
     @JsonKey(name: '\$permissions') List<String>? permissions,
     @JsonKey(name: 'orderId') String? orderId,
     @JsonKey(name: 'campaignId') String? campaignId,
+    @JsonKey(name: 'campaignName') String? campaignName,
+    @JsonKey(name: 'campaignImage') String? campaignImage,
     @JsonKey(name: 'amount') int? amount,
     @JsonKey(name: 'paymentStatus') String? paymentStatus,
     @JsonKey(name: 'userId') String? userId,

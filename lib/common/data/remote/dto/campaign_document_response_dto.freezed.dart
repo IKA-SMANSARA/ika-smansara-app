@@ -429,7 +429,7 @@ class _$CampaignItemResponseDTOImpl implements _CampaignItemResponseDTO {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CampaignItemResponseDTOImpl &&

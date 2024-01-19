@@ -1,6 +1,8 @@
 export 'data/mapper/detail_campaign_mapper.dart';
 export 'data/repository/detail_campaign_repository_impl.dart';
+export 'domain/model/backer_document.dart';
 export 'domain/model/detail_campaign_document_response.dart';
+export 'domain/model/list_backer.dart';
 export 'domain/repository/detail_campaign_repository.dart';
 export 'domain/use_case/get_detail_campaign_use_case/get_detail_campaign_use_case.dart';
 export 'presentation/bloc/detail_campaign_bloc.dart';

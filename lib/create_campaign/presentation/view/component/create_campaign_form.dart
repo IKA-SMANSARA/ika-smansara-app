@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/create_campaign/create_campaign.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreateCampaignForm extends StatelessWidget {
   const CreateCampaignForm({super.key});
@@ -11,8 +15,15 @@ class CreateCampaignForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.h),
-      child: BlocProvider(
-        create: (_) => CreateCampaignFormBloc(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => CreateCampaignFormBloc(),
+          ),
+          BlocProvider(
+            create: (_) => ImageCubit(),
+          )
+        ],
         child: Builder(
           builder: (context) {
             final createCampaignFormBloc =
@@ -28,9 +39,53 @@ class CreateCampaignForm extends StatelessWidget {
                     ScrollViewKeyboardDismissBehavior.onDrag,
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 16.h,
+                    Gap(16.h),
+                    BlocBuilder<ImageCubit, ImageState>(
+                      buildWhen: (previous, current) =>
+                          previous.image != current.image,
+                      builder: (context, state) {
+                        return Column(
+                          children: [
+                            if (state.image == null)
+                              const Icon(
+                                Icons.image_rounded,
+                                size: 70,
+                              ),
+                            if (state.image != null)
+                              Image.file(
+                                state.image ?? File('assets/images/a1.webp'),
+                                height: 200,
+                              ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF104993),
+                                minimumSize: Size(350.w, 36.h),
+                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              ),
+                              onPressed: () async {
+                                final image = await ImagePicker().pickImage(
+                                  source: ImageSource.gallery,
+                                );
+                                if (image == null) return;
+                                // ignore: use_build_context_synchronously
+                                await context.read<ImageCubit>().setImage(
+                                      File(image.path),
+                                    );
+                              },
+                              child: Text(
+                                'Gambar Poster Galang Dana',
+                                style: GoogleFonts.inter(
+                                  color: Colors.white,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
+                    Gap(16.h),
                     TextFieldBlocBuilder(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
                       textFieldBloc: createCampaignFormBloc.title,

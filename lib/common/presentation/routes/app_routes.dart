@@ -6,11 +6,12 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/create_campaign/create_campaign.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
+import 'package:ika_smansara/detail_campaign/presentation/view/screen_size/android/list_backer_screen.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
+import 'package:ika_smansara/list_my_donation/list_my_donation.dart';
 import 'package:ika_smansara/login/login.dart';
-import 'package:ika_smansara/my_donation/my_donation.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:ika_smansara/register/register.dart';
 
@@ -57,6 +58,15 @@ class AppRoutes {
         name: Routes.createCampaign,
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const CreateCampaignPage(),
+      ),
+      GoRoute(
+        path: Routes.listBacker,
+        name: Routes.listBacker,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => ListBackerScreen(
+          backerCount: state.uri.queryParameters[Constants.backerCountKey],
+          documentId: state.uri.queryParameters[Constants.idCampaignKey],
+        ),
       ),
       GoRoute(
         name: Routes.register,
@@ -113,6 +123,9 @@ class AppRoutes {
         builder: (context, state) {
           return PaymentGatewayPage(
             idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
+            campaignImage:
+                state.uri.queryParameters[Constants.imageCampaignKey],
+            campaignName: state.uri.queryParameters[Constants.nameCampaignKey],
           );
         },
       ),
@@ -124,6 +137,9 @@ class AppRoutes {
           return PaymentWindowWebViewPage(
             amountValue: state.uri.queryParameters[Constants.amountValueKey],
             campaignId: state.uri.queryParameters[Constants.idCampaignKey],
+            campaignImage:
+                state.uri.queryParameters[Constants.imageCampaignKey],
+            campaignName: state.uri.queryParameters[Constants.nameCampaignKey],
           );
         },
       ),

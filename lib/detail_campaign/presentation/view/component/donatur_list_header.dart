@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ika_smansara/common/common.dart';
 
 class DonaturListHeader extends StatelessWidget {
-  const DonaturListHeader({required this.backerCount, super.key});
+  const DonaturListHeader({
+    required this.backerCount,
+    required this.documentId,
+    super.key,
+  });
 
   final int backerCount;
+  final String documentId;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +43,13 @@ class DonaturListHeader extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () => context.pushNamed(
+              Routes.listBacker,
+              queryParameters: {
+                Constants.backerCountKey: '$backerCount',
+                Constants.idCampaignKey: documentId,
+              },
+            ),
             child: Text(
               'Lihat semua',
               style: GoogleFonts.inter(

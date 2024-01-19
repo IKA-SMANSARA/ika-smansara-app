@@ -102,7 +102,7 @@ class _$IsAdminImpl implements IsAdmin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$IsAdminImpl);
   }
@@ -204,7 +204,7 @@ class _$IsUserImpl implements IsUser {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$IsUserImpl);
   }

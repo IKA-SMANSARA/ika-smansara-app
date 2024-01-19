@@ -173,9 +173,11 @@ class MainContent extends StatelessWidget {
                     child: DonaturListHeader(
                       backerCount:
                           detailCampaignDocumentResponse.backerCount ?? 0,
+                      documentId: detailCampaignDocumentResponse.id ?? '',
                     ),
                   ),
                   DonaturShortList(
+                    documentId: detailCampaignDocumentResponse.id,
                     backerCount:
                         detailCampaignDocumentResponse.backerCount ?? 0,
                   ),
@@ -185,6 +187,10 @@ class MainContent extends StatelessWidget {
                       campaignStatus:
                           detailCampaignDocumentResponse.isActive ?? false,
                       documentId: detailCampaignDocumentResponse.id ?? '',
+                      campaignName:
+                          detailCampaignDocumentResponse.campaignName ?? '',
+                      campaignImage:
+                          detailCampaignDocumentResponse.photoThumbnail ?? '',
                     ),
                   ),
                 ],

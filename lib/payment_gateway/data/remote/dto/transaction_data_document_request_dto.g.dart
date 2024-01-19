@@ -15,6 +15,8 @@ _$TransactionDataDocumentRequestDTOImpl
           amount: json['amount'] as int?,
           paymentStatus: json['paymentStatus'] as String?,
           userId: json['userId'] as String?,
+          campaignName: json['campaignName'] as String?,
+          campaignImage: json['campaignImage'] as String?,
         );
 
 Map<String, dynamic> _$$TransactionDataDocumentRequestDTOImplToJson(
@@ -25,4 +27,6 @@ Map<String, dynamic> _$$TransactionDataDocumentRequestDTOImplToJson(
       'amount': instance.amount,
       'paymentStatus': instance.paymentStatus,
       'userId': instance.userId,
+      'campaignName': instance.campaignName,
+      'campaignImage': instance.campaignImage,
     };

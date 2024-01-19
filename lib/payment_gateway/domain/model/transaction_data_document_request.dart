@@ -11,6 +11,8 @@ class TransactionDataDocumentRequest with _$TransactionDataDocumentRequest {
     int? amount,
     String? paymentStatus,
     String? userId,
+    String? campaignName,
+    String? campaignImage,
   }) = _TransactionDataDocumentRequest;
 
   factory TransactionDataDocumentRequest.fromJson(Map<String, dynamic> json) =>

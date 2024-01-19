@@ -176,7 +176,7 @@ class _$TransactionDocumentRequestImpl implements _TransactionDocumentRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TransactionDocumentRequestImpl &&

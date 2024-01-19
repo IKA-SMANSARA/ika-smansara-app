@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 import 'package:injectable/injectable.dart';
@@ -16,6 +15,8 @@ class SaveTransactionUseCase {
     String? campaignId,
     String? statusPayment,
     String? userId,
+    String? campaignName,
+    String? campaignImage,
   ) async {
     final transactionDataDocumentRequest = TransactionDataDocumentRequest(
       amount: int.parse(grossAmount ?? '0'),
@@ -23,10 +24,12 @@ class SaveTransactionUseCase {
       orderId: orderId,
       paymentStatus: statusPayment,
       userId: userId,
+      campaignImage: campaignImage,
+      campaignName: campaignName,
     );
 
     final transactionDocumentRequest = TransactionDocumentRequest(
-      documentId: Constants.uniqueId,
+      documentId: orderId,
       data: transactionDataDocumentRequest,
       permissions: [
         'read("user:$userId")',

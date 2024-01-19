@@ -50,7 +50,7 @@ class SaveUserProfileDocUseCase {
               authKey: userId,
             );
             final userRegisterDocRequest = UserRegisterDocRequest(
-              documentId: Constants.uniqueId,
+              documentId: userId,
               data: userProfileDocRequest,
               permissions: [
                 'read("user:$userId")',

@@ -15,5 +15,7 @@ class TransactionEvent with _$TransactionEvent {
     String? orderId,
     String? campaignId,
     String? statusPayment,
+    String? campaignName,
+    String? campaignImage,
   ) = _SaveTransactionData;
 }

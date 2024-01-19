@@ -22,8 +22,13 @@ mixin _$TransactionEvent {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
-    required TResult Function(String? grossAmount, String? orderId,
-            String? campaignId, String? statusPayment)
+    required TResult Function(
+            String? grossAmount,
+            String? orderId,
+            String? campaignId,
+            String? statusPayment,
+            String? campaignName,
+            String? campaignImage)
         saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,7 +38,7 @@ mixin _$TransactionEvent {
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,7 +48,7 @@ mixin _$TransactionEvent {
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
     required TResult orElse(),
   }) =>
@@ -117,7 +122,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -132,8 +137,13 @@ class _$StartedImpl implements _Started {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
-    required TResult Function(String? grossAmount, String? orderId,
-            String? campaignId, String? statusPayment)
+    required TResult Function(
+            String? grossAmount,
+            String? orderId,
+            String? campaignId,
+            String? statusPayment,
+            String? campaignName,
+            String? campaignImage)
         saveTransactionData,
   }) {
     return started();
@@ -146,7 +156,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
   }) {
     return started?.call();
@@ -159,7 +169,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
     required TResult orElse(),
   }) {
@@ -267,7 +277,7 @@ class _$FetchDataImpl implements _FetchData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchDataImpl &&
@@ -295,8 +305,13 @@ class _$FetchDataImpl implements _FetchData {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
-    required TResult Function(String? grossAmount, String? orderId,
-            String? campaignId, String? statusPayment)
+    required TResult Function(
+            String? grossAmount,
+            String? orderId,
+            String? campaignId,
+            String? statusPayment,
+            String? campaignName,
+            String? campaignImage)
         saveTransactionData,
   }) {
     return fetchData(grossAmount, orderId, campaignId);
@@ -309,7 +324,7 @@ class _$FetchDataImpl implements _FetchData {
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
   }) {
     return fetchData?.call(grossAmount, orderId, campaignId);
@@ -322,7 +337,7 @@ class _$FetchDataImpl implements _FetchData {
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
     required TResult orElse(),
   }) {
@@ -389,7 +404,9 @@ abstract class _$$SaveTransactionDataImplCopyWith<$Res> {
       {String? grossAmount,
       String? orderId,
       String? campaignId,
-      String? statusPayment});
+      String? statusPayment,
+      String? campaignName,
+      String? campaignImage});
 }
 
 /// @nodoc
@@ -407,6 +424,8 @@ class __$$SaveTransactionDataImplCopyWithImpl<$Res>
     Object? orderId = freezed,
     Object? campaignId = freezed,
     Object? statusPayment = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
   }) {
     return _then(_$SaveTransactionDataImpl(
       freezed == grossAmount
@@ -425,6 +444,14 @@ class __$$SaveTransactionDataImplCopyWithImpl<$Res>
           ? _value.statusPayment
           : statusPayment // ignore: cast_nullable_to_non_nullable
               as String?,
+      freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -433,7 +460,12 @@ class __$$SaveTransactionDataImplCopyWithImpl<$Res>
 
 class _$SaveTransactionDataImpl implements _SaveTransactionData {
   const _$SaveTransactionDataImpl(
-      this.grossAmount, this.orderId, this.campaignId, this.statusPayment);
+      this.grossAmount,
+      this.orderId,
+      this.campaignId,
+      this.statusPayment,
+      this.campaignName,
+      this.campaignImage);
 
   @override
   final String? grossAmount;
@@ -443,14 +475,18 @@ class _$SaveTransactionDataImpl implements _SaveTransactionData {
   final String? campaignId;
   @override
   final String? statusPayment;
+  @override
+  final String? campaignName;
+  @override
+  final String? campaignImage;
 
   @override
   String toString() {
-    return 'TransactionEvent.saveTransactionData(grossAmount: $grossAmount, orderId: $orderId, campaignId: $campaignId, statusPayment: $statusPayment)';
+    return 'TransactionEvent.saveTransactionData(grossAmount: $grossAmount, orderId: $orderId, campaignId: $campaignId, statusPayment: $statusPayment, campaignName: $campaignName, campaignImage: $campaignImage)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SaveTransactionDataImpl &&
@@ -460,12 +496,16 @@ class _$SaveTransactionDataImpl implements _SaveTransactionData {
             (identical(other.campaignId, campaignId) ||
                 other.campaignId == campaignId) &&
             (identical(other.statusPayment, statusPayment) ||
-                other.statusPayment == statusPayment));
+                other.statusPayment == statusPayment) &&
+            (identical(other.campaignName, campaignName) ||
+                other.campaignName == campaignName) &&
+            (identical(other.campaignImage, campaignImage) ||
+                other.campaignImage == campaignImage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, grossAmount, orderId, campaignId, statusPayment);
+  int get hashCode => Object.hash(runtimeType, grossAmount, orderId, campaignId,
+      statusPayment, campaignName, campaignImage);
 
   @JsonKey(ignore: true)
   @override
@@ -481,11 +521,17 @@ class _$SaveTransactionDataImpl implements _SaveTransactionData {
     required TResult Function(
             String? grossAmount, String? orderId, String? campaignId)
         fetchData,
-    required TResult Function(String? grossAmount, String? orderId,
-            String? campaignId, String? statusPayment)
+    required TResult Function(
+            String? grossAmount,
+            String? orderId,
+            String? campaignId,
+            String? statusPayment,
+            String? campaignName,
+            String? campaignImage)
         saveTransactionData,
   }) {
-    return saveTransactionData(grossAmount, orderId, campaignId, statusPayment);
+    return saveTransactionData(grossAmount, orderId, campaignId, statusPayment,
+        campaignName, campaignImage);
   }
 
   @override
@@ -495,11 +541,11 @@ class _$SaveTransactionDataImpl implements _SaveTransactionData {
     TResult? Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult? Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
   }) {
-    return saveTransactionData?.call(
-        grossAmount, orderId, campaignId, statusPayment);
+    return saveTransactionData?.call(grossAmount, orderId, campaignId,
+        statusPayment, campaignName, campaignImage);
   }
 
   @override
@@ -509,13 +555,13 @@ class _$SaveTransactionDataImpl implements _SaveTransactionData {
     TResult Function(String? grossAmount, String? orderId, String? campaignId)?
         fetchData,
     TResult Function(String? grossAmount, String? orderId, String? campaignId,
-            String? statusPayment)?
+            String? statusPayment, String? campaignName, String? campaignImage)?
         saveTransactionData,
     required TResult orElse(),
   }) {
     if (saveTransactionData != null) {
-      return saveTransactionData(
-          grossAmount, orderId, campaignId, statusPayment);
+      return saveTransactionData(grossAmount, orderId, campaignId,
+          statusPayment, campaignName, campaignImage);
     }
     return orElse();
   }
@@ -560,12 +606,16 @@ abstract class _SaveTransactionData implements TransactionEvent {
       final String? grossAmount,
       final String? orderId,
       final String? campaignId,
-      final String? statusPayment) = _$SaveTransactionDataImpl;
+      final String? statusPayment,
+      final String? campaignName,
+      final String? campaignImage) = _$SaveTransactionDataImpl;
 
   String? get grossAmount;
   String? get orderId;
   String? get campaignId;
   String? get statusPayment;
+  String? get campaignName;
+  String? get campaignImage;
   @JsonKey(ignore: true)
   _$$SaveTransactionDataImplCopyWith<_$SaveTransactionDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -670,7 +720,7 @@ class _$InitialImpl implements Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
@@ -784,7 +834,7 @@ class _$LoadingImpl implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
@@ -916,7 +966,7 @@ class _$ErrorImpl implements Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
@@ -1062,7 +1112,7 @@ class _$SuccessImpl implements Success {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&

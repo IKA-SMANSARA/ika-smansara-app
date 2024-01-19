@@ -31,6 +31,10 @@ mixin _$TransactionDataDocumentRequestDTO {
   String? get paymentStatus => throw _privateConstructorUsedError;
   @JsonKey(name: 'userId')
   String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'campaignName')
+  String? get campaignName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'campaignImage')
+  String? get campaignImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +55,9 @@ abstract class $TransactionDataDocumentRequestDTOCopyWith<$Res> {
       @JsonKey(name: 'campaignId') String? campaignId,
       @JsonKey(name: 'amount') int? amount,
       @JsonKey(name: 'paymentStatus') String? paymentStatus,
-      @JsonKey(name: 'userId') String? userId});
+      @JsonKey(name: 'userId') String? userId,
+      @JsonKey(name: 'campaignName') String? campaignName,
+      @JsonKey(name: 'campaignImage') String? campaignImage});
 }
 
 /// @nodoc
@@ -73,6 +79,8 @@ class _$TransactionDataDocumentRequestDTOCopyWithImpl<$Res,
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
   }) {
     return _then(_value.copyWith(
       orderId: freezed == orderId
@@ -95,6 +103,14 @@ class _$TransactionDataDocumentRequestDTOCopyWithImpl<$Res,
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -113,7 +129,9 @@ abstract class _$$TransactionDataDocumentRequestDTOImplCopyWith<$Res>
       @JsonKey(name: 'campaignId') String? campaignId,
       @JsonKey(name: 'amount') int? amount,
       @JsonKey(name: 'paymentStatus') String? paymentStatus,
-      @JsonKey(name: 'userId') String? userId});
+      @JsonKey(name: 'userId') String? userId,
+      @JsonKey(name: 'campaignName') String? campaignName,
+      @JsonKey(name: 'campaignImage') String? campaignImage});
 }
 
 /// @nodoc
@@ -134,6 +152,8 @@ class __$$TransactionDataDocumentRequestDTOImplCopyWithImpl<$Res>
     Object? amount = freezed,
     Object? paymentStatus = freezed,
     Object? userId = freezed,
+    Object? campaignName = freezed,
+    Object? campaignImage = freezed,
   }) {
     return _then(_$TransactionDataDocumentRequestDTOImpl(
       orderId: freezed == orderId
@@ -156,6 +176,14 @@ class __$$TransactionDataDocumentRequestDTOImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      campaignName: freezed == campaignName
+          ? _value.campaignName
+          : campaignName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      campaignImage: freezed == campaignImage
+          ? _value.campaignImage
+          : campaignImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -169,7 +197,9 @@ class _$TransactionDataDocumentRequestDTOImpl
       @JsonKey(name: 'campaignId') this.campaignId,
       @JsonKey(name: 'amount') this.amount,
       @JsonKey(name: 'paymentStatus') this.paymentStatus,
-      @JsonKey(name: 'userId') this.userId});
+      @JsonKey(name: 'userId') this.userId,
+      @JsonKey(name: 'campaignName') this.campaignName,
+      @JsonKey(name: 'campaignImage') this.campaignImage});
 
   factory _$TransactionDataDocumentRequestDTOImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -190,14 +220,20 @@ class _$TransactionDataDocumentRequestDTOImpl
   @override
   @JsonKey(name: 'userId')
   final String? userId;
+  @override
+  @JsonKey(name: 'campaignName')
+  final String? campaignName;
+  @override
+  @JsonKey(name: 'campaignImage')
+  final String? campaignImage;
 
   @override
   String toString() {
-    return 'TransactionDataDocumentRequestDTO(orderId: $orderId, campaignId: $campaignId, amount: $amount, paymentStatus: $paymentStatus, userId: $userId)';
+    return 'TransactionDataDocumentRequestDTO(orderId: $orderId, campaignId: $campaignId, amount: $amount, paymentStatus: $paymentStatus, userId: $userId, campaignName: $campaignName, campaignImage: $campaignImage)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TransactionDataDocumentRequestDTOImpl &&
@@ -207,13 +243,17 @@ class _$TransactionDataDocumentRequestDTOImpl
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.paymentStatus, paymentStatus) ||
                 other.paymentStatus == paymentStatus) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.campaignName, campaignName) ||
+                other.campaignName == campaignName) &&
+            (identical(other.campaignImage, campaignImage) ||
+                other.campaignImage == campaignImage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, orderId, campaignId, amount, paymentStatus, userId);
+  int get hashCode => Object.hash(runtimeType, orderId, campaignId, amount,
+      paymentStatus, userId, campaignName, campaignImage);
 
   @JsonKey(ignore: true)
   @override
@@ -238,7 +278,9 @@ abstract class _TransactionDataDocumentRequestDTO
           @JsonKey(name: 'campaignId') final String? campaignId,
           @JsonKey(name: 'amount') final int? amount,
           @JsonKey(name: 'paymentStatus') final String? paymentStatus,
-          @JsonKey(name: 'userId') final String? userId}) =
+          @JsonKey(name: 'userId') final String? userId,
+          @JsonKey(name: 'campaignName') final String? campaignName,
+          @JsonKey(name: 'campaignImage') final String? campaignImage}) =
       _$TransactionDataDocumentRequestDTOImpl;
 
   factory _TransactionDataDocumentRequestDTO.fromJson(
@@ -260,6 +302,12 @@ abstract class _TransactionDataDocumentRequestDTO
   @override
   @JsonKey(name: 'userId')
   String? get userId;
+  @override
+  @JsonKey(name: 'campaignName')
+  String? get campaignName;
+  @override
+  @JsonKey(name: 'campaignImage')
+  String? get campaignImage;
   @override
   @JsonKey(ignore: true)
   _$$TransactionDataDocumentRequestDTOImplCopyWith<

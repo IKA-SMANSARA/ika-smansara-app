@@ -37,6 +37,7 @@ class AppScreen extends StatelessWidget {
               colorScheme: ColorScheme.fromSwatch(
                 accentColor: const Color(0xFF13B9FF),
               ),
+              useMaterial3: false,
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
