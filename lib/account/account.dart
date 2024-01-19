@@ -9,4 +9,3 @@ export 'presentation/view/component/account_user_profile.dart';
 export 'presentation/view/component/create_campaign_button.dart';
 export 'presentation/view/component/is_admin_account_screen.dart';
 export 'presentation/view/component/is_user_account_screen.dart';
-export 'presentation/view/screen_size/android/account_portrait_screen.dart';

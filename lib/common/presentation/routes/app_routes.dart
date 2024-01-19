@@ -6,7 +6,6 @@ import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/create_campaign/create_campaign.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
-import 'package:ika_smansara/detail_campaign/presentation/view/screen_size/android/list_backer_screen.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/list_campaign_per_category/list_campaign_per_category.dart';
@@ -63,7 +62,7 @@ class AppRoutes {
         path: Routes.listBacker,
         name: Routes.listBacker,
         parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => ListBackerScreen(
+        builder: (context, state) => ListBackerWidget(
           backerCount: state.uri.queryParameters[Constants.backerCountKey],
           documentId: state.uri.queryParameters[Constants.idCampaignKey],
         ),
@@ -96,7 +95,8 @@ class AppRoutes {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return ListCampaignPerCategoryPage(
-            categoryName: state.uri.queryParameters[Constants.categoryNameKey],
+            categoryName:
+                state.uri.queryParameters[Constants.categoryNameKey] ?? '',
           );
         },
       ),
@@ -122,10 +122,12 @@ class AppRoutes {
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return PaymentGatewayPage(
-            idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
+            idCampaign:
+                state.uri.queryParameters[Constants.idCampaignKey] ?? '',
             campaignImage:
-                state.uri.queryParameters[Constants.imageCampaignKey],
-            campaignName: state.uri.queryParameters[Constants.nameCampaignKey],
+                state.uri.queryParameters[Constants.imageCampaignKey] ?? '',
+            campaignName:
+                state.uri.queryParameters[Constants.nameCampaignKey] ?? '',
           );
         },
       ),

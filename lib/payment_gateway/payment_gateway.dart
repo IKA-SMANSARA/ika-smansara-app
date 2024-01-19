@@ -32,5 +32,3 @@ export 'presentation/view/component/payment_button.dart';
 export 'presentation/view/component/payment_detail.dart';
 export 'presentation/view/payment_gateway_page.dart';
 export 'presentation/view/payment_window_webview_page.dart';
-export 'presentation/view/screen_size/android/payment_gateway_portrait_screen.dart';
-export 'presentation/view/screen_size/android/payment_window_webview_portrait_screen.dart';
