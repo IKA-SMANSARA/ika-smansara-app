@@ -4,4 +4,3 @@ export 'presentation/view/component/login_button.dart';
 export 'presentation/view/component/login_container_page.dart';
 export 'presentation/view/component/login_form_field.dart';
 export 'presentation/view/login_page.dart';
-export 'presentation/view/screen_size/android/login_portrait_screen.dart';

@@ -1,5 +1,5 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ika_smansara/account/account.dart';
 
 class AccountPage extends StatelessWidget {
@@ -7,9 +7,27 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: AdaptiveScreen(
-        androidScreen: AccountPortraitScreen(),
+    return SafeArea(
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => LogoutCubit()),
+          BlocProvider(
+            create: (_) => CheckAdminStatusCubit()..checkUserStatus(),
+          ),
+        ],
+        child: BlocBuilder<CheckAdminStatusCubit, CheckAdminStatusState>(
+          builder: (context, state) {
+            if (state is IsAdmin) {
+              return const IsAdminAccountScreen();
+            }
+
+            if (state is IsUser) {
+              return const IsUserAccountScreen();
+            }
+
+            return const IsUserAccountScreen();
+          },
+        ),
       ),
     );
   }

@@ -7,4 +7,3 @@ export 'presentation/bloc/detail_my_donation_bloc.dart';
 export 'presentation/detail_my_donation_page.dart';
 export 'presentation/view/component/button_donate_again.dart';
 export 'presentation/view/component/content_page_my_donation.dart';
-export 'presentation/view/screen_size/android/detail_my_donation_portrait_screen.dart';

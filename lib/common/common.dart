@@ -27,7 +27,6 @@ export 'presentation/routes/cubit/navigation_cubit.dart';
 export 'presentation/routes/routes.dart';
 export 'presentation/utils/named_nav_bar_item_widget.dart';
 export 'presentation/view/main_page.dart';
-export 'presentation/view/screen_size/android/main_portrait_screen.dart';
 export 'utils/constants.dart';
 export 'utils/extension.dart';
 export 'utils/flutter_fcm.dart';

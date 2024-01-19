@@ -6,8 +6,8 @@ import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:ika_smansara/detail_campaign/presentation/bloc/list_backer_bloc.dart';
 import 'package:ika_smansara/detail_campaign/presentation/view/component/donatur_card.dart';
 
-class ListBackerScreen extends StatelessWidget {
-  const ListBackerScreen({
+class ListBackerWidget extends StatelessWidget {
+  const ListBackerWidget({
     required this.backerCount,
     required this.documentId,
     super.key,
