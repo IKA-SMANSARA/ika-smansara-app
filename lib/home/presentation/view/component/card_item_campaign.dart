@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
@@ -28,12 +27,12 @@ class CardItemCampaign extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        width: 300.w,
+        width: 300,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.white12,
           ),
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -48,21 +47,21 @@ class CardItemCampaign extends StatelessWidget {
             AspectRatio(
               aspectRatio: 16 / 9,
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.r),
-                  topRight: Radius.circular(8.r),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
                 ),
                 child: campaignImage ?? const Placeholder(),
               ),
             ),
             Expanded(
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(8.r),
-                  bottomLeft: Radius.circular(8.r),
+                borderRadius: const BorderRadius.only(
+                  bottomRight: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
                 ),
                 child: Container(
-                  padding: EdgeInsets.all(8.w),
+                  padding: const EdgeInsets.all(8),
                   color: Colors.white,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,19 +72,19 @@ class CardItemCampaign extends StatelessWidget {
                         maxLines: 1,
                         style: GoogleFonts.inter(
                           color: Colors.black,
-                          fontSize: 10.sp,
+                          fontSize: 10,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Gap(8.h),
+                      const Gap(8),
                       Text(
                         l10n.collectedTitle,
                         style: GoogleFonts.inter(
                           color: Colors.black,
-                          fontSize: 10.sp,
+                          fontSize: 10,
                         ),
                       ),
-                      Gap(4.h),
+                      const Gap(4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -93,7 +92,7 @@ class CardItemCampaign extends StatelessWidget {
                             campaignDonationCollected ?? '',
                             style: GoogleFonts.inter(
                               color: Colors.blue,
-                              fontSize: 11.sp,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -101,16 +100,16 @@ class CardItemCampaign extends StatelessWidget {
                             campaignDuration ?? '',
                             style: GoogleFonts.inter(
                               color: Colors.black,
-                              fontSize: 10.sp,
+                              fontSize: 10,
                             ),
                           ),
                         ],
                       ),
-                      Gap(4.h),
+                      const Gap(4),
                       LinearProgressIndicator(
                         value: campaignProgressIndicator,
                       ),
-                      Gap(4.h),
+                      const Gap(4),
                     ],
                   ),
                 ),

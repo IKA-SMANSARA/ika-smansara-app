@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -24,8 +23,8 @@ class CardVerticalListView extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16.h,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,7 +33,7 @@ class CardVerticalListView extends StatelessWidget {
                   listTitle ?? '',
                   style: GoogleFonts.inter(
                     color: Colors.black,
-                    fontSize: 14.sp,
+                    fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -49,7 +48,7 @@ class CardVerticalListView extends StatelessWidget {
                     buttonTitle ?? '',
                     style: GoogleFonts.inter(
                       color: const Color(0xFF104993),
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -58,11 +57,11 @@ class CardVerticalListView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 8.h,
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
             ),
             child: SizedBox(
-              height: 255.h,
+              height: 255,
               child: BlocBuilder<CampaignsBloc, CampaignsState>(
                 builder: (context, state) {
                   if (state is LoadingCampaigns) {
@@ -85,7 +84,7 @@ class CardVerticalListView extends StatelessWidget {
                       itemCount: state.listCampaigns?.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: CardItemCampaign(
                             onPress: () => context.pushNamed(
                               Routes.detailCampaign,

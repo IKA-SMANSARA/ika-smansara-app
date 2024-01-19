@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomLoadingDialog extends StatelessWidget {
   const CustomLoadingDialog({super.key});
@@ -26,9 +25,9 @@ class CustomLoadingDialog extends StatelessWidget {
       child: Center(
         child: Card(
           child: Container(
-            width: 100.w,
-            height: 80.h,
-            padding: EdgeInsets.all(12.h),
+            width: 100,
+            height: 80,
+            padding: const EdgeInsets.all(12),
             child: const CircularProgressIndicator(),
           ),
         ),

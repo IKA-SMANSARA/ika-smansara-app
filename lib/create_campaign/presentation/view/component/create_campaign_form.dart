@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/create_campaign/create_campaign.dart';
@@ -14,7 +13,7 @@ class CreateCampaignForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.h),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -22,7 +21,7 @@ class CreateCampaignForm extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => ImageCubit(),
-          )
+          ),
         ],
         child: Builder(
           builder: (context) {
@@ -39,7 +38,7 @@ class CreateCampaignForm extends StatelessWidget {
                     ScrollViewKeyboardDismissBehavior.onDrag,
                 child: Column(
                   children: [
-                    Gap(16.h),
+                    const Gap(16),
                     BlocBuilder<ImageCubit, ImageState>(
                       buildWhen: (previous, current) =>
                           previous.image != current.image,
@@ -59,8 +58,8 @@ class CreateCampaignForm extends StatelessWidget {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF104993),
-                                minimumSize: Size(350.w, 36.h),
-                                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                minimumSize: const Size(350, 36),
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
                               ),
                               onPressed: () async {
                                 final image = await ImagePicker().pickImage(
@@ -76,7 +75,7 @@ class CreateCampaignForm extends StatelessWidget {
                                 'Gambar Poster Galang Dana',
                                 style: GoogleFonts.inter(
                                   color: Colors.white,
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -85,9 +84,9 @@ class CreateCampaignForm extends StatelessWidget {
                         );
                       },
                     ),
-                    Gap(16.h),
+                    const Gap(16),
                     TextFieldBlocBuilder(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       textFieldBloc: createCampaignFormBloc.title,
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
@@ -98,10 +97,10 @@ class CreateCampaignForm extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 200.h,
+                      height: 200,
                       child: TextFieldBlocBuilder(
                         textAlignVertical: TextAlignVertical.top,
-                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         textFieldBloc: createCampaignFormBloc.longDescription,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
@@ -115,7 +114,7 @@ class CreateCampaignForm extends StatelessWidget {
                       ),
                     ),
                     TextFieldBlocBuilder(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       textFieldBloc: createCampaignFormBloc.goalAmount,
                       keyboardType: TextInputType.number,
                       textInputAction: TextInputAction.next,
@@ -153,15 +152,15 @@ class CreateCampaignForm extends StatelessWidget {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF104993),
-                        minimumSize: Size(350.w, 36.h),
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        minimumSize: const Size(350, 36),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
                       onPressed: createCampaignFormBloc.submit,
                       child: Text(
                         'Buat Penggalangan Dana',
                         style: GoogleFonts.inter(
                           color: Colors.white,
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -186,26 +185,26 @@ class CreateCampaignForm extends StatelessWidget {
       label: Text(
         label,
         style: GoogleFonts.inter(
-          fontSize: 16.sp,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
           color: Colors.black87,
         ),
       ),
-      contentPadding: EdgeInsets.all(8.w),
+      contentPadding: const EdgeInsets.all(8),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xff4880FF),
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffff486a),
         ),
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffBBBCBC),
         ),
@@ -214,13 +213,13 @@ class CreateCampaignForm extends StatelessWidget {
       filled: true,
       hintText: hint,
       hintStyle: GoogleFonts.inter(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: Colors.black45,
         fontWeight: FontWeight.w400,
       ),
       prefixText: prefixText ?? '',
       prefixStyle: GoogleFonts.inter(
-        fontSize: 16.sp,
+        fontSize: 16,
         fontWeight: FontWeight.w400,
         color: Colors.black87,
       ),

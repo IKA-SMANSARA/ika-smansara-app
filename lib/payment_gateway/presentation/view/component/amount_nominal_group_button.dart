@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -27,17 +26,17 @@ class AmountNominalGroupButton extends StatelessWidget {
       options: GroupButtonOptions(
         selectedColor: const Color(0xFF104993),
         unselectedColor: const Color(0xFFD9D9D9),
-        buttonHeight: 45.h,
-        buttonWidth: 170.w,
+        buttonHeight: 45,
+        buttonWidth: 170,
         borderRadius: BorderRadius.circular(100),
         selectedTextStyle: GoogleFonts.inter(
           color: Colors.white,
-          fontSize: 14.sp,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         ),
         unselectedTextStyle: GoogleFonts.inter(
           color: Colors.black,
-          fontSize: 14.sp,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -34,7 +33,7 @@ class ListCardCampaign extends StatelessWidget {
             child: Text(
               state.errorMessage.toString(),
               style: GoogleFonts.inter(
-                fontSize: 16.sp,
+                fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -83,7 +82,7 @@ class ListCardCampaign extends StatelessWidget {
               child: Text(
                 'Tidak ada acara di kategori ini.',
                 style: GoogleFonts.inter(
-                  fontSize: 16.sp,
+                  fontSize: 16,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -100,7 +99,7 @@ class ListCardCampaign extends StatelessWidget {
           child: Text(
             'Network Error!',
             style: GoogleFonts.inter(
-              fontSize: 16.sp,
+              fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
           ),

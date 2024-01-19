@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/presentation/routes/routes.dart';
@@ -17,32 +16,32 @@ class LoginContainerPage extends StatelessWidget {
       shrinkWrap: true,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 32.h,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 32,
           ),
           child: Assets.images.logoIkaSmansaraColored.svg(),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
           ),
           child: Text(
             'Selamat Datang',
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
-              fontSize: 20.sp,
+              fontSize: 20,
               color: Colors.black,
               fontWeight: FontWeight.w500,
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(16.w),
-          child: const LoginFormField(),
+        const Padding(
+          padding: EdgeInsets.all(16),
+          child: LoginFormField(),
         ),
         Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: const EdgeInsets.all(16),
           child: Center(
             child: Text.rich(
               TextSpan(
@@ -51,7 +50,7 @@ class LoginContainerPage extends StatelessWidget {
                     text: 'Belum punya akun ? ',
                     style: GoogleFonts.inter(
                       color: Colors.black,
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -59,7 +58,7 @@ class LoginContainerPage extends StatelessWidget {
                     text: 'Daftar',
                     style: GoogleFonts.inter(
                       color: const Color(0xFF104993),
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
                     recognizer: TapGestureRecognizer()
@@ -71,11 +70,11 @@ class LoginContainerPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(16.h),
+          padding: const EdgeInsets.all(16),
           child: Divider(
             color: Colors.blueGrey.withAlpha(150),
-            thickness: 0.5.h,
-            height: 0.5.h,
+            thickness: 0.5,
+            height: 0.5,
           ),
         ),
       ],

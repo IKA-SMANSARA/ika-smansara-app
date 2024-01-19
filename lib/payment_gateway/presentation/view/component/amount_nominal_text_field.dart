@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 
@@ -14,8 +13,8 @@ class AmountNominalTextField extends StatelessWidget {
     amountNominal.text = context.read<AmountValueCubit>().state;
 
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16.h,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
       ),
       child: TextField(
         onChanged: (amount) {
@@ -27,17 +26,17 @@ class AmountNominalTextField extends StatelessWidget {
         },
         style: GoogleFonts.inter(
           color: Colors.black,
-          fontSize: 16.sp,
+          fontSize: 16,
           fontWeight: FontWeight.w700,
         ),
         controller: amountNominal,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 6.w),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 6),
           prefixText: 'Rp. ',
           prefixStyle: GoogleFonts.inter(
             color: Colors.black,
-            fontSize: 16.sp,
+            fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
           border: const OutlineInputBorder(

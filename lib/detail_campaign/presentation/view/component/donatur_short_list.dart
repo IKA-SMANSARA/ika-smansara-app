@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/detail_campaign/presentation/bloc/list_backer_bloc.dart';
 
@@ -34,7 +33,7 @@ class DonaturShortList extends StatelessWidget {
 
           if (state is SuccessListBacker) {
             return SizedBox(
-              height: 200.h,
+              height: 200,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: state.listBacker.listBacker?.length ?? 0,

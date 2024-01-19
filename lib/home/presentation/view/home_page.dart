@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/home/home.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
@@ -19,7 +18,7 @@ class HomePage extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: 150.h,
+                height: 150,
                 decoration: const BoxDecoration(color: Color(0xFF104993)),
               ),
               MultiBlocProvider(
@@ -37,28 +36,28 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16.h,
-                        vertical: 8.h,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                       child: Assets.images.ikaSmansaraHeaderHome.svg(
                         width: double.infinity,
-                        height: 32.h,
+                        height: 32,
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: 8.h,
+                        vertical: 8,
                       ),
-                      child: const CardCarousel(),
+                      child: CardCarousel(),
                     ),
                     const Categories(),
                     Padding(
-                      padding: EdgeInsets.all(16.h),
+                      padding: const EdgeInsets.all(16),
                       child: Divider(
                         color: Colors.blueGrey.withAlpha(150),
-                        thickness: 0.5.h,
-                        height: 0.5.h,
+                        thickness: 0.5,
+                        height: 0.5,
                       ),
                     ),
                     CardVerticalListView(
@@ -66,11 +65,11 @@ class HomePage extends StatelessWidget {
                       buttonTitle: l10n.seeMoreTitle,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(16.h),
+                      padding: const EdgeInsets.all(16),
                       child: Divider(
                         color: Colors.blueGrey.withAlpha(150),
-                        thickness: 0.5.h,
-                        height: 0.5.h,
+                        thickness: 0.5,
+                        height: 0.5,
                       ),
                     ),
                     CardVerticalListView(
@@ -78,11 +77,11 @@ class HomePage extends StatelessWidget {
                       buttonTitle: l10n.seeMoreTitle,
                     ),
                     Padding(
-                      padding: EdgeInsets.all(16.h),
+                      padding: const EdgeInsets.all(16),
                       child: Divider(
                         color: Colors.blueGrey.withAlpha(150),
-                        thickness: 0.5.h,
-                        height: 0.5.h,
+                        thickness: 0.5,
+                        height: 0.5,
                       ),
                     ),
                   ],

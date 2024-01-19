@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -25,11 +24,11 @@ class CategoryItem extends StatelessWidget {
             child: Wrap(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(4.h),
+                  padding: const EdgeInsets.all(4),
                   child: Center(
                     child: Text(
                       categoryTitle ?? '',
-                      style: GoogleFonts.inter(fontSize: 10.sp),
+                      style: GoogleFonts.inter(fontSize: 10),
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

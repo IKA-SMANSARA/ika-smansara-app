@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,11 +58,11 @@ class MainPage extends StatelessWidget {
               currentIndex: state.index,
               type: BottomNavigationBarType.fixed,
               selectedLabelStyle: GoogleFonts.inter(
-                fontSize: 10.sp,
+                fontSize: 10,
                 fontWeight: FontWeight.w700,
               ),
               unselectedLabelStyle: GoogleFonts.inter(
-                fontSize: 10.sp,
+                fontSize: 10,
                 fontWeight: FontWeight.w400,
               ),
               fixedColor: const Color(0xFF104993),

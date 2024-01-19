@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ika_smansara/account/account.dart';
 
 class IsUserAccountScreen extends StatelessWidget {
@@ -13,7 +12,7 @@ class IsUserAccountScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              height: 250.h,
+              height: 250,
               decoration: const BoxDecoration(color: Color(0xFF104993)),
             ),
             const AccountUserProfile(),

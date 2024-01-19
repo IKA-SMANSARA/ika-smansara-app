@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
@@ -45,7 +44,7 @@ class LoginFormField extends StatelessWidget {
           child: Column(
             children: [
               TextFieldBlocBuilder(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 textFieldBloc: loginFormBloc.email,
                 keyboardType: TextInputType.emailAddress,
                 autofillHints: const [AutofillHints.email],
@@ -56,7 +55,7 @@ class LoginFormField extends StatelessWidget {
                 ),
               ),
               TextFieldBlocBuilder(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 textFieldBloc: loginFormBloc.password,
                 keyboardType: TextInputType.visiblePassword,
                 suffixButton: SuffixButton.obscureText,
@@ -68,7 +67,7 @@ class LoginFormField extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 child: LoginButton(
                   onSubmitted: loginFormBloc.submit,
                 ),
@@ -86,26 +85,26 @@ class LoginFormField extends StatelessWidget {
       label: Text(
         label,
         style: GoogleFonts.inter(
-          fontSize: 16.sp,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
           color: Colors.black87,
         ),
       ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 6.w),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 6),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xff4880FF),
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffff486a),
         ),
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(
           color: Color(0xffBBBCBC),
         ),
@@ -114,7 +113,7 @@ class LoginFormField extends StatelessWidget {
       filled: true,
       hintText: hint,
       hintStyle: GoogleFonts.inter(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: Colors.black45,
         fontWeight: FontWeight.w400,
       ),

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
@@ -28,7 +27,7 @@ class MainContent extends StatelessWidget {
         title: Text(
           detailCampaignDocumentResponse.campaignName?.toUpperCase() ?? '',
           style: GoogleFonts.inter(
-            fontSize: 16.sp,
+            fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -44,19 +43,19 @@ class MainContent extends StatelessWidget {
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.h,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
                     ),
                     child: Text(
                       detailCampaignDocumentResponse.campaignName ?? '',
                       style: GoogleFonts.inter(
                         color: Colors.black,
-                        fontSize: 14.sp,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -65,13 +64,13 @@ class MainContent extends StatelessWidget {
                     'Terkumpul',
                     style: GoogleFonts.inter(
                       color: Colors.black,
-                      fontSize: 10.sp,
+                      fontSize: 10,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.h,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +86,7 @@ class MainContent extends StatelessWidget {
                                 ),
                                 style: GoogleFonts.inter(
                                   color: const Color(0xFFD52014),
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -95,7 +94,7 @@ class MainContent extends StatelessWidget {
                                 text: ' dari ',
                                 style: GoogleFonts.inter(
                                   color: Colors.black,
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -106,7 +105,7 @@ class MainContent extends StatelessWidget {
                                 ),
                                 style: GoogleFonts.inter(
                                   color: const Color(0xFF104993),
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -119,7 +118,7 @@ class MainContent extends StatelessWidget {
                           ),
                           style: GoogleFonts.inter(
                             color: Colors.black,
-                            fontSize: 10.sp,
+                            fontSize: 10,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -140,23 +139,23 @@ class MainContent extends StatelessWidget {
                     color: Color(0xFFD9D9D9),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
                       'Tentang Penggalanan Dana',
                       style: GoogleFonts.inter(
                         color: Colors.black,
-                        fontSize: 14.sp,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: ExpandableText(
                       detailCampaignDocumentResponse.campaignDescription ?? '',
                       style: GoogleFonts.inter(
                         color: Colors.black,
-                        fontSize: 12.sp,
+                        fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),
                       textAlign: TextAlign.justify,
@@ -169,7 +168,7 @@ class MainContent extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: DonaturListHeader(
                       backerCount:
                           detailCampaignDocumentResponse.backerCount ?? 0,
@@ -182,7 +181,7 @@ class MainContent extends StatelessWidget {
                         detailCampaignDocumentResponse.backerCount ?? 0,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     child: DonateButton(
                       campaignStatus:
                           detailCampaignDocumentResponse.isActive ?? false,

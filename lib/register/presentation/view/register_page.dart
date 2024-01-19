@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/l10n/l10n.dart';
@@ -23,7 +22,7 @@ class RegisterPage extends StatelessWidget {
             title: Text(
               l10n.registerTitle,
               style: GoogleFonts.inter(
-                fontSize: 16.sp,
+                fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -33,26 +32,26 @@ class RegisterPage extends StatelessWidget {
             shrinkWrap: true,
             children: [
               Padding(
-                padding: EdgeInsets.all(16.w),
+                padding: const EdgeInsets.all(16),
                 child: Text(
                   'Mari mulai berbagi kebaikan untuk sesama',
                   style: GoogleFonts.inter(
-                    fontSize: 20.sp,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16.h),
+                padding: const EdgeInsets.all(16),
                 child: Divider(
                   color: Colors.blueGrey.withAlpha(150),
-                  thickness: 0.5.h,
-                  height: 0.5.h,
+                  thickness: 0.5,
+                  height: 0.5,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.h),
-                child: const RegisterFormField(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: RegisterFormField(),
               ),
             ],
           ),

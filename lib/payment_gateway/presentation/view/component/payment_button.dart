@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PaymentButton extends StatelessWidget {
@@ -10,18 +9,18 @@ class PaymentButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16.h),
+      padding: const EdgeInsets.all(16),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF104993),
-          minimumSize: Size(350.w, 36.h),
+          minimumSize: const Size(350, 36),
         ),
         onPressed: onPress,
         child: Text(
           'Bayar',
           style: GoogleFonts.inter(
             color: Colors.white,
-            fontSize: 14.sp,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
         ),
