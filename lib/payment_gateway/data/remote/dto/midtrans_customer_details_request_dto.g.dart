@@ -8,7 +8,7 @@ part of 'midtrans_customer_details_request_dto.dart';
 
 _$MidtransCustomerDetailsRequestDTOImpl
     _$$MidtransCustomerDetailsRequestDTOImplFromJson(
-            Map<String, dynamic> json,) =>
+            Map<String, dynamic> json) =>
         _$MidtransCustomerDetailsRequestDTOImpl(
           firstName: json['first_name'] as String?,
           email: json['email'] as String?,
@@ -16,7 +16,7 @@ _$MidtransCustomerDetailsRequestDTOImpl
         );
 
 Map<String, dynamic> _$$MidtransCustomerDetailsRequestDTOImplToJson(
-        _$MidtransCustomerDetailsRequestDTOImpl instance,) =>
+        _$MidtransCustomerDetailsRequestDTOImpl instance) =>
     <String, dynamic>{
       'first_name': instance.firstName,
       'email': instance.email,

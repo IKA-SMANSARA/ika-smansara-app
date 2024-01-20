@@ -8,7 +8,7 @@ class Constants {
   static const paymentGatewayBaseURLNamed = 'BASE URL PAYMENT GATEWAY';
   static const paymentGatewayNetworkModuleNamed =
       'PAYMENT GATEWAY NETWORK MODULE';
-  static const baseURL = 'https://cloud.appwrite.io/v1';
+  static const baseURL = 'https://cloud.ezhardigital.com/v1';
 
   // Dummy Counter APP Source Data
   static const projectId = '64aa86334bd6c9d9678f';
@@ -19,9 +19,9 @@ class Constants {
   static const documentId = '64aa8891b1513662c4bd';
 
   // Source Data REAL
-  static const ikaSmansaraProjectId = '6526850f77b1a0e42833';
+  static const ikaSmansaraProjectId = '6593da3fed3a601345e6';
   static const ikaSmansaraApiKey =
-      '02bc64055f82bc9b5f3a98dd5403be59234729bdf9efe3d9bb8210b2c0d133c76347938a33ae6e19c79025b8fb6de7fa843fc2037f5675f8ac7abc2322daec06d069f0b7cd8a18cb6bf04e1c47bfc219fc5cd8b841d88f314bc982f5ad0544c29887e74b1fb7031e332acb3d88f4ae2351eeae3682629bfc468cff41e6290610';
+      'b7bb1d90016162a14dfcd83ab02e4b9cf6f20f515c1680806f4191170a9cb5b601d9d0d3062ad5621a522ba7cb670e83344bdf989deda266a525267a5c3e60a32d8ff6a5694633a27646bd4be14c431e4bba9cc049a0dc5fde0edee8854694081afcc9bde5833ee78dc334204b6edf53ea864a2fcc35a2e5921039e02cd83420';
   static const ikaSmansaraDatabaseId = '652bc7f26602bddc2f4a';
   static const ikaSmansaraUserProfileCollectionId = '652bc80fe2fdeb1e3893';
   static const ikaSmansaraCategoriesCollectionId = '6533be7558e38f4d949d';
