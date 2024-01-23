@@ -6,7 +6,7 @@ import 'package:ika_smansara/payment_gateway/payment_gateway.dart';
 part 'api_services_payment_gateway.chopper.dart';
 
 @ChopperApi()
-abstract class ApiServicesPaymentGateway extends ChopperService {
+abstract interface class ApiServicesPaymentGateway extends ChopperService {
   static ApiServicesPaymentGateway create([ChopperClient? client]) =>
       _$ApiServicesPaymentGateway(client);
 

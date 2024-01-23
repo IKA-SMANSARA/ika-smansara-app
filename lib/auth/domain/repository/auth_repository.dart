@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ika_smansara/auth/auth.dart';
 import 'package:ika_smansara/common/common.dart';
 
-abstract class AuthRepository {
+abstract interface class AuthRepository {
   Future<Either<ErrorResponse, SessionResponse>> createEmailSession(
     EmailSessionRequest emailSessionRequest,
   );
