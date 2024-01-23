@@ -30,4 +30,3 @@ export 'presentation/view/main_page.dart';
 export 'utils/constants.dart';
 export 'utils/extension.dart';
 export 'utils/flutter_fcm.dart';
-export 'utils/resource.dart';

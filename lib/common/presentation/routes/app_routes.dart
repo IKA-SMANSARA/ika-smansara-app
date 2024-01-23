@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/account/account.dart';
 import 'package:ika_smansara/common/common.dart';
-import 'package:ika_smansara/counter/counter.dart';
 import 'package:ika_smansara/create_campaign/create_campaign.dart';
 import 'package:ika_smansara/detail_campaign/detail_campaign.dart';
 import 'package:ika_smansara/detail_my_donation/detail_my_donation.dart';
@@ -109,12 +108,6 @@ class AppRoutes {
             idCampaign: state.uri.queryParameters[Constants.idCampaignKey],
           );
         },
-      ),
-      GoRoute(
-        name: Routes.counter,
-        path: Routes.counter,
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const CounterPage(),
       ),
       GoRoute(
         name: Routes.paymentGateway,

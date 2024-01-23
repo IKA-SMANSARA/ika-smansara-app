@@ -53,7 +53,11 @@ class CreateCampaignFormBloc extends FormBloc<String, String> {
 
   @override
   FutureOr<void> onSubmitting() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await Future<void>.delayed(
+      const Duration(
+        seconds: 1,
+      ),
+    );
     emitSuccess();
   }
 
