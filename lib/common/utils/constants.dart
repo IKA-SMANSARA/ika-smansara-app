@@ -37,7 +37,8 @@ class Constants {
       'BH7TgdBEdeyIbhc15HLEZhvQ28R67tn5N9lfoyiyF6gSwzy8zX1AkVmTaOZs16pnAwyXVNz6O3bvWfDco2O0Rw8';
   static const paymentGateWayURL =
       'https://app.sandbox.midtrans.com/snap/v1/transactions';
-  static const apiKeyPaymentGateway = 'SB-Mid-server-ywOX8MSEs8NRE8ISA_tn-M0A';
+  static const apiKeyPaymentGateway = 'SB-Mid-server-JhkHk51SeijTaaoPLtkG3MaM'; // dev
+  // static const apiKeyPaymentGateway = 'Mid-server-Qu-d3DU5dzjnLAkxEI5dx-P_'; // prod
   static const blankString = '';
   static const amountValueKey = 'amount value';
   static const sessionUserIdBoxName = 'session-user-id';

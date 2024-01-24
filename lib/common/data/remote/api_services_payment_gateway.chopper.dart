@@ -23,7 +23,7 @@ class _$ApiServicesPaymentGateway extends ApiServicesPaymentGateway {
     final Map<String, String> $headers = {
       'Accept': 'application/json',
       'Authorization':
-          'Basic U0ItTWlkLXNlcnZlci15d09YOE1TRXM4TlJFOElTQV90bi1NMEE6',
+          'Basic U0ItTWlkLXNlcnZlci1KaGtIazUxU2VpalRhYW9QTHRrRzNNYU0=',
       'Content-Type': 'application/json',
     };
     final $body = midtransTransactionRequestDTO;
