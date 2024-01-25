@@ -104,19 +104,19 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     final appwriteModule = _$AppwriteModule();
-    final networkModule = _$NetworkModule();
     final paymentGatewayNetworkModule = _$PaymentGatewayNetworkModule();
+    final networkModule = _$NetworkModule();
     final apiInterfaceNetworkModule = _$ApiInterfaceNetworkModule();
     final apiInterfacePaymentGatewayNetworkModule =
         _$ApiInterfacePaymentGatewayNetworkModule();
     gh.lazySingleton<_i3.Client>(() => appwriteModule.appwriteClient());
     gh.factory<String>(
-      () => networkModule.baseURL,
-      instanceName: 'BASEURL',
-    );
-    gh.factory<String>(
       () => paymentGatewayNetworkModule.paymentGatewayBaseURL,
       instanceName: 'BASEURLPAYMENTGATEWAY',
+    );
+    gh.factory<String>(
+      () => networkModule.baseURL,
+      instanceName: 'BASEURL',
     );
     gh.lazySingleton<_i4.ChopperClient>(
         () => networkModule.chopperClient(gh<String>(instanceName: 'BASEURL')));
