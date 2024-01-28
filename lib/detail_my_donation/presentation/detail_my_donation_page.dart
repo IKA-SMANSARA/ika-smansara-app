@@ -112,9 +112,13 @@ class DetailMyDonationPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(16),
-                          child: ButtonDonateAgain(
-                            state.detailMyDonationDocumentResponse.campaignId ??
-                                '',
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ButtonDonateAgain(
+                              state.detailMyDonationDocumentResponse
+                                      .campaignId ??
+                                  '',
+                            ),
                           ),
                         ),
                       ],

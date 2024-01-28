@@ -33,7 +33,6 @@ class ContentPageMyDonation extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                 ),
-                textScaleFactor: 1.0,
               ),
             ],
           ),

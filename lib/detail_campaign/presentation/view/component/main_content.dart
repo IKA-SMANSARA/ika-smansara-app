@@ -182,14 +182,17 @@ class MainContent extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: DonateButton(
-                      campaignStatus:
-                          detailCampaignDocumentResponse.isActive ?? false,
-                      documentId: detailCampaignDocumentResponse.id ?? '',
-                      campaignName:
-                          detailCampaignDocumentResponse.campaignName ?? '',
-                      campaignImage:
-                          detailCampaignDocumentResponse.photoThumbnail ?? '',
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: DonateButton(
+                        campaignStatus:
+                            detailCampaignDocumentResponse.isActive ?? false,
+                        documentId: detailCampaignDocumentResponse.id ?? '',
+                        campaignName:
+                            detailCampaignDocumentResponse.campaignName ?? '',
+                        campaignImage:
+                            detailCampaignDocumentResponse.photoThumbnail ?? '',
+                      ),
                     ),
                   ),
                 ],

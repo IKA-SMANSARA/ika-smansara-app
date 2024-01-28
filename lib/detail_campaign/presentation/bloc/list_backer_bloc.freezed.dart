@@ -314,51 +314,52 @@ abstract class _FetchData implements ListBackerEvent {
 mixin _$ListBackerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ListBacker listBacker) success,
-    required TResult Function(String? errorMessage) error,
+    required TResult Function() initialListBacker,
+    required TResult Function() loadingListBacker,
+    required TResult Function(List<BackerDocument> listBacker)
+        successListBacker,
+    required TResult Function(String? errorMessage) errorErrorListBacker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ListBacker listBacker)? success,
-    TResult? Function(String? errorMessage)? error,
+    TResult? Function()? initialListBacker,
+    TResult? Function()? loadingListBacker,
+    TResult? Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult? Function(String? errorMessage)? errorErrorListBacker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ListBacker listBacker)? success,
-    TResult Function(String? errorMessage)? error,
+    TResult Function()? initialListBacker,
+    TResult Function()? loadingListBacker,
+    TResult Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult Function(String? errorMessage)? errorErrorListBacker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialListBacker value) initial,
-    required TResult Function(LoadingListBacker value) loading,
-    required TResult Function(SuccessListBacker value) success,
-    required TResult Function(ErrorListBacker value) error,
+    required TResult Function(InitialListBacker value) initialListBacker,
+    required TResult Function(LoadingListBacker value) loadingListBacker,
+    required TResult Function(SuccessListBacker value) successListBacker,
+    required TResult Function(ErrorListBacker value) errorErrorListBacker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitialListBacker value)? initial,
-    TResult? Function(LoadingListBacker value)? loading,
-    TResult? Function(SuccessListBacker value)? success,
-    TResult? Function(ErrorListBacker value)? error,
+    TResult? Function(InitialListBacker value)? initialListBacker,
+    TResult? Function(LoadingListBacker value)? loadingListBacker,
+    TResult? Function(SuccessListBacker value)? successListBacker,
+    TResult? Function(ErrorListBacker value)? errorErrorListBacker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialListBacker value)? initial,
-    TResult Function(LoadingListBacker value)? loading,
-    TResult Function(SuccessListBacker value)? success,
-    TResult Function(ErrorListBacker value)? error,
+    TResult Function(InitialListBacker value)? initialListBacker,
+    TResult Function(LoadingListBacker value)? loadingListBacker,
+    TResult Function(SuccessListBacker value)? successListBacker,
+    TResult Function(ErrorListBacker value)? errorErrorListBacker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -405,7 +406,7 @@ class _$InitialListBackerImpl implements InitialListBacker {
 
   @override
   String toString() {
-    return 'ListBackerState.initial()';
+    return 'ListBackerState.initialListBacker()';
   }
 
   @override
@@ -420,36 +421,37 @@ class _$InitialListBackerImpl implements InitialListBacker {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ListBacker listBacker) success,
-    required TResult Function(String? errorMessage) error,
+    required TResult Function() initialListBacker,
+    required TResult Function() loadingListBacker,
+    required TResult Function(List<BackerDocument> listBacker)
+        successListBacker,
+    required TResult Function(String? errorMessage) errorErrorListBacker,
   }) {
-    return initial();
+    return initialListBacker();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ListBacker listBacker)? success,
-    TResult? Function(String? errorMessage)? error,
+    TResult? Function()? initialListBacker,
+    TResult? Function()? loadingListBacker,
+    TResult? Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult? Function(String? errorMessage)? errorErrorListBacker,
   }) {
-    return initial?.call();
+    return initialListBacker?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ListBacker listBacker)? success,
-    TResult Function(String? errorMessage)? error,
+    TResult Function()? initialListBacker,
+    TResult Function()? loadingListBacker,
+    TResult Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult Function(String? errorMessage)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (initialListBacker != null) {
+      return initialListBacker();
     }
     return orElse();
   }
@@ -457,36 +459,36 @@ class _$InitialListBackerImpl implements InitialListBacker {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialListBacker value) initial,
-    required TResult Function(LoadingListBacker value) loading,
-    required TResult Function(SuccessListBacker value) success,
-    required TResult Function(ErrorListBacker value) error,
+    required TResult Function(InitialListBacker value) initialListBacker,
+    required TResult Function(LoadingListBacker value) loadingListBacker,
+    required TResult Function(SuccessListBacker value) successListBacker,
+    required TResult Function(ErrorListBacker value) errorErrorListBacker,
   }) {
-    return initial(this);
+    return initialListBacker(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitialListBacker value)? initial,
-    TResult? Function(LoadingListBacker value)? loading,
-    TResult? Function(SuccessListBacker value)? success,
-    TResult? Function(ErrorListBacker value)? error,
+    TResult? Function(InitialListBacker value)? initialListBacker,
+    TResult? Function(LoadingListBacker value)? loadingListBacker,
+    TResult? Function(SuccessListBacker value)? successListBacker,
+    TResult? Function(ErrorListBacker value)? errorErrorListBacker,
   }) {
-    return initial?.call(this);
+    return initialListBacker?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialListBacker value)? initial,
-    TResult Function(LoadingListBacker value)? loading,
-    TResult Function(SuccessListBacker value)? success,
-    TResult Function(ErrorListBacker value)? error,
+    TResult Function(InitialListBacker value)? initialListBacker,
+    TResult Function(LoadingListBacker value)? loadingListBacker,
+    TResult Function(SuccessListBacker value)? successListBacker,
+    TResult Function(ErrorListBacker value)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (initialListBacker != null) {
+      return initialListBacker(this);
     }
     return orElse();
   }
@@ -519,7 +521,7 @@ class _$LoadingListBackerImpl implements LoadingListBacker {
 
   @override
   String toString() {
-    return 'ListBackerState.loading()';
+    return 'ListBackerState.loadingListBacker()';
   }
 
   @override
@@ -534,36 +536,37 @@ class _$LoadingListBackerImpl implements LoadingListBacker {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ListBacker listBacker) success,
-    required TResult Function(String? errorMessage) error,
+    required TResult Function() initialListBacker,
+    required TResult Function() loadingListBacker,
+    required TResult Function(List<BackerDocument> listBacker)
+        successListBacker,
+    required TResult Function(String? errorMessage) errorErrorListBacker,
   }) {
-    return loading();
+    return loadingListBacker();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ListBacker listBacker)? success,
-    TResult? Function(String? errorMessage)? error,
+    TResult? Function()? initialListBacker,
+    TResult? Function()? loadingListBacker,
+    TResult? Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult? Function(String? errorMessage)? errorErrorListBacker,
   }) {
-    return loading?.call();
+    return loadingListBacker?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ListBacker listBacker)? success,
-    TResult Function(String? errorMessage)? error,
+    TResult Function()? initialListBacker,
+    TResult Function()? loadingListBacker,
+    TResult Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult Function(String? errorMessage)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (loadingListBacker != null) {
+      return loadingListBacker();
     }
     return orElse();
   }
@@ -571,36 +574,36 @@ class _$LoadingListBackerImpl implements LoadingListBacker {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialListBacker value) initial,
-    required TResult Function(LoadingListBacker value) loading,
-    required TResult Function(SuccessListBacker value) success,
-    required TResult Function(ErrorListBacker value) error,
+    required TResult Function(InitialListBacker value) initialListBacker,
+    required TResult Function(LoadingListBacker value) loadingListBacker,
+    required TResult Function(SuccessListBacker value) successListBacker,
+    required TResult Function(ErrorListBacker value) errorErrorListBacker,
   }) {
-    return loading(this);
+    return loadingListBacker(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitialListBacker value)? initial,
-    TResult? Function(LoadingListBacker value)? loading,
-    TResult? Function(SuccessListBacker value)? success,
-    TResult? Function(ErrorListBacker value)? error,
+    TResult? Function(InitialListBacker value)? initialListBacker,
+    TResult? Function(LoadingListBacker value)? loadingListBacker,
+    TResult? Function(SuccessListBacker value)? successListBacker,
+    TResult? Function(ErrorListBacker value)? errorErrorListBacker,
   }) {
-    return loading?.call(this);
+    return loadingListBacker?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialListBacker value)? initial,
-    TResult Function(LoadingListBacker value)? loading,
-    TResult Function(SuccessListBacker value)? success,
-    TResult Function(ErrorListBacker value)? error,
+    TResult Function(InitialListBacker value)? initialListBacker,
+    TResult Function(LoadingListBacker value)? loadingListBacker,
+    TResult Function(SuccessListBacker value)? successListBacker,
+    TResult Function(ErrorListBacker value)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (loadingListBacker != null) {
+      return loadingListBacker(this);
     }
     return orElse();
   }
@@ -616,9 +619,7 @@ abstract class _$$SuccessListBackerImplCopyWith<$Res> {
           $Res Function(_$SuccessListBackerImpl) then) =
       __$$SuccessListBackerImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ListBacker listBacker});
-
-  $ListBackerCopyWith<$Res> get listBacker;
+  $Res call({List<BackerDocument> listBacker});
 }
 
 /// @nodoc
@@ -636,32 +637,30 @@ class __$$SuccessListBackerImplCopyWithImpl<$Res>
   }) {
     return _then(_$SuccessListBackerImpl(
       null == listBacker
-          ? _value.listBacker
+          ? _value._listBacker
           : listBacker // ignore: cast_nullable_to_non_nullable
-              as ListBacker,
+              as List<BackerDocument>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ListBackerCopyWith<$Res> get listBacker {
-    return $ListBackerCopyWith<$Res>(_value.listBacker, (value) {
-      return _then(_value.copyWith(listBacker: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessListBackerImpl implements SuccessListBacker {
-  const _$SuccessListBackerImpl(this.listBacker);
+  const _$SuccessListBackerImpl(final List<BackerDocument> listBacker)
+      : _listBacker = listBacker;
 
+  final List<BackerDocument> _listBacker;
   @override
-  final ListBacker listBacker;
+  List<BackerDocument> get listBacker {
+    if (_listBacker is EqualUnmodifiableListView) return _listBacker;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listBacker);
+  }
 
   @override
   String toString() {
-    return 'ListBackerState.success(listBacker: $listBacker)';
+    return 'ListBackerState.successListBacker(listBacker: $listBacker)';
   }
 
   @override
@@ -669,12 +668,13 @@ class _$SuccessListBackerImpl implements SuccessListBacker {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessListBackerImpl &&
-            (identical(other.listBacker, listBacker) ||
-                other.listBacker == listBacker));
+            const DeepCollectionEquality()
+                .equals(other._listBacker, _listBacker));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, listBacker);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_listBacker));
 
   @JsonKey(ignore: true)
   @override
@@ -686,36 +686,37 @@ class _$SuccessListBackerImpl implements SuccessListBacker {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ListBacker listBacker) success,
-    required TResult Function(String? errorMessage) error,
+    required TResult Function() initialListBacker,
+    required TResult Function() loadingListBacker,
+    required TResult Function(List<BackerDocument> listBacker)
+        successListBacker,
+    required TResult Function(String? errorMessage) errorErrorListBacker,
   }) {
-    return success(listBacker);
+    return successListBacker(listBacker);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ListBacker listBacker)? success,
-    TResult? Function(String? errorMessage)? error,
+    TResult? Function()? initialListBacker,
+    TResult? Function()? loadingListBacker,
+    TResult? Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult? Function(String? errorMessage)? errorErrorListBacker,
   }) {
-    return success?.call(listBacker);
+    return successListBacker?.call(listBacker);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ListBacker listBacker)? success,
-    TResult Function(String? errorMessage)? error,
+    TResult Function()? initialListBacker,
+    TResult Function()? loadingListBacker,
+    TResult Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult Function(String? errorMessage)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(listBacker);
+    if (successListBacker != null) {
+      return successListBacker(listBacker);
     }
     return orElse();
   }
@@ -723,46 +724,46 @@ class _$SuccessListBackerImpl implements SuccessListBacker {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialListBacker value) initial,
-    required TResult Function(LoadingListBacker value) loading,
-    required TResult Function(SuccessListBacker value) success,
-    required TResult Function(ErrorListBacker value) error,
+    required TResult Function(InitialListBacker value) initialListBacker,
+    required TResult Function(LoadingListBacker value) loadingListBacker,
+    required TResult Function(SuccessListBacker value) successListBacker,
+    required TResult Function(ErrorListBacker value) errorErrorListBacker,
   }) {
-    return success(this);
+    return successListBacker(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitialListBacker value)? initial,
-    TResult? Function(LoadingListBacker value)? loading,
-    TResult? Function(SuccessListBacker value)? success,
-    TResult? Function(ErrorListBacker value)? error,
+    TResult? Function(InitialListBacker value)? initialListBacker,
+    TResult? Function(LoadingListBacker value)? loadingListBacker,
+    TResult? Function(SuccessListBacker value)? successListBacker,
+    TResult? Function(ErrorListBacker value)? errorErrorListBacker,
   }) {
-    return success?.call(this);
+    return successListBacker?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialListBacker value)? initial,
-    TResult Function(LoadingListBacker value)? loading,
-    TResult Function(SuccessListBacker value)? success,
-    TResult Function(ErrorListBacker value)? error,
+    TResult Function(InitialListBacker value)? initialListBacker,
+    TResult Function(LoadingListBacker value)? loadingListBacker,
+    TResult Function(SuccessListBacker value)? successListBacker,
+    TResult Function(ErrorListBacker value)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (successListBacker != null) {
+      return successListBacker(this);
     }
     return orElse();
   }
 }
 
 abstract class SuccessListBacker implements ListBackerState {
-  const factory SuccessListBacker(final ListBacker listBacker) =
+  const factory SuccessListBacker(final List<BackerDocument> listBacker) =
       _$SuccessListBackerImpl;
 
-  ListBacker get listBacker;
+  List<BackerDocument> get listBacker;
   @JsonKey(ignore: true)
   _$$SuccessListBackerImplCopyWith<_$SuccessListBackerImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -809,7 +810,7 @@ class _$ErrorListBackerImpl implements ErrorListBacker {
 
   @override
   String toString() {
-    return 'ListBackerState.error(errorMessage: $errorMessage)';
+    return 'ListBackerState.errorErrorListBacker(errorMessage: $errorMessage)';
   }
 
   @override
@@ -834,36 +835,37 @@ class _$ErrorListBackerImpl implements ErrorListBacker {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(ListBacker listBacker) success,
-    required TResult Function(String? errorMessage) error,
+    required TResult Function() initialListBacker,
+    required TResult Function() loadingListBacker,
+    required TResult Function(List<BackerDocument> listBacker)
+        successListBacker,
+    required TResult Function(String? errorMessage) errorErrorListBacker,
   }) {
-    return error(errorMessage);
+    return errorErrorListBacker(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(ListBacker listBacker)? success,
-    TResult? Function(String? errorMessage)? error,
+    TResult? Function()? initialListBacker,
+    TResult? Function()? loadingListBacker,
+    TResult? Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult? Function(String? errorMessage)? errorErrorListBacker,
   }) {
-    return error?.call(errorMessage);
+    return errorErrorListBacker?.call(errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(ListBacker listBacker)? success,
-    TResult Function(String? errorMessage)? error,
+    TResult Function()? initialListBacker,
+    TResult Function()? loadingListBacker,
+    TResult Function(List<BackerDocument> listBacker)? successListBacker,
+    TResult Function(String? errorMessage)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(errorMessage);
+    if (errorErrorListBacker != null) {
+      return errorErrorListBacker(errorMessage);
     }
     return orElse();
   }
@@ -871,36 +873,36 @@ class _$ErrorListBackerImpl implements ErrorListBacker {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialListBacker value) initial,
-    required TResult Function(LoadingListBacker value) loading,
-    required TResult Function(SuccessListBacker value) success,
-    required TResult Function(ErrorListBacker value) error,
+    required TResult Function(InitialListBacker value) initialListBacker,
+    required TResult Function(LoadingListBacker value) loadingListBacker,
+    required TResult Function(SuccessListBacker value) successListBacker,
+    required TResult Function(ErrorListBacker value) errorErrorListBacker,
   }) {
-    return error(this);
+    return errorErrorListBacker(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitialListBacker value)? initial,
-    TResult? Function(LoadingListBacker value)? loading,
-    TResult? Function(SuccessListBacker value)? success,
-    TResult? Function(ErrorListBacker value)? error,
+    TResult? Function(InitialListBacker value)? initialListBacker,
+    TResult? Function(LoadingListBacker value)? loadingListBacker,
+    TResult? Function(SuccessListBacker value)? successListBacker,
+    TResult? Function(ErrorListBacker value)? errorErrorListBacker,
   }) {
-    return error?.call(this);
+    return errorErrorListBacker?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialListBacker value)? initial,
-    TResult Function(LoadingListBacker value)? loading,
-    TResult Function(SuccessListBacker value)? success,
-    TResult Function(ErrorListBacker value)? error,
+    TResult Function(InitialListBacker value)? initialListBacker,
+    TResult Function(LoadingListBacker value)? loadingListBacker,
+    TResult Function(SuccessListBacker value)? successListBacker,
+    TResult Function(ErrorListBacker value)? errorErrorListBacker,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (errorErrorListBacker != null) {
+      return errorErrorListBacker(this);
     }
     return orElse();
   }

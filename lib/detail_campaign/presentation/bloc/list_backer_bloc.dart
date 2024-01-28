@@ -15,15 +15,20 @@ class ListBackerBloc extends Bloc<ListBackerEvent, ListBackerState> {
         await event.when(
           started: () {
             // init loading first
-            emit(const ListBackerState.loading());
+            emit(const ListBackerState.loadingListBacker());
           },
           fetchData: (String? documentId) async {
             // fetching data
             await _getListBackerUseCase(documentId).then(
               (value) => {
                 value.fold(
-                  (error) => emit(ListBackerState.error(error.message)),
-                  (response) => emit(ListBackerState.success(response)),
+                  (error) =>
+                      emit(ListBackerState.errorErrorListBacker(error.message)),
+                  (response) => emit(
+                    ListBackerState.successListBacker(
+                      response.listBacker ?? [],
+                    ),
+                  ),
                 ),
               },
             );

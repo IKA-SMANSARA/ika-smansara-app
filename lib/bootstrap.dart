@@ -52,9 +52,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // init basic configuration
-  await Hive.initFlutter();
   setupLogging();
   await configureDependencies();
+  await Hive.initFlutter();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

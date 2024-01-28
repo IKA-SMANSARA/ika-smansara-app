@@ -15,51 +15,50 @@ class DonaturShortList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (backerCount != 0) {
-      return BlocBuilder<ListBackerBloc, ListBackerState>(
-        builder: (context, state) {
-          if (state is LoadingListBacker) {
-            context.read<ListBackerBloc>().add(
-                  ListBackerEvent.fetchData(documentId),
-                );
-            return const Center(child: CircularProgressIndicator());
-          }
+    return BlocBuilder<ListBackerBloc, ListBackerState>(
+      builder: (context, state) {
+        if (state is LoadingListBacker) {
+          context.read<ListBackerBloc>().add(
+                ListBackerEvent.fetchData(documentId),
+              );
+          return const Center(child: CircularProgressIndicator());
+        }
 
-          if (state is ErrorListBacker) {
-            return Center(
-              child: Text(state.errorMessage ?? 'NETWORK ERROR'),
-            );
-          }
+        if (state is ErrorListBacker) {
+          return Center(
+            child: Text(state.errorMessage ?? 'NETWORK ERROR'),
+          );
+        }
 
-          if (state is SuccessListBacker) {
+        if (state is SuccessListBacker) {
+          if (backerCount != 0) {
             return SizedBox(
               height: 200,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: state.listBacker.listBacker?.length ?? 0,
+                itemCount: state.listBacker.length,
                 itemBuilder: (context, index) {
                   return DonaturCard(
-                    name: state.listBacker.listBacker?[index].userName ?? '-',
-                    amount: state.listBacker.listBacker?[index].amount ?? 0,
-                    createdAt:
-                        state.listBacker.listBacker?[index].createdAt ?? '',
+                    name: state.listBacker[index].userName ?? '-',
+                    amount: state.listBacker[index].amount ?? 0,
+                    createdAt: state.listBacker[index].createdAt ?? '',
                   );
                 },
               ),
             );
+          } else {
+            return const Center(
+              child: Text('BELUM ADA YANG BERDONASI'),
+            );
           }
+        }
 
-          context.read<ListBackerBloc>().add(const ListBackerEvent.started());
+        context.read<ListBackerBloc>().add(const ListBackerEvent.started());
 
-          return const Center(
-            child: Text('NETWORK ERROR'),
-          );
-        },
-      );
-    } else {
-      return const Center(
-        child: Text('BELUM ADA YANG BERDONASI'),
-      );
-    }
+        return const Center(
+          child: Text('NETWORK ERROR'),
+        );
+      },
+    );
   }
 }

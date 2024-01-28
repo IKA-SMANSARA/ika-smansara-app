@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ika_smansara/common/utils/constants.dart';
 import 'package:ika_smansara/detail_campaign/presentation/bloc/list_backer_bloc.dart';
 import 'package:ika_smansara/detail_campaign/presentation/view/component/donatur_card.dart';
 
@@ -17,7 +16,6 @@ class ListBackerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Constants.logger.d('ini back $documentId $backerCount');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF104993),
@@ -48,13 +46,12 @@ class ListBackerWidget extends StatelessWidget {
 
             if (state is SuccessListBacker) {
               return ListView.builder(
-                itemCount: state.listBacker.listBacker?.length ?? 0,
+                itemCount: state.listBacker.length,
                 itemBuilder: (context, index) {
                   return DonaturCard(
-                    name: state.listBacker.listBacker?[index].userName ?? '-',
-                    amount: state.listBacker.listBacker?[index].amount ?? 0,
-                    createdAt:
-                        state.listBacker.listBacker?[index].createdAt ?? '',
+                    name: state.listBacker[index].userName ?? '-',
+                    amount: state.listBacker[index].amount ?? 0,
+                    createdAt: state.listBacker[index].createdAt ?? '',
                   );
                 },
               );
