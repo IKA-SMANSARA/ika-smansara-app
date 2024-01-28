@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -9,24 +8,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/firebase_options.dart';
-
-class AppBlocObserver extends BlocObserver {
-  const AppBlocObserver();
-
-  @override
-  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    super.onChange(bloc, change);
-    log('onChange(${bloc.runtimeType}, $change)');
-  }
-
-  @override
-  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    log('onError(${bloc.runtimeType}, $error, $stackTrace)');
-    super.onError(bloc, error, stackTrace);
-  }
-}
+import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/flutter_fcm.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -46,14 +30,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
-  Bloc.observer = const AppBlocObserver();
-
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
   // init basic configuration
-  setupLogging();
-  await configureDependencies();
   await Hive.initFlutter();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
