@@ -7,10 +7,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:ika_smansara/firebase_options.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:ika_smansara/utils/flutter_fcm.dart';
+import 'package:ika_smansara/utils/my_observer.dart';
+import 'package:logger/logger.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -61,10 +64,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
     // get fcm token
     final fcmToken = kIsWeb
-        ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
+        ? await messaging.getToken(vapidKey: Constants.VAPID_KEY_FCM)
         : await messaging.getToken();
     // ignore: inference_failure_on_function_invocation
-    final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
+    final fcmTokenBox = await Hive.openBox(Constants.FCM_TOKEN_BOX_NAME);
     // save fcm token to local db
     await fcmTokenBox.put('fcmToken', fcmToken ?? '');
 
@@ -93,5 +96,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     return true;
   };
 
-  runApp(await builder());
+  runApp(
+    ProviderScope(
+      observers: [
+        MyObserver(),
+      ],
+      child: await builder(),
+    ),
+  );
 }
