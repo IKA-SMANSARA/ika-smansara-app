@@ -93,7 +93,7 @@ class LoginPage extends ConsumerWidget {
                     Text('Belum punya akun ? '),
                     TextButton(
                       onPressed: () {
-                        ref.read(routerProvider).goNamed('register');
+                        ref.read(routerProvider).pushNamed('register');
                       },
                       child: const Text(
                         'Daftar',

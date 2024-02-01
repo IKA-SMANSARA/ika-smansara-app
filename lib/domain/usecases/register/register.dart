@@ -5,6 +5,7 @@ import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
 import 'package:ika_smansara/domain/usecases/usecase.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
 class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
   final Authentication _authentication;
@@ -26,26 +27,37 @@ class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
     );
 
     if (resultRegister.isSuccess) {
-      var resultCreateUser = await _userRepository.createUser(
-        userProfileRequest: UserProfileRequest(
-          address: params.address,
-          authKey: resultRegister.resultValue?.id,
-          email: params.email,
-          graduateYear: params.graduateYear ?? 0,
-          isAlumni: params.isAlumni ?? false,
-          name: params.name,
-          phone: params.phone,
-          photoProfileUrl: null,
-        ),
+      var getSession = await _authentication.login(
+        email: params.email,
+        password: params.password,
       );
 
-      if (resultCreateUser.isSuccess) {
-        return Result.success(
-          resultCreateUser.resultValue ?? UserProfileDocument(),
+      if (getSession.isSuccess) {
+        var resultCreateUser = await _userRepository.createUser(
+          userProfileRequest: UserProfileRequest(
+            address: params.address,
+            authKey: resultRegister.resultValue?.id,
+            email: params.email,
+            graduateYear: params.graduateYear ?? '0',
+            isAlumni: params.isAlumni ?? false,
+            name: params.name,
+            phone: params.phone,
+            photoProfileUrl: null,
+          ),
         );
+
+        if (resultCreateUser.isSuccess) {
+          return Result.success(
+            resultCreateUser.resultValue ?? UserProfileDocument(),
+          );
+        } else {
+          return Result.failed(
+            resultCreateUser.errorMessage ?? 'Failed register user',
+          );
+        }
       } else {
         return Result.failed(
-          resultCreateUser.errorMessage ?? 'Failed register user',
+          getSession.errorMessage ?? 'Failed register user',
         );
       }
     } else {

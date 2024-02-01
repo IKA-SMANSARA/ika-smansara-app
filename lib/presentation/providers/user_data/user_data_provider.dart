@@ -66,7 +66,7 @@ class UserData extends _$UserData {
     required address,
     required phone,
     isAlumni = false,
-    graduateYear = 0,
+    graduateYear = '0',
     required password,
   }) async {
     state = const AsyncLoading();
@@ -80,6 +80,8 @@ class UserData extends _$UserData {
         address: address,
         phone: phone,
         password: password,
+        graduateYear: graduateYear,
+        isAlumni: isAlumni,
       ),
     );
 

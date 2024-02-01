@@ -11,7 +11,7 @@ class CarouselImageDocument with _$CarouselImageDocument {
     String? databaseId,
     String? createdAt,
     String? updatedAt,
-    @Default([]) List<dynamic> permissions,
+    @Default([]) List<dynamic>? permissions,
     String? imageUrl,
   }) = _CarouselImageDocument;
 

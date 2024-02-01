@@ -60,17 +60,17 @@ class AppwriteAuthentication implements Authentication {
     required String name,
   }) async {
     try {
-      var createAccount = _account.create(
+      var createAccount = await _account.create(
         userId: 'unique()',
         email: email,
         password: password,
         name: name,
       );
 
-      Constants.logger.d(createAccount);
+      Constants.logger.d(createAccount.toMap());
 
       return Result.success(
-        User.fromJson(createAccount as Map<String, dynamic>),
+        User.fromJson(createAccount.toMap()),
       );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);

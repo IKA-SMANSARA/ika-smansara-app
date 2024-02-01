@@ -23,6 +23,7 @@ class AppwriteUserRepository implements UserRepository {
     required UserProfileRequest userProfileRequest,
   }) async {
     try {
+      Constants.logger.d(userProfileRequest.authKey);
       var createUser = await _databases.createDocument(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
@@ -31,19 +32,19 @@ class AppwriteUserRepository implements UserRepository {
         permissions: [
           Permission.read(
             Role.user(
-              userProfileRequest.authKey ?? 'unique()',
+              userProfileRequest.authKey!,
             ),
           ),
           Permission.update(
             Role.user(
-              userProfileRequest.authKey ?? 'unique()',
+              userProfileRequest.authKey!,
             ),
           ),
         ],
       );
 
       return Result.success(
-        UserProfileDocument.fromJson(createUser as Map<String, dynamic>),
+        UserProfileDocument.fromJson(createUser.toMap()),
       );
     } on AppwriteException catch (e) {
       return Result.failed(e.message ?? 'Error!');
@@ -82,7 +83,7 @@ class AppwriteUserRepository implements UserRepository {
       );
 
       return Result.success(
-        UserProfileDocument.fromJson(updateUser as Map<String, dynamic>),
+        UserProfileDocument.fromJson(updateUser.toMap()),
       );
     } on AppwriteException catch (e) {
       return Result.failed(e.message ?? 'Error!');

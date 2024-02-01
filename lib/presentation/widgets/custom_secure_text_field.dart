@@ -45,7 +45,7 @@ class _CustomSecureTextFieldState extends State<CustomSecureTextField> {
             icon: FaIcon(
               color: Colors.black,
               size: 18,
-              _isObscure == true
+              (_isObscure == true)
                   ? FontAwesomeIcons.eye
                   : FontAwesomeIcons.eyeSlash,
             ),
