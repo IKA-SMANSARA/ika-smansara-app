@@ -74,21 +74,42 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 CustomTextField(
                   labelText: 'Email',
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 verticalSpace(24),
                 CustomTextField(
                   labelText: 'Nama Lengkap',
                   controller: nameController,
+                  keyboardType: TextInputType.name,
+                ),
+                verticalSpace(24),
+                SizedBox(
+                  height: 200,
+                  child: CustomTextField(
+                    labelText: 'Alamat',
+                    controller: addressController,
+                    expands: true,
+                    maxLines: null,
+                    keyboardType: TextInputType.streetAddress,
+                    textAlignVertical: TextAlignVertical.top,
+                  ),
                 ),
                 verticalSpace(24),
                 CustomTextField(
-                  labelText: 'Alamat',
-                  controller: addressController,
-                ),
-                verticalSpace(24),
-                CustomTextField(
-                  labelText: 'Nomor Telepon (awali dengan angka 0, bukan +62)',
+                  labelText: 'Nomor Telepon',
                   controller: phoneController,
+                  keyboardType: TextInputType.phone,
+                ),
+                verticalSpace(8),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '*awali dengan angka 0, bukan +62',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.redAccent,
+                    ),
+                  ),
                 ),
                 verticalSpace(24),
                 CheckboxListTile.adaptive(
@@ -115,8 +136,20 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                     children: [
                       verticalSpace(24),
                       CustomTextField(
-                        labelText: 'Tahun Lulus (tulis tahun saja cnt: 2008)',
+                        labelText: 'Tahun Lulus',
                         controller: graduateYearController,
+                        keyboardType: TextInputType.number,
+                      ),
+                      verticalSpace(8),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '*tulis tahun saja cnt: 2008',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.redAccent,
+                          ),
+                        ),
                       ),
                     ],
                   ),

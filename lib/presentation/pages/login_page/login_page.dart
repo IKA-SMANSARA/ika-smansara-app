@@ -57,6 +57,7 @@ class LoginPage extends ConsumerWidget {
                 CustomTextField(
                   labelText: 'Email',
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 verticalSpace(24),
                 CustomSecureTextField(
