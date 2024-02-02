@@ -13,7 +13,6 @@ import 'package:ika_smansara/firebase_options.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:ika_smansara/utils/flutter_fcm.dart';
 import 'package:ika_smansara/utils/my_observer.dart';
-import 'package:logger/logger.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
