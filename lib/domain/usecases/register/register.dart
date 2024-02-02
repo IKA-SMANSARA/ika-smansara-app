@@ -5,7 +5,6 @@ import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
 import 'package:ika_smansara/domain/usecases/usecase.dart';
-import 'package:ika_smansara/utils/constants.dart';
 
 class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
   final Authentication _authentication;
