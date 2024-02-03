@@ -26,6 +26,8 @@ class GetLoggedInUser implements UseCase<Result<UserProfileDocument>, void> {
         uid: loggedIn,
       );
 
+      Constants.logger.i(resultUserProfile);
+
       if (resultUserProfile.isSuccess) {
         return Result.success(
           resultUserProfile.resultValue ?? UserProfileDocument(),

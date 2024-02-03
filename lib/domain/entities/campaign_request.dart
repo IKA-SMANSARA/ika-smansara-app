@@ -1,17 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'campaign_document.freezed.dart';
-part 'campaign_document.g.dart';
+part 'campaign_request.freezed.dart';
+part 'campaign_request.g.dart';
 
 @freezed
-class CampaignDocument with _$CampaignDocument {
-  factory CampaignDocument({
-    String? id,
-    String? collectionId,
-    String? databaseId,
-    String? createdAt,
-    String? updatedAt,
-    @Default([]) List<dynamic>? permissions,
+class CampaignRequest with _$CampaignRequest {
+  factory CampaignRequest({
     String? campaignName,
     @Default(0) int? goalAmount,
     String? dateStartCampaign,
@@ -23,16 +17,10 @@ class CampaignDocument with _$CampaignDocument {
     @Default([]) List<String>? categories,
     @Default(0) int? currentAmount,
     String? campaignDescription,
-  }) = _CampaignDocument;
+  }) = _CampaignRequest;
 
-  factory CampaignDocument.fromJson(Map<String, dynamic> json) =>
-      CampaignDocument(
-        id: json['\$id'],
-        collectionId: json['\$collectionId'],
-        databaseId: json['\$databaseId'],
-        createdAt: json['\$createdAt'],
-        updatedAt: json['\$updatedAt'],
-        permissions: json['\$permissions'],
+  factory CampaignRequest.fromJson(Map<String, dynamic> json) =>
+      CampaignRequest(
         backerCount: json['backerCount'],
         campaignDescription: json['campaignDescription'],
         campaignName: json['campaignName'],

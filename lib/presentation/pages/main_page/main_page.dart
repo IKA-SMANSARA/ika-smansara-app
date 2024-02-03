@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
+import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/bottom_nav_bar.dart';
@@ -32,6 +32,10 @@ class _MainPageState extends ConsumerState<MainPage> {
       },
     );
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        elevation: 0.0,
+      ),
       body: Stack(
         children: [
           PageView(
@@ -41,7 +45,7 @@ class _MainPageState extends ConsumerState<MainPage> {
             }),
             children: [
               Center(
-                child: Text('page 1'),
+                child: HomePage(),
               ),
               Center(
                 child: Text('page 2'),

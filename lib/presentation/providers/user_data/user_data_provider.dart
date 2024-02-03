@@ -6,6 +6,8 @@ import 'package:ika_smansara/domain/usecases/login/login.dart';
 import 'package:ika_smansara/domain/usecases/login/login_params.dart';
 import 'package:ika_smansara/domain/usecases/register/register.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
+import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
+import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/get_logged_in_user_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/login_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/logout_provider.dart';
@@ -24,7 +26,8 @@ class UserData extends _$UserData {
 
     switch (userResult) {
       case Success(value: final user):
-        //TODO: add get home page content (categories, carousel image, etc) here!
+        _getCategories();
+        _getCarouselImages();
         Constants.logger.d(user);
         return user;
       case Failed(message: _):
@@ -49,7 +52,8 @@ class UserData extends _$UserData {
 
     switch (loginResult) {
       case Success(value: final user):
-        //TODO: add get home page content (categories, carousel image, etc) here!
+        _getCategories();
+        _getCarouselImages();
         state = AsyncData(user);
       case Failed(:final message):
         state = AsyncError(
@@ -87,7 +91,8 @@ class UserData extends _$UserData {
 
     switch (registerResult) {
       case Success(value: final user):
-        //TODO: add get home page content (categories, carousel image, etc) here!
+        _getCategories();
+        _getCarouselImages();
         state = AsyncData(user);
       case Failed(:final message):
         state = AsyncError(
@@ -114,7 +119,8 @@ class UserData extends _$UserData {
 
     switch (logoutResult) {
       case Success(value: _):
-        //TODO: add get home page content (categories, carousel image, etc) here!
+        _getCategories();
+        _getCarouselImages();
         state = const AsyncData(null);
       case Failed(:final message):
         state = AsyncError(
@@ -123,5 +129,13 @@ class UserData extends _$UserData {
         );
         state = AsyncData(state.valueOrNull);
     }
+  }
+
+  void _getCategories() {
+    ref.read(getListCategoryProvider.notifier).getListCategory();
+  }
+
+  void _getCarouselImages() {
+    ref.read(getCarouselsProvider.notifier).getCarouselImagesData();
   }
 }
