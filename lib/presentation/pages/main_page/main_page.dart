@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
+import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
@@ -51,7 +52,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                 child: Text('page 2'),
               ),
               Center(
-                child: Text('page 3'),
+                child: AccountPage(),
               ),
             ],
           ),
