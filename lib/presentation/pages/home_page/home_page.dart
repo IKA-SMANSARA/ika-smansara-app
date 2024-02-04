@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
@@ -9,6 +10,7 @@ import 'package:ika_smansara/presentation/pages/home_page/methods/header_image_l
 import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -37,7 +39,10 @@ class HomePage extends ConsumerWidget {
                 categoryList(
                   categories: ref.watch(getListCategoryProvider),
                   onTap: (category) {
-                    context.showSnackBar('$category clicked');
+                    ref.read(routerProvider).pushNamed(
+                          'list-campaign-page',
+                          extra: category,
+                        );
                   },
                 ),
                 verticalSpace(30),
@@ -58,7 +63,10 @@ class HomePage extends ConsumerWidget {
                     context.showSnackBar('$campaign clicked');
                   },
                   onPressed: () {
-                    context.showSnackBar('GO TO PAGE ALL CAMPAIGN');
+                    ref.read(routerProvider).pushNamed(
+                          'list-campaign-page',
+                          extra: CategoryDocument(),
+                        );
                   },
                 ),
                 verticalSpace(16),

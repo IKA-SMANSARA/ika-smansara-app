@@ -50,6 +50,7 @@ List<Widget> campaignList({
                       right: campaign == data.last ? 24 : 0,
                     ),
                     child: CampaignCard(
+                      onTap: () => onTap?.call(campaign),
                       imageUrl: campaign.photoThumbnail ?? '',
                       campaignName: campaign.campaignName ?? '',
                       dateEndCampaign: campaign.dateEndCampaign ?? '',

@@ -23,8 +23,8 @@ class BottomNavBar extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
           ),
           boxShadow: [
             BoxShadow(
