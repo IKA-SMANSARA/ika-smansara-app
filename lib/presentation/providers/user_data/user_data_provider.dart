@@ -6,6 +6,7 @@ import 'package:ika_smansara/domain/usecases/login/login.dart';
 import 'package:ika_smansara/domain/usecases/login/login_params.dart';
 import 'package:ika_smansara/domain/usecases/register/register.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
+import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/get_logged_in_user_provider.dart';
@@ -28,6 +29,7 @@ class UserData extends _$UserData {
       case Success(value: final user):
         _getCategories();
         _getCarouselImages();
+        _getNewCampaigns();
         Constants.logger.d(user);
         return user;
       case Failed(message: _):
@@ -54,6 +56,7 @@ class UserData extends _$UserData {
       case Success(value: final user):
         _getCategories();
         _getCarouselImages();
+        _getNewCampaigns();
         state = AsyncData(user);
       case Failed(:final message):
         state = AsyncError(
@@ -93,6 +96,7 @@ class UserData extends _$UserData {
       case Success(value: final user):
         _getCategories();
         _getCarouselImages();
+        _getNewCampaigns();
         state = AsyncData(user);
       case Failed(:final message):
         state = AsyncError(
@@ -121,6 +125,7 @@ class UserData extends _$UserData {
       case Success(value: _):
         _getCategories();
         _getCarouselImages();
+        _getNewCampaigns();
         state = const AsyncData(null);
       case Failed(:final message):
         state = AsyncError(
@@ -137,5 +142,9 @@ class UserData extends _$UserData {
 
   void _getCarouselImages() {
     ref.read(getCarouselsProvider.notifier).getCarouselImagesData();
+  }
+
+  void _getNewCampaigns() {
+    ref.read(getNewCampaignsListProvider.notifier).getNewCampaignsData();
   }
 }

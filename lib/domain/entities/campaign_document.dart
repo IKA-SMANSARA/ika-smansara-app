@@ -20,7 +20,7 @@ class CampaignDocument with _$CampaignDocument {
     @Default(false) bool? isActive,
     String? photoThumbnail,
     @Default(0) int? backerCount,
-    @Default([]) List<String>? categories,
+    @Default([]) List<dynamic>? categories,
     @Default(0) int? currentAmount,
     String? campaignDescription,
   }) = _CampaignDocument;

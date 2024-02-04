@@ -22,3 +22,32 @@ SizedBox horizontalSpace(double width) {
 
   return _horizontalSpaces[width] ?? const SizedBox();
 }
+
+String getRemainingDays({String? dateEndCampaign}) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    final timestamp = DateTime.parse(timestampString);
+
+    final today = DateTime.now();
+
+    final difference = timestamp.difference(today);
+
+    final remainingDays = difference.inDays;
+
+    if (remainingDays != 0) {
+      return '$remainingDays hari lagi';
+    } else {
+      return '0 hari lagi';
+    }
+  } else {
+    return '0 hari lagi';
+  }
+}
+
+double getCampaignProgressIndicatorValue(
+  int goalAmount,
+  int currentAmount,
+) {
+  return (currentAmount / goalAmount) * 100 / 100;
+}

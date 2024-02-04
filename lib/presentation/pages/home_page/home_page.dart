@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
+import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_images.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/header_image_logo.dart';
+import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 
@@ -49,7 +51,18 @@ class HomePage extends ConsumerWidget {
                     color: Colors.grey,
                   ),
                 ),
-                // Program ika smansara
+                verticalSpace(8),
+                ...campaignList(
+                  title: 'Program IKA SMANSARA',
+                  campaigns: ref.watch(getNewCampaignsListProvider),
+                  onTap: (campaign) {
+                    context.showSnackBar('$campaign clicked');
+                  },
+                  onPressed: () {
+                    context.showSnackBar('GO TO PAGE ALL CAMPAIGN');
+                  },
+                ),
+                verticalSpace(16),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
