@@ -26,7 +26,6 @@ class HomePage extends ConsumerWidget {
               ),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 verticalSpace(16),
                 headerImageLogo(),

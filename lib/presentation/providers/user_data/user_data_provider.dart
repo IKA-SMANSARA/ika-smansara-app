@@ -97,6 +97,7 @@ class UserData extends _$UserData {
         _getCategories();
         _getCarouselImages();
         _getNewCampaigns();
+        refreshUserData();
         state = AsyncData(user);
       case Failed(:final message):
         state = AsyncError(
