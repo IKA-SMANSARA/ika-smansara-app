@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
@@ -14,6 +15,7 @@ Widget menuAccountItem({
         ),
         child: Column(
           children: [
+            verticalSpace(16),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -25,7 +27,7 @@ Widget menuAccountItem({
                     children: [
                       menuIcon,
                       horizontalSpace(16),
-                      Text(
+                      AutoSizeText(
                         title,
                         style: TextStyle(
                           fontSize: 14,
@@ -40,7 +42,7 @@ Widget menuAccountItem({
                 ],
               ),
             ),
-            verticalSpace(8),
+            verticalSpace(16),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,

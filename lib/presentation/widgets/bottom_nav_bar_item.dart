@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
@@ -46,7 +47,7 @@ class BottomNavBarItem extends StatelessWidget {
               color: isSelected ? const Color(0xFF104993) : Colors.grey,
             ),
           ),
-          Text(
+          AutoSizeText(
             title,
             style: TextStyle(
               fontSize: 10,

@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 
 Map<double, SizedBox> _verticalSpaces = {};
@@ -57,5 +58,49 @@ bool enableInfiniteScrollStatus({int? listLength = 0}) {
     return true;
   } else {
     return false;
+  }
+}
+
+int categoryMenuCrossAxisCount(BuildContext context) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+    return 4;
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
+    return 5;
+  } else {
+    return 10;
+  }
+}
+
+double responsiveAspectRatio(BuildContext context) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+    return 1.7;
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
+    return 2.7;
+  } else {
+    return 3.7;
+  }
+}
+
+double headerImageLogoHeigh(BuildContext context) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+    return 32.0;
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
+    return 52.0;
+  } else {
+    return 72.0;
+  }
+}
+
+double headerHomeBackgroundHeigh(BuildContext context) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+    return 200;
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
+    return 250;
+  } else {
+    return 300;
   }
 }

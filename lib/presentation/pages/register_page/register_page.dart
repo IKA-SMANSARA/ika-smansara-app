@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
@@ -40,7 +41,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daftar'),
+        title: AutoSizeText('Daftar'),
       ),
       body: ListView(
         children: [
@@ -49,7 +50,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
             child: Column(
               children: [
                 verticalSpace(24),
-                Text(
+                AutoSizeText(
                   'Mari mulai berbagi kebaikan untuk sesama',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 verticalSpace(8),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: AutoSizeText(
                     '*awali dengan angka 0, bukan +62',
                     style: TextStyle(
                       fontSize: 12,
@@ -113,7 +114,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 ),
                 verticalSpace(24),
                 CheckboxListTile.adaptive(
-                  title: Text(
+                  title: AutoSizeText(
                     'Apakah anda lulusan dari SMA Negeri 1 Jepara ?',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -143,7 +144,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                       verticalSpace(8),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           '*tulis tahun saja cnt: 2008',
                           style: TextStyle(
                             fontSize: 12,
@@ -188,7 +189,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                                 );
                               }
                             },
-                            child: const Text(
+                            child: AutoSizeText(
                               'Daftar',
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
@@ -49,7 +50,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                 child: HomePage(),
               ),
               Center(
-                child: Text('page 2'),
+                child: AutoSizeText('page 2'),
               ),
               Center(
                 child: AccountPage(),

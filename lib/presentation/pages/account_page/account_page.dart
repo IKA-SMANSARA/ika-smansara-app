@@ -30,6 +30,7 @@ class AccountPage extends ConsumerWidget {
               isAdmin: asyncUserData.valueOrNull?.isAdmin ?? false,
             ),
             createCampaignButton(
+              context: context,
               isAdmin: asyncUserData.valueOrNull?.isAdmin ?? false,
               title: 'Buat Galang Dana',
               onPressed: () => context.showSnackBar('create campaign!'),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/presentation/misc/methods.dart';
 
-Widget headerImageLogo() => Center(
+Widget headerImageLogo({
+  required BuildContext context,
+}) =>
+    Center(
       child: Assets.images.ikaSmansaraHeaderHome.svg(
         width: double.infinity,
-        height: 32,
+        height: headerImageLogoHeigh(context),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
 Widget carouselCampaignImage({
+  required BuildContext context,
   required AsyncValue<List<CampaignDocument>> campaigns,
 }) =>
     campaigns.when(
@@ -13,7 +14,7 @@ Widget carouselCampaignImage({
         itemCount: data.length,
         itemBuilder: (context, itemIndex, pageViewIndex) {
           return SizedBox(
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
               imageUrl: data[itemIndex].photoThumbnail ?? '',
               placeholder: (context, url) => const LinearProgressIndicator(),
@@ -22,7 +23,7 @@ Widget carouselCampaignImage({
           );
         },
         options: CarouselOptions(
-          aspectRatio: 16 / 9,
+          aspectRatio: responsiveAspectRatio(context),
           autoPlay: true,
           enableInfiniteScroll: enableInfiniteScrollStatus(
             listLength: data.length,

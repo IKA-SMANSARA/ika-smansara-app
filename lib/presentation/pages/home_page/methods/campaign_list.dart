@@ -1,6 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/presentation/widgets/campaign_card.dart';
 
@@ -19,16 +19,16 @@ List<Widget> campaignList({
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            AutoSizeText(
               title,
-              style: GoogleFonts.poppins(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
             ),
             TextButton(
               onPressed: onPressed,
-              child: const Text(
+              child: AutoSizeText(
                 'selengkapnya',
                 style: TextStyle(
                   color: const Color(0xFF104993),

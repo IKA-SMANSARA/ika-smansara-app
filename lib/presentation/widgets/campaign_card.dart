@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
@@ -38,7 +39,7 @@ class CampaignCard extends StatelessWidget {
         child: Column(
           children: [
             AspectRatio(
-              aspectRatio: 16 / 9,
+              aspectRatio: responsiveAspectRatio(context),
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8),
@@ -66,7 +67,7 @@ class CampaignCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      AutoSizeText(
                         campaignName,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -76,7 +77,7 @@ class CampaignCard extends StatelessWidget {
                         ),
                       ),
                       verticalSpace(8),
-                      Text(
+                      AutoSizeText(
                         'Donasi Terkumpul',
                         style: TextStyle(
                           fontSize: 12,
@@ -86,7 +87,7 @@ class CampaignCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          AutoSizeText(
                             campaignCurrentAmount.toIDRCurrencyFormat(),
                             style: TextStyle(
                               color: Colors.blue,
@@ -94,7 +95,7 @@ class CampaignCard extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          Text(
+                          AutoSizeText(
                             getRemainingDays(
                               dateEndCampaign: dateEndCampaign,
                             ),
@@ -106,7 +107,7 @@ class CampaignCard extends StatelessWidget {
                       ),
                       verticalSpace(4),
                       SizedBox(
-                        width: 290,
+                        width: width,
                         child: LinearProgressIndicator(
                           value: getCampaignProgressIndicatorValue(
                             campaignGoalAmount,

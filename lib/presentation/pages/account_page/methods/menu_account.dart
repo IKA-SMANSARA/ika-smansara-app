@@ -21,7 +21,6 @@ Widget menuAccount({
             height: 1,
           ),
         ),
-        verticalSpace(16),
         Visibility(
           visible: isAdmin,
           child: Column(
@@ -77,6 +76,6 @@ Widget menuAccount({
           title: 'Keluar',
           onTap: () => ref.read(userDataProvider.notifier).logout(),
         ),
-        verticalSpace(16),
+        verticalSpace(300),
       ],
     );

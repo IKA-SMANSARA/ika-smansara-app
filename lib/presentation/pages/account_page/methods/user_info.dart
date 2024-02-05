@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,7 +40,7 @@ Widget userInfo({
                     ),
                   ),
             verticalSpace(16),
-            Text(
+            AutoSizeText(
               userData.valueOrNull?.name ?? '',
               style: TextStyle(
                 color: Colors.white,
@@ -50,7 +51,7 @@ Widget userInfo({
             verticalSpace(8),
             Visibility(
               visible: isAdmin,
-              child: Text(
+              child: AutoSizeText(
                 'ADMIN',
                 style: TextStyle(
                   color: Colors.white,

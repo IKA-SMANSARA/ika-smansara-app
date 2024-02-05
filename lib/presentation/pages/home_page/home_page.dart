@@ -22,7 +22,7 @@ class HomePage extends ConsumerWidget {
         Stack(
           children: [
             Container(
-              height: 200,
+              height: headerHomeBackgroundHeigh(context),
               decoration: const BoxDecoration(
                 color: Color(0xFF104993),
               ),
@@ -30,13 +30,17 @@ class HomePage extends ConsumerWidget {
             Column(
               children: [
                 verticalSpace(16),
-                headerImageLogo(),
+                headerImageLogo(
+                  context: context,
+                ),
                 verticalSpace(16),
                 carouselImages(
+                  context: context,
                   carouselImagesValue: ref.watch(getCarouselsProvider),
                 ),
                 verticalSpace(30),
                 categoryList(
+                  context: context,
                   categories: ref.watch(getListCategoryProvider),
                   onTap: (category) {
                     ref.read(routerProvider).pushNamed(

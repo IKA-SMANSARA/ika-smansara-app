@@ -1,17 +1,21 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
+import 'package:ika_smansara/presentation/misc/methods.dart';
 
 Widget categoryList({
+  required BuildContext context,
   void Function(CategoryDocument category)? onTap,
   required AsyncValue<List<CategoryDocument>> categories,
 }) =>
     categories.when(
       data: (data) => GridView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
+        padding: const EdgeInsets.all(16),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: categoryMenuCrossAxisCount(context),
+          mainAxisSpacing: 10,
         ),
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -33,7 +37,7 @@ Widget categoryList({
                       Padding(
                         padding: const EdgeInsets.all(6),
                         child: Center(
-                          child: Text(
+                          child: AutoSizeText(
                             data[index].nameCategory?.toUpperCase() ?? '',
                             style: TextStyle(
                               fontSize: 10,

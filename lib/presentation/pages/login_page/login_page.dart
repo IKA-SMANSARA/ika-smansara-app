@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
@@ -39,7 +40,7 @@ class LoginPage extends ConsumerWidget {
             child: Assets.images.logoIkaSmansaraColored.svg(),
           ),
           verticalSpace(16),
-          Text(
+          AutoSizeText(
             'Selamat Datang',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -76,7 +77,7 @@ class LoginPage extends ConsumerWidget {
                                     password: passwordController.text,
                                   );
                             },
-                            child: const Text(
+                            child: AutoSizeText(
                               'Login',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -91,12 +92,12 @@ class LoginPage extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Belum punya akun ? '),
+                    AutoSizeText('Belum punya akun ? '),
                     TextButton(
                       onPressed: () {
                         ref.read(routerProvider).pushNamed('register');
                       },
-                      child: const Text(
+                      child: AutoSizeText(
                         'Daftar',
                         style: TextStyle(
                           color: const Color(0xFF104993),
