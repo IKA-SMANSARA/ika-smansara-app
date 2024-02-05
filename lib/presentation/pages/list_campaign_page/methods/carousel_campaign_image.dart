@@ -6,7 +6,6 @@ import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
 Widget carouselCampaignImage({
-  void Function(CampaignDocument campaign)? onTap,
   required AsyncValue<List<CampaignDocument>> campaigns,
 }) =>
     campaigns.when(

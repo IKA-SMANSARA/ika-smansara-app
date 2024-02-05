@@ -49,18 +49,25 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required String categoryName,
   }) async {
     try {
+      var filterQueries = (categoryName != '')
+          ? [
+              Query.orderDesc('dateStartCampaign'),
+              Query.search('categories', '$categoryName'),
+              Query.equal('isDeleted', false),
+              Query.equal('isActive', true),
+            ]
+          : [
+              Query.orderDesc('dateStartCampaign'),
+              Query.equal('isDeleted', false),
+              Query.equal('isActive', true),
+            ];
       var result = await _databases.listDocuments(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
-        queries: [
-          Query.orderDesc('dateStartCampaign'),
-          Query.equal('categories', ['$categoryName']),
-          Query.equal('isDeleted', false),
-          Query.equal('isActive', true),
-        ],
+        queries: filterQueries,
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d(result.documents);
 
       if (result.documents.isNotEmpty) {
         return Result.success(
@@ -106,7 +113,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
         ],
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d(result.documents);
 
       if (result.documents.isNotEmpty) {
         return Result.success(

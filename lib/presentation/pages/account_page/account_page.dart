@@ -12,7 +12,7 @@ class AccountPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var asyncUserData = ref.watch(userDataProvider);
+    var asyncUserData = ref.read(userDataProvider);
 
     Constants.logger.d(asyncUserData);
     return ListView(
