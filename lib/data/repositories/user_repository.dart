@@ -11,6 +11,9 @@ abstract interface class UserRepository {
   Future<Result<UserProfileDocument>> getUser({
     required String uid,
   });
+  Future<Result<UserProfileDocument>> deleteUser({
+    required String uid,
+  });
   Future<Result<UserProfileDocument>> updateUser({
     required UserProfileRequest userProfileRequest,
   });

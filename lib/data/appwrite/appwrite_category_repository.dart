@@ -18,16 +18,16 @@ class AppwriteCategoryRepository implements CategoryRepository {
   @override
   Future<Result<List<CategoryDocument>>> getCategories() async {
     try {
-      var getCategoriesResult = await _databases.listDocuments(
+      var result = await _databases.listDocuments(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.CATEGORY_DOCUMENT_ID,
       );
 
-      Constants.logger.d(getCategoriesResult);
+      Constants.logger.d(result);
 
-      if (getCategoriesResult.documents.isNotEmpty) {
+      if (result.documents.isNotEmpty) {
         return Result.success(
-          getCategoriesResult.documents
+          result.documents
               .map(
                 (e) => CategoryDocument.fromJson(e.data),
               )
@@ -37,6 +37,7 @@ class AppwriteCategoryRepository implements CategoryRepository {
         return Result.success([]);
       }
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }

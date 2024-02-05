@@ -51,3 +51,11 @@ double getCampaignProgressIndicatorValue(
 ) {
   return (currentAmount / goalAmount) * 100 / 100;
 }
+
+bool enableInfiniteScrollStatus({int? listLength = 0}) {
+  if (listLength != 1) {
+    return true;
+  } else {
+    return false;
+  }
+}

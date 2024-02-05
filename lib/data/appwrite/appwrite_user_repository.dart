@@ -24,7 +24,7 @@ class AppwriteUserRepository implements UserRepository {
   }) async {
     try {
       Constants.logger.d(userProfileRequest.authKey);
-      var createUser = await _databases.createDocument(
+      var result = await _databases.createDocument(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
         documentId: userProfileRequest.authKey ?? 'unique()',
@@ -43,10 +43,13 @@ class AppwriteUserRepository implements UserRepository {
         ],
       );
 
+      Constants.logger.d(result);
+
       return Result.success(
-        UserProfileDocument.fromJson(createUser.toMap()),
+        UserProfileDocument.fromJson(result.toMap()),
       );
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -62,10 +65,13 @@ class AppwriteUserRepository implements UserRepository {
         documentId: uid,
       );
 
+      Constants.logger.d(result);
+
       return Result.success(
         UserProfileDocument.fromJson(result.data),
       );
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -75,17 +81,20 @@ class AppwriteUserRepository implements UserRepository {
     required UserProfileRequest userProfileRequest,
   }) async {
     try {
-      var updateUser = await _databases.updateDocument(
+      var result = await _databases.updateDocument(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
         documentId: userProfileRequest.authKey ?? 'unique()',
         data: userProfileRequest.toJson(),
       );
 
+      Constants.logger.d(result);
+
       return Result.success(
-        UserProfileDocument.fromJson(updateUser.toMap()),
+        UserProfileDocument.fromJson(result.toMap()),
       );
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -123,24 +132,39 @@ class AppwriteUserRepository implements UserRepository {
         }
       });
 
-      Constants.logger.i('IMAGE URL $imageUrl');
+      Constants.logger.d('IMAGE URL $imageUrl');
 
       if (imageUrl != '') {
-        var updateResult = await updateUser(
+        var result = await updateUser(
             userProfileRequest: userProfileRequest.copyWith(
           photoProfileUrl: imageUrl,
         ));
 
-        if (updateResult.isSuccess) {
-          return Result.success(
-              updateResult.resultValue ?? UserProfileDocument());
+        Constants.logger.d(result);
+
+        if (result.isSuccess) {
+          return Result.success(result.resultValue ?? UserProfileDocument());
         } else {
-          return Result.failed(updateResult.errorMessage ?? 'Error!');
+          return Result.failed(result.errorMessage ?? 'Error!');
         }
       } else {
         return Result.failed('Error! failed get image url!');
       }
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
+      return Result.failed(e.message ?? 'Error!');
+    }
+  }
+
+  @override
+  Future<Result<UserProfileDocument>> deleteUser({
+    required String uid,
+  }) async {
+    try {
+      // TODO: implement deleteUser
+      throw UnimplementedError();
+    } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }

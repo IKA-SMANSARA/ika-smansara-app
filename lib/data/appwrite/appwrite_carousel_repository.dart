@@ -18,16 +18,16 @@ class AppwriteCarouselRepository implements CarouselRepository {
   @override
   Future<Result<List<CarouselImageDocument>>> getCarousels() async {
     try {
-      var getCarouselsResult = await _databases.listDocuments(
+      var result = await _databases.listDocuments(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.CAROUSEL_DOCUMENT_ID,
       );
 
-      Constants.logger.d(getCarouselsResult);
+      Constants.logger.d(result);
 
-      if (getCarouselsResult.documents.isNotEmpty) {
+      if (result.documents.isNotEmpty) {
         return Result.success(
-          getCarouselsResult.documents
+          result.documents
               .map(
                 (e) => CarouselImageDocument.fromJson(e.data),
               )
@@ -37,6 +37,7 @@ class AppwriteCarouselRepository implements CarouselRepository {
         return Result.success([]);
       }
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }

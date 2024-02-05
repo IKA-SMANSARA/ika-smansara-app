@@ -9,11 +9,16 @@ class ListCampaignPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      child: Center(
-        child: Text(
-          category?.nameCategory ?? 'not found',
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          (category?.nameCategory ?? '').toUpperCase(),
         ),
+      ),
+      body: ListView(
+        children: [
+          
+        ],
       ),
     );
   }

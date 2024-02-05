@@ -25,7 +25,7 @@ abstract interface class CampaignRepository {
     File? imageFile,
   });
 
-  Future<Result<void>> deleteCampaign({
+  Future<Result<CampaignDocument>> deleteCampaign({
     required String campaignId,
   });
 }

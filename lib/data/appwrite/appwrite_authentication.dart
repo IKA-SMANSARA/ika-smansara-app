@@ -22,15 +22,15 @@ class AppwriteAuthentication implements Authentication {
     required String password,
   }) async {
     try {
-      var createEmailSession = await _account.createEmailSession(
+      var result = await _account.createEmailSession(
         email: email,
         password: password,
       );
 
-      Constants.logger.d(createEmailSession);
+      Constants.logger.d(result);
 
       return Result.success(
-        Session.fromJson(createEmailSession.toMap()),
+        Session.fromJson(result.toMap()),
       );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
@@ -41,11 +41,11 @@ class AppwriteAuthentication implements Authentication {
   @override
   Future<Result<void>> logout() async {
     try {
-      var logout = await _account.deleteSession(sessionId: 'current');
+      var result = await _account.deleteSession(sessionId: 'current');
 
-      Constants.logger.d(logout);
+      Constants.logger.d(result);
 
-      return Result.success(logout);
+      return Result.success(result);
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
@@ -60,17 +60,17 @@ class AppwriteAuthentication implements Authentication {
     required String name,
   }) async {
     try {
-      var createAccount = await _account.create(
+      var result = await _account.create(
         userId: 'unique()',
         email: email,
         password: password,
         name: name,
       );
 
-      Constants.logger.d(createAccount.toMap());
+      Constants.logger.d(result.toMap());
 
       return Result.success(
-        User.fromJson(createAccount.toMap()),
+        User.fromJson(result.toMap()),
       );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
@@ -85,6 +85,7 @@ class AppwriteAuthentication implements Authentication {
 
       return uid.$id;
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       if (e.code != 401 || e.type != 'general_unauthorized_scope') rethrow;
     }
 

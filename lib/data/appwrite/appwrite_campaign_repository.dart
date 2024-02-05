@@ -32,13 +32,14 @@ class AppwriteCampaignRepository implements CampaignRepository {
   }
 
   @override
-  Future<Result<void>> deleteCampaign({
+  Future<Result<CampaignDocument>> deleteCampaign({
     required String campaignId,
   }) async {
     try {
       // TODO: implement getNewCampaigns
       throw UnimplementedError();
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -48,9 +49,32 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required String categoryName,
   }) async {
     try {
-      // TODO: implement getNewCampaigns
-      throw UnimplementedError();
+      var result = await _databases.listDocuments(
+        databaseId: Constants.DATABASE_ID,
+        collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
+        queries: [
+          Query.orderDesc('dateStartCampaign'),
+          Query.equal('categories', ['$categoryName']),
+          Query.equal('isDeleted', false),
+          Query.equal('isActive', true),
+        ],
+      );
+
+      Constants.logger.d(result);
+
+      if (result.documents.isNotEmpty) {
+        return Result.success(
+          result.documents
+              .map(
+                (e) => CampaignDocument.fromJson(e.data),
+              )
+              .toList(),
+        );
+      } else {
+        return Result.success([]);
+      }
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -63,6 +87,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
       // TODO: implement getNewCampaigns
       throw UnimplementedError();
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -70,20 +95,22 @@ class AppwriteCampaignRepository implements CampaignRepository {
   @override
   Future<Result<List<CampaignDocument>>> getNewCampaigns() async {
     try {
-      var getNewCampaignsResult = await _databases.listDocuments(
+      var result = await _databases.listDocuments(
         databaseId: Constants.DATABASE_ID,
         collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
         queries: [
           Query.limit(5),
-          Query.orderDesc("dateStartCampaign"),
+          Query.orderDesc('dateStartCampaign'),
+          Query.equal('isDeleted', false),
+          Query.equal('isActive', true),
         ],
       );
 
-      Constants.logger.d(getNewCampaignsResult);
+      Constants.logger.d(result);
 
-      if (getNewCampaignsResult.documents.isNotEmpty) {
+      if (result.documents.isNotEmpty) {
         return Result.success(
-          getNewCampaignsResult.documents
+          result.documents
               .map(
                 (e) => CampaignDocument.fromJson(e.data),
               )
@@ -93,6 +120,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
         return Result.success([]);
       }
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
@@ -106,6 +134,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
       // TODO: implement getNewCampaigns
       throw UnimplementedError();
     } on AppwriteException catch (e) {
+      Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
     }
   }
