@@ -9,10 +9,10 @@ import 'package:ika_smansara/domain/usecases/register/register_params.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/get_logged_in_user_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/login_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/logout_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/register_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/get_logged_in_user_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/login_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/logout_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/register_use_case_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -22,7 +22,7 @@ part 'user_data_provider.g.dart';
 class UserData extends _$UserData {
   @override
   Future<UserProfileDocument?> build() async {
-    GetLoggedInUser getLoggedInUser = ref.read(getLoggedInUserProvider);
+    GetLoggedInUser getLoggedInUser = ref.read(getLoggedInUserUseCaseProvider);
     var userResult = await getLoggedInUser(null);
 
     switch (userResult) {
@@ -43,7 +43,7 @@ class UserData extends _$UserData {
   }) async {
     state = const AsyncLoading();
 
-    Login login = ref.read(loginProvider);
+    Login login = ref.read(loginUseCaseProvider);
 
     var loginResult = await login(
       LoginParams(
@@ -78,7 +78,7 @@ class UserData extends _$UserData {
   }) async {
     state = const AsyncLoading();
 
-    Register register = ref.read(registerProvider);
+    Register register = ref.read(registerUseCaseProvider);
 
     var registerResult = await register(
       RegisterParams(
@@ -109,7 +109,7 @@ class UserData extends _$UserData {
   }
 
   Future<void> refreshUserData() async {
-    GetLoggedInUser getLoggedInUser = ref.read(getLoggedInUserProvider);
+    GetLoggedInUser getLoggedInUser = ref.read(getLoggedInUserUseCaseProvider);
 
     var result = await getLoggedInUser(null);
 
@@ -119,7 +119,7 @@ class UserData extends _$UserData {
   }
 
   Future<void> logout() async {
-    var logout = ref.read(logoutProvider);
+    var logout = ref.read(logoutUseCaseProvider);
     var logoutResult = await logout(null);
 
     switch (logoutResult) {

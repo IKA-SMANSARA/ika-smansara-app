@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
-import 'package:ika_smansara/presentation/widgets/campaign_card.dart';
+import 'package:ika_smansara/presentation/widgets/vertical_campaign_card.dart';
 
 List<Widget> campaignList({
   required String title,
@@ -49,7 +49,7 @@ List<Widget> campaignList({
                       left: campaign == data.first ? 24 : 10,
                       right: campaign == data.last ? 24 : 0,
                     ),
-                    child: CampaignCard(
+                    child: VerticalCampaignCard(
                       onTap: () => onTap?.call(campaign),
                       imageUrl: campaign.photoThumbnail ?? '',
                       campaignName: campaign.campaignName ?? '',

@@ -14,7 +14,7 @@ class GetNewCampaigns implements UseCase<Result<List<CampaignDocument>>, void> {
   Future<Result<List<CampaignDocument>>> call(void _) async {
     var result = await _campaignRepository.getNewCampaigns();
 
-    Constants.logger.i(result);
+    Constants.logger.d(result.resultValue);
 
     if (result is Success) {
       return switch (result) {

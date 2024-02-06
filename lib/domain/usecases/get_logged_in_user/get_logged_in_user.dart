@@ -19,14 +19,14 @@ class GetLoggedInUser implements UseCase<Result<UserProfileDocument>, void> {
   Future<Result<UserProfileDocument>> call(void _) async {
     String? loggedIn = await _authentication.getLoggedInUserId();
 
-    Constants.logger.i(loggedIn);
+    Constants.logger.d(loggedIn);
 
     if (loggedIn != null) {
       var resultUserProfile = await _userRepository.getUser(
         uid: loggedIn,
       );
 
-      Constants.logger.i(resultUserProfile);
+      Constants.logger.d(resultUserProfile.resultValue);
 
       if (resultUserProfile.isSuccess) {
         return Result.success(

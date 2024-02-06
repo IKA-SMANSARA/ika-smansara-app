@@ -5,8 +5,9 @@ import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/methods/carousel_campaign_image.dart';
+import 'package:ika_smansara/presentation/pages/list_campaign_page/methods/list_campaigns.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaigns_by_category_list_provider.dart';
-import 'package:ika_smansara/presentation/widgets/campaign_card.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 
 class ListCampaignPage extends ConsumerWidget {
   final CategoryDocument? category;
@@ -34,39 +35,15 @@ class ListCampaignPage extends ConsumerWidget {
             campaigns: asyncCampaignsData,
           ),
           verticalSpace(16),
-          ...(asyncCampaignsData.whenOrNull(
-                data: (data) => data
-                    .map(
-                      (campaign) => Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                        child: CampaignCard(
-                          onTap: () => context.showSnackBar(
-                            campaign.toString(),
-                          ),
-                          imageUrl: campaign.photoThumbnail ?? '',
-                          campaignName: campaign.campaignName ?? '',
-                          dateEndCampaign: campaign.dateEndCampaign ?? '',
-                          campaignGoalAmount: campaign.goalAmount ?? 0,
-                          campaignCurrentAmount: campaign.currentAmount ?? 0,
-                          width: double.infinity,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                error: (error, stackTrace) => [
-                  const Center(
-                    child: Text(
-                      'NETWORK ERROR!',
-                    ),
-                  ),
-                ],
-                loading: () => [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-                ],
-              ) ??
-              []),
+          ...listCampaigns(
+            campaigns: asyncCampaignsData,
+            onTap: (campaign) {
+              ref.read(routerProvider).pushNamed(
+                    'campaign-detail-page',
+                    extra: campaign,
+                  );
+            },
+          ),
         ],
       ),
     );

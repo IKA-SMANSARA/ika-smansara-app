@@ -11,7 +11,7 @@ Widget menuAccountItem({
       onTap: onTap,
       child: Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Colors.transparent,
         ),
         child: Column(
           children: [
@@ -51,7 +51,7 @@ Widget menuAccountItem({
                 color: Colors.grey,
                 height: 1,
               ),
-            )
+            ),
           ],
         ),
       ),

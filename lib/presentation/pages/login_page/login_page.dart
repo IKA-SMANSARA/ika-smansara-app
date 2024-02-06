@@ -77,9 +77,13 @@ class LoginPage extends ConsumerWidget {
                                     password: passwordController.text,
                                   );
                             },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF104993),
+                            ),
                             child: AutoSizeText(
                               'Login',
                               style: TextStyle(
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

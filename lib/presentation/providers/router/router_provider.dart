@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
+import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
@@ -31,6 +33,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'list-campaign-page',
           builder: (context, state) => ListCampaignPage(
             state.extra as CategoryDocument,
+          ),
+        ),
+        GoRoute(
+          path: '/campaign-detail-page',
+          name: 'campaign-detail-page',
+          builder: (context, state) => CampaignDetailPage(
+            state.extra as CampaignDocument,
           ),
         ),
       ],

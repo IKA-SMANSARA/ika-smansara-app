@@ -1,7 +1,7 @@
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/get_categories/get_categories.dart';
-import 'package:ika_smansara/presentation/providers/usecase/get_categories_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/get_categories_use_case_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'get_list_category_provider.g.dart';
@@ -14,7 +14,7 @@ class GetListCategory extends _$GetListCategory {
   Future<void> getListCategory() async {
     state = const AsyncLoading();
 
-    GetCategories getCategories = ref.read(getCategoriesProvider);
+    GetCategories getCategories = ref.read(getCategoriesUseCaseProvider);
 
     var result = await getCategories(null);
 

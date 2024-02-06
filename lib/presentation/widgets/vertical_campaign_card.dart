@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
-class CampaignCard extends StatelessWidget {
+class VerticalCampaignCard extends StatelessWidget {
   final VoidCallback? onTap;
   final String imageUrl;
   final String campaignName;
@@ -13,7 +13,7 @@ class CampaignCard extends StatelessWidget {
   final int campaignCurrentAmount;
   final double? width;
 
-  const CampaignCard({
+  const VerticalCampaignCard({
     super.key,
     this.onTap,
     required this.imageUrl,
@@ -109,6 +109,8 @@ class CampaignCard extends StatelessWidget {
                       SizedBox(
                         width: width,
                         child: LinearProgressIndicator(
+                          backgroundColor: Colors.grey.shade200,
+                          color: const Color(0xFF104993),
                           value: getCampaignProgressIndicatorValue(
                             campaignGoalAmount,
                             campaignCurrentAmount,

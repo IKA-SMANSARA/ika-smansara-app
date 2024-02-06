@@ -5,6 +5,7 @@ import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
 import 'package:ika_smansara/domain/usecases/usecase.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
 class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
   final Authentication _authentication;
@@ -25,6 +26,8 @@ class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
       name: params.name,
     );
 
+    Constants.logger.d(resultRegister.resultValue);
+
     if (resultRegister.isSuccess) {
       var getSession = await _authentication.login(
         email: params.email,
@@ -44,6 +47,8 @@ class Register implements UseCase<Result<UserProfileDocument>, RegisterParams> {
             photoProfileUrl: null,
           ),
         );
+
+        Constants.logger.d(resultCreateUser.resultValue);
 
         if (resultCreateUser.isSuccess) {
           return Result.success(

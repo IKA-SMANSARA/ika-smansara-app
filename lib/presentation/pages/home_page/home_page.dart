@@ -64,7 +64,10 @@ class HomePage extends ConsumerWidget {
                   title: 'Program IKA SMANSARA',
                   campaigns: ref.watch(getNewCampaignsListProvider),
                   onTap: (campaign) {
-                    context.showSnackBar('$campaign clicked');
+                    ref.read(routerProvider).pushNamed(
+                          'campaign-detail-page',
+                          extra: campaign,
+                        );
                   },
                   onPressed: () {
                     ref.read(routerProvider).pushNamed(

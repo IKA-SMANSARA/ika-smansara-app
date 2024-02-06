@@ -12,7 +12,7 @@ abstract interface class CampaignRepository {
   });
 
   Future<Result<CampaignDocument>> getCampaignDetail({
-    required campaignId,
+    required String campaignId,
   });
 
   Future<Result<CampaignDocument>> createCampaign({

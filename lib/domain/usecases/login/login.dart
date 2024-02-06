@@ -23,14 +23,14 @@ class Login implements UseCase<Result<UserProfileDocument>, LoginParams> {
       password: params.password,
     );
 
-    Constants.logger.d(loginResult);
+    Constants.logger.d(loginResult.resultValue);
 
     if (loginResult is Success) {
       var userResult = await _userRepository.getUser(
         uid: loginResult.resultValue?.userId ?? '',
       );
 
-      Constants.logger.d(userResult);
+      Constants.logger.d(userResult.resultValue);
 
       return switch (userResult) {
         Success(value: final user) => Result.success(user),

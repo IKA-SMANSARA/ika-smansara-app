@@ -1,7 +1,7 @@
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/get_new_campaigns/get_new_campaigns.dart';
-import 'package:ika_smansara/presentation/providers/usecase/get_new_campaigns_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/get_new_campaigns_use_case_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'get_new_campaigns_list_provider.g.dart';
@@ -14,7 +14,7 @@ class GetNewCampaignsList extends _$GetNewCampaignsList {
   Future<void> getNewCampaignsData() async {
     state = const AsyncLoading();
 
-    GetNewCampaigns getNewCampaigns = ref.read(getNewCampaignsProvider);
+    GetNewCampaigns getNewCampaigns = ref.read(getNewCampaignsUseCaseProvider);
 
     var result = await getNewCampaigns(null);
 

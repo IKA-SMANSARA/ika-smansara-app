@@ -3,10 +3,10 @@ import 'package:ika_smansara/presentation/providers/repositories/authentication/
 import 'package:ika_smansara/presentation/providers/repositories/user_repository/user_repository_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'register_provider.g.dart';
+part 'register_use_case_provider.g.dart';
 
 @riverpod
-Register register(RegisterRef ref) => Register(
+Register registerUseCase(RegisterUseCaseRef ref) => Register(
       authentication: ref.watch(authenticationProvider),
       userRepository: ref.watch(userRepositoryProvider),
     );

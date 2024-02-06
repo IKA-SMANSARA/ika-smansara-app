@@ -88,11 +88,22 @@ class AppwriteCampaignRepository implements CampaignRepository {
 
   @override
   Future<Result<CampaignDocument>> getCampaignDetail({
-    required campaignId,
+    required String campaignId,
   }) async {
     try {
-      // TODO: implement getNewCampaigns
-      throw UnimplementedError();
+      var result = await _databases.getDocument(
+        databaseId: Constants.DATABASE_ID,
+        collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
+        documentId: campaignId,
+      );
+
+      Constants.logger.d(result.data);
+
+      return Result.success(
+        CampaignDocument.fromJson(
+          result.data,
+        ),
+      );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');

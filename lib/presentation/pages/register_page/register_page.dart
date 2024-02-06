@@ -189,10 +189,14 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                                 );
                               }
                             },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF104993),
+                            ),
                             child: AutoSizeText(
                               'Daftar',
                               style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),

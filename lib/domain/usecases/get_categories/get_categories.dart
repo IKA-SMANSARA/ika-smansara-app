@@ -14,7 +14,7 @@ class GetCategories implements UseCase<Result<List<CategoryDocument>>, void> {
   Future<Result<List<CategoryDocument>>> call(void _) async {
     var result = await _categoryRepository.getCategories();
 
-    Constants.logger.i(result);
+    Constants.logger.d(result.resultValue);
 
     if (result is Success) {
       return switch (result) {
