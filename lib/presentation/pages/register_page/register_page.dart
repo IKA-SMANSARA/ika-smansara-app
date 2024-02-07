@@ -26,6 +26,18 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   var _isAlumni = false;
 
   @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    passwordController.dispose();
+    retypePasswordController.dispose();
+    emailController.dispose();
+    addressController.dispose();
+    phoneController.dispose();
+    graduateYearController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ref.listen(
       userDataProvider,

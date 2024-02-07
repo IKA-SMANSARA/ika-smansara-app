@@ -1,9 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 
 class BackerCard extends StatelessWidget {
-  const BackerCard({super.key});
+  final String backerName;
+  final String amount;
+  final String dateTime;
+  const BackerCard({
+    super.key,
+    required this.backerName,
+    required this.amount,
+    required this.dateTime,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +34,16 @@ class BackerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      '-',
+                      backerName,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     AutoSizeText(
-                      '14 hari lalu',
+                      dateTime,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -45,7 +54,7 @@ class BackerCard extends StatelessWidget {
               ],
             ),
             AutoSizeText(
-              'IDR 0',
+              amount,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,

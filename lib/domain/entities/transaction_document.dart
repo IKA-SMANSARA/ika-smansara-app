@@ -18,6 +18,7 @@ class TransactionDocument with _$TransactionDocument {
     String? userId,
     String? campaignName,
     String? campaignImage,
+    String? userName,
   }) = _TransactionDocument;
 
   factory TransactionDocument.fromJson(Map<String, dynamic> json) =>
@@ -34,5 +35,6 @@ class TransactionDocument with _$TransactionDocument {
         campaignName: json['campaignName'],
         paymentStatus: json['paymentStatus'],
         userId: json['userId'],
+        userName: json['userName'],
       );
 }

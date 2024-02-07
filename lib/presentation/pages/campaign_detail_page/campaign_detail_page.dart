@@ -10,6 +10,7 @@ import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/des
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/header_campaign_detail.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/header_image.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
@@ -89,7 +90,7 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                             ...backerList(
                               backerCount: data?.backerCount ?? 0,
                               ref: ref,
-                              campaignId: data?.id ?? '',
+                              campaign: data ?? CampaignDocument(),
                             ),
                             verticalSpace((16 + 45)),
                           ],
@@ -116,27 +117,33 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
             visible: widget.campaign != null,
             child: Align(
               alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                  bottom: 16,
-                ),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.showSnackBar('${widget.campaign}');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF104993),
-                    ),
-                    child: AutoSizeText(
-                      'Kirim Donasi',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+              child: Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    bottom: 16,
+                  ),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 45,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        ref.read(routerProvider).pushNamed(
+                              'checkout-page',
+                              extra: widget.campaign,
+                            );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF104993),
+                      ),
+                      child: AutoSizeText(
+                        'Kirim Donasi',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

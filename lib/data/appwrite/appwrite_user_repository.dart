@@ -31,6 +31,12 @@ class AppwriteUserRepository implements UserRepository {
         data: userProfileRequest.toJson(),
         permissions: [
           Permission.read(
+            Role.label('admin'),
+          ),
+          Permission.update(
+            Role.label('admin'),
+          ),
+          Permission.read(
             Role.user(
               userProfileRequest.authKey!,
             ),

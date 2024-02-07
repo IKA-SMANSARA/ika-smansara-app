@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final TextAlignVertical? textAlignVertical;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -18,11 +19,13 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.next,
     this.keyboardType = TextInputType.text,
     this.textAlignVertical,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       maxLines: maxLines,
       controller: controller,
       expands: expands,
