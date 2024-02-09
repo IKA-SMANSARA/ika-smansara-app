@@ -137,6 +137,6 @@ pubspec.lock
 *.chopper.dart
 
 # env files
-assets/dev-assets/.env
-assets/staging-assets/.env
-assets/production-assets/.env
+assets/development/.env
+assets/staging/.env
+assets/production/.env

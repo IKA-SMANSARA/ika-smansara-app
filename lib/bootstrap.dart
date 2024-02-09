@@ -6,14 +6,17 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:ika_smansara/firebase_options.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:ika_smansara/utils/flutter_fcm.dart';
 import 'package:ika_smansara/utils/my_observer.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+
+enum Flavors { development, staging, production }
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -32,6 +35,16 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // init basic configuration
+  switch (Constants.appFlavor) {
+    case Constants.DEVELOPMENT:
+      await dotenv.load(fileName: "assets/${Constants.DEVELOPMENT}/.env");
+    case Constants.STAGING:
+      await dotenv.load(fileName: "assets/${Constants.STAGING}/.env");
+    case Constants.PRODUCTION:
+      await dotenv.load(fileName: "assets/${Constants.PRODUCTION}/.env");
+    default:
+      await dotenv.load(fileName: "assets/${Constants.DEVELOPMENT}/.env");
+  }
   usePathUrlStrategy();
   await Hive.initFlutter();
 
@@ -67,10 +80,14 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
       // get fcm token
       final fcmToken = kIsWeb
-          ? await messaging.getToken(vapidKey: Constants.VAPID_KEY_FCM)
+          ? await messaging.getToken(
+              vapidKey: dotenv.env['VAPID_KEY_FCM'].toString(),
+            )
           : await messaging.getToken();
       // ignore: inference_failure_on_function_invocation
-      final fcmTokenBox = await Hive.openBox(Constants.FCM_TOKEN_BOX_NAME);
+      final fcmTokenBox = await Hive.openBox(
+        dotenv.env['FCM_TOKEN_BOX_NAME'].toString(),
+      );
       // save fcm token to local db
       await fcmTokenBox.put('fcmToken', fcmToken ?? '');
 
