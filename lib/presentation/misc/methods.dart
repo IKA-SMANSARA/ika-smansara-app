@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
@@ -155,4 +157,11 @@ double getPercentFeeValue(String? payment) {
   } else {
     return 0.9 / 100;
   }
+}
+
+String getRandomOrderIdNumber() {
+  final randomInt = Random().nextInt(99999) + 1000;
+  final merchantOrderId =
+      'ID-$randomInt-${DateTime.now().millisecondsSinceEpoch}';
+  return merchantOrderId;
 }

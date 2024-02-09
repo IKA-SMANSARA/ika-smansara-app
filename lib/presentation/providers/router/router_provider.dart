@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
+import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
@@ -8,6 +9,7 @@ import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
+import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -56,6 +58,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'backer-list-page',
           builder: (context, state) => BackerListPage(
             state.extra as CampaignDocument,
+          ),
+        ),
+        GoRoute(
+          path: '/webview-snap-page',
+          name: 'webview-snap-page',
+          builder: (context, state) => WebviewSnapPage(
+            state.extra as TransactionRequest,
           ),
         ),
       ],

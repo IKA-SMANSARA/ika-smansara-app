@@ -12,7 +12,7 @@ abstract interface class UserRepository {
     required String uid,
   });
   Future<Result<UserProfileDocument>> deleteUser({
-    required String uid,
+    required UserProfileRequest userProfileRequest,
   });
   Future<Result<UserProfileDocument>> updateUser({
     required UserProfileRequest userProfileRequest,
