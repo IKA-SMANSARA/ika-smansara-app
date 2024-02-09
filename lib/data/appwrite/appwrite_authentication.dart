@@ -4,7 +4,7 @@ import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/session.dart';
 import 'package:ika_smansara/domain/entities/user.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/utils/network_client_helper.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 
 class AppwriteAuthentication implements Authentication {
   final Client _appwriteClient;

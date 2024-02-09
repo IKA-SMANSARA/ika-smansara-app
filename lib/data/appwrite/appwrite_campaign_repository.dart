@@ -7,7 +7,7 @@ import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/utils/network_client_helper.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 
 class AppwriteCampaignRepository implements CampaignRepository {
   final Client _appwriteClient;

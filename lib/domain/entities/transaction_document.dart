@@ -13,12 +13,13 @@ class TransactionDocument with _$TransactionDocument {
     String? updatedAt,
     @Default([]) List<dynamic>? permissions,
     String? campaignId,
-    @Default(0.0) double? amount,
+    @Default(0) int? amount,
     String? paymentStatus,
     String? userId,
     String? campaignName,
     String? campaignImage,
     String? userName,
+    @Default(0) int? paymentFee,
   }) = _TransactionDocument;
 
   factory TransactionDocument.fromJson(Map<String, dynamic> json) =>
@@ -36,5 +37,6 @@ class TransactionDocument with _$TransactionDocument {
         paymentStatus: json['paymentStatus'],
         userId: json['userId'],
         userName: json['userName'],
+        paymentFee: json['paymentFee'],
       );
 }

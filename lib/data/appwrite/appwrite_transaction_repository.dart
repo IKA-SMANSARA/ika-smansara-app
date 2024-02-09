@@ -1,11 +1,11 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 import 'package:ika_smansara/data/repositories/transaction_repository.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/transaction_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/utils/network_client_helper.dart';
 
 class AppwriteTransactionRepository implements TransactionRepository {
   final Client _appwriteClient;
@@ -123,15 +123,24 @@ class AppwriteTransactionRepository implements TransactionRepository {
   @override
   Future<Result<List<TransactionDocument>>> getAllBacker({
     required String campaignId,
+    required bool isSortList,
   }) async {
     try {
+      final queries = (isSortList)
+          ? [
+              Query.orderDesc('\$updatedAt'),
+              Query.equal('campaignId', '$campaignId'),
+              Query.limit(5),
+            ]
+          : [
+              Query.orderDesc('\$updatedAt'),
+              Query.equal('campaignId', '$campaignId'),
+            ];
+
       var result = await _databases.listDocuments(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
-        queries: [
-          Query.orderDesc('\$updatedAt'),
-          Query.equal('campaignId', campaignId),
-        ],
+        queries: queries,
       );
 
       Constants.logger.d(result.documents);

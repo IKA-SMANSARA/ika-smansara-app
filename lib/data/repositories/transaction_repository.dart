@@ -18,5 +18,6 @@ abstract interface class TransactionRepository {
 
   Future<Result<List<TransactionDocument>>> getAllBacker({
     required String campaignId,
+    required bool isSortList,
   });
 }

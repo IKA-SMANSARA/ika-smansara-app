@@ -4,7 +4,7 @@ import 'package:ika_smansara/data/repositories/carousel_repository.dart';
 import 'package:ika_smansara/domain/entities/carousel_image_document.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/utils/network_client_helper.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 
 class AppwriteCarouselRepository implements CarouselRepository {
   final Client _appwriteClient;

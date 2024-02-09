@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/hea
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/header_image.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
 
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
@@ -36,6 +37,13 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
 
     var asyncCampaignDetailData = ref.watch(
       getCampaignDetailProvider(campaignId: widget.campaign?.id ?? ''),
+    );
+
+    var asyncBackerList = ref.watch(
+      getBackerListProvider(
+        campaignId: widget.campaign?.id ?? '',
+        isSortList: true,
+      ),
     );
 
     return Scaffold(
@@ -87,10 +95,18 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                               description: data?.campaignDescription ?? '',
                             ),
                             verticalSpace(16),
-                            ...backerList(
-                              backerCount: data?.backerCount ?? 0,
-                              ref: ref,
-                              campaign: data ?? CampaignDocument(),
+                            Visibility(
+                              visible: (data?.backerCount ?? 0) != 0,
+                              child: Column(
+                                children: [
+                                  ...backerList(
+                                    ref: ref,
+                                    backerCount: data?.backerCount ?? 0,
+                                    asyncBackerList: asyncBackerList,
+                                    campaign: data ?? CampaignDocument(),
+                                  ),
+                                ],
+                              ),
                             ),
                             verticalSpace((16 + 45)),
                           ],

@@ -7,7 +7,7 @@ import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/utils/network_client_helper.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 
 class AppwriteUserRepository implements UserRepository {
   final Client _appwriteClient;
