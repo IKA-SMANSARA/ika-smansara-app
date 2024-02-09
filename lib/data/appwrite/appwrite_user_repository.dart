@@ -1,20 +1,20 @@
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ika_smansara/data/repositories/user_repository.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/network_client_helper.dart';
 
 class AppwriteUserRepository implements UserRepository {
   final Client _appwriteClient;
 
   AppwriteUserRepository({Client? appwriteClient})
-      : _appwriteClient = appwriteClient ??
-            Client()
-                .setEndpoint(Constants.BASE_URL)
-                .setProject(Constants.PROJECT_ID);
+      : _appwriteClient =
+            appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
   late final _databases = Databases(_appwriteClient);
 
@@ -25,8 +25,8 @@ class AppwriteUserRepository implements UserRepository {
     try {
       Constants.logger.d(userProfileRequest.authKey);
       var result = await _databases.createDocument(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
         documentId: userProfileRequest.authKey ?? 'unique()',
         data: userProfileRequest.toJson(),
         permissions: [
@@ -66,8 +66,8 @@ class AppwriteUserRepository implements UserRepository {
   }) async {
     try {
       final result = await _databases.getDocument(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
         documentId: uid,
       );
 
@@ -88,8 +88,8 @@ class AppwriteUserRepository implements UserRepository {
   }) async {
     try {
       var result = await _databases.updateDocument(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.USER_PROFILE_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
         documentId: userProfileRequest.authKey ?? 'unique()',
         data: userProfileRequest.toJson(),
       );
@@ -114,7 +114,7 @@ class AppwriteUserRepository implements UserRepository {
       final Storage _storage = Storage(_appwriteClient);
 
       var uploadPhotoProfile = _storage.createFile(
-        bucketId: Constants.BUCKET_USER_ID,
+        bucketId: dotenv.env['BUCKET_USER_ID'].toString(),
         fileId: userProfileRequest.authKey ?? 'unique()',
         file: InputFile.fromPath(
           path: imageFile.path,
@@ -132,7 +132,7 @@ class AppwriteUserRepository implements UserRepository {
       uploadPhotoProfile.then((response) {
         if (response.chunksTotal == response.sizeOriginal) {
           imageUrl =
-              'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${Constants.PROJECT_ID}&mode=admin';
+              'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
         } else {
           imageUrl = '';
         }
@@ -164,11 +164,21 @@ class AppwriteUserRepository implements UserRepository {
 
   @override
   Future<Result<UserProfileDocument>> deleteUser({
-    required String uid,
+    required UserProfileRequest userProfileRequest,
   }) async {
     try {
-      // TODO: implement deleteUser
-      throw UnimplementedError();
+      var result = await _databases.updateDocument(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
+        documentId: userProfileRequest.authKey!,
+        data: userProfileRequest.toJson(),
+      );
+
+      Constants.logger.d(result);
+
+      return Result.success(
+        UserProfileDocument.fromJson(result.toMap()),
+      );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');

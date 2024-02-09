@@ -4,15 +4,14 @@ import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/session.dart';
 import 'package:ika_smansara/domain/entities/user.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/network_client_helper.dart';
 
 class AppwriteAuthentication implements Authentication {
   final Client _appwriteClient;
 
   AppwriteAuthentication({Client? appwriteClient})
-      : _appwriteClient = appwriteClient ??
-            Client()
-                .setEndpoint(Constants.BASE_URL)
-                .setProject(Constants.PROJECT_ID);
+      : _appwriteClient =
+            appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
   late final Account _account = Account(_appwriteClient);
 

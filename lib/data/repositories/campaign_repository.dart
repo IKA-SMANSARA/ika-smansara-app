@@ -26,6 +26,6 @@ abstract interface class CampaignRepository {
   });
 
   Future<Result<CampaignDocument>> deleteCampaign({
-    required String campaignId,
+    required CampaignRequest campaignRequest,
   });
 }

@@ -1,20 +1,20 @@
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ika_smansara/data/repositories/campaign_repository.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/network_client_helper.dart';
 
 class AppwriteCampaignRepository implements CampaignRepository {
   final Client _appwriteClient;
 
   AppwriteCampaignRepository({Client? appwriteClient})
-      : _appwriteClient = appwriteClient ??
-            Client()
-                .setEndpoint(Constants.BASE_URL)
-                .setProject(Constants.PROJECT_ID);
+      : _appwriteClient =
+            appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
   late final _databases = Databases(_appwriteClient);
 
@@ -24,8 +24,33 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required File imageFile,
   }) async {
     try {
-      // TODO: implement getNewCampaigns
-      throw UnimplementedError();
+      // TODO : ADD GET IMAGE FILE AND PATCH TO DOCUMENT
+
+      var result = await _databases.createDocument(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+        documentId: 'unique()',
+        data: campaignRequest.toJson(),
+        permissions: [
+          Permission.read(
+            Role.label('admin'),
+          ),
+          Permission.update(
+            Role.label('admin'),
+          ),
+          Permission.read(
+            Role.users(),
+          ),
+        ],
+      );
+
+      Constants.logger.d(result);
+
+      return Result.success(
+        CampaignDocument.fromJson(
+          result.toMap(),
+        ),
+      );
     } on AppwriteException catch (e) {
       return Result.failed(e.message ?? 'Error!');
     }
@@ -33,11 +58,34 @@ class AppwriteCampaignRepository implements CampaignRepository {
 
   @override
   Future<Result<CampaignDocument>> deleteCampaign({
-    required String campaignId,
+    required CampaignRequest campaignRequest,
   }) async {
     try {
-      // TODO: implement getNewCampaigns
-      throw UnimplementedError();
+      var result = await _databases.updateDocument(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+        documentId: 'unique()',
+        data: campaignRequest.toJson(),
+        permissions: [
+          Permission.read(
+            Role.label('admin'),
+          ),
+          Permission.update(
+            Role.label('admin'),
+          ),
+          Permission.read(
+            Role.users(),
+          ),
+        ],
+      );
+
+      Constants.logger.d(result);
+
+      return Result.success(
+        CampaignDocument.fromJson(
+          result.toMap(),
+        ),
+      );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
@@ -62,8 +110,8 @@ class AppwriteCampaignRepository implements CampaignRepository {
               Query.equal('isActive', true),
             ];
       var result = await _databases.listDocuments(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         queries: filterQueries,
       );
 
@@ -92,8 +140,8 @@ class AppwriteCampaignRepository implements CampaignRepository {
   }) async {
     try {
       var result = await _databases.getDocument(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         documentId: campaignId,
       );
 
@@ -114,8 +162,8 @@ class AppwriteCampaignRepository implements CampaignRepository {
   Future<Result<List<CampaignDocument>>> getNewCampaigns() async {
     try {
       var result = await _databases.listDocuments(
-        databaseId: Constants.DATABASE_ID,
-        collectionId: Constants.CAMPAIGN_DOCUMENT_ID,
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         queries: [
           Query.limit(5),
           Query.orderDesc('dateStartCampaign'),
@@ -149,8 +197,32 @@ class AppwriteCampaignRepository implements CampaignRepository {
     File? imageFile,
   }) async {
     try {
-      // TODO: implement getNewCampaigns
-      throw UnimplementedError();
+      // TODO : ADD GET IMAGE FILE AND PATCH TO DOCUMENT
+      var result = await _databases.updateDocument(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+        documentId: 'unique()',
+        data: campaignRequest.toJson(),
+        permissions: [
+          Permission.read(
+            Role.label('admin'),
+          ),
+          Permission.update(
+            Role.label('admin'),
+          ),
+          Permission.read(
+            Role.users(),
+          ),
+        ],
+      );
+
+      Constants.logger.d(result);
+
+      return Result.success(
+        CampaignDocument.fromJson(
+          result.toMap(),
+        ),
+      );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
