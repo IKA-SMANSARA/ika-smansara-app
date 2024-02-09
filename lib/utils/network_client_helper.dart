@@ -8,6 +8,11 @@ class NetworkClientHelper {
     BaseOptions(
       baseUrl: dotenv.env['PAYMENT_GATEWAY_URL'].toString(),
       contentType: Headers.jsonContentType,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization':
+            'Basic ${dotenv.env['API_KEY_PAYMENT_GATEWAY'].toString()}',
+      },
     ),
   );
 
