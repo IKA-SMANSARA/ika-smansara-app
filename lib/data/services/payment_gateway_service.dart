@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:ika_smansara/domain/entities/midtrans_transaction_request.dart';
 import 'package:ika_smansara/domain/entities/midtrans_transaction_response.dart';
 import 'package:retrofit/http.dart';
 
