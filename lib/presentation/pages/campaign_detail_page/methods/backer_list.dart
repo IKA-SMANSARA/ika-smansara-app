@@ -49,10 +49,9 @@ List<Widget> backerList({
                 .map(
                   (e) => BackerCard(
                     backerName: e.userName ?? '',
-                    amount: ((e.amount ?? 0) - (e.paymentFee ?? 0))
-                        .toIDRCurrencyFormat(),
+                    amount: (e.amount ?? 0).toIDRCurrencyFormat(),
                     dateTime: countDays(
-                      e.updatedAt,
+                      e.createdAt,
                     ),
                   ),
                 )

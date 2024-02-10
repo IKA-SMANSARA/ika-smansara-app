@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'campaign_request.freezed.dart';
@@ -6,6 +8,7 @@ part 'campaign_request.g.dart';
 @freezed
 class CampaignRequest with _$CampaignRequest {
   factory CampaignRequest({
+    @JsonKey(name: '\$id') String? id,
     String? campaignName,
     @Default(0) int? goalAmount,
     String? dateStartCampaign,
@@ -14,7 +17,7 @@ class CampaignRequest with _$CampaignRequest {
     @Default(false) bool? isActive,
     String? photoThumbnail,
     @Default(0) int? backerCount,
-    @Default([]) List<String>? categories,
+    @Default([]) List<dynamic>? categories,
     @Default(0) int? currentAmount,
     String? campaignDescription,
   }) = _CampaignRequest;

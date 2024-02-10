@@ -5,6 +5,7 @@ import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
+import 'package:ika_smansara/presentation/pages/detail_transaction/detail_transaction.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
@@ -20,7 +21,7 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/main',
           name: 'main',
-          builder: (context, state) => const MainPage(),
+          builder: (context, state) => MainPage(),
         ),
         GoRoute(
           path: '/login',
@@ -65,6 +66,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'webview-snap-page',
           builder: (context, state) => WebviewSnapPage(
             state.extra as TransactionRequest,
+          ),
+        ),
+        GoRoute(
+          path: '/detail-transaction',
+          name: 'detail-transaction',
+          builder: (context, state) => DetailTransaction(
+            transactionId: state.extra as String,
           ),
         ),
       ],

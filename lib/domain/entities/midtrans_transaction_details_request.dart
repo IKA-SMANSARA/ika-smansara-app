@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'midtrans_transaction_details_request.freezed.dart';
@@ -7,14 +9,11 @@ part 'midtrans_transaction_details_request.g.dart';
 class MidtransTransactionDetailsRequest
     with _$MidtransTransactionDetailsRequest {
   factory MidtransTransactionDetailsRequest({
-    String? orderId,
-    String? grossAmount,
+    @JsonKey(name: 'order_id') String? orderId,
+    @JsonKey(name: 'gross_amount') int? grossAmount,
   }) = _MidtransTransactionDetailsRequest;
 
   factory MidtransTransactionDetailsRequest.fromJson(
           Map<String, dynamic> json) =>
-      MidtransTransactionDetailsRequest(
-        orderId: json['order_id'],
-        grossAmount: json['gross_amount'],
-      );
+      _$MidtransTransactionDetailsRequestFromJson(json);
 }

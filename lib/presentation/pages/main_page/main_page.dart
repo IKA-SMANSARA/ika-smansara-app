@@ -1,9 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
 import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
+import 'package:ika_smansara/presentation/pages/my_donation_page/my_donation_page.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/bottom_nav_bar.dart';
@@ -50,7 +50,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                 child: HomePage(),
               ),
               Center(
-                child: AutoSizeText('page 2'),
+                child: MyDonationPage(),
               ),
               Center(
                 child: AccountPage(),

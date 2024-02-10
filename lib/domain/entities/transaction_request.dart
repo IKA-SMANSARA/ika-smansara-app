@@ -18,17 +18,24 @@ class TransactionRequest with _$TransactionRequest {
     String? userAddress,
     String? userEmail,
     @Default(0) int? paymentFee,
+    @Default(0) int? backerCount,
+    @Default(0) int? currentAmount,
+    String? id,
+    String? collectionId,
+    String? databaseId,
+    String? createdAt,
+    String? updatedAt,
+    @Default([]) List<dynamic>? permissions,
+    @Default(0) int? goalAmount,
+    String? dateStartCampaign,
+    String? dateEndCampaign,
+    @Default(false) bool? isDeleted,
+    @Default(false) bool? isActive,
+    String? photoThumbnail,
+    @Default([]) List<dynamic>? categories,
+    String? campaignDescription,
   }) = _TransactionRequest;
 
   factory TransactionRequest.fromJson(Map<String, dynamic> json) =>
-      TransactionRequest(
-        amount: json['amount'],
-        campaignId: json['campaignId'],
-        campaignImage: json['campaignImage'],
-        campaignName: json['campaignName'],
-        paymentStatus: json['paymentStatus'],
-        userId: json['userId'],
-        userName: json['userName'],
-        paymentFee: json['paymentFee'],
-      );
+      _$TransactionRequestFromJson(json);
 }

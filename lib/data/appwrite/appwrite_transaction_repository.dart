@@ -4,6 +4,7 @@ import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 import 'package:ika_smansara/data/repositories/transaction_repository.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/transaction_document.dart';
+import 'package:ika_smansara/domain/entities/transaction_document_request.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/utils/constants.dart';
 
@@ -19,13 +20,14 @@ class AppwriteTransactionRepository implements TransactionRepository {
   @override
   Future<Result<TransactionDocument>> createTransaction({
     required TransactionRequest transactionRequest,
+    required TransactionDocumentRequest transactionDocumentRequest,
   }) async {
     try {
       var result = await _databases.createDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
         documentId: transactionRequest.transactionId ?? 'unique()',
-        data: transactionRequest.toJson(),
+        data: transactionDocumentRequest.toJson(),
         permissions: [
           Permission.read(
             Role.label('admin'),
@@ -130,11 +132,13 @@ class AppwriteTransactionRepository implements TransactionRepository {
           ? [
               Query.orderDesc('\$updatedAt'),
               Query.equal('campaignId', '$campaignId'),
+              Query.equal('paymentStatus', 'settlement'),
               Query.limit(5),
             ]
           : [
               Query.orderDesc('\$updatedAt'),
               Query.equal('campaignId', '$campaignId'),
+              Query.equal('paymentStatus', 'settlement'),
             ];
 
       var result = await _databases.listDocuments(

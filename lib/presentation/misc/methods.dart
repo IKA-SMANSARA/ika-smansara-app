@@ -123,10 +123,10 @@ String countDays(String? dateEndCampaign) {
     if (remainingDays != 0) {
       return '$remainingDays hari lalu';
     } else {
-      return '';
+      return 'Beberapa jam lalu';
     }
   } else {
-    return '';
+    return 'Beberapa jam lalu';
   }
 }
 

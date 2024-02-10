@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/get_categories/get_categories.dart';
@@ -21,8 +22,12 @@ class GetListCategory extends _$GetListCategory {
     switch (result) {
       case Success(value: final categories):
         state = AsyncData(categories);
-      case Failed(message: _):
-        state = const AsyncData([]);
+      case Failed(:final message):
+        state = AsyncError(
+          FlutterError(message),
+          StackTrace.current,
+        );
+        state = AsyncData(state.valueOrNull ?? []);
     }
   }
 }

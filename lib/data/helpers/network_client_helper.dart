@@ -1,6 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkClientHelper {
   // DIO CLIENT HELPER FOR SNAP
@@ -9,12 +10,21 @@ class NetworkClientHelper {
       baseUrl: dotenv.env['PAYMENT_GATEWAY_URL'].toString(),
       contentType: Headers.jsonContentType,
       headers: {
-        'Accept': 'application/json',
         'Authorization':
             'Basic ${dotenv.env['API_KEY_PAYMENT_GATEWAY'].toString()}',
+        'Accept': 'application/json',
       },
     ),
-  );
+  )..interceptors.add(
+      PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          error: true,
+          compact: true,
+          maxWidth: 80),
+    );
 
   // APPWRITE CLIENT HELPER
   static final Client _appwriteClient = Client()

@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 import 'package:ika_smansara/data/repositories/campaign_repository.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 
 class AppwriteCampaignRepository implements CampaignRepository {
   final Client _appwriteClient;
@@ -64,7 +64,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
       var result = await _databases.updateDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: 'unique()',
+        documentId: campaignRequest.id ?? 'unique()',
         data: campaignRequest.toJson(),
         permissions: [
           Permission.read(
@@ -201,7 +201,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
       var result = await _databases.updateDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: 'unique()',
+        documentId: campaignRequest.id ?? 'unique()',
         data: campaignRequest.toJson(),
         permissions: [
           Permission.read(

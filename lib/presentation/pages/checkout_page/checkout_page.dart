@@ -261,6 +261,16 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                       userEmail: ref.read(userDataProvider).valueOrNull?.email,
                       userPhone: ref.read(userDataProvider).valueOrNull?.phone,
                       transactionId: getRandomOrderIdNumber(),
+                      backerCount: widget.campaign?.backerCount,
+                      currentAmount: widget.campaign?.currentAmount,
+                      campaignDescription: widget.campaign?.campaignDescription,
+                      categories: widget.campaign?.categories,
+                      dateEndCampaign: widget.campaign?.dateEndCampaign,
+                      dateStartCampaign: widget.campaign?.dateStartCampaign,
+                      goalAmount: widget.campaign?.goalAmount,
+                      isActive: widget.campaign?.isActive,
+                      isDeleted: widget.campaign?.isDeleted,
+                      photoThumbnail: widget.campaign?.photoThumbnail,
                     );
 
                     ref.read(routerProvider).pushNamed(

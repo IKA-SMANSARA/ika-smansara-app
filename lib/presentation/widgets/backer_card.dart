@@ -36,7 +36,7 @@ class BackerCard extends StatelessWidget {
                     AutoSizeText(
                       backerName,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,
@@ -46,7 +46,6 @@ class BackerCard extends StatelessWidget {
                       dateTime,
                       style: TextStyle(
                         fontSize: 10,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
