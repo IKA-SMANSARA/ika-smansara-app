@@ -39,7 +39,7 @@ class VerticalCampaignCard extends StatelessWidget {
         child: Column(
           children: [
             AspectRatio(
-              aspectRatio: responsiveAspectRatio(context),
+              aspectRatio: responsiveImageAspectRatio(context),
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8),

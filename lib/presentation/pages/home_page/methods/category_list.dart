@@ -14,7 +14,7 @@ Widget categoryList({
       data: (data) => GridView.builder(
         padding: const EdgeInsets.all(16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: categoryMenuCrossAxisCount(context),
+          crossAxisCount: responsiveGridMenuCrossAxisCount(context),
           mainAxisSpacing: 10,
         ),
         shrinkWrap: true,

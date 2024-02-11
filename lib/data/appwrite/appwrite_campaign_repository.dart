@@ -97,18 +97,16 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required String categoryName,
   }) async {
     try {
-      var filterQueries = (categoryName != '')
-          ? [
-              Query.orderDesc('dateStartCampaign'),
-              Query.search('categories', '$categoryName'),
-              Query.equal('isDeleted', false),
-              Query.equal('isActive', true),
-            ]
-          : [
-              Query.orderDesc('dateStartCampaign'),
-              Query.equal('isDeleted', false),
-              Query.equal('isActive', true),
-            ];
+      var filterQueries = [
+        Query.orderDesc('dateStartCampaign'),
+        Query.equal('isDeleted', false),
+        Query.equal('isActive', true),
+      ];
+
+      (categoryName != '')
+          ? filterQueries.add(Query.search('categories', '$categoryName'))
+          : filterQueries;
+
       var result = await _databases.listDocuments(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),

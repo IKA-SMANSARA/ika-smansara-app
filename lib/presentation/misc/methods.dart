@@ -64,7 +64,7 @@ bool enableInfiniteScrollStatus({int? listLength = 0}) {
   }
 }
 
-int categoryMenuCrossAxisCount(BuildContext context) {
+int responsiveGridMenuCrossAxisCount(BuildContext context) {
   if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
     return 4;
   } else if (MediaQuery.of(context).size.width <=
@@ -75,7 +75,7 @@ int categoryMenuCrossAxisCount(BuildContext context) {
   }
 }
 
-double responsiveAspectRatio(BuildContext context) {
+double responsiveImageAspectRatio(BuildContext context) {
   if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
     return 1.7;
   } else if (MediaQuery.of(context).size.width <=
@@ -86,22 +86,24 @@ double responsiveAspectRatio(BuildContext context) {
   }
 }
 
-double headerImageLogoHeigh(BuildContext context) {
-  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+double headerImageLogoHeight(BuildContext context) {
+  if (MediaQuery.of(context).size.height <=
+      MinimumScreenSize.smallScreenHeight) {
     return 32.0;
-  } else if (MediaQuery.of(context).size.width <=
-      MinimumScreenSize.expandedScreenWidth) {
+  } else if (MediaQuery.of(context).size.height <=
+      MinimumScreenSize.expandedScreenHeight) {
     return 52.0;
   } else {
     return 72.0;
   }
 }
 
-double headerHomeBackgroundHeigh(BuildContext context) {
-  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
+double headerHomeBackgroundHeight(BuildContext context) {
+  if (MediaQuery.of(context).size.height <=
+      MinimumScreenSize.smallScreenHeight) {
     return 200;
-  } else if (MediaQuery.of(context).size.width <=
-      MinimumScreenSize.expandedScreenWidth) {
+  } else if (MediaQuery.of(context).size.height <=
+      MinimumScreenSize.expandedScreenHeight) {
     return 250;
   } else {
     return 300;

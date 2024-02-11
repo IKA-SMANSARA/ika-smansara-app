@@ -8,6 +8,6 @@ Widget headerImageLogo({
     Center(
       child: Assets.images.ikaSmansaraHeaderHome.svg(
         width: double.infinity,
-        height: headerImageLogoHeigh(context),
+        height: headerImageLogoHeight(context),
       ),
     );

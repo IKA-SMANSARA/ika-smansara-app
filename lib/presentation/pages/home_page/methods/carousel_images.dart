@@ -29,7 +29,7 @@ Widget carouselImages({
           );
         },
         options: CarouselOptions(
-          aspectRatio: responsiveAspectRatio(context),
+          aspectRatio: responsiveImageAspectRatio(context),
           viewportFraction: 1,
           autoPlay: true,
           slideIndicator: CircularWaveSlideIndicator(

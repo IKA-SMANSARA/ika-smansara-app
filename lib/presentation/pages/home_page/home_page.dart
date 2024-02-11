@@ -21,7 +21,7 @@ class HomePage extends ConsumerWidget {
         Stack(
           children: [
             Container(
-              height: headerHomeBackgroundHeigh(context),
+              height: headerHomeBackgroundHeight(context),
               decoration: const BoxDecoration(
                 color: Color(0xFF104993),
               ),

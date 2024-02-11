@@ -63,7 +63,6 @@ class AppwriteTransactionRepository implements TransactionRepository {
 
   @override
   Future<Result<List<TransactionDocument>>> getAllTransactions({
-    required String campaignId,
     required String userId,
   }) async {
     try {
@@ -72,7 +71,6 @@ class AppwriteTransactionRepository implements TransactionRepository {
         collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
         queries: [
           Query.orderDesc('\$updatedAt'),
-          Query.equal('campaignId', campaignId),
           Query.equal('userId', userId),
         ],
       );

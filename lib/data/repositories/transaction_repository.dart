@@ -10,7 +10,6 @@ abstract interface class TransactionRepository {
   });
 
   Future<Result<List<TransactionDocument>>> getAllTransactions({
-    required String campaignId,
     required String userId,
   });
 

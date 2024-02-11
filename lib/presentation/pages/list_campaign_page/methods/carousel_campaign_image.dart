@@ -23,7 +23,7 @@ Widget carouselCampaignImage({
           );
         },
         options: CarouselOptions(
-          aspectRatio: responsiveAspectRatio(context),
+          aspectRatio: responsiveImageAspectRatio(context),
           autoPlay: true,
           enableInfiniteScroll: enableInfiniteScrollStatus(
             listLength: data.length,
