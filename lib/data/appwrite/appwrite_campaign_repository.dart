@@ -44,7 +44,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
         ],
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d(result.data);
 
       return Result.success(
         CampaignDocument.fromJson(
@@ -66,20 +66,9 @@ class AppwriteCampaignRepository implements CampaignRepository {
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         documentId: campaignRequest.id ?? 'unique()',
         data: campaignRequest.toJson(),
-        permissions: [
-          Permission.read(
-            Role.label('admin'),
-          ),
-          Permission.update(
-            Role.label('admin'),
-          ),
-          Permission.read(
-            Role.users(),
-          ),
-        ],
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d(result.data);
 
       return Result.success(
         CampaignDocument.fromJson(
@@ -201,20 +190,9 @@ class AppwriteCampaignRepository implements CampaignRepository {
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         documentId: campaignRequest.id ?? 'unique()',
         data: campaignRequest.toJson(),
-        permissions: [
-          Permission.read(
-            Role.label('admin'),
-          ),
-          Permission.update(
-            Role.label('admin'),
-          ),
-          Permission.read(
-            Role.users(),
-          ),
-        ],
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d(result.data);
 
       return Result.success(
         CampaignDocument.fromJson(
