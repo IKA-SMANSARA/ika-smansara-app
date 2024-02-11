@@ -32,7 +32,7 @@ class SnapPayment
     );
     final MidtransItemRequest _midtransItemRequest = MidtransItemRequest(
       id: params.transactionRequest.campaignId,
-      name: params.transactionRequest.campaignName,
+      name: params.transactionRequest.campaignName?.substring(0,20),
       price: params.transactionRequest.amount,
       quantity: 1,
     );

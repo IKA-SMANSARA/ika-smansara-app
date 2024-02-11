@@ -58,7 +58,8 @@ class SavePayment
     Constants.logger.d(resultSaveTransaction.resultValue);
 
     if (resultSaveTransaction is Success) {
-      if (params.transactionRequest.paymentStatus == 'settlement') {
+      if (params.transactionRequest.paymentStatus == 'settlement' ||
+          params.transactionRequest.paymentStatus == 'capture') {
         var resultUpdateCampaign = await _campaignRepository.updateCampaign(
           campaignRequest: _campaignRequest,
         );

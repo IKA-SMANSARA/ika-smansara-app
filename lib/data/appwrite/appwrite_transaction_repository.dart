@@ -128,23 +128,18 @@ class AppwriteTransactionRepository implements TransactionRepository {
     required bool isSortList,
   }) async {
     try {
-      final queries = (isSortList)
-          ? [
-              Query.orderDesc('\$updatedAt'),
-              Query.equal('campaignId', '$campaignId'),
-              Query.equal('paymentStatus', 'settlement'),
-              Query.limit(5),
-            ]
-          : [
-              Query.orderDesc('\$updatedAt'),
-              Query.equal('campaignId', '$campaignId'),
-              Query.equal('paymentStatus', 'settlement'),
-            ];
+      final baseQueries = [
+        Query.orderDesc('\$updatedAt'),
+        Query.equal('campaignId', '$campaignId'),
+        Query.equal('paymentStatus', ['settlement', 'capture']),
+      ];
+
+      (isSortList) ? baseQueries.add(Query.limit(5)) : baseQueries;
 
       var result = await _databases.listDocuments(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
-        queries: queries,
+        queries: baseQueries,
       );
 
       Constants.logger.d(result.documents);
