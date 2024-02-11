@@ -5,10 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'get_backer_list_use_case_provider.g.dart';
 
 @riverpod
-GetBackerList getBackerListUseCase(GetBackerListUseCaseRef ref) {
-  return GetBackerList(
+GetBackerList getBackerListUseCase(GetBackerListUseCaseRef ref) => GetBackerList(
     transactionRepository: ref.watch(
       transactionRepositoryProvider,
     ),
   );
-}

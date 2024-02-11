@@ -21,7 +21,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
   @override
   Future<Result<CampaignDocument>> createCampaign({
     required CampaignRequest campaignRequest,
-    required File imageFile,
+    File? imageFile,
   }) async {
     try {
       // TODO : ADD GET IMAGE FILE AND PATCH TO DOCUMENT

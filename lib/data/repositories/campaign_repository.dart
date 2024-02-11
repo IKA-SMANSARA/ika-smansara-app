@@ -17,7 +17,7 @@ abstract interface class CampaignRepository {
 
   Future<Result<CampaignDocument>> createCampaign({
     required CampaignRequest campaignRequest,
-    required File imageFile,
+    File? imageFile,
   });
 
   Future<Result<CampaignDocument>> updateCampaign({
