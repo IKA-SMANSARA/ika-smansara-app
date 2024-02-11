@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/account_page/methods/menu_account_item.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
 Widget menuAccount({
@@ -47,6 +48,10 @@ Widget menuAccount({
                   height: 20,
                 ),
                 title: 'Data Rekening',
+                onTap: () => ref.read(routerProvider).pushNamed(
+                      'bank-account-list',
+                      extra: ref.read(userDataProvider).valueOrNull?.authKey,
+                    ),
               ),
               verticalSpace(16),
             ],

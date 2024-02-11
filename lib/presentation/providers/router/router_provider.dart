@@ -3,6 +3,7 @@ import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
+import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
@@ -79,6 +80,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'detail-transaction',
           builder: (context, state) => DetailTransactionPage(
             transactionId: state.extra as String,
+          ),
+        ),
+        GoRoute(
+          path: '/bank-account-list',
+          name: 'bank-account-list',
+          builder: (context, state) => BankAccountListPage(
+            state.extra as String,
           ),
         ),
       ],
