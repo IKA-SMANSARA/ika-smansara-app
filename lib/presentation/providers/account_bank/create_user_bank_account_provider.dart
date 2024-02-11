@@ -27,7 +27,7 @@ Future<UserAccountBankDocument?> createUserBankAccount(
   Constants.logger.d(result.resultValue);
 
   return switch (result) {
-    Success(value: final campaign) => campaign,
+    Success(value: final bankAccount) => bankAccount,
     Failed(message: _) => null,
   };
 }
