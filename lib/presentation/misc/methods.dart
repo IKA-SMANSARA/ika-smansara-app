@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
+import 'package:jiffy/jiffy.dart';
 
 Map<double, SizedBox> _verticalSpaces = {};
 Map<double, SizedBox> _horizontalSpaces = {};
@@ -25,28 +26,6 @@ SizedBox horizontalSpace(double width) {
   }
 
   return _horizontalSpaces[width] ?? const SizedBox();
-}
-
-String getRemainingDays({String? dateEndCampaign}) {
-  final timestampString = dateEndCampaign ?? '';
-
-  if (timestampString != '') {
-    final timestamp = DateTime.parse(timestampString);
-
-    final today = DateTime.now();
-
-    final difference = timestamp.difference(today);
-
-    final remainingDays = difference.inDays;
-
-    if (remainingDays != 0) {
-      return '$remainingDays hari lagi';
-    } else {
-      return '0 hari lagi';
-    }
-  } else {
-    return '0 hari lagi';
-  }
 }
 
 double getCampaignProgressIndicatorValue(
@@ -87,11 +66,10 @@ double responsiveImageAspectRatio(BuildContext context) {
 }
 
 double headerImageLogoHeight(BuildContext context) {
-  if (MediaQuery.of(context).size.height <=
-      MinimumScreenSize.smallScreenHeight) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
     return 32.0;
-  } else if (MediaQuery.of(context).size.height <=
-      MinimumScreenSize.expandedScreenHeight) {
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
     return 52.0;
   } else {
     return 72.0;
@@ -99,14 +77,40 @@ double headerImageLogoHeight(BuildContext context) {
 }
 
 double headerHomeBackgroundHeight(BuildContext context) {
-  if (MediaQuery.of(context).size.height <=
-      MinimumScreenSize.smallScreenHeight) {
+  if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
     return 200;
-  } else if (MediaQuery.of(context).size.height <=
-      MinimumScreenSize.expandedScreenHeight) {
+  } else if (MediaQuery.of(context).size.width <=
+      MinimumScreenSize.expandedScreenWidth) {
     return 250;
   } else {
     return 300;
+  }
+}
+
+String getRemainingDays({String? dateEndCampaign}) {
+  final timestampString = dateEndCampaign ?? '';
+
+  if (timestampString != '') {
+    var formatter = Jiffy.parse(
+      timestampString,
+      pattern: 'yyyy-MM-ddTHH:mm:ss.SSSZ',
+    ).add(hours: 7).toNow(
+          withPrefixAndSuffix: false,
+        );
+    return '$formatter lagi';
+  } else {
+    return '-';
+  }
+}
+
+String formatDate(String timestampString) {
+  if (timestampString != '') {
+    return Jiffy.parse(
+      timestampString,
+      pattern: 'yyyy-MM-ddTHH:mm:ss.SSSZ',
+    ).add(hours: 7).format(pattern: 'd MMMM y HH:mm');
+  } else {
+    return '';
   }
 }
 
@@ -114,21 +118,15 @@ String countDays(String? dateEndCampaign) {
   final timestampString = dateEndCampaign ?? '';
 
   if (timestampString != '') {
-    final timestamp = DateTime.parse(timestampString);
-
-    final today = DateTime.now();
-
-    final difference = today.difference(timestamp);
-
-    final remainingDays = difference.inDays;
-
-    if (remainingDays != 0) {
-      return '$remainingDays hari lalu';
-    } else {
-      return 'Beberapa jam lalu';
-    }
+    var formatter = Jiffy.parse(
+      timestampString,
+      pattern: 'yyyy-MM-ddTHH:mm:ss.SSSZ',
+    ).add(hours: 7).fromNow(
+          withPrefixAndSuffix: false,
+        );
+    return '$formatter yang lalu';
   } else {
-    return 'Beberapa jam lalu';
+    return '-';
   }
 }
 

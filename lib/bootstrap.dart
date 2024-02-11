@@ -15,6 +15,7 @@ import 'package:ika_smansara/firebase_options.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:ika_smansara/utils/flutter_fcm.dart';
 import 'package:ika_smansara/utils/my_observer.dart';
+import 'package:jiffy/jiffy.dart';
 
 enum Flavors { development, staging, production }
 
@@ -47,6 +48,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   }
   usePathUrlStrategy();
   await Hive.initFlutter();
+  await Jiffy.setLocale('id');
 
   if (defaultTargetPlatform != TargetPlatform.windows) {
     await Firebase.initializeApp(
