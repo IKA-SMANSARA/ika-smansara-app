@@ -36,6 +36,7 @@ class SavePayment
       isActive: params.transactionRequest.isActive,
       isDeleted: params.transactionRequest.isDeleted,
       photoThumbnail: params.transactionRequest.photoThumbnail,
+      createdBy: params.transactionRequest.campaignCreatedBy,
     );
     final TransactionDocumentRequest _transactionDocumentRequest =
         TransactionDocumentRequest(

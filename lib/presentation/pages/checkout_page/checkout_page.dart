@@ -271,6 +271,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                       isActive: widget.campaign?.isActive,
                       isDeleted: widget.campaign?.isDeleted,
                       photoThumbnail: widget.campaign?.photoThumbnail,
+                      campaignCreatedBy: widget.campaign?.createdBy,
                     );
 
                     ref.read(routerProvider).pushNamed(

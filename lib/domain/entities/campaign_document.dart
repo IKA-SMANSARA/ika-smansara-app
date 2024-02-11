@@ -23,6 +23,7 @@ class CampaignDocument with _$CampaignDocument {
     @Default([]) List<dynamic>? categories,
     @Default(0) int? currentAmount,
     String? campaignDescription,
+    String? createdBy,
   }) = _CampaignDocument;
 
   factory CampaignDocument.fromJson(Map<String, dynamic> json) =>
@@ -44,5 +45,6 @@ class CampaignDocument with _$CampaignDocument {
         isActive: json['isActive'],
         isDeleted: json['isDeleted'],
         photoThumbnail: json['photoThumbnail'],
+        createdBy: json['createdBy'],
       );
 }

@@ -5,10 +5,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'create_account_bank_use_case_provider.g.dart';
 
 @riverpod
-CreateAccountBank createAccountBankUseCase(CreateAccountBankUseCaseRef ref) {
-  return CreateAccountBank(
-    userBankAccountRepository: ref.watch(
-      userBankAccountRepositoryProvider,
-    ),
-  );
-}
+CreateAccountBank createAccountBankUseCase(CreateAccountBankUseCaseRef ref) =>
+    CreateAccountBank(
+      userBankAccountRepository: ref.watch(
+        userBankAccountRepositoryProvider,
+      ),
+    );

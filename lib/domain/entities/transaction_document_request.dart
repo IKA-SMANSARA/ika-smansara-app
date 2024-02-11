@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'transaction_document_request.freezed.dart';
@@ -6,6 +8,7 @@ part 'transaction_document_request.g.dart';
 @freezed
 class TransactionDocumentRequest with _$TransactionDocumentRequest {
   factory TransactionDocumentRequest({
+    @JsonKey(name: '\$id') String? id,
     String? campaignId,
     @Default(0) int? amount,
     String? paymentStatus,

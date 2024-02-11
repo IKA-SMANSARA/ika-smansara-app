@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_profile_request.freezed.dart';
@@ -6,6 +8,7 @@ part 'user_profile_request.g.dart';
 @freezed
 class UserProfileRequest with _$UserProfileRequest {
   factory UserProfileRequest({
+    @JsonKey(name: '\$id') String? id,
     String? name,
     String? email,
     String? address,

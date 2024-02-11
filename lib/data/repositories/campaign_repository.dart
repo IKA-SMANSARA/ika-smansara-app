@@ -11,6 +11,10 @@ abstract interface class CampaignRepository {
     required String categoryName,
   });
 
+  Future<Result<List<CampaignDocument>>> getCampaignByUserId({
+    required String userId,
+  });
+
   Future<Result<CampaignDocument>> getCampaignDetail({
     required String campaignId,
   });

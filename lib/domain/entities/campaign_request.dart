@@ -20,6 +20,7 @@ class CampaignRequest with _$CampaignRequest {
     @Default([]) List<dynamic>? categories,
     @Default(0) int? currentAmount,
     String? campaignDescription,
+    String? createdBy,
   }) = _CampaignRequest;
 
   factory CampaignRequest.fromJson(Map<String, dynamic> json) =>
@@ -35,5 +36,6 @@ class CampaignRequest with _$CampaignRequest {
         isActive: json['isActive'],
         isDeleted: json['isDeleted'],
         photoThumbnail: json['photoThumbnail'],
+        createdBy: json['createdBy'],
       );
 }

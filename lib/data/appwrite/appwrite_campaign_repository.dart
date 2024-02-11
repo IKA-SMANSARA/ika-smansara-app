@@ -204,4 +204,39 @@ class AppwriteCampaignRepository implements CampaignRepository {
       return Result.failed(e.message ?? 'Error!');
     }
   }
+
+  @override
+  Future<Result<List<CampaignDocument>>> getCampaignByUserId({
+    required String userId,
+  }) async {
+    try {
+      var result = await _databases.listDocuments(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+        queries: [
+          Query.orderDesc('dateStartCampaign'),
+          Query.equal('isDeleted', false),
+          Query.equal('isActive', true),
+          Query.equal('createdBy', '$userId')
+        ],
+      );
+
+      Constants.logger.d(result.documents);
+
+      if (result.documents.isNotEmpty) {
+        return Result.success(
+          result.documents
+              .map(
+                (e) => CampaignDocument.fromJson(e.data),
+              )
+              .toList(),
+        );
+      } else {
+        return Result.success([]);
+      }
+    } on AppwriteException catch (e) {
+      Constants.logger.e(e);
+      return Result.failed(e.message ?? 'Error!');
+    }
+  }
 }
