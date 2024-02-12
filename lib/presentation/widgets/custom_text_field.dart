@@ -5,10 +5,12 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final int? maxLines;
   final bool expands;
+  final bool enabled;
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final TextAlignVertical? textAlignVertical;
   final void Function(String)? onChanged;
+  final void Function()? onTap;
 
   const CustomTextField({
     super.key,
@@ -20,11 +22,15 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textAlignVertical,
     this.onChanged,
+    this.onTap,
+    this.enabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onTap: onTap,
+      enabled: enabled,
       onChanged: onChanged,
       maxLines: maxLines,
       controller: controller,

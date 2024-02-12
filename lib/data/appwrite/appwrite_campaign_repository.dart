@@ -17,6 +17,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
   late final _databases = Databases(_appwriteClient);
+  late final _storage = Storage(_appwriteClient);
 
   @override
   Future<Result<CampaignDocument>> createCampaign({
@@ -24,33 +25,69 @@ class AppwriteCampaignRepository implements CampaignRepository {
     File? imageFile,
   }) async {
     try {
-      // TODO : ADD GET IMAGE FILE AND PATCH TO DOCUMENT
+      final imageId = ID.unique();
+      final file = InputFile.fromPath(
+        path: imageFile?.path ?? '',
+        filename: 'campaign-${imageFile?.path}',
+      );
 
-      var result = await _databases.createDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: 'unique()',
-        data: campaignRequest.toJson(),
+      var uploadPhotoCampaign = _storage.createFile(
+        bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+        fileId: imageId,
+        file: file,
         permissions: [
-          Permission.read(
-            Role.label('admin'),
-          ),
-          Permission.update(
-            Role.label('admin'),
-          ),
-          Permission.read(
-            Role.users(),
-          ),
+          Permission.read(Role.any()),
         ],
       );
 
-      Constants.logger.d(result.data);
+      var imageUrl = '';
 
-      return Result.success(
-        CampaignDocument.fromJson(
-          result.toMap(),
-        ),
+      await uploadPhotoCampaign.then(
+        (response) {
+          if (response.$id != '') {
+            imageUrl =
+                'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+          } else {
+            imageUrl = '';
+          }
+        },
       );
+
+      Constants.logger.d('IMAGE URL $imageUrl');
+
+      if (imageUrl != '') {
+        var result = await _databases.createDocument(
+          databaseId: dotenv.env['DATABASE_ID'].toString(),
+          collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+          documentId: ID.unique(),
+          data: campaignRequest
+              .copyWith(
+                photoThumbnail: imageUrl,
+              )
+              .toJson(),
+          permissions: [
+            Permission.read(
+              Role.label('admin'),
+            ),
+            Permission.update(
+              Role.label('admin'),
+            ),
+            Permission.read(
+              Role.users(),
+            ),
+          ],
+        );
+
+        Constants.logger.d(result.data);
+
+        return Result.success(
+          CampaignDocument.fromJson(
+            result.toMap(),
+          ),
+        );
+      } else {
+        return Result.failed('Error! failed get image url!');
+      }
     } on AppwriteException catch (e) {
       return Result.failed(e.message ?? 'Error!');
     }

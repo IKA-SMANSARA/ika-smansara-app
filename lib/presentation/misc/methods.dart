@@ -103,6 +103,15 @@ String getRemainingDays({String? dateEndCampaign}) {
   }
 }
 
+String formatReadableDateTime({String? dateTime}) {
+  return Jiffy.parse(dateTime ?? '').format(pattern: 'd MMMM y');
+}
+
+String formatUploadableDateTime({String? dateTime}) {
+  return Jiffy.parse(dateTime ?? '')
+      .format(pattern: 'yyyy-MM-ddTHH:mm:ss.SSSZ');
+}
+
 String formatDate(String timestampString) {
   if (timestampString != '') {
     return Jiffy.parse(
