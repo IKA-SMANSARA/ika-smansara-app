@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_button/group_button.dart';
-import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
@@ -190,7 +189,7 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
-                      var uploaded = ref.watch(
+                      ref.watch(
                         createNewCampaignProvider(
                           campaignRequest: CampaignRequest(
                             backerCount: 0,
