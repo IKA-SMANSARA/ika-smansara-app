@@ -5,7 +5,7 @@ import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/methods/carousel_campaign_image.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/methods/list_campaigns.dart';
-import 'package:ika_smansara/presentation/providers/campaign/get_campaigns_by_category_list_provider.dart';
+import 'package:ika_smansara/presentation/providers/campaign/get_list_campaigns_by_category_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 
 class ListCampaignPage extends ConsumerWidget {
@@ -16,7 +16,7 @@ class ListCampaignPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var asyncCampaignsData = ref.watch(
-      getCampaignsByCategoryListProvider(
+      getListCampaignsByCategoryProvider(
         categoryName: category?.nameCategory ?? '',
       ),
     );

@@ -151,7 +151,7 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                 verticalSpace(16),
                 GroupButton(
                   buttons: ref
-                          .read(getListCategoryProvider)
+                          .watch(getListCategoryProvider)
                           .valueOrNull
                           ?.map(
                             (e) => e.nameCategory?.toUpperCase(),
@@ -189,39 +189,37 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
-                      ref.watch(
-                        createNewCampaignProvider(
-                          campaignRequest: CampaignRequest(
-                            backerCount: 0,
-                            campaignDescription:
-                                campaignDescriptionController.text,
-                            campaignName: campaignNameController.text,
-                            categories: categoriesData,
-                            createdBy:
-                                ref.read(userDataProvider).valueOrNull?.authKey,
-                            currentAmount: 0,
-                            dateEndCampaign: campaignEndDateController.text,
-                            dateStartCampaign: campaignStartDateController.text,
-                            goalAmount: int.parse(
-                              campaignGoalAmountController.text
-                                  .replaceAll('.', '')
-                                  .replaceAll('Rp', '')
-                                  .replaceAll(' ', '0')
-                                  .replaceAll('-', '0'),
+                      ref
+                          .read(
+                            createNewCampaignProvider.notifier,
+                          )
+                          .postNewCampaign(
+                            campaignRequest: CampaignRequest(
+                              backerCount: 0,
+                              campaignDescription:
+                                  campaignDescriptionController.text,
+                              campaignName: campaignNameController.text,
+                              categories: categoriesData,
+                              createdBy: ref
+                                  .read(userDataProvider)
+                                  .valueOrNull
+                                  ?.authKey,
+                              currentAmount: 0,
+                              dateEndCampaign: campaignEndDateController.text,
+                              dateStartCampaign:
+                                  campaignStartDateController.text,
+                              goalAmount: int.parse(
+                                campaignGoalAmountController.text
+                                    .replaceAll('.', '')
+                                    .replaceAll('Rp', '')
+                                    .replaceAll(' ', '0')
+                                    .replaceAll('-', '0'),
+                              ),
+                              isActive: true,
+                              isDeleted: false,
                             ),
-                            isActive: true,
-                            isDeleted: false,
-                          ),
-                          imageFile: selectedImage,
-                        ),
-                      );
-
-                      Future.delayed(
-                        Duration(milliseconds: 2000),
-                        () {
-                          ref.read(routerProvider).goNamed('main');
-                        },
-                      );
+                            imageFile: selectedImage,
+                          );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),

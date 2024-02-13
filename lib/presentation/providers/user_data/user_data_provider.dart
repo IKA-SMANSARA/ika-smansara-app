@@ -7,7 +7,7 @@ import 'package:ika_smansara/domain/usecases/login/login_params.dart';
 import 'package:ika_smansara/domain/usecases/register/register.dart';
 import 'package:ika_smansara/domain/usecases/register/register_params.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
-import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
+import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/get_logged_in_user_use_case_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/login_use_case_provider.dart';
@@ -124,9 +124,6 @@ class UserData extends _$UserData {
 
     switch (logoutResult) {
       case Success(value: _):
-        _getCategories();
-        _getCarouselImages();
-        _getNewCampaigns();
         state = const AsyncData(null);
       case Failed(:final message):
         state = AsyncError(
@@ -138,14 +135,14 @@ class UserData extends _$UserData {
   }
 
   void _getCategories() {
-    ref.read(getListCategoryProvider.notifier).getListCategory();
+    ref.read(getListCategoryProvider);
   }
 
   void _getCarouselImages() {
-    ref.read(getCarouselsProvider.notifier).getCarouselImagesData();
+    ref.read(getListCarouselsProvider);
   }
 
   void _getNewCampaigns() {
-    ref.read(getNewCampaignsListProvider.notifier).getNewCampaignsData();
+    ref.read(getNewCampaignsListProvider);
   }
 }

@@ -32,7 +32,7 @@ class SnapPayment
     );
     final MidtransItemRequest _midtransItemRequest = MidtransItemRequest(
       id: params.transactionRequest.campaignId,
-      name: params.transactionRequest.campaignName?.substring(0,20),
+      name: 'check campaign name by admin, with id campaign',
       price: params.transactionRequest.amount,
       quantity: 1,
     );

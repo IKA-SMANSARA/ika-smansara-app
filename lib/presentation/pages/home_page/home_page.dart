@@ -7,7 +7,7 @@ import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_image
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/header_image_logo.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
-import 'package:ika_smansara/presentation/providers/carousel/get_carousels_provider.dart';
+import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 
@@ -35,7 +35,7 @@ class HomePage extends ConsumerWidget {
                 verticalSpace(16),
                 carouselImages(
                   context: context,
-                  carouselImagesValue: ref.watch(getCarouselsProvider),
+                  carouselImagesValue: ref.watch(getListCarouselsProvider),
                 ),
                 verticalSpace(30),
                 categoryList(

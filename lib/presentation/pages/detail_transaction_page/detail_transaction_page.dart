@@ -34,11 +34,6 @@ class DetailTransactionPage extends ConsumerWidget {
         title: AutoSizeText(
           asyncDetailTransactionData.valueOrNull?.campaignName ?? '',
         ),
-        leading: BackButton(
-          onPressed: () {
-            ref.read(routerProvider).goNamed('main');
-          },
-        ),
       ),
       body: ListView(
         children: [

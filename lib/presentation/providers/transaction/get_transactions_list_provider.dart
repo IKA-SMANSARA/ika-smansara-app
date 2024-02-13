@@ -13,6 +13,7 @@ Future<List<TransactionDocument>> getTransactionsList(
   required String userId,
 }) async {
   GetTransactions getTransactions = ref.read(getTransactionsUseCaseProvider);
+
   var result = await getTransactions(
     GetTransactionsParams(
       userId: userId,
