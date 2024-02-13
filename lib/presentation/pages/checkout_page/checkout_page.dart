@@ -173,15 +173,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                             .replaceAll('-', '0')
                         : '0')
                     .toIDRCurrencyFormat(),
-                paymentFee: getPaymentFee(
-                  (amountNominal.text != '')
-                      ? amountNominal.text
-                          .replaceAll('.', '')
-                          .replaceAll('Rp', '')
-                          .replaceAll(' ', '0')
-                          .replaceAll('-', '0')
-                      : '0',
-                ),
+                paymentFee: getPaymentFee(),
                 totalAmount: getTotalPayment(
                   (amountNominal.text != '')
                       ? amountNominal.text
@@ -237,15 +229,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                             .replaceAll('-', '0'),
                       ),
                       paymentFee: int.parse(
-                        getPaymentFee(
-                          (amountNominal.text != '')
-                              ? amountNominal.text
-                                  .replaceAll('.', '')
-                                  .replaceAll('Rp', '')
-                                  .replaceAll(' ', '0')
-                                  .replaceAll('-', '0')
-                              : '0',
-                        )
+                        getPaymentFee()
                             .replaceAll('.', '')
                             .replaceAll('Rp', '')
                             .replaceAll(' ', '0')

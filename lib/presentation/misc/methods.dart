@@ -145,7 +145,7 @@ String getTotalPayment(String? payment) {
       .toIDRCurrencyFormat();
 }
 
-String getPaymentFee(String? payment) {
+String getPaymentFee() {
   return getPercentFeeValue().toInt().toIDRCurrencyFormat();
 }
 
