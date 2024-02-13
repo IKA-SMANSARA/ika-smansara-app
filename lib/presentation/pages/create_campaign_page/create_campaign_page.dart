@@ -9,7 +9,6 @@ import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/sel
 import 'package:ika_smansara/presentation/providers/campaign/create_new_campaign_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
-import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_date_time_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
