@@ -140,32 +140,31 @@ String countDays(String? dateEndCampaign) {
 }
 
 String getTotalPayment(String? payment) {
-  return (int.parse((payment ?? '0')) +
-          (int.parse((payment ?? '0')) * getPercentFeeValue(payment)))
+  return (int.parse((payment ?? '0')) + getPercentFeeValue())
       .toInt()
       .toIDRCurrencyFormat();
 }
 
 String getPaymentFee(String? payment) {
-  return (int.parse((payment ?? '0')) * getPercentFeeValue(payment))
-      .toInt()
-      .toIDRCurrencyFormat();
+  return getPercentFeeValue().toInt().toIDRCurrencyFormat();
 }
 
-double getPercentFeeValue(String? payment) {
-  if (int.parse(payment ?? '') < 100000) {
-    return 10.5 / 100;
-  } else if (int.parse(payment ?? '') < 200000) {
-    return 5.5 / 100;
-  } else if (int.parse(payment ?? '') < 300000) {
-    return 2.5 / 100;
-  } else if (int.parse(payment ?? '') < 400000) {
-    return 1.7 / 100;
-  } else if (int.parse(payment ?? '') < 500000) {
-    return 1.5 / 100;
-  } else {
-    return 0.9 / 100;
-  }
+double getPercentFeeValue() {
+  // if (int.parse(payment ?? '') < 100000) {
+  //   return 10.5 / 100;
+  // } else if (int.parse(payment ?? '') < 200000) {
+  //   return 5.5 / 100;
+  // } else if (int.parse(payment ?? '') < 300000) {
+  //   return 2.5 / 100;
+  // } else if (int.parse(payment ?? '') < 400000) {
+  //   return 1.7 / 100;
+  // } else if (int.parse(payment ?? '') < 500000) {
+  //   return 1.5 / 100;
+  // } else {
+  //   return 0.9 / 100;
+  // }
+
+  return 5000 + (5000 * 0.11);
 }
 
 String getRandomOrderIdNumber() {
