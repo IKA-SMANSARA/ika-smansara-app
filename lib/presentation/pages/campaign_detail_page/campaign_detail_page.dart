@@ -12,10 +12,13 @@ import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/hea
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
-  const CampaignDetailPage(this.campaign, {super.key});
+  final String fromHome;
+  const CampaignDetailPage(
+      {required this.campaign, this.fromHome = 'true', super.key});
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _CampaignDetailPageState();
@@ -146,16 +149,22 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {
-                        ref.read(routerProvider).pushNamed(
-                              'checkout-page',
-                              extra: widget.campaign,
-                            );
+                        if (widget.fromHome == 'false') {
+                          context.showSnackBar('go to edit campaign page');
+                        } else {
+                          ref.read(routerProvider).pushNamed(
+                                'checkout-page',
+                                extra: widget.campaign,
+                              );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF104993),
                       ),
                       child: AutoSizeText(
-                        'Kirim Donasi',
+                        (widget.fromHome == 'false')
+                            ? 'Ubah Informasi Acara'
+                            : 'Kirim Donasi',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

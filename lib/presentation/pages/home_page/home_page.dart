@@ -64,9 +64,12 @@ class HomePage extends ConsumerWidget {
                   campaigns: ref.watch(getNewCampaignsListProvider),
                   onTap: (campaign) {
                     ref.read(routerProvider).pushNamed(
-                          'campaign-detail-page',
-                          extra: campaign,
-                        );
+                      'campaign-detail-page',
+                      extra: campaign,
+                      queryParameters: {
+                        "from-home": 'true',
+                      },
+                    );
                   },
                   onPressed: () {
                     ref.read(routerProvider).pushNamed(

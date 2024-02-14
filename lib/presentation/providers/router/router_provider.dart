@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_t
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
+import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -51,7 +52,8 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/campaign-detail-page',
           name: 'campaign-detail-page',
           builder: (context, state) => CampaignDetailPage(
-            state.extra as CampaignDocument,
+            campaign: state.extra as CampaignDocument,
+            fromHome: state.uri.queryParameters['from-home'] ?? 'true',
           ),
         ),
         GoRoute(
@@ -80,6 +82,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'detail-transaction',
           builder: (context, state) => DetailTransactionPage(
             transactionId: state.extra as String,
+          ),
+        ),
+        GoRoute(
+          path: '/my-campaigns-list',
+          name: 'my-campaigns-list',
+          builder: (context, state) => MyCampaignsPage(
+            userId: state.extra as String,
           ),
         ),
         GoRoute(

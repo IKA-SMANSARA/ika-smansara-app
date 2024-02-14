@@ -32,6 +32,10 @@ Widget menuAccount({
                   height: 20,
                 ),
                 title: 'Penggalangan Dana',
+                onTap: () => ref.read(routerProvider).pushNamed(
+                      'my-campaigns-list',
+                      extra: ref.read(userDataProvider).valueOrNull?.authKey,
+                    ),
               ),
               verticalSpace(16),
               menuAccountItem(
