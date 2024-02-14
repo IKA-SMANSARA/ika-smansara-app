@@ -12,7 +12,6 @@ import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/hea
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
-import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
