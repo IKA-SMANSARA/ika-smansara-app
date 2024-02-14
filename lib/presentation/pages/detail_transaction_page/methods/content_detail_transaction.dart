@@ -218,6 +218,7 @@ List<Widget>? contentDetailTransaction({
             ),
           ),
         ),
+        verticalSpace(24),
       ],
       error: (error, stackTrace) => [
         const Center(
