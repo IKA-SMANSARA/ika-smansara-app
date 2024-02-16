@@ -12,7 +12,8 @@
            android:theme="@style/LaunchTheme"
            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
            android:hardwareAccelerated="true"
-           android:windowSoftInputMode="adjustResize">
+           android:windowSoftInputMode="adjustResize"
+           android:enableOnBackInvokedCallback="true">
            <!-- Specifies an Android theme to apply to this Activity as soon as
                 the Android process has started. This theme is visible to the user
                 while the Flutter UI initializes. After that, this theme continues
@@ -63,6 +64,14 @@
        <meta-data
            android:name="com.google.firebase.messaging.default_notification_channel_id"
            android:value="campaign_channel" />
+        <activity android:name="com.linusu.flutter_web_auth_2.CallbackActivity" android:exported="true">
+      <intent-filter android:label="flutter_web_auth_2">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="appwrite-callback-[PROJECT_ID]" />
+      </intent-filter>
+    </activity>
    </application>
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />

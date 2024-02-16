@@ -130,3 +130,13 @@ pubspec.lock
 *_keys.lock
 /*_collection/*.hive
 /*_collection/*.lock
+
+# remove generated file
+*.freezed.dart
+*.g.dart
+*.chopper.dart
+
+# env files
+assets/development/.env
+assets/staging/.env
+assets/production/.env

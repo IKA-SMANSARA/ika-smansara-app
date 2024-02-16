@@ -1,32 +1,23 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:ika_smansara/common/common.dart';
 import 'package:ika_smansara/firebase_options.dart';
+import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/flutter_fcm.dart';
+import 'package:ika_smansara/utils/my_observer.dart';
+import 'package:jiffy/jiffy.dart';
 
-class AppBlocObserver extends BlocObserver {
-  const AppBlocObserver();
-
-  @override
-  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    super.onChange(bloc, change);
-    log('onChange(${bloc.runtimeType}, $change)');
-  }
-
-  @override
-  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    log('onError(${bloc.runtimeType}, $error, $stackTrace)');
-    super.onError(bloc, error, stackTrace);
-  }
-}
+enum Flavors { development, staging, production }
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -41,77 +32,100 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 // ignore: lines_longer_than_80_chars
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
-  FlutterError.onError = (details) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(details);
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
-
-  Bloc.observer = const AppBlocObserver();
-
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
   // init basic configuration
+  switch (Constants.appFlavor) {
+    case Constants.DEVELOPMENT:
+      await dotenv.load(fileName: "assets/${Constants.DEVELOPMENT}/.env");
+    case Constants.STAGING:
+      await dotenv.load(fileName: "assets/${Constants.STAGING}/.env");
+    case Constants.PRODUCTION:
+      await dotenv.load(fileName: "assets/${Constants.PRODUCTION}/.env");
+    default:
+      await dotenv.load(fileName: "assets/${Constants.DEVELOPMENT}/.env");
+  }
+  usePathUrlStrategy();
   await Hive.initFlutter();
-  setupLogging();
-  await configureDependencies();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Jiffy.setLocale('id');
 
-  // firebase notification
-  // Set the background messaging handler early on,
-  // as a named top-level function
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  if (defaultTargetPlatform != TargetPlatform.windows) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
-  // allow notification for application not for build web
-  if (!kIsWeb) {
-    await setupFlutterNotifications();
-  }
+    FlutterError.onError = (details) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+      log(details.exceptionAsString(), stackTrace: details.stack);
+    };
 
-  // disable get fcm for build web
-  // issue cannot run application if request fcm before allow notification
-  // permission in browser
-  if (!kIsWeb) {
-    // init messaging instance for permission
-    final messaging = FirebaseMessaging.instance;
+    // firebase notification
+    // Set the background messaging handler early on,
+    // as a named top-level function
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    // permission request for notification
-    final settings = await messaging.requestPermission();
-
-    // get fcm token
-    final fcmToken = kIsWeb
-        ? await messaging.getToken(vapidKey: Constants.vapidKeyFcm)
-        : await messaging.getToken();
-    // ignore: inference_failure_on_function_invocation
-    final fcmTokenBox = await Hive.openBox(Constants.fcmTokenBoxName);
-    // save fcm token to local db
-    await fcmTokenBox.put('fcmToken', fcmToken ?? '');
-
-    // notification permission condition
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      Constants.logger.i('User granted permission');
-    } else if (settings.authorizationStatus ==
-        AuthorizationStatus.provisional) {
-      Constants.logger.i('User granted provisional permission');
-    } else {
-      Constants.logger.w('User declined or has not accepted permission');
-
-      // Flutter local notification request permission android 13
-      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-      await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.requestPermission();
+    // allow notification for application not for build web
+    if (!kIsWeb) {
+      await setupFlutterNotifications();
     }
+
+    // disable get fcm for build web
+    // issue cannot run application if request fcm before allow notification
+    // permission in browser
+    if (!kIsWeb) {
+      // init messaging instance for permission
+      final messaging = FirebaseMessaging.instance;
+
+      // permission request for notification
+      final settings = await messaging.requestPermission();
+
+      // get fcm token
+      final fcmToken = kIsWeb
+          ? await messaging.getToken(
+              vapidKey: dotenv.env['VAPID_KEY_FCM'].toString(),
+            )
+          : await messaging.getToken();
+      // ignore: inference_failure_on_function_invocation
+      final fcmTokenBox = await Hive.openBox(
+        dotenv.env['FCM_TOKEN_BOX_NAME'].toString(),
+      );
+      // save fcm token to local db
+      await fcmTokenBox.put('fcmToken', fcmToken ?? '');
+
+      // notification permission condition
+      if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+        Constants.logger.i('User granted permission');
+      } else if (settings.authorizationStatus ==
+          AuthorizationStatus.provisional) {
+        Constants.logger.i('User granted provisional permission');
+      } else {
+        Constants.logger.w('User declined or has not accepted permission');
+
+        // Flutter local notification request permission android 13
+        final flutterLocalNotificationsPlugin =
+            FlutterLocalNotificationsPlugin();
+        await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin>()
+            ?.requestNotificationsPermission();
+      }
+    }
+
+    // Pass all uncaught asynchronous errors that aren't handled by
+    // the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
   }
 
-  // Pass all uncaught asynchronous errors that aren't handled by
-  // the Flutter framework to Crashlytics
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
-
-  runApp(await builder());
+  runApp(
+    ProviderScope(
+      observers: [
+        MyObserver(),
+      ],
+      child: await builder(),
+    ),
+  );
 }
