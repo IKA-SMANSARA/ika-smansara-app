@@ -17,7 +17,8 @@ class UserAccountBankDocument with _$UserAccountBankDocument {
     String? realUserName,
     String? bankName,
     String? bankAccountNumber,
-    @Default(false) bool isDeleted,
+    @Default(false) bool? isDeleted,
+    @Default(false) bool? isDefault,
   }) = _UserAccountBankDocument;
 
   factory UserAccountBankDocument.fromJson(Map<String, dynamic> json) =>
@@ -34,5 +35,6 @@ class UserAccountBankDocument with _$UserAccountBankDocument {
         userId: json['userId'],
         userName: json['userId'],
         isDeleted: json['isDeleted'],
+        isDefault: json['isDefault'],
       );
 }

@@ -15,6 +15,7 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
     String? bankName,
     String? bankAccountNumber,
     @Default(false) bool isDefault,
+    @Default(false) bool isDeleted,
   }) = _UserAccountBankRequest;
 
   factory UserAccountBankRequest.fromJson(Map<String, dynamic> json) =>
@@ -25,5 +26,6 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
         userId: json['userId'],
         userName: json['userId'],
         isDefault: json['isDefault'],
+        isDeleted: json['isDeleted'],
       );
 }
