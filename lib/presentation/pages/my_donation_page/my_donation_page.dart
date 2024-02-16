@@ -67,7 +67,7 @@ class MyDonationPage extends ConsumerWidget {
             transactions: asyncTransactionsData,
             onTap: (transaction) {
               ref.read(routerProvider).pushNamed(
-                    'detail-transaction',
+                    'detail-transaction-page',
                     extra: transaction.id,
                   );
             },

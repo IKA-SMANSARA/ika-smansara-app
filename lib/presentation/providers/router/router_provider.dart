@@ -2,10 +2,13 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
+import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
+import 'package:ika_smansara/presentation/pages/bank_account_detail_page/bank_account_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
+import 'package:ika_smansara/presentation/pages/create_account_bank_page/create_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_transaction_page.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
@@ -13,6 +16,7 @@ import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
+import 'package:ika_smansara/presentation/pages/success_add_bank_account_page/success_add_bank_account_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -78,24 +82,39 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           ),
         ),
         GoRoute(
-          path: '/detail-transaction',
-          name: 'detail-transaction',
+          path: '/detail-transaction-page',
+          name: 'detail-transaction-page',
           builder: (context, state) => DetailTransactionPage(
             transactionId: state.extra as String,
           ),
         ),
         GoRoute(
-          path: '/my-campaigns-list',
-          name: 'my-campaigns-list',
+          path: '/my-campaigns-list-page',
+          name: 'my-campaigns-list-page',
           builder: (context, state) => MyCampaignsPage(
             userId: state.extra as String,
           ),
         ),
         GoRoute(
-          path: '/bank-account-list',
-          name: 'bank-account-list',
-          builder: (context, state) => BankAccountListPage(
-            state.extra as String,
+          path: '/bank-account-list-page',
+          name: 'bank-account-list-page',
+          builder: (context, state) => const BankAccountListPage(),
+        ),
+        GoRoute(
+          path: '/create-bank-account-page',
+          name: 'create-bank-account-page',
+          builder: (context, state) => const CreateAccountBankPage(),
+        ),
+        GoRoute(
+          path: '/success-add-bank-account-page',
+          name: 'success-add-bank-account-page',
+          builder: (context, state) => const SuccessAddBankAccountPage(),
+        ),
+        GoRoute(
+          path: '/bank-account-detail-page',
+          name: 'bank-account-detail-page',
+          builder: (context, state) => BankAccountDetailPage(
+            userAccountBankDocument: state.extra as UserAccountBankDocument,
           ),
         ),
       ],
