@@ -93,7 +93,6 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
         queries: [
-          Query.orderDesc('dateStartCampaign'),
           Query.equal('isDeleted', false),
         ],
       );
