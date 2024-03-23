@@ -94,6 +94,7 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
         collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
         queries: [
           Query.equal('isDeleted', false),
+          Query.equal('userId', userId),
         ],
       );
 
