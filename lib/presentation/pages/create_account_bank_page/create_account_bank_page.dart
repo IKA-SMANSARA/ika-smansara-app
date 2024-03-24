@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/create_user_bank_account_provider.dart';
+import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 
 class CreateAccountBankPage extends ConsumerStatefulWidget {
@@ -21,6 +23,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
       TextEditingController();
   final TextEditingController bankAccountNameController =
       TextEditingController();
+  var selectedBankCode = '';
 
   @override
   void dispose() {
@@ -32,6 +35,8 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
 
   @override
   Widget build(BuildContext context) {
+    var asyncListBank = ref.watch(getListBankDocProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: AutoSizeText(
@@ -46,10 +51,81 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextField(
-                  labelText: 'Nama Bank',
-                  controller: bankNameController,
-                  keyboardType: TextInputType.name,
+                CustomTextButton(
+                  title: 'Nama Bank',
+                  textEditingController: bankNameController,
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(10.0),
+                        ),
+                      ),
+                      builder: (context) {
+                        return ListView(
+                          children: [
+                            ...(asyncListBank.when(
+                                  data: (data) => data
+                                      .map(
+                                        (e) => GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              bankNameController.text =
+                                                  e.bankName ?? '';
+                                              selectedBankCode =
+                                                  e.bankCode ?? '';
+                                            });
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  AutoSizeText(
+                                                    e.bankName ?? '',
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  error: (error, stackTrace) => [
+                                    Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: const Center(
+                                        child: Text(
+                                          'NETWORK ERROR!',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                  loading: () => [
+                                    Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive(),
+                                      ),
+                                    ),
+                                  ],
+                                ) ??
+                                [])
+                          ],
+                        );
+                      },
+                    );
+                  },
                 ),
                 verticalSpace(16),
                 CustomTextField(
@@ -82,6 +158,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                       var userAccountBankRequest = UserAccountBankRequest(
                         bankAccountNumber: bankAccountNumberController.text,
                         bankName: bankNameController.text,
+                        bankCode: selectedBankCode,
                         realUserName: bankAccountNameController.text,
                         userId: ref.read(userDataProvider).valueOrNull?.authKey,
                         userName: ref.read(userDataProvider).valueOrNull?.name,

@@ -13,6 +13,7 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
     String? userName,
     String? realUserName,
     String? bankName,
+    String? bankCode,
     String? bankAccountNumber,
     @Default(false) bool isDefault,
     @Default(false) bool isDeleted,
@@ -22,6 +23,7 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
       UserAccountBankRequest(
         bankAccountNumber: json['bankAccountNumber'],
         bankName: json['bankName'],
+        bankCode: json['bankCode'],
         realUserName: json['realUserName'],
         userId: json['userId'],
         userName: json['userId'],

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/methods/bank_account_item.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
@@ -40,17 +41,33 @@ class BankAccountListPage extends ConsumerWidget {
           ...(asyncAccountBankData.whenOrNull(
                 data: (data) => data
                     .map(
-                      (accountBank) => bankAccountItem(
-                        bankName: (accountBank.bankName ?? '').toUpperCase(),
-                        accountBankNumber: accountBank.bankAccountNumber ?? '',
-                        realNameUserAccountBank:
-                            (accountBank.realUserName ?? '').toUpperCase(),
-                        onTap: () {
-                          ref.read(routerProvider).pushNamed(
-                                'bank-account-detail-page',
-                                extra: accountBank,
-                              );
-                        },
+                      (accountBank) => Slidable(
+                        endActionPane: ActionPane(
+                          motion: const DrawerMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) {},
+                              backgroundColor: Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              label: 'Hapus',
+                            ),
+                            SlidableAction(
+                              onPressed: (context) {},
+                              backgroundColor: Color(0xFF21B7CA),
+                              foregroundColor: Colors.white,
+                              icon: Icons.edit,
+                              label: 'Ubah',
+                            ),
+                          ],
+                        ),
+                        child: bankAccountItem(
+                          bankName: (accountBank.bankName ?? '').toUpperCase(),
+                          accountBankNumber:
+                              accountBank.bankAccountNumber ?? '',
+                          realNameUserAccountBank:
+                              (accountBank.realUserName ?? '').toUpperCase(),
+                        ),
                       ),
                     )
                     .toList(),
