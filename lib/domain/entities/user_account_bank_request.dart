@@ -26,7 +26,7 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
         bankCode: json['bankCode'],
         realUserName: json['realUserName'],
         userId: json['userId'],
-        userName: json['userId'],
+        userName: json['userName'],
         isDefault: json['isDefault'],
         isDeleted: json['isDeleted'],
       );

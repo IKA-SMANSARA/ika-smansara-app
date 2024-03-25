@@ -35,7 +35,7 @@ class UserAccountBankDocument with _$UserAccountBankDocument {
         bankCode: json['bankCode'],
         realUserName: json['realUserName'],
         userId: json['userId'],
-        userName: json['userId'],
+        userName: json['userName'],
         isDeleted: json['isDeleted'],
         isDefault: json['isDefault'],
       );
