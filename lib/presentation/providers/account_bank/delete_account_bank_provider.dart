@@ -4,9 +4,10 @@ import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank.dart';
 import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank_params.dart';
-import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
+import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/delete_account_bank_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'delete_account_bank_provider.g.dart';
@@ -31,8 +32,12 @@ class DeleteAccountBankUser extends _$DeleteAccountBankUser {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
-        // ignore: unused_result
-        ref.refresh(getListBankDocProvider);
+        var userId = ref.read(userDataProvider).valueOrNull?.authKey;
+        ref.refresh(
+          getAccountBankByUserIdProvider(
+            userId: userId ?? '',
+          ),
+        );
         ref.read(routerProvider).pop();
       case Failed(:final message):
         state = AsyncError(

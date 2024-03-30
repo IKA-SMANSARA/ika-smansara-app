@@ -95,6 +95,7 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
         queries: [
           Query.equal('isDeleted', false),
           Query.equal('userId', userId),
+          Query.orderDesc('\$updatedAt'),
         ],
       );
 

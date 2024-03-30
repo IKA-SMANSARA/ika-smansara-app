@@ -4,9 +4,10 @@ import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/domain/usecases/create_account_bank/create_account_bank.dart';
 import 'package:ika_smansara/domain/usecases/create_account_bank/create_account_bank_params.dart';
-import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
+import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/create_account_bank_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -20,6 +21,8 @@ class CreateUserBankAccount extends _$CreateUserBankAccount {
   Future<void> postAccountBank({
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
+    state = AsyncValue.loading();
+
     CreateAccountBank createAccountBank = ref.read(
       createAccountBankUseCaseProvider,
     );
@@ -35,8 +38,12 @@ class CreateUserBankAccount extends _$CreateUserBankAccount {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
-        // ignore: unused_result
-        ref.refresh(getListBankDocProvider);
+        var userId = ref.read(userDataProvider).valueOrNull?.authKey;
+        ref.refresh(
+          getAccountBankByUserIdProvider(
+            userId: userId ?? '',
+          ),
+        );
         ref.read(routerProvider).pop();
       case Failed(:final message):
         state = AsyncError(
