@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
+import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
@@ -15,6 +16,7 @@ import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
 import 'package:ika_smansara/presentation/pages/success_add_bank_account_page/success_add_bank_account_page.dart';
+import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -107,6 +109,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/success-add-bank-account-page',
           name: 'success-add-bank-account-page',
           builder: (context, state) => const SuccessAddBankAccountPage(),
+        ),
+        GoRoute(
+          path: '/update-account-bank-page',
+          name: 'update-account-bank-page',
+          builder: (context, state) => UpdateAccountBankPage(
+            userAccountBankDocument: state.extra as UserAccountBankDocument,
+          ),
         ),
       ],
       initialLocation: '/login',

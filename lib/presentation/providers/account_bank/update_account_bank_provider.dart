@@ -1,35 +1,40 @@
 // ignore_for_file: unused_result
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
-import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank.dart';
-import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank_params.dart';
+import 'package:ika_smansara/domain/usecases/update_account_bank/update_account_bank.dart';
+import 'package:ika_smansara/domain/usecases/update_account_bank/update_account_bank_params.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/delete_account_bank_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/update_account_bank_use_case_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'delete_account_bank_provider.g.dart';
+part 'update_account_bank_provider.g.dart';
 
 @riverpod
-class DeleteAccountBankUser extends _$DeleteAccountBankUser {
+class UpdateUserAccountBank extends _$UpdateUserAccountBank {
   @override
   Future<UserAccountBankDocument?> build() async => null;
 
-  Future<void> deleteAccountBankUser({
+  Future<void> postUpdateAccountBank({
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
-    DeleteAccountBank deleteAccountBank =
-        ref.read(deleteAccountBankUseCaseProvider);
+    state = AsyncValue.loading();
 
-    var result = await deleteAccountBank(
-      DeleteAccountBankParams(
+    UpdateAccountBank updateAccountBank =
+        ref.read(updateAccountBankUseCaseProvider);
+
+    var result = await updateAccountBank(
+      UpdateAccountBankParams(
         userAccountBankRequest: userAccountBankRequest,
       ),
     );
+
+    Constants.logger.d(result.resultValue);
 
     switch (result) {
       case Success(value: final data):

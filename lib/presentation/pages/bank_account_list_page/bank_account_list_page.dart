@@ -64,7 +64,12 @@ class _BankAccountListPageState extends ConsumerState<BankAccountListPage> {
                               label: 'Hapus',
                             ),
                             SlidableAction(
-                              onPressed: (context) {},
+                              onPressed: (context) {
+                                ref.read(routerProvider).pushNamed(
+                                      'update-account-bank-page',
+                                      extra: accountBank,
+                                    );
+                              },
                               backgroundColor: Color(0xFF21B7CA),
                               foregroundColor: Colors.white,
                               icon: Icons.edit,

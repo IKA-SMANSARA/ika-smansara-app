@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
