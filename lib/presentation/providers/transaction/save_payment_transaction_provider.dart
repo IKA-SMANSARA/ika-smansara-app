@@ -33,7 +33,7 @@ class SavePaymentTransaction extends _$SavePaymentTransaction {
     switch (result) {
       case Success(value: final transaction):
         ref.read(routerProvider).pushReplacementNamed(
-              'detail-transaction',
+              'detail-transaction-page',
               extra: transaction.id,
             );
         state = AsyncData(transaction);

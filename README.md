@@ -9,7 +9,7 @@ after clone this repo,
 
 create 3 .env files for each flavor,
 
-- assets/dev/.env
+- assets/development/.env
 - assets/staging/.env
 - assets/production/.env
 

@@ -1,41 +1,35 @@
 // ignore_for_file: unused_result
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
-import 'package:ika_smansara/domain/usecases/create_account_bank/create_account_bank.dart';
-import 'package:ika_smansara/domain/usecases/create_account_bank/create_account_bank_params.dart';
+import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank.dart';
+import 'package:ika_smansara/domain/usecases/delete_account_bank/delete_account_bank_params.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
-import 'package:ika_smansara/presentation/providers/usecase/create_account_bank_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/usecase/delete_account_bank_use_case_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'create_user_bank_account_provider.g.dart';
+part 'delete_account_bank_provider.g.dart';
 
 @riverpod
-class CreateUserBankAccount extends _$CreateUserBankAccount {
+class DeleteAccountBankUser extends _$DeleteAccountBankUser {
   @override
   Future<UserAccountBankDocument?> build() async => null;
 
-  Future<void> postAccountBank({
+  Future<void> deleteAccountBankUser({
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
-    state = AsyncValue.loading();
+    DeleteAccountBank deleteAccountBank =
+        ref.read(deleteAccountBankUseCaseProvider);
 
-    CreateAccountBank createAccountBank = ref.read(
-      createAccountBankUseCaseProvider,
-    );
-
-    var result = await createAccountBank(
-      CreateAccountBankParams(
+    var result = await deleteAccountBank(
+      DeleteAccountBankParams(
         userAccountBankRequest: userAccountBankRequest,
       ),
     );
-
-    Constants.logger.d(result.resultValue);
 
     switch (result) {
       case Success(value: final data):

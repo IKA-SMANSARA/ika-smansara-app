@@ -1,29 +1,49 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
-import 'package:ika_smansara/presentation/providers/account_bank/create_user_bank_account_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
+import 'package:ika_smansara/presentation/providers/account_bank/update_account_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
-class CreateAccountBankPage extends ConsumerStatefulWidget {
-  const CreateAccountBankPage({super.key});
+class UpdateAccountBankPage extends ConsumerStatefulWidget {
+  final UserAccountBankDocument userAccountBankDocument;
+
+  const UpdateAccountBankPage({
+    super.key,
+    required this.userAccountBankDocument,
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _CreateAccountBankPageState();
+      _UpdateAccountBankPageState();
 }
 
-class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
+class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
   final TextEditingController bankNameController = TextEditingController();
   final TextEditingController bankAccountNumberController =
       TextEditingController();
   final TextEditingController bankAccountNameController =
       TextEditingController();
   var selectedBankCode = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    bankNameController.text =
+        widget.userAccountBankDocument.bankName ?? '';
+    bankAccountNumberController.text =
+        widget.userAccountBankDocument.bankAccountNumber.toString();
+    bankAccountNameController.text =
+        widget.userAccountBankDocument.realUserName ?? '';
+    selectedBankCode = widget.userAccountBankDocument.bankCode ?? '';
+  }
 
   @override
   void dispose() {
@@ -39,9 +59,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText(
-          'Tambahkan Rekening Bank',
-        ),
+        title: AutoSizeText('Ubah data rekening bank'),
       ),
       body: ListView(
         children: [
@@ -52,7 +70,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextButton(
-                  title: 'Nama Bank',
+                  title: widget.userAccountBankDocument.bankName ?? 'Nama Bank',
                   textEditingController: bankNameController,
                   onTap: () {
                     showModalBottomSheet(
@@ -156,6 +174,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                   child: ElevatedButton(
                     onPressed: () {
                       var userAccountBankRequest = UserAccountBankRequest(
+                        id: widget.userAccountBankDocument.id,
                         bankAccountNumber: bankAccountNumberController.text,
                         bankName: bankNameController.text,
                         bankCode: selectedBankCode,
@@ -165,9 +184,11 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                         isDefault: false,
                       );
 
+                      Constants.logger.d(userAccountBankRequest);
+
                       ref
-                          .read(createUserBankAccountProvider.notifier)
-                          .postAccountBank(
+                          .read(updateUserAccountBankProvider.notifier)
+                          .postUpdateAccountBank(
                             userAccountBankRequest: userAccountBankRequest,
                           );
                     },
