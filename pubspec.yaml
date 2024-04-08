@@ -7,10 +7,7 @@ environment:
   sdk: ">=3.2.3 <4.0.0"
 
 dependencies:
-  adaptive_responsive_util:
-    git:
-      url: https://github.com/MashudiSudonym/adaptive_responsive_util.git
-      ref: master
+  adaptive_responsive_util: ^1.0.1
   appwrite: ^11.0.1
   auto_size_text: ^3.0.0
   cached_network_image: ^3.2.3
