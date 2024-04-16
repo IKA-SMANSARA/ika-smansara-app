@@ -29,22 +29,7 @@ class AppwriteTransactionRepository implements TransactionRepository {
         documentId: transactionRequest.transactionId ?? 'unique()',
         data: transactionDocumentRequest.toJson(),
         permissions: [
-          Permission.read(
-            Role.label('admin'),
-          ),
-          Permission.update(
-            Role.label('admin'),
-          ),
-          Permission.read(
-            Role.user(
-              transactionRequest.userId!,
-            ),
-          ),
-          Permission.update(
-            Role.user(
-              transactionRequest.userId!,
-            ),
-          ),
+          Permission.read(Role.any()),
         ],
       );
 

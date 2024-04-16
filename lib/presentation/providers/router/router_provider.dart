@@ -17,6 +17,7 @@ import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_p
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
 import 'package:ika_smansara/presentation/pages/success_add_bank_account_page/success_add_bank_account_page.dart';
 import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_account_bank_page.dart';
+import 'package:ika_smansara/presentation/pages/update_campaign_page/update_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -115,6 +116,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'update-account-bank-page',
           builder: (context, state) => UpdateAccountBankPage(
             userAccountBankDocument: state.extra as UserAccountBankDocument,
+          ),
+        ),
+        GoRoute(
+          path: '/update-campaign-page',
+          name: 'update-campaign-page',
+          builder: (context, state) => UpdateCampaignPage(
+            campaignDocument: state.extra as CampaignDocument,
           ),
         ),
       ],

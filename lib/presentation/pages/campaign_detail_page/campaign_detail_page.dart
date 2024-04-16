@@ -149,7 +149,10 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (widget.fromHome == 'false') {
-                          context.showSnackBar('go to edit campaign page');
+                          ref.read(routerProvider).pushNamed(
+                                'update-campaign-page',
+                                extra: widget.campaign,
+                              );
                         } else {
                           ref.read(routerProvider).pushNamed(
                                 'checkout-page',

@@ -46,7 +46,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
         (response) {
           if (response.$id != '') {
             imageUrl =
-                'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+                'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
           } else {
             imageUrl = '';
           }

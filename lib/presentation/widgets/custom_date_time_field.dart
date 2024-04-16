@@ -50,7 +50,8 @@ class CustomDateTimeField extends StatelessWidget {
                 child: AutoSizeText(
                   (textEditingController.text != '')
                       ? formatReadableDateTime(
-                          dateTime: textEditingController.text)
+                          dateTime: textEditingController.text,
+                        )
                       : title,
                   style: TextStyle(
                     color: Colors.black,
