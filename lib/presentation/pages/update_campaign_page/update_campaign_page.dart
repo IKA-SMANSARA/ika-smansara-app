@@ -8,6 +8,7 @@ import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
+import 'package:ika_smansara/presentation/providers/campaign/delete_campaign_provider.dart';
 import 'package:ika_smansara/presentation/providers/campaign/update_campaign_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
@@ -313,7 +314,43 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
                         title: 'Peringatan!',
                         content: 'Apakah anda yakin untuk hapus acara ini?',
                         positiveButtonText: 'Hapus',
-                        onPositivePressed: () {},
+                        onPositivePressed: () {
+                          ref
+                              .read(deleteCampaignDocProvider.notifier)
+                              .deleteCampaign(
+                                campaignRequest: CampaignRequest(
+                                  id: widget.campaignDocument.id,
+                                  photoThumbnail:
+                                      widget.campaignDocument.photoThumbnail,
+                                  backerCount:
+                                      widget.campaignDocument.backerCount,
+                                  campaignDescription:
+                                      campaignDescriptionController.text,
+                                  campaignName: campaignNameController.text,
+                                  categories: categoriesData,
+                                  createdBy: ref
+                                      .read(userDataProvider)
+                                      .valueOrNull
+                                      ?.authKey,
+                                  currentAmount:
+                                      widget.campaignDocument.currentAmount,
+                                  dateEndCampaign:
+                                      campaignEndDateController.text,
+                                  dateStartCampaign:
+                                      campaignStartDateController.text,
+                                  goalAmount: int.parse(
+                                    campaignGoalAmountController.text
+                                        .replaceAll('.', '')
+                                        .replaceAll('Rp', '')
+                                        .replaceAll(' ', '0')
+                                        .replaceAll('-', '0'),
+                                  ),
+                                  isActive: false,
+                                  isDeleted: true,
+                                ),
+                              );
+                          ref.read(routerProvider).pop();
+                        },
                       );
                     },
                     style: ElevatedButton.styleFrom(
