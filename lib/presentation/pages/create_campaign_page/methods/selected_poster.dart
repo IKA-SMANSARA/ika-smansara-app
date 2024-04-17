@@ -1,20 +1,27 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
 import 'package:image_picker/image_picker.dart';
 
-List<Widget> selectedPoster({required WidgetRef ref}) => [
+List<Widget> selectedPoster({
+  required WidgetRef ref,
+  required String imageUrl,
+}) =>
+    [
       Visibility(
-        visible: ref.watch(selectedImageProvider) == null,
+        visible:
+            ((ref.watch(selectedImageProvider) == null) && (imageUrl == '')),
         child: const Icon(
           Icons.image_rounded,
           size: 70,
         ),
       ),
       Visibility(
-        visible: ref.watch(selectedImageProvider) != null,
+        visible:
+            ((ref.watch(selectedImageProvider) != null) && (imageUrl == '')),
         child: Padding(
           padding: const EdgeInsets.only(
             top: 16,
@@ -25,6 +32,24 @@ List<Widget> selectedPoster({required WidgetRef ref}) => [
             child: Image.file(
               ref.watch(selectedImageProvider) ?? File('assets/images/a1.webp'),
               height: 200,
+            ),
+          ),
+        ),
+      ),
+      Visibility(
+        visible: imageUrl != '',
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 16,
+            left: 16,
+            right: 16,
+          ),
+          child: SizedBox(
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              placeholder: (context, url) =>
+                  const CircularProgressIndicator.adaptive(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),

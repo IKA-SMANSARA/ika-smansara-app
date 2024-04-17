@@ -1,4 +1,3 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,17 +25,6 @@ class CampaignDetailPage extends ConsumerStatefulWidget {
 class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
   @override
   Widget build(BuildContext context) {
-    ref.listen(
-      getCampaignDetailProvider(campaignId: widget.campaign?.id ?? ''),
-      (previous, next) {
-        if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
-          );
-        }
-      },
-    );
-
     var asyncCampaignDetailData = ref.watch(
       getCampaignDetailProvider(campaignId: widget.campaign?.id ?? ''),
     );
@@ -151,7 +139,7 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                         if (widget.fromHome == 'false') {
                           ref.read(routerProvider).pushNamed(
                                 'update-campaign-page',
-                                extra: widget.campaign,
+                                extra: asyncCampaignDetailData.value,
                               );
                         } else {
                           ref.read(routerProvider).pushNamed(

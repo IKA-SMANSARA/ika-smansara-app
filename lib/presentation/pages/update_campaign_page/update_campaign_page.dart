@@ -8,9 +8,10 @@ import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
-import 'package:ika_smansara/presentation/providers/campaign/create_new_campaign_provider.dart';
+import 'package:ika_smansara/presentation/providers/campaign/update_campaign_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_date_time_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
@@ -65,9 +66,11 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
               ?.map((e) => e.nameCategory?.toUpperCase())
               .toList() ??
           [];
+
       final selectedIndexes = widget.campaignDocument.categories
               ?.map(
                 (e) {
+                  categoriesData.add(e);
                   var a = categories.indexOf(
                     (e ?? '').toUpperCase(),
                   );
@@ -104,7 +107,10 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
       ),
       body: ListView(
         children: [
-          ...selectedPoster(ref: ref),
+          ...selectedPoster(
+            ref: ref,
+            imageUrl: widget.campaignDocument.photoThumbnail ?? '',
+          ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -237,38 +243,53 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
                   height: 45,
                   child: ElevatedButton(
                     onPressed: () {
-                      ref
-                          .read(
-                            createNewCampaignProvider.notifier,
-                          )
-                          .postNewCampaign(
-                            campaignRequest: CampaignRequest(
-                              backerCount: widget.campaignDocument.backerCount,
-                              campaignDescription:
-                                  campaignDescriptionController.text,
-                              campaignName: campaignNameController.text,
-                              categories: categoriesData,
-                              createdBy: ref
-                                  .read(userDataProvider)
-                                  .valueOrNull
-                                  ?.authKey,
-                              currentAmount:
-                                  widget.campaignDocument.currentAmount,
-                              dateEndCampaign: campaignEndDateController.text,
-                              dateStartCampaign:
-                                  campaignStartDateController.text,
-                              goalAmount: int.parse(
-                                campaignGoalAmountController.text
-                                    .replaceAll('.', '')
-                                    .replaceAll('Rp', '')
-                                    .replaceAll(' ', '0')
-                                    .replaceAll('-', '0'),
-                              ),
-                              isActive: true,
-                              isDeleted: false,
-                            ),
-                            imageFile: selectedImage,
-                          );
+                      context.displayAlertDialog(
+                        title: 'Peringatan!',
+                        content:
+                            'Apakah anda yakin untuk mengubah informasi acara ini?',
+                        positiveButtonText: 'Ubah',
+                        onPositivePressed: () {
+                          ref
+                              .read(updateCampaignDocProvider.notifier)
+                              .updateCampaignDoc(
+                                campaignRequest: CampaignRequest(
+                                  id: widget.campaignDocument.id,
+                                  photoThumbnail: (selectedImage == null)
+                                      ? widget.campaignDocument.photoThumbnail
+                                      : '',
+                                  backerCount:
+                                      widget.campaignDocument.backerCount,
+                                  campaignDescription:
+                                      campaignDescriptionController.text,
+                                  campaignName: campaignNameController.text,
+                                  categories: categoriesData,
+                                  createdBy: ref
+                                      .read(userDataProvider)
+                                      .valueOrNull
+                                      ?.authKey,
+                                  currentAmount:
+                                      widget.campaignDocument.currentAmount,
+                                  dateEndCampaign:
+                                      campaignEndDateController.text,
+                                  dateStartCampaign:
+                                      campaignStartDateController.text,
+                                  goalAmount: int.parse(
+                                    campaignGoalAmountController.text
+                                        .replaceAll('.', '')
+                                        .replaceAll('Rp', '')
+                                        .replaceAll(' ', '0')
+                                        .replaceAll('-', '0'),
+                                  ),
+                                  isActive: true,
+                                  isDeleted: false,
+                                ),
+                                imageFile: (selectedImage != null)
+                                    ? selectedImage
+                                    : null,
+                              );
+                          ref.read(routerProvider).pop();
+                        },
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
