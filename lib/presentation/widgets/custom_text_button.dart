@@ -2,12 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
-class CustomDateTimeField extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
   final TextEditingController textEditingController;
   final void Function()? onTap;
   final String title;
 
-  const CustomDateTimeField({
+  const CustomTextButton({
     super.key,
     required this.textEditingController,
     this.onTap,
@@ -49,9 +49,7 @@ class CustomDateTimeField extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: AutoSizeText(
                   (textEditingController.text != '')
-                      ? formatReadableDateTime(
-                          dateTime: textEditingController.text,
-                        )
+                      ? textEditingController.text
                       : title,
                   style: TextStyle(
                     color: Colors.black,

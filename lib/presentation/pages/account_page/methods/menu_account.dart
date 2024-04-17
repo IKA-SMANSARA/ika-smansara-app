@@ -33,7 +33,7 @@ Widget menuAccount({
                 ),
                 title: 'Penggalangan Dana',
                 onTap: () => ref.read(routerProvider).pushNamed(
-                      'my-campaigns-list',
+                      'my-campaigns-list-page',
                       extra: ref.read(userDataProvider).valueOrNull?.authKey,
                     ),
               ),
@@ -52,10 +52,8 @@ Widget menuAccount({
                   height: 20,
                 ),
                 title: 'Data Rekening',
-                onTap: () => ref.read(routerProvider).pushNamed(
-                      'bank-account-list',
-                      extra: ref.read(userDataProvider).valueOrNull?.authKey,
-                    ),
+                onTap: () =>
+                    ref.read(routerProvider).pushNamed('bank-account-list-page'),
               ),
               verticalSpace(16),
             ],

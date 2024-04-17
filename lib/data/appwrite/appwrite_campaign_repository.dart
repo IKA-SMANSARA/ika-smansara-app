@@ -46,7 +46,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
         (response) {
           if (response.$id != '') {
             imageUrl =
-                'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+                'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
           } else {
             imageUrl = '';
           }
@@ -221,12 +221,43 @@ class AppwriteCampaignRepository implements CampaignRepository {
     File? imageFile,
   }) async {
     try {
-      // TODO : ADD GET IMAGE FILE AND PATCH TO DOCUMENT
+      final imageId = ID.unique();
+      final file = InputFile.fromPath(
+        path: imageFile?.path ?? '',
+        filename: 'campaign-${imageFile?.path}',
+      );
+
+      var uploadPhotoCampaign = _storage.createFile(
+        bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+        fileId: imageId,
+        file: file,
+        permissions: [
+          Permission.read(Role.any()),
+        ],
+      );
+
+      var imageUrl = '';
+
+      await uploadPhotoCampaign.then(
+        (response) {
+          if (response.$id != '') {
+            imageUrl =
+                'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+          } else {
+            imageUrl = '';
+          }
+        },
+      );
+
+      Constants.logger.d('IMAGE URL $imageUrl');
+
       var result = await _databases.updateDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
         documentId: campaignRequest.id ?? 'unique()',
-        data: campaignRequest.toJson(),
+        data: (imageUrl != '')
+            ? campaignRequest.copyWith(photoThumbnail: imageUrl).toJson()
+            : campaignRequest.toJson(),
       );
 
       Constants.logger.d(result.data);

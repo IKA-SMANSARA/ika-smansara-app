@@ -125,7 +125,7 @@ class AppwriteUserRepository implements UserRepository {
       uploadPhotoProfile.then((response) {
         if (response.chunksTotal == response.sizeOriginal) {
           imageUrl =
-              'https://cloud.ezhardigital.com/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+              'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
         } else {
           imageUrl = '';
         }

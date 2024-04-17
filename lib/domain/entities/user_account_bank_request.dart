@@ -13,17 +13,21 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
     String? userName,
     String? realUserName,
     String? bankName,
+    String? bankCode,
     String? bankAccountNumber,
     @Default(false) bool isDefault,
+    @Default(false) bool isDeleted,
   }) = _UserAccountBankRequest;
 
   factory UserAccountBankRequest.fromJson(Map<String, dynamic> json) =>
       UserAccountBankRequest(
         bankAccountNumber: json['bankAccountNumber'],
         bankName: json['bankName'],
+        bankCode: json['bankCode'],
         realUserName: json['realUserName'],
         userId: json['userId'],
-        userName: json['userId'],
+        userName: json['userName'],
         isDefault: json['isDefault'],
+        isDeleted: json['isDeleted'],
       );
 }

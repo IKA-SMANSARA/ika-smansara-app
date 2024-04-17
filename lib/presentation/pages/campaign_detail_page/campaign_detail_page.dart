@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
-import 'package:ika_smansara/presentation/extensions/build_context_extension.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/backer_list.dart';
@@ -26,17 +25,6 @@ class CampaignDetailPage extends ConsumerStatefulWidget {
 class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
   @override
   Widget build(BuildContext context) {
-    ref.listen(
-      getCampaignDetailProvider(campaignId: widget.campaign?.id ?? ''),
-      (previous, next) {
-        if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
-          );
-        }
-      },
-    );
-
     var asyncCampaignDetailData = ref.watch(
       getCampaignDetailProvider(campaignId: widget.campaign?.id ?? ''),
     );
@@ -149,7 +137,10 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (widget.fromHome == 'false') {
-                          context.showSnackBar('go to edit campaign page');
+                          ref.read(routerProvider).pushNamed(
+                                'update-campaign-page',
+                                extra: asyncCampaignDetailData.value,
+                              );
                         } else {
                           ref.read(routerProvider).pushNamed(
                                 'checkout-page',

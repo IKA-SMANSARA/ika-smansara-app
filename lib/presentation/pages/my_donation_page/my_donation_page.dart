@@ -33,47 +33,92 @@ class MyDonationPage extends ConsumerWidget {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          carouselTransactionImage(
-            context: context,
-            campaigns: asyncTransactionsData,
-          ),
-          verticalSpace(16),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Builder(
+        builder: (context) {
+          var isNotEmpty = asyncTransactionsData.value?.isNotEmpty;
+
+          if (isNotEmpty ?? false) {
+            return ListView(
               children: [
-                AutoSizeText(
-                  'Riwayat Donasi',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                carouselTransactionImage(
+                  context: context,
+                  campaigns: asyncTransactionsData,
+                ),
+                verticalSpace(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        'Riwayat Donasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      verticalSpace(16),
+                      Divider(
+                        color: Colors.black,
+                        height: 1,
+                      ),
+                    ],
                   ),
                 ),
                 verticalSpace(16),
-                Divider(
-                  color: Colors.black,
-                  height: 1,
+                ...listTransactions(
+                  transactions: asyncTransactionsData,
+                  onTap: (transaction) {
+                    ref.read(routerProvider).pushNamed(
+                          'detail-transaction-page',
+                          extra: transaction.id,
+                        );
+                  },
                 ),
+                verticalSpace(100),
               ],
-            ),
-          ),
-          verticalSpace(16),
-          ...listTransactions(
-            transactions: asyncTransactionsData,
-            onTap: (transaction) {
-              ref.read(routerProvider).pushNamed(
-                    'detail-transaction',
-                    extra: transaction.id,
-                  );
-            },
-          ),
-          verticalSpace(100),
-        ],
+            );
+          } else {
+            return ListView(
+              children: [
+                verticalSpace(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        'Riwayat Donasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      verticalSpace(16),
+                      Divider(
+                        color: Colors.black,
+                        height: 1,
+                      ),
+                      verticalSpace(16),
+                      AutoSizeText(
+                        'Anda Belum Pernah Berdonasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                verticalSpace(16),
+              ],
+            );
+          }
+        },
       ),
     );
   }
