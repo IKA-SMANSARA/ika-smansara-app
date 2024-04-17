@@ -56,7 +56,10 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
       ),
       body: ListView(
         children: [
-          ...selectedPoster(ref: ref),
+          ...selectedPoster(
+            ref: ref,
+            imageUrl: '',
+          ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
