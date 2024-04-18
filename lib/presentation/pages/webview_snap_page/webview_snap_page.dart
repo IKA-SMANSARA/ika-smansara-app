@@ -19,58 +19,61 @@ class WebviewSnapPage extends ConsumerWidget {
       ),
     );
 
-    return Scaffold(
-      body: asyncWebViewUrl.whenOrNull(
-        data: (data) => InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri(data?.redirectUrl ?? ''),
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: asyncWebViewUrl.whenOrNull(
+          data: (data) => InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri(data?.redirectUrl ?? ''),
+            ),
+            initialSettings: InAppWebViewSettings(
+              useShouldOverrideUrlLoading: true,
+              mediaPlaybackRequiresUserGesture: true,
+              useHybridComposition: true,
+              allowsInlineMediaPlayback: true,
+            ),
+            shouldOverrideUrlLoading: (controller, navigationAction) async {
+              Constants.logger.w("request url ${navigationAction.request.url}");
+              RegExp pattern = RegExp(r"/pdf$");
+              bool isPdfUrl =
+                  pattern.hasMatch(navigationAction.request.url.toString());
+
+              if (isPdfUrl) {
+                final taskId = await FlutterDownloader.enqueue(
+                  url: navigationAction.request.url.toString(),
+                  savedDir: "/storage/emulated/0/Download",
+                );
+
+                Constants.logger.d(taskId);
+              }
+
+              if (navigationAction.request.url?.host == 'example.com') {
+                final statusPayment = navigationAction
+                    .request.url?.queryParametersAll.values.last.first;
+
+                Constants.logger.d(statusPayment);
+
+                ref
+                    .read(savePaymentTransactionProvider.notifier)
+                    .postPaymentTransaction(
+                      statusPayment: statusPayment ?? '',
+                      transactionRequest: transactionRequest,
+                    );
+
+                return NavigationActionPolicy.CANCEL;
+              }
+              return NavigationActionPolicy.ALLOW;
+            },
           ),
-          initialSettings: InAppWebViewSettings(
-            useShouldOverrideUrlLoading: true,
-            mediaPlaybackRequiresUserGesture: true,
-            useHybridComposition: true,
-            allowsInlineMediaPlayback: true,
+          error: (error, stackTrace) => const Center(
+            child: Text(
+              'NETWORK ERROR!',
+            ),
           ),
-          shouldOverrideUrlLoading: (controller, navigationAction) async {
-            Constants.logger.w("request url ${navigationAction.request.url}");
-            RegExp pattern = RegExp(r"/pdf$");
-            bool isPdfUrl =
-                pattern.hasMatch(navigationAction.request.url.toString());
-
-            if (isPdfUrl) {
-              final taskId = await FlutterDownloader.enqueue(
-                url: navigationAction.request.url.toString(),
-                savedDir: "/storage/emulated/0/Download",
-              );
-
-              Constants.logger.d(taskId);
-            }
-
-            if (navigationAction.request.url?.host == 'example.com') {
-              final statusPayment = navigationAction
-                  .request.url?.queryParametersAll.values.last.first;
-
-              Constants.logger.d(statusPayment);
-
-              ref
-                  .read(savePaymentTransactionProvider.notifier)
-                  .postPaymentTransaction(
-                    statusPayment: statusPayment ?? '',
-                    transactionRequest: transactionRequest,
-                  );
-
-              return NavigationActionPolicy.CANCEL;
-            }
-            return NavigationActionPolicy.ALLOW;
-          },
-        ),
-        error: (error, stackTrace) => const Center(
-          child: Text(
-            'NETWORK ERROR!',
+          loading: () => const Center(
+            child: CircularProgressIndicator.adaptive(),
           ),
-        ),
-        loading: () => const Center(
-          child: CircularProgressIndicator.adaptive(),
         ),
       ),
     );
