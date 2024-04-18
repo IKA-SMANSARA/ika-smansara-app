@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
@@ -31,7 +32,20 @@ class WebviewSnapPage extends ConsumerWidget {
             allowsInlineMediaPlayback: true,
           ),
           shouldOverrideUrlLoading: (controller, navigationAction) async {
-            Constants.logger.w(navigationAction.request.url);
+            Constants.logger.w("request url ${navigationAction.request.url}");
+            RegExp pattern = RegExp(r"/pdf$");
+            bool isPdfUrl =
+                pattern.hasMatch(navigationAction.request.url.toString());
+
+            if (isPdfUrl) {
+              final taskId = await FlutterDownloader.enqueue(
+                url: navigationAction.request.url.toString(),
+                savedDir: "/storage/emulated/0/Download",
+              );
+
+              Constants.logger.d(taskId);
+            }
+
             if (navigationAction.request.url?.host == 'example.com') {
               final statusPayment = navigationAction
                   .request.url?.queryParametersAll.values.last.first;
