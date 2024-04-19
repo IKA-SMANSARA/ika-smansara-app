@@ -42,17 +42,30 @@ class WebviewSnapPage extends ConsumerWidget {
               if (isPdfUrl) {
                 final taskId = await FlutterDownloader.enqueue(
                   url: navigationAction.request.url.toString(),
-                  savedDir: "/storage/emulated/0/Download",
+                  savedDir: '/storage/emulated/0/Download',
                 );
 
                 Constants.logger.d(taskId);
               }
 
               if (navigationAction.request.url?.host == 'example.com') {
-                final statusPayment = navigationAction
+                var statusPayment = navigationAction
                     .request.url?.queryParametersAll.values.last.first;
 
                 Constants.logger.d(statusPayment);
+
+                if (navigationAction
+                        .request.url?.queryParametersAll.values.last.first ==
+                    'capture') {
+                  statusPayment = 'success';
+                } else if (navigationAction
+                        .request.url?.queryParametersAll.values.last.first ==
+                    'settlement') {
+                  statusPayment = 'success';
+                } else {
+                  statusPayment = navigationAction
+                      .request.url?.queryParametersAll.values.last.first;
+                }
 
                 ref
                     .read(savePaymentTransactionProvider.notifier)

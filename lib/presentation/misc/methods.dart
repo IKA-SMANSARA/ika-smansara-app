@@ -126,6 +126,17 @@ String formatDate(String timestampString) {
   }
 }
 
+String formatDate2(String timestampString) {
+  if (timestampString != '') {
+    return Jiffy.parse(
+      timestampString,
+      pattern: 'yyyy-MM-dd HH:mm:ss',
+    ).format(pattern: 'd MMMM y HH:mm');
+  } else {
+    return '';
+  }
+}
+
 String countDays(String? dateEndCampaign) {
   final timestampString = dateEndCampaign ?? '';
 
@@ -175,4 +186,14 @@ String getRandomOrderIdNumber() {
   final merchantOrderId =
       'ID-$randomInt-${DateTime.now().millisecondsSinceEpoch}';
   return merchantOrderId;
+}
+
+String paymentType(String stringPaymentType) {
+  if (stringPaymentType == 'bank_transfer') {
+    return 'Virtual Account / Bank Transfer';
+  } else if (stringPaymentType == 'credit_card') {
+    return 'Debit / Credit Card';
+  } else {
+    return stringPaymentType;
+  }
 }
