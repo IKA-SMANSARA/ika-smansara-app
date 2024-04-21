@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,32 +13,38 @@ List<Widget> selectedPoster({
 }) =>
     [
       Visibility(
-        visible:
-            ((ref.watch(selectedImageProvider) == null) && (imageUrl == '')),
-        child: const Icon(
-          Icons.image_rounded,
-          size: 70,
-        ),
-      ),
-      Visibility(
-        visible:
-            ((ref.watch(selectedImageProvider) != null) && (imageUrl == '')),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 16,
-            left: 16,
-            right: 16,
-          ),
-          child: SizedBox(
-            child: Image.file(
-              ref.watch(selectedImageProvider) ?? File('assets/images/a1.webp'),
-              height: 200,
+        visible: (imageUrl != '') && (ref.watch(selectedImageProvider) != null),
+        child: Column(
+          children: [
+            Visibility(
+              visible: ref.watch(selectedImageProvider) == null,
+              child: const Icon(
+                Icons.image_rounded,
+                size: 70,
+              ),
             ),
-          ),
+            Visibility(
+              visible: ref.watch(selectedImageProvider) != null,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                ),
+                child: SizedBox(
+                  child: Image.file(
+                    ref.watch(selectedImageProvider) ??
+                        File('assets/images/a1.webp'),
+                    height: 200,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       Visibility(
-        visible: imageUrl != '',
+        visible: (imageUrl != '') && (ref.watch(selectedImageProvider) == null),
         child: Padding(
           padding: const EdgeInsets.only(
             top: 16,

@@ -222,32 +222,35 @@ class AppwriteCampaignRepository implements CampaignRepository {
   }) async {
     try {
       final imageId = ID.unique();
-      final file = InputFile.fromPath(
-        path: imageFile?.path ?? '',
-        filename: 'campaign-${imageFile?.path}',
-      );
-
-      var uploadPhotoCampaign = _storage.createFile(
-        bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
-        fileId: imageId,
-        file: file,
-        permissions: [
-          Permission.read(Role.any()),
-        ],
-      );
-
+      final file = imageFile != null
+          ? InputFile.fromPath(
+              path: imageFile.path,
+              filename: 'campaign-${imageFile.path}',
+            )
+          : null;
       var imageUrl = '';
 
-      await uploadPhotoCampaign.then(
-        (response) {
-          if (response.$id != '') {
-            imageUrl =
-                'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
-          } else {
-            imageUrl = '';
-          }
-        },
-      );
+      if (file != null) {
+        var uploadPhotoCampaign = _storage.createFile(
+          bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+          fileId: imageId,
+          file: file,
+          permissions: [
+            Permission.read(Role.any()),
+          ],
+        );
+
+        await uploadPhotoCampaign.then(
+          (response) {
+            if (response.$id != '') {
+              imageUrl =
+                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+            } else {
+              imageUrl = '';
+            }
+          },
+        );
+      }
 
       Constants.logger.d('IMAGE URL $imageUrl');
 

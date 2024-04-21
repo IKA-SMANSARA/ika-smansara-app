@@ -7,6 +7,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -16,6 +17,7 @@ import 'package:ika_smansara/utils/constants.dart';
 import 'package:ika_smansara/utils/flutter_fcm.dart';
 import 'package:ika_smansara/utils/my_observer.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 enum Flavors { development, staging, production }
 
@@ -49,6 +51,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   usePathUrlStrategy();
   await Hive.initFlutter();
   await Jiffy.setLocale('id');
+  await FlutterDownloader.initialize();
+
+  // request permission storage
+  await Permission.storage.request();
 
   if (defaultTargetPlatform != TargetPlatform.windows) {
     await Firebase.initializeApp(
