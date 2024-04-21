@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
@@ -18,45 +19,74 @@ class WebviewSnapPage extends ConsumerWidget {
       ),
     );
 
-    return Scaffold(
-      body: asyncWebViewUrl.whenOrNull(
-        data: (data) => InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri(data?.redirectUrl ?? ''),
-          ),
-          initialSettings: InAppWebViewSettings(
-            useShouldOverrideUrlLoading: true,
-            mediaPlaybackRequiresUserGesture: true,
-            useHybridComposition: true,
-            allowsInlineMediaPlayback: true,
-          ),
-          shouldOverrideUrlLoading: (controller, navigationAction) async {
-            Constants.logger.w(navigationAction.request.url);
-            if (navigationAction.request.url?.host == 'example.com') {
-              final statusPayment = navigationAction
-                  .request.url?.queryParametersAll.values.last.first;
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: asyncWebViewUrl.whenOrNull(
+          data: (data) => InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri(data?.redirectUrl ?? ''),
+            ),
+            initialSettings: InAppWebViewSettings(
+              useShouldOverrideUrlLoading: true,
+              mediaPlaybackRequiresUserGesture: true,
+              useHybridComposition: true,
+              allowsInlineMediaPlayback: true,
+            ),
+            shouldOverrideUrlLoading: (controller, navigationAction) async {
+              Constants.logger.w("request url ${navigationAction.request.url}");
+              RegExp pattern = RegExp(r"/pdf$");
+              bool isPdfUrl =
+                  pattern.hasMatch(navigationAction.request.url.toString());
 
-              Constants.logger.d(statusPayment);
+              if (isPdfUrl) {
+                final taskId = await FlutterDownloader.enqueue(
+                  url: navigationAction.request.url.toString(),
+                  savedDir: '/storage/emulated/0/Download',
+                );
 
-              ref
-                  .read(savePaymentTransactionProvider.notifier)
-                  .postPaymentTransaction(
-                    statusPayment: statusPayment ?? '',
-                    transactionRequest: transactionRequest,
-                  );
+                Constants.logger.d(taskId);
+              }
 
-              return NavigationActionPolicy.CANCEL;
-            }
-            return NavigationActionPolicy.ALLOW;
-          },
-        ),
-        error: (error, stackTrace) => const Center(
-          child: Text(
-            'NETWORK ERROR!',
+              if (navigationAction.request.url?.host == 'example.com') {
+                var statusPayment = navigationAction
+                    .request.url?.queryParametersAll.values.last.first;
+
+                Constants.logger.d(statusPayment);
+
+                if (navigationAction
+                        .request.url?.queryParametersAll.values.last.first ==
+                    'capture') {
+                  statusPayment = 'success';
+                } else if (navigationAction
+                        .request.url?.queryParametersAll.values.last.first ==
+                    'settlement') {
+                  statusPayment = 'success';
+                } else {
+                  statusPayment = navigationAction
+                      .request.url?.queryParametersAll.values.last.first;
+                }
+
+                ref
+                    .read(savePaymentTransactionProvider.notifier)
+                    .postPaymentTransaction(
+                      statusPayment: statusPayment ?? '',
+                      transactionRequest: transactionRequest,
+                    );
+
+                return NavigationActionPolicy.CANCEL;
+              }
+              return NavigationActionPolicy.ALLOW;
+            },
           ),
-        ),
-        loading: () => const Center(
-          child: CircularProgressIndicator.adaptive(),
+          error: (error, stackTrace) => const Center(
+            child: Text(
+              'NETWORK ERROR!',
+            ),
+          ),
+          loading: () => const Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
         ),
       ),
     );

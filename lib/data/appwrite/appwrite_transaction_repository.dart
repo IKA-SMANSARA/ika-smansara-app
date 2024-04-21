@@ -23,7 +23,7 @@ class AppwriteTransactionRepository implements TransactionRepository {
     required TransactionDocumentRequest transactionDocumentRequest,
   }) async {
     try {
-      var result = await _databases.createDocument(
+      var result = await _databases.updateDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
         documentId: transactionRequest.transactionId ?? 'unique()',
@@ -42,7 +42,29 @@ class AppwriteTransactionRepository implements TransactionRepository {
       );
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
-      return Result.failed(e.message ?? 'Error!');
+
+      try {
+        var result = await _databases.createDocument(
+          databaseId: dotenv.env['DATABASE_ID'].toString(),
+          collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
+          documentId: transactionRequest.transactionId ?? 'unique()',
+          data: transactionDocumentRequest.toJson(),
+          permissions: [
+            Permission.read(Role.any()),
+          ],
+        );
+
+        Constants.logger.d(result);
+
+        return Result.success(
+          TransactionDocument.fromJson(
+            result.toMap(),
+          ),
+        );
+      } on AppwriteException catch (e) {
+        Constants.logger.e(e);
+        return Result.failed(e.message ?? 'Error!');
+      }
     }
   }
 
