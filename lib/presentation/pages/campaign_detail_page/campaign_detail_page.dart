@@ -7,7 +7,7 @@ import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/backer_list.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/description_campaign_detail.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/header_campaign_detail.dart';
-import 'package:ika_smansara/presentation/pages/campaign_detail_page/methods/header_image.dart';
+import 'package:ika_smansara/presentation/widgets/header_image.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
@@ -51,7 +51,7 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
             children: [
               ...(asyncCampaignDetailData.whenOrNull(
                     data: (data) => [
-                      headerImage(imageUrl: data?.photoThumbnail ?? ''),
+                      headerImage(imageUrl: data?.photoThumbnail ?? 'https://picsum.photos/250?image=9'),
                       verticalSpace(16),
                       Padding(
                         padding: const EdgeInsets.symmetric(

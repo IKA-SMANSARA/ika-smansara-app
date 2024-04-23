@@ -52,8 +52,9 @@ Widget menuAccount({
                   height: 20,
                 ),
                 title: 'Data Rekening',
-                onTap: () =>
-                    ref.read(routerProvider).pushNamed('bank-account-list-page'),
+                onTap: () => ref
+                    .read(routerProvider)
+                    .pushNamed('bank-account-list-page'),
               ),
               verticalSpace(16),
             ],
@@ -65,6 +66,7 @@ Widget menuAccount({
             height: 20,
           ),
           title: 'Ubah Profile',
+          onTap: () => ref.read(routerProvider).pushNamed('user-profile-page'),
         ),
         verticalSpace(16),
         menuAccountItem(
