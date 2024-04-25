@@ -3,6 +3,7 @@ import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
+import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
@@ -18,6 +19,8 @@ import 'package:ika_smansara/presentation/pages/register_page/register_page.dart
 import 'package:ika_smansara/presentation/pages/success_add_bank_account_page/success_add_bank_account_page.dart';
 import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/update_campaign_page/update_campaign_page.dart';
+import 'package:ika_smansara/presentation/pages/update_user_profile_page/update_user_profile_page.dart';
+import 'package:ika_smansara/presentation/pages/user_profile_page/user_profile_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -87,6 +90,18 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           name: 'detail-transaction-page',
           builder: (context, state) => DetailTransactionPage(
             transactionId: state.extra as String,
+          ),
+        ),
+        GoRoute(
+          path: '/user-profile-page',
+          name: 'user-profile-page',
+          builder: (context, state) => UserProfilePage(),
+        ),
+        GoRoute(
+          path: '/update-user-profile-page',
+          name: 'update-user-profile-page',
+          builder: (context, state) => UpdateUserProfilePage(
+            userProfileDocument: state.extra as UserProfileDocument,
           ),
         ),
         GoRoute(
