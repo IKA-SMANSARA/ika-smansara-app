@@ -79,7 +79,7 @@ List<Widget> selectedPoster({
                 );
           },
           child: Text(
-            'Pilih Poster Galang Dana',
+            'Pilih Foto / Gambar',
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
