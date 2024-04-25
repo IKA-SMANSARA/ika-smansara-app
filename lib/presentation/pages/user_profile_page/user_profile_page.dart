@@ -2,15 +2,24 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
-class UserProfilePage extends ConsumerWidget {
+class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _UserProfilePageState();
+}
+
+class _UserProfilePageState extends ConsumerState<UserProfilePage> {
+  var _isDevMode = false;
+
+  @override
+  Widget build(BuildContext context) {
     var asyncUserData = ref.watch(userDataProvider);
     return Scaffold(
       appBar: AppBar(
@@ -183,6 +192,26 @@ class UserProfilePage extends ConsumerWidget {
                       ],
                     ),
                   ),
+                  // Visibility(
+                  //   visible: data?.isAdmin ?? false,
+                  //   child: Row(
+                  //     children: [
+                  //       AutoSizeText('Dev Mode'),
+                  //       Switch.adaptive(
+                  //         value: _isDevMode,
+                  //         onChanged: (bool status) {
+                  //           setState(() {
+                  //             _isDevMode = status;
+
+                  //             var devModeValue = Hive.box('devMode');
+
+                  //             devModeValue.put('isDevMode', _isDevMode);
+                  //           });
+                  //         },
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ) ??
               []),
