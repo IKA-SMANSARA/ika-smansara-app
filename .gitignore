@@ -140,3 +140,7 @@ pubspec.lock
 assets/development/.env
 assets/staging/.env
 assets/production/.env
+
+# fvm
+.fvmrc
+.fvm/*
