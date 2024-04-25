@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
 class UserProfilePage extends ConsumerWidget {
@@ -14,6 +15,16 @@ class UserProfilePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: AutoSizeText('Profile'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => ref.read(routerProvider).pushNamed(
+              'update-user-profile-page',
+              extra: asyncUserData.valueOrNull,
+            ),
+        label: AutoSizeText('Ubah Profile'),
+        icon: Icon(
+          Icons.edit,
+        ),
       ),
       body: ListView(
         children: [
@@ -35,9 +46,13 @@ class UserProfilePage extends ConsumerWidget {
                   (data?.photoProfileUrl != null)
                       ? CircleAvatar(
                           radius: 100,
-                          backgroundImage: CachedNetworkImageProvider(
-                            data?.photoProfileUrl ??
-                                'https://i.pravatar.cc/150?img=3',
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              height: 200,
+                              fit: BoxFit.contain,
+                              imageUrl: data?.photoProfileUrl ??
+                                  'https://i.pravatar.cc/150?img=3',
+                            ),
                           ),
                         )
                       : const CircleAvatar(

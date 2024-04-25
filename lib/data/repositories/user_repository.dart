@@ -16,9 +16,6 @@ abstract interface class UserRepository {
   });
   Future<Result<UserProfileDocument>> updateUser({
     required UserProfileRequest userProfileRequest,
-  });
-  Future<Result<UserProfileDocument>> uploadProfilePicture({
-    required UserProfileRequest userProfileRequest,
-    required File imageFile,
+    File? imageFile,
   });
 }

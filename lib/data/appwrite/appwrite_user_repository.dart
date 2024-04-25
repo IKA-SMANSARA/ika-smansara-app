@@ -17,6 +17,7 @@ class AppwriteUserRepository implements UserRepository {
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
   late final _databases = Databases(_appwriteClient);
+  late final _storage = Storage(_appwriteClient);
 
   @override
   Future<Result<UserProfileDocument>> createUser({
@@ -78,13 +79,53 @@ class AppwriteUserRepository implements UserRepository {
   @override
   Future<Result<UserProfileDocument>> updateUser({
     required UserProfileRequest userProfileRequest,
+    File? imageFile,
   }) async {
     try {
+      final imageId = ID.unique();
+      final file = imageFile != null
+          ? InputFile.fromPath(
+              path: imageFile.path,
+              filename: 'user-${imageFile.path}',
+            )
+          : null;
+      var imageUrl = '';
+
+      if (file != null) {
+        var uploadPhotoUser = _storage.createFile(
+          bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+          fileId: imageId,
+          file: file,
+          permissions: [
+            Permission.read(Role.any()),
+          ],
+        );
+
+        await uploadPhotoUser.then(
+          (response) {
+            if (response.$id != '') {
+              imageUrl =
+                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+            } else {
+              imageUrl = '';
+            }
+          },
+        );
+      }
+
+      Constants.logger.d('IMAGE URL $imageUrl');
+
       var result = await _databases.updateDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
         documentId: userProfileRequest.authKey ?? 'unique()',
-        data: userProfileRequest.toJson(),
+        data: (imageUrl != '')
+            ? userProfileRequest
+                .copyWith(
+                  photoProfileUrl: imageUrl,
+                )
+                .toJson()
+            : userProfileRequest.toJson(),
       );
 
       Constants.logger.d(result);
@@ -92,63 +133,6 @@ class AppwriteUserRepository implements UserRepository {
       return Result.success(
         UserProfileDocument.fromJson(result.toMap()),
       );
-    } on AppwriteException catch (e) {
-      Constants.logger.e(e);
-      return Result.failed(e.message ?? 'Error!');
-    }
-  }
-
-  @override
-  Future<Result<UserProfileDocument>> uploadProfilePicture({
-    required UserProfileRequest userProfileRequest,
-    required File imageFile,
-  }) async {
-    try {
-      final Storage _storage = Storage(_appwriteClient);
-
-      var uploadPhotoProfile = _storage.createFile(
-        bucketId: dotenv.env['BUCKET_USER_ID'].toString(),
-        fileId: userProfileRequest.authKey ?? 'unique()',
-        file: InputFile.fromPath(
-          path: imageFile.path,
-          filename: '${userProfileRequest.authKey}_${imageFile.path}',
-        ),
-        permissions: [
-          Permission.read(
-            Role.any(),
-          ),
-        ],
-      );
-
-      var imageUrl = '';
-
-      uploadPhotoProfile.then((response) {
-        if (response.chunksTotal == response.sizeOriginal) {
-          imageUrl =
-              'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
-        } else {
-          imageUrl = '';
-        }
-      });
-
-      Constants.logger.d('IMAGE URL $imageUrl');
-
-      if (imageUrl != '') {
-        var result = await updateUser(
-            userProfileRequest: userProfileRequest.copyWith(
-          photoProfileUrl: imageUrl,
-        ));
-
-        Constants.logger.d(result);
-
-        if (result.isSuccess) {
-          return Result.success(result.resultValue ?? UserProfileDocument());
-        } else {
-          return Result.failed(result.errorMessage ?? 'Error!');
-        }
-      } else {
-        return Result.failed('Error! failed get image url!');
-      }
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
