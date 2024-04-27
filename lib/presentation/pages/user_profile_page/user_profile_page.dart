@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
 class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
@@ -16,7 +17,17 @@ class UserProfilePage extends ConsumerStatefulWidget {
 }
 
 class _UserProfilePageState extends ConsumerState<UserProfilePage> {
+  late final Box devModeBox;
   var _isDevMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    devModeBox = Hive.box('dev mode');
+
+    _isDevMode = devModeBox.get('isDevMode');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -192,26 +203,26 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                       ],
                     ),
                   ),
-                  // Visibility(
-                  //   visible: data?.isAdmin ?? false,
-                  //   child: Row(
-                  //     children: [
-                  //       AutoSizeText('Dev Mode'),
-                  //       Switch.adaptive(
-                  //         value: _isDevMode,
-                  //         onChanged: (bool status) {
-                  //           setState(() {
-                  //             _isDevMode = status;
-
-                  //             var devModeValue = Hive.box('devMode');
-
-                  //             devModeValue.put('isDevMode', _isDevMode);
-                  //           });
-                  //         },
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
+                  Visibility(
+                    visible: data?.isAdmin ?? false,
+                    child: Row(
+                      children: [
+                        AutoSizeText('Dev Mode'),
+                        Switch.adaptive(
+                          value: _isDevMode,
+                          onChanged: (bool status) {
+                            setState(() {
+                              _isDevMode = status;
+                              devModeBox.put('isDevMode', _isDevMode);
+                              Constants.logger.d(
+                                'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
+                              );
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ) ??
               []),
