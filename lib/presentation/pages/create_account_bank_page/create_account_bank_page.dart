@@ -163,6 +163,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                         userId: ref.read(userDataProvider).valueOrNull?.authKey,
                         userName: ref.read(userDataProvider).valueOrNull?.name,
                         isDefault: false,
+                        email: ref.read(userDataProvider).valueOrNull?.email,
                       );
 
                       ref

@@ -36,8 +36,7 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
   void initState() {
     super.initState();
 
-    bankNameController.text =
-        widget.userAccountBankDocument.bankName ?? '';
+    bankNameController.text = widget.userAccountBankDocument.bankName ?? '';
     bankAccountNumberController.text =
         widget.userAccountBankDocument.bankAccountNumber.toString();
     bankAccountNameController.text =
@@ -182,6 +181,7 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                         userId: ref.read(userDataProvider).valueOrNull?.authKey,
                         userName: ref.read(userDataProvider).valueOrNull?.name,
                         isDefault: false,
+                        email: ref.read(userDataProvider).valueOrNull?.email,
                       );
 
                       Constants.logger.d(userAccountBankRequest);
