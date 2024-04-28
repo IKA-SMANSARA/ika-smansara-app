@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ika_smansara/domain/entities/beneficiaries_response.dart';
+import 'package:ika_smansara/domain/entities/payout_response.dart';
 import 'package:retrofit/http.dart';
 
 part 'payout_gateway_service.g.dart';
@@ -23,4 +24,9 @@ abstract class PayoutGatewayService {
 
   @GET('/iris/api/v1/beneficiaries')
   Future<List<BeneficiariesResponse>> listCreateBeneficiaries();
+
+  @POST('/iris/api/v1/payouts')
+  Future<PayoutResponse> createPayout(
+    @Body() Map<String, dynamic> payoutRequest,
+  );
 }

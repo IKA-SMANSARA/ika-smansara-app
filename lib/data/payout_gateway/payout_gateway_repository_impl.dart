@@ -4,6 +4,8 @@ import 'package:ika_smansara/data/repositories/payout_gateway_repository.dart';
 import 'package:ika_smansara/data/services/payout_gateway_service.dart';
 import 'package:ika_smansara/domain/entities/beneficiaries_request.dart';
 import 'package:ika_smansara/domain/entities/beneficiaries_response.dart';
+import 'package:ika_smansara/domain/entities/payout_request.dart';
+import 'package:ika_smansara/domain/entities/payout_response.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/utils/constants.dart';
 
@@ -61,6 +63,26 @@ class PayoutGatewayRepositoryImpl implements PayoutGatewayRepository {
       var result = await _payoutGatewayService.updateBeneficiaries(
         beneficiariesRequest.aliasName ?? '',
         beneficiariesRequest.toJson(),
+      );
+
+      Constants.logger.d(result);
+
+      return Result.success(
+        result,
+      );
+    } on DioException catch (e) {
+      Constants.logger.e(e);
+      return Result.failed(e.message ?? 'Error!');
+    }
+  }
+
+  @override
+  Future<Result<PayoutResponse>> createPayout({
+    required PayoutRequest payoutRequest,
+  }) async {
+    try {
+      var result = await _payoutGatewayService.createPayout(
+        payoutRequest.toJson(),
       );
 
       Constants.logger.d(result);
