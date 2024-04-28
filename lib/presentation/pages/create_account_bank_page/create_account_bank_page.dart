@@ -9,7 +9,6 @@ import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_p
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:ika_smansara/utils/constants.dart';
 
 class CreateAccountBankPage extends ConsumerStatefulWidget {
   const CreateAccountBankPage({super.key});
