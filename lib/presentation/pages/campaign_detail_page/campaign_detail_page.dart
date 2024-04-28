@@ -15,8 +15,11 @@ import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
   final String fromHome;
-  const CampaignDetailPage(
-      {required this.campaign, this.fromHome = 'true', super.key});
+  const CampaignDetailPage({
+    required this.campaign,
+    this.fromHome = 'true',
+    super.key,
+  });
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _CampaignDetailPageState();
@@ -51,7 +54,9 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
             children: [
               ...(asyncCampaignDetailData.whenOrNull(
                     data: (data) => [
-                      headerImage(imageUrl: data?.photoThumbnail ?? 'https://picsum.photos/250?image=9'),
+                      headerImage(
+                          imageUrl: data?.photoThumbnail ??
+                              'https://picsum.photos/250?image=9'),
                       verticalSpace(16),
                       Padding(
                         padding: const EdgeInsets.symmetric(

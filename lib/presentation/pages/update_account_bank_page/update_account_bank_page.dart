@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -80,65 +81,51 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                         ),
                       ),
                       builder: (context) {
-                        return ListView(
-                          children: [
-                            ...(asyncListBank.when(
-                                  data: (data) => data
-                                      .map(
-                                        (e) => GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              bankNameController.text =
-                                                  e.bankName ?? '';
-                                              selectedBankCode =
-                                                  e.bankCode ?? '';
-                                            });
+                        return asyncListBank.when(
+                          data: (data) => ListView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AutoSizeText(
+                                          data[index].bankName ?? '',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ).onClick(
+                                  () {
+                                    setState(() {
+                                      bankNameController.text =
+                                          data[index].bankName ?? '';
+                                      selectedBankCode =
+                                          data[index].bankCode ?? '';
+                                    });
 
-                                            Navigator.pop(context);
-                                          },
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                              color: Colors.transparent,
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(16.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  AutoSizeText(
-                                                    e.bankName ?? '',
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
-                                  error: (error, stackTrace) => [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: const Center(
-                                        child: Text(
-                                          'NETWORK ERROR!',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                  loading: () => [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: const Center(
-                                        child: CircularProgressIndicator
-                                            .adaptive(),
-                                      ),
-                                    ),
-                                  ],
-                                ) ??
-                                [])
-                          ],
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }),
+                          error: (error, stackTrace) => Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Center(
+                              child: AutoSizeText("NETWORK ERROR"),
+                            ),
+                          ),
+                          loading: () => Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Center(
+                              child: CircularProgressIndicator.adaptive(),
+                            ),
+                          ),
                         );
                       },
                     );
