@@ -2,14 +2,17 @@ import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ika_smansara/domain/entities/payout_item_request.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_by_user_id_provider.dart';
+import 'package:ika_smansara/presentation/providers/payout/create_payout_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:ika_smansara/presentation/widgets/horizontal_campaign_card.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
 class RequestPayoutPage extends ConsumerStatefulWidget {
   const RequestPayoutPage({super.key});
@@ -30,6 +33,8 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
   var selectedCampaignCurrentAmount = '0';
   var selectedCampaignId = '';
   var selectedBankCode = '';
+  var selectedBankUserRealName = '';
+  var selectedBankAccountNumber = '';
 
   @override
   Widget build(BuildContext context) {
@@ -224,6 +229,11 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                                             data[index].bankCode ?? '';
                                         selectBankAccountController.text =
                                             '${data[index].bankAccountNumber} ${data[index].bankName}';
+                                        selectedBankAccountNumber =
+                                            data[index].bankAccountNumber ?? '';
+                                        selectedBankUserRealName =
+                                            data[index].realUserName ?? '';
+                                        Navigator.pop(context);
                                       }),
                                     );
                                   }),
@@ -246,7 +256,7 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                     ),
                     verticalSpace(16),
                     CustomTextField(
-                      labelText: 'Target Pengumpulan Dana',
+                      labelText: 'Dana yang akan ditarik',
                       controller: payoutAmountController,
                       keyboardType: TextInputType.number,
                       onChanged: (inputAmount) {
@@ -287,7 +297,41 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var payoutItemRequest = PayoutItemRequest(
+                        amount: payoutAmountController.text
+                            .replaceAll('.', '')
+                            .replaceAll('Rp', '')
+                            .replaceAll(' ', '0')
+                            .replaceAll('-', '0'),
+                        beneficiaryEmail:
+                            ref.watch(userDataProvider).valueOrNull?.email,
+                        beneficiaryAccount: selectedBankAccountNumber,
+                        beneficiaryName: selectedBankUserRealName,
+                        beneficiaryBank: selectedBankCode,
+                        notes:
+                            'Payout for campaign with ID ${selectedCampaignId}',
+                      );
+
+                      Constants.logger.w(
+                        payoutItemRequest,
+                      );
+
+                      context.displayAlertDialog(
+                        title: 'Perhatian',
+                        content:
+                            'Apakah anda yakin untuk melanjutkan penarikan sebesar ${payoutAmountController.text} ?',
+                        positiveButtonText: 'Ya',
+                        onPositivePressed: () {
+                          ref
+                              .read(createUserPayoutProvider.notifier)
+                              .postRequestPayout(
+                                payoutItemRequest: payoutItemRequest,
+                              );
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
