@@ -78,7 +78,8 @@ class _BankAccountListPageState extends ConsumerState<BankAccountListPage> {
                           ],
                         ),
                         child: bankAccountItem(
-                          bankName: (accountBank.bankName ?? '').toUpperCase(),
+                          bankCode:
+                              'Bank ${accountBank.bankCode?.toUpperCase()}',
                           accountBankNumber:
                               accountBank.bankAccountNumber ?? '',
                           realNameUserAccountBank:

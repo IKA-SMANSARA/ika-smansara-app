@@ -9,6 +9,7 @@ import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_p
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:uuid/uuid.dart';
 
 class CreateAccountBankPage extends ConsumerStatefulWidget {
   const CreateAccountBankPage({super.key});
@@ -66,37 +67,37 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                       builder: (context) {
                         return asyncListBank.when(
                           data: (data) => ListView.builder(
-                                itemCount: data.length,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.transparent,
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AutoSizeText(
+                                          data[index].bankName ?? '',
+                                        ),
+                                      ],
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          AutoSizeText(
-                                            data[index].bankName ?? '',
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ).onClick(
-                                    () {
-                                      setState(() {
-                                        bankNameController.text =
-                                            data[index].bankName ?? '';
-                                        selectedBankCode =
-                                            data[index].bankCode ?? '';
-                                      });
+                                  ),
+                                ).onClick(
+                                  () {
+                                    setState(() {
+                                      bankNameController.text =
+                                          data[index].bankName ?? '';
+                                      selectedBankCode =
+                                          data[index].bankCode ?? '';
+                                    });
 
-                                      Navigator.pop(context);
-                                    },
-                                  );
-                                }),
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }),
                           error: (error, stackTrace) => Padding(
                             padding: const EdgeInsets.all(16),
                             child: Center(
@@ -148,7 +149,11 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                         bankCode: selectedBankCode,
                         realUserName: bankAccountNameController.text,
                         userId: ref.read(userDataProvider).valueOrNull?.authKey,
-                        userName: ref.read(userDataProvider).valueOrNull?.name,
+                        userName: Uuid()
+                            .v4()
+                            .toString()
+                            .removeWhitespace
+                            .replaceAll('-', ''),
                         isDefault: false,
                         email: ref.read(userDataProvider).valueOrNull?.email,
                       );

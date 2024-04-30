@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/providers/user_data/user_data_provider
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:uuid/uuid.dart';
 
 class UpdateAccountBankPage extends ConsumerStatefulWidget {
   final UserAccountBankDocument userAccountBankDocument;
@@ -166,7 +167,11 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                         bankCode: selectedBankCode,
                         realUserName: bankAccountNameController.text,
                         userId: ref.read(userDataProvider).valueOrNull?.authKey,
-                        userName: ref.read(userDataProvider).valueOrNull?.name,
+                        userName: Uuid()
+                            .v4()
+                            .toString()
+                            .removeWhitespace
+                            .replaceAll('-', ''),
                         isDefault: false,
                         email: ref.read(userDataProvider).valueOrNull?.email,
                       );

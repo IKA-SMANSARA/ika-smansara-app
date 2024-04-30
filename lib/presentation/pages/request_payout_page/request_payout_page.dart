@@ -203,10 +203,7 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                                           children: [
                                             verticalSpace(8),
                                             AutoSizeText(
-                                              data[index]
-                                                      .bankName
-                                                      ?.capitalizeFirstLetter ??
-                                                  '',
+                                              'Bank ${data[index].bankCode?.toUpperCase()}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                               ),

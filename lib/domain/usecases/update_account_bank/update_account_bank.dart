@@ -1,4 +1,3 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:ika_smansara/data/repositories/payout_gateway_repository.dart';
 import 'package:ika_smansara/data/repositories/user_bank_account_repository.dart';
 import 'package:ika_smansara/domain/entities/beneficiaries_request.dart';
@@ -25,7 +24,7 @@ class UpdateAccountBank
       UpdateAccountBankParams params) async {
     var beneficiariesRequest = BeneficiariesRequest(
       account: params.userAccountBankRequest.bankAccountNumber,
-      aliasName: params.userAccountBankRequest.userName?.removeWhitespace,
+      aliasName: params.userAccountBankRequest.userName?.substring(0, 19),
       bank: params.userAccountBankRequest.bankCode,
       email: params.userAccountBankRequest.email,
       name: params.userAccountBankRequest.realUserName,
