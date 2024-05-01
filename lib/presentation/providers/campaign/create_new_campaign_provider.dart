@@ -21,6 +21,8 @@ class CreateNewCampaign extends _$CreateNewCampaign {
     required CampaignRequest campaignRequest,
     required File? imageFile,
   }) async {
+    state = AsyncValue.loading();
+    
     CreateCampaign createCampaign = ref.read(createCampaignUseCaseProvider);
 
     var result = await createCampaign(

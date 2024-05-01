@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/methods/bank_account_item.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/delete_account_bank_provider.dart';
@@ -26,6 +27,16 @@ class _BankAccountListPageState extends ConsumerState<BankAccountListPage> {
     var asyncAccountBankData = ref.watch(
       getAccountBankByUserIdProvider(
         userId: userId ?? '',
+      ),
+    );
+
+    // list account bank state error
+    ref.listen(
+      getAccountBankByUserIdProvider(
+        userId: userId ?? '',
+      ),
+      (_, state) => state.showSnackbarOnError(
+        context,
       ),
     );
 

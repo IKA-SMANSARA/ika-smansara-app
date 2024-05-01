@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 List<Widget> selectedPoster({
   required WidgetRef ref,
   required String imageUrl,
+  required bool isLoading,
 }) =>
     [
       Visibility(
@@ -69,23 +69,27 @@ List<Widget> selectedPoster({
             minimumSize: const Size(350, 36),
             padding: const EdgeInsets.symmetric(horizontal: 16),
           ),
-          onPressed: () async {
-            final image = await ImagePicker().pickImage(
-              source: ImageSource.gallery,
-            );
-            if (image == null) return;
-            await ref.read(selectedImageProvider.notifier).selectedImage(
-                  File(image.path),
-                );
-          },
-          child: Text(
-            'Pilih Foto / Gambar',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          onPressed: isLoading
+              ? null
+              : () async {
+                  final image = await ImagePicker().pickImage(
+                    source: ImageSource.gallery,
+                  );
+                  if (image == null) return;
+                  await ref.read(selectedImageProvider.notifier).selectedImage(
+                        File(image.path),
+                      );
+                },
+          child: isLoading
+              ? CircularProgressIndicator.adaptive()
+              : Text(
+                  'Pilih Foto / Gambar',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     ];

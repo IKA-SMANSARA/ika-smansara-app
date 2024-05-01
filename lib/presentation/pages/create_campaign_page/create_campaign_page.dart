@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
@@ -47,6 +48,15 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
   @override
   Widget build(BuildContext context) {
     var selectedImage = ref.watch(selectedImageProvider);
+    var saveDataState = ref.watch(createNewCampaignProvider);
+
+    // save data state error
+    ref.listen(
+      createNewCampaignProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -59,6 +69,7 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
           ...selectedPoster(
             ref: ref,
             imageUrl: '',
+            isLoading: saveDataState.isLoading,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -190,49 +201,54 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      ref
-                          .read(
-                            createNewCampaignProvider.notifier,
-                          )
-                          .postNewCampaign(
-                            campaignRequest: CampaignRequest(
-                              backerCount: 0,
-                              campaignDescription:
-                                  campaignDescriptionController.text,
-                              campaignName: campaignNameController.text,
-                              categories: categoriesData,
-                              createdBy: ref
-                                  .read(userDataProvider)
-                                  .valueOrNull
-                                  ?.authKey,
-                              currentAmount: 0,
-                              dateEndCampaign: campaignEndDateController.text,
-                              dateStartCampaign:
-                                  campaignStartDateController.text,
-                              goalAmount: int.parse(
-                                campaignGoalAmountController.text
-                                    .replaceAll('.', '')
-                                    .replaceAll('Rp', '')
-                                    .replaceAll(' ', '0')
-                                    .replaceAll('-', '0'),
-                              ),
-                              isActive: true,
-                              isDeleted: false,
-                            ),
-                            imageFile: selectedImage,
-                          );
-                    },
+                    onPressed: saveDataState.isLoading
+                        ? null
+                        : () {
+                            ref
+                                .read(
+                                  createNewCampaignProvider.notifier,
+                                )
+                                .postNewCampaign(
+                                  campaignRequest: CampaignRequest(
+                                    backerCount: 0,
+                                    campaignDescription:
+                                        campaignDescriptionController.text,
+                                    campaignName: campaignNameController.text,
+                                    categories: categoriesData,
+                                    createdBy: ref
+                                        .read(userDataProvider)
+                                        .valueOrNull
+                                        ?.authKey,
+                                    currentAmount: 0,
+                                    dateEndCampaign:
+                                        campaignEndDateController.text,
+                                    dateStartCampaign:
+                                        campaignStartDateController.text,
+                                    goalAmount: int.parse(
+                                      campaignGoalAmountController.text
+                                          .replaceAll('.', '')
+                                          .replaceAll('Rp', '')
+                                          .replaceAll(' ', '0')
+                                          .replaceAll('-', '0'),
+                                    ),
+                                    isActive: true,
+                                    isDeleted: false,
+                                  ),
+                                  imageFile: selectedImage,
+                                );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Publikasi Acara',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: saveDataState.isLoading
+                        ? CircularProgressIndicator.adaptive()
+                        : AutoSizeText(
+                            'Publikasi Acara',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
                 verticalSpace(24),

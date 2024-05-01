@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_button/group_button.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
@@ -99,6 +100,24 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
   @override
   Widget build(BuildContext context) {
     var selectedImage = ref.watch(selectedImageProvider);
+    var updateDataState = ref.watch(updateCampaignDocProvider);
+    var deleteDataState = ref.watch(deleteCampaignDocProvider);
+
+    // update data state error
+    ref.listen(
+      updateCampaignDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
+
+    // delete data state error
+    ref.listen(
+      deleteCampaignDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -111,6 +130,7 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
           ...selectedPoster(
             ref: ref,
             imageUrl: widget.campaignDocument.photoThumbnail ?? '',
+            isLoading: updateDataState.isLoading,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -243,65 +263,71 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.displayAlertDialog(
-                        title: 'Peringatan!',
-                        content:
-                            'Apakah anda yakin untuk mengubah informasi acara ini?',
-                        positiveButtonText: 'Ubah',
-                        onPositivePressed: () {
-                          ref
-                              .read(updateCampaignDocProvider.notifier)
-                              .updateCampaignDoc(
-                                campaignRequest: CampaignRequest(
-                                  id: widget.campaignDocument.id,
-                                  photoThumbnail: (selectedImage == null)
-                                      ? widget.campaignDocument.photoThumbnail
-                                      : '',
-                                  backerCount:
-                                      widget.campaignDocument.backerCount,
-                                  campaignDescription:
-                                      campaignDescriptionController.text,
-                                  campaignName: campaignNameController.text,
-                                  categories: categoriesData,
-                                  createdBy: ref
-                                      .read(userDataProvider)
-                                      .valueOrNull
-                                      ?.authKey,
-                                  currentAmount:
-                                      widget.campaignDocument.currentAmount,
-                                  dateEndCampaign:
-                                      campaignEndDateController.text,
-                                  dateStartCampaign:
-                                      campaignStartDateController.text,
-                                  goalAmount: int.parse(
-                                    campaignGoalAmountController.text
-                                        .replaceAll('.', '')
-                                        .replaceAll('Rp', '')
-                                        .replaceAll(' ', '0')
-                                        .replaceAll('-', '0'),
-                                  ),
-                                  isActive: true,
-                                  isDeleted: false,
-                                ),
-                                imageFile: (selectedImage != null)
-                                    ? selectedImage
-                                    : null,
-                              );
-                          ref.read(routerProvider).pop();
-                        },
-                      );
-                    },
+                    onPressed: updateDataState.isLoading
+                        ? null
+                        : () {
+                            context.displayAlertDialog(
+                              title: 'Peringatan!',
+                              content:
+                                  'Apakah anda yakin untuk mengubah informasi acara ini?',
+                              positiveButtonText: 'Ubah',
+                              onPositivePressed: () {
+                                ref
+                                    .read(updateCampaignDocProvider.notifier)
+                                    .updateCampaignDoc(
+                                      campaignRequest: CampaignRequest(
+                                        id: widget.campaignDocument.id,
+                                        photoThumbnail: (selectedImage == null)
+                                            ? widget
+                                                .campaignDocument.photoThumbnail
+                                            : '',
+                                        backerCount:
+                                            widget.campaignDocument.backerCount,
+                                        campaignDescription:
+                                            campaignDescriptionController.text,
+                                        campaignName:
+                                            campaignNameController.text,
+                                        categories: categoriesData,
+                                        createdBy: ref
+                                            .read(userDataProvider)
+                                            .valueOrNull
+                                            ?.authKey,
+                                        currentAmount: widget
+                                            .campaignDocument.currentAmount,
+                                        dateEndCampaign:
+                                            campaignEndDateController.text,
+                                        dateStartCampaign:
+                                            campaignStartDateController.text,
+                                        goalAmount: int.parse(
+                                          campaignGoalAmountController.text
+                                              .replaceAll('.', '')
+                                              .replaceAll('Rp', '')
+                                              .replaceAll(' ', '0')
+                                              .replaceAll('-', '0'),
+                                        ),
+                                        isActive: true,
+                                        isDeleted: false,
+                                      ),
+                                      imageFile: (selectedImage != null)
+                                          ? selectedImage
+                                          : null,
+                                    );
+                                ref.read(routerProvider).pop();
+                              },
+                            );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Update Informasi Acara',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: updateDataState.isLoading
+                        ? CircularProgressIndicator.adaptive()
+                        : AutoSizeText(
+                            'Update Informasi Acara',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
                 verticalSpace(16),
@@ -309,60 +335,68 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.displayAlertDialog(
-                        title: 'Peringatan!',
-                        content: 'Apakah anda yakin untuk hapus acara ini?',
-                        positiveButtonText: 'Hapus',
-                        onPositivePressed: () {
-                          ref
-                              .read(deleteCampaignDocProvider.notifier)
-                              .deleteCampaign(
-                                campaignRequest: CampaignRequest(
-                                  id: widget.campaignDocument.id,
-                                  photoThumbnail:
-                                      widget.campaignDocument.photoThumbnail,
-                                  backerCount:
-                                      widget.campaignDocument.backerCount,
-                                  campaignDescription:
-                                      campaignDescriptionController.text,
-                                  campaignName: campaignNameController.text,
-                                  categories: categoriesData,
-                                  createdBy: ref
-                                      .read(userDataProvider)
-                                      .valueOrNull
-                                      ?.authKey,
-                                  currentAmount:
-                                      widget.campaignDocument.currentAmount,
-                                  dateEndCampaign:
-                                      campaignEndDateController.text,
-                                  dateStartCampaign:
-                                      campaignStartDateController.text,
-                                  goalAmount: int.parse(
-                                    campaignGoalAmountController.text
-                                        .replaceAll('.', '')
-                                        .replaceAll('Rp', '')
-                                        .replaceAll(' ', '0')
-                                        .replaceAll('-', '0'),
-                                  ),
-                                  isActive: false,
-                                  isDeleted: true,
-                                ),
-                              );
-                          ref.read(routerProvider).pop();
-                        },
-                      );
-                    },
+                    onPressed: (updateDataState.isLoading ||
+                            deleteDataState.isLoading)
+                        ? null
+                        : () {
+                            context.displayAlertDialog(
+                              title: 'Peringatan!',
+                              content:
+                                  'Apakah anda yakin untuk hapus acara ini?',
+                              positiveButtonText: 'Hapus',
+                              onPositivePressed: () {
+                                ref
+                                    .read(deleteCampaignDocProvider.notifier)
+                                    .deleteCampaign(
+                                      campaignRequest: CampaignRequest(
+                                        id: widget.campaignDocument.id,
+                                        photoThumbnail: widget
+                                            .campaignDocument.photoThumbnail,
+                                        backerCount:
+                                            widget.campaignDocument.backerCount,
+                                        campaignDescription:
+                                            campaignDescriptionController.text,
+                                        campaignName:
+                                            campaignNameController.text,
+                                        categories: categoriesData,
+                                        createdBy: ref
+                                            .read(userDataProvider)
+                                            .valueOrNull
+                                            ?.authKey,
+                                        currentAmount: widget
+                                            .campaignDocument.currentAmount,
+                                        dateEndCampaign:
+                                            campaignEndDateController.text,
+                                        dateStartCampaign:
+                                            campaignStartDateController.text,
+                                        goalAmount: int.parse(
+                                          campaignGoalAmountController.text
+                                              .replaceAll('.', '')
+                                              .replaceAll('Rp', '')
+                                              .replaceAll(' ', '0')
+                                              .replaceAll('-', '0'),
+                                        ),
+                                        isActive: false,
+                                        isDeleted: true,
+                                      ),
+                                    );
+                                ref.read(routerProvider).pop();
+                              },
+                            );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 197, 13, 13),
                     ),
-                    child: AutoSizeText(
-                      'Hapus Acara Ini',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child:
+                        (updateDataState.isLoading || deleteDataState.isLoading)
+                            ? null
+                            : AutoSizeText(
+                                'Hapus Acara Ini',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                   ),
                 ),
                 verticalSpace(24),

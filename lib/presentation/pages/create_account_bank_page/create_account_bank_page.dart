@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/create_user_bank_account_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
@@ -26,6 +27,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
   final TextEditingController bankAccountNameController =
       TextEditingController();
   var selectedBankCode = '';
+  var selectedBankName = '';
 
   @override
   void dispose() {
@@ -38,6 +40,23 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
   @override
   Widget build(BuildContext context) {
     var asyncListBank = ref.watch(getListBankDocProvider);
+    var saveDataState = ref.watch(createUserBankAccountProvider);
+
+    // list bank state error
+    ref.listen(
+      getListBankDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
+
+    // save data state error
+    ref.listen(
+      createUserBankAccountProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -80,7 +99,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         AutoSizeText(
-                                          data[index].bankName ?? '',
+                                          'Bank ${data[index].bankCode?.toUpperCase()}',
                                         ),
                                       ],
                                     ),
@@ -89,9 +108,11 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                                   () {
                                     setState(() {
                                       bankNameController.text =
-                                          data[index].bankName ?? '';
+                                          'Bank ${data[index].bankCode?.toUpperCase()}';
                                       selectedBankCode =
                                           data[index].bankCode ?? '';
+                                      selectedBankName =
+                                          data[index].bankName ?? '';
                                     });
 
                                     Navigator.pop(context);
@@ -142,38 +163,48 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      var userAccountBankRequest = UserAccountBankRequest(
-                        bankAccountNumber: bankAccountNumberController.text,
-                        bankName: bankNameController.text,
-                        bankCode: selectedBankCode,
-                        realUserName: bankAccountNameController.text,
-                        userId: ref.read(userDataProvider).valueOrNull?.authKey,
-                        userName: Uuid()
-                            .v4()
-                            .toString()
-                            .removeWhitespace
-                            .replaceAll('-', ''),
-                        isDefault: false,
-                        email: ref.read(userDataProvider).valueOrNull?.email,
-                      );
+                    onPressed: saveDataState.isLoading
+                        ? null
+                        : () {
+                            var userAccountBankRequest = UserAccountBankRequest(
+                              bankAccountNumber:
+                                  bankAccountNumberController.text,
+                              bankName: selectedBankName,
+                              bankCode: selectedBankCode,
+                              realUserName: bankAccountNameController.text,
+                              userId: ref
+                                  .read(userDataProvider)
+                                  .valueOrNull
+                                  ?.authKey,
+                              userName: Uuid()
+                                  .v4()
+                                  .toString()
+                                  .removeWhitespace
+                                  .replaceAll('-', ''),
+                              isDefault: false,
+                              email:
+                                  ref.read(userDataProvider).valueOrNull?.email,
+                            );
 
-                      ref
-                          .read(createUserBankAccountProvider.notifier)
-                          .postAccountBank(
-                            userAccountBankRequest: userAccountBankRequest,
-                          );
-                    },
+                            ref
+                                .read(createUserBankAccountProvider.notifier)
+                                .postAccountBank(
+                                  userAccountBankRequest:
+                                      userAccountBankRequest,
+                                );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Simpan Rekening Bank',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: saveDataState.isLoading
+                        ? const CircularProgressIndicator.adaptive()
+                        : AutoSizeText(
+                            'Simpan Rekening Bank',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ],

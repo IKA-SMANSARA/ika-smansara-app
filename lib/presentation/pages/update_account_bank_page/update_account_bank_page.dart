@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/update_account_bank_provider.dart';
@@ -11,7 +12,6 @@ import 'package:ika_smansara/presentation/providers/user_data/user_data_provider
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:ika_smansara/utils/constants.dart';
-import 'package:uuid/uuid.dart';
 
 class UpdateAccountBankPage extends ConsumerStatefulWidget {
   final UserAccountBankDocument userAccountBankDocument;
@@ -33,12 +33,14 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
   final TextEditingController bankAccountNameController =
       TextEditingController();
   var selectedBankCode = '';
+  var selectedBankName = '';
 
   @override
   void initState() {
     super.initState();
 
-    bankNameController.text = widget.userAccountBankDocument.bankName ?? '';
+    bankNameController.text =
+        'Bank ${widget.userAccountBankDocument.bankCode?.toUpperCase()}';
     bankAccountNumberController.text =
         widget.userAccountBankDocument.bankAccountNumber.toString();
     bankAccountNameController.text =
@@ -57,6 +59,23 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
   @override
   Widget build(BuildContext context) {
     var asyncListBank = ref.watch(getListBankDocProvider);
+    var updateDataState = ref.watch(updateUserAccountBankProvider);
+
+    // list bank state error
+    ref.listen(
+      getListBankDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
+
+    // update data state error
+    ref.listen(
+      updateUserAccountBankProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -97,7 +116,7 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         AutoSizeText(
-                                          data[index].bankName ?? '',
+                                          'Bank ${data[index].bankCode?.toUpperCase()}',
                                         ),
                                       ],
                                     ),
@@ -106,9 +125,11 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                                   () {
                                     setState(() {
                                       bankNameController.text =
-                                          data[index].bankName ?? '';
+                                          'Bank ${data[index].bankCode?.toUpperCase()}';
                                       selectedBankCode =
                                           data[index].bankCode ?? '';
+                                      selectedBankName =
+                                          data[index].bankName ?? '';
                                     });
 
                                     Navigator.pop(context);
@@ -159,41 +180,47 @@ class _UpdateAccountBankPageState extends ConsumerState<UpdateAccountBankPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      var userAccountBankRequest = UserAccountBankRequest(
-                        id: widget.userAccountBankDocument.id,
-                        bankAccountNumber: bankAccountNumberController.text,
-                        bankName: bankNameController.text,
-                        bankCode: selectedBankCode,
-                        realUserName: bankAccountNameController.text,
-                        userId: ref.read(userDataProvider).valueOrNull?.authKey,
-                        userName: Uuid()
-                            .v4()
-                            .toString()
-                            .removeWhitespace
-                            .replaceAll('-', ''),
-                        isDefault: false,
-                        email: ref.read(userDataProvider).valueOrNull?.email,
-                      );
+                    onPressed: updateDataState.isLoading
+                        ? null
+                        : () {
+                            var userAccountBankRequest = UserAccountBankRequest(
+                              id: widget.userAccountBankDocument.id,
+                              bankAccountNumber:
+                                  bankAccountNumberController.text,
+                              bankName: bankNameController.text,
+                              bankCode: selectedBankCode,
+                              realUserName: bankAccountNameController.text,
+                              userId: ref
+                                  .read(userDataProvider)
+                                  .valueOrNull
+                                  ?.authKey,
+                              userName: widget.userAccountBankDocument.userName,
+                              isDefault: false,
+                              email:
+                                  ref.read(userDataProvider).valueOrNull?.email,
+                            );
 
-                      Constants.logger.d(userAccountBankRequest);
+                            Constants.logger.d(userAccountBankRequest);
 
-                      ref
-                          .read(updateUserAccountBankProvider.notifier)
-                          .postUpdateAccountBank(
-                            userAccountBankRequest: userAccountBankRequest,
-                          );
-                    },
+                            ref
+                                .read(updateUserAccountBankProvider.notifier)
+                                .postUpdateAccountBank(
+                                  userAccountBankRequest:
+                                      userAccountBankRequest,
+                                );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Simpan Rekening Bank',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: updateDataState.isLoading
+                        ? CircularProgressIndicator.adaptive()
+                        : AutoSizeText(
+                            'Simpan Rekening Bank',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ],

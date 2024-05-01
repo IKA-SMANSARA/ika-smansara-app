@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
@@ -55,6 +56,15 @@ class _UpdateUserProfilePageState extends ConsumerState<UpdateUserProfilePage> {
   @override
   Widget build(BuildContext context) {
     var selectedImage = ref.watch(selectedImageProvider);
+    var updateDataState = ref.watch(updateUserProfileDocProvider);
+
+    // update data state error
+    ref.listen(
+      updateUserProfileDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -65,6 +75,7 @@ class _UpdateUserProfilePageState extends ConsumerState<UpdateUserProfilePage> {
           ...selectedPoster(
             ref: ref,
             imageUrl: widget.userProfileDocument.photoProfileUrl ?? '',
+            isLoading: updateDataState.isLoading,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -135,55 +146,62 @@ class _UpdateUserProfilePageState extends ConsumerState<UpdateUserProfilePage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.displayAlertDialog(
-                        title: 'Peringatan!',
-                        content:
-                            'Apakah anda yakin untuk mengubah informasi profil ?',
-                        positiveButtonText: 'Ubah',
-                        onPositivePressed: () {
-                          ref
-                              .read(updateUserProfileDocProvider.notifier)
-                              .updateUserProfileDoc(
-                                userProfileRequest: UserProfileRequest(
-                                  id: widget.userProfileDocument.authKey,
-                                  photoProfileUrl: (selectedImage == null)
-                                      ? widget
-                                          .userProfileDocument.photoProfileUrl
-                                      : '',
-                                  address: addressController.text,
-                                  email: emailController.text,
-                                  phone: phoneController.text,
-                                  name: nameController.text,
-                                  graduateYear: graduateYearController.text,
-                                  authKey: widget.userProfileDocument.authKey,
-                                  isAlumni: (graduateYearController.text != '')
-                                      ? true
-                                      : false,
-                                  isAdmin:
-                                      (widget.userProfileDocument.isAdmin ==
-                                              true)
-                                          ? true
-                                          : false,
-                                ),
-                                imageFile: (selectedImage != null)
-                                    ? selectedImage
-                                    : null,
-                              );
-                          ref.read(routerProvider).pop();
-                        },
-                      );
-                    },
+                    onPressed: updateDataState.isLoading
+                        ? null
+                        : () {
+                            context.displayAlertDialog(
+                              title: 'Peringatan!',
+                              content:
+                                  'Apakah anda yakin untuk mengubah informasi profil ?',
+                              positiveButtonText: 'Ubah',
+                              onPositivePressed: () {
+                                ref
+                                    .read(updateUserProfileDocProvider.notifier)
+                                    .updateUserProfileDoc(
+                                      userProfileRequest: UserProfileRequest(
+                                        id: widget.userProfileDocument.authKey,
+                                        photoProfileUrl: (selectedImage == null)
+                                            ? widget.userProfileDocument
+                                                .photoProfileUrl
+                                            : '',
+                                        address: addressController.text,
+                                        email: emailController.text,
+                                        phone: phoneController.text,
+                                        name: nameController.text,
+                                        graduateYear:
+                                            graduateYearController.text,
+                                        authKey:
+                                            widget.userProfileDocument.authKey,
+                                        isAlumni:
+                                            (graduateYearController.text != '')
+                                                ? true
+                                                : false,
+                                        isAdmin: (widget.userProfileDocument
+                                                    .isAdmin ==
+                                                true)
+                                            ? true
+                                            : false,
+                                      ),
+                                      imageFile: (selectedImage != null)
+                                          ? selectedImage
+                                          : null,
+                                    );
+                                ref.read(routerProvider).pop();
+                              },
+                            );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Update Profile',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: updateDataState.isLoading
+                        ? null
+                        : AutoSizeText(
+                            'Update Profile',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ],
