@@ -67,9 +67,6 @@ class AppwritePayoutRepository implements PayoutRepository {
       } else {
         return Result.success([]);
       }
-
-      // TODO: implement createPayout
-      throw UnimplementedError();
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
       return Result.failed(e.message ?? 'Error!');
