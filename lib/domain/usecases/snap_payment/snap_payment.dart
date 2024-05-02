@@ -32,7 +32,7 @@ class SnapPayment
     );
     final MidtransItemRequest _midtransItemRequest = MidtransItemRequest(
       id: params.transactionRequest.campaignId,
-      name: 'check campaign name by admin, with id campaign',
+      name: params.transactionRequest.campaignName?.substring(0, 19).toString(),
       price: params.transactionRequest.amount,
       quantity: 1,
     );
@@ -54,6 +54,8 @@ class SnapPayment
     );
 
     Constants.logger.d(result.resultValue);
+
+    Constants.logger.d('${params.transactionRequest.campaignName?.substring(0, 19)}');
 
     if (result is Success) {
       return switch (result) {
