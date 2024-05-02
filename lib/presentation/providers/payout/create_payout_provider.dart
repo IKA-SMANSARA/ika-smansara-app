@@ -1,11 +1,15 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/foundation.dart';
 import 'package:ika_smansara/domain/entities/payout_document.dart';
 import 'package:ika_smansara/domain/entities/payout_item_request.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/create_payout/create_payout.dart';
 import 'package:ika_smansara/domain/usecases/create_payout/create_payout_params.dart';
+import 'package:ika_smansara/presentation/providers/payout/get_requested_payout_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/create_payout_use_case_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -36,12 +40,12 @@ class CreateUserPayout extends _$CreateUserPayout {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
-        // var userId = ref.read(userDataProvider).valueOrNull?.authKey;
-        // ref.refresh(
-        //   getAccountBankByUserIdProvider(
-        //     userId: userId ?? '',
-        //   ),
-        // );
+        var userId = ref.read(userDataProvider).valueOrNull?.authKey;
+        ref.refresh(
+          getRequestedPayoutByUserIdProvider(
+            userId: userId ?? '',
+          ),
+        );
         ref.read(routerProvider).pop();
       case Failed(:final message):
         state = AsyncError(
