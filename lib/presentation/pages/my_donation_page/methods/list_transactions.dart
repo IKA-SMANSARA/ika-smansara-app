@@ -17,6 +17,7 @@ List<Widget> listTransactions({
                   currentUpdate: transaction.updatedAt ?? '',
                   amount: transaction.amount ?? 0,
                   cardWidth: double.infinity,
+                  paymentStatus: transaction.paymentStatus ?? '',
                 ),
               )
               .toList(),

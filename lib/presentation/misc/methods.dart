@@ -197,3 +197,13 @@ String paymentType(String stringPaymentType) {
     return stringPaymentType;
   }
 }
+
+Color paymentStatusBackgroundColor(String paymentStatus) {
+  if (paymentStatus == 'success') {
+    return Colors.green;
+  } else if (paymentStatus == 'expire') {
+    return Colors.red;
+  } else {
+    return Colors.amber;
+  }
+}
