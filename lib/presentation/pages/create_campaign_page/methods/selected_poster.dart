@@ -13,7 +13,7 @@ List<Widget> selectedPoster({
 }) =>
     [
       Visibility(
-        visible: (imageUrl != '') && (ref.watch(selectedImageProvider) != null),
+        visible: (ref.watch(selectedImageProvider) != null),
         child: Column(
           children: [
             Visibility(

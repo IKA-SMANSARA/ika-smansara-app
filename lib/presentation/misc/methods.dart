@@ -207,3 +207,11 @@ Color paymentStatusBackgroundColor(String paymentStatus) {
     return Colors.amber;
   }
 }
+
+String validateStringLength(String defaultString) {
+  if (defaultString.length < 19) {
+    return defaultString;
+  } else {
+    return defaultString.substring(0, 19).toString();
+  }
+}

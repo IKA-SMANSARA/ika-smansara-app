@@ -181,7 +181,7 @@ List<Widget>? contentDetailTransaction({
                 ),
                 Visibility(
                   visible: data?.vaNumber != null,
-                  child: AutoSizeText(
+                  child: SelectableText(
                     data?.vaNumber ?? '',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
