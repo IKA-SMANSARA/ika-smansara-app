@@ -24,11 +24,11 @@ class AppwritePayoutRepository implements PayoutRepository {
       var result = await _databases.createDocument(
         databaseId: dotenv.env['DATABASE_ID'].toString(),
         collectionId: dotenv.env['PAYOUT_DOCUMENT_ID'].toString(),
-        documentId: ID.unique(),
+        documentId: payoutItemRequest.payoutReferenceNo ?? ID.unique(),
         data: payoutItemRequest.toJson(),
         permissions: [
           Permission.read(Role.any()),
-          Permission.create(Role.any()),
+          Permission.write(Role.any()),
           Permission.update(Role.any()),
         ],
       );
@@ -47,12 +47,14 @@ class AppwritePayoutRepository implements PayoutRepository {
   }
 
   @override
-  Future<Result<List<PayoutDocument>>> getListPayout() async {
+  Future<Result<List<PayoutDocument>>> getListPayoutByUserId({
+    required String userId,
+  }) async {
     try {
       var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['PAYOUT_DOCUMENT_ID'].toString(),
-      );
+          databaseId: dotenv.env['DATABASE_ID'].toString(),
+          collectionId: dotenv.env['PAYOUT_DOCUMENT_ID'].toString(),
+          queries: [Query.equal('userId', '$userId')]);
 
       Constants.logger.d(result.documents);
 

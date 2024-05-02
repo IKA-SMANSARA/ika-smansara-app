@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/payout_item_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
@@ -47,6 +48,15 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
     var asyncListBankAccount = ref.watch(
       getAccountBankByUserIdProvider(
         userId: asyncUserData.valueOrNull?.authKey ?? '',
+      ),
+    );
+    var saveDataState = ref.watch(createUserPayoutProvider);
+
+    // save request payout state error
+    ref.listen(
+      createUserPayoutProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
       ),
     );
 
@@ -294,51 +304,62 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      var payoutItemRequest = PayoutItemRequest(
-                        amount: payoutAmountController.text
-                            .replaceAll('.', '')
-                            .replaceAll('Rp', '')
-                            .replaceAll(' ', '0')
-                            .replaceAll('-', '0'),
-                        beneficiaryEmail:
-                            ref.watch(userDataProvider).valueOrNull?.email,
-                        beneficiaryAccount: selectedBankAccountNumber,
-                        beneficiaryName: selectedBankUserRealName,
-                        beneficiaryBank: selectedBankCode,
-                        notes:
-                            'Payout for campaign with ID ${selectedCampaignId}',
-                      );
+                    onPressed: saveDataState.isLoading
+                        ? null
+                        : () {
+                            var payoutItemRequest = PayoutItemRequest(
+                              amount: payoutAmountController.text
+                                  .replaceAll('.', '')
+                                  .replaceAll('Rp', '')
+                                  .replaceAll(' ', '0')
+                                  .replaceAll('-', '0'),
+                              beneficiaryEmail: ref
+                                  .watch(userDataProvider)
+                                  .valueOrNull
+                                  ?.email,
+                              beneficiaryAccount: selectedBankAccountNumber,
+                              beneficiaryName: selectedBankUserRealName,
+                              beneficiaryBank: selectedBankCode,
+                              notes:
+                                  'Payout for campaign with ID ${selectedCampaignId}',
+                              campaignId: selectedCampaignId,
+                              userId: ref
+                                  .read(userDataProvider)
+                                  .valueOrNull
+                                  ?.authKey,
+                            );
 
-                      Constants.logger.w(
-                        payoutItemRequest,
-                      );
+                            Constants.logger.w(
+                              payoutItemRequest,
+                            );
 
-                      context.displayAlertDialog(
-                        title: 'Perhatian',
-                        content:
-                            'Apakah anda yakin untuk melanjutkan penarikan sebesar ${payoutAmountController.text} ?',
-                        positiveButtonText: 'Ya',
-                        onPositivePressed: () {
-                          ref
-                              .read(createUserPayoutProvider.notifier)
-                              .postRequestPayout(
-                                payoutItemRequest: payoutItemRequest,
-                              );
-                          Navigator.pop(context);
-                        },
-                      );
-                    },
+                            context.displayAlertDialog(
+                              title: 'Perhatian',
+                              content:
+                                  'Apakah anda yakin untuk melanjutkan penarikan sebesar ${payoutAmountController.text} ?',
+                              positiveButtonText: 'Ya',
+                              onPositivePressed: () {
+                                ref
+                                    .read(createUserPayoutProvider.notifier)
+                                    .postRequestPayout(
+                                      payoutItemRequest: payoutItemRequest,
+                                    );
+                                Navigator.pop(context);
+                              },
+                            );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Kirim',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: saveDataState.isLoading
+                        ? CircularProgressIndicator.adaptive()
+                        : AutoSizeText(
+                            'Kirim',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ),

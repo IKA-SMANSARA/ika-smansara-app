@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:ika_smansara/domain/entities/payout_document.dart';
 import 'package:ika_smansara/domain/entities/payout_item_request.dart';
-import 'package:ika_smansara/domain/entities/payout_response.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/create_payout/create_payout.dart';
 import 'package:ika_smansara/domain/usecases/create_payout/create_payout_params.dart';
@@ -14,7 +14,7 @@ part 'create_payout_provider.g.dart';
 @riverpod
 class CreateUserPayout extends _$CreateUserPayout {
   @override
-  Future<PayoutResponse?> build() async => null;
+  Future<PayoutDocument?> build() async => null;
 
   Future<void> postRequestPayout({
     required PayoutItemRequest payoutItemRequest,
