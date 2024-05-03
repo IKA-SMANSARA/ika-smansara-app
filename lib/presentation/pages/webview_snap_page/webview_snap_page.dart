@@ -6,6 +6,7 @@ import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_url_webview_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/save_payment_transaction_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class WebviewSnapPage extends ConsumerWidget {
   final TransactionRequest transactionRequest;
@@ -84,8 +85,14 @@ class WebviewSnapPage extends ConsumerWidget {
               'NETWORK ERROR!',
             ),
           ),
-          loading: () => const Center(
-            child: CircularProgressIndicator.adaptive(),
+          loading: () => Padding(
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: LoadingAnimationWidget.inkDrop(
+                color: Colors.amber,
+                size: 35,
+              ),
+            ),
           ),
         ),
       ),

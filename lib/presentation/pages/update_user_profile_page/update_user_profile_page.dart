@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/providers/common/selected_image_provid
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/update_user_profile_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class UpdateUserProfilePage extends ConsumerStatefulWidget {
   final UserProfileDocument userProfileDocument;
@@ -194,7 +195,10 @@ class _UpdateUserProfilePageState extends ConsumerState<UpdateUserProfilePage> {
                       backgroundColor: const Color(0xFF104993),
                     ),
                     child: updateDataState.isLoading
-                        ? null
+                        ? LoadingAnimationWidget.horizontalRotatingDots(
+                            color: Colors.amber,
+                            size: 35,
+                          )
                         : AutoSizeText(
                             'Update Profile',
                             style: TextStyle(

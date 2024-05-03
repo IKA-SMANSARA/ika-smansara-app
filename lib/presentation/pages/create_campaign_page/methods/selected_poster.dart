@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 List<Widget> selectedPoster({
   required WidgetRef ref,
@@ -55,7 +56,10 @@ List<Widget> selectedPoster({
             child: CachedNetworkImage(
               imageUrl: imageUrl,
               placeholder: (context, url) =>
-                  const CircularProgressIndicator.adaptive(),
+                  LoadingAnimationWidget.newtonCradle(
+                color: Colors.amber,
+                size: 35,
+              ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
@@ -81,7 +85,10 @@ List<Widget> selectedPoster({
                       );
                 },
           child: isLoading
-              ? CircularProgressIndicator.adaptive()
+              ? LoadingAnimationWidget.newtonCradle(
+                  color: Colors.amber,
+                  size: 35,
+                )
               : Text(
                   'Pilih Foto / Gambar',
                   style: TextStyle(

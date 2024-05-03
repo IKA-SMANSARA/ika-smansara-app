@@ -7,6 +7,7 @@ import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/widgets/backer_card.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 List<Widget> backerList({
   required int backerCount,
@@ -64,8 +65,11 @@ List<Widget> backerList({
               ),
             ],
             loading: () => [
-              const Center(
-                child: CircularProgressIndicator.adaptive(),
+              Center(
+                child: LoadingAnimationWidget.inkDrop(
+                  color: Colors.amber,
+                  size: 35,
+                ),
               ),
             ],
           ) ??

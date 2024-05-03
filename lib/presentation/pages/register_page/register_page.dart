@@ -7,6 +7,7 @@ import 'package:ika_smansara/presentation/providers/router/router_provider.dart'
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
@@ -213,8 +214,14 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                             ),
                           ),
                         )
-                      : const CircularProgressIndicator.adaptive(),
-                  _ => const CircularProgressIndicator.adaptive(),
+                      : LoadingAnimationWidget.newtonCradle(
+                        color: Colors.amber,
+                        size: 35,
+                      ),
+                  _ => LoadingAnimationWidget.newtonCradle(
+                        color: Colors.amber,
+                        size: 35,
+                      ),
                 },
                 verticalSpace(24)
               ],

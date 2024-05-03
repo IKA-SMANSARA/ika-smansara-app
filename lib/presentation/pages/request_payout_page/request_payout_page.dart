@@ -14,6 +14,7 @@ import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:ika_smansara/presentation/widgets/horizontal_campaign_card.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class RequestPayoutPage extends ConsumerStatefulWidget {
   const RequestPayoutPage({super.key});
@@ -134,7 +135,10 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                               loading: () => Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Center(
-                                  child: CircularProgressIndicator.adaptive(),
+                                  child: LoadingAnimationWidget.inkDrop(
+                                    color: Colors.amber,
+                                    size: 35,
+                                  ),
                                 ),
                               ),
                             );
@@ -253,7 +257,10 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                               loading: () => Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: Center(
-                                  child: CircularProgressIndicator.adaptive(),
+                                  child: LoadingAnimationWidget.inkDrop(
+                                    color: Colors.amber,
+                                    size: 35,
+                                  ),
                                 ),
                               ),
                             );
@@ -352,7 +359,10 @@ class _RequestPayoutPageState extends ConsumerState<RequestPayoutPage> {
                       backgroundColor: const Color(0xFF104993),
                     ),
                     child: saveDataState.isLoading
-                        ? CircularProgressIndicator.adaptive()
+                        ? LoadingAnimationWidget.horizontalRotatingDots(
+                            color: Colors.amber,
+                            size: 35,
+                          )
                         : AutoSizeText(
                             'Kirim',
                             style: TextStyle(

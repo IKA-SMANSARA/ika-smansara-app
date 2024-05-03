@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/widgets/header_image.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CampaignDetailPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;
@@ -116,8 +117,14 @@ class _CampaignDetailPageState extends ConsumerState<CampaignDetailPage> {
                       ),
                     ],
                     loading: () => [
-                      const Center(
-                        child: CircularProgressIndicator.adaptive(),
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Center(
+                          child: LoadingAnimationWidget.inkDrop(
+                            color: Colors.amber,
+                            size: 35,
+                          ),
+                        ),
                       ),
                     ],
                   ) ??

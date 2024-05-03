@@ -10,6 +10,7 @@ import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_p
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:uuid/uuid.dart';
 
 class CreateAccountBankPage extends ConsumerStatefulWidget {
@@ -128,7 +129,10 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                           loading: () => Padding(
                             padding: const EdgeInsets.all(16),
                             child: Center(
-                              child: CircularProgressIndicator.adaptive(),
+                              child: LoadingAnimationWidget.inkDrop(
+                                color: Colors.amber,
+                                size: 35,
+                              ),
                             ),
                           ),
                         );
@@ -197,7 +201,10 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                       backgroundColor: const Color(0xFF104993),
                     ),
                     child: saveDataState.isLoading
-                        ? const CircularProgressIndicator.adaptive()
+                        ? LoadingAnimationWidget.newtonCradle(
+                            color: Colors.amber,
+                            size: 35,
+                          )
                         : AutoSizeText(
                             'Simpan Rekening Bank',
                             style: TextStyle(

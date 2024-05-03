@@ -7,6 +7,7 @@ import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
@@ -58,8 +59,11 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                   ),
                 ],
                 loading: () => [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                  Center(
+                    child: LoadingAnimationWidget.inkDrop(
+                      color: Colors.amber,
+                      size: 35,
+                    ),
                   ),
                 ],
                 data: (data) => [

@@ -13,6 +13,7 @@ import 'package:ika_smansara/presentation/providers/common/selected_image_provid
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_date_time_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CreateCampaignPage extends ConsumerStatefulWidget {
   const CreateCampaignPage({super.key});
@@ -241,7 +242,10 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                       backgroundColor: const Color(0xFF104993),
                     ),
                     child: saveDataState.isLoading
-                        ? CircularProgressIndicator.adaptive()
+                        ? LoadingAnimationWidget.newtonCradle(
+                            color: Colors.amber,
+                            size: 35,
+                          )
                         : AutoSizeText(
                             'Publikasi Acara',
                             style: TextStyle(

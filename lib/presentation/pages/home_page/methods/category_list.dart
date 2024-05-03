@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 Widget categoryList({
   required BuildContext context,
@@ -27,8 +28,11 @@ Widget categoryList({
               children: [
                 SvgPicture.network(
                   data[index].categoryIcon ?? '',
-                  placeholderBuilder: (context) => const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                  placeholderBuilder: (context) => Center(
+                    child: LoadingAnimationWidget.inkDrop(
+                      color: Colors.amber,
+                      size: 35,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -60,7 +64,10 @@ Widget categoryList({
       error: (error, stackTrace) => const Center(
         child: Text('NETWORK ERROR!'),
       ),
-      loading: () => const Center(
-        child: CircularProgressIndicator.adaptive(),
+      loading: () => Center(
+        child: LoadingAnimationWidget.inkDrop(
+          color: Colors.amber,
+          size: 35,
+        ),
       ),
     );

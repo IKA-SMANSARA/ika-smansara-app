@@ -11,6 +11,7 @@ import 'package:ika_smansara/presentation/providers/account_bank/delete_account_
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class BankAccountListPage extends ConsumerStatefulWidget {
   const BankAccountListPage({super.key});
@@ -109,8 +110,11 @@ class _BankAccountListPageState extends ConsumerState<BankAccountListPage> {
                 loading: () => [
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: const Center(
-                      child: CircularProgressIndicator.adaptive(),
+                    child: Center(
+                      child: LoadingAnimationWidget.inkDrop(
+                        color: Colors.amber,
+                        size: 35,
+                      ),
                     ),
                   ),
                 ],

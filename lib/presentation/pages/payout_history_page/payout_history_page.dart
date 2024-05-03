@@ -5,6 +5,7 @@ import 'package:ika_smansara/presentation/extensions/async_value_extension.dart'
 import 'package:ika_smansara/presentation/providers/payout/get_requested_payout_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class PayoutHistoryPage extends ConsumerWidget {
   const PayoutHistoryPage({super.key});
@@ -105,7 +106,10 @@ class PayoutHistoryPage extends ConsumerWidget {
         loading: () => Padding(
           padding: const EdgeInsets.all(16),
           child: Center(
-            child: CircularProgressIndicator.adaptive(),
+            child: LoadingAnimationWidget.inkDrop(
+              color: Colors.amber,
+              size: 35,
+            ),
           ),
         ),
       ),

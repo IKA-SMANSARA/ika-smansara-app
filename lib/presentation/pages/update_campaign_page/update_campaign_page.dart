@@ -17,6 +17,7 @@ import 'package:ika_smansara/presentation/providers/router/router_provider.dart'
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_date_time_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class UpdateCampaignPage extends ConsumerStatefulWidget {
   final CampaignDocument campaignDocument;
@@ -320,7 +321,10 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
                       backgroundColor: const Color(0xFF104993),
                     ),
                     child: updateDataState.isLoading
-                        ? CircularProgressIndicator.adaptive()
+                        ? LoadingAnimationWidget.horizontalRotatingDots(
+                            color: Colors.amber,
+                            size: 35,
+                          )
                         : AutoSizeText(
                             'Update Informasi Acara',
                             style: TextStyle(
