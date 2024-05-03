@@ -348,6 +348,33 @@ List<Widget>? contentDetailTransaction({
                 verticalSpace(16),
               ],
             ),
+            TableRow(
+              children: [
+                AutoSizeText(
+                  'Catatan',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                AutoSizeText(
+                  data?.note ?? '',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.end,
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                verticalSpace(16),
+                verticalSpace(16),
+              ],
+            ),
           ],
         ),
         verticalSpace(24),
