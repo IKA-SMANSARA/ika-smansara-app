@@ -2,15 +2,36 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/utils/constants.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class UserProfilePage extends ConsumerWidget {
+class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _UserProfilePageState();
+}
+
+class _UserProfilePageState extends ConsumerState<UserProfilePage> {
+  late final Box devModeBox;
+  var _isDevMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    devModeBox = Hive.box('dev mode');
+
+    _isDevMode = devModeBox.get('isDevMode');
+  }
+
+  @override
+  Widget build(BuildContext context) {
     var asyncUserData = ref.watch(userDataProvider);
     return Scaffold(
       appBar: AppBar(
@@ -38,8 +59,11 @@ class UserProfilePage extends ConsumerWidget {
                   ),
                 ],
                 loading: () => [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                  Center(
+                    child: LoadingAnimationWidget.inkDrop(
+                      color: Colors.amber,
+                      size: 35,
+                    ),
                   ),
                 ],
                 data: (data) => [
@@ -179,6 +203,26 @@ class UserProfilePage extends ConsumerWidget {
                             verticalSpace(16),
                             verticalSpace(16),
                           ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Visibility(
+                    visible: data?.isAdmin ?? false,
+                    child: Row(
+                      children: [
+                        AutoSizeText('Dev Mode'),
+                        Switch.adaptive(
+                          value: _isDevMode,
+                          onChanged: (bool status) {
+                            setState(() {
+                              _isDevMode = status;
+                              devModeBox.put('isDevMode', _isDevMode);
+                              Constants.logger.d(
+                                'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
+                              );
+                            });
+                          },
                         ),
                       ],
                     ),

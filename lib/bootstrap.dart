@@ -50,11 +50,20 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   }
   usePathUrlStrategy();
   await Hive.initFlutter();
+  await Hive.openBox('dev mode'); // init pref box dev mode
   await Jiffy.setLocale('id');
   await FlutterDownloader.initialize();
 
   // request permission storage
   await Permission.storage.request();
+
+  // set initial value for development mode
+  var devModeBox = Hive.box('dev mode');
+  if (devModeBox.get('isDevMode') == null) {
+    devModeBox.put('isDevMode', false);
+  }
+
+  Constants.logger.d('DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}');
 
   if (defaultTargetPlatform != TargetPlatform.windows) {
     await Firebase.initializeApp(

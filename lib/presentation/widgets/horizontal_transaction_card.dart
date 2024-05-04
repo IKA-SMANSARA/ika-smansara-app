@@ -11,6 +11,7 @@ class HorizontalTransactionCard extends StatelessWidget {
   final String currentUpdate;
   final int amount;
   final double? cardWidth;
+  final String paymentStatus;
 
   const HorizontalTransactionCard({
     super.key,
@@ -20,6 +21,7 @@ class HorizontalTransactionCard extends StatelessWidget {
     required this.currentUpdate,
     this.cardWidth,
     required this.amount,
+    required this.paymentStatus,
   });
 
   @override
@@ -41,7 +43,7 @@ class HorizontalTransactionCard extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 3,
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 8,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(
@@ -62,17 +64,45 @@ class HorizontalTransactionCard extends StatelessWidget {
                   SizedBox(
                     width: (MediaQuery.of(context).size.width / 2) + 24,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AutoSizeText(
-                          campaignName,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width / 3,
+                              child: AutoSizeText(
+                                campaignName,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color:
+                                    paymentStatusBackgroundColor(paymentStatus),
+                                borderRadius:
+                                    BorderRadius.all(Radius.elliptical(50, 50)),
+                              ),
+                              height: 20,
+                              width: MediaQuery.of(context).size.width / 6,
+                              child: Center(
+                                child: AutoSizeText(
+                                  paymentStatus.toUpperCase(),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         verticalSpace(24),
                         Row(

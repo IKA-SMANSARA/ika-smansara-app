@@ -15,6 +15,7 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
     String? bankName,
     String? bankCode,
     String? bankAccountNumber,
+    String? email,
     @Default(false) bool isDefault,
     @Default(false) bool isDeleted,
   }) = _UserAccountBankRequest;
@@ -29,5 +30,6 @@ class UserAccountBankRequest with _$UserAccountBankRequest {
         userName: json['userName'],
         isDefault: json['isDefault'],
         isDeleted: json['isDeleted'],
+        email: json['email'],
       );
 }

@@ -6,6 +6,7 @@ import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
 import 'package:ika_smansara/presentation/widgets/backer_card.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class BackerListPage extends ConsumerWidget {
   final CampaignDocument campaign;
@@ -46,8 +47,14 @@ class BackerListPage extends ConsumerWidget {
                   ),
                 ],
                 loading: () => [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Center(
+                      child: LoadingAnimationWidget.inkDrop(
+                        color: Colors.amber,
+                        size: 35,
+                      ),
+                    ),
                   ),
                 ],
               ) ??

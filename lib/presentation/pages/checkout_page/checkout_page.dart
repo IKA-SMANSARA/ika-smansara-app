@@ -25,6 +25,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   final TextEditingController amountNominal = TextEditingController();
   final GroupButtonController groupButtonAmountNominalController =
       GroupButtonController();
+  final TextEditingController notesController = TextEditingController();
 
   final List<String> defaultAmount = [
     50000.toIDRCurrencyFormat(),
@@ -38,6 +39,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
     super.dispose();
     amountNominal.dispose();
     groupButtonAmountNominalController.dispose();
+    notesController.dispose();
   }
 
   @override
@@ -144,6 +146,18 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                   color: Colors.red,
                 ),
                 textAlign: TextAlign.center,
+              ),
+              verticalSpace(16),
+              SizedBox(
+                height: 200,
+                child: CustomTextField(
+                  labelText: 'Catatan',
+                  controller: notesController,
+                  expands: true,
+                  maxLines: null,
+                  keyboardType: TextInputType.text,
+                  textAlignVertical: TextAlignVertical.top,
+                ),
               ),
               verticalSpace(32),
               Divider(
@@ -256,6 +270,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                       isDeleted: widget.campaign?.isDeleted,
                       photoThumbnail: widget.campaign?.photoThumbnail,
                       campaignCreatedBy: widget.campaign?.createdBy,
+                      note: notesController.text.trim(),
                     );
 
                     ref.read(routerProvider).pushNamed(

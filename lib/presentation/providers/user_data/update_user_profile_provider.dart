@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -23,6 +25,8 @@ class UpdateUserProfileDoc extends _$UpdateUserProfileDoc {
     required UserProfileRequest userProfileRequest,
     File? imageFile,
   }) async {
+    state = AsyncValue.loading();
+
     UpdateUserProfile updateUserProfile =
         ref.read(updateUserProfileUseCaseProvider);
 

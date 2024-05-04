@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/presentation/widgets/vertical_campaign_card.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 List<Widget> campaignList({
   required String title,
@@ -65,8 +66,14 @@ List<Widget> campaignList({
         error: (error, stackTrace) => const Center(
           child: Text('NETWORK ERROR!'),
         ),
-        loading: () => const Center(
-          child: CircularProgressIndicator.adaptive(),
+        loading: () => Padding(
+          padding: const EdgeInsets.all(16),
+          child: Center(
+            child: LoadingAnimationWidget.inkDrop(
+              color: Colors.amber,
+              size: 35,
+            ),
+          ),
         ),
       ),
     ];

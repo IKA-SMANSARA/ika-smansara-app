@@ -7,7 +7,8 @@ part 'payment_gateway_service.g.dart';
 @RestApi()
 abstract class PaymentGatewayService {
   factory PaymentGatewayService(
-Dio dio) = _PaymentGatewayService;
+    Dio dio,
+  ) = _PaymentGatewayService;
 
   @POST('')
   Future<MidtransTransactionResponse> acquiringTransactionToken(

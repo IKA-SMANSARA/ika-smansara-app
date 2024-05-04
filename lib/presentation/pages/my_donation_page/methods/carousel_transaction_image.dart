@@ -4,6 +4,7 @@ import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/transaction_document.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 Widget carouselTransactionImage({
   required BuildContext context,
@@ -17,7 +18,11 @@ Widget carouselTransactionImage({
             width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
               imageUrl: data[itemIndex].campaignImage ?? '',
-              placeholder: (context, url) => const LinearProgressIndicator(),
+              placeholder: (context, url) =>
+                  LoadingAnimationWidget.newtonCradle(
+                color: Colors.amber,
+                size: 35,
+              ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           );
@@ -35,7 +40,10 @@ Widget carouselTransactionImage({
       error: (error, stackTrace) => const Center(
         child: Text('NETWORK ERROR!'),
       ),
-      loading: () => const Center(
-        child: CircularProgressIndicator.adaptive(),
+      loading: () => Center(
+        child: LoadingAnimationWidget.inkDrop(
+          color: Colors.amber,
+          size: 35,
+        ),
       ),
     );

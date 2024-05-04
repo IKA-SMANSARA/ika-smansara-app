@@ -25,6 +25,8 @@ class UpdateCampaignDoc extends _$UpdateCampaignDoc {
     required CampaignRequest campaignRequest,
     File? imageFile,
   }) async {
+    state = AsyncValue.loading();
+
     UpdateCampaign updateCampaign = ref.read(updateCampaignUseCaseProvider);
 
     var result = await updateCampaign(

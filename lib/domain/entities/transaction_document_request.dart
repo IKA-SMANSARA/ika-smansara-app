@@ -17,6 +17,7 @@ class TransactionDocumentRequest with _$TransactionDocumentRequest {
     String? campaignImage,
     String? userName,
     @Default(0) int? paymentFee,
+    String? note,
   }) = _TransactionDocumentRequest;
 
   factory TransactionDocumentRequest.fromJson(Map<String, dynamic> json) =>
@@ -29,5 +30,6 @@ class TransactionDocumentRequest with _$TransactionDocumentRequest {
         userId: json['userId'],
         userName: json['userName'],
         paymentFee: json['paymentFee'],
+        note: json['note'],
       );
 }
