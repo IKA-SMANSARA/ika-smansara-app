@@ -25,6 +25,8 @@ class UpdateUserProfileDoc extends _$UpdateUserProfileDoc {
     required UserProfileRequest userProfileRequest,
     File? imageFile,
   }) async {
+    state = AsyncValue.loading();
+
     UpdateUserProfile updateUserProfile =
         ref.read(updateUserProfileUseCaseProvider);
 

@@ -35,6 +35,7 @@ class TransactionRequest with _$TransactionRequest {
     @Default([]) List<dynamic>? categories,
     String? campaignDescription,
     String? campaignCreatedBy,
+    String? note,
   }) = _TransactionRequest;
 
   factory TransactionRequest.fromJson(Map<String, dynamic> json) =>

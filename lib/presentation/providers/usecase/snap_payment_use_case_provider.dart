@@ -15,13 +15,25 @@ SnapPayment snapPaymentUseCase(SnapPaymentUseCaseRef ref) {
   if (Hive.box('dev mode').get("isDevMode")) {
     return SnapPayment(
       paymentGatewayRepository: ref.watch(
-        paymentGatewayAdminRepositoryProvider,
+        paymentGatewayRepositoryProvider,
+      ),
+    );
+  } else if (Constants.appFlavor == Constants.DEVELOPMENT) {
+    return SnapPayment(
+      paymentGatewayRepository: ref.watch(
+        paymentGatewayRepositoryProvider,
+      ),
+    );
+  } else if (Constants.appFlavor == Constants.STAGING) {
+    return SnapPayment(
+      paymentGatewayRepository: ref.watch(
+        paymentGatewayRepositoryProvider,
       ),
     );
   } else {
     return SnapPayment(
       paymentGatewayRepository: ref.watch(
-        paymentGatewayRepositoryProvider,
+        paymentGatewayAdminRepositoryProvider,
       ),
     );
   }

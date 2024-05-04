@@ -49,6 +49,7 @@ class SavePayment
       paymentStatus: params.statusPayment,
       userId: params.transactionRequest.userId,
       userName: params.transactionRequest.userName,
+      note: params.transactionRequest.note,
     );
 
     var resultSaveTransaction = await _transactionRepository.createTransaction(

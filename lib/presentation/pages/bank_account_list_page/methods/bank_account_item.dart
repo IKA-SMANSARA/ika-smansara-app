@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
 Widget bankAccountItem({
-  required String bankName,
+  required String bankCode,
   required String accountBankNumber,
   required String realNameUserAccountBank,
 }) =>
@@ -25,7 +25,7 @@ Widget bankAccountItem({
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
-                      bankName,
+                      bankCode,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                       ),

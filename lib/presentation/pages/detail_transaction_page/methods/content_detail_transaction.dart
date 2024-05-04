@@ -8,6 +8,7 @@ import 'package:ika_smansara/domain/entities/transaction_document.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 List<Widget>? contentDetailTransaction({
   required AsyncValue<TransactionDocument?> transactions,
@@ -29,7 +30,10 @@ List<Widget>? contentDetailTransaction({
           child: CachedNetworkImage(
             imageUrl: data?.campaignImage ?? '',
             placeholder: (context, url) =>
-                const CircularProgressIndicator.adaptive(),
+                LoadingAnimationWidget.horizontalRotatingDots(
+              color: Colors.amber,
+              size: 35,
+            ),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
@@ -181,7 +185,7 @@ List<Widget>? contentDetailTransaction({
                 ),
                 Visibility(
                   visible: data?.vaNumber != null,
-                  child: AutoSizeText(
+                  child: SelectableText(
                     data?.vaNumber ?? '',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -336,6 +340,33 @@ List<Widget>? contentDetailTransaction({
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF104993),
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.end,
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                verticalSpace(16),
+                verticalSpace(16),
+              ],
+            ),
+            TableRow(
+              children: [
+                AutoSizeText(
+                  'Catatan',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                AutoSizeText(
+                  data?.note ?? '',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                     fontSize: 14,
                   ),
                   textAlign: TextAlign.end,

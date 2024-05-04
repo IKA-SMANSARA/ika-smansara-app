@@ -1,4 +1,6 @@
+import 'package:ika_smansara/data/repositories/payout_gateway_repository.dart';
 import 'package:ika_smansara/data/repositories/user_bank_account_repository.dart';
+import 'package:ika_smansara/domain/entities/beneficiaries_request.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/usecases/update_account_bank/update_account_bank_params.dart';
@@ -9,28 +11,49 @@ class UpdateAccountBank
     implements
         UseCase<Result<UserAccountBankDocument>, UpdateAccountBankParams> {
   final UserBankAccountRepository _userBankAccountRepository;
+  final PayoutGatewayRepository _payoutGatewayRepository;
 
-  UpdateAccountBank(
-      {required UserBankAccountRepository userBankAccountRepository})
-      : _userBankAccountRepository = userBankAccountRepository;
+  UpdateAccountBank({
+    required UserBankAccountRepository userBankAccountRepository,
+    required PayoutGatewayRepository payoutGatewayRepository,
+  })  : _userBankAccountRepository = userBankAccountRepository,
+        _payoutGatewayRepository = payoutGatewayRepository;
 
   @override
   Future<Result<UserAccountBankDocument>> call(
       UpdateAccountBankParams params) async {
-    var result = await _userBankAccountRepository.updateAccountBank(
-      userAccountBankRequest: params.userAccountBankRequest,
+    var beneficiariesRequest = BeneficiariesRequest(
+      account: params.userAccountBankRequest.bankAccountNumber,
+      aliasName: params.userAccountBankRequest.userName?.substring(0, 19),
+      bank: params.userAccountBankRequest.bankCode,
+      email: params.userAccountBankRequest.email,
+      name: params.userAccountBankRequest.realUserName,
     );
 
-    Constants.logger.d(result.resultValue);
+    var resultPayout = await _payoutGatewayRepository.updateBeneficiaries(
+        beneficiariesRequest: beneficiariesRequest);
 
-    if (result is Success) {
-      return switch (result) {
-        Success(value: final data) => Result.success(data),
-        Failed(:final message) => Result.failed(message),
-      };
+    Constants.logger.d(resultPayout.resultValue);
+
+    if (resultPayout is Success) {
+      var result = await _userBankAccountRepository.updateAccountBank(
+        userAccountBankRequest: params.userAccountBankRequest,
+      );
+
+      Constants.logger.d(result.resultValue);
+
+      if (result is Success) {
+        return switch (result) {
+          Success(value: final data) => Result.success(data),
+          Failed(:final message) => Result.failed(message),
+        };
+      } else {
+        Constants.logger.e(result.errorMessage);
+        return Result.failed(result.errorMessage ?? 'Error!');
+      }
     } else {
-      Constants.logger.e(result.errorMessage);
-      return Result.failed(result.errorMessage ?? 'Error!');
+      Constants.logger.e(resultPayout.errorMessage);
+      return Result.failed(resultPayout.errorMessage ?? 'Error!');
     }
   }
 }

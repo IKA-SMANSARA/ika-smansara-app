@@ -22,6 +22,8 @@ class DeleteCampaignDoc extends _$DeleteCampaignDoc {
   Future<void> deleteCampaign({
     required CampaignRequest campaignRequest,
   }) async {
+    state = AsyncValue.loading();
+    
     DeleteCampaign deleteCampaign = ref.read(deleteCampaignUseCaseProvider);
 
     var result = await deleteCampaign(DeleteCampaignParams(

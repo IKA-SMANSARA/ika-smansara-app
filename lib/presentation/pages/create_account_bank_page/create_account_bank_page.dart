@@ -1,13 +1,17 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/create_user_bank_account_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:uuid/uuid.dart';
 
 class CreateAccountBankPage extends ConsumerStatefulWidget {
   const CreateAccountBankPage({super.key});
@@ -24,6 +28,7 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
   final TextEditingController bankAccountNameController =
       TextEditingController();
   var selectedBankCode = '';
+  var selectedBankName = '';
 
   @override
   void dispose() {
@@ -36,6 +41,23 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
   @override
   Widget build(BuildContext context) {
     var asyncListBank = ref.watch(getListBankDocProvider);
+    var saveDataState = ref.watch(createUserBankAccountProvider);
+
+    // list bank state error
+    ref.listen(
+      getListBankDocProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
+
+    // save data state error
+    ref.listen(
+      createUserBankAccountProvider,
+      (_, state) => state.showSnackbarOnError(
+        context,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -63,65 +85,56 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                         ),
                       ),
                       builder: (context) {
-                        return ListView(
-                          children: [
-                            ...(asyncListBank.when(
-                                  data: (data) => data
-                                      .map(
-                                        (e) => GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              bankNameController.text =
-                                                  e.bankName ?? '';
-                                              selectedBankCode =
-                                                  e.bankCode ?? '';
-                                            });
+                        return asyncListBank.when(
+                          data: (data) => ListView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AutoSizeText(
+                                          'Bank ${data[index].bankCode?.toUpperCase()}',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ).onClick(
+                                  () {
+                                    setState(() {
+                                      bankNameController.text =
+                                          'Bank ${data[index].bankCode?.toUpperCase()}';
+                                      selectedBankCode =
+                                          data[index].bankCode ?? '';
+                                      selectedBankName =
+                                          data[index].bankName ?? '';
+                                    });
 
-                                            Navigator.pop(context);
-                                          },
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                              color: Colors.transparent,
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(16.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  AutoSizeText(
-                                                    e.bankName ?? '',
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
-                                  error: (error, stackTrace) => [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: const Center(
-                                        child: Text(
-                                          'NETWORK ERROR!',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                  loading: () => [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: const Center(
-                                        child: CircularProgressIndicator
-                                            .adaptive(),
-                                      ),
-                                    ),
-                                  ],
-                                ) ??
-                                [])
-                          ],
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }),
+                          error: (error, stackTrace) => Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Center(
+                              child: AutoSizeText("NETWORK ERROR"),
+                            ),
+                          ),
+                          loading: () => Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Center(
+                              child: LoadingAnimationWidget.inkDrop(
+                                color: Colors.amber,
+                                size: 35,
+                              ),
+                            ),
+                          ),
                         );
                       },
                     );
@@ -154,33 +167,51 @@ class _CreateAccountBankPageState extends ConsumerState<CreateAccountBankPage> {
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
-                    onPressed: () {
-                      var userAccountBankRequest = UserAccountBankRequest(
-                        bankAccountNumber: bankAccountNumberController.text,
-                        bankName: bankNameController.text,
-                        bankCode: selectedBankCode,
-                        realUserName: bankAccountNameController.text,
-                        userId: ref.read(userDataProvider).valueOrNull?.authKey,
-                        userName: ref.read(userDataProvider).valueOrNull?.name,
-                        isDefault: false,
-                      );
+                    onPressed: saveDataState.isLoading
+                        ? null
+                        : () {
+                            var userAccountBankRequest = UserAccountBankRequest(
+                              bankAccountNumber:
+                                  bankAccountNumberController.text,
+                              bankName: selectedBankName,
+                              bankCode: selectedBankCode,
+                              realUserName: bankAccountNameController.text,
+                              userId: ref
+                                  .read(userDataProvider)
+                                  .valueOrNull
+                                  ?.authKey,
+                              userName: Uuid()
+                                  .v4()
+                                  .toString()
+                                  .removeWhitespace
+                                  .replaceAll('-', ''),
+                              isDefault: false,
+                              email:
+                                  ref.read(userDataProvider).valueOrNull?.email,
+                            );
 
-                      ref
-                          .read(createUserBankAccountProvider.notifier)
-                          .postAccountBank(
-                            userAccountBankRequest: userAccountBankRequest,
-                          );
-                    },
+                            ref
+                                .read(createUserBankAccountProvider.notifier)
+                                .postAccountBank(
+                                  userAccountBankRequest:
+                                      userAccountBankRequest,
+                                );
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF104993),
                     ),
-                    child: AutoSizeText(
-                      'Simpan Rekening Bank',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    child: saveDataState.isLoading
+                        ? LoadingAnimationWidget.newtonCradle(
+                            color: Colors.amber,
+                            size: 35,
+                          )
+                        : AutoSizeText(
+                            'Simpan Rekening Bank',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ],

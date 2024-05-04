@@ -26,6 +26,7 @@ class TransactionDocument with _$TransactionDocument {
     String? transactionTime,
     String? paymentType,
     String? paymentCode,
+    String? note,
   }) = _TransactionDocument;
 
   factory TransactionDocument.fromJson(Map<String, dynamic> json) =>
@@ -50,5 +51,6 @@ class TransactionDocument with _$TransactionDocument {
         paymentType: json['paymentType'],
         transactionTime: json['transactionTime'],
         vaNumber: json['vaNumber'],
+        note: json['note'],
       );
 }

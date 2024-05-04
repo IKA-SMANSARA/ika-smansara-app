@@ -27,6 +27,30 @@ class NetworkClientHelper {
       ),
     );
 
+  // DIO CLIENT HELPER FOR PAYOUT
+  static final Dio _payoutClient = Dio(
+    BaseOptions(
+      baseUrl: dotenv.env['MIDTRANS_IRIS_URL'].toString(),
+      contentType: Headers.jsonContentType,
+      headers: {
+        'Authorization':
+            'Basic ${dotenv.env['MIDTRANS_IRIS_API_KEY'].toString()}',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    ),
+  )..interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
+        maxWidth: 80,
+      ),
+    );
+
   // APPWRITE CLIENT HELPER
   static final Client _appwriteClient = Client()
       .setEndpoint(dotenv.env['BASE_URL'].toString())
@@ -37,5 +61,6 @@ class NetworkClientHelper {
   static final instance = NetworkClientHelper._();
 
   Dio get midtransSNAPClient => _midtransSNAPClient;
+  Dio get payoutClient => _payoutClient;
   Client get appwriteClient => _appwriteClient;
 }

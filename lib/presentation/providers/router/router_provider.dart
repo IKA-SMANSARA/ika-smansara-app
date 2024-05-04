@@ -15,7 +15,9 @@ import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
+import 'package:ika_smansara/presentation/pages/payout_history_page/payout_history_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
+import 'package:ika_smansara/presentation/pages/request_payout_page/request_payout_page.dart';
 import 'package:ika_smansara/presentation/pages/success_add_bank_account_page/success_add_bank_account_page.dart';
 import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/update_campaign_page/update_campaign_page.dart';
@@ -103,6 +105,16 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => UpdateUserProfilePage(
             userProfileDocument: state.extra as UserProfileDocument,
           ),
+        ),
+        GoRoute(
+          path: '/payout-history-page',
+          name: 'payout-history-page',
+          builder: (context, state) => const PayoutHistoryPage(),
+        ),
+        GoRoute(
+          path: '/request-payout-page',
+          name: 'request-payout-page',
+          builder: (context, state) => const RequestPayoutPage(),
         ),
         GoRoute(
           path: '/my-campaigns-list-page',
