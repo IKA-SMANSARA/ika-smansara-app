@@ -8,6 +8,7 @@ import 'package:ika_smansara/domain/entities/midtrans_transaction_response.dart'
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/usecases/snap_payment/snap_payment_params.dart';
 import 'package:ika_smansara/domain/usecases/usecase.dart';
+import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/utils/constants.dart';
 
 class SnapPayment
@@ -32,7 +33,9 @@ class SnapPayment
     );
     final MidtransItemRequest _midtransItemRequest = MidtransItemRequest(
       id: params.transactionRequest.campaignId,
-      name: 'check campaign name by admin, with id campaign',
+      name: validateStringLength(
+        params.transactionRequest.campaignName.toString(),
+      ),
       price: params.transactionRequest.amount,
       quantity: 1,
     );
@@ -54,6 +57,10 @@ class SnapPayment
     );
 
     Constants.logger.d(result.resultValue);
+
+    Constants.logger.d('SNAP ${validateStringLength(
+      params.transactionRequest.campaignName.toString(),
+    )}');
 
     if (result is Success) {
       return switch (result) {

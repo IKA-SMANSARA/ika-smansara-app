@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
@@ -34,31 +35,28 @@ class CustomTextButton extends StatelessWidget {
         verticalSpace(4),
         SizedBox(
           width: double.infinity,
-          child: GestureDetector(
-            onTap: onTap,
-            child: Container(
-              height: 55,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(
-                  color: Colors.grey.shade800,
-                ),
+          child: Container(
+            height: 55,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(
+                color: Colors.grey.shade800,
               ),
-              padding: const EdgeInsets.only(left: 8),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: AutoSizeText(
-                  (textEditingController.text != '')
-                      ? textEditingController.text
-                      : title,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
+            ),
+            padding: const EdgeInsets.only(left: 8),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: AutoSizeText(
+                (textEditingController.text != '')
+                    ? textEditingController.text
+                    : title,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
               ),
             ),
-          ),
+          ).onClick(onTap!),
         ),
       ],
     );

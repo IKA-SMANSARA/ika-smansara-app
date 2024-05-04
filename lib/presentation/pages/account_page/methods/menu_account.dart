@@ -44,6 +44,9 @@ Widget menuAccount({
                   height: 20,
                 ),
                 title: 'Riwayat Pencairan Dana',
+                onTap: () => ref.read(routerProvider).pushNamed(
+                      'payout-history-page',
+                    ),
               ),
               verticalSpace(16),
               menuAccountItem(

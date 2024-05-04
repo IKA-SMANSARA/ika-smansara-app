@@ -23,7 +23,7 @@ class AppwriteListBankRepository implements ListBankRepository {
         collectionId: dotenv.env['LIST_BANK_DOCUMENT_ID'].toString(),
       );
 
-      Constants.logger.d(result);
+      Constants.logger.d('list bank ${result.documents}');
 
       if (result.documents.isNotEmpty) {
         return Result.success(
