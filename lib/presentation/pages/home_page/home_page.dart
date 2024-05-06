@@ -1,3 +1,5 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
@@ -10,12 +12,36 @@ import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_l
 import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:video_player/video_player.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  late VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoPlayerController = VideoPlayerController.asset(
+      'assets/images/tutorial.mp4',
+    )..initialize().then((_) {
+        _videoPlayerController.play();
+      });
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ListView(
       children: [
         Stack(
@@ -29,15 +55,64 @@ class HomePage extends ConsumerWidget {
             Column(
               children: [
                 verticalSpace(16),
-                headerImageLogo(
-                  context: context,
+                Row(
+                  children: [
+                    horizontalSpace(16),
+                    Expanded(
+                      flex: 7,
+                      child: headerImageLogo(
+                        context: context,
+                      ),
+                    ),
+                    horizontalSpace(
+                      MediaQuery.of(context).size.width * 0.30,
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 14,
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.info_outline,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ).onClick(
+                        () => {
+                          // play video
+                          setState(() {
+                            _videoPlayerController.play();
+                            _videoPlayerController.setLooping(true);
+                          }),
+
+                          showAdaptiveDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                child: Container(
+                                  child: _videoPlayerController
+                                          .value.isInitialized
+                                      ? VideoPlayer(_videoPlayerController)
+                                      : Container(
+                                          child: AutoSizeText('Network Error!'),
+                                        ),
+                                ),
+                              );
+                            },
+                          )
+                        },
+                      ),
+                    ),
+                  ],
                 ),
                 verticalSpace(16),
                 carouselImages(
                   context: context,
                   carouselImagesValue: ref.watch(getListCarouselsProvider),
                 ),
-                verticalSpace(30),
+                verticalSpace(28),
                 categoryList(
                   context: context,
                   categories: ref.watch(getListCategoryProvider),

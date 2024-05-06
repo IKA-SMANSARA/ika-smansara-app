@@ -21,7 +21,7 @@ class AppwriteAuthentication implements Authentication {
     required String password,
   }) async {
     try {
-      var result = await _account.createEmailSession(
+      var result = await _account.createEmailPasswordSession(
         email: email,
         password: password,
       );
