@@ -118,11 +118,10 @@ Widget checkoutInformationTable({
         TableRow(
           children: [
             AutoSizeText(
-              'Total Pembayaran',
+              'Total Dana yang Diterima',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
-                color: const Color(0xFF104993),
+                fontSize: 12,
               ),
               textAlign: TextAlign.start,
             ),
@@ -130,7 +129,7 @@ Widget checkoutInformationTable({
               totalAmount,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 12,
               ),
               textAlign: TextAlign.end,
             ),

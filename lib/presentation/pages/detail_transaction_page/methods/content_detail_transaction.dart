@@ -9,6 +9,7 @@ import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 List<Widget>? contentDetailTransaction({
   required AsyncValue<TransactionDocument?> transactions,
@@ -110,6 +111,7 @@ List<Widget>? contentDetailTransaction({
                   ),
                   textAlign: TextAlign.end,
                 ),
+                // TimerCountdown(endTime: DateTime.now().add(Duration()),),),
               ],
             ),
             TableRow(
@@ -155,7 +157,7 @@ List<Widget>? contentDetailTransaction({
                   textAlign: TextAlign.start,
                 ),
                 AutoSizeText(
-                  paymentType(data?.paymentType ?? ''),
+                  paymentType(data?.paymentType ?? '').toUpperCase(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -249,7 +251,7 @@ List<Widget>? contentDetailTransaction({
             TableRow(
               children: [
                 AutoSizeText(
-                  'Donasi',
+                  'Donasi yang Dibayarkan',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -257,7 +259,8 @@ List<Widget>? contentDetailTransaction({
                   textAlign: TextAlign.start,
                 ),
                 AutoSizeText(
-                  (data?.amount ?? 0).toIDRCurrencyFormat(),
+                  ((data?.amount ?? 0) + (data?.paymentFee ?? 0))
+                      .toIDRCurrencyFormat(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -301,7 +304,7 @@ List<Widget>? contentDetailTransaction({
             TableRow(
               children: [
                 AutoSizeText(
-                  'Total',
+                  'Total Dana yang Diterima',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -309,8 +312,7 @@ List<Widget>? contentDetailTransaction({
                   textAlign: TextAlign.start,
                 ),
                 AutoSizeText(
-                  ((data?.amount ?? 0) + (data?.paymentFee ?? 0))
-                      .toIDRCurrencyFormat(),
+                  (data?.amount ?? 0).toIDRCurrencyFormat(),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
