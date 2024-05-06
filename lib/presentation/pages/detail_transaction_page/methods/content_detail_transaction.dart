@@ -9,7 +9,6 @@ import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 List<Widget>? contentDetailTransaction({
   required AsyncValue<TransactionDocument?> transactions,
