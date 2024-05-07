@@ -39,12 +39,11 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
     200000.toIDRCurrencyFormat(),
     500000.toIDRCurrencyFormat(),
   ];
-  var _paymentFee = 1500;
+  var _paymentFee = (0.0 * 0.015).toInt();
   var _paymentMethodValue = ['other_qris'];
 
   @override
   void initState() {
-    _groupButtonSelectedPaymentMethodController.selectIndex(0);
     super.initState();
   }
 
@@ -93,6 +92,16 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                     if (!isSelected) {
                       _amountNominal.text = '';
                     }
+
+                    _groupButtonSelectedPaymentMethodController.selectIndex(0);
+                    _paymentFee = (int.parse((_amountNominal.text != '')
+                        ? _amountNominal.text
+                        .replaceAll('.', '')
+                        .replaceAll('Rp', '')
+                        .replaceAll(' ', '0')
+                        .replaceAll('-', '0')
+                        : '0').toDouble() * 0.015).toInt();
+                    _paymentMethodValue = ['other_qris'];
                   });
                 },
                 controller: _groupButtonAmountNominalController,
@@ -204,9 +213,8 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                 controller: _groupButtonSelectedPaymentMethodController,
                 onSelected: (contentSelected, index, isSelected) {
                   setState(() {
-                    _paymentFee = int.parse(contentSelected);
-
-                    if (contentSelected != '1500') {
+                    if (contentSelected == '5550') {
+                      _paymentFee = int.parse(contentSelected);
                       _paymentMethodValue = [
                         'echannel',
                         'permata_va',
@@ -217,6 +225,13 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                         'other_va',
                       ];
                     } else {
+                      _paymentFee = (int.parse((_amountNominal.text != '')
+                          ? _amountNominal.text
+                          .replaceAll('.', '')
+                          .replaceAll('Rp', '')
+                          .replaceAll(' ', '0')
+                          .replaceAll('-', '0')
+                          : '0').toDouble() * 0.015).toInt();
                       _paymentMethodValue = ['other_qris'];
                     }
 
@@ -296,14 +311,14 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                   bottom: 16,
                 ),
                 child: buttonPay(
-                  isEnable: int.parse((_amountNominal.text != '')
+                  isEnable: (int.parse((_amountNominal.text != '')
                           ? _amountNominal.text
                               .replaceAll('.', '')
                               .replaceAll('Rp', '')
                               .replaceAll(' ', '0')
                               .replaceAll('-', '0')
                           : '0') >=
-                      50000,
+                      50000) &&(_paymentFee != 0),
                   onPress: () {
                     var transactionRequestData = TransactionRequest(
                       amount: int.parse(
