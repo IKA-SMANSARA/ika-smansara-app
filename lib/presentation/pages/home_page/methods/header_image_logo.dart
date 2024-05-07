@@ -5,9 +5,6 @@ import 'package:ika_smansara/presentation/misc/methods.dart';
 Widget headerImageLogo({
   required BuildContext context,
 }) =>
-    Center(
-      child: Assets.images.ikaSmansaraHeaderHome.svg(
-        width: double.infinity,
-        height: headerImageLogoHeight(context),
-      ),
+    Assets.images.ikaSmansaraHeaderHome.svg(
+      height: headerImageLogoHeight(context),
     );

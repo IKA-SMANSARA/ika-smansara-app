@@ -56,7 +56,7 @@ int responsiveGridMenuCrossAxisCount(BuildContext context) {
 
 double responsiveImageAspectRatio(BuildContext context) {
   if (MediaQuery.of(context).size.width <= MinimumScreenSize.smallScreenWidth) {
-    return 1.7;
+    return 1.4;
   } else if (MediaQuery.of(context).size.width <=
       MinimumScreenSize.expandedScreenWidth) {
     return 2.7;

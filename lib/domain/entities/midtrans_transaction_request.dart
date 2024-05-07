@@ -20,6 +20,9 @@ class MidtransTransactionRequest with _$MidtransTransactionRequest {
     List<MidtransItemRequest>? midtransItemRequest,
     @JsonKey(name: 'customer_details')
     MidtransCustomerDetailsRequest? midtransCustomerDetailsRequest,
+    @JsonKey(name: 'enabled_payments')
+    @Default(['other_qris'])
+    List<String> enabledPayments,
   }) = _MidtransTransactionRequest;
 
   factory MidtransTransactionRequest.fromJson(Map<String, dynamic> json) =>
