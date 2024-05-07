@@ -36,6 +36,7 @@ class TransactionRequest with _$TransactionRequest {
     String? campaignDescription,
     String? campaignCreatedBy,
     String? note,
+    @Default(['other_qris']) List<String> enabledPayments,
   }) = _TransactionRequest;
 
   factory TransactionRequest.fromJson(Map<String, dynamic> json) =>

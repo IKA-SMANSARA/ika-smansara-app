@@ -50,6 +50,7 @@ class SnapPayment
       midtransCustomerDetailsRequest: _midtransCustomerDetailsRequest,
       midtransItemRequest: [_midtransItemRequest],
       midtransTransactionDetailsRequest: _midtransTransactionDetailsRequest,
+      enabledPayments: params.transactionRequest.enabledPayments,
     );
 
     var result = await _paymentGatewayRepository.getAcquiringTransactionToken(

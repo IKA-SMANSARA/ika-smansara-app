@@ -34,6 +34,15 @@ class WebviewSnapPage extends ConsumerWidget {
               useHybridComposition: true,
               allowsInlineMediaPlayback: true,
             ),
+            onDownloadStartRequest: (controller, request) async {
+              final taskId = await FlutterDownloader.enqueue(
+                url: request.url.toString(),
+                savedDir: '/storage/emulated/0/Download',
+                saveInPublicStorage: true,
+              );
+
+              Constants.logger.d(taskId);
+            },
             shouldOverrideUrlLoading: (controller, navigationAction) async {
               Constants.logger.w("request url ${navigationAction.request.url}");
               RegExp pattern = RegExp(r"/pdf$");
