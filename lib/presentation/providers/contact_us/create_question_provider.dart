@@ -4,6 +4,7 @@ import 'package:ika_smansara/domain/entities/threads_document.dart';
 import 'package:ika_smansara/domain/entities/threads_request.dart';
 import 'package:ika_smansara/domain/usecases/create_question_to_admin/create_question_to_admin.dart';
 import 'package:ika_smansara/domain/usecases/create_question_to_admin/create_question_to_admin_params.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/usecase/create_question_to_admin_use_case_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -35,6 +36,10 @@ class CreateQuestion extends _$CreateQuestion {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
+        ref.read(routerProvider).pushNamed(
+              'get_question_detail',
+              extra: data.id,
+            );
       case Failed(:final message):
         state = AsyncError(
           FlutterError(message),

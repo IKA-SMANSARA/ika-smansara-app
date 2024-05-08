@@ -140,7 +140,7 @@ class AppwriteThreadsRepository implements ThreadsRepository {
 
       return Result.success(
         ThreadsDocument.fromJson(
-          result.toMap(),
+          result.data,
         ),
       );
     } on AppwriteException catch (e) {

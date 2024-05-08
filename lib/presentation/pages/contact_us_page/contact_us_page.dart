@@ -6,6 +6,7 @@ import 'package:ika_smansara/domain/entities/threads_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/create_question_provider.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -41,7 +42,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
       },
     );
 
-    // reset text field content if success post question
+    // reset text field content and open question detail page, if success post question
     if (postQuestionData.asData != null) {
       setState(() {
         threadContentController.text = '';
