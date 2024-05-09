@@ -72,6 +72,7 @@ class AppwriteThreadsRepository implements ThreadsRepository {
         collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
         queries: [
           Query.equal('isDeleted', false),
+          Query.orderDesc('\$updatedAt'),
         ],
       );
 
@@ -103,7 +104,8 @@ class AppwriteThreadsRepository implements ThreadsRepository {
         collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
         queries: [
           Query.equal('isDeleted', false),
-          Query.equal('createdBy', '$userId')
+          Query.equal('userId', '$userId'),
+          Query.orderDesc('\$updatedAt'),
         ],
       );
 

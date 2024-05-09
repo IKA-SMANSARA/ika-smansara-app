@@ -65,6 +65,7 @@ class ListUserQuestionPage extends ConsumerWidget {
                           postDate: data?[index].updatedAt ?? '',
                           questionStatus: data?[index].isOpen ?? false,
                           username: data?[index].username ?? '',
+                          isLongContent: false,
                         ).onClick(
                           () => ref.read(routerProvider).pushNamed(
                                 'get_question_detail',

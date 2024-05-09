@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/get_user_question_detail_provider.dart';
+import 'package:ika_smansara/presentation/widgets/horizontal_question_card.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class GetQuestionDetailPage extends ConsumerStatefulWidget {
   final String threadId;
+
   const GetQuestionDetailPage({
     super.key,
     required this.threadId,
@@ -39,16 +41,27 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
         title: AutoSizeText('Detail Pertanyaan'),
       ),
       body: questionDetailData.isLoading
-          ? Center(
-              child: LoadingAnimationWidget.inkDrop(
-                color: Colors.amber,
-                size: 50,
+          ? Container(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: LoadingAnimationWidget.inkDrop(
+                  color: Colors.amber,
+                  size: 50,
+                ),
               ),
             )
           : ListView(
+              padding: const EdgeInsets.all(16),
               children: [
-                Text(
-                  '${questionDetailData.valueOrNull?.threadContent}',
+                HorizontalQuestionCard(
+                  content: questionDetailData.valueOrNull?.threadContent ?? '',
+                  editedStatus:
+                      questionDetailData.valueOrNull?.isEdited ?? false,
+                  postDate: questionDetailData.valueOrNull?.updatedAt ?? '',
+                  questionStatus:
+                      questionDetailData.valueOrNull?.isOpen ?? false,
+                  username: questionDetailData.valueOrNull?.username ?? '',
+                  isLongContent: true,
                 ),
               ],
             ),

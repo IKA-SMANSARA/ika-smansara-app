@@ -208,6 +208,14 @@ Color paymentStatusBackgroundColor(String paymentStatus) {
   }
 }
 
+Color questionStatusBackgroundColor(bool questionStatus) {
+  if (questionStatus) {
+    return Colors.green;
+  } else {
+    return Colors.red;
+  }
+}
+
 String validateStringLength(String defaultString) {
   if (defaultString.length < 19) {
     return defaultString;

@@ -7,6 +7,7 @@ class HorizontalQuestionCard extends StatelessWidget {
   final bool editedStatus;
   final String postDate;
   final String content;
+  final bool isLongContent;
 
   const HorizontalQuestionCard({
     super.key,
@@ -15,6 +16,7 @@ class HorizontalQuestionCard extends StatelessWidget {
     required this.editedStatus,
     required this.postDate,
     required this.content,
+    required this.isLongContent,
   });
 
   @override
@@ -72,17 +74,26 @@ class HorizontalQuestionCard extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: Text(
-              content,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
+          isLongContent
+              ? Expanded(
+                  child: Text(
+                    content,
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                )
+              : Expanded(
+                  child: Text(
+                    content,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
