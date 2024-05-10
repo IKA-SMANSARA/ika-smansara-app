@@ -111,29 +111,33 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                       child: AutoSizeText('Kirim Pertanyaan'),
                     ),
                     verticalSpace(32),
-                    AutoSizeText(
-                      'Daftar Pertanyaan Lain',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ).onClick(() {
-                      ref.read(routerProvider).pushNamed(
-                            'list_all_question',
-                          );
-                    }),
-                    verticalSpace(16),
-                    AutoSizeText(
-                      'Daftar Pertanyaan Saya',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ).onClick(() {
-                      ref.read(routerProvider).pushNamed(
-                            'list_user_question',
-                          );
-                    }),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AutoSizeText(
+                          'Daftar Pertanyaan Lain',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ).onClick(() {
+                          ref.read(routerProvider).pushNamed(
+                                'list_all_question',
+                              );
+                        }),
+                        AutoSizeText(
+                          'Daftar Pertanyaan Saya',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ).onClick(() {
+                          ref.read(routerProvider).pushNamed(
+                                'list_user_question',
+                              );
+                        }),
+                      ],
+                    ),
                     verticalSpace(16),
                   ],
                 ),
