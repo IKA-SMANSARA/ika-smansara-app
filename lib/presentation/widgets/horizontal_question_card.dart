@@ -125,10 +125,6 @@ class HorizontalQuestionCard extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
-            color: Colors.grey[900],
-            height: 1,
-          ),
         ],
       ),
     );

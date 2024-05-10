@@ -118,7 +118,9 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ).onClick(() {
-                      context.showSnackBar('OPEN NEW PAGE');
+                      ref.read(routerProvider).pushNamed(
+                            'list_all_question',
+                          );
                     }),
                     verticalSpace(16),
                     AutoSizeText(

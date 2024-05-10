@@ -3,37 +3,23 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/providers/contact_us/get_list_user_question_provider.dart';
+import 'package:ika_smansara/presentation/providers/contact_us/get_list_all_question_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
-import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/horizontal_question_card.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class ListUserQuestionPage extends ConsumerWidget {
-  const ListUserQuestionPage({super.key});
+class ListAllQuestionPage extends ConsumerWidget {
+  const ListAllQuestionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var userData = ref.watch(userDataProvider);
     var listUserQuestionData = ref.watch(
-      getListUserQuestionProvider(
-        userId: userData.valueOrNull?.authKey ?? '',
-      ),
-    );
-
-    // show error information if failed get user data
-    ref.listen(
-      userDataProvider,
-      (_, state) => state.showSnackbarOnError(
-        context,
-      ),
+      getListAllQuestionProvider,
     );
 
     // show error information if failed get list user question
     ref.listen(
-      getListUserQuestionProvider(
-        userId: userData.valueOrNull?.authKey ?? '',
-      ),
+      getListAllQuestionProvider,
       (_, state) => state.showSnackbarOnError(
         context,
       ),
@@ -42,7 +28,7 @@ class ListUserQuestionPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: AutoSizeText(
-          'Pertanyaan Saya',
+          'Pertanyaan',
         ),
       ),
       body: listUserQuestionData.isLoading
