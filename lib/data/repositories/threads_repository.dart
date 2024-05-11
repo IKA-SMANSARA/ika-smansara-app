@@ -13,6 +13,10 @@ abstract interface class ThreadsRepository {
     required String threadId,
   });
 
+  Future<Result<List<ThreadsDocument>>> getListAnswerThread({
+    required String threadId,
+  });
+
   Future<Result<ThreadsDocument>> editThread({
     required ThreadsRequest threadsRequest,
   });

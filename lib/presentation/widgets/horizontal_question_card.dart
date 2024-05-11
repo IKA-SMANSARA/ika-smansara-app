@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
@@ -22,7 +23,7 @@ class HorizontalQuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 5,
+      height: MediaQuery.of(context).size.height / 6.5,
       padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 16,
@@ -33,23 +34,24 @@ class HorizontalQuestionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: Text(
-                    'Pertanyaan dari : ${username.toUpperCase()}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width / 2,
+                child: Text(
+                  questionStatus ? 'Pertanyaan dari : ${username.toUpperCase()}': 'Dijawab oleh : ${username.toUpperCase()}',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
                   ),
                 ),
-                Container(
+              ),
+              Visibility(
+                visible: questionStatus,
+                child: Container(
                   decoration: BoxDecoration(
                     color: questionStatusBackgroundColor(questionStatus),
                     borderRadius: BorderRadius.all(
@@ -71,59 +73,55 @@ class HorizontalQuestionCard extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          verticalSpace(16),
           isLongContent
-              ? Expanded(
+              ? Text(
+                content,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              )
+              : Text(
+                content,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+          verticalSpace(16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                formatDate(
+                  postDate,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
+              Visibility(
+                visible: editedStatus,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: Text(
-                    content,
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                )
-              : Expanded(
-                  child: Text(
-                    content,
+                    editedStatus ? 'edited' : '',
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
+                    maxLines: 1,
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 10,
                     ),
                   ),
                 ),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  formatDate(
-                    postDate,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-                Visibility(
-                  visible: editedStatus,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Text(
-                      editedStatus ? 'edited' : '',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

@@ -180,4 +180,38 @@ class AppwriteThreadsRepository implements ThreadsRepository {
       return Result.failed(e.message ?? 'Error!');
     }
   }
+
+  @override
+  Future<Result<List<ThreadsDocument>>> getListAnswerThread({
+    required String threadId,
+  }) async {
+    try {
+      var result = await _databases.listDocuments(
+        databaseId: dotenv.env['DATABASE_ID'].toString(),
+        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
+        queries: [
+          Query.equal('isDeleted', false),
+          Query.equal('isAnswer', true),
+          Query.orderDesc('\$updatedAt'),
+          Query.equal('replyingThreadId', threadId),
+        ],
+      );
+
+      Constants.logger.d(result.documents);
+
+      if (result.documents.isNotEmpty) {
+        return Result.success(
+          result.documents
+              .map(
+                (e) => ThreadsDocument.fromJson(e.data),
+              )
+              .toList(),
+        );
+      } else {
+        return Result.success([]);
+      }
+    } on AppwriteException catch (e) {
+      return Result.failed(e.message ?? 'Error!');
+    }
+  }
 }

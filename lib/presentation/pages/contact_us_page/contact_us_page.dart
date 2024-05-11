@@ -8,6 +8,7 @@ import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/create_question_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/custom_text_button.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -69,7 +70,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                     ),
                     verticalSpace(24),
                     SizedBox(
-                      height: 200,
+                      height: 250,
                       child: CustomTextField(
                         labelText: 'Tulis pertanyaan disini',
                         controller: threadContentController,
@@ -112,7 +113,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                     ),
                     verticalSpace(32),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         AutoSizeText(
                           'Daftar Pertanyaan Lain',
