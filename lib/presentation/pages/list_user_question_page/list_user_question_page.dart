@@ -66,6 +66,7 @@ class ListUserQuestionPage extends ConsumerWidget {
                       itemCount: data?.length ?? 0,
                       itemBuilder: (context, index) {
                         return HorizontalQuestionCard(
+                          isAnswer: data?[index].isAnswer ?? false,
                           content: data?[index].threadContent ?? '',
                           editedStatus: data?[index].isEdited ?? false,
                           postDate: data?[index].updatedAt ?? '',

@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 
 class HorizontalQuestionCard extends StatelessWidget {
   final String username;
   final bool questionStatus;
+  final bool isAnswer;
   final bool editedStatus;
   final String postDate;
   final String content;
@@ -18,12 +19,13 @@ class HorizontalQuestionCard extends StatelessWidget {
     required this.postDate,
     required this.content,
     required this.isLongContent,
+    required this.isAnswer,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 6.5,
+      height: MediaQuery.of(context).size.height / 4,
       padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 16,
@@ -40,7 +42,9 @@ class HorizontalQuestionCard extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Text(
-                  questionStatus ? 'Pertanyaan dari : ${username.toUpperCase()}': 'Dijawab oleh : ${username.toUpperCase()}',
+                  !isAnswer
+                      ? 'Pertanyaan dari : ${username.toUpperCase()}'
+                      : 'Dijawab oleh : ${username.toUpperCase()}',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: TextStyle(
@@ -50,7 +54,7 @@ class HorizontalQuestionCard extends StatelessWidget {
                 ),
               ),
               Visibility(
-                visible: questionStatus,
+                visible: !isAnswer,
                 child: Container(
                   decoration: BoxDecoration(
                     color: questionStatusBackgroundColor(questionStatus),
@@ -78,21 +82,23 @@ class HorizontalQuestionCard extends StatelessWidget {
           ),
           verticalSpace(16),
           isLongContent
-              ? Text(
-                content,
-                style: TextStyle(
-                  fontSize: 16,
+              ? AutoSizeText(
+                  content,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                )
+              : Expanded(
+                  child: Text(
+                    content,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              )
-              : Text(
-                content,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
           verticalSpace(16),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
