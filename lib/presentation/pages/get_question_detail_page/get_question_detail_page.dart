@@ -1,6 +1,5 @@
 import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/threads_request.dart';
@@ -30,6 +29,7 @@ class GetQuestionDetailPage extends ConsumerStatefulWidget {
 
 class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
   final TextEditingController responseTextController = TextEditingController();
+  final TextEditingController questionTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -145,8 +145,7 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
                 verticalSpace(32),
                 Visibility(
                   visible: (questionDetailData.valueOrNull?.isOpen == true) &&
-                      (userData.valueOrNull?.isAdmin ==
-                          true),
+                      (userData.valueOrNull?.isAdmin == true),
                   child: Column(
                     children: [
                       SizedBox(
@@ -207,7 +206,91 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // initial default edit text for edit question
+                          setState(() {
+                            questionTextController.text =
+                                questionDetailData.valueOrNull?.threadContent ??
+                                    '';
+                          });
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (_) => Dialog(
+                              insetPadding: const EdgeInsets.all(16),
+                              child: ListView(
+                                padding: const EdgeInsets.all(16),
+                                children: [
+                                  verticalSpace(16),
+                                  AutoSizeText(
+                                    'Ubah Pertanyaan',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24,
+                                    ),
+                                  ),
+                                  verticalSpace(16),
+                                  SizedBox(
+                                    height: context.height / 2,
+                                    child: CustomTextField(
+                                      maxLines: null,
+                                      expands: true,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      labelText: 'Tulis pertanyaan',
+                                      controller: questionTextController,
+                                    ),
+                                  ),
+                                  verticalSpace(16),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      context.displayAlertDialog(
+                                        title: 'Ubah Pertanyaan',
+                                        content:
+                                            'Apakah anda yakin ingin mengubah pertanyaan ?',
+                                        positiveButtonText: 'Ya',
+                                        onPositivePressed: () {
+                                          var threadsRequest = ThreadsRequest(
+                                            id: questionDetailData
+                                                .valueOrNull?.id,
+                                            isAnswer: questionDetailData
+                                                .valueOrNull?.isAnswer,
+                                            isDeleted: questionDetailData
+                                                .valueOrNull?.isDeleted,
+                                            isEdited: questionDetailData
+                                                .valueOrNull?.isEdited,
+                                            isOpen: questionDetailData
+                                                .valueOrNull?.isOpen,
+                                            isQuestion: questionDetailData
+                                                .valueOrNull?.isQuestion,
+                                            threadContent:
+                                                questionTextController.text
+                                                    .trim(),
+                                            userId: questionDetailData
+                                                .valueOrNull?.userId,
+                                            username: questionDetailData
+                                                .valueOrNull?.username,
+                                            replyingThreadId: questionDetailData
+                                                .valueOrNull?.replyingThreadId,
+                                          );
+
+                                          ref
+                                              .read(updateUserThreadProvider
+                                                  .notifier)
+                                              .postUpdateThread(
+                                                threadsRequest: threadsRequest,
+                                              );
+
+                                          Navigator.pop(context);
+                                        },
+                                      );
+                                    },
+                                    child: AutoSizeText('Ubah Pertanyaan'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF28A262),
                         ),
@@ -244,7 +327,7 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
 
                               ref
                                   .read(updateUserThreadProvider.notifier)
-                                  .postUpdateThread(
+                                  .closeThread(
                                     threadsRequest: threadsRequest,
                                   );
 
