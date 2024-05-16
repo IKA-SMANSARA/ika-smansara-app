@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/foundation.dart';
 import 'package:ika_smansara/domain/entities/result.dart';
 import 'package:ika_smansara/domain/entities/threads_document.dart';
