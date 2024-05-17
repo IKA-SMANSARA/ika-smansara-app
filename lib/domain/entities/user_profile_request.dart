@@ -15,6 +15,7 @@ class UserProfileRequest with _$UserProfileRequest {
     String? phone,
     @Default(false) bool isAlumni,
     @Default(false) bool isAdmin,
+    @Default(false) bool isPanitia,
     @Default(false) bool isDeleted,
     @Default('0') String graduateYear,
     String? authKey,
@@ -33,5 +34,6 @@ class UserProfileRequest with _$UserProfileRequest {
         name: json['name'],
         phone: json['phone'],
         photoProfileUrl: json['photoProfileUrl'],
+        isPanitia: json['isPanitia'],
       );
 }

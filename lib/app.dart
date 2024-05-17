@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
@@ -22,6 +23,12 @@ class App extends ConsumerWidget {
       routeInformationProvider:
           ref.watch(routerProvider).routeInformationProvider,
       routerDelegate: ref.watch(routerProvider).routerDelegate,
+      builder: (context, child) {
+        return UpgradeAlert(
+          child: child,
+          navigatorKey: ref.watch(routerProvider).routerDelegate.navigatorKey,
+        );
+      },
     );
   }
 }
