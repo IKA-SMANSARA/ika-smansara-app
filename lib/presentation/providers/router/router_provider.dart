@@ -11,7 +11,10 @@ import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart
 import 'package:ika_smansara/presentation/pages/create_account_bank_page/create_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_transaction_page.dart';
+import 'package:ika_smansara/presentation/pages/list_all_question_page/list_all_question_page.dart';
+import 'package:ika_smansara/presentation/pages/get_question_detail_page/get_question_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
+import 'package:ika_smansara/presentation/pages/list_user_question_page/list_user_question_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
@@ -50,6 +53,23 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/create_campaign',
           name: 'create_campaign',
           builder: (context, state) => const CreateCampaignPage(),
+        ),
+        GoRoute(
+          path: '/list_user_question',
+          name: 'list_user_question',
+          builder: (context, state) => const ListUserQuestionPage(),
+        ),
+        GoRoute(
+          path: '/list_all_question',
+          name: 'list_all_question',
+          builder: (context, state) => const ListAllQuestionPage(),
+        ),
+        GoRoute(
+          path: '/get_question_detail',
+          name: 'get_question_detail',
+          builder: (context, state) => GetQuestionDetailPage(
+            threadId: state.extra as String,
+          ),
         ),
         GoRoute(
           path: '/list-campaign-page',

@@ -18,6 +18,7 @@ class UserProfileDocument with _$UserProfileDocument {
     String? phone,
     @Default(false) bool? isAlumni,
     @Default(false) bool? isAdmin,
+    @Default(false) bool? isPanitia,
     @Default(false) bool? isDeleted,
     @Default('0') String? graduateYear,
     String? authKey,
@@ -42,5 +43,6 @@ class UserProfileDocument with _$UserProfileDocument {
         name: json['name'],
         phone: json['phone'],
         photoProfileUrl: json['photoProfileUrl'],
+        isPanitia: json['isPanitia'],
       );
 }

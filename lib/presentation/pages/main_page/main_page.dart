@@ -2,6 +2,7 @@ import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
+import 'package:ika_smansara/presentation/pages/contact_us_page/contact_us_page.dart';
 import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
 import 'package:ika_smansara/presentation/pages/my_donation_page/my_donation_page.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
@@ -55,6 +56,9 @@ class _MainPageState extends ConsumerState<MainPage> {
               Center(
                 child: AccountPage(),
               ),
+              Center(
+                child: ContactUsPage(),
+              ),
             ],
           ),
           BottomNavBar(
@@ -79,6 +83,13 @@ class _MainPageState extends ConsumerState<MainPage> {
                 title: 'Akun',
                 iconData: Icons.person_outline,
                 selectedIconData: Icons.person,
+              ),
+              BottomNavBarItem(
+                index: 3,
+                isSelected: selectedPage == 3,
+                title: 'Hubungi Kami',
+                iconData: Icons.headset_mic_outlined,
+                selectedIconData: Icons.headset_mic,
               ),
             ],
             onTap: (index) {
