@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
@@ -11,28 +12,36 @@ Widget carouselCampaignImage({
   required AsyncValue<List<CampaignDocument>> campaigns,
 }) =>
     campaigns.when(
-      data: (data) => FlutterCarousel.builder(
-        itemCount: data.length,
-        itemBuilder: (context, itemIndex, pageViewIndex) {
-          return SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: CachedNetworkImage(
-              imageUrl: data[itemIndex].photoThumbnail ?? '',
-              placeholder: (context, url) => const LinearProgressIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+      data: (data) => data.length != 0
+          ? FlutterCarousel.builder(
+              itemCount: data.length,
+              itemBuilder: (context, itemIndex, pageViewIndex) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: CachedNetworkImage(
+                    imageUrl: data[itemIndex].photoThumbnail ?? '',
+                    placeholder: (context, url) =>
+                        const LinearProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
+                );
+              },
+              options: CarouselOptions(
+                aspectRatio: responsiveImageAspectRatio(context),
+                autoPlay: true,
+                enableInfiniteScroll: enableInfiniteScrollStatus(
+                  listLength: data.length,
+                ),
+                showIndicator: false,
+                viewportFraction: 1,
+              ),
+            )
+          : Container(
+              child: Center(
+                child: AutoSizeText(''),
+              ),
             ),
-          );
-        },
-        options: CarouselOptions(
-          aspectRatio: responsiveImageAspectRatio(context),
-          autoPlay: true,
-          enableInfiniteScroll: enableInfiniteScrollStatus(
-            listLength: data.length,
-          ),
-          showIndicator: false,
-          viewportFraction: 1,
-        ),
-      ),
       error: (error, stackTrace) => const Center(
         child: Text('NETWORK ERROR!'),
       ),
