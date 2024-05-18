@@ -10,27 +10,19 @@ List<Widget> listCampaigns({
   void Function(CampaignDocument campaign)? onTap,
 }) =>
     (campaigns.whenOrNull(
-          data: (data) => data.length != 0
-              ? data
-                  .map(
-                    (campaign) => HorizontalCampaignCard(
-                      onTap: () => onTap?.call(campaign),
-                      imageUrl: campaign.photoThumbnail ?? '',
-                      campaignName: campaign.campaignName ?? '',
-                      dateEndCampaign: campaign.dateEndCampaign ?? '',
-                      campaignGoalAmount: campaign.goalAmount ?? 0,
-                      campaignCurrentAmount: campaign.currentAmount ?? 0,
-                      cardWidth: double.infinity,
-                    ),
-                  )
-                  .toList()
-              : [
-                  Container(
-                    child: Center(
-                      child: AutoSizeText('Belum Ada Kegiatan'),
-                    ),
-                  ),
-                ],
+          data: (data) => data
+              .map(
+                (campaign) => HorizontalCampaignCard(
+                  onTap: () => onTap?.call(campaign),
+                  imageUrl: campaign.photoThumbnail ?? '',
+                  campaignName: campaign.campaignName ?? '',
+                  dateEndCampaign: campaign.dateEndCampaign ?? '',
+                  campaignGoalAmount: campaign.goalAmount ?? 0,
+                  campaignCurrentAmount: campaign.currentAmount ?? 0,
+                  cardWidth: double.infinity,
+                ),
+              )
+              .toList(),
           error: (error, stackTrace) => [
             Center(
               child: AutoSizeText(
