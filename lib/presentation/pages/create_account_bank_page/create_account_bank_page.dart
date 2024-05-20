@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/create_user_bank_account_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_list_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';

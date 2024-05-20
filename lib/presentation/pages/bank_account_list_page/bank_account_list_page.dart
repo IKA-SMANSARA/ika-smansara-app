@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/methods/bank_account_item.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/delete_account_bank_provider.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';

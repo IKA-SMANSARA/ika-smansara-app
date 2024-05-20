@@ -1,3 +1,4 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +12,6 @@ import 'package:ika_smansara/presentation/pages/checkout_page/methods/checkout_i
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:ika_smansara/utils/constants.dart';
 
 class CheckoutPage extends ConsumerStatefulWidget {
   final CampaignDocument? campaign;

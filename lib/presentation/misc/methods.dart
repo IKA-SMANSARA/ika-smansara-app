@@ -5,29 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:jiffy/jiffy.dart';
 
-Map<double, SizedBox> _verticalSpaces = {};
-Map<double, SizedBox> _horizontalSpaces = {};
-
-SizedBox verticalSpace(double height) {
-  if (!_verticalSpaces.containsKey(height)) {
-    _verticalSpaces[height] = SizedBox(
-      height: height,
-    );
-  }
-
-  return _verticalSpaces[height] ?? const SizedBox();
-}
-
-SizedBox horizontalSpace(double width) {
-  if (!_horizontalSpaces.containsKey(width)) {
-    _horizontalSpaces[width] = SizedBox(
-      width: width,
-    );
-  }
-
-  return _horizontalSpaces[width] ?? const SizedBox();
-}
-
 double getCampaignProgressIndicatorValue(
   int goalAmount,
   int currentAmount,
