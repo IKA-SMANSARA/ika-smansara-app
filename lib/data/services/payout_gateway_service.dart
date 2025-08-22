@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:ika_smansara/domain/entities/beneficiaries_response.dart';
 import 'package:ika_smansara/domain/entities/payout_response.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 part 'payout_gateway_service.g.dart';
 
