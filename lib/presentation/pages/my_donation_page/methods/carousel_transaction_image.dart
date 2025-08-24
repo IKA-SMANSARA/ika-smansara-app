@@ -27,7 +27,7 @@ Widget carouselTransactionImage({
             ),
           );
         },
-        options: FlutterCarouselOptions(
+        options: CarouselOptions(
           aspectRatio: responsiveImageAspectRatio(context),
           autoPlay: true,
           enableInfiniteScroll: enableInfiniteScrollStatus(

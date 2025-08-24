@@ -19,7 +19,7 @@ Widget carouselImages({
                 'https://picsum.photos/seed/picsum/200/300',
           );
         },
-        options: FlutterCarouselOptions(
+        options: CarouselOptions(
           aspectRatio: responsiveImageAspectRatio(context),
           autoPlay: true,
           showIndicator: false,

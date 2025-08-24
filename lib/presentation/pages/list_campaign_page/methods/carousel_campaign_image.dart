@@ -27,7 +27,7 @@ Widget carouselCampaignImage({
                   ),
                 );
               },
-              options: FlutterCarouselOptions(
+              options: CarouselOptions(
                 aspectRatio: responsiveImageAspectRatio(context),
                 autoPlay: true,
                 enableInfiniteScroll: enableInfiniteScrollStatus(
