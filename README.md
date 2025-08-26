@@ -11,6 +11,8 @@ USING A LATER VERSION OF FLUTTER IS STRICTLY PROHIBITED
 
 SOME DEPENDENCIES DO NOT SUPPORT THE LATEST VERSION OF DART
 
+please use [https://fvm.app/](fvm) or [https://mise.jdx.dev/](mise) to use flutter with specified version
+
 ---
 
 ## Getting Started 🚀
