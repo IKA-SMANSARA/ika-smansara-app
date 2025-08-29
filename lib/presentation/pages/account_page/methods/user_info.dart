@@ -1,9 +1,9 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 
 Widget userInfo({
   bool isAdmin = false,

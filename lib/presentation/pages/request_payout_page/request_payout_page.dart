@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/payout_item_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/account_bank/get_account_bank_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/payout/create_payout_provider.dart';

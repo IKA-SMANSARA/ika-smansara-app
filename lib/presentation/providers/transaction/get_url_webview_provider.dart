@@ -13,6 +13,26 @@ Future<MidtransTransactionResponse?> getUrlWebview(
   GetUrlWebviewRef ref, {
   required TransactionRequest transactionRequest,
 }) async {
+  // Validate email before calling snap payment
+  final email = transactionRequest.userEmail;
+  if (email == null || email.isEmpty) {
+    throw Exception('Email is required for payment');
+  }
+
+  // Basic email validation
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  if (!emailRegex.hasMatch(email)) {
+    throw Exception('Invalid email format. Please use a valid email address.');
+  }
+
+  // Check for common invalid email patterns
+  if (email.contains('test.com') ||
+      email.contains('example.com') ||
+      email.split('@')[0].length < 2 ||
+      email.split('@')[1].split('.')[0].length < 2) {
+    throw Exception('Please use a valid email address (not test/example emails)');
+  }
+
   SnapPayment snapPayment = ref.read(snapPaymentUseCaseProvider);
 
   var result = await snapPayment(
@@ -23,6 +43,6 @@ Future<MidtransTransactionResponse?> getUrlWebview(
 
   return switch (result) {
     Success(value: final data) => data,
-    Failed(message: _) => null,
+    Failed(:final message) => throw Exception(message ?? 'Payment initialization failed'),
   };
 }

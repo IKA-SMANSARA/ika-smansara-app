@@ -24,10 +24,7 @@ class GetCampaignDetail
     Constants.logger.d(result.resultValue);
 
     if (result is Success) {
-      return switch (result) {
-        Success(value: final data) => Result.success(data),
-        Failed(:final message) => Result.failed(message),
-      };
+      return Result.success((result as Success).value);
     } else {
       Constants.logger.e(result.errorMessage);
       return Result.failed(result.errorMessage ?? 'Error!');
