@@ -1,12 +1,11 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/utils/constants.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class UserProfilePage extends ConsumerStatefulWidget {

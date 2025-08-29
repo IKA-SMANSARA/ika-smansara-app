@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/threads_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/create_question_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
