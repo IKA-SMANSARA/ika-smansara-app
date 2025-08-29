@@ -319,7 +319,45 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                               .replaceAll('-', '0')
                           : '0') >=
                       50000) &&(_paymentFee != 0),
-                  onPress: () {
+                   onPress: () {
+                    // Validate email before proceeding
+                    final userEmail = ref.read(userDataProvider).valueOrNull?.email;
+                    if (userEmail == null || userEmail.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Email is required for payment'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                      return;
+                    }
+
+                    // Basic email validation
+                    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                    if (!emailRegex.hasMatch(userEmail)) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please enter a valid email address'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                      return;
+                    }
+
+                    // Check for common invalid email patterns
+                    if (userEmail.contains('test.com') ||
+                        userEmail.contains('example.com') ||
+                        userEmail.split('@')[0].length < 2 ||
+                        userEmail.split('@')[1].split('.')[0].length < 2) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please use a valid email address (not test/example emails)'),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                      return;
+                    }
+
                     var transactionRequestData = TransactionRequest(
                       amount: int.parse(
                         (_amountNominal.text != '')
@@ -338,7 +376,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                       userName: ref.read(userDataProvider).valueOrNull?.name,
                       userAddress:
                           ref.read(userDataProvider).valueOrNull?.address,
-                      userEmail: ref.read(userDataProvider).valueOrNull?.email,
+                      userEmail: userEmail,
                       userPhone: ref.read(userDataProvider).valueOrNull?.phone,
                       transactionId: getRandomOrderIdNumber(),
                       backerCount: widget.campaign?.backerCount,
