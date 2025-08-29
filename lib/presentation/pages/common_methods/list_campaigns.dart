@@ -14,6 +14,7 @@ List<Widget> listCampaigns({
               ? data
                   .map(
                     (campaign) => HorizontalCampaignCard(
+                      key: ValueKey(campaign.id ?? campaign.hashCode),
                       onTap: () => onTap?.call(campaign),
                       imageUrl: campaign.photoThumbnail ?? '',
                       campaignName: campaign.campaignName ?? '',

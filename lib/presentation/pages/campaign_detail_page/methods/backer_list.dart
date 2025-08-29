@@ -50,6 +50,7 @@ List<Widget> backerList({
             data: (data) => data
                 .map(
                   (e) => BackerCard(
+                    key: ValueKey(e.id ?? e.hashCode),
                     backerName: e.userName ?? '',
                     amount: (e.amount ?? 0).toIDRCurrencyFormat(),
                     dateTime: countDays(

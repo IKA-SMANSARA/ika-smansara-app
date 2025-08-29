@@ -78,6 +78,15 @@ android {
         multiDexEnabled true
     }
 
+    buildFeatures {
+        buildConfig = true
+        compose = false
+        aidl = false
+        renderScript = false
+        resValues = false
+        shaders = false
+    }
+
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -88,7 +97,7 @@ android {
     }
 
     flavorDimensions "default"
-    productFlavors { 
+    productFlavors {
         production {
             dimension "default"
             applicationIdSuffix ""
