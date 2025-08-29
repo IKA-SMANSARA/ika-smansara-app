@@ -46,6 +46,7 @@ List<Widget> campaignList({
             children: data
                 .map(
                   (campaign) => Padding(
+                    key: ValueKey(campaign.id ?? campaign.hashCode),
                     padding: EdgeInsets.only(
                       left: campaign == data.first ? 24 : 10,
                       right: campaign == data.last ? 24 : 0,

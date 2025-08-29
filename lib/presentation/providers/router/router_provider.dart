@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
@@ -81,38 +82,80 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/campaign-detail-page',
           name: 'campaign-detail-page',
-          builder: (context, state) => CampaignDetailPage(
-            campaign: state.extra as CampaignDocument,
-            fromHome: state.uri.queryParameters['from-home'] ?? 'true',
-          ),
+          builder: (context, state) {
+            final campaign = state.extra;
+            if (campaign is! CampaignDocument) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid campaign data'),
+                ),
+              );
+            }
+            return CampaignDetailPage(
+              campaign: campaign,
+              fromHome: state.uri.queryParameters['from-home'] ?? 'true',
+            );
+          },
         ),
         GoRoute(
           path: '/checkout-page',
           name: 'checkout-page',
-          builder: (context, state) => CheckoutPage(
-            state.extra as CampaignDocument,
-          ),
+          builder: (context, state) {
+            final campaign = state.extra;
+            if (campaign is! CampaignDocument) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid campaign data'),
+                ),
+              );
+            }
+            return CheckoutPage(campaign);
+          },
         ),
         GoRoute(
           path: '/backer-list-page',
           name: 'backer-list-page',
-          builder: (context, state) => BackerListPage(
-            state.extra as CampaignDocument,
-          ),
+          builder: (context, state) {
+            final campaign = state.extra;
+            if (campaign is! CampaignDocument) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid campaign data'),
+                ),
+              );
+            }
+            return BackerListPage(campaign);
+          },
         ),
         GoRoute(
           path: '/webview-snap-page',
           name: 'webview-snap-page',
-          builder: (context, state) => WebviewSnapPage(
-            state.extra as TransactionRequest,
-          ),
+          builder: (context, state) {
+            final transaction = state.extra;
+            if (transaction is! TransactionRequest) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid transaction data'),
+                ),
+              );
+            }
+            return WebviewSnapPage(transaction);
+          },
         ),
         GoRoute(
           path: '/detail-transaction-page',
           name: 'detail-transaction-page',
-          builder: (context, state) => DetailTransactionPage(
-            transactionId: state.extra as String,
-          ),
+          builder: (context, state) {
+            final transactionId = state.extra;
+            if (transactionId is! String) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid transaction ID'),
+                ),
+              );
+            }
+            return DetailTransactionPage(transactionId: transactionId);
+          },
         ),
         GoRoute(
           path: '/user-profile-page',
@@ -122,9 +165,17 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/update-user-profile-page',
           name: 'update-user-profile-page',
-          builder: (context, state) => UpdateUserProfilePage(
-            userProfileDocument: state.extra as UserProfileDocument,
-          ),
+          builder: (context, state) {
+            final userProfile = state.extra;
+            if (userProfile is! UserProfileDocument) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid user profile data'),
+                ),
+              );
+            }
+            return UpdateUserProfilePage(userProfileDocument: userProfile);
+          },
         ),
         GoRoute(
           path: '/payout-history-page',
@@ -139,9 +190,17 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/my-campaigns-list-page',
           name: 'my-campaigns-list-page',
-          builder: (context, state) => MyCampaignsPage(
-            userId: state.extra as String,
-          ),
+          builder: (context, state) {
+            final userId = state.extra;
+            if (userId is! String) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid user ID'),
+                ),
+              );
+            }
+            return MyCampaignsPage(userId: userId);
+          },
         ),
         GoRoute(
           path: '/bank-account-list-page',
@@ -161,9 +220,17 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
         GoRoute(
           path: '/update-account-bank-page',
           name: 'update-account-bank-page',
-          builder: (context, state) => UpdateAccountBankPage(
-            userAccountBankDocument: state.extra as UserAccountBankDocument,
-          ),
+          builder: (context, state) {
+            final accountBank = state.extra;
+            if (accountBank is! UserAccountBankDocument) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Invalid account bank data'),
+                ),
+              );
+            }
+            return UpdateAccountBankPage(userAccountBankDocument: accountBank);
+          },
         ),
         GoRoute(
           path: '/update-campaign-page',

@@ -63,6 +63,7 @@ class _BankAccountListPageState extends ConsumerState<BankAccountListPage> {
                 data: (data) => data
                     .map(
                       (accountBank) => Slidable(
+                        key: ValueKey(accountBank.id ?? accountBank.hashCode),
                         endActionPane: ActionPane(
                           motion: const DrawerMotion(),
                           children: [
