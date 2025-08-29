@@ -13,10 +13,12 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-//def flutterRoot = localProperties.getProperty('flutter.sdk')
-//if (flutterRoot == null) {
-//    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-//}
+// Load key properties
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
@@ -28,30 +30,13 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
-
-//apply plugin: 'com.android.application'
-// START: FlutterFire Configuration
-//apply plugin: 'com.google.gms.google-services'
-// END: FlutterFire Configuration
-//apply plugin: 'kotlin-android'
-//apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
-
 android {
     namespace "com.ikasmansara.ika_smansara"
     compileSdkVersion 35
-    //flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
-        // Flag to enable support for the new language APIs
         coreLibraryDesugaringEnabled true
-        // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -65,26 +50,12 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.ikasmansara.ika_smansara"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
-        //flutter.minSdkVersion
         targetSdkVersion 35
-        //flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
-    }
-
-    buildFeatures {
-        buildConfig = true
-        compose = false
-        aidl = false
-        renderScript = false
-        resValues = false
-        shaders = false
     }
 
     signingConfigs {
@@ -93,6 +64,14 @@ android {
             keyPassword keystoreProperties['keyPassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
             storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
 
@@ -115,15 +94,13 @@ android {
         }
     }
 
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
-        }
-        debug {
-            signingConfig signingConfigs.debug
-        }
+    buildFeatures {
+        buildConfig = true
+        compose = false
+        aidl = false
+        renderScript = false
+        resValues = false
+        shaders = false
     }
 }
 
@@ -132,9 +109,7 @@ flutter {
 }
 
 dependencies {
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.9.0'
-    // multidex
     implementation 'androidx.multidex:multidex:2.0.1'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
     implementation 'androidx.window:window:1.0.0'
