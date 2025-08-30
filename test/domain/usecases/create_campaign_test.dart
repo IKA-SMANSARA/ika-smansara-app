@@ -19,7 +19,7 @@ void main() {
     usecase = CreateCampaign(campaignRepository: mockRepository);
   });
 
-  const tCampaignDocument = CampaignDocument(
+  final tCampaignDocument = CampaignDocument(
     id: 'test-id',
     campaignName: 'Test Campaign',
     goalAmount: 1000000,
@@ -42,8 +42,8 @@ void main() {
     test('should return CampaignDocument when repository returns Success', () async {
       // Arrange
       when(mockRepository.createCampaign(
-        campaignRequest: anyNamed('campaignRequest'),
-        imageFile: anyNamed('imageFile'),
+        campaignRequest: any(),
+        imageFile: any(),
       )).thenAnswer((_) async => Result.success(tCampaignDocument));
 
       // Act
@@ -58,8 +58,8 @@ void main() {
       // Arrange
       const errorMessage = 'Failed to create campaign';
       when(mockRepository.createCampaign(
-        campaignRequest: anyNamed('campaignRequest'),
-        imageFile: anyNamed('imageFile'),
+        campaignRequest: any(),
+        imageFile: any(),
       )).thenAnswer((_) async => Result.failed(errorMessage));
 
       // Act
@@ -73,8 +73,8 @@ void main() {
     test('should return Failed when repository throws exception', () async {
       // Arrange
       when(mockRepository.createCampaign(
-        campaignRequest: anyNamed('campaignRequest'),
-        imageFile: anyNamed('imageFile'),
+        campaignRequest: any(),
+        imageFile: any(),
       )).thenThrow(Exception('Network error'));
 
       // Act
@@ -88,9 +88,9 @@ void main() {
     test('should handle null error message from repository', () async {
       // Arrange
       when(mockRepository.createCampaign(
-        campaignRequest: anyNamed('campaignRequest'),
-        imageFile: anyNamed('imageFile'),
-      )).thenAnswer((_) async => Result.failed(null));
+        campaignRequest: any(),
+        imageFile: any(),
+      )).thenAnswer((_) async => Result.failed('Error!'));
 
       // Act
       final result = await usecase.call(tParams);

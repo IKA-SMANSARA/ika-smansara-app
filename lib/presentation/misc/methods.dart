@@ -9,7 +9,9 @@ double getCampaignProgressIndicatorValue(
   int goalAmount,
   int currentAmount,
 ) {
-  return (currentAmount / goalAmount) * 100 / 100;
+  if (goalAmount <= 0) return 0.0;
+  final progress = currentAmount / goalAmount;
+  return progress.clamp(0.0, 1.0);
 }
 
 bool enableInfiniteScrollStatus({int? listLength = 0}) {

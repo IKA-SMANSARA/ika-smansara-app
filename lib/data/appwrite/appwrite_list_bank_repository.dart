@@ -13,21 +13,21 @@ class AppwriteListBankRepository implements ListBankRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
 
   @override
   Future<Result<List<ListBankDocument>>> getListBank() async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['LIST_BANK_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['LIST_BANK_DOCUMENT_ID'] ?? 'default-collection',
       );
 
-      Constants.logger.d('list bank ${result.documents}');
+      Constants.logger.d('list bank ${result.rows}');
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => ListBankDocument.fromJson(e.data),
               )
