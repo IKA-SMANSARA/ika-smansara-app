@@ -60,7 +60,7 @@ class AppwriteAuthentication implements Authentication {
   }) async {
     try {
       var result = await _account.create(
-        userId: 'unique()',
+        userId: ID.unique(),
         email: email,
         password: password,
         name: name,
@@ -85,9 +85,11 @@ class AppwriteAuthentication implements Authentication {
       return uid.$id;
     } on AppwriteException catch (e) {
       Constants.logger.e(e);
-      if (e.code != 401 || e.type != 'general_unauthorized_scope') rethrow;
+      // Check for unauthorized access
+      if (e.code == 401) {
+        return null;
+      }
+      rethrow;
     }
-
-    return null;
   }
 }

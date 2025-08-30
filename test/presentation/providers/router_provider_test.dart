@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
@@ -82,8 +83,6 @@ void main() {
         final transaction = TransactionRequest(
           campaignId: 'campaign-123',
           amount: 100000,
-          customerDetails: null,
-          itemDetails: null,
         );
 
         final route = router.routeInformationParser.configuration.findMatch(

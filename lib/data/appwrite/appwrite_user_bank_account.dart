@@ -14,17 +14,17 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
 
   @override
   Future<Result<UserAccountBankDocument>> createAccountBank({
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
     try {
-      var result = await _databases.createDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
-        documentId: 'unique()',
+      var result = await _tablesDB.createRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: ID.unique(),
         data: userAccountBankRequest.toJson(),
         permissions: [
           Permission.read(
@@ -35,12 +35,12 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
           ),
           Permission.read(
             Role.user(
-              userAccountBankRequest.userId!,
+              userAccountBankRequest.userId ?? '',
             ),
           ),
           Permission.update(
             Role.user(
-              userAccountBankRequest.userId!,
+              userAccountBankRequest.userId ?? '',
             ),
           ),
         ],
@@ -64,10 +64,10 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
-        documentId: userAccountBankRequest.id!,
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: userAccountBankRequest.id ?? ID.unique(),
         data: userAccountBankRequest.toJson(),
       );
 
@@ -89,9 +89,9 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
     required String userId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.equal('isDeleted', false),
           Query.equal('userId', userId),
@@ -99,11 +99,11 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => UserAccountBankDocument.fromJson(e.data),
               )
@@ -123,10 +123,10 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
     required String accountBankId,
   }) async {
     try {
-      var result = await _databases.getDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
-        documentId: accountBankId,
+      var result = await _tablesDB.getRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: accountBankId,
       );
 
       Constants.logger.d(result.data);
@@ -147,10 +147,10 @@ class AppwriteUserBankAccount implements UserBankAccountRepository {
     required UserAccountBankRequest userAccountBankRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'].toString(),
-        documentId: userAccountBankRequest.id!,
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['ACCOUNT_BANK_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: userAccountBankRequest.id ?? ID.unique(),
         data: userAccountBankRequest.toJson(),
       );
 

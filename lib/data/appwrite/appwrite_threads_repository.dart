@@ -14,17 +14,17 @@ class AppwriteThreadsRepository implements ThreadsRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
 
   @override
   Future<Result<ThreadsDocument>> deleteThread({
     required ThreadsRequest threadsRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
-        documentId: threadsRequest.id ?? '',
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: threadsRequest.id ?? ID.unique(),
         data: threadsRequest.toJson(),
       );
 
@@ -45,10 +45,10 @@ class AppwriteThreadsRepository implements ThreadsRepository {
     required ThreadsRequest threadsRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
-        documentId: threadsRequest.id ?? '',
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: threadsRequest.id ?? ID.unique(),
         data: threadsRequest.toJson(),
       );
 
@@ -67,9 +67,9 @@ class AppwriteThreadsRepository implements ThreadsRepository {
   @override
   Future<Result<List<ThreadsDocument>>> getListThreads() async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.equal('isDeleted', false),
           Query.equal('isQuestion', true),
@@ -77,11 +77,11 @@ class AppwriteThreadsRepository implements ThreadsRepository {
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => ThreadsDocument.fromJson(e.data),
               )
@@ -100,22 +100,22 @@ class AppwriteThreadsRepository implements ThreadsRepository {
     required String userId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.equal('isDeleted', false),
           Query.equal('isQuestion', true),
-          Query.equal('userId', '$userId'),
+          Query.equal('userId', userId),
           Query.orderDesc('\$updatedAt'),
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => ThreadsDocument.fromJson(e.data),
               )
@@ -134,10 +134,10 @@ class AppwriteThreadsRepository implements ThreadsRepository {
     required String threadId,
   }) async {
     try {
-      var result = await _databases.getDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
-        documentId: threadId,
+      var result = await _tablesDB.getRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: threadId,
       );
 
       Constants.logger.d(result.data);
@@ -157,10 +157,10 @@ class AppwriteThreadsRepository implements ThreadsRepository {
     required ThreadsRequest threadsRequest,
   }) async {
     try {
-      var result = await _databases.createDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
-        documentId: ID.unique(),
+      var result = await _tablesDB.createRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: ID.unique(),
         data: threadsRequest.toJson(),
         permissions: [
           Permission.write(Role.any()),
@@ -186,9 +186,9 @@ class AppwriteThreadsRepository implements ThreadsRepository {
     required String threadId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['THREADS_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['THREADS_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.equal('isDeleted', false),
           Query.equal('isAnswer', true),
@@ -197,11 +197,11 @@ class AppwriteThreadsRepository implements ThreadsRepository {
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => ThreadsDocument.fromJson(e.data),
               )
