@@ -2,51 +2,86 @@
 
 ## Build/Lint/Test Commands
 - **Prerequisites**: Flutter 3.32.8 (use `mise` or `fvm`), run `flutter pub get` after cloning
-- **Code Generation**: `dart run build_runner build` (Freezed/Riverpod/JSON serializable)
+- **Code Generation**: `dart run build_runner build` (Freezed/Riverpod/JSON serializable/Retrofit)
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
-- **Lint**: `flutter analyze` (uses custom_lint)
+- **Lint**: `flutter analyze` (uses custom_lint + riverpod_lint)
 - **Test All**: `flutter test`
 - **Test Single**: `flutter test test/path/to/test_file.dart`
 - **Test Watch**: `flutter test --watch`
+- **Clean**: `flutter clean && flutter pub get`
 
 ## Code Style Guidelines
 - **Architecture**: Clean Architecture (Domain → Data → Presentation)
-- **State Management**: Riverpod with `@riverpod` annotation
-- **Data Classes**: Freezed with `@freezed` (immutable models, JSON serialization)
-- **Error Handling**: Result pattern with `Success<T>`/`Failed<T>` types
-- **Imports**: Group as Flutter → Third-party → Project (use relative imports within project)
+- **State Management**: Riverpod with `@riverpod` annotation + riverpod_generator
+- **Data Classes**: Freezed with `@freezed` (immutable models, custom JSON serialization for Appwrite)
+- **Error Handling**: Result pattern with `Success<T>`/`Failed<T>` types + switch expressions
+- **Imports**: Group as Flutter → Third-party → Project (relative imports within project)
 - **Naming**: Classes (PascalCase), methods/variables (camelCase), files (snake_case), constants (UPPER_SNAKE_CASE)
 - **Formatting**: 80 char line limit, always use braces, full null safety, `const` for immutable collections
 - **Logging**: `Constants.logger.d()` for debug, `.e()` for errors
-- **Testing**: flutter_test + mockito for mocking repositories
+- **Testing**: flutter_test + mockito for mocking (AAA pattern: Arrange-Act-Assert)
+- **JSON**: Custom fromJson for Appwrite entities (handle `$id`, `$createdAt` fields)
 
 ## Key Patterns
 ```dart
-// Freezed Entity
+// Freezed Entity with Custom JSON (Appwrite pattern)
 @freezed
 class CampaignDocument with _$CampaignDocument {
-  factory CampaignDocument({String? id, @Default(0) int? goalAmount}) = _CampaignDocument;
-  factory CampaignDocument.fromJson(Map<String, dynamic> json) => _$CampaignDocumentFromJson(json);
+  factory CampaignDocument({
+    String? id,
+    @Default(0) int? goalAmount,
+    // ... other fields
+  }) = _CampaignDocument;
+
+  factory CampaignDocument.fromJson(Map<String, dynamic> json) => CampaignDocument(
+    id: json['\$id'],  // Handle Appwrite special fields
+    goalAmount: json['goalAmount'],
+    // ... map other fields
+  );
 }
 
 // Riverpod Provider
 @riverpod
-CampaignRepository campaignRepository(CampaignRepositoryRef ref) => AppwriteCampaignRepository();
+Future<CampaignDocument?> getCampaignDetail(
+  GetCampaignDetailRef ref, {
+  required String campaignId,
+}) async {
+  final result = await ref.read(getCampaignDetailUseCaseProvider)(
+    GetCampaignDetailParams(campaignId: campaignId),
+  );
 
-// Error Handling
-if (result is Success) {
-  return Result.success((result as Success).value);
-} else {
-  return Result.failed(result.errorMessage ?? 'Error!');
+  return switch (result) {
+    Success(value: final campaign) => campaign,
+    Failed(message: _) => null,
+  };
 }
+
+// Error Handling with Result Pattern
+final result = await usecase.call(params);
+return switch (result) {
+  Success(value: final data) => Result.success(data),
+  Failed(message: final error) => Result.failed(error ?? 'Unknown error'),
+};
 ```
 
 ## File Structure
 ```
 lib/
-├── domain/entities/     # Freezed data models
-├── domain/usecases/     # Business logic
-├── data/repositories/   # Repository interfaces
-├── data/appwrite/       # Appwrite implementations
-└── presentation/        # Riverpod providers + UI
+├── domain/
+│   ├── entities/        # Freezed data models + custom JSON
+│   └── usecases/        # Business logic with params/result
+├── data/
+│   ├── repositories/    # Repository interfaces
+│   ├── appwrite/        # Appwrite implementations
+│   └── services/        # External service integrations
+└── presentation/
+    ├── providers/       # Riverpod providers + state management
+    ├── pages/          # UI screens
+    └── widgets/        # Reusable UI components
 ```
+
+## Development Workflow
+1. **New Feature**: Create entity → usecase → repository → provider → UI
+2. **Data Changes**: Update Freezed entity → run `dart run build_runner build`
+3. **Testing**: Write tests for usecases → mock repositories → verify behavior
+4. **State Management**: Use Riverpod providers for reactive state updates

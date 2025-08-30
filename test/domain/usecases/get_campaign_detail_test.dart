@@ -5,7 +5,7 @@ import 'package:ika_smansara/domain/usecases/get_campaign_detail/get_campaign_de
 import 'package:ika_smansara/domain/usecases/get_campaign_detail/get_campaign_detail_params.dart';
 import 'package:mockito/mockito.dart';
 
-import '../helpers/test_helper.dart';
+import '../../helpers/test_helper.dart';
 
 void main() {
   late GetCampaignDetail usecase;

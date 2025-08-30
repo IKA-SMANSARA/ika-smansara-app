@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ika_smansara/data/helpers/network_client_helper.dart';
 import 'package:ika_smansara/data/repositories/campaign_repository.dart';
@@ -11,13 +12,33 @@ import 'package:ika_smansara/utils/constants.dart';
 
 class AppwriteCampaignRepository implements CampaignRepository {
   final Client _appwriteClient;
+  late final TablesDB _tablesDB;
+  late final Storage _storage;
 
-  AppwriteCampaignRepository({Client? appwriteClient})
-      : _appwriteClient =
-            appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
+  AppwriteCampaignRepository({
+    Client? appwriteClient,
+    TablesDB? tablesDB,
+    Storage? storage,
+  }) : _appwriteClient =
+            appwriteClient ?? NetworkClientHelper.instance.appwriteClient {
+    _tablesDB = tablesDB ?? TablesDB(_appwriteClient);
+    _storage = storage ?? Storage(_appwriteClient);
+  }
 
-  late final _databases = Databases(_appwriteClient);
-  late final _storage = Storage(_appwriteClient);
+  // Factory constructor for testing with direct mock injection
+  @visibleForTesting
+  factory AppwriteCampaignRepository.forTesting({
+    required TablesDB tablesDB,
+    required Storage storage,
+  }) {
+    return AppwriteCampaignRepository(
+      appwriteClient: Client()
+        ..setEndpoint('http://localhost')
+        ..setProject('test'),
+      tablesDB: tablesDB,
+      storage: storage,
+    );
+  }
 
   @override
   Future<Result<CampaignDocument>> createCampaign({
@@ -26,13 +47,18 @@ class AppwriteCampaignRepository implements CampaignRepository {
   }) async {
     try {
       final imageId = ID.unique();
-      final file = InputFile.fromPath(
-        path: imageFile?.path ?? '',
-        filename: 'campaign-${imageFile?.path}',
-      );
+      final file = imageFile != null
+          ? InputFile.fromPath(
+              path: imageFile.path,
+              filename: 'campaign-${imageFile.path.split('/').last}',
+            )
+          : InputFile.fromPath(
+              path: '',
+              filename: 'campaign-default',
+            );
 
       var uploadPhotoCampaign = _storage.createFile(
-        bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+        bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'] ?? 'default-bucket',
         fileId: imageId,
         file: file,
         permissions: [
@@ -42,27 +68,29 @@ class AppwriteCampaignRepository implements CampaignRepository {
 
       var imageUrl = '';
 
-      await uploadPhotoCampaign.then(
-        (response) {
-          if (response.$id != '') {
-            imageUrl =
-                'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
-          } else {
-            imageUrl = '';
-          }
-        },
-      );
+      if (imageFile != null) {
+        await uploadPhotoCampaign.then(
+          (response) {
+            if (response.$id != '') {
+              imageUrl =
+                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'] ?? 'default-project'}&mode=admin';
+            } else {
+              imageUrl = '';
+            }
+          },
+        );
+      }
 
       Constants.logger.d('IMAGE URL $imageUrl');
 
-      if (imageUrl != '') {
-        var result = await _databases.createDocument(
-          databaseId: dotenv.env['DATABASE_ID'].toString(),
-          collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-          documentId: ID.unique(),
+      if (imageFile == null || imageUrl != '') {
+        var result = await _tablesDB.createRow(
+          databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+          tableId: dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
+          rowId: ID.unique(),
           data: campaignRequest
               .copyWith(
-                photoThumbnail: imageUrl,
+                photoThumbnail: imageFile != null ? imageUrl : '',
               )
               .toJson(),
           permissions: [
@@ -98,10 +126,10 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required CampaignRequest campaignRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: campaignRequest.id ?? 'unique()',
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: campaignRequest.id ?? ID.unique(),
         data: campaignRequest.toJson(),
       );
 
@@ -129,21 +157,21 @@ class AppwriteCampaignRepository implements CampaignRepository {
         Query.equal('isActive', true),
       ];
 
-      (categoryName != '')
-          ? filterQueries.add(Query.search('categories', '$categoryName'))
-          : filterQueries;
+      if (categoryName.isNotEmpty) {
+        filterQueries.add(Query.search('categories', categoryName));
+      }
 
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
         queries: filterQueries,
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => CampaignDocument.fromJson(e.data),
               )
@@ -163,10 +191,11 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required String campaignId,
   }) async {
     try {
-      var result = await _databases.getDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: campaignId,
+      var result = await _tablesDB.getRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId:
+            dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: campaignId,
       );
 
       Constants.logger.d(result.data);
@@ -185,9 +214,10 @@ class AppwriteCampaignRepository implements CampaignRepository {
   @override
   Future<Result<List<CampaignDocument>>> getNewCampaigns() async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId:
+            dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.limit(5),
           Query.orderDesc('dateStartCampaign'),
@@ -196,11 +226,11 @@ class AppwriteCampaignRepository implements CampaignRepository {
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => CampaignDocument.fromJson(e.data),
               )
@@ -225,14 +255,14 @@ class AppwriteCampaignRepository implements CampaignRepository {
       final file = imageFile != null
           ? InputFile.fromPath(
               path: imageFile.path,
-              filename: 'campaign-${imageFile.path}',
+              filename: 'campaign-${imageFile.path.split('/').last}',
             )
           : null;
       var imageUrl = '';
 
       if (file != null) {
         var uploadPhotoCampaign = _storage.createFile(
-          bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+          bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'] ?? 'default-bucket',
           fileId: imageId,
           file: file,
           permissions: [
@@ -244,7 +274,7 @@ class AppwriteCampaignRepository implements CampaignRepository {
           (response) {
             if (response.$id != '') {
               imageUrl =
-                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'] ?? 'default-project'}&mode=admin';
             } else {
               imageUrl = '';
             }
@@ -254,11 +284,12 @@ class AppwriteCampaignRepository implements CampaignRepository {
 
       Constants.logger.d('IMAGE URL $imageUrl');
 
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
-        documentId: campaignRequest.id ?? 'unique()',
-        data: (imageUrl != '')
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId:
+            dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: campaignRequest.id ?? ID.unique(),
+        data: (imageUrl.isNotEmpty)
             ? campaignRequest.copyWith(photoThumbnail: imageUrl).toJson()
             : campaignRequest.toJson(),
       );
@@ -281,22 +312,23 @@ class AppwriteCampaignRepository implements CampaignRepository {
     required String userId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['CAMPAIGN_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId:
+            dotenv.env['CAMPAIGN_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.orderDesc('dateStartCampaign'),
           Query.equal('isDeleted', false),
           Query.equal('isActive', true),
-          Query.equal('createdBy', '$userId')
+          Query.equal('createdBy', userId)
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => CampaignDocument.fromJson(e.data),
               )

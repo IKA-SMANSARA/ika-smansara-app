@@ -15,7 +15,7 @@ class AppwriteTransactionRepository implements TransactionRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
 
   @override
   Future<Result<TransactionDocument>> createTransaction({
@@ -23,10 +23,10 @@ class AppwriteTransactionRepository implements TransactionRepository {
     required TransactionDocumentRequest transactionDocumentRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
-        documentId: transactionRequest.transactionId ?? 'unique()',
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['TRANSACTION_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: transactionRequest.transactionId ?? ID.unique(),
         data: transactionDocumentRequest.toJson(),
         permissions: [
           Permission.read(Role.any()),
@@ -44,10 +44,11 @@ class AppwriteTransactionRepository implements TransactionRepository {
       Constants.logger.e(e);
 
       try {
-        var result = await _databases.createDocument(
-          databaseId: dotenv.env['DATABASE_ID'].toString(),
-          collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
-          documentId: transactionRequest.transactionId ?? 'unique()',
+        var result = await _tablesDB.createRow(
+          databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+          tableId:
+              dotenv.env['TRANSACTION_DOCUMENT_ID'] ?? 'default-collection',
+          rowId: transactionRequest.transactionId ?? ID.unique(),
           data: transactionDocumentRequest.toJson(),
           permissions: [
             Permission.read(Role.any()),
@@ -73,20 +74,20 @@ class AppwriteTransactionRepository implements TransactionRepository {
     required String userId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['TRANSACTION_DOCUMENT_ID'] ?? 'default-collection',
         queries: [
           Query.orderDesc('\$updatedAt'),
           Query.equal('userId', userId),
         ],
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => TransactionDocument.fromJson(
                   e.data,
@@ -108,10 +109,10 @@ class AppwriteTransactionRepository implements TransactionRepository {
     required String transactionId,
   }) async {
     try {
-      var result = await _databases.getDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
-        documentId: transactionId,
+      var result = await _tablesDB.getRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['TRANSACTION_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: transactionId,
       );
 
       Constants.logger.d(result);
@@ -135,23 +136,25 @@ class AppwriteTransactionRepository implements TransactionRepository {
     try {
       final baseQueries = [
         Query.orderDesc('\$updatedAt'),
-        Query.equal('campaignId', '$campaignId'),
-        Query.equal('paymentStatus', ['settlement', 'capture']),
+        Query.equal('campaignId', campaignId),
+        Query.equal('paymentStatus', 'settlement'),
       ];
 
-      (isSortList) ? baseQueries.add(Query.limit(5)) : baseQueries;
+      if (isSortList) {
+        baseQueries.add(Query.limit(5));
+      }
 
-      var result = await _databases.listDocuments(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['TRANSACTION_DOCUMENT_ID'].toString(),
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['TRANSACTION_DOCUMENT_ID'] ?? 'default-collection',
         queries: baseQueries,
       );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => TransactionDocument.fromJson(
                   e.data,
