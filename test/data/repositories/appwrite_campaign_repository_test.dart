@@ -1,6 +1,12 @@
-import 'dart:io';
+import 'dart:io' as io;
 
-import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/appwrite.dart' as appwrite;
+import 'package:appwrite/models.dart' as models;
+import 'package:appwrite/src/input_file.dart';
+import 'package:appwrite/src/enums.dart';
+import 'package:appwrite/src/upload_progress.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ika_smansara/data/appwrite/appwrite_campaign_repository.dart';
@@ -11,28 +17,87 @@ import 'package:mockito/mockito.dart';
 
 import '../../helpers/test_helper.dart';
 
-class MockClient extends Mock implements Client {}
-class MockDatabases extends Mock implements Databases {}
-class MockStorage extends Mock implements Storage {}
+
+
+
+
+class MockTablesDB extends Mock implements appwrite.TablesDB {
+  Set<String> _nonExistentDocuments = {};
+
+  void setNonExistentDocument(String documentId) {
+    _nonExistentDocuments.add(documentId);
+  }
+
+  @override
+  Future<models.Row> createRow({
+    required String databaseId,
+    required String tableId,
+    required String rowId,
+    required Map<dynamic, dynamic> data,
+    List<String>? permissions,
+  }) async {
+    return MockRowResponse();
+  }
+
+  @override
+  Future<models.Row> getRow({
+    required String databaseId,
+    required String tableId,
+    required String rowId,
+    List<String>? queries,
+  }) async {
+    if (_nonExistentDocuments.contains(rowId)) {
+      throw appwrite.AppwriteException('Document not found', 404);
+    }
+    return MockRowResponse();
+  }
+}
+class MockStorage extends Mock implements appwrite.Storage {
+  bool _shouldFail = false;
+  bool _shouldReturnEmptyId = false;
+
+  void setShouldFail(bool fail) {
+    _shouldFail = fail;
+  }
+
+  void setShouldReturnEmptyId(bool emptyId) {
+    _shouldReturnEmptyId = emptyId;
+  }
+
+  @override
+  Future<models.File> createFile({
+    required String bucketId,
+    required String fileId,
+    required appwrite.InputFile file,
+    List<String>? permissions,
+    Function(UploadProgress)? onProgress,
+  }) async {
+    if (_shouldFail) {
+      throw appwrite.AppwriteException('Upload failed', 500);
+    }
+    return _shouldReturnEmptyId ? MockFileResponse.emptyId() : MockFileResponse();
+  }
+}
 
 void main() {
   late AppwriteCampaignRepository repository;
-  late MockClient mockClient;
-  late MockDatabases mockDatabases;
+  late MockTablesDB mockTablesDB;
   late MockStorage mockStorage;
 
   setUp(() {
-    mockClient = MockClient();
-    mockDatabases = MockDatabases();
+    mockTablesDB = MockTablesDB();
     mockStorage = MockStorage();
-    repository = AppwriteCampaignRepository(appwriteClient: mockClient);
 
-    // Mock the late final fields
-    repository._databases = mockDatabases;
-    repository._storage = mockStorage;
+    repository = AppwriteCampaignRepository.forTesting(
+      tablesDB: mockTablesDB,
+      storage: mockStorage,
+    );
   });
 
   setUpAll(() {
+    // Initialize Flutter binding for testing
+    TestWidgetsFlutterBinding.ensureInitialized();
+
     // Mock dotenv for testing
     dotenv.testLoad(fileInput: '''
       BUCKET_IMAGE_CAMPAIGN=test-bucket
@@ -40,6 +105,21 @@ void main() {
       CAMPAIGN_DOCUMENT_ID=test-collection
       PROJECT_ID=test-project
     ''');
+
+    // Mock path provider to avoid MissingPluginException
+    const MethodChannel('plugins.flutter.io/path_provider')
+        .setMockMethodCallHandler((MethodCall methodCall) async {
+      if (methodCall.method == 'getApplicationDocumentsDirectory') {
+        return '/tmp/test';
+      }
+      return null;
+    });
+
+    // Create the test directory for cookies
+    final testDir = io.Directory('/tmp/test/cookies');
+    if (!testDir.existsSync()) {
+      testDir.createSync(recursive: true);
+    }
   });
 
   final tCampaignRequest = CampaignRequest(
@@ -48,37 +128,12 @@ void main() {
     campaignDescription: 'Test Description',
   );
 
-  final tImageFile = File('test_image.jpg');
+  final tImageFile = io.File('test_image.jpg');
 
   group('AppwriteCampaignRepository', () {
     group('createCampaign', () {
       test('should return CampaignDocument when creation succeeds', () async {
         // Arrange
-        final mockFileResponse = MockFileResponse();
-        when(mockFileResponse.$id).thenReturn('file-123');
-        when(mockFileResponse.bucketId).thenReturn('test-bucket');
-
-        final mockDocumentResponse = MockDocumentResponse();
-        when(mockDocumentResponse.toMap()).thenReturn({
-          '\$id': 'doc-123',
-          'campaignName': 'Test Campaign',
-          'goalAmount': 1000000,
-        });
-
-        when(mockStorage.createFile(
-          bucketId: anyNamed('bucketId'),
-          fileId: anyNamed('fileId'),
-          file: anyNamed('file'),
-          permissions: anyNamed('permissions'),
-        )).thenAnswer((_) async => mockFileResponse);
-
-        when(mockDatabases.createDocument(
-          databaseId: anyNamed('databaseId'),
-          collectionId: anyNamed('collectionId'),
-          documentId: anyNamed('documentId'),
-          data: anyNamed('data'),
-          permissions: anyNamed('permissions'),
-        )).thenAnswer((_) async => mockDocumentResponse);
 
         // Act
         final result = await repository.createCampaign(
@@ -93,15 +148,7 @@ void main() {
 
       test('should return Failed when file upload fails', () async {
         // Arrange
-        final mockFileResponse = MockFileResponse();
-        when(mockFileResponse.$id).thenReturn(''); // Empty ID means failure
-
-        when(mockStorage.createFile(
-          bucketId: anyNamed('bucketId'),
-          fileId: anyNamed('fileId'),
-          file: anyNamed('file'),
-          permissions: anyNamed('permissions'),
-        )).thenAnswer((_) async => mockFileResponse);
+        mockStorage.setShouldReturnEmptyId(true);
 
         // Act
         final result = await repository.createCampaign(
@@ -116,12 +163,7 @@ void main() {
 
       test('should return Failed when AppwriteException occurs', () async {
         // Arrange
-        when(mockStorage.createFile(
-          bucketId: anyNamed('bucketId'),
-          fileId: anyNamed('fileId'),
-          file: anyNamed('file'),
-          permissions: anyNamed('permissions'),
-        )).thenThrow(AppwriteException('Upload failed', 500));
+        mockStorage.setShouldFail(true);
 
         // Act
         final result = await repository.createCampaign(
@@ -136,32 +178,6 @@ void main() {
 
       test('should handle null image file', () async {
         // Arrange
-        final mockFileResponse = MockFileResponse();
-        when(mockFileResponse.$id).thenReturn('file-123');
-        when(mockFileResponse.bucketId).thenReturn('test-bucket');
-
-        final mockDocumentResponse = MockDocumentResponse();
-        when(mockDocumentResponse.toMap()).thenReturn({
-          '\$id': 'doc-123',
-          'campaignName': 'Test Campaign',
-          'goalAmount': 1000000,
-        });
-
-        when(mockStorage.createFile(
-          bucketId: anyNamed('bucketId'),
-          fileId: anyNamed('fileId'),
-          file: anyNamed('file'),
-          permissions: anyNamed('permissions'),
-        )).thenAnswer((_) async => mockFileResponse);
-
-        when(mockDatabases.createDocument(
-          databaseId: anyNamed('databaseId'),
-          collectionId: anyNamed('collectionId'),
-          documentId: anyNamed('documentId'),
-          data: anyNamed('data'),
-          permissions: anyNamed('permissions'),
-        )).thenAnswer((_) async => mockDocumentResponse);
-
         // Act
         final result = await repository.createCampaign(
           campaignRequest: tCampaignRequest,
@@ -177,19 +193,6 @@ void main() {
     group('getCampaignDetail', () {
       test('should return CampaignDocument when retrieval succeeds', () async {
         // Arrange
-        final mockDocumentResponse = MockDocumentResponse();
-        when(mockDocumentResponse.toMap()).thenReturn({
-          '\$id': 'doc-123',
-          'campaignName': 'Test Campaign',
-          'goalAmount': 1000000,
-        });
-
-        when(mockDatabases.getDocument(
-          databaseId: anyNamed('databaseId'),
-          collectionId: anyNamed('collectionId'),
-          documentId: anyNamed('documentId'),
-        )).thenAnswer((_) async => mockDocumentResponse);
-
         // Act
         final result = await repository.getCampaignDetail(campaignId: 'doc-123');
 
@@ -200,14 +203,10 @@ void main() {
 
       test('should return Failed when AppwriteException occurs', () async {
         // Arrange
-        when(mockDatabases.getDocument(
-          databaseId: anyNamed('databaseId'),
-          collectionId: anyNamed('collectionId'),
-          documentId: anyNamed('documentId'),
-        )).thenThrow(AppwriteException('Document not found', 404));
+        mockTablesDB.setNonExistentDocument('non-existent-doc');
 
         // Act
-        final result = await repository.getCampaignDetail(campaignId: 'doc-123');
+        final result = await repository.getCampaignDetail(campaignId: 'non-existent-doc');
 
         // Assert
         expect(result.isFailed, true);
@@ -218,5 +217,47 @@ void main() {
 }
 
 // Mock classes for Appwrite responses
-class MockFileResponse extends Mock implements File {}
-class MockDocumentResponse extends Mock implements Document {}
+class MockFileResponse extends Mock implements models.File {
+  final String _id;
+
+  MockFileResponse() : _id = 'file-123';
+  MockFileResponse.emptyId() : _id = '';
+
+  @override
+  String get $id => _id;
+
+  @override
+  String get bucketId => 'test-bucket';
+}
+
+class MockRowResponse extends Mock implements models.Row {
+  @override
+  Map<String, dynamic> toMap() => {
+    '\$id': 'doc-123',
+    'campaignName': 'Test Campaign',
+    'goalAmount': 1000000,
+  };
+
+  @override
+  Map<String, dynamic> get data => {
+    '\$id': 'doc-123',
+    'campaignName': 'Test Campaign',
+    'goalAmount': 1000000,
+  };
+}
+
+class MockDocumentResponse extends Mock implements models.Document {
+  @override
+  Map<String, dynamic> toMap() => {
+    '\$id': 'doc-123',
+    'campaignName': 'Test Campaign',
+    'goalAmount': 1000000,
+  };
+
+  @override
+  Map<String, dynamic> get data => {
+    '\$id': 'doc-123',
+    'campaignName': 'Test Campaign',
+    'goalAmount': 1000000,
+  };
+}

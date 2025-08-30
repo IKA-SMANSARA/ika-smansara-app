@@ -6,7 +6,7 @@ import 'package:ika_smansara/domain/usecases/login/login.dart';
 import 'package:ika_smansara/domain/usecases/login/login_params.dart';
 import 'package:mockito/mockito.dart';
 
-import '../helpers/test_helper.dart';
+import '../../helpers/test_helper.dart';
 
 void main() {
   late Login usecase;
@@ -22,19 +22,19 @@ void main() {
     );
   });
 
-  const tSession = Session(
+  final tSession = Session(
     sessionId: 'session-123',
     userId: 'user-123',
   );
 
-  const tUserProfile = UserProfileDocument(
+  final tUserProfile = UserProfileDocument(
     id: 'user-123',
     name: 'John Doe',
     email: 'john@example.com',
     isAdmin: false,
   );
 
-  const tParams = LoginParams(
+  final tParams = LoginParams(
     email: 'john@example.com',
     password: 'password123',
   );

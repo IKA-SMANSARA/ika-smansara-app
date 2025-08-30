@@ -14,17 +14,17 @@ class AppwritePayoutRepository implements PayoutRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
 
   @override
   Future<Result<PayoutDocument>> createPayout({
     required PayoutItemRequest payoutItemRequest,
   }) async {
     try {
-      var result = await _databases.createDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['PAYOUT_DOCUMENT_ID'].toString(),
-        documentId: payoutItemRequest.payoutReferenceNo ?? ID.unique(),
+      var result = await _tablesDB.createRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['PAYOUT_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: payoutItemRequest.payoutReferenceNo ?? ID.unique(),
         data: payoutItemRequest.toJson(),
         permissions: [
           Permission.read(Role.any()),
@@ -51,16 +51,17 @@ class AppwritePayoutRepository implements PayoutRepository {
     required String userId,
   }) async {
     try {
-      var result = await _databases.listDocuments(
-          databaseId: dotenv.env['DATABASE_ID'].toString(),
-          collectionId: dotenv.env['PAYOUT_DOCUMENT_ID'].toString(),
-          queries: [Query.equal('userId', '$userId')]);
+      var result = await _tablesDB.listRows(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['PAYOUT_DOCUMENT_ID'] ?? 'default-collection',
+        queries: [Query.equal('userId', userId)],
+      );
 
-      Constants.logger.d(result.documents);
+      Constants.logger.d(result.rows);
 
-      if (result.documents.isNotEmpty) {
+      if (result.rows.isNotEmpty) {
         return Result.success(
-          result.documents
+          result.rows
               .map(
                 (e) => PayoutDocument.fromJson(e.data),
               )

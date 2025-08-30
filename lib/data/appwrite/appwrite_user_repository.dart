@@ -16,7 +16,7 @@ class AppwriteUserRepository implements UserRepository {
       : _appwriteClient =
             appwriteClient ?? NetworkClientHelper.instance.appwriteClient;
 
-  late final _databases = Databases(_appwriteClient);
+  late final _tablesDB = TablesDB(_appwriteClient);
   late final _storage = Storage(_appwriteClient);
 
   @override
@@ -25,10 +25,10 @@ class AppwriteUserRepository implements UserRepository {
   }) async {
     try {
       Constants.logger.d(userProfileRequest.authKey);
-      var result = await _databases.createDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
-        documentId: userProfileRequest.authKey ?? 'unique()',
+      var result = await _tablesDB.createRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['USER_PROFILE_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: userProfileRequest.authKey ?? ID.unique(),
         data: userProfileRequest.toJson(),
         permissions: [
           Permission.write(
@@ -59,10 +59,10 @@ class AppwriteUserRepository implements UserRepository {
     required String uid,
   }) async {
     try {
-      final result = await _databases.getDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
-        documentId: uid,
+      final result = await _tablesDB.getRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['USER_PROFILE_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: uid,
       );
 
       Constants.logger.d(result);
@@ -86,14 +86,14 @@ class AppwriteUserRepository implements UserRepository {
       final file = imageFile != null
           ? InputFile.fromPath(
               path: imageFile.path,
-              filename: 'user-${imageFile.path}',
+              filename: 'user-${imageFile.path.split('/').last}',
             )
           : null;
       var imageUrl = '';
 
       if (file != null) {
         var uploadPhotoUser = _storage.createFile(
-          bucketId: dotenv.env['BUCKET_IMAGE_CAMPAIGN'].toString(),
+          bucketId: dotenv.env['BUCKET_USER_ID'] ?? 'default-bucket',
           fileId: imageId,
           file: file,
           permissions: [
@@ -105,7 +105,7 @@ class AppwriteUserRepository implements UserRepository {
           (response) {
             if (response.$id != '') {
               imageUrl =
-                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'].toString()}&mode=admin';
+                  'https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=${dotenv.env['PROJECT_ID'] ?? 'default-project'}&mode=admin';
             } else {
               imageUrl = '';
             }
@@ -115,11 +115,11 @@ class AppwriteUserRepository implements UserRepository {
 
       Constants.logger.d('IMAGE URL $imageUrl');
 
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
-        documentId: userProfileRequest.authKey ?? 'unique()',
-        data: (imageUrl != '')
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['USER_PROFILE_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: userProfileRequest.authKey ?? ID.unique(),
+        data: (imageUrl.isNotEmpty)
             ? userProfileRequest
                 .copyWith(
                   photoProfileUrl: imageUrl,
@@ -144,10 +144,10 @@ class AppwriteUserRepository implements UserRepository {
     required UserProfileRequest userProfileRequest,
   }) async {
     try {
-      var result = await _databases.updateDocument(
-        databaseId: dotenv.env['DATABASE_ID'].toString(),
-        collectionId: dotenv.env['USER_PROFILE_DOCUMENT_ID'].toString(),
-        documentId: userProfileRequest.authKey!,
+      var result = await _tablesDB.updateRow(
+        databaseId: dotenv.env['DATABASE_ID'] ?? 'default-database',
+        tableId: dotenv.env['USER_PROFILE_DOCUMENT_ID'] ?? 'default-collection',
+        rowId: userProfileRequest.authKey ?? ID.unique(),
         data: userProfileRequest.toJson(),
       );
 
