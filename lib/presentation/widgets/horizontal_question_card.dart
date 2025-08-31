@@ -26,7 +26,6 @@ class HorizontalQuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 4,
       padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 16,
@@ -42,16 +41,16 @@ class HorizontalQuestionCard extends StatelessWidget {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width / 2,
-                child: Text(
-                  !isAnswer
-                      ? 'Pertanyaan dari : ${username.toUpperCase()}'
-                      : 'Dijawab oleh : ${username.toUpperCase()}',
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'diposting oleh :',
+                    ),
+                    Text(
+                      username.toUpperCase(),
+                    ),
+                  ],
                 ),
               ),
               Visibility(
@@ -89,18 +88,16 @@ class HorizontalQuestionCard extends StatelessWidget {
                     fontSize: 16,
                   ),
                 )
-              : Expanded(
-                  child: Text(
-                    content,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+              : Text(
+                  content,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
-          verticalSpace(16),
+          verticalSpace(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

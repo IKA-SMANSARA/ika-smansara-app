@@ -4,10 +4,12 @@
 - **Prerequisites**: Flutter 3.32.8 (use `mise` or `fvm`), run `flutter pub get` after cloning
 - **Code Generation**: `dart run build_runner build` (Freezed/Riverpod/JSON serializable/Retrofit)
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
+- **Build Device**: `flutter run --flavor development --target lib/main_development.dart -d {device_id}`
 - **Lint**: `flutter analyze` (uses custom_lint + riverpod_lint)
-- **Test All**: `flutter test`
-- **Test Single**: `flutter test test/path/to/test_file.dart`
+- **Test All**: `flutter test --coverage`
+- **Test Single**: `flutter test test/domain/usecases/get_campaign_detail_test.dart`
 - **Test Watch**: `flutter test --watch`
+- **Test Coverage**: `flutter test --coverage && genhtml coverage/lcov.info -o coverage/html`
 - **Clean**: `flutter clean && flutter pub get`
 
 ## Code Style Guidelines
@@ -30,26 +32,21 @@ class CampaignDocument with _$CampaignDocument {
   factory CampaignDocument({
     String? id,
     @Default(0) int? goalAmount,
-    // ... other fields
   }) = _CampaignDocument;
 
   factory CampaignDocument.fromJson(Map<String, dynamic> json) => CampaignDocument(
-    id: json['\$id'],  // Handle Appwrite special fields
-    goalAmount: json['goalAmount'],
-    // ... map other fields
+    id: json['\$id'], goalAmount: json['goalAmount'],
   );
 }
 
 // Riverpod Provider
 @riverpod
-Future<CampaignDocument?> getCampaignDetail(
-  GetCampaignDetailRef ref, {
+Future<CampaignDocument?> getCampaignDetail(GetCampaignDetailRef ref, {
   required String campaignId,
 }) async {
   final result = await ref.read(getCampaignDetailUseCaseProvider)(
     GetCampaignDetailParams(campaignId: campaignId),
   );
-
   return switch (result) {
     Success(value: final campaign) => campaign,
     Failed(message: _) => null,
