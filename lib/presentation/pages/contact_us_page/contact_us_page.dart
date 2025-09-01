@@ -6,8 +6,10 @@ import 'package:ika_smansara/presentation/extensions/async_value_extension.dart'
 import 'package:ika_smansara/presentation/providers/contact_us/create_question_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
+import 'package:ika_smansara/presentation/widgets/navigation_card.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'widgets/contact_us_form.dart';
+import 'widgets/contact_us_header.dart';
 
 class ContactUsPage extends ConsumerStatefulWidget {
   const ContactUsPage({super.key});
@@ -75,97 +77,15 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Header Section
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade50,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.contact_support_outlined,
-                            size: 32,
-                            color: Colors.blue.shade700,
-                          ),
-                          const SizedBox(height: 12),
-                          const Text(
-                            'Ada pertanyaan?',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Silahkan ajukan pertanyaan Anda terkait aplikasi IKA SMANSARA',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey.shade600,
-                              height: 1.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    const ContactUsHeader(),
 
                     const SizedBox(height: 24),
 
                     // Form Section
-                    const Text(
-                      'Tulis Pertanyaan',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: CustomTextField(
-                        labelText: 'Jelaskan pertanyaan Anda...',
-                        controller: threadContentController,
-                        expands: true,
-                        maxLines: null,
-                        textAlignVertical: TextAlignVertical.top,
-                      ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // Submit Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: threadContentController.text.trim().isEmpty
-                            ? null
-                            : () {
-                                _showSubmitDialog(context, ref, userData);
-                              },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue.shade600,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: const Text(
-                          'Kirim Pertanyaan',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                    ContactUsForm(
+                      controller: threadContentController,
+                      onSubmit: () => _showSubmitDialog(context, ref, userData),
+                      isLoading: postQuestionData.isLoading,
                     ),
 
                     const SizedBox(height: 32),
@@ -183,24 +103,18 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
 
                     Row(
                       children: [
-                        Expanded(
-                          child: _buildNavigationCard(
-                            context,
-                            'Pertanyaan Lain',
-                            Icons.question_answer_outlined,
-                            Colors.green,
-                            () => ref.read(routerProvider).pushNamed('list_all_question'),
-                          ),
+                        NavigationCard(
+                          title: 'Pertanyaan Lain',
+                          icon: Icons.question_answer_outlined,
+                          color: Colors.green,
+                          onTap: () => ref.read(routerProvider).pushNamed('list_all_question'),
                         ),
                         const SizedBox(width: 12),
-                        Expanded(
-                          child: _buildNavigationCard(
-                            context,
-                            'Pertanyaan Saya',
-                            Icons.person_outline,
-                            Colors.orange,
-                            () => ref.read(routerProvider).pushNamed('list_user_question'),
-                          ),
+                        NavigationCard(
+                          title: 'Pertanyaan Saya',
+                          icon: Icons.person_outline,
+                          color: Colors.orange,
+                          onTap: () => ref.read(routerProvider).pushNamed('list_user_question'),
                         ),
                       ],
                     ),
@@ -272,43 +186,5 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
     );
   }
 
-  Widget _buildNavigationCard(
-    BuildContext context,
-    String title,
-    IconData icon,
-    Color color,
-    VoidCallback onTap,
-  ) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
-          border: Border.all(color: color.withValues(alpha: 0.3)),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              size: 24,
-              color: color,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: color,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+
 }
