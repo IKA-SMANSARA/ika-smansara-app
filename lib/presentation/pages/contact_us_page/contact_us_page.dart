@@ -130,14 +130,14 @@ class ContactUsPage extends ConsumerWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(dialogContext).pop(),
+              onPressed: () => Navigator.of(context).pop(), // Use parent context
               child: Text(
                 'Batal',
                 style: TextStyle(color: Colors.grey.shade600),
               ),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 final threadsRequest = ThreadsRequest(
                   isAnswer: false,
                   isDeleted: false,
@@ -149,11 +149,16 @@ class ContactUsPage extends ConsumerWidget {
                   username: userData.valueOrNull?.name,
                 );
 
-                ref.read(createQuestionProvider.notifier).postQuestion(
-                  threadsRequest: threadsRequest,
-                );
+                // Close dialog first
+                Navigator.of(context).pop();
 
-                Navigator.of(dialogContext).pop();
+                // Then submit
+                await Future.delayed(const Duration(milliseconds: 100)); // Small delay
+                if (context.mounted) {
+                  ref.read(createQuestionProvider.notifier).postQuestion(
+                    threadsRequest: threadsRequest,
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue.shade600,
