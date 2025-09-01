@@ -187,76 +187,95 @@ class QuestionSection extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ElevatedButton.icon(
-                          onPressed: () {
-                            questionController.text = questionData?.threadContent ?? '';
-                            showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (_) => Dialog(
-                                insetPadding: const EdgeInsets.all(16),
-                                child: ListView(
-                                  padding: const EdgeInsets.all(16),
-                                  children: [
-                                    const SizedBox(height: 16),
-                                    const Text(
-                                      'Ubah Pertanyaan',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    SizedBox(
-                                      height: MediaQuery.of(context).size.height / 2,
-                                      child: CustomTextField(
-                                        maxLines: null,
-                                        expands: true,
-                                        textAlignVertical: TextAlignVertical.top,
-                                        labelText: 'Tulis pertanyaan',
-                                        controller: questionController,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        context.displayAlertDialog(
-                                          title: 'Ubah Pertanyaan',
-                                          content: 'Apakah anda yakin ingin mengubah pertanyaan?',
-                                          positiveButtonText: 'Ya',
-                                          onPositivePressed: () {
-                                            var threadsRequest = ThreadsRequest(
-                                              id: questionData?.id,
-                                              isAnswer: questionData?.isAnswer,
-                                              isDeleted: questionData?.isDeleted,
-                                              isEdited: questionData?.isEdited,
-                                              isOpen: questionData?.isOpen,
-                                              isQuestion: questionData?.isQuestion,
-                                              threadContent: questionController.text.trim(),
-                                              userId: questionData?.userId,
-                                              username: questionData?.username,
-                                              replyingThreadId: questionData?.replyingThreadId,
-                                            );
+                           onPressed: () {
+                             questionController.text = questionData?.threadContent ?? '';
+                             showDialog(
+                               context: context,
+                               builder: (_) => AlertDialog(
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(12),
+                                 ),
+                                 title: const Text(
+                                   'Ubah Pertanyaan',
+                                   style: TextStyle(
+                                     fontSize: 18,
+                                     fontWeight: FontWeight.w600,
+                                   ),
+                                 ),
+                                 content: SizedBox(
+                                   width: double.maxFinite,
+                                   child: Column(
+                                     mainAxisSize: MainAxisSize.min,
+                                     children: [
+                                       Container(
+                                         height: 200,
+                                         decoration: BoxDecoration(
+                                           border: Border.all(color: Colors.grey.shade300),
+                                           borderRadius: BorderRadius.circular(8),
+                                         ),
+                                         child: CustomTextField(
+                                           labelText: 'Jelaskan pertanyaan Anda...',
+                                           controller: questionController,
+                                           expands: true,
+                                           maxLines: null,
+                                           textAlignVertical: TextAlignVertical.top,
+                                         ),
+                                       ),
+                                     ],
+                                   ),
+                                 ),
+                                 actions: [
+                                   TextButton(
+                                     onPressed: () => Navigator.of(context).pop(),
+                                     child: Text(
+                                       'Batal',
+                                       style: TextStyle(color: Colors.grey.shade600),
+                                     ),
+                                   ),
+                                   ElevatedButton(
+                                     onPressed: questionController.text.trim().isEmpty
+                                         ? null
+                                         : () {
+                                             context.displayAlertDialog(
+                                               title: 'Ubah Pertanyaan',
+                                               content: 'Apakah anda yakin ingin mengubah pertanyaan?',
+                                               positiveButtonText: 'Ya',
+                                               onPositivePressed: () {
+                                                 var threadsRequest = ThreadsRequest(
+                                                   id: questionData?.id,
+                                                   isAnswer: questionData?.isAnswer,
+                                                   isDeleted: questionData?.isDeleted,
+                                                   isEdited: questionData?.isEdited,
+                                                   isOpen: questionData?.isOpen,
+                                                   isQuestion: questionData?.isQuestion,
+                                                   threadContent: questionController.text.trim(),
+                                                   userId: questionData?.userId,
+                                                   username: questionData?.username,
+                                                   replyingThreadId: questionData?.replyingThreadId,
+                                                 );
 
-                                            ref
-                                                .read(updateUserThreadProvider.notifier)
-                                                .postUpdateThread(
-                                                  threadsRequest: threadsRequest,
-                                                );
+                                                 ref
+                                                     .read(updateUserThreadProvider.notifier)
+                                                     .postUpdateThread(
+                                                       threadsRequest: threadsRequest,
+                                                     );
 
-                                            Navigator.pop(context);
-                                          },
-                                        );
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.blue,
-                                      ),
-                                      child: const Text('Ubah Pertanyaan'),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+                                                 Navigator.of(context).pop();
+                                               },
+                                             );
+                                           },
+                                     style: ElevatedButton.styleFrom(
+                                       backgroundColor: Colors.blue.shade600,
+                                       shape: RoundedRectangleBorder(
+                                         borderRadius: BorderRadius.circular(6),
+                                       ),
+                                     ),
+                                     child: const Text('Simpan'),
+                                   ),
+                                 ],
+                               ),
+                              );
+                           },
                           icon: const Icon(Icons.edit, size: 16),
                           label: const Text('Ubah'),
                           style: ElevatedButton.styleFrom(

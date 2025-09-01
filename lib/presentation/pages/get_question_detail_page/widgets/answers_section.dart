@@ -343,8 +343,11 @@ class AnswersSection extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
         title: const Text(
-          'Edit jawaban',
+          'Edit Jawaban',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -352,32 +355,46 @@ class AnswersSection extends StatelessWidget {
         ),
         content: SizedBox(
           width: double.maxFinite,
-          child: CustomTextField(
-            maxLines: 5,
-            textAlignVertical: TextAlignVertical.top,
-            labelText: 'Jawaban Anda...',
-            controller: editController,
+          child: Container(
+            height: 200,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: CustomTextField(
+              labelText: 'Jelaskan jawaban Anda...',
+              controller: editController,
+              expands: true,
+              maxLines: null,
+              textAlignVertical: TextAlignVertical.top,
+            ),
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(
+            child: Text(
               'Batal',
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey.shade600),
             ),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: editController.text.trim().isEmpty
                 ? null
                 : () {
                     _updateAnswer(context, answer, editController.text.trim());
                     Navigator.of(context).pop();
                   },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue.shade600,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+              ),
+            ),
             child: const Text(
               'Simpan',
               style: TextStyle(
-                color: Colors.blue,
+                color: Colors.white,
                 fontWeight: FontWeight.w600,
               ),
             ),
