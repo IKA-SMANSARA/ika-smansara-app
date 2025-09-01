@@ -30,7 +30,7 @@ class ContactUsHeader extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Silahkan ajukan pertanyaan Anda terkait aplikasi IKA SMANSARA',
+            'Silahkan ajukan pertanyaan atau saran Anda terkait aplikasi IKA SMANSARA',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,
@@ -42,3 +42,4 @@ class ContactUsHeader extends StatelessWidget {
     );
   }
 }
+
