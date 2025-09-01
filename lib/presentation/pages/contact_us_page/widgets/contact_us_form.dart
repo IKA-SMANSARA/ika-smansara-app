@@ -117,49 +117,8 @@ class _ContactUsFormState extends State<ContactUsForm> {
         },
       );
     } else {
-      // Show confirmation dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext dialogContext) {
-          return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            title: const Text(
-              'Kirim Pertanyaan',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            content: const Text(
-              'Apakah Anda yakin ingin mengirim pertanyaan ini?',
-              style: TextStyle(height: 1.5),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(dialogContext).pop(),
-                child: Text(
-                  'Batal',
-                  style: TextStyle(color: Colors.grey.shade600),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(dialogContext).pop();
-                  widget.onSubmit?.call(_controller.text.trim());
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue.shade600,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                ),
-                child: const Text('Kirim'),
-              ),
-            ],
-          );
-        },
-      );
+      // Call onSubmit directly for confirmation dialog in parent
+      widget.onSubmit?.call(content);
     }
   }
 }
