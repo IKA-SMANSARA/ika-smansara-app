@@ -5,6 +5,83 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+28] - 2025-01-31
+
+### Fixed
+- **Auto-Refresh Bug**: Fixed question detail page not refreshing after creator closes question
+  - Resolved infinite loop in GetQuestionDetailPage state management
+  - Improved provider state reset mechanism
+  - Fixed UI update issues when question status changes
+
+- **Multiline Text Input**: Fixed Enter key not working for line breaks in text fields
+  - Resolved Flutter assertion error in CustomTextField
+  - Fixed keyboardType compatibility issues with multiline input
+  - Updated ContactUsPage, GetQuestionDetailPage, and related forms
+  - Ensured proper TextInputAction.newline behavior
+
+- **Submit Button Issues**: Fixed various submit button activation problems
+  - Resolved ContactUsPage submit button disabled state
+  - Fixed double-click requirement on dialog submit buttons
+  - Improved state management for form submissions
+  - Enhanced user feedback with proper validation dialogs
+
+- **Dialog UX Issues**: Improved dialog user experience across the app
+  - Fixed double confirmation dialogs causing confusion
+  - Enhanced dialog styling and button placement
+  - Improved dialog context management and navigation
+  - Added proper async handling for dialog operations
+
+### Changed
+- **UI Component Refactoring**: Major redesign of question-related UI components
+  - Converted GetQuestionDetailPage from StatefulWidget to ConsumerWidget for better performance
+  - Refactored HorizontalQuestionCard with consistent design pattern
+  - Updated ContactUsPage with simplified state management
+  - Improved widget separation and reusability
+
+- **Code Architecture**: Enhanced code organization and maintainability
+  - Extracted ContactUsForm and ContactUsHeader into separate widget files
+  - Created NavigationCard global widget for consistent navigation UI
+  - Improved separation of concerns between UI and business logic
+  - Better error handling and state management patterns
+
+- **Performance Optimizations**: Reduced memory usage and improved app responsiveness
+  - Eliminated infinite loops and unnecessary rebuilds
+  - Optimized provider state management
+  - Improved widget lifecycle management
+  - Enhanced async operation handling
+
+### Added
+- **New Widget Components**: Added reusable UI components
+  - `NavigationCard`: Global widget for consistent navigation cards
+  - `ContactUsHeader`: Dedicated header component for contact page
+  - `ContactUsForm`: Self-contained form component with validation
+  - Enhanced widget reusability across different pages
+
+- **Enhanced Validation**: Improved form validation and user feedback
+  - Smart validation dialogs for empty content
+  - Better error messages and user guidance
+  - Consistent validation patterns across forms
+  - Improved user experience with immediate feedback
+
+### Technical Improvements
+- **State Management**: Enhanced Riverpod provider patterns
+  - Better state reset mechanisms
+  - Improved async operation handling
+  - More reliable provider lifecycle management
+  - Reduced memory leaks and performance issues
+
+- **UI/UX Enhancements**: Improved user interface and experience
+  - Consistent design patterns across pages
+  - Better dialog and form interactions
+  - Enhanced visual feedback and transitions
+  - More intuitive user flows and navigation
+
+- **Code Quality**: Better code organization and maintainability
+  - Improved widget separation and reusability
+  - Better error handling and logging
+  - Enhanced code documentation and structure
+  - More consistent coding patterns
+
 ## [1.1.1+27] - 2025-01-30
 
 ### Fixed
@@ -149,6 +226,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Campaign management system
 
 ---
+
+### Session Summary [1.2.0+28]
+- **UI/UX Fixes**: Complete resolution of auto-refresh, multiline input, and submit button issues
+- **Performance**: Eliminated infinite loops and improved state management
+- **Code Architecture**: Major refactoring with ConsumerWidget pattern and widget extraction
+- **User Experience**: Enhanced form validation, dialog UX, and navigation consistency
+- **Widget Components**: Added reusable NavigationCard, ContactUsHeader, and ContactUsForm
+- **State Management**: Improved Riverpod patterns with better error handling
+
+### Key Improvements Summary
+- **Fixed**: 4 major UI/UX bugs (auto-refresh, multiline input, submit buttons, dialogs)
+- **Refactored**: 3 major pages with ConsumerWidget pattern for better performance
+- **Added**: 3 new reusable widget components
+- **Enhanced**: State management and error handling throughout the app
+- **Optimized**: Memory usage and app responsiveness
+
+### Technical Notes
+- All changes maintain backward compatibility
+- No breaking changes to existing functionality
+- Improved Flutter widget lifecycle management
+- Enhanced Riverpod provider patterns
+- Better separation of concerns between UI and business logic
+- Comprehensive error handling and user feedback
+- Optimized for better mobile performance
 
 ### Session Summary [1.1.1+27]
 - **Appwrite Migration**: Complete v18.0.0 compatibility (10 repository files updated)
