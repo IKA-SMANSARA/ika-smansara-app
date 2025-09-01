@@ -30,11 +30,32 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
   @override
   Widget build(BuildContext context) {
     final userData = ref.watch(userDataProvider);
-
-    // Reset createQuestionProvider state on every build to ensure clean state
-    ref.invalidate(createQuestionProvider);
-
     final postQuestionData = ref.watch(createQuestionProvider);
+
+    // Reset provider state only if it has stale success data
+    // This prevents infinite loops while ensuring clean state
+    if (postQuestionData.hasValue && !postQuestionData.isLoading) {
+      print('Resetting stale createQuestionProvider state');
+      ref.invalidate(createQuestionProvider);
+      // Return loading state temporarily while resetting
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Hubungi Kami'),
+          elevation: 0,
+        ),
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: LoadingAnimationWidget.inkDrop(
+                color: Colors.amber,
+                size: 50,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     // Show error messages for failed operations
     ref.listen(
