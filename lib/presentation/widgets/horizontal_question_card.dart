@@ -80,7 +80,7 @@ class HorizontalQuestionCard extends StatelessWidget {
               ),
             ],
           ),
-          verticalSpace(16),
+          verticalSpace(8),
           isLongContent
               ? AutoSizeText(
                   content,
