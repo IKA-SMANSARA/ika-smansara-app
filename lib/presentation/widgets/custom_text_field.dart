@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.enabled = true,
-  })  : textInputAction = textInputAction ?? (expands ? TextInputAction.newline : TextInputAction.next),
+  })  : textInputAction = textInputAction ?? (expands ? TextInputAction.newline : TextInputAction.done),
         keyboardType = keyboardType ?? (expands ? TextInputType.multiline : TextInputType.text);
 
   @override
@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
       enabled: enabled,
       onChanged: onChanged,
       maxLines: expands ? null : (maxLines ?? 1),
-      minLines: expands ? null : 1,
+      minLines: expands ? 2 : 1, // Set minLines to 2 when expands for better multiline UX
       controller: controller,
       expands: expands,
       textInputAction: textInputAction,

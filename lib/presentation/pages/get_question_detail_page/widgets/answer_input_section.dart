@@ -73,13 +73,17 @@ class _AnswerInputSectionState extends State<AnswerInputSection> {
             ),
           ),
           const SizedBox(height: 12),
-          SizedBox(
-            height: 120, // Fixed height for the text field
+          Container(
+            height: 120,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: CustomTextField(
               labelText: widget.userData?.isAdmin ?? false
                   ? 'Tulis jawaban Anda di sini...'
                   : 'Tambahkan komentar Anda di sini...',
-              expands: false,
+              expands: true,
               maxLines: null,
               textAlignVertical: TextAlignVertical.top,
               controller: widget.responseController,
