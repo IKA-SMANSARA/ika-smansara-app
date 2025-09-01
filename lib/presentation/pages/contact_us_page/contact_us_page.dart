@@ -20,6 +20,13 @@ class ContactUsPage extends ConsumerStatefulWidget {
 
 class _ContactUsPageState extends ConsumerState<ContactUsPage> {
   final TextEditingController threadContentController = TextEditingController();
+  bool _hasResetProvider = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _hasResetProvider = false;
+  }
 
   @override
   void dispose() {
@@ -32,10 +39,10 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
     final userData = ref.watch(userDataProvider);
     final postQuestionData = ref.watch(createQuestionProvider);
 
-    // Reset provider state only if it has stale success data
-    // This prevents infinite loops while ensuring clean state
-    if (postQuestionData.hasValue && !postQuestionData.isLoading) {
-      print('Resetting stale createQuestionProvider state');
+    // Reset provider state only once when page is first built and has stale data
+    if (!_hasResetProvider && postQuestionData.hasValue && !postQuestionData.isLoading) {
+      print('Resetting stale createQuestionProvider state (one-time)');
+      _hasResetProvider = true;
       ref.invalidate(createQuestionProvider);
       // Return loading state temporarily while resetting
       return Scaffold(
