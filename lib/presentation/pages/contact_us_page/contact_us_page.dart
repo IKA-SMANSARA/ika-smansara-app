@@ -85,7 +85,11 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                     ContactUsForm(
                       controller: threadContentController,
                       onSubmit: () => _showSubmitDialog(context, ref, userData),
-                      isLoading: postQuestionData.isLoading,
+                      isLoading: () {
+                        final loading = postQuestionData.isLoading;
+                        print('ContactUsPage passing isLoading: $loading');
+                        return loading;
+                      }(),
                     ),
 
                     const SizedBox(height: 32),

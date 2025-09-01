@@ -15,6 +15,8 @@ class ContactUsForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('ContactUsForm build - isLoading: $isLoading');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +49,12 @@ class ContactUsForm extends StatelessWidget {
           width: double.infinity,
           height: 50,
           child: ElevatedButton(
-            onPressed: (controller.text.trim().isEmpty || isLoading) ? null : onSubmit,
+            onPressed: () {
+              final textEmpty = controller.text.trim().isEmpty;
+              final shouldDisable = textEmpty || isLoading;
+              print('Button condition - textEmpty: $textEmpty, isLoading: $isLoading, shouldDisable: $shouldDisable');
+              return shouldDisable ? null : onSubmit;
+            }(),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue.shade600,
               foregroundColor: Colors.white,
