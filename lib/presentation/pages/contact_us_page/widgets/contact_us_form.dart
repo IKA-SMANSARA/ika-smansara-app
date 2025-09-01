@@ -46,7 +46,19 @@ class ContactUsForm extends StatelessWidget {
           width: double.infinity,
           height: 50,
           child: ElevatedButton(
-            onPressed: (controller.text.trim().isEmpty || isLoading) ? null : onSubmit,
+            onPressed: () {
+              print('DEBUG ContactUsForm:');
+              print('  - controller.text: "${controller.text}"');
+              print('  - controller.text.trim(): "${controller.text.trim()}"');
+              print('  - controller.text.trim().isEmpty: ${controller.text.trim().isEmpty}');
+              print('  - isLoading: $isLoading');
+              print('  - onSubmit is null: ${onSubmit == null}');
+
+              final shouldDisable = controller.text.trim().isEmpty || isLoading;
+              print('  - shouldDisable: $shouldDisable');
+
+              return shouldDisable ? null : onSubmit;
+            }(),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue.shade600,
               foregroundColor: Colors.white,
