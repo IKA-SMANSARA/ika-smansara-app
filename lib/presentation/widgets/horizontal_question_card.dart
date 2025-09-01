@@ -1,4 +1,3 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
@@ -26,107 +25,115 @@ class HorizontalQuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-        horizontal: 16,
-      ),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade200),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade100,
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Question Header
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width / 2,
+              CircleAvatar(
+                backgroundColor: Colors.blue.shade100,
+                child: Text(
+                  (username.isNotEmpty ? username[0] : 'U').toUpperCase(),
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'diposting oleh :',
+                      username,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                     Text(
-                      username.toUpperCase(),
+                      formatDate(postDate),
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),
               ),
+              // Status Badge
               Visibility(
                 visible: !isAnswer,
                 child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: questionStatusBackgroundColor(questionStatus),
-                    borderRadius: BorderRadius.all(
-                      Radius.elliptical(
-                        50,
-                        50,
-                      ),
-                    ),
+                    color: questionStatus
+                        ? Colors.green.shade100
+                        : Colors.red.shade100,
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  height: 20,
-                  width: MediaQuery.of(context).size.width / 6,
-                  child: Center(
-                    child: Text(
-                      questionStatus ? 'Open' : 'Close',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
+                  child: Text(
+                    questionStatus ? 'Terbuka' : 'Ditutup',
+                    style: TextStyle(
+                      color: questionStatus
+                          ? Colors.green.shade800
+                          : Colors.red.shade800,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          verticalSpace(8),
+          const SizedBox(height: 16),
+
+          // Question Content
           isLongContent
               ? AutoSizeText(
                   content,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
+                    height: 1.5,
                   ),
                 )
               : Text(
                   content,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                  style: const TextStyle(
                     fontSize: 16,
+                    height: 1.5,
                   ),
                 ),
-          verticalSpace(8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                formatDate(
-                  postDate,
-                ),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: TextStyle(
-                  fontSize: 12,
-                ),
+
+          // Edited indicator
+          if (editedStatus) ...[
+            const SizedBox(height: 8),
+            Text(
+              'Diedit',
+              style: TextStyle(
+                color: Colors.grey.shade500,
+                fontSize: 12,
+                fontStyle: FontStyle.italic,
               ),
-              Visibility(
-                visible: editedStatus,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
-                  child: Text(
-                    editedStatus ? 'edited' : '',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ],
       ),
     );
