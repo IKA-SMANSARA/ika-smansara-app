@@ -11,58 +11,13 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'widgets/contact_us_form.dart';
 import 'widgets/contact_us_header.dart';
 
-class ContactUsPage extends ConsumerStatefulWidget {
+class ContactUsPage extends ConsumerWidget {
   const ContactUsPage({super.key});
 
   @override
-  ConsumerState createState() => _ContactUsPageState();
-}
-
-class _ContactUsPageState extends ConsumerState<ContactUsPage> {
-  final TextEditingController threadContentController = TextEditingController();
-  bool _hasResetProvider = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _hasResetProvider = false;
-  }
-
-  @override
-  void dispose() {
-    threadContentController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final userData = ref.watch(userDataProvider);
     final postQuestionData = ref.watch(createQuestionProvider);
-
-    // Reset provider state only once when page is first built and has stale data
-    if (!_hasResetProvider && postQuestionData.hasValue && !postQuestionData.isLoading) {
-      print('Resetting stale createQuestionProvider state (one-time)');
-      _hasResetProvider = true;
-      ref.invalidate(createQuestionProvider);
-      // Return loading state temporarily while resetting
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Hubungi Kami'),
-          elevation: 0,
-        ),
-        body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Center(
-              child: LoadingAnimationWidget.inkDrop(
-                color: Colors.amber,
-                size: 50,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
 
     // Show error messages for failed operations
     ref.listen(
@@ -75,12 +30,9 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
       (_, state) => state.showSnackbarOnError(context),
     );
 
-    // Reset text field on successful submission
+    // Handle successful submission
     ref.listen(createQuestionProvider, (previous, next) {
       if (next.hasValue && next.value != null) {
-        setState(() {
-          threadContentController.clear();
-        });
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Pertanyaan berhasil dikirim')),
         );
@@ -115,8 +67,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
 
                     // Form Section
                     ContactUsForm(
-                      controller: threadContentController,
-                      onSubmit: () => _showSubmitDialog(context, ref, userData),
+                      onSubmit: (content) => _showSubmitDialog(context, ref, userData, content),
                       isLoading: postQuestionData.isLoading,
                     ),
 
@@ -159,7 +110,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
     );
   }
 
-  void _showSubmitDialog(BuildContext context, WidgetRef ref, AsyncValue userData) {
+  void _showSubmitDialog(BuildContext context, WidgetRef ref, AsyncValue userData, String content) {
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -193,7 +144,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                   isEdited: false,
                   isOpen: true,
                   isQuestion: true,
-                  threadContent: threadContentController.text.trim(),
+                  threadContent: content,
                   userId: userData.valueOrNull?.authKey,
                   username: userData.valueOrNull?.name,
                 );

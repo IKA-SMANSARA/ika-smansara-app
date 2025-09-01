@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
 
-class ContactUsForm extends StatelessWidget {
-  final TextEditingController controller;
-  final VoidCallback? onSubmit;
+class ContactUsForm extends StatefulWidget {
+  final Function(String)? onSubmit;
   final bool isLoading;
 
   const ContactUsForm({
     super.key,
-    required this.controller,
     this.onSubmit,
     this.isLoading = false,
   });
+
+  @override
+  State<ContactUsForm> createState() => _ContactUsFormState();
+}
+
+class _ContactUsFormState extends State<ContactUsForm> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +46,10 @@ class ContactUsForm extends StatelessWidget {
           ),
           child: CustomTextField(
             labelText: 'Jelaskan pertanyaan Anda...',
-            controller: controller,
+            controller: _controller,
             expands: true,
             maxLines: null,
             textAlignVertical: TextAlignVertical.top,
-            forceMultiline: true,
           ),
         ),
         const SizedBox(height: 24),
@@ -47,7 +57,7 @@ class ContactUsForm extends StatelessWidget {
           width: double.infinity,
           height: 50,
           child: ElevatedButton(
-            onPressed: (controller.text.trim().isEmpty || isLoading) ? null : onSubmit,
+            onPressed: widget.isLoading ? null : () => _handleSubmit(context),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue.shade600,
               foregroundColor: Colors.white,
@@ -67,5 +77,89 @@ class ContactUsForm extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _handleSubmit(BuildContext context) {
+    final content = _controller.text.trim();
+
+    if (content.isEmpty) {
+      // Show validation dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext dialogContext) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            title: const Text(
+              'Pertanyaan Kosong',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            content: const Text(
+              'Silakan tulis pertanyaan Anda terlebih dahulu.',
+              style: TextStyle(height: 1.5),
+            ),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(dialogContext).pop(),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade600,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      // Show confirmation dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext dialogContext) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            title: const Text(
+              'Kirim Pertanyaan',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            content: const Text(
+              'Apakah Anda yakin ingin mengirim pertanyaan ini?',
+              style: TextStyle(height: 1.5),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(dialogContext).pop(),
+                child: Text(
+                  'Batal',
+                  style: TextStyle(color: Colors.grey.shade600),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop();
+                  widget.onSubmit?.call(_controller.text.trim());
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade600,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                child: const Text('Kirim'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }
