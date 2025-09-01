@@ -36,15 +36,15 @@ class CreateQuestion extends _$CreateQuestion {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
-        // Add delay to ensure navigation completes before resetting state
-        await Future.delayed(const Duration(milliseconds: 100));
-        // Reset state to prevent button staying disabled
-        state = const AsyncData(null);
-        // Navigate to question detail page
+        // Navigate to question detail page first
         ref.read(routerProvider).pushNamed(
               'get_question_detail',
               extra: data.id,
             );
+        // Add longer delay to ensure navigation completes before resetting state
+        await Future.delayed(const Duration(milliseconds: 500));
+        // Reset state to prevent button staying disabled
+        state = const AsyncData(null);
       case Failed(:final message):
         state = AsyncError(
           FlutterError(message),
