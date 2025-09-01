@@ -18,13 +18,14 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.maxLines,
     this.expands = false,
-    this.textInputAction = TextInputAction.next,
-    this.keyboardType = TextInputType.text,
+    TextInputAction? textInputAction,
+    TextInputType? keyboardType,
     this.textAlignVertical,
     this.onChanged,
     this.onTap,
     this.enabled = true,
-  });
+  })  : textInputAction = textInputAction ?? (expands ? TextInputAction.newline : TextInputAction.next),
+        keyboardType = keyboardType ?? (expands ? TextInputType.multiline : TextInputType.text);
 
   @override
   Widget build(BuildContext context) {
