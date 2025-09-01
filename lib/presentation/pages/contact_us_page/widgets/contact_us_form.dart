@@ -39,6 +39,7 @@ class ContactUsForm extends StatelessWidget {
             expands: true,
             maxLines: null,
             textAlignVertical: TextAlignVertical.top,
+            forceMultiline: true,
           ),
         ),
         const SizedBox(height: 24),

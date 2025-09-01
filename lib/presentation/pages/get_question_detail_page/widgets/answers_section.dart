@@ -367,6 +367,7 @@ class AnswersSection extends StatelessWidget {
               expands: true,
               maxLines: null,
               textAlignVertical: TextAlignVertical.top,
+              forceMultiline: true,
             ),
           ),
         ),

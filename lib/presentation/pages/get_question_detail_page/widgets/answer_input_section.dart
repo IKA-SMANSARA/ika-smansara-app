@@ -87,6 +87,7 @@ class _AnswerInputSectionState extends State<AnswerInputSection> {
               maxLines: null,
               textAlignVertical: TextAlignVertical.top,
               controller: widget.responseController,
+              forceMultiline: true,
             ),
           ),
           const SizedBox(height: 16),

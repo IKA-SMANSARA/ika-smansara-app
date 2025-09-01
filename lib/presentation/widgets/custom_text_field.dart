@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final bool expands;
   final bool enabled;
+  final bool forceMultiline;
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final TextAlignVertical? textAlignVertical;
@@ -18,14 +19,15 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.maxLines,
     this.expands = false,
+    this.forceMultiline = false,
     TextInputAction? textInputAction,
     TextInputType? keyboardType,
     this.textAlignVertical,
     this.onChanged,
     this.onTap,
     this.enabled = true,
-  })  : textInputAction = textInputAction ?? (expands ? TextInputAction.newline : TextInputAction.done),
-        keyboardType = keyboardType ?? (expands ? TextInputType.multiline : TextInputType.text);
+  })  : textInputAction = textInputAction ?? ((expands || forceMultiline) ? TextInputAction.newline : TextInputAction.done),
+        keyboardType = keyboardType ?? ((expands || forceMultiline) ? TextInputType.multiline : TextInputType.text);
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,8 @@ class CustomTextField extends StatelessWidget {
       onTap: onTap,
       enabled: enabled,
       onChanged: onChanged,
-      maxLines: expands ? null : (maxLines ?? 1),
-      minLines: expands ? 2 : 1, // Set minLines to 2 when expands for better multiline UX
+      maxLines: (expands || forceMultiline) ? null : (maxLines ?? 1),
+      minLines: (expands || forceMultiline) ? null : 1, // Must be null when multiline
       controller: controller,
       expands: expands,
       textInputAction: textInputAction,
