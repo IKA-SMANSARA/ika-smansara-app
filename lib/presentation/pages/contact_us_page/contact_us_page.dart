@@ -1,5 +1,4 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/threads_request.dart';
@@ -21,142 +20,294 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
   final TextEditingController threadContentController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    var userData = ref.watch(userDataProvider);
-    var postQuestionData = ref.watch(createQuestionProvider);
+  void dispose() {
+    threadContentController.dispose();
+    super.dispose();
+  }
 
-    // show error text if get user data error
+  @override
+  Widget build(BuildContext context) {
+    final userData = ref.watch(userDataProvider);
+    final postQuestionData = ref.watch(createQuestionProvider);
+
+    // Show error messages for failed operations
     ref.listen(
       userDataProvider,
-      (_, state) => state.showSnackbarOnError(
-        context,
-      ),
+      (_, state) => state.showSnackbarOnError(context),
     );
 
-    // show error text if failed post question
     ref.listen(
       createQuestionProvider,
-      (_, state) {
-        state.showSnackbarOnError(context);
-      },
+      (_, state) => state.showSnackbarOnError(context),
     );
 
-    // reset text field content and open question detail page, if success post question
-    if (postQuestionData.asData != null) {
-      setState(() {
-        threadContentController.text = '';
-      });
-    }
+    // Reset text field on successful submission
+    ref.listen(createQuestionProvider, (previous, next) {
+      if (next.hasValue && next.value != null) {
+        setState(() {
+          threadContentController.clear();
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Pertanyaan berhasil dikirim')),
+        );
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText('Hubungi Kami'),
+        title: const Text('Hubungi Kami'),
+        elevation: 0,
       ),
-      body: Stack(
-        children: [
-          ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+      body: SafeArea(
+        child: postQuestionData.isLoading
+            ? Container(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: LoadingAnimationWidget.inkDrop(
+                    color: Colors.amber,
+                    size: 50,
+                  ),
+                ),
+              )
+            : SingleChildScrollView(
+                padding: const EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
-                      'Silahkan ajukan pertanyaan anda terkait aplikasi IKA SMANSARA',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    // Header Section
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade50,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.contact_support_outlined,
+                            size: 32,
+                            color: Colors.blue.shade700,
+                          ),
+                          const SizedBox(height: 12),
+                          const Text(
+                            'Ada pertanyaan?',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Silahkan ajukan pertanyaan Anda terkait aplikasi IKA SMANSARA',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey.shade600,
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    verticalSpace(24),
-                    SizedBox(
-                      height: 250,
+
+                    const SizedBox(height: 24),
+
+                    // Form Section
+                    const Text(
+                      'Tulis Pertanyaan',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                       child: CustomTextField(
-                        labelText: 'Tulis pertanyaan disini',
+                        labelText: 'Jelaskan pertanyaan Anda...',
                         controller: threadContentController,
                         expands: true,
                         maxLines: null,
                         textAlignVertical: TextAlignVertical.top,
                       ),
                     ),
-                    verticalSpace(24),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.displayAlertDialog(
-                          title: 'Kirim Pertanyaan',
-                          content: 'Yakin untuk mengirim pertanyaan ?',
-                          positiveButtonText: 'Kirim',
-                          onPositivePressed: () {
-                            var threadsRequest = ThreadsRequest(
-                              isAnswer: false,
-                              isDeleted: false,
-                              isEdited: false,
-                              isOpen: true,
-                              isQuestion: true,
-                              threadContent:
-                                  threadContentController.text.trim(),
-                              userId: userData.valueOrNull?.authKey,
-                              username: userData.valueOrNull?.name,
-                            );
 
-                            ref
-                                .read(createQuestionProvider.notifier)
-                                .postQuestion(
-                                  threadsRequest: threadsRequest,
-                                );
+                    const SizedBox(height: 24),
 
-                            Navigator.pop(context);
-                          },
-                        );
-                      },
-                      child: AutoSizeText('Kirim Pertanyaan'),
+                    // Submit Button
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: threadContentController.text.trim().isEmpty
+                            ? null
+                            : () {
+                                _showSubmitDialog(context, ref, userData);
+                              },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue.shade600,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 0,
+                        ),
+                        child: const Text(
+                          'Kirim Pertanyaan',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     ),
-                    verticalSpace(32),
+
+                    const SizedBox(height: 32),
+
+                    // Navigation Section
+                    const Text(
+                      'Lihat Pertanyaan',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        AutoSizeText(
-                          'Daftar Pertanyaan Lain',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: _buildNavigationCard(
+                            context,
+                            'Pertanyaan Lain',
+                            Icons.question_answer_outlined,
+                            Colors.green,
+                            () => ref.read(routerProvider).pushNamed('list_all_question'),
                           ),
-                        ).onClick(() {
-                          ref.read(routerProvider).pushNamed(
-                                'list_all_question',
-                              );
-                        }),
-                        AutoSizeText(
-                          'Daftar Pertanyaan Saya',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _buildNavigationCard(
+                            context,
+                            'Pertanyaan Saya',
+                            Icons.person_outline,
+                            Colors.orange,
+                            () => ref.read(routerProvider).pushNamed('list_user_question'),
                           ),
-                        ).onClick(() {
-                          ref.read(routerProvider).pushNamed(
-                                'list_user_question',
-                              );
-                        }),
+                        ),
                       ],
                     ),
-                    verticalSpace(16),
+
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
-            ],
+      ),
+    );
+  }
+
+  void _showSubmitDialog(BuildContext context, WidgetRef ref, AsyncValue userData) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
-          Visibility(
-            visible: postQuestionData.isLoading,
-            child: Container(
-              color: Colors.white,
-              height: double.infinity,
-              child: Center(
-                child: LoadingAnimationWidget.inkDrop(
-                  color: Colors.amber,
-                  size: 50,
-                ),
-              ),
+          title: const Text(
+            'Kirim Pertanyaan',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
+          content: const Text(
+            'Apakah Anda yakin ingin mengirim pertanyaan ini?',
+            style: TextStyle(height: 1.5),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: Text(
+                'Batal',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final threadsRequest = ThreadsRequest(
+                  isAnswer: false,
+                  isDeleted: false,
+                  isEdited: false,
+                  isOpen: true,
+                  isQuestion: true,
+                  threadContent: threadContentController.text.trim(),
+                  userId: userData.valueOrNull?.authKey,
+                  username: userData.valueOrNull?.name,
+                );
+
+                ref.read(createQuestionProvider.notifier).postQuestion(
+                  threadsRequest: threadsRequest,
+                );
+
+                Navigator.of(dialogContext).pop();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue.shade600,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+              ),
+              child: const Text('Kirim'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildNavigationCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              size: 24,
+              color: color,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: color,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
