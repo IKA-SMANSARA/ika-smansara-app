@@ -32,13 +32,6 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
     final userData = ref.watch(userDataProvider);
     final postQuestionData = ref.watch(createQuestionProvider);
 
-    // Debug prints
-    print('DEBUG ContactUsPage:');
-    print('  - postQuestionData.isLoading: ${postQuestionData.isLoading}');
-    print('  - postQuestionData.hasValue: ${postQuestionData.hasValue}');
-    print('  - postQuestionData.hasError: ${postQuestionData.hasError}');
-    print('  - threadContentController.text: "${threadContentController.text}"');
-
     // Show error messages for failed operations
     ref.listen(
       userDataProvider,
