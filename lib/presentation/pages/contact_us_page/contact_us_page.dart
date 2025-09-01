@@ -30,6 +30,10 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
   @override
   Widget build(BuildContext context) {
     final userData = ref.watch(userDataProvider);
+
+    // Reset createQuestionProvider state on every build to ensure clean state
+    ref.invalidate(createQuestionProvider);
+
     final postQuestionData = ref.watch(createQuestionProvider);
 
     // Show error messages for failed operations
@@ -85,11 +89,7 @@ class _ContactUsPageState extends ConsumerState<ContactUsPage> {
                     ContactUsForm(
                       controller: threadContentController,
                       onSubmit: () => _showSubmitDialog(context, ref, userData),
-                      isLoading: () {
-                        final loading = postQuestionData.isLoading;
-                        print('ContactUsPage passing isLoading: $loading');
-                        return loading;
-                      }(),
+                      isLoading: postQuestionData.isLoading,
                     ),
 
                     const SizedBox(height: 32),
