@@ -31,16 +31,28 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Determine effective values based on multiline requirements
+    final isMultiline = expands || forceMultiline;
+    final effectiveMaxLines = isMultiline ? null : (maxLines ?? 1);
+    final effectiveMinLines = isMultiline ? null : 1;
+    final effectiveTextInputAction = textInputAction;
+    final effectiveKeyboardType = keyboardType;
+
+    // Ensure keyboardType is compatible with textInputAction for multiline
+    final finalKeyboardType = (effectiveTextInputAction == TextInputAction.newline && effectiveKeyboardType == TextInputType.text)
+        ? TextInputType.multiline
+        : effectiveKeyboardType;
+
     return TextField(
       onTap: onTap,
       enabled: enabled,
       onChanged: onChanged,
-      maxLines: (expands || forceMultiline) ? null : (maxLines ?? 1),
-      minLines: (expands || forceMultiline) ? null : 1, // Must be null when multiline
+      maxLines: effectiveMaxLines,
+      minLines: effectiveMinLines,
       controller: controller,
       expands: expands,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
+      textInputAction: effectiveTextInputAction,
+      keyboardType: finalKeyboardType,
       textAlignVertical: textAlignVertical,
       decoration: InputDecoration(
         labelText: labelText,

@@ -242,12 +242,12 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
               verticalSpace(16),
               SizedBox(
                 height: 200,
-                child: CustomTextField(
-                  labelText: 'Catatan',
-                  controller: _notesController,
-                  expands: true,
-                  maxLines: null,
-                  keyboardType: TextInputType.text,
+                  child: CustomTextField(
+                    labelText: 'Catatan',
+                    controller: _notesController,
+                    expands: true,
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
                   textAlignVertical: TextAlignVertical.top,
                 ),
               ),

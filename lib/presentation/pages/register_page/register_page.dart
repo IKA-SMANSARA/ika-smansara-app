@@ -89,14 +89,14 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 verticalSpace(24),
                 SizedBox(
                   height: 200,
-                  child: CustomTextField(
-                    labelText: 'Alamat',
-                    controller: addressController,
-                    expands: true,
-                    maxLines: null,
-                    keyboardType: TextInputType.streetAddress,
-                    textAlignVertical: TextAlignVertical.top,
-                  ),
+                   child: CustomTextField(
+                     labelText: 'Alamat',
+                     controller: addressController,
+                     expands: true,
+                     maxLines: null,
+                     keyboardType: TextInputType.multiline,
+                     textAlignVertical: TextAlignVertical.top,
+                   ),
                 ),
                 verticalSpace(24),
                 CustomTextField(
