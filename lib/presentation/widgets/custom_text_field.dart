@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
       enabled: enabled,
       onChanged: onChanged,
       maxLines: expands ? null : (maxLines ?? 1),
-      minLines: expands ? 2 : 1, // Set minLines to 2 when expands for better multiline UX
+      minLines: expands ? null : 1, // Must be null when expands is true
       controller: controller,
       expands: expands,
       textInputAction: textInputAction,
