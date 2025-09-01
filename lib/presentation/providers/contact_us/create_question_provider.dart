@@ -36,6 +36,11 @@ class CreateQuestion extends _$CreateQuestion {
     switch (result) {
       case Success(value: final data):
         state = AsyncData(data);
+        // Add delay to ensure navigation completes before resetting state
+        await Future.delayed(const Duration(milliseconds: 100));
+        // Reset state to prevent button staying disabled
+        state = const AsyncData(null);
+        // Navigate to question detail page
         ref.read(routerProvider).pushNamed(
               'get_question_detail',
               extra: data.id,
@@ -45,7 +50,10 @@ class CreateQuestion extends _$CreateQuestion {
           FlutterError(message),
           StackTrace.current,
         );
-        state = const AsyncData(null);
+        // Reset state after error
+        Future.delayed(const Duration(seconds: 2), () {
+          state = const AsyncData(null);
+        });
     }
   }
 }
