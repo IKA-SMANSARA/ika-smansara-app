@@ -14,39 +14,33 @@ class ListUserQuestionPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var userData = ref.watch(userDataProvider);
-    var listUserQuestionData = ref.watch(
+    final userData = ref.watch(userDataProvider);
+    final listUserQuestionData = ref.watch(
       getListUserQuestionProvider(
         userId: userData.valueOrNull?.authKey ?? '',
       ),
     );
 
-    // show error information if failed get user data
+    // Show error messages for failed operations
     ref.listen(
       userDataProvider,
-      (_, state) => state.showSnackbarOnError(
-        context,
-      ),
+      (_, state) => state.showSnackbarOnError(context),
     );
 
-    // show error information if failed get list user question
     ref.listen(
       getListUserQuestionProvider(
         userId: userData.valueOrNull?.authKey ?? '',
       ),
-      (_, state) => state.showSnackbarOnError(
-        context,
-      ),
+      (_, state) => state.showSnackbarOnError(context),
     );
 
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText(
-          'Pertanyaan Saya',
-        ),
+        title: AutoSizeText('Pertanyaan Saya'),
       ),
       body: listUserQuestionData.isLoading
           ? Container(
+              padding: const EdgeInsets.all(16),
               child: Center(
                 child: LoadingAnimationWidget.inkDrop(
                   color: Colors.amber,
@@ -55,14 +49,10 @@ class ListUserQuestionPage extends ConsumerWidget {
               ),
             )
           : listUserQuestionData.whenOrNull(
-              data: (data) => data?.length != 0
+              data: (data) => data?.isNotEmpty == true
                   ? ListView.separated(
-                      separatorBuilder: (context, index) {
-                        return Divider(
-                          color: Colors.grey[900],
-                          height: 1,
-                        );
-                      },
+                      padding: const EdgeInsets.all(16),
+                      separatorBuilder: (context, index) => verticalSpace(16),
                       itemCount: data?.length ?? 0,
                       itemBuilder: (context, index) {
                         return HorizontalQuestionCard(
@@ -82,21 +72,36 @@ class ListUserQuestionPage extends ConsumerWidget {
                       },
                     )
                   : Container(
+                      padding: const EdgeInsets.all(16),
                       child: Center(
-                        child: AutoSizeText('Belum ada pertanyaan'),
+                        child: AutoSizeText(
+                          'Belum ada pertanyaan',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ),
               error: (error, stackTrace) => Container(
+                padding: const EdgeInsets.all(16),
                 child: Center(
-                  child: AutoSizeText('NO NETWORK'),
+                  child: AutoSizeText(
+                    'Terjadi kesalahan saat memuat data',
+                    style: TextStyle(
+                      color: Colors.grey.shade600,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
-              loading: () => Container(
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.amber,
-                    size: 50,
-                  ),
+            ) ??
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: LoadingAnimationWidget.inkDrop(
+                  color: Colors.amber,
+                  size: 50,
                 ),
               ),
             ),
