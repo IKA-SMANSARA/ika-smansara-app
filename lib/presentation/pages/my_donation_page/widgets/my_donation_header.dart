@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 
 class MyDonationHeader extends StatelessWidget {
   const MyDonationHeader({super.key});
@@ -11,21 +10,6 @@ class MyDonationHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Logo
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: const Color(0xFF104993).withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Assets.images.logoIkaSmansaraColored.svg(
-              width: 60,
-              height: 60,
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
           // Title
           Text(
             'Donasiku',
