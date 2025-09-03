@@ -243,6 +243,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
               data,
               downloadStartRequest.suggestedFilename ??
                   'qris_payment_${DateTime.now().millisecondsSinceEpoch}.$fileExtension',
+              context,
             );
             return;
           } else {
@@ -265,6 +266,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
           result,
           downloadStartRequest.suggestedFilename ??
               'qris_payment_${DateTime.now().millisecondsSinceEpoch}.png',
+          context,
         );
         return;
       }
@@ -319,11 +321,244 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
 
       Constants.logger.d('Data URL MIME type: $mimeType, extension: $fileExtension');
 
-      await _createFileFromBase64(data, filename);
+      await _createFileFromBase64(data, filename, context);
 
     } catch (e) {
       Constants.logger.e('Data URL download error: $e');
       showDownloadSnackBar(context, 'Failed to process data URL download');
+    }
+  }
+
+  // Capture screenshot of QR code area specifically
+  Future<Uint8List?> _captureQRScreenshot(InAppWebViewController controller) async {
+    try {
+      Constants.logger.d('Attempting to capture QR code area screenshot');
+
+      const qrCaptureScript = '''
+        (function() {
+          try {
+            // Find QR code elements with multiple selectors
+            const qrSelectors = [
+              'img[src*="qr"]', 'img[alt*="qr"]', 'img[alt*="QR"]',
+              'img[src*="QR"]', 'img[alt*="payment"]', 'img[alt*="pay"]',
+              'canvas', 'svg', '[class*="qr"]', '[id*="qr"]',
+              '[class*="QR"]', '[id*="QR"]', '[class*="payment"]', '[id*="payment"]'
+            ];
+
+            let qrElement = null;
+
+            // Try to find QR element
+            for (const selector of qrSelectors) {
+              const elements = document.querySelectorAll(selector);
+              for (const element of elements) {
+                // Check if element is visible and has reasonable size
+                const rect = element.getBoundingClientRect();
+                if (rect.width > 50 && rect.height > 50 &&
+                    rect.top >= 0 && rect.left >= 0 &&
+                    rect.bottom <= window.innerHeight &&
+                    rect.right <= window.innerWidth) {
+                  qrElement = element;
+                  break;
+                }
+              }
+              if (qrElement) break;
+            }
+
+            if (!qrElement) {
+              console.log('No suitable QR element found');
+              return null;
+            }
+
+            console.log('Found QR element:', qrElement.tagName, 'Size:', qrElement.offsetWidth, 'x', qrElement.offsetHeight);
+
+            // Create canvas for screenshot
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Get device pixel ratio for high DPI screens
+            const dpr = window.devicePixelRatio || 1;
+
+            // Get element bounding rectangle
+            const rect = qrElement.getBoundingClientRect();
+
+            // Add some padding around QR code
+            const padding = 20;
+            const width = rect.width + (padding * 2);
+            const height = rect.height + (padding * 2);
+
+            // Set canvas size
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // Scale context for high DPI
+            ctx.scale(dpr, dpr);
+
+            // Fill background with white
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, width, height);
+
+            // If it's an image element
+            if (qrElement.tagName === 'IMG') {
+              ctx.drawImage(qrElement, padding, padding, rect.width, rect.height);
+            }
+            // If it's a canvas element
+            else if (qrElement.tagName === 'CANVAS') {
+              ctx.drawImage(qrElement, padding, padding, rect.width, rect.height);
+            }
+            // If it's an SVG element
+            else if (qrElement.tagName === 'SVG') {
+              const svgData = new XMLSerializer().serializeToString(qrElement);
+              const img = new Image();
+              const svgBlob = new Blob([svgData], {type: 'image/svg+xml'});
+              const url = URL.createObjectURL(svgBlob);
+
+              return new Promise((resolve) => {
+                img.onload = function() {
+                  ctx.drawImage(img, padding, padding, rect.width, rect.height);
+                  URL.revokeObjectURL(url);
+                  resolve(canvas.toDataURL('image/png'));
+                };
+                img.onerror = function() {
+                  URL.revokeObjectURL(url);
+                  resolve(null);
+                };
+                img.src = url;
+              });
+            }
+            // For other elements, try to capture the area
+            else {
+              // Use html2canvas if available, otherwise fallback to basic capture
+              if (typeof html2canvas !== 'undefined') {
+                return html2canvas(qrElement, {
+                  backgroundColor: 'white',
+                  scale: dpr,
+                  useCORS: true
+                }).then(canvas => {
+                  return canvas.toDataURL('image/png');
+                });
+              } else {
+                // Basic fallback - capture the area using CSS and canvas
+                const elementCanvas = document.createElement('canvas');
+                const elementCtx = elementCanvas.getContext('2d');
+                elementCanvas.width = rect.width * dpr;
+                elementCanvas.height = rect.height * dpr;
+                elementCtx.scale(dpr, dpr);
+
+                // This is a basic fallback and may not work perfectly
+                // but better than nothing
+                return elementCanvas.toDataURL('image/png');
+              }
+            }
+
+            // Return canvas data URL
+            return canvas.toDataURL('image/png');
+
+          } catch (error) {
+            console.error('QR screenshot capture failed:', error);
+            return null;
+          }
+        })();
+      ''';
+
+      final result = await controller.callAsyncJavaScript(functionBody: qrCaptureScript);
+
+      if (result != null && result.value != null) {
+        final dataUrl = result.value.toString();
+        Constants.logger.d('QR screenshot data URL captured');
+
+        // Convert data URL to bytes
+        if (dataUrl.startsWith('data:image/png;base64,')) {
+          final base64Data = dataUrl.split(',')[1];
+          final bytes = base64Decode(base64Data);
+          return Uint8List.fromList(bytes);
+        }
+      }
+
+      Constants.logger.w('QR screenshot capture returned null or invalid data');
+      return null;
+
+    } catch (e) {
+      Constants.logger.e('QR screenshot capture error: $e');
+      return null;
+    }
+  }
+
+  // Save screenshot to gallery/screenshots folder
+  Future<void> _saveScreenshotToGallery(Uint8List screenshotData, String fileName) async {
+    try {
+      Constants.logger.d('Saving screenshot to gallery: $fileName');
+
+      String screenshotsDir;
+
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        // Try to use DCIM/Screenshots first, fallback to Pictures/Screenshots
+        try {
+          final dcimDir = Directory('/storage/emulated/0/DCIM/Screenshots');
+          if (!await dcimDir.exists()) {
+            await dcimDir.create(recursive: true);
+          }
+          screenshotsDir = dcimDir.path;
+          Constants.logger.d('Using DCIM/Screenshots directory: $screenshotsDir');
+        } catch (e) {
+          Constants.logger.w('DCIM/Screenshots not accessible, trying Pictures/Screenshots');
+          try {
+            final picturesDir = Directory('/storage/emulated/0/Pictures/Screenshots');
+            if (!await picturesDir.exists()) {
+              await picturesDir.create(recursive: true);
+            }
+            screenshotsDir = picturesDir.path;
+            Constants.logger.d('Using Pictures/Screenshots directory: $screenshotsDir');
+          } catch (e2) {
+            Constants.logger.w('Pictures/Screenshots not accessible, using Downloads');
+            final directory = await getExternalStorageDirectory();
+            screenshotsDir = directory?.path ?? '/storage/emulated/0/Download';
+            Constants.logger.d('Using fallback directory: $screenshotsDir');
+          }
+        }
+      } else {
+        // For iOS and other platforms
+        final directory = await getApplicationDocumentsDirectory();
+        screenshotsDir = directory.path;
+        Constants.logger.d('Using iOS documents directory: $screenshotsDir');
+      }
+
+      // Ensure unique filename
+      String uniqueFileName = fileName;
+      int counter = 1;
+      while (File("$screenshotsDir/$uniqueFileName").existsSync()) {
+        final nameParts = fileName.split('.');
+        if (nameParts.length > 1) {
+          uniqueFileName = '${nameParts[0]}_$counter.${nameParts[1]}';
+        } else {
+          uniqueFileName = '${fileName}_$counter';
+        }
+        counter++;
+      }
+
+      final file = File("$screenshotsDir/$uniqueFileName");
+      await file.writeAsBytes(screenshotData);
+
+      Constants.logger.i('Screenshot saved successfully: ${file.path}');
+
+      // Show success message
+      showDownloadSnackBar(context, 'QR screenshot saved to gallery');
+
+      // Try to open the file
+      try {
+        final result = await OpenFile.open(file.path);
+        if (result.type == ResultType.done) {
+          Constants.logger.i('Screenshot opened successfully: ${file.path}');
+        } else {
+          Constants.logger.w('Screenshot open result: ${result.message}');
+        }
+      } catch (e) {
+        Constants.logger.e('Failed to open screenshot: $e');
+        // Don't show error for file opening failure as file is already saved
+      }
+
+    } catch (e) {
+      Constants.logger.e('Screenshot save error: $e');
+      showDownloadSnackBar(context, 'Failed to save screenshot');
     }
   }
 
@@ -332,21 +567,27 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
     try {
       Constants.logger.d('Trying alternative blob download method');
 
-      // Method 1: Try to capture QR code via screenshot (if it's visible)
-      final screenshotResult = await controller.takeScreenshot();
-      if (screenshotResult != null && screenshotResult.isNotEmpty) {
-        Constants.logger.d('Screenshot captured, size: ${screenshotResult.length}');
+      // Method 1: Try to capture QR code area specifically using JavaScript
+      final qrScreenshotResult = await _captureQRScreenshot(controller);
+      if (qrScreenshotResult != null && qrScreenshotResult.isNotEmpty) {
+        Constants.logger.d('QR area screenshot captured, size: ${qrScreenshotResult.length}');
 
-        // Convert screenshot to base64 and save
-        final base64Screenshot = base64Encode(screenshotResult);
-        await _createFileFromBase64(
-          base64Screenshot,
-          'qris_screenshot_${DateTime.now().millisecondsSinceEpoch}.png',
-        );
+        // Save to screenshots folder
+        await _saveScreenshotToGallery(qrScreenshotResult, 'qris_${DateTime.now().millisecondsSinceEpoch}.png');
         return;
       }
 
-      // Method 2: Try to inject a script that creates a downloadable link
+      // Method 2: Fallback to full screenshot if QR-specific capture fails
+      final screenshotResult = await controller.takeScreenshot();
+      if (screenshotResult != null && screenshotResult.isNotEmpty) {
+        Constants.logger.d('Full screenshot captured as fallback, size: ${screenshotResult.length}');
+
+        // Save to screenshots folder
+        await _saveScreenshotToGallery(screenshotResult, 'qris_full_${DateTime.now().millisecondsSinceEpoch}.png');
+        return;
+      }
+
+      // Method 3: Try to inject a script that creates a downloadable link
       const alternativeScript = '''
         (function() {
           try {
@@ -401,6 +642,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
                 await _createFileFromBase64(
                   dataParts[1],
                   'qris_payment_${DateTime.now().millisecondsSinceEpoch}.png',
+                  context,
                 );
               }
             } else {
@@ -420,6 +662,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
               await _createFileFromBase64(
                 dataParts[1],
                 'qris_payment_${DateTime.now().millisecondsSinceEpoch}.png',
+                context,
               );
             }
           } else if (resultMap['type'] == 'svg' && resultMap['data'] != null) {
@@ -428,6 +671,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
             await _createFileFromBase64(
               base64Encode(utf8.encode(svgData)),
               'qris_payment_${DateTime.now().millisecondsSinceEpoch}.svg',
+              context,
             );
           } else if (resultMap['type'] == 'clicked') {
             Constants.logger.d('Download button clicked via alternative method');
@@ -574,7 +818,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
     ''';
   }
 
-  Future<void> _createFileFromBase64(String base64content, String fileName) async {
+  Future<void> _createFileFromBase64(String base64content, String fileName, BuildContext context) async {
     try {
       Constants.logger.d('Processing $fileName with ${base64content.length} characters');
 
