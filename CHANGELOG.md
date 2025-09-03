@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0+29] - 2025-01-31
 
+### Changed
+- **Campaign Detail Page Redesign**: Complete UI/UX overhaul following consistent design language
+  - Converted from ConsumerStatefulWidget to ConsumerWidget for better performance
+  - Applied SafeArea wrapper with consistent padding (20px all sides)
+  - Updated AppBar styling with elevation: 0 to match other pages
+  - Redesigned action button with consistent styling (Color(0xFF104993), rounded corners, no elevation)
+  - Enhanced loading and error states with proper icons and Indonesian messaging
+  - Improved spacing patterns (24px between sections, 32px before action button)
+
+### Added
+- **Modular Widget Components**: Created 5 reusable widget components for campaign detail page
+  - `CampaignHeaderImage`: Dedicated campaign image display component
+  - `CampaignInfoSection`: Campaign title, progress bar, and backer information
+  - `CampaignDescriptionSection`: Expandable campaign description with consistent styling
+  - `CampaignBackerSection`: Donatur list with "View All" navigation
+  - `CampaignActionButton`: Main CTA button with consistent design language
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Better separation of concerns between UI components
+  - Improved widget reusability and consistency
+  - Cleaner code organization following established patterns
+  - Enhanced error handling and state management
+
+- **Design Consistency**: Unified design language across contact us, checkout, and campaign detail pages
+  - Consistent color scheme and typography
+  - Matching button styling and sizing
+  - Same loading animation patterns
+  - Unified spacing and layout structure
+
+### Fixed
+- **AGENTS.md Enhancement**: Improved development guidelines and formatting
+  - Added fluttergen command for asset generation
+  - Enhanced import guidelines (no package: imports)
+  - Added security guidelines for environment variables
+  - Expanded workflow section with asset generation step
+
+## [1.2.0+28] - 2025-01-31
+
 ### Fixed
 - **QR Code Download Issues**: Complete resolution of QRIS download problems in Midtrans Snap
   - Fixed XHR network error in WebView blob download handler

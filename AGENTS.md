@@ -2,7 +2,7 @@
 
 ## Commands
 - **Setup**: `mise use` or `fvm use` (Flutter 3.32.8), then `flutter pub get`
-- **Generate**: `dart run build_runner build` (Freezed/Riverpod/JSON/Retrofit/Hive)
+- **Generate**: `dart run build_runner build` (Freezed/Riverpod/JSON/Retrofit/Hive) + `fluttergen` (assets)
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
 - **Lint**: `flutter analyze` (custom_lint + riverpod_lint enabled)
 - **Test**: `flutter test --coverage` | Single: `flutter test test/path/to/test_file.dart`
@@ -13,11 +13,12 @@
 - **State**: Riverpod with `@riverpod` + riverpod_generator
 - **Data**: Freezed with `@freezed` (immutable, Appwrite JSON with `$id`, `$createdAt`)
 - **Error**: Result pattern `Success<T>`/`Failed<T>` + switch expressions
-- **Imports**: Flutter → Third-party → Project (relative imports only)
+- **Imports**: Flutter → Third-party → Project (relative imports only, no package: imports)
 - **Naming**: PascalCase(classes), camelCase(methods/vars), snake_case(files), UPPER_SNAKE_CASE(constants)
 - **Formatting**: 80 char limit, always braces, null safety, `const` for immutables
 - **Logging**: `Constants.logger.d()` debug, `.e()` errors
 - **Testing**: flutter_test + mockito (AAA pattern: Arrange-Act-Assert)
+- **Security**: Never log secrets/keys, use flutter_dotenv for environment variables
 
 ## Patterns
 ```dart
@@ -63,3 +64,4 @@ lib/
 1. New Feature: Entity → Usecase → Repository → Provider → UI
 2. Data Changes: Update Freezed → `dart run build_runner build`
 3. Testing: Write usecase tests with mocked repositories
+4. Assets: Update assets → `fluttergen` → Use generated classes
