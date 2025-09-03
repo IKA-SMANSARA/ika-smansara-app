@@ -18,6 +18,7 @@ import 'package:ika_smansara/utils/flutter_fcm.dart';
 import 'package:ika_smansara/utils/my_observer.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 enum Flavors { development, staging, production }
 
@@ -54,8 +55,52 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await Jiffy.setLocale('id');
   await FlutterDownloader.initialize();
 
-  // request permission storage
-  await Permission.storage.request();
+   // Request storage permissions based on Android version
+   if (defaultTargetPlatform == TargetPlatform.android) {
+     final deviceInfo = DeviceInfoPlugin();
+     final androidInfo = await deviceInfo.androidInfo;
+     final sdkInt = androidInfo.version.sdkInt;
+
+     Constants.logger.d('Android SDK Version: $sdkInt');
+
+     if (sdkInt >= 33) {
+       // Android 13+ (API 33+): Use granular permissions
+       Constants.logger.d('Requesting granular media permissions for Android 13+');
+       final photosStatus = await Permission.photos.request();
+       final videosStatus = await Permission.videos.request();
+       final audioStatus = await Permission.audio.request();
+
+       Constants.logger.d('Photos permission: $photosStatus');
+       Constants.logger.d('Videos permission: $videosStatus');
+       Constants.logger.d('Audio permission: $audioStatus');
+
+       // Also request manage external storage as fallback
+       if (photosStatus.isDenied || videosStatus.isDenied) {
+         Constants.logger.d('Requesting manage external storage as fallback');
+         await Permission.manageExternalStorage.request();
+       }
+     } else if (sdkInt >= 30) {
+       // Android 11-12 (API 30-32): Request manage external storage
+       Constants.logger.d('Requesting manage external storage for Android 11-12');
+       await Permission.manageExternalStorage.request();
+     } else if (sdkInt >= 29) {
+       // Android 10 (API 29): Request storage permission
+       Constants.logger.d('Requesting storage permission for Android 10');
+       await Permission.storage.request();
+     } else {
+       // Android 9 and below: Request storage permission
+       Constants.logger.d('Requesting storage permission for Android 9 and below');
+       await Permission.storage.request();
+     }
+
+     // Always request notification permission
+     final notificationStatus = await Permission.notification.request();
+     Constants.logger.d('Notification permission: $notificationStatus');
+   } else {
+     // For iOS and other platforms
+     Constants.logger.d('Requesting storage permission for non-Android platform');
+     await Permission.storage.request();
+   }
 
   // set initial value for development mode
   var devModeBox = Hive.box('dev mode');
