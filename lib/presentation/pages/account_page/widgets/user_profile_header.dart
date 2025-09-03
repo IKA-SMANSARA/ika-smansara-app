@@ -40,11 +40,11 @@ class UserProfileHeader extends StatelessWidget {
                 width: 2,
               ),
               boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
+                 BoxShadow(
+                   color: Colors.black.withValues(alpha: 0.1),
+                   blurRadius: 8,
+                   offset: const Offset(0, 4),
+                 ),
               ],
             ),
             child: ClipRRect(
@@ -67,14 +67,14 @@ class UserProfileHeader extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Container(
-                      color: Colors.white.withOpacity(0.2),
-                      child: const Icon(
-                        Icons.person,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                    ),
+                   : Container(
+                       color: Colors.white.withValues(alpha: 0.2),
+                       child: const Icon(
+                         Icons.person,
+                         size: 40,
+                         color: Colors.white,
+                       ),
+                     ),
             ),
           ),
 
@@ -97,12 +97,12 @@ class UserProfileHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: isAdmin
-                  ? const Color(0xFFD52014).withOpacity(0.2)
-                  : Colors.white.withOpacity(0.2),
+               color: isAdmin
+                   ? const Color(0xFFD52014).withValues(alpha: 0.2)
+                   : Colors.white.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: Colors.white.withOpacity(0.3),
+                 color: Colors.white.withValues(alpha: 0.3),
                 width: 1,
               ),
             ),
@@ -123,10 +123,10 @@ class UserProfileHeader extends StatelessWidget {
           if (userData.email != null)
             Text(
               userData.email!,
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.8),
-                fontSize: 13,
-              ),
+               style: TextStyle(
+                 color: Colors.white.withValues(alpha: 0.8),
+                 fontSize: 13,
+               ),
               textAlign: TextAlign.center,
             ),
 
@@ -136,10 +136,10 @@ class UserProfileHeader extends StatelessWidget {
           if (userData.isAlumni == true)
             Text(
               'Alumni ${userData.graduateYear ?? ''}',
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.8),
-                fontSize: 11,
-              ),
+               style: TextStyle(
+                 color: Colors.white.withValues(alpha: 0.8),
+                 fontSize: 11,
+               ),
               textAlign: TextAlign.center,
             ),
         ],

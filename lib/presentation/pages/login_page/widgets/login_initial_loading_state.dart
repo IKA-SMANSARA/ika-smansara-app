@@ -16,7 +16,7 @@ class LoginInitialLoadingState extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: const Color(0xFF104993).withValues(alpha: 0.1),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Assets.images.logoIkaSmansaraColored.svg(
@@ -53,3 +53,4 @@ class LoginInitialLoadingState extends StatelessWidget {
     );
   }
 }
+
