@@ -127,187 +127,175 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
 
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header Section - Logo with Account Button
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Left side - empty for balance
-                      const SizedBox(width: 48),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF104993),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              ref.read(routerProvider).pushNamed('account');
+            },
+            icon: const Icon(
+              Icons.person_outline,
+              color: Colors.white,
+              size: 28,
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header Section - Logo Only
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: Assets.images.logoIkaSmansaraColored.svg(
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+              ),
 
-                      // Center - Logo
-                      Assets.images.logoIkaSmansaraColored.svg(
-                        width: 80,
-                        height: 80,
-                      ),
+              const SizedBox(height: 16),
 
-                      // Right side - Account Button
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            ref.read(routerProvider).pushNamed('account');
-                          },
-                          borderRadius: BorderRadius.circular(8),
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            child: const Icon(
-                              Icons.person_outline,
-                              color: Color(0xFF104993),
-                              size: 28,
-                            ),
+              // Carousel Section
+              carouselImages(
+                context: context,
+                carouselImagesValue: ref.watch(getListCarouselsProvider),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Category Section
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Kategori Kampanye',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 16),
+                    categoryList(
+                      context: context,
+                      categories: ref.watch(getListCategoryProvider),
+                      onTap: (category) {
+                        ref.read(routerProvider).pushNamed(
+                              'list-campaign-page',
+                              extra: category,
+                            );
+                      },
+                    ),
+                  ],
                 ),
+              ),
 
-                const SizedBox(height: 16),
+              const SizedBox(height: 24),
 
-                // Carousel Section
-                carouselImages(
-                  context: context,
-                  carouselImagesValue: ref.watch(getListCarouselsProvider),
-                ),
+              // Campaign Section
+              ...campaignList(
+                title: 'Kampanye Terbaru',
+                campaigns: ref.watch(getNewCampaignsListProvider),
+                onTap: (campaign) {
+                  ref.read(routerProvider).pushNamed(
+                        'campaign-detail-page',
+                        extra: campaign,
+                      );
+                },
+                onPressed: () {
+                  // TODO: Navigate to all campaigns page
+                },
+              ),
 
-                const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-                // Category Section
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Kategori Kampanye',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),
-                      ),
-                      const SizedBox(height: 16),
-                      categoryList(
-                        context: context,
-                        categories: ref.watch(getListCategoryProvider),
-                        onTap: (category) {
-                          ref.read(routerProvider).pushNamed(
-                                'list-campaign-page',
-                                extra: category,
-                              );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                // Campaign Section
-                ...campaignList(
-                  title: 'Kampanye Terbaru',
-                  campaigns: ref.watch(getNewCampaignsListProvider),
-                  onTap: (campaign) {
-                    ref.read(routerProvider).pushNamed(
-                          'campaign-detail-page',
-                          extra: campaign,
-                        );
-                  },
-                  onPressed: () {
-                    // TODO: Navigate to all campaigns page
-                  },
-                ),
-
-                const SizedBox(height: 24),
-
-                // Tutorial Card
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Material(
-                    elevation: 2,
+              // Tutorial Card
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Material(
+                  elevation: 2,
+                  borderRadius: BorderRadius.circular(16),
+                  child: InkWell(
+                    onTap: _showTutorialDialog,
                     borderRadius: BorderRadius.circular(16),
-                    child: InkWell(
-                      onTap: _showTutorialDialog,
-                      borderRadius: BorderRadius.circular(16),
-                      child: Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Colors.white,
-                              Colors.grey.withValues(alpha: 0.02),
-                            ],
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            // Icon
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF104993).withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.play_circle_outline,
-                                color: Color(0xFF104993),
-                                size: 24,
-                              ),
-                            ),
-
-                            const SizedBox(width: 16),
-
-                            // Content
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Tutorial Penggunaan',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xFF104993),
-                                        ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    'Pelajari cara menggunakan aplikasi',
-                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                          color: Colors.grey[600],
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            // Arrow Icon
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.grey[400],
-                            ),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.white,
+                            Colors.grey.withValues(alpha: 0.02),
                           ],
                         ),
+                      ),
+                      child: Row(
+                        children: [
+                          // Icon
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF104993).withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(
+                              Icons.play_circle_outline,
+                              color: Color(0xFF104993),
+                              size: 24,
+                            ),
+                          ),
+
+                          const SizedBox(width: 16),
+
+                          // Content
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Tutorial Penggunaan',
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xFF104993),
+                                      ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Pelajari cara menggunakan aplikasi',
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                        color: Colors.grey[600],
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // Arrow Icon
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.grey[400],
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
+              ),
 
-                const SizedBox(height: 32),
-              ],
-            ),
+              const SizedBox(height: 32),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
