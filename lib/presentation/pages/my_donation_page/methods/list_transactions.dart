@@ -9,31 +9,88 @@ List<Widget> listTransactions({
   void Function(TransactionDocument transaction)? onTap,
 }) =>
     (transactions.whenOrNull(
-          data: (data) => data
-              .map(
-                (transaction) => HorizontalTransactionCard(
-                  onTap: () => onTap?.call(transaction),
-                  imageUrl: transaction.campaignImage ?? '',
-                  campaignName: transaction.campaignName ?? '',
-                  currentUpdate: transaction.updatedAt ?? '',
-                  amount: transaction.amount ?? 0,
-                  cardWidth: double.infinity,
-                  paymentStatus: transaction.paymentStatus ?? '',
+          data: (data) {
+            if (data.isEmpty) {
+              return [
+                const SizedBox(height: 40),
+                const Center(
+                  child: Text(
+                    'Belum ada riwayat donasi',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              )
-              .toList(),
+              ];
+            }
+
+            return data
+                .map(
+                  (transaction) => Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: HorizontalTransactionCard(
+                      onTap: () => onTap?.call(transaction),
+                      imageUrl: transaction.campaignImage ?? '',
+                      campaignName: transaction.campaignName ?? 'Nama Kampanye',
+                      currentUpdate: transaction.updatedAt ?? '',
+                      amount: transaction.amount ?? 0,
+                      cardWidth: double.infinity,
+                      paymentStatus: transaction.paymentStatus ?? 'Unknown',
+                    ),
+                  ),
+                )
+                .toList();
+          },
           error: (error, stackTrace) => [
-            const Center(
-              child: Text(
-                'NETWORK ERROR!',
+            Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              decoration: BoxDecoration(
+                color: Colors.red.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.red.withValues(alpha: 0.2),
+                ),
+              ),
+              child: const Column(
+                children: [
+                  Icon(
+                    Icons.error_outline,
+                    size: 48,
+                    color: Colors.red,
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    'Gagal memuat data donasi',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Silakan coba lagi nanti',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
           ],
           loading: () => [
-            Center(
-              child: LoadingAnimationWidget.inkDrop(
-                color: Colors.amber,
-                size: 35,
+            Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.symmetric(vertical: 20),
+              child: Center(
+                child: LoadingAnimationWidget.inkDrop(
+                  color: const Color(0xFFD52014),
+                  size: 35,
+                ),
               ),
             ),
           ],
