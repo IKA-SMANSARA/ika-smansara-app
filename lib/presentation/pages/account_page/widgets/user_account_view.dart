@@ -5,6 +5,7 @@ import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/presentation/pages/account_page/widgets/user_profile_header.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/activity_card.dart';
 
 class UserAccountView extends ConsumerWidget {
   final UserProfileDocument userData;
@@ -43,8 +44,7 @@ class UserAccountView extends ConsumerWidget {
                           ),
                     ),
                     const SizedBox(height: 12),
-                    _buildActivityCard(
-                      context,
+                    ActivityCard(
                       icon: Assets.images.gift.svg(width: 24, height: 24),
                       title: 'Donasi Saya',
                       subtitle: 'Lihat riwayat donasi',
@@ -114,66 +114,7 @@ class UserAccountView extends ConsumerWidget {
     );
   }
 
-  Widget _buildActivityCard(
-    BuildContext context, {
-    required Widget icon,
-    required String title,
-    required String subtitle,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: icon,
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: Colors.grey,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+
 
   Widget _buildMenuItem(
     BuildContext context, {
