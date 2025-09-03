@@ -1,8 +1,8 @@
 # AGENTS.md - IKA Smansara Flutter Project
 
 ## Commands
-- **Setup**: `mise use` or `fvm use`, then `flutter pub get`
-- **Generate**: `dart run build_runner build` (Freezed/Riverpod/JSON/Retrofit)
+- **Setup**: `mise use` or `fvm use` (Flutter 3.32.8), then `flutter pub get`
+- **Generate**: `dart run build_runner build` (Freezed/Riverpod/JSON/Retrofit/Hive)
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
 - **Lint**: `flutter analyze` (custom_lint + riverpod_lint enabled)
 - **Test**: `flutter test --coverage` | Single: `flutter test test/path/to/test_file.dart`
@@ -17,7 +17,7 @@
 - **Naming**: PascalCase(classes), camelCase(methods/vars), snake_case(files), UPPER_SNAKE_CASE(constants)
 - **Formatting**: 80 char limit, always braces, null safety, `const` for immutables
 - **Logging**: `Constants.logger.d()` debug, `.e()` errors
-- **Testing**: flutter_test + mockito (AAA pattern)
+- **Testing**: flutter_test + mockito (AAA pattern: Arrange-Act-Assert)
 
 ## Patterns
 ```dart
@@ -41,9 +41,12 @@ Future<CampaignDocument?> getCampaignDetail(GetCampaignDetailRef ref, {required 
 
 // Test: AAA pattern with mockito
 test('should return CampaignDocument when repository returns Success', () async {
+  // Arrange
   when(mockRepository.getCampaignDetail(campaignId: anyNamed('campaignId')))
       .thenAnswer((_) async => Result.success(tCampaignDocument));
+  // Act
   final result = await usecase.call(tParams);
+  // Assert
   expect(result.isSuccess, true); expect(result.resultValue, tCampaignDocument);
 });
 ```
