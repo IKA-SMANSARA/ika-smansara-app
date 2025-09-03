@@ -1,9 +1,5 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/domain/entities/category_document.dart';
-import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_images.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
@@ -50,8 +46,8 @@ class _HomePageState extends ConsumerState<HomePage> {
         if (previous != null && next is AsyncData && next.value == null) {
           ref.read(routerProvider).goNamed('login');
         } else if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(next.error.toString())),
           );
         }
       },
@@ -67,14 +63,22 @@ class _HomePageState extends ConsumerState<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header Section
+              // Header Section with Logo
               Container(
                 padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: headerImageLogo(context: context),
+                ),
+              ),
+
+              // Welcome Text
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Selamat Datang',
+                      'Selamat Datang di IKA Smansara',
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF104993),
@@ -93,20 +97,100 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ),
 
-              // Content sections would go here
-              // For now, just show a simple message
+              const SizedBox(height: 24),
+
+              // Carousel Section
+              carouselImages(
+                context: context,
+                carouselImagesValue: ref.watch(getListCarouselsProvider),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Category Section
               Container(
-                padding: const EdgeInsets.all(20),
-                child: const Center(
-                  child: Text(
-                    'Konten beranda akan ditampilkan di sini',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Kategori Kampanye',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
                     ),
-                  ),
+                    const SizedBox(height: 16),
+                    categoryList(
+                      context: context,
+                      categories: ref.watch(getListCategoryProvider),
+                      onTap: (category) {
+                        ref.read(routerProvider).pushNamed(
+                              'list-campaign-page',
+                              extra: category,
+                            );
+                      },
+                    ),
+                  ],
                 ),
               ),
+
+              const SizedBox(height: 24),
+
+              // Campaign Section
+              ...campaignList(
+                title: 'Kampanye Terbaru',
+                campaigns: ref.watch(getNewCampaignsListProvider),
+                onTap: (campaign) {
+                  ref.read(routerProvider).pushNamed(
+                        'campaign-detail-page',
+                        extra: campaign,
+                      );
+                },
+                onPressed: () {
+                  // TODO: Navigate to all campaigns page
+                },
+              ),
+
+              const SizedBox(height: 24),
+
+              // Tutorial Video Section
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Tutorial Penggunaan',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.grey[200],
+                      ),
+                      child: _videoPlayerController.value.isInitialized
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: AspectRatio(
+                                aspectRatio: _videoPlayerController.value.aspectRatio,
+                                child: VideoPlayer(_videoPlayerController),
+                              ),
+                            )
+                          : const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 32),
             ],
           ),
         ),
