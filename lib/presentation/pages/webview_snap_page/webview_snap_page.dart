@@ -27,6 +27,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
+import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_url_webview_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/save_payment_transaction_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
@@ -78,50 +79,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
     send?.send([id, status, progress]);
   }
 
-  void _showDownloadSnackBar(String message) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-          duration: const Duration(seconds: 3),
-          action: SnackBarAction(
-            label: 'OK',
-            onPressed: () {},
-          ),
-        ),
-      );
-    }
-  }
 
-  void _showDownloadErrorSnackBar(String message, {String? details}) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(message),
-              if (details != null) ...[
-                const SizedBox(height: 4),
-                Text(
-                  details,
-                  style: const TextStyle(fontSize: 12, color: Colors.white70),
-                ),
-              ],
-            ],
-          ),
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            label: 'Retry',
-            onPressed: () {
-              // Could implement retry logic here
-            },
-          ),
-        ),
-      );
-    }
-  }
 
   Future<void> _downloadNormalLink(DownloadStartRequest downloadStartRequest) async {
     try {
@@ -153,15 +111,15 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       );
 
       if (taskId != null) {
-        _showDownloadSnackBar('Download started: ${downloadStartRequest.suggestedFilename}');
+        showDownloadSnackBar(context, 'Download started: ${downloadStartRequest.suggestedFilename}');
         Constants.logger.i('Download task created: $taskId for ${downloadStartRequest.url}');
       } else {
-        _showDownloadSnackBar('Failed to start download');
+        showDownloadSnackBar(context, 'Failed to start download');
         Constants.logger.e('Failed to create download task');
       }
 
     } catch (e) {
-      _showDownloadSnackBar('Download failed');
+      showDownloadSnackBar(context, 'Download failed');
       Constants.logger.e('Normal download error: $e');
     }
   }
@@ -175,7 +133,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       // Validate blob URL
       final url = downloadStartRequest.url.toString();
       if (!url.startsWith('blob:')) {
-        _showDownloadSnackBar('Invalid blob URL format');
+        showDownloadSnackBar(context, 'Invalid blob URL format');
         Constants.logger.e('Invalid blob URL: $url');
         return;
       }
@@ -215,7 +173,8 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
           Constants.logger.e('Both JavaScript methods failed: $fallbackError');
 
           // Show detailed error message
-          _showDownloadErrorSnackBar(
+          showDownloadErrorSnackBar(
+            context,
             'JavaScript execution failed',
             details: 'Trying alternative download method...'
           );
@@ -227,7 +186,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       }
 
       if (!jsExecuted) {
-        _showDownloadSnackBar('Failed to execute JavaScript');
+        showDownloadSnackBar(context, 'Failed to execute JavaScript');
         Constants.logger.e('JavaScript execution failed');
         return;
       }
@@ -252,7 +211,8 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
           // If it's a network error, try alternative method
           if (errorMsg.contains('Network error') || errorMsg.contains('cannot fetch blob')) {
             Constants.logger.w('Network error detected, trying alternative method');
-            _showDownloadErrorSnackBar(
+            showDownloadErrorSnackBar(
+              context,
               'Network error occurred',
               details: 'Trying alternative download method...'
             );
@@ -260,7 +220,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
             return;
           }
 
-          _showDownloadErrorSnackBar('Failed to download QRIS', details: errorMsg);
+          showDownloadErrorSnackBar(context, 'Failed to download QRIS', details: errorMsg);
           return;
         }
 
@@ -286,14 +246,14 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
             );
             return;
           } else {
-            _showDownloadSnackBar('QRIS data is empty or invalid');
+            showDownloadSnackBar(context, 'QRIS data is empty or invalid');
             Constants.logger.e('Invalid or empty data in result: $data');
             return;
           }
         }
 
         // If result is a Map but doesn't have expected structure
-        _showDownloadSnackBar('Unexpected response format');
+        showDownloadSnackBar(context, 'Unexpected response format');
         Constants.logger.e('Unexpected Map result structure: $result');
         return;
       }
@@ -310,11 +270,11 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       }
 
       // If we reach here, result format is unexpected
-      _showDownloadSnackBar('Failed to process download response');
+      showDownloadSnackBar(context, 'Failed to process download response');
       Constants.logger.e('Unexpected result format: ${result.runtimeType} - $result');
 
     } catch (e) {
-      _showDownloadSnackBar('Failed to download QRIS');
+      showDownloadSnackBar(context, 'Failed to download QRIS');
       Constants.logger.e('Blob download error: $e');
     }
   }
@@ -327,7 +287,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       // Parse data URL format: data:[<mime type>][;charset=<charset>][;base64],<encoded data>
       final dataUriParts = dataUrl.split(',');
       if (dataUriParts.length < 2) {
-        _showDownloadSnackBar('Invalid data URL format');
+        showDownloadSnackBar(context, 'Invalid data URL format');
         return;
       }
 
@@ -363,7 +323,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
 
     } catch (e) {
       Constants.logger.e('Data URL download error: $e');
-      _showDownloadSnackBar('Failed to process data URL download');
+      showDownloadSnackBar(context, 'Failed to process data URL download');
     }
   }
 
@@ -471,7 +431,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
             );
           } else if (resultMap['type'] == 'clicked') {
             Constants.logger.d('Download button clicked via alternative method');
-            _showDownloadSnackBar('Download initiated');
+            showDownloadSnackBar(context, 'Download initiated');
           } else if (resultMap['error'] != null) {
             Constants.logger.w('Alternative method error: ${resultMap['error']}');
           }
@@ -480,7 +440,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
 
     } catch (e) {
       Constants.logger.e('Alternative blob download failed: $e');
-      _showDownloadSnackBar('QRIS download failed - please try manual download');
+      showDownloadSnackBar(context, 'QRIS download failed - please try manual download');
     }
   }
 
@@ -619,7 +579,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       Constants.logger.d('Processing $fileName with ${base64content.length} characters');
 
       if (base64content.isEmpty) {
-        _showDownloadSnackBar('QRIS data is empty');
+        showDownloadSnackBar(context, 'QRIS data is empty');
         Constants.logger.e('Base64 content is empty');
         return;
       }
@@ -633,7 +593,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
 
       // Validate base64 format
       if (!RegExp(r'^[A-Za-z0-9+/]*={0,2}$').hasMatch(cleanBase64)) {
-        _showDownloadSnackBar('Invalid QRIS data format');
+        showDownloadSnackBar(context, 'Invalid QRIS data format');
         Constants.logger.e('Invalid base64 format detected');
         return;
       }
@@ -648,20 +608,20 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
         bytes = base64Decode(cleanBase64);
         Constants.logger.d('Decoded ${bytes.length} bytes');
       } catch (decodeError) {
-        _showDownloadSnackBar('Failed to decode QRIS data');
+        showDownloadSnackBar(context, 'Failed to decode QRIS data');
         Constants.logger.e('Base64 decode error: $decodeError');
         return;
       }
 
       if (bytes.isEmpty) {
-        _showDownloadSnackBar('Failed to decode QRIS data');
+        showDownloadSnackBar(context, 'Failed to decode QRIS data');
         Constants.logger.e('Decoded bytes is empty');
         return;
       }
 
       // Validate minimum file size (QR code should be at least a few KB)
       if (bytes.length < 1024) {
-        _showDownloadSnackBar('QRIS data appears to be too small');
+        showDownloadSnackBar(context, 'QRIS data appears to be too small');
         Constants.logger.w('Decoded file is very small: ${bytes.length} bytes');
       }
 
@@ -702,7 +662,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       Constants.logger.i('File saved successfully: ${file.path}');
 
       // Show success message
-      _showDownloadSnackBar('QRIS saved as $uniqueFileName');
+      showDownloadSnackBar(context, 'QRIS saved as $uniqueFileName');
 
       // Try to open the file
       try {
@@ -718,7 +678,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
       }
 
     } catch (e) {
-      _showDownloadSnackBar('Failed to save QRIS file');
+      showDownloadSnackBar(context, 'Failed to save QRIS file');
       Constants.logger.e('File creation error: $e');
     }
   }
@@ -826,7 +786,7 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
                     } catch (e, stackTrace) {
                       Constants.logger.e("Error in onDownloadStartRequest: $e");
                       Constants.logger.e("Stack trace: $stackTrace");
-                      _showDownloadSnackBar("Download failed: ${e.toString()}");
+                      showDownloadSnackBar(context, "Download failed: ${e.toString()}");
                     }
                   },
                   onConsoleMessage: (controller, consoleMessage) {

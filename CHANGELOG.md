@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+29] - 2025-01-31
+
+### Fixed
+- **QR Code Download Issues**: Complete resolution of QRIS download problems in Midtrans Snap
+  - Fixed XHR network error in WebView blob download handler
+  - Implemented dual-method JavaScript blob handler (fetch + XHR fallback)
+  - Added alternative download methods when JavaScript execution fails
+  - Fixed CallAsyncJavaScriptResult operator errors and compilation issues
+  - Enhanced error handling with detailed user feedback and logging
+  - Added QRIS-specific download detection and handling
+  - Implemented screenshot capture as fallback for QR code extraction
+  - Improved base64 validation and MIME type detection
+  - Added data URL handling for direct QR code downloads
+  - Fixed all compilation errors and warnings in webview_snap_page.dart
+
+- **WebView Download Handler**: Comprehensive improvements to QR code download functionality
+  - Better CORS and security policy handling
+  - Enhanced fallback mechanisms for different download scenarios
+  - Improved user experience with informative error messages
+  - Added unique filename generation to prevent conflicts
+  - Better file validation and error recovery
+
+### Technical Improvements
+- **Error Handling**: Enhanced error detection and user feedback
+- **Code Quality**: Fixed all compilation errors and improved code structure
+- **Performance**: Optimized WebView download operations
+- **Reliability**: Added multiple fallback methods for download failures
+- **Debugging**: Comprehensive logging for troubleshooting download issues
+
+### Changed
+- **AGENTS.md**: Improved formatting and development guidelines
+- **WebView Implementation**: Enhanced QR code download with robust error handling
+
 ## [1.2.0+28] - 2025-01-31
 
 ### Fixed
