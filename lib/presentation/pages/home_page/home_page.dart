@@ -9,109 +9,12 @@ import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:video_player/video_player.dart';
 
-class HomePage extends ConsumerStatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
-}
-
-class _HomePageState extends ConsumerState<HomePage> {
-  late VideoPlayerController _videoPlayerController;
-
-  @override
-  void initState() {
-    super.initState();
-    _videoPlayerController = VideoPlayerController.asset(
-      'assets/images/tutorial.mp4',
-    )..initialize().then((_) {
-        _videoPlayerController.play();
-      });
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  void _showTutorialDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Header
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Tutorial Penggunaan',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF104993),
-                          ),
-                    ),
-                    IconButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      icon: const Icon(Icons.close),
-                      color: Colors.grey,
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 16),
-
-                // Video Player
-                Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[200],
-                  ),
-                  child: _videoPlayerController.value.isInitialized
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: AspectRatio(
-                            aspectRatio: _videoPlayerController.value.aspectRatio,
-                            child: VideoPlayer(_videoPlayerController),
-                          ),
-                        )
-                      : const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Description
-                Text(
-                  'Pelajari cara menggunakan aplikasi IKA Smansara untuk mendukung kampanye sosial.',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey[600],
-                        height: 1.5,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Listen to user authentication changes
     ref.listen(
       userDataProvider,
@@ -127,46 +30,46 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF104993),
+        elevation: 0,
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 16),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  ref.read(routerProvider).pushNamed('account');
+                },
+                borderRadius: BorderRadius.circular(50),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  child: const Icon(
+                    Icons.account_circle,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header Section - Logo with Account Button
+                // Logo Section
                 Container(
-                  padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Left side - empty for balance
-                      const SizedBox(width: 48),
-
-                      // Center - Logo
-                      Assets.images.logoIkaSmansaraColored.svg(
-                        width: 80,
-                        height: 80,
-                      ),
-
-                      // Right side - Account Button
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            ref.read(routerProvider).pushNamed('account');
-                          },
-                          borderRadius: BorderRadius.circular(8),
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            child: const Icon(
-                              Icons.person_outline,
-                              color: Color(0xFF104993),
-                              size: 28,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Center(
+                    child: Assets.images.logoIkaSmansaraColored.svg(
+                      width: 80,
+                      height: 80,
+                    ),
                   ),
                 ),
 
@@ -225,84 +128,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                   },
                 ),
 
-                const SizedBox(height: 24),
-
-                // Tutorial Card
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Material(
-                    elevation: 2,
-                    borderRadius: BorderRadius.circular(16),
-                    child: InkWell(
-                      onTap: _showTutorialDialog,
-                      borderRadius: BorderRadius.circular(16),
-                      child: Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Colors.white,
-                              Colors.grey.withValues(alpha: 0.02),
-                            ],
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            // Icon
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF104993).withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: const Icon(
-                                Icons.play_circle_outline,
-                                color: Color(0xFF104993),
-                                size: 24,
-                              ),
-                            ),
-
-                            const SizedBox(width: 16),
-
-                            // Content
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Tutorial Penggunaan',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xFF104993),
-                                        ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    'Pelajari cara menggunakan aplikasi',
-                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                          color: Colors.grey[600],
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            // Arrow Icon
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.grey[400],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
                 const SizedBox(height: 32),
               ],
             ),
@@ -312,3 +137,4 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 }
+

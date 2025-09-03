@@ -10,10 +10,12 @@ import 'package:ika_smansara/presentation/widgets/menu_item.dart';
 
 class UserAccountView extends ConsumerWidget {
   final UserProfileDocument userData;
+  final VoidCallback? onShowTutorial;
 
   const UserAccountView({
     super.key,
     required this.userData,
+    this.onShowTutorial,
   });
 
   @override
@@ -79,12 +81,18 @@ class UserAccountView extends ConsumerWidget {
                           .read(routerProvider)
                           .pushNamed('user-profile-page'),
                     ),
-                    MenuItem(
-                      icon: Assets.images.about.svg(width: 20, height: 20),
-                      title: 'Tentang IKA SMANSARA',
-                      subtitle: 'Informasi tentang organisasi',
-                      onTap: () {},
-                    ),
+                     MenuItem(
+                       icon: Icon(Icons.play_circle_outline, size: 20, color: const Color(0xFF104993)),
+                       title: 'Tutorial Penggunaan',
+                       subtitle: 'Pelajari cara menggunakan aplikasi',
+                       onTap: onShowTutorial ?? () {},
+                     ),
+                     MenuItem(
+                       icon: Assets.images.about.svg(width: 20, height: 20),
+                       title: 'Tentang IKA SMANSARA',
+                       subtitle: 'Informasi tentang organisasi',
+                       onTap: () {},
+                     ),
                     MenuItem(
                       icon: Assets.images.person.svg(width: 20, height: 20),
                       title: 'Hubungi Kami',

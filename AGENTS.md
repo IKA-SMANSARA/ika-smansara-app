@@ -58,3 +58,42 @@ lib/
 2. Data Changes: Update Freezed → `dart run build_runner build`
 3. Testing: Write usecase tests with mocked repositories
 4. Assets: Update assets → `fluttergen` + `flutter pub run flutter_launcher_icons:main`
+
+## Key Patterns
+```dart
+// Entity
+@freezed
+class CampaignDocument with _$CampaignDocument {
+  factory CampaignDocument({String? id, String? campaignName, @Default(0) int? goalAmount}) = _CampaignDocument;
+  factory CampaignDocument.fromJson(Map<String, dynamic> json) => _$CampaignDocumentFromJson(json);
+}
+
+// Provider
+@riverpod
+Future<CampaignDocument?> getCampaignDetail(GetCampaignDetailRef ref, {required String campaignId}) async {
+  final result = await ref.read(getCampaignDetailUseCaseProvider)(GetCampaignDetailParams(campaignId: campaignId));
+  return switch (result) { Success(value: final campaign) => campaign, Failed(message: _) => null };
+}
+
+// Test
+test('should return CampaignDocument when repository returns Success', () async {
+  when(mockRepository.getCampaignDetail(campaignId: anyNamed('campaignId')))
+      .thenAnswer((_) async => Result.success(tCampaignDocument));
+  final result = await usecase.call(tParams);
+  expect(result.isSuccess, true);
+});
+```
+
+## Project Structure
+```
+lib/
+├── domain/     # entities, usecases
+├── data/       # repositories, appwrite, services
+└── presentation/ # providers, pages, widgets
+```
+
+## Development Workflow
+1. New Feature: Entity → Usecase → Repository → Provider → UI
+2. Data Changes: Update Freezed → `dart run build_runner build`
+3. Testing: Write usecase tests with mocked repositories
+4. Assets: Update assets → `fluttergen` + `flutter pub run flutter_launcher_icons:main`
