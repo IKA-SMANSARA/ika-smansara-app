@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
-import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_already_logged_in_state.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_form.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_error_state.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_loading_state.dart';
 
 class LoginPage extends ConsumerWidget {
   final TextEditingController emailController = TextEditingController();
@@ -40,53 +40,50 @@ class LoginPage extends ConsumerWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: userDataAsync.when(
-            loading: () => _buildInitialLoadingState(),
-            error: (error, stack) => _buildInitialErrorState(context, ref, error),
+            loading: () => const LoginInitialLoadingState(),
+            error: (error, stack) => LoginInitialErrorState(ref: ref),
             data: (userData) => userData != null
-                ? _buildAlreadyLoggedInState()
-                : _buildLoginForm(context, ref),
+                ? const LoginAlreadyLoggedInState()
+                : LoginForm(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  ),
           ),
         ),
       ),
     );
   }
+}
+        } else if (next is AsyncError) {
+          // Error saat login process, bukan saat pengecekan status
+          if (previous is AsyncData && previous.value == null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(next.error.toString())),
+            );
+          }
+        }
+      },
+    );
 
-  Widget _buildInitialLoadingState() {
-    return const SizedBox(
-      height: 600,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Logo will be added here
-          SizedBox(height: 32),
-          LoadingAnimationWidget.inkDrop(
-            color: Color(0xFFD52014),
-            size: 50,
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          child: userDataAsync.when(
+            loading: () => const LoginInitialLoadingState(),
+            error: (error, stack) => LoginInitialErrorState(ref: ref),
+            data: (userData) => userData != null
+                ? const LoginAlreadyLoggedInState()
+                : LoginForm(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  ),
           ),
-          SizedBox(height: 24),
-          Text(
-            'Memeriksa status login...',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF104993),
-            ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Mohon tunggu sebentar',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+        ),
       ),
     );
   }
+}
 
   Widget _buildInitialErrorState(BuildContext context, WidgetRef ref, Object error) {
     return SizedBox(
