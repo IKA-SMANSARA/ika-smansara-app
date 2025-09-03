@@ -9,6 +9,7 @@ import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_pag
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
+import 'package:ika_smansara/presentation/pages/contact_us_page/contact_us_page.dart';
 import 'package:ika_smansara/presentation/pages/create_account_bank_page/create_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_transaction_page.dart';
@@ -187,6 +188,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/my-donation-page',
           name: 'my_donation_page',
           builder: (context, state) => const MyDonationPage(),
+        ),
+        GoRoute(
+          path: '/contact-us-page',
+          name: 'contact-us-page',
+          builder: (context, state) => const ContactUsPage(),
         ),
         GoRoute(
           path: '/request-payout-page',

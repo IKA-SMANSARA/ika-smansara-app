@@ -6,6 +6,7 @@ import 'package:ika_smansara/presentation/pages/account_page/widgets/user_profil
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/activity_card.dart';
+import 'package:ika_smansara/presentation/widgets/menu_item.dart';
 
 class UserAccountView extends ConsumerWidget {
   final UserProfileDocument userData;
@@ -70,8 +71,7 @@ class UserAccountView extends ConsumerWidget {
                           ),
                     ),
                     const SizedBox(height: 12),
-                    _buildMenuItem(
-                      context,
+                    MenuItem(
                       icon: Assets.images.person.svg(width: 20, height: 20),
                       title: 'Ubah Profile',
                       subtitle: 'Perbarui informasi pribadi',
@@ -79,23 +79,20 @@ class UserAccountView extends ConsumerWidget {
                           .read(routerProvider)
                           .pushNamed('user-profile-page'),
                     ),
-                    _buildMenuItem(
-                      context,
+                    MenuItem(
                       icon: Assets.images.about.svg(width: 20, height: 20),
                       title: 'Tentang IKA SMANSARA',
                       subtitle: 'Informasi tentang organisasi',
                       onTap: () {},
                     ),
-                    _buildMenuItem(
-                      context,
+                    MenuItem(
                       icon: Assets.images.person.svg(width: 20, height: 20),
                       title: 'Hubungi Kami',
                       subtitle: 'Ada pertanyaan? Hubungi tim kami',
                       onTap: () =>
                           ref.read(routerProvider).pushNamed('contact-us-page'),
                     ),
-                    _buildMenuItem(
-                      context,
+                    MenuItem(
                       icon: Assets.images.logout.svg(width: 20, height: 20),
                       title: 'Keluar',
                       subtitle: 'Keluar dari akun',
@@ -116,69 +113,6 @@ class UserAccountView extends ConsumerWidget {
 
 
 
-  Widget _buildMenuItem(
-    BuildContext context, {
-    required Widget icon,
-    required String title,
-    required String subtitle,
-    required VoidCallback onTap,
-    bool showDivider = true,
-  }) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF104993).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: icon,
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        subtitle,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Colors.grey[600],
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 16,
-                  color: Colors.grey,
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (showDivider) ...[
-          const SizedBox(height: 12),
-          Divider(
-            color: Colors.grey[300],
-            height: 1,
-          ),
-        ],
-      ],
-    );
-  }
+
 }
 
