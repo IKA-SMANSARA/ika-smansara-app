@@ -1,5 +1,3 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
@@ -25,102 +23,183 @@ class LoginPage extends ConsumerWidget {
             ref.read(routerProvider).goNamed('main');
           }
         } else if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(next.error.toString())),
           );
         }
       },
     );
 
     return Scaffold(
-      body: ListView(
-        children: [
-          verticalSpace(200),
-          Center(
-            child: Assets.images.logoIkaSmansaraColored.svg(),
-          ),
-          verticalSpace(16),
-          AutoSizeText(
-            'Selamat Datang',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          verticalSpace(50),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: 'Email',
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 60),
+
+              // Logo Section
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF104993).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                verticalSpace(24),
-                CustomSecureTextField(
-                  labelText: 'Password',
-                  controller: passwordController,
+                child: Assets.images.logoIkaSmansaraColored.svg(
+                  width: 80,
+                  height: 80,
                 ),
-                verticalSpace(24),
-                switch (ref.watch(userDataProvider)) {
-                  AsyncData(:final value) => value == null
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              ref.read(userDataProvider.notifier).login(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF104993),
-                            ),
-                            child: AutoSizeText(
-                              'Login',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        )
-                      : LoadingAnimationWidget.newtonCradle(
-                          color: Colors.amber,
-                          size: 35,
-                        ),
-                  _ => LoadingAnimationWidget.newtonCradle(
-                      color: Colors.amber,
-                      size: 35,
+              ),
+
+              const SizedBox(height: 32),
+
+              // Welcome Text
+              Text(
+                'Selamat Datang',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF104993),
                     ),
-                },
-                verticalSpace(24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText('Belum punya akun ? '),
-                    TextButton(
-                      onPressed: () {
-                        ref.read(routerProvider).pushNamed('register');
-                      },
-                      child: AutoSizeText(
-                        'Daftar',
-                        style: TextStyle(
-                          color: const Color(0xFF104993),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                'Masuk ke akun Anda untuk melanjutkan',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 48),
+
+              // Form Section
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-              ],
-            ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Informasi Login',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF104993),
+                          ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Email Field
+                    CustomTextField(
+                      labelText: 'Email',
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Password Field
+                    CustomSecureTextField(
+                      labelText: 'Password',
+                      controller: passwordController,
+                    ),
+
+                    const SizedBox(height: 32),
+
+                    // Login Button
+                    switch (ref.watch(userDataProvider)) {
+                      AsyncData(:final value) => value == null
+                          ? SizedBox(
+                              width: double.infinity,
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  ref.read(userDataProvider.notifier).login(
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                      );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF104993),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  elevation: 2,
+                                ),
+                                child: const Text(
+                                  'Masuk',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Center(
+                              child: LoadingAnimationWidget.inkDrop(
+                                color: const Color(0xFFD52014),
+                                size: 40,
+                              ),
+                            ),
+                      _ => Center(
+                          child: LoadingAnimationWidget.inkDrop(
+                            color: const Color(0xFFD52014),
+                            size: 40,
+                          ),
+                        ),
+                    },
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 32),
+
+              // Register Link
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Belum punya akun?',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey[600],
+                        ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      ref.read(routerProvider).pushNamed('register');
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: const Color(0xFF104993),
+                    ),
+                    child: const Text(
+                      'Daftar Sekarang',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 20),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
