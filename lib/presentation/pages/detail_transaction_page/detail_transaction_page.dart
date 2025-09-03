@@ -58,6 +58,7 @@ class DetailTransactionPage extends ConsumerWidget {
                 CampaignInfoCard(
                   campaignName: transaction.campaignName ?? '',
                   campaignImage: transaction.campaignImage ?? '',
+                  campaign: campaign,
                 ),
 
                 const SizedBox(height: 20),
