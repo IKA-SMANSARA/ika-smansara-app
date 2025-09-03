@@ -59,9 +59,18 @@ class AdminAccountView extends ConsumerWidget {
                   subtitle: 'Pantau dan kelola pencairan dana',
                   color: const Color(0xFF104993),
                   onTap: () => ref.read(routerProvider).pushNamed('payout-history-page'),
-                      ),
-                    ],
-                  ),
+                ),
+                const SizedBox(height: 8),
+                _buildQuickActionCard(
+                  context,
+                  icon: Assets.images.gift.svg(width: 24, height: 24),
+                  title: 'Donasi Saya',
+                  subtitle: 'Lihat riwayat donasi',
+                  color: const Color(0xFFD52014),
+                  onTap: () => ref.read(routerProvider).pushNamed('my_donation_page'),
+                ),
+              ],
+            ),
 
                   const SizedBox(height: 24),
 

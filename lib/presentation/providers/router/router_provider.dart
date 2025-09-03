@@ -19,6 +19,7 @@ import 'package:ika_smansara/presentation/pages/list_user_question_page/list_use
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
+import 'package:ika_smansara/presentation/pages/my_donation_page/my_donation_page.dart';
 import 'package:ika_smansara/presentation/pages/payout_history_page/payout_history_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
 import 'package:ika_smansara/presentation/pages/request_payout_page/request_payout_page.dart';
@@ -181,6 +182,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/payout-history-page',
           name: 'payout-history-page',
           builder: (context, state) => const PayoutHistoryPage(),
+        ),
+        GoRoute(
+          path: '/my-donation-page',
+          name: 'my_donation_page',
+          builder: (context, state) => const MyDonationPage(),
         ),
         GoRoute(
           path: '/request-payout-page',
