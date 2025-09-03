@@ -20,99 +20,95 @@ class UserAccountView extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-            // User Profile Header
-            UserProfileHeader(userData: userData),
+          // User Profile Header
+          UserProfileHeader(userData: userData),
 
-            const SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-            // Content with padding
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Quick Actions Section
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Aktivitas',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFF104993),
-                            ),
-                      ),
-                      const SizedBox(height: 12),
-                _buildActivityCard(
-                  context,
-                  icon: Assets.images.gift.svg(width: 24, height: 24),
-                  title: 'Donasi Saya',
-                  subtitle: 'Lihat riwayat donasi',
-                  color: const Color(0xFFD52014),
-                  onTap: () => ref.read(routerProvider).pushNamed('donation-history-page'),
+          // Content with padding
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Quick Actions Section
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Aktivitas',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF104993),
+                          ),
+                    ),
+                    const SizedBox(height: 12),
+                    _buildActivityCard(
+                      context,
+                      icon: Assets.images.gift.svg(width: 24, height: 24),
+                      title: 'Donasi Saya',
+                      subtitle: 'Lihat riwayat donasi',
+                      color: const Color(0xFFD52014),
+                      onTap: () => ref
+                          .read(routerProvider)
+                          .pushNamed('my_donation_page'),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                _buildActivityCard(
-                  context,
-                  icon: Assets.images.heartWithPulse.svg(width: 24, height: 24),
-                  title: 'Kampanye Favorit',
-                  subtitle: 'Kampanye yang Anda dukung',
-                  color: const Color(0xFF104993),
-                  onTap: () => ref.read(routerProvider).pushNamed('favorite-campaigns-page'),
-                      ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 24),
+                const SizedBox(height: 24),
 
-                  // Account Section
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Akun',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFF104993),
-                            ),
-                      ),
-                      const SizedBox(height: 12),
-                _buildMenuItem(
-                  context,
-                  icon: Assets.images.person.svg(width: 20, height: 20),
-                  title: 'Ubah Profile',
-                  subtitle: 'Perbarui informasi pribadi',
-                  onTap: () => ref.read(routerProvider).pushNamed('user-profile-page'),
+                // Account Section
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Akun',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF104993),
+                          ),
+                    ),
+                    const SizedBox(height: 12),
+                    _buildMenuItem(
+                      context,
+                      icon: Assets.images.person.svg(width: 20, height: 20),
+                      title: 'Ubah Profile',
+                      subtitle: 'Perbarui informasi pribadi',
+                      onTap: () => ref
+                          .read(routerProvider)
+                          .pushNamed('user-profile-page'),
+                    ),
+                    _buildMenuItem(
+                      context,
+                      icon: Assets.images.about.svg(width: 20, height: 20),
+                      title: 'Tentang IKA SMANSARA',
+                      subtitle: 'Informasi tentang organisasi',
+                      onTap: () {},
+                    ),
+                    _buildMenuItem(
+                      context,
+                      icon: Assets.images.person.svg(width: 20, height: 20),
+                      title: 'Hubungi Kami',
+                      subtitle: 'Ada pertanyaan? Hubungi tim kami',
+                      onTap: () =>
+                          ref.read(routerProvider).pushNamed('contact-us-page'),
+                    ),
+                    _buildMenuItem(
+                      context,
+                      icon: Assets.images.logout.svg(width: 20, height: 20),
+                      title: 'Keluar',
+                      subtitle: 'Keluar dari akun',
+                      onTap: () => ref.read(userDataProvider.notifier).logout(),
+                      showDivider: false,
+                    ),
+                  ],
                 ),
-                _buildMenuItem(
-                  context,
-                  icon: Assets.images.about.svg(width: 20, height: 20),
-                  title: 'Tentang IKA SMANSARA',
-                  subtitle: 'Informasi tentang organisasi',
-                  onTap: () {},
-                ),
-                _buildMenuItem(
-                  context,
-                  icon: Assets.images.person.svg(width: 20, height: 20),
-                  title: 'Hubungi Kami',
-                  subtitle: 'Ada pertanyaan? Hubungi tim kami',
-                  onTap: () => ref.read(routerProvider).pushNamed('contact-us-page'),
-                ),
-                _buildMenuItem(
-                  context,
-                  icon: Assets.images.logout.svg(width: 20, height: 20),
-                  title: 'Keluar',
-                  subtitle: 'Keluar dari akun',
-                  onTap: () => ref.read(userDataProvider.notifier).logout(),
-                  showDivider: false,
-                      ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 20),
-                ],
-              ),
+                const SizedBox(height: 20),
+              ],
             ),
+          ),
         ],
       ),
     );
@@ -244,3 +240,4 @@ class UserAccountView extends ConsumerWidget {
     );
   }
 }
+
