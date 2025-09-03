@@ -33,15 +33,20 @@ class ContactUsPage extends ConsumerWidget {
     // Handle successful submission
     ref.listen(createQuestionProvider, (previous, next) {
       if (next.hasValue && next.value != null) {
+        final isAdmin = userData.valueOrNull?.isAdmin ?? false;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Pertanyaan berhasil dikirim')),
+          SnackBar(
+            content: Text(isAdmin ? 'Jawaban berhasil dikirim' : 'Pertanyaan berhasil dikirim'),
+          ),
         );
       }
     });
 
+    final isAdmin = userData.valueOrNull?.isAdmin ?? false;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hubungi Kami'),
+        title: Text(isAdmin ? 'Forum Diskusi' : 'Hubungi Kami'),
         elevation: 0,
       ),
       body: SafeArea(
@@ -74,9 +79,9 @@ class ContactUsPage extends ConsumerWidget {
                     const SizedBox(height: 32),
 
                     // Navigation Section
-                    const Text(
-                      'Lihat Pertanyaan',
-                      style: TextStyle(
+                    Text(
+                      isAdmin ? 'Kelola Pertanyaan' : 'Lihat Pertanyaan',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
@@ -87,7 +92,7 @@ class ContactUsPage extends ConsumerWidget {
                     Row(
                       children: [
                         NavigationCard(
-                          title: 'Pertanyaan Lain',
+                          title: isAdmin ? 'Semua Pertanyaan' : 'Pertanyaan Lain',
                           icon: Icons.question_answer_outlined,
                           color: Colors.green,
                           onTap: () => ref.read(routerProvider).pushNamed('list_all_question'),
@@ -111,6 +116,8 @@ class ContactUsPage extends ConsumerWidget {
   }
 
   void _showSubmitDialog(BuildContext context, WidgetRef ref, AsyncValue userData, String content) {
+    final isAdmin = userData.valueOrNull?.isAdmin ?? false;
+
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -118,15 +125,15 @@ class ContactUsPage extends ConsumerWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          title: const Text(
-            'Kirim Pertanyaan',
-            style: TextStyle(
+          title: Text(
+            isAdmin ? 'Kirim Jawaban' : 'Kirim Pertanyaan',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-          content: const Text(
-            'Apakah Anda yakin ingin mengirim pertanyaan ini?',
-            style: TextStyle(height: 1.5),
+          content: Text(
+            isAdmin ? 'Apakah Anda yakin ingin mengirim jawaban ini?' : 'Apakah Anda yakin ingin mengirim pertanyaan ini?',
+            style: const TextStyle(height: 1.5),
           ),
           actions: [
             TextButton(
@@ -166,7 +173,7 @@ class ContactUsPage extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
-              child: const Text('Kirim'),
+              child: Text(isAdmin ? 'Kirim Jawaban' : 'Kirim'),
             ),
           ],
         );
