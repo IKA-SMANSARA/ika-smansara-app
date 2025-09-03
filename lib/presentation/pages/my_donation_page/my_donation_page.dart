@@ -1,11 +1,10 @@
+import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_content.dart';
-import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_empty_state.dart';
-import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_error_state.dart';
-import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_page_header.dart';
-import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_loading_state.dart';
+import 'package:ika_smansara/presentation/pages/my_donation_page/methods/carousel_transaction_image.dart';
+import 'package:ika_smansara/presentation/pages/my_donation_page/methods/list_transactions.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_transactions_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 
@@ -14,62 +13,112 @@ class MyDonationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userDataAsync = ref.watch(userDataProvider);
-    final userId = userDataAsync.valueOrNull?.authKey ?? '';
-    final transactionsAsync = ref.watch(getTransactionsListProvider(userId: userId));
-
-    // Show error messages for failed operations
-    ref.listen(
-      userDataProvider,
-      (_, state) => state.showSnackbarOnError(context),
-    );
-
-    ref.listen(
-      getTransactionsListProvider(userId: userId),
-      (_, state) => state.showSnackbarOnError(context),
-    );
+    var userId = ref.read(userDataProvider).valueOrNull?.authKey;
+    var asyncTransactionsData =
+        ref.watch(getTransactionsListProvider(userId: userId ?? ''));
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header Section
-              const MyDonationPageHeader(),
-
-              // Content Section
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: userDataAsync.when(
-                  loading: () => const MyDonationLoadingState(),
-                  error: (error, stack) => MyDonationErrorState(error: error),
-                  data: (userData) {
-                    if (userData == null) {
-                      return const Center(
-                        child: Text('Silakan login untuk melihat riwayat donasi'),
-                      );
-                    }
-
-                    return transactionsAsync.when(
-                      loading: () => const MyDonationLoadingState(),
-                      error: (error, stack) => MyDonationErrorState(error: error),
-                      data: (transactions) {
-                        if (transactions.isEmpty) {
-                          return const MyDonationEmptyState();
-                        }
-
-                        return MyDonationContent(transactions: transactionsAsync);
-                      },
-                    );
-                  },
-                ),
-              ),
-
-              const SizedBox(height: 20),
-            ],
+      appBar: AppBar(
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        backgroundColor: const Color(0xFF104993),
+        title: Center(
+          child: AutoSizeText(
+            'Donasiku',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
+      ),
+      body: Builder(
+        builder: (context) {
+          var isNotEmpty = asyncTransactionsData.value?.isNotEmpty;
+
+          if (isNotEmpty ?? false) {
+            return ListView(
+              children: [
+                carouselTransactionImage(
+                  context: context,
+                  campaigns: asyncTransactionsData,
+                ),
+                verticalSpace(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        'Riwayat Donasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      verticalSpace(16),
+                      Divider(
+                        color: Colors.black,
+                        height: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                verticalSpace(16),
+                ...listTransactions(
+                  transactions: asyncTransactionsData,
+                  onTap: (transaction) {
+                    ref.read(routerProvider).pushNamed(
+                          'detail-transaction-page',
+                          extra: transaction.id,
+                        );
+                  },
+                ),
+                verticalSpace(100),
+              ],
+            );
+          } else {
+            return ListView(
+              children: [
+                verticalSpace(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        'Riwayat Donasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      verticalSpace(16),
+                      Divider(
+                        color: Colors.black,
+                        height: 1,
+                      ),
+                      verticalSpace(16),
+                      AutoSizeText(
+                        'Anda Belum Pernah Berdonasi',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                verticalSpace(16),
+              ],
+            );
+          }
+        },
       ),
     );
   }

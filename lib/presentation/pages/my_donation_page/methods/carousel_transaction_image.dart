@@ -11,114 +11,39 @@ Widget carouselTransactionImage({
   required AsyncValue<List<TransactionDocument>> campaigns,
 }) =>
     campaigns.when(
-      data: (data) {
-        if (data.isEmpty) {
-          return const SizedBox.shrink();
-        }
-
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 16),
-          child: FlutterCarousel.builder(
-            itemCount: data.length,
-            itemBuilder: (context, itemIndex, pageViewIndex) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.1),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: CachedNetworkImage(
-                    imageUrl: data[itemIndex].campaignImage ?? '',
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: Colors.grey[200],
-                      child: Center(
-                        child: LoadingAnimationWidget.newtonCradle(
-                          color: const Color(0xFFD52014),
-                          size: 35,
-                        ),
-                      ),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      color: Colors.grey[200],
-                      child: const Icon(
-                        Icons.image_not_supported_outlined,
-                        size: 50,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-            options: CarouselOptions(
-              aspectRatio: responsiveImageAspectRatio(context),
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 4),
-              enableInfiniteScroll: enableInfiniteScrollStatus(
-                listLength: data.length,
+      data: (data) => FlutterCarousel.builder(
+        itemCount: data.length,
+        itemBuilder: (context, itemIndex, pageViewIndex) {
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: CachedNetworkImage(
+              imageUrl: data[itemIndex].campaignImage ?? '',
+              placeholder: (context, url) =>
+                  LoadingAnimationWidget.newtonCradle(
+                color: Colors.amber,
+                size: 35,
               ),
-              showIndicator: true,
-              viewportFraction: 0.9,
-              slideIndicator: CircularSlideIndicator(
-                slideIndicatorOptions: const SlideIndicatorOptions(
-                  indicatorBackgroundColor: Colors.grey,
-                  currentIndicatorColor: Color(0xFFD52014),
-                ),
-              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
+          );
+        },
+        options: CarouselOptions(
+          aspectRatio: responsiveImageAspectRatio(context),
+          autoPlay: true,
+          enableInfiniteScroll: enableInfiniteScrollStatus(
+            listLength: data.length,
           ),
-        );
-      },
-      error: (error, stackTrace) => Container(
-        height: 200,
-        margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.red.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.error_outline,
-                size: 48,
-                color: Colors.red,
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Gagal memuat gambar',
-                style: TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
+          showIndicator: false,
+          viewportFraction: 1,
         ),
       ),
-      loading: () => Container(
-        height: 200,
-        margin: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.grey.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Center(
-          child: LoadingAnimationWidget.inkDrop(
-            color: const Color(0xFFD52014),
-            size: 35,
-          ),
+      error: (error, stackTrace) => const Center(
+        child: Text('NETWORK ERROR!'),
+      ),
+      loading: () => Center(
+        child: LoadingAnimationWidget.inkDrop(
+          color: Colors.amber,
+          size: 35,
         ),
       ),
     );
