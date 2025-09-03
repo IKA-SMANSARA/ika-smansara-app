@@ -12,6 +12,7 @@ import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_l
 import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:video_player/video_player.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -42,133 +43,23 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Listen to user authentication changes
+    ref.listen(
+      userDataProvider,
+      (previous, next) {
+        if (previous != null && next is AsyncData && next.value == null) {
+          ref.read(routerProvider).goNamed('login');
+        } else if (next is AsyncError) {
+          context.showSnackBar(
+            next.error.toString(),
+          );
+        }
+      },
+    );
+
     return ListView(
       children: [
         Stack(
           children: [
             Container(
               height: headerHomeBackgroundHeight(context),
-              decoration: const BoxDecoration(
-                color: Color(0xFF104993),
-              ),
-            ),
-            Column(
-              children: [
-                verticalSpace(16),
-                Row(
-                  children: [
-                    horizontalSpace(16),
-                    Expanded(
-                      flex: 7,
-                      child: headerImageLogo(
-                        context: context,
-                      ),
-                    ),
-                    horizontalSpace(
-                      MediaQuery.of(context).size.width * 0.30,
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 14,
-                        ),
-                        child: Center(
-                          child: Icon(
-                            Icons.info_outline,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ).onClick(
-                        () => {
-                          // play video
-                          setState(() {
-                            _videoPlayerController.play();
-                            _videoPlayerController.setLooping(true);
-                          }),
-
-                          showAdaptiveDialog(
-                            context: context,
-                            builder: (context) {
-                              return Dialog(
-                                child: Container(
-                                  child: _videoPlayerController
-                                          .value.isInitialized
-                                      ? VideoPlayer(_videoPlayerController)
-                                      : Container(
-                                          child: AutoSizeText('Network Error!'),
-                                        ),
-                                ),
-                              );
-                            },
-                          )
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                verticalSpace(16),
-                carouselImages(
-                  context: context,
-                  carouselImagesValue: ref.watch(getListCarouselsProvider),
-                ),
-                verticalSpace(28),
-                categoryList(
-                  context: context,
-                  categories: ref.watch(getListCategoryProvider),
-                  onTap: (category) {
-                    ref.read(routerProvider).pushNamed(
-                          'list-campaign-page',
-                          extra: category,
-                        );
-                  },
-                ),
-                verticalSpace(30),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                  ),
-                  child: Divider(
-                    height: 1,
-                    color: Colors.grey,
-                  ),
-                ),
-                verticalSpace(8),
-                ...campaignList(
-                  title: 'Program IKA SMANSARA',
-                  campaigns: ref.watch(getNewCampaignsListProvider),
-                  onTap: (campaign) {
-                    ref.read(routerProvider).pushNamed(
-                      'campaign-detail-page',
-                      extra: campaign,
-                      queryParameters: {
-                        "from-home": 'true',
-                      },
-                    );
-                  },
-                  onPressed: () {
-                    ref.read(routerProvider).pushNamed(
-                          'list-campaign-page',
-                          extra: CategoryDocument(),
-                        );
-                  },
-                ),
-                verticalSpace(16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                  ),
-                  child: Divider(
-                    height: 1,
-                    color: Colors.grey,
-                  ),
-                ),
-                verticalSpace(100),
-              ],
-            )
-          ],
-        ),
-      ],
-    );
-  }
-}
