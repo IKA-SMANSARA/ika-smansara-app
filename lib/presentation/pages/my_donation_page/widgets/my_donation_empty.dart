@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 
 class MyDonationEmpty extends StatelessWidget {
   const MyDonationEmpty({super.key});
@@ -25,13 +24,10 @@ class MyDonationEmpty extends StatelessWidget {
                 ),
               ],
             ),
-            child: Assets.images.gift.svg(
-              width: 80,
-              height: 80,
-              colorFilter: const ColorFilter.mode(
-                Color(0xFF104993),
-                BlendMode.srcIn,
-              ),
+            child: const Icon(
+              Icons.volunteer_activism_outlined,
+              size: 80,
+              color: Color(0xFF104993),
             ),
           ),
 

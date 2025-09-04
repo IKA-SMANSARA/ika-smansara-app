@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
+
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
@@ -29,9 +29,10 @@ class LoginForm extends ConsumerWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Assets.images.logoIkaSmansaraColored.svg(
-            width: 80,
-            height: 80,
+          child: const Icon(
+            Icons.campaign,
+            size: 80,
+            color: Color(0xFF104993),
           ),
         ),
         const SizedBox(height: 32),

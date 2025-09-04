@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/domain/entities/category_document.dart';
+
 import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_images.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
@@ -15,7 +16,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Listen to user authentication changes
     ref.listen(
       userDataProvider,
       (previous, next) {
@@ -30,14 +30,24 @@ class HomePage extends ConsumerWidget {
     );
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF104993),
+        backgroundColor: Colors.white,
         elevation: 0,
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
-            child: Material(
-              color: Colors.transparent,
+            child: Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF104993),
+                    Colors.white,
+                  ],
+                  stops: [0.3, 1.0],
+                ),
+              ),
               child: InkWell(
                 onTap: () {
                   ref.read(routerProvider).pushNamed('account');
@@ -56,85 +66,73 @@ class HomePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Logo Section
-                Container(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                  child: Center(
-                    child: Assets.images.logoIkaSmansaraColored.svg(
-                      width: 80,
-                      height: 80,
-                    ),
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child: Center(
+                child: const Icon(
+                  Icons.campaign,
+                  size: 80,
+                  color: Color(0xFF104993),
                 ),
-
-                const SizedBox(height: 16),
-
-                // Carousel Section
-                carouselImages(
-                  context: context,
-                  carouselImagesValue: ref.watch(getListCarouselsProvider),
-                ),
-
-                const SizedBox(height: 24),
-
-                // Category Section
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Kategori Kampanye',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black87,
-                            ),
-                      ),
-                      const SizedBox(height: 16),
-                      categoryList(
-                        context: context,
-                        categories: ref.watch(getListCategoryProvider),
-                        onTap: (category) {
-                          ref.read(routerProvider).pushNamed(
-                                'list-campaign-page',
-                                extra: category,
-                              );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                // Campaign Section
-                ...campaignList(
-                  title: 'Kampanye Terbaru',
-                  campaigns: ref.watch(getNewCampaignsListProvider),
-                  onTap: (campaign) {
-                    ref.read(routerProvider).pushNamed(
-                          'campaign-detail-page',
-                          extra: campaign,
-                        );
-                  },
-                  onPressed: () {
-                    // TODO: Navigate to all campaigns page
-                  },
-                ),
-
-                const SizedBox(height: 32),
-              ],
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 16),
+            carouselImages(
+              context: context,
+              carouselImagesValue: ref.watch(getListCarouselsProvider),
+            ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Kategori Kampanye',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black87,
+                        ),
+                  ),
+                  const SizedBox(height: 16),
+                  categoryList(
+                    context: context,
+                    categories: ref.watch(getListCategoryProvider),
+                    onTap: (category) {
+                      ref.read(routerProvider).pushNamed(
+                            'list-campaign-page',
+                            extra: category,
+                          );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            ...campaignList(
+              title: 'Kampanye Terbaru',
+              campaigns: ref.watch(getNewCampaignsListProvider),
+              onTap: (campaign) {
+                ref.read(routerProvider).pushNamed(
+                      'campaign-detail-page',
+                      extra: campaign,
+                    );
+              },
+              onPressed: () {
+                ref.read(routerProvider).pushNamed(
+                      'list-campaign-page',
+                      extra: CategoryDocument(),
+                    );
+              },
+            ),
+            const SizedBox(height: 32),
+          ],
+        ),
       ),
     );
   }
 }
-
