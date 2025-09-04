@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
-
+import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_images.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
@@ -71,12 +71,14 @@ class HomePage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              padding: const EdgeInsets.all(20),
               child: Center(
-                child: const Icon(
-                  Icons.campaign,
-                  size: 80,
-                  color: Color(0xFF104993),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Assets.images.logoIkaSmansaraColored.svg(
+                    height: 80,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),
