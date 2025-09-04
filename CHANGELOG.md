@@ -34,11 +34,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed forced landscape orientation to maintain vertical display
   - Improved video scaling with BoxFit.cover for better visual quality
 
-- **Code Architecture**: Simplified account page implementation
+- **Code Architecture**: Improved code organization across pages
   - Converted AccountPage from ConsumerStatefulWidget to ConsumerWidget
   - Removed unused VideoPlayerController and related lifecycle methods
-  - Cleaned up imports and improved code maintainability
-  - Better separation of concerns between video tutorial and account page
+  - Refactored VideoTutorialPage with separated methods and widgets
+  - Created dedicated methods/ and widgets/ folders for better organization
+  - Better separation of concerns between UI and business logic
+  - Improved maintainability and code reusability
 
 ## [1.2.0+30] - 2025-01-31
 
