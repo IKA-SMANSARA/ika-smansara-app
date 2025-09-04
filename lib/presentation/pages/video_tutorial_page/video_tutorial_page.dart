@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
-import 'methods/video_methods.dart';
-import 'widgets/play_pause_overlay.dart';
-import 'widgets/video_controls_overlay.dart';
-import 'widgets/video_player_container.dart';
-import 'widgets/tap_hint_overlay.dart';
 
 class VideoTutorialPage extends StatefulWidget {
   const VideoTutorialPage({super.key});
@@ -20,66 +15,6 @@ class _VideoTutorialPageState extends State<VideoTutorialPage> {
   bool _isInitialized = false;
   bool _showControls = true;
   bool _isFullscreen = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _initializeVideo();
-    _startHideControlsTimer();
-  }
-
-  void _initializeVideo() {
-    _videoPlayerController = VideoPlayerController.asset(
-      'assets/images/tutorial.mp4',
-    );
-
-    VideoMethods.initializeVideo(
-      _videoPlayerController,
-      () => setState(() => _isInitialized = true),
-    );
-
-    VideoMethods.setupVideoListener(
-      _videoPlayerController,
-      (isPlaying) => setState(() => _isPlaying = isPlaying),
-    );
-  }
-
-  void _startHideControlsTimer() {
-    VideoMethods.startHideControlsTimer(
-      _isPlaying,
-      () => setState(() => _showControls = false),
-    );
-  }
-
-  void _togglePlayPause() {
-    VideoMethods.togglePlayPause(
-      _videoPlayerController,
-      _isPlaying,
-      () => setState(() => _showControls = true),
-      _startHideControlsTimer,
-    );
-  }
-
-  void _toggleFullscreen() {
-    VideoMethods.toggleFullscreen(
-      _isFullscreen,
-      (isFullscreen) => setState(() => _isFullscreen = isFullscreen),
-    );
-  }
-
-  void _onTapVideo() {
-    VideoMethods.onVideoTap(
-      _showControls,
-      (showControls) => setState(() => _showControls = showControls),
-      _startHideControlsTimer,
-    );
-  }
-
-  @override
-  void dispose() {
-    VideoMethods.disposeVideo(_videoPlayerController);
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,35 +52,207 @@ class _VideoTutorialPageState extends State<VideoTutorialPage> {
             alignment: Alignment.center,
             children: [
               // Video Player
-              VideoPlayerContainer(
-                controller: _videoPlayerController,
-                isInitialized: _isInitialized,
+              Container(
+                color: Colors.black,
+                child: _isInitialized
+                    ? FittedBox(
+                        fit: BoxFit.cover,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          child: VideoPlayer(_videoPlayerController),
+                        ),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ),
               ),
+
+              // Loading Indicator
+              if (!_isInitialized)
+                const CircularProgressIndicator(
+                  color: Colors.white,
+                ),
 
               // Play/Pause Overlay
               if (_isInitialized && !_isPlaying)
-                PlayPauseOverlay(
-                  isPlaying: _isPlaying,
-                  onPressed: _togglePlayPause,
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.black54,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    iconSize: 80,
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                    onPressed: _togglePlayPause,
+                  ),
                 ),
 
               // Controls Overlay
               if (_showControls && _isInitialized)
-                VideoControlsOverlay(
-                  controller: _videoPlayerController,
-                  isPlaying: _isPlaying,
-                  isFullscreen: _isFullscreen,
-                  onPlayPausePressed: _togglePlayPause,
-                  onFullscreenPressed: _toggleFullscreen,
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        // Play/Pause Button
+                        IconButton(
+                          icon: Icon(
+                            _isPlaying ? Icons.pause : Icons.play_arrow,
+                            color: Colors.white,
+                            size: 32,
+                          ),
+                          onPressed: _togglePlayPause,
+                        ),
+
+                        // Progress Bar
+                        Expanded(
+                          child: VideoProgressIndicator(
+                            _videoPlayerController,
+                            allowScrubbing: true,
+                            colors: const VideoProgressColors(
+                              playedColor: Color(0xFF104993),
+                              bufferedColor: Colors.white54,
+                              backgroundColor: Colors.white24,
+                            ),
+                          ),
+                        ),
+
+                        // Fullscreen Button
+                        IconButton(
+                          icon: Icon(
+                            _isFullscreen
+                                ? Icons.fullscreen_exit
+                                : Icons.fullscreen,
+                            color: Colors.white,
+                          ),
+                          onPressed: _toggleFullscreen,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
 
               // Tap to show controls hint
               if (!_showControls && _isInitialized && _isPlaying)
-                const TapHintOverlay(),
+                Positioned(
+                  top: 20,
+                  right: 20,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Text(
+                      'Tap untuk kontrol',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeVideo();
+    _startHideControlsTimer();
+  }
+
+  void _initializeVideo() {
+    _videoPlayerController = VideoPlayerController.asset(
+      'assets/images/tutorial.mp4',
+    )..initialize().then((_) {
+        setState(() {
+          _isInitialized = true;
+        });
+        _videoPlayerController.setLooping(true);
+      });
+
+    _videoPlayerController.addListener(() {
+      if (mounted) {
+        setState(() {
+          _isPlaying = _videoPlayerController.value.isPlaying;
+        });
+      }
+    });
+  }
+
+  void _onTapVideo() {
+    setState(() {
+      _showControls = !_showControls;
+      if (_showControls) {
+        _startHideControlsTimer();
+      }
+    });
+  }
+
+  void _startHideControlsTimer() {
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted && _isPlaying) {
+        setState(() {
+          _showControls = false;
+        });
+      }
+    });
+  }
+
+  void _toggleFullscreen() {
+    setState(() {
+      _isFullscreen = !_isFullscreen;
+      if (_isFullscreen) {
+        SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+      } else {
+        SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+            overlays: SystemUiOverlay.values);
+      }
+    });
+  }
+
+  void _togglePlayPause() {
+    setState(() {
+      if (_videoPlayerController.value.isPlaying) {
+        _videoPlayerController.pause();
+      } else {
+        _videoPlayerController.play();
+      }
+      _showControls = true;
+      _startHideControlsTimer();
+    });
+  }
 }
+

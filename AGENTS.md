@@ -26,47 +26,22 @@
 // Entity (manual fromJson for Appwrite compatibility)
 @freezed
 class CampaignDocument with _$CampaignDocument {
-  factory CampaignDocument({
-    String? id,
-    String? campaignName,
-    @Default(0) int? goalAmount,
-  }) = _CampaignDocument;
-
-  factory CampaignDocument.fromJson(Map<String, dynamic> json) =>
-      CampaignDocument(
-        id: json['\$id'],
-        campaignName: json['campaignName'],
-        goalAmount: json['goalAmount'],
-      );
+  factory CampaignDocument({String? id, String? campaignName, @Default(0) int? goalAmount}) = _CampaignDocument;
+  factory CampaignDocument.fromJson(Map<String, dynamic> json) => CampaignDocument(id: json['\$id'], campaignName: json['campaignName'], goalAmount: json['goalAmount']);
 }
 
 // Provider
 @riverpod
-Future<CampaignDocument?> getCampaignDetail(
-  GetCampaignDetailRef ref, {
-  required String campaignId,
-}) async {
-  final result = await ref.read(getCampaignDetailUseCaseProvider)(
-    GetCampaignDetailParams(campaignId: campaignId),
-  );
-  return switch (result) {
-    Success(value: final campaign) => campaign,
-    Failed(message: _) => null,
-  };
+Future<CampaignDocument?> getCampaignDetail(GetCampaignDetailRef ref, {required String campaignId}) async {
+  final result = await ref.read(getCampaignDetailUseCaseProvider)(GetCampaignDetailParams(campaignId: campaignId));
+  return switch (result) { Success(value: final campaign) => campaign, Failed(message: _) => null };
 }
 
 // Test (AAA pattern)
 test('should return CampaignDocument when repository returns Success', () async {
-  // Arrange
-  when(mockRepository.getCampaignDetail(campaignId: anyNamed('campaignId')))
-      .thenAnswer((_) async => Result.success(tCampaignDocument));
-
-  // Act
+  when(mockRepository.getCampaignDetail(campaignId: anyNamed('campaignId'))).thenAnswer((_) async => Result.success(tCampaignDocument));
   final result = await usecase.call(tParams);
-
-  // Assert
-  expect(result.isSuccess, true);
-  expect(result.resultValue, tCampaignDocument);
+  expect(result.isSuccess, true); expect(result.resultValue, tCampaignDocument);
 });
 ```
 
