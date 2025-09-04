@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ika_smansara/gen/assets.gen.dart';
 
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
@@ -17,6 +18,26 @@ class LoginForm extends ConsumerWidget {
     required this.passwordController,
   });
 
+  // Fungsi validasi format email
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return emailRegex.hasMatch(email);
+  }
+
+  // Fungsi untuk menampilkan pesan error
+  void _showErrorSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
@@ -29,10 +50,14 @@ class LoginForm extends ConsumerWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Icon(
-            Icons.campaign,
-            size: 80,
-            color: Color(0xFF104993),
+          child: Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Assets.images.logoIkaSmansaraColored.svg(
+                height: 80,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 32),
@@ -93,13 +118,33 @@ class LoginForm extends ConsumerWidget {
                     ? SizedBox(
                         width: double.infinity,
                         height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            ref.read(userDataProvider.notifier).login(
-                                  email: emailController.text,
-                                  password: passwordController.text,
-                                );
-                          },
+                         child: ElevatedButton(
+                           onPressed: () {
+                             // Validasi input
+                             final email = emailController.text.trim();
+                             final password = passwordController.text;
+
+                             if (email.isEmpty) {
+                               _showErrorSnackBar(context, 'Email tidak boleh kosong');
+                               return;
+                             }
+
+                             if (!_isValidEmail(email)) {
+                               _showErrorSnackBar(context, 'Format email tidak valid');
+                               return;
+                             }
+
+                             if (password.isEmpty) {
+                               _showErrorSnackBar(context, 'Password tidak boleh kosong');
+                               return;
+                             }
+
+                             // Jika semua validasi lolos, lakukan login
+                             ref.read(userDataProvider.notifier).login(
+                               email: email,
+                               password: password,
+                             );
+                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF104993),
                             foregroundColor: Colors.white,
@@ -164,4 +209,3 @@ class LoginForm extends ConsumerWidget {
     );
   }
 }
-
