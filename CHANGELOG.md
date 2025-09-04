@@ -28,6 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added progress tracking and scrubbing functionality
   - Proper disposal of video resources to prevent memory leaks
 
+- **Video Display Fix**: Corrected video aspect ratio for vertical fullscreen
+  - Fixed video distortion ('gepeng') issue in fullscreen mode
+  - Replaced AspectRatio with FittedBox for proper screen coverage
+  - Removed forced landscape orientation to maintain vertical display
+  - Improved video scaling with BoxFit.cover for better visual quality
+
 - **Code Architecture**: Simplified account page implementation
   - Converted AccountPage from ConsumerStatefulWidget to ConsumerWidget
   - Removed unused VideoPlayerController and related lifecycle methods
