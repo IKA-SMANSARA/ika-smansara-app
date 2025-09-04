@@ -28,6 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added progress tracking and scrubbing functionality
   - Proper disposal of video resources to prevent memory leaks
 
+- **Code Architecture**: Simplified account page implementation
+  - Converted AccountPage from ConsumerStatefulWidget to ConsumerWidget
+  - Removed unused VideoPlayerController and related lifecycle methods
+  - Cleaned up imports and improved code maintainability
+  - Better separation of concerns between video tutorial and account page
+
 ## [1.2.0+30] - 2025-01-31
 
 ### Changed
