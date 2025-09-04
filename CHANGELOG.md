@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+33] - 2025-09-04
+
+### Added
+- **Email Validation**: Comprehensive email format validation on login page
+  - Added regex-based email validation with user-friendly error messages
+  - Validates empty email, invalid format, and required password fields
+  - Displays attractive SnackBar with Indonesian error messages
+  - Prevents login attempts with invalid input data
+
+### Changed
+- **Login Page Background**: Updated login page background to white for cleaner appearance
+  - Changed Scaffold backgroundColor to Colors.white
+  - Improved visual consistency and user experience
+  - Enhanced overall page aesthetics
+
+### Technical Improvements
+- **Test Coverage**: Added comprehensive unit tests for email validation
+  - Created test suite for email format validation logic
+  - Tests various email formats (valid and invalid)
+  - Ensures validation reliability and correctness
+  - Added test/presentation/pages/login_page/login_form_test.dart
+
+- **Code Quality**: Enhanced login form with better input validation
+  - Improved error handling and user feedback
+  - Better separation of validation logic
+  - More maintainable and testable code structure
+
+### Fixed
+- **User Experience**: Improved login form validation feedback
+  - Clear error messages for different validation scenarios
+  - Consistent error styling with app design language
+  - Better user guidance for form completion
+
 ## [1.2.0+32] - 2025-09-04
 
 ### Changed
