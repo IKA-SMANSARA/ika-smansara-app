@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+30] - 2025-01-31
+
+### Changed
+- **AGENTS.md Enhancement**: Comprehensive documentation improvements
+  - Updated Freezed fromJson pattern to match actual codebase usage (manual implementation)
+  - Added detailed code style guidelines and architecture patterns
+  - Improved formatting with better code examples and explanations
+  - Enhanced development workflow documentation
+  - Added specific testing patterns and conventions
+
+- **Home Page Design Update**: Visual improvements to home page layout
+  - Replaced campaign icon with IKA Smansara logo SVG for better branding
+  - Improved padding and responsive sizing for logo display
+  - Enhanced visual hierarchy and user experience
+
+### Technical Improvements
+- **Dependency Management**: Updated analyzer version for compatibility
+  - Downgraded analyzer from ^8.1.1 to ^6.4.1 for better stability
+  - Maintained compatibility with existing codebase patterns
+
+- **Code Quality**: Enhanced documentation and development guidelines
+  - Better separation of concerns in documentation
+  - Improved code examples with accurate patterns
+  - Enhanced developer onboarding experience
+
 ## [1.2.0+29] - 2025-01-31
 
 ### Changed
