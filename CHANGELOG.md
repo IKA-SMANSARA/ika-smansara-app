@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+31] - 2025-01-31
+
+### Added
+- **Video Tutorial Page**: Dedicated fullscreen video tutorial experience
+  - Created VideoTutorialPage with immersive video player
+  - Added comprehensive video controls (play/pause, progress bar, fullscreen)
+  - Implemented orientation lock for fullscreen mode
+  - Added tap-to-show controls with auto-hide functionality
+  - Integrated with account page tutorial navigation
+
+### Changed
+- **Tutorial Navigation**: Improved user experience for tutorial access
+  - Changed from dialog-based tutorial to dedicated fullscreen page
+  - Enhanced video playback with better controls and responsiveness
+  - Improved navigation flow from account page to tutorial
+
+### Technical Improvements
+- **Video Player Integration**: Enhanced video handling and controls
+  - Added VideoPlayerController with proper lifecycle management
+  - Implemented fullscreen mode with system UI management
+  - Added progress tracking and scrubbing functionality
+  - Proper disposal of video resources to prevent memory leaks
+
 ## [1.2.0+30] - 2025-01-31
 
 ### Changed
