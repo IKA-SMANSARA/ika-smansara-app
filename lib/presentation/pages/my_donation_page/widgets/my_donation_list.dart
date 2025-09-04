@@ -14,15 +14,41 @@ class MyDonationList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: listTransactions(
-        transactions: transactions,
-        onTap: (transaction) {
-          ref.read(routerProvider).pushNamed(
-                'detail-transaction-page',
-                extra: transaction.id,
-              );
-        },
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section Title
+          Text(
+            'Riwayat Donasi',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Divider
+          Divider(
+            color: Colors.grey.withValues(alpha: 0.3),
+            height: 1,
+          ),
+
+          const SizedBox(height: 16),
+
+          // Transaction List
+          ...listTransactions(
+            transactions: transactions,
+            onTap: (transaction) {
+              ref.read(routerProvider).pushNamed(
+                    'detail-transaction-page',
+                    extra: transaction.id,
+                  );
+            },
+          ),
+        ],
       ),
     );
   }
