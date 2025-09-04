@@ -6,9 +6,12 @@ import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_error_dialog.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_primary_button.dart';
 import 'widgets/checkout_header.dart';
 import 'widgets/donation_amount_selector.dart';
+import 'widgets/payment_confirmation_dialog.dart';
 import 'widgets/payment_method_selector.dart';
 import 'widgets/notes_section.dart';
 import 'widgets/payment_summary.dart';
@@ -65,14 +68,8 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
       ),
       body: SafeArea(
         child: _isProcessing
-            ? Container(
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.amber,
-                    size: 50,
-                  ),
-                ),
+            ? const GlobalLoadingWidget(
+                color: Colors.amber,
               )
             : SingleChildScrollView(
                 padding: const EdgeInsets.all(20),
@@ -136,27 +133,10 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                     const SizedBox(height: 32),
 
                     // Pay Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: _donationAmount >= 50000 ? () => _handlePayment(context, ref) : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: _donationAmount >= 50000 ? const Color(0xFF104993) : Colors.grey,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: const Text(
-                          'Bayar Sekarang',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                    GlobalPrimaryButton(
+                      text: 'Bayar Sekarang',
+                      isEnabled: _donationAmount >= 50000,
+                      onPressed: () => _handlePayment(context, ref),
                     ),
 
                     const SizedBox(height: 20),
@@ -196,101 +176,20 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   }
 
   void _showErrorDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          title: const Text(
-            'Pemberitahuan',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(
-            message,
-            style: const TextStyle(height: 1.5),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(dialogContext).pop(),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF104993),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-              ),
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    GlobalErrorDialog.show(context, message: message);
   }
 
   void _showPaymentConfirmationDialog(BuildContext context, WidgetRef ref) {
-    showDialog(
-      context: context,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          title: const Text(
-            'Konfirmasi Pembayaran',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Jumlah Donasi: ${_donationAmount.toIDRCurrencyFormat()}',
-                style: const TextStyle(height: 1.5),
-              ),
-              Text(
-                'Biaya Layanan: ${_paymentFee.toIDRCurrencyFormat()}',
-                style: const TextStyle(height: 1.5),
-              ),
-              Text(
-                'Total Diterima: ${_totalReceived.toIDRCurrencyFormat()}',
-                style: const TextStyle(height: 1.5, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'Apakah Anda yakin ingin melanjutkan pembayaran?',
-                style: TextStyle(height: 1.5),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(
-                'Batal',
-                style: TextStyle(color: Colors.grey.shade600),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                _processPayment(ref);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF104993),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-              ),
-              child: const Text('Bayar'),
-            ),
-          ],
-        );
+    PaymentConfirmationDialog.show(
+      context,
+      donationAmount: _donationAmount,
+      paymentFee: _paymentFee,
+      totalReceived: _totalReceived,
+      onConfirm: () {
+        Navigator.of(context).pop();
+        _processPayment(ref);
       },
+      onCancel: () => Navigator.of(context).pop(),
     );
   }
 

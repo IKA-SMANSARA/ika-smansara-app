@@ -51,14 +51,8 @@ class ContactUsPage extends ConsumerWidget {
       ),
       body: SafeArea(
         child: postQuestionData.isLoading
-            ? Container(
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.amber,
-                    size: 50,
-                  ),
-                ),
+            ? const GlobalLoadingWidget(
+                color: Colors.amber,
               )
             : SingleChildScrollView(
                 padding: const EdgeInsets.all(20),

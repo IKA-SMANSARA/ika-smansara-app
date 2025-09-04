@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/campaign_list.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/carousel_images.dart';
 import 'package:ika_smansara/presentation/pages/home_page/methods/category_list.dart';
+import 'package:ika_smansara/presentation/pages/home_page/widgets/logo_section.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/global_appbar_action_button.dart';
+import 'package:ika_smansara/presentation/widgets/global_section_header.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -35,85 +37,35 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            child: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    Color(0xFF104993),
-                    Colors.white,
-                  ],
-                  stops: [0.3, 1.0],
-                ),
-              ),
-              child: InkWell(
-                onTap: () {
-                  ref.read(routerProvider).pushNamed('account');
-                },
-                borderRadius: BorderRadius.circular(50),
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  child: const Icon(
-                    Icons.account_circle,
-                    color: Colors.white,
-                    size: 28,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          GlobalAppBarActionButton(routeName: 'account'),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Center(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Assets.images.logoIkaSmansaraColored.svg(
-                    height: 80,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
+             const LogoSection(),
             const SizedBox(height: 16),
             carouselImages(
               context: context,
               carouselImagesValue: ref.watch(getListCarouselsProvider),
             ),
             const SizedBox(height: 24),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Kategori Kampanye',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
-                  ),
-                  const SizedBox(height: 16),
-                  categoryList(
-                    context: context,
-                    categories: ref.watch(getListCategoryProvider),
-                    onTap: (category) {
-                      ref.read(routerProvider).pushNamed(
-                            'list-campaign-page',
-                            extra: category,
-                          );
-                    },
-                  ),
-                ],
-              ),
-            ),
+             Column(
+               children: [
+                 GlobalSectionHeader(title: 'Kategori Kampanye'),
+                 categoryList(
+                   context: context,
+                   categories: ref.watch(getListCategoryProvider),
+                   onTap: (category) {
+                     ref.read(routerProvider).pushNamed(
+                           'list-campaign-page',
+                           extra: category,
+                           );
+                   },
+                 ),
+               ],
+             ),
             const SizedBox(height: 24),
             ...campaignList(
               title: 'Kampanye Terbaru',

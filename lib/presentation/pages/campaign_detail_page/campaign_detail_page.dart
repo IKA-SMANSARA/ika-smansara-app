@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_backer_list_provider.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_error_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'widgets/campaign_header_image.dart';
 import 'widgets/campaign_info_section.dart';
 import 'widgets/campaign_description_section.dart';
@@ -97,44 +98,12 @@ class CampaignDetailPage extends ConsumerWidget {
               ),
             );
           },
-          error: (error, stackTrace) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.error_outline,
-                  size: 64,
-                  color: Colors.red,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Terjadi kesalahan saat memuat data',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  error.toString(),
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          loading: () => Container(
-            padding: const EdgeInsets.all(16),
-            child: Center(
-              child: LoadingAnimationWidget.inkDrop(
-                color: Colors.amber,
-                size: 50,
-              ),
-            ),
-          ),
+           error: (error, stackTrace) => GlobalErrorWidget(
+             message: error.toString(),
+           ),
+           loading: () => const GlobalLoadingWidget(
+             color: Colors.amber,
+           ),
         ),
       ),
     );

@@ -37,11 +37,8 @@ class MyDonationPage extends ConsumerWidget {
       ),
       body: SafeArea(
         child: userDataAsync.when(
-          loading: () => Center(
-            child: LoadingAnimationWidget.inkDrop(
-              color: const Color(0xFFD52014),
-              size: 50,
-            ),
+          loading: () => const GlobalLoadingWidget(
+            color: Color(0xFFD52014),
           ),
           error: (error, stack) => Center(
             child: Column(

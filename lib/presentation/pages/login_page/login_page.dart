@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_already_logged_in_state.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_form.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_error_state.dart';
-import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_loading_state.dart';
 
 class LoginPage extends ConsumerWidget {
   final TextEditingController emailController = TextEditingController();
@@ -40,7 +40,9 @@ class LoginPage extends ConsumerWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: userDataAsync.when(
-            loading: () => const LoginInitialLoadingState(),
+            loading: () => const GlobalLoadingWidget(
+              color: Color(0xFFD52014),
+            ),
             error: (error, stack) => LoginInitialErrorState(ref: ref),
             data: (userData) => userData != null
                 ? const LoginAlreadyLoggedInState()
