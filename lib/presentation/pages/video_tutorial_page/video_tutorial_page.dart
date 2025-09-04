@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
@@ -69,17 +70,9 @@ class _VideoTutorialPageState extends State<VideoTutorialPage> {
       _isFullscreen = !_isFullscreen;
       if (_isFullscreen) {
         SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-        SystemChrome.setPreferredOrientations([
-          DeviceOrientation.landscapeLeft,
-          DeviceOrientation.landscapeRight,
-        ]);
       } else {
         SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
             overlays: SystemUiOverlay.values);
-        SystemChrome.setPreferredOrientations([
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ]);
       }
     });
   }
@@ -98,10 +91,6 @@ class _VideoTutorialPageState extends State<VideoTutorialPage> {
     _videoPlayerController.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
     super.dispose();
   }
 
@@ -143,16 +132,20 @@ class _VideoTutorialPageState extends State<VideoTutorialPage> {
               // Video Player
               Container(
                 color: Colors.black,
-                child: Center(
-                  child: _isInitialized
-                      ? AspectRatio(
-                          aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: _isInitialized
+                    ? FittedBox(
+                        fit: BoxFit.cover,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
                           child: VideoPlayer(_videoPlayerController),
-                        )
-                      : const CircularProgressIndicator(
+                        ),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
                           color: Colors.white,
                         ),
-                ),
+                      ),
               ),
 
               // Loading Indicator
