@@ -29,6 +29,7 @@ import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_
 import 'package:ika_smansara/presentation/pages/update_campaign_page/update_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/update_user_profile_page/update_user_profile_page.dart';
 import 'package:ika_smansara/presentation/pages/user_profile_page/user_profile_page.dart';
+import 'package:ika_smansara/presentation/pages/video_tutorial_page/video_tutorial_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -266,6 +267,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => UpdateCampaignPage(
             campaignDocument: state.extra as CampaignDocument,
           ),
+        ),
+        GoRoute(
+          path: '/video-tutorial-page',
+          name: 'video-tutorial-page',
+          builder: (context, state) => const VideoTutorialPage(),
         ),
       ],
       initialLocation: '/home',

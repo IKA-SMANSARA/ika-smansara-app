@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/pages/account_page/widgets/admin_account_view.dart';
-import 'package:ika_smansara/presentation/pages/account_page/widgets/tutorial_dialog.dart';
 import 'package:ika_smansara/presentation/pages/account_page/widgets/user_account_view.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/global_error_widget.dart';
 import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
+import 'package:video_player/video_player.dart';
 
 class AccountPage extends ConsumerStatefulWidget {
   const AccountPage({super.key});
@@ -34,8 +35,8 @@ class _AccountPageState extends ConsumerState<AccountPage> {
     super.dispose();
   }
 
-  void _showTutorialDialog() {
-    TutorialDialog.show(context);
+  void _navigateToVideoTutorial() {
+    ref.read(routerProvider).pushNamed('video-tutorial-page');
   }
 
   @override
@@ -88,7 +89,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
                     ? AdminAccountView(userData: userData)
                     : UserAccountView(
                         userData: userData,
-                        onShowTutorial: _showTutorialDialog,
+                        onShowTutorial: _navigateToVideoTutorial,
                       );
               },
             ),
@@ -98,4 +99,3 @@ class _AccountPageState extends ConsumerState<AccountPage> {
     );
   }
 }
-

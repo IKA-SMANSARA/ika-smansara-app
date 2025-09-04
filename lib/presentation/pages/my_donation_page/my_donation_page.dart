@@ -8,6 +8,7 @@ import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_dona
 import 'package:ika_smansara/presentation/pages/my_donation_page/widgets/my_donation_stats.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_transactions_list_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class MyDonationPage extends ConsumerWidget {
@@ -17,7 +18,8 @@ class MyDonationPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userDataAsync = ref.watch(userDataProvider);
     final userId = userDataAsync.valueOrNull?.authKey ?? '';
-    final transactionsAsync = ref.watch(getTransactionsListProvider(userId: userId));
+    final transactionsAsync =
+        ref.watch(getTransactionsListProvider(userId: userId));
 
     // Show error messages for failed operations
     ref.listen(
@@ -115,7 +117,8 @@ class MyDonationPage extends ConsumerWidget {
                             ),
                             const SizedBox(height: 16),
                             ElevatedButton(
-                              onPressed: () => ref.invalidate(getTransactionsListProvider(userId: userId)),
+                              onPressed: () => ref.invalidate(
+                                  getTransactionsListProvider(userId: userId)),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFFD52014),
                               ),
@@ -152,3 +155,4 @@ class MyDonationPage extends ConsumerWidget {
     );
   }
 }
+
