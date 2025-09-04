@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+32] - 2025-09-04
+
+### Changed
+- **My Donation Page Redesign**: Complete UI/UX overhaul with simplified and modern design
+  - Removed header, stats, and carousel sections for cleaner, focused layout
+  - Redesigned transaction list with modern card-based design and improved visual hierarchy
+  - Fixed app bar color to app blue (#104993) for brand consistency
+  - Fixed list view scrolling issue with proper Expanded layout structure
+  - Changed donation amount text color to app blue (#104993) for brand consistency
+  - Enhanced empty state design with consistent branding and better user guidance
+  - Improved date formatting with user-friendly relative dates ("Hari ini", "Kemarin", etc.)
+  - Added status badges with color-coded payment status indicators
+  - Optimized layout for better mobile experience and touch interactions
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with cleaner component structure
+  - Removed unused widget files (MyDonationHeader, MyDonationStats, MyDonationCarousel)
+  - Removed unused method files (carousel_transaction_image.dart, list_transactions.dart)
+  - Consolidated transaction list logic into MyDonationList widget
+  - Improved error handling and state management
+  - Better separation of concerns between UI components
+
+- **UI/UX Enhancements**: Improved user interface consistency and experience
+  - Consistent color scheme using app blue (#104993) throughout
+  - Modern card design with subtle shadows and rounded corners
+  - Better typography hierarchy and spacing patterns
+  - Enhanced touch targets and interactive elements
+  - Improved loading and error states with consistent styling
+
+### Fixed
+- **List View Scrolling**: Resolved scrolling issues with proper layout constraints
+- **Color Consistency**: Unified color scheme across all donation page components
+- **Layout Structure**: Fixed layout hierarchy for better scrolling performance
+
 ## [1.2.0+31] - 2025-01-31
 
 ### Added
