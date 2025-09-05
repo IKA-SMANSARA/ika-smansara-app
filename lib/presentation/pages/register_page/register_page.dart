@@ -1,12 +1,11 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'methods/index.dart';
+import 'widgets/index.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
@@ -15,26 +14,14 @@ class RegisterPage extends ConsumerStatefulWidget {
 }
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController retypePasswordController =
-      TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController graduateYearController = TextEditingController();
+  final RegisterControllers _controllers = RegisterControllers();
   var _isAlumni = false;
+  var _isLoading = false;
 
   @override
   void dispose() {
+    _controllers.dispose();
     super.dispose();
-    nameController.dispose();
-    passwordController.dispose();
-    retypePasswordController.dispose();
-    emailController.dispose();
-    addressController.dispose();
-    phoneController.dispose();
-    graduateYearController.dispose();
   }
 
   @override
@@ -45,8 +32,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
         if (next is AsyncData && next.value != null) {
           ref.read(routerProvider).goNamed('home');
         } else if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(next.error.toString())),
           );
         }
       },
@@ -80,80 +67,90 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               const SizedBox(height: 32),
               CustomTextField(
                 labelText: 'Nama Lengkap',
-                controller: nameController,
+                controller: _controllers.nameController,
+                enabled: !_isLoading,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Email',
-                controller: emailController,
+                controller: _controllers.emailController,
                 keyboardType: TextInputType.emailAddress,
+                enabled: !_isLoading,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Alamat',
-                controller: addressController,
+                controller: _controllers.addressController,
+                enabled: !_isLoading,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Nomor Telepon',
-                controller: phoneController,
+                controller: _controllers.phoneController,
                 keyboardType: TextInputType.phone,
+                enabled: !_isLoading,
               ),
               const SizedBox(height: 16),
               CustomSecureTextField(
                 labelText: 'Password',
-                controller: passwordController,
+                controller: _controllers.passwordController,
+                enabled: !_isLoading,
               ),
               const SizedBox(height: 16),
               CustomSecureTextField(
                 labelText: 'Konfirmasi Password',
-                controller: retypePasswordController,
+                controller: _controllers.retypePasswordController,
+                enabled: !_isLoading,
               ),
+               const SizedBox(height: 16),
+               AlumniCheckbox(
+                 isAlumni: _isAlumni,
+                 onChanged: (bool? value) {
+                   setState(() {
+                     _isAlumni = value ?? false;
+                     if (!_isAlumni) {
+                       _controllers.graduateYearController.clear();
+                     }
+                   });
+                 },
+                 enabled: !_isLoading,
+               ),
+               ...(_isAlumni
+                   ? [
+                       const SizedBox(height: 16),
+                        GraduateYearField(
+                          controller: _controllers.graduateYearController,
+                          enabled: !_isLoading,
+                        ),
+                      ]
+                    : []),
               const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement registration logic
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF104993),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    'Daftar',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+              RegisterButton(
+                onPressed: _isLoading
+                    ? () {}
+                    : () {
+                        RegisterHandler.handleRegistration(
+                          nameController: _controllers.nameController,
+                          emailController: _controllers.emailController,
+                          addressController: _controllers.addressController,
+                          phoneController: _controllers.phoneController,
+                          passwordController: _controllers.passwordController,
+                          retypePasswordController: _controllers.retypePasswordController,
+                          graduateYearController: _controllers.graduateYearController,
+                          isAlumni: _isAlumni,
+                          context: context,
+                          ref: ref,
+                          setLoading: (bool loading) {
+                            setState(() {
+                              _isLoading = loading;
+                            });
+                          },
+                        );
+                      },
+                isLoading: _isLoading,
               ),
               const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Sudah punya akun? ',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      ref.read(routerProvider).goNamed('login');
-                    },
-                    child: const Text(
-                      'Masuk',
-                      style: TextStyle(
-                        color: Color(0xFF104993),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const LoginLink(),
             ],
           ),
         ),

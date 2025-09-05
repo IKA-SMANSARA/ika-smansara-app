@@ -16,14 +16,14 @@ void main() {
     usecase = GetCampaignDetail(campaignRepository: mockRepository);
   });
 
-  const tCampaignDocument = CampaignDocument(
+  final tCampaignDocument = CampaignDocument(
     id: 'test-id',
     campaignName: 'Test Campaign',
     goalAmount: 1000000,
     isActive: true,
   );
 
-  const tParams = GetCampaignDetailParams(campaignId: 'test-id');
+  final tParams = GetCampaignDetailParams(campaignId: 'test-id');
 
   group('GetCampaignDetail', () {
     test('should return CampaignDocument when repository returns Success', () async {
@@ -66,10 +66,10 @@ void main() {
       expect(result.errorMessage, 'Exception: Network error');
     });
 
-    test('should handle null error message from repository', () async {
+    test('should handle error message from repository', () async {
       // Arrange
       when(mockRepository.getCampaignDetail(campaignId: anyNamed('campaignId')))
-          .thenAnswer((_) async => Result.failed(null));
+          .thenAnswer((_) async => Result.failed('Error!'));
 
       // Act
       final result = await usecase.call(tParams);
