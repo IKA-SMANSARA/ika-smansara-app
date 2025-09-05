@@ -5,6 +5,64 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+35] - 2025-09-05
+
+### Fixed
+- **Build Errors**: Resolved critical syntax error preventing app compilation
+  - Fixed missing closing parenthesis in register_page.dart Scaffold widget
+  - Ensured app builds successfully for all flavors (development, staging, production)
+  - Verified APK generation works correctly
+
+- **Register Page Structure**: Major code organization improvements
+  - Refactored register page with modular architecture (methods/ and widgets/ folders)
+  - Created reusable widget components (AlumniCheckbox, GraduateYearField, RegisterButton, LoginLink)
+  - Extracted validation logic to separate RegisterFormValidation class
+  - Improved code maintainability and separation of concerns
+
+- **Form Validation**: Enhanced alumni registration with comprehensive validation
+  - Added email format validation with regex patterns
+  - Implemented password length validation (minimum 6 characters)
+  - Added phone number validation (minimum 10 digits)
+  - Created graduate year validation with range checking (1900-current year)
+  - Conditional validation based on alumni status
+
+- **Test File Fixes**: Resolved compilation errors in test suites
+  - Fixed const constructor issues in get_campaign_detail_test.dart and login_test.dart
+  - Updated Session and CampaignDocument test instances to use proper constructors
+  - Fixed null handling in test mocks and assertions
+
+### Added
+- **New Widget Components**: 5 reusable UI components for register page
+  - `AlumniCheckbox`: Toggle for alumni status with state management
+  - `GraduateYearField`: Conditional year input with validation
+  - `RegisterButton`: Loading-aware submit button with proper styling
+  - `LoginLink`: Navigation link to login page
+  - `RegisterControllers`: Centralized form controller management
+
+- **Validation Methods**: Comprehensive form validation system
+  - `RegisterFormValidation`: Email, password, phone, and graduate year validation
+  - `RegisterHandler`: Form submission with loading states and error handling
+  - Proper error messaging in Indonesian language
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with clean separation
+  - Better folder structure following established patterns
+  - Improved widget reusability and component isolation
+  - Enhanced error handling and state management
+  - Consistent code style and formatting
+
+- **Build System**: Verified compilation across all target platforms
+  - Development, staging, and production flavor builds confirmed working
+  - APK generation successful with proper signing
+  - No blocking compilation errors remaining
+
+### Changed
+- **Register Page**: Complete UI/UX enhancement with alumni support
+  - Added alumni checkbox with conditional graduate year field
+  - Improved form layout and user experience
+  - Enhanced validation feedback and error display
+  - Better loading states and user feedback
+
 ## [1.2.0+34] - 2025-09-05
 
 ### Added
