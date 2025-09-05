@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0+34] - 2025-09-05
+
+### Added
+- **Password Validation**: Enhanced login form with minimum password length validation
+  - Added 8-character minimum password requirement
+  - Integrated with existing form validation flow
+  - User-friendly error messages in Indonesian
+
+- **Login Error Handling**: Improved error display for authentication failures
+  - Fixed login error state management in user data provider
+  - Proper error message display from usecase responses
+  - Enhanced user feedback for invalid credentials
+
+### Changed
+- **Code Architecture**: Refactored login form for better maintainability
+  - Extracted validation methods to separate `LoginFormMethods` class
+  - Created dedicated `methods/` folder for login page utilities
+  - Improved separation of concerns between UI and validation logic
+
+### Technical Improvements
+- **Error State Management**: Fixed critical bug in user data provider
+  - Resolved error state being immediately replaced by success state
+  - Proper AsyncError state persistence for error handling
+  - Enhanced Riverpod provider error handling patterns
+
+- **Test Coverage**: Updated login form tests for new architecture
+  - Modified tests to use new `LoginFormMethods` class
+  - Maintained comprehensive test coverage for validation logic
+  - Added tests for password length validation
+
+### Fixed
+- **Login Error Display**: Resolved issue where login errors weren't shown to users
+  - Fixed `ref.listen` error handling in login form
+  - Proper error message extraction from FlutterError objects
+  - Consistent error snackbar styling and behavior
+
 ## [1.2.0+33] - 2025-09-04
 
 ### Added
