@@ -63,7 +63,6 @@ class UserData extends _$UserData {
           FlutterError(message),
           StackTrace.current,
         );
-        state = const AsyncData(null);
     }
   }
 
@@ -104,7 +103,6 @@ class UserData extends _$UserData {
           FlutterError(message),
           StackTrace.current,
         );
-        state = const AsyncData(null);
     }
   }
 
@@ -130,7 +128,6 @@ class UserData extends _$UserData {
           FlutterError(message),
           StackTrace.current,
         );
-        state = AsyncData(state.valueOrNull);
     }
   }
 

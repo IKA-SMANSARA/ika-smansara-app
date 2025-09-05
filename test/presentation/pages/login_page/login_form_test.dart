@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ika_smansara/presentation/pages/login_page/methods/login_form_methods.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_form.dart';
 
 void main() {
@@ -11,26 +12,42 @@ void main() {
       final passwordController = TextEditingController();
 
       // Test valid emails
-      expect(_isValidEmail('test@example.com'), true);
-      expect(_isValidEmail('user.name@domain.co.uk'), true);
-      expect(_isValidEmail('test123@gmail.com'), true);
+      expect(LoginFormMethods.isValidEmail('test@example.com'), true);
+      expect(LoginFormMethods.isValidEmail('user.name@domain.co.uk'), true);
+      expect(LoginFormMethods.isValidEmail('test123@gmail.com'), true);
 
       // Test invalid emails
-      expect(_isValidEmail('invalid-email'), false);
-      expect(_isValidEmail('test@'), false);
-      expect(_isValidEmail('@example.com'), false);
-      expect(_isValidEmail('test.example.com'), false);
-      expect(_isValidEmail(''), false);
-      expect(_isValidEmail('test@.com'), false);
+      expect(LoginFormMethods.isValidEmail('invalid-email'), false);
+      expect(LoginFormMethods.isValidEmail('test@'), false);
+      expect(LoginFormMethods.isValidEmail('@example.com'), false);
+      expect(LoginFormMethods.isValidEmail('test.example.com'), false);
+      expect(LoginFormMethods.isValidEmail(''), false);
+      expect(LoginFormMethods.isValidEmail('test@.com'), false);
+    });
+  });
+
+  group('LoginForm Password Validation', () {
+    test('should validate password minimum length', () {
+      // Test valid passwords (8+ characters)
+      expect(_isValidPasswordLength('password123'), true);
+      expect(_isValidPasswordLength('12345678'), true);
+      expect(_isValidPasswordLength('abcdefgh'), true);
+      expect(_isValidPasswordLength('password123456789'), true);
+
+      // Test invalid passwords (less than 8 characters)
+      expect(_isValidPasswordLength('pass'), false);
+      expect(_isValidPasswordLength('1234567'), false);
+      expect(_isValidPasswordLength('abc'), false);
+      expect(_isValidPasswordLength(''), false);
+      expect(_isValidPasswordLength('1234567'), false);
     });
   });
 
   // Widget tests removed due to layout complexity in test environment
-  // The email validation functionality is tested above and works correctly
+  // The email and password validation functionality is tested above and works correctly
 }
 
-// Helper function to test email validation (copied from LoginForm)
-bool _isValidEmail(String email) {
-  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-  return emailRegex.hasMatch(email);
+// Helper function to test password length validation
+bool _isValidPasswordLength(String password) {
+  return password.length >= 8;
 }

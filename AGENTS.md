@@ -1,7 +1,7 @@
 # AGENTS.md - IKA Smansara Flutter Project
 
 ## Essential Commands
-- **Setup**: `mise install` + `fvm use` (Flutter 3.32.8, SDK >=3.2.3) + `flutter pub get`
+- **Setup**: `mise install` + `fvm use` (Flutter 3.32.8) + `flutter pub get`
 - **Generate**: `dart run build_runner build` + `fluttergen` + `flutter pub run flutter_launcher_icons:main`
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
 - **Lint**: `flutter analyze` + `dart run custom_lint`
@@ -41,7 +41,7 @@ test('should return CampaignDocument when repository returns Success', () async 
 });
 ```
 
-## Project Structure
+## Project Structure & Workflow
 ```
 lib/
 ├── domain/     # entities, usecases

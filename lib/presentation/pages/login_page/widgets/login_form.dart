@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/gen/assets.gen.dart';
 
+import 'package:ika_smansara/presentation/pages/login_page/methods/login_form_methods.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
@@ -18,28 +19,22 @@ class LoginForm extends ConsumerWidget {
     required this.passwordController,
   });
 
-  // Fungsi validasi format email
-  bool _isValidEmail(String email) {
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegex.hasMatch(email);
-  }
 
-  // Fungsi untuk menampilkan pesan error
-  void _showErrorSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Listen for login errors
+    ref.listen(userDataProvider, (previous, next) {
+      if (next is AsyncError) {
+        final error = next.error;
+        if (error is FlutterError) {
+          LoginFormMethods.showErrorSnackBar(context, error.message);
+        } else {
+          LoginFormMethods.showErrorSnackBar(context, 'Terjadi kesalahan saat login');
+        }
+      }
+    });
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -124,20 +119,25 @@ class LoginForm extends ConsumerWidget {
                              final email = emailController.text.trim();
                              final password = passwordController.text;
 
-                             if (email.isEmpty) {
-                               _showErrorSnackBar(context, 'Email tidak boleh kosong');
-                               return;
-                             }
+                              if (email.isEmpty) {
+                                LoginFormMethods.showErrorSnackBar(context, 'Email tidak boleh kosong');
+                                return;
+                              }
 
-                             if (!_isValidEmail(email)) {
-                               _showErrorSnackBar(context, 'Format email tidak valid');
-                               return;
-                             }
+                              if (!LoginFormMethods.isValidEmail(email)) {
+                                LoginFormMethods.showErrorSnackBar(context, 'Format email tidak valid');
+                                return;
+                              }
 
-                             if (password.isEmpty) {
-                               _showErrorSnackBar(context, 'Password tidak boleh kosong');
-                               return;
-                             }
+                              if (password.isEmpty) {
+                                LoginFormMethods.showErrorSnackBar(context, 'Password tidak boleh kosong');
+                                return;
+                              }
+
+                              if (password.length < 8) {
+                                LoginFormMethods.showErrorSnackBar(context, 'Password minimal 8 karakter');
+                                return;
+                              }
 
                              // Jika semua validasi lolos, lakukan login
                              ref.read(userDataProvider.notifier).login(
@@ -168,6 +168,58 @@ class LoginForm extends ConsumerWidget {
                           size: 40,
                         ),
                       ),
+                AsyncError() => SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                     child: ElevatedButton(
+                       onPressed: () {
+                         // Validasi input
+                         final email = emailController.text.trim();
+                         final password = passwordController.text;
+
+                          if (email.isEmpty) {
+                            LoginFormMethods.showErrorSnackBar(context, 'Email tidak boleh kosong');
+                            return;
+                          }
+
+                          if (!LoginFormMethods.isValidEmail(email)) {
+                            LoginFormMethods.showErrorSnackBar(context, 'Format email tidak valid');
+                            return;
+                          }
+
+                          if (password.isEmpty) {
+                            LoginFormMethods.showErrorSnackBar(context, 'Password tidak boleh kosong');
+                            return;
+                          }
+
+                          if (password.length < 8) {
+                            LoginFormMethods.showErrorSnackBar(context, 'Password minimal 8 karakter');
+                            return;
+                          }
+
+                         // Jika semua validasi lolos, lakukan login
+                         ref.read(userDataProvider.notifier).login(
+                           email: email,
+                           password: password,
+                         );
+                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF104993),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: 2,
+                      ),
+                      child: const Text(
+                        'Masuk',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
                 _ => Center(
                     child: LoadingAnimationWidget.inkDrop(
                       color: const Color(0xFFD52014),
