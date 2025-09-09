@@ -1,6 +1,6 @@
 # AGENTS.md - IKA Smansara Flutter Project
 
-## Essential Commands
+## Commands
 - **Setup**: `mise install` + `fvm use` (Flutter 3.32.8) + `flutter pub get`
 - **Generate**: `dart run build_runner build` + `fluttergen` + `flutter pub run flutter_launcher_icons:main`
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
@@ -8,7 +8,7 @@
 - **Test**: `flutter test --coverage` | Single: `flutter test test/domain/usecases/get_campaign_detail_test.dart`
 - **Clean**: `flutter clean && flutter pub get`
 
-## Code Style Guidelines
+## Code Style
 - **Architecture**: Clean Architecture (Domain → Data → Presentation)
 - **State**: Riverpod with `@riverpod` + riverpod_generator + riverpod_lint
 - **Data**: Freezed with manual `fromJson` (Appwrite: `$id`, `$createdAt`, `$permissions`)
@@ -41,7 +41,7 @@ test('should return CampaignDocument when repository returns Success', () async 
 });
 ```
 
-## Project Structure & Workflow
+## Project Structure
 ```
 lib/
 ├── domain/     # entities, usecases
