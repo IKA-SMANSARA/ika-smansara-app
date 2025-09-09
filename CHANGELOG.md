@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1+29] - 2025-09-10
+
+### Changed
+- **Version Numbering Fix**: Corrected semantic versioning pattern
+  - Fixed incorrect build number incrementing (was 1.2.0+30, +31, etc.)
+  - Established proper patch version increments (1.2.0+29 → 1.2.1+29)
+  - Build number after + remains constant at 29 for all releases
+  - Consolidated all recent changes under single version 1.2.0+29
+
+- **AGENTS.md Enhancement**: Improved developer documentation
+  - Made file more concise while maintaining essential information
+  - Better formatting and clearer code examples
+  - Enhanced development workflow documentation
+
+### Technical Improvements
+- **Documentation Quality**: Enhanced changelog structure and versioning consistency
+- **Developer Experience**: Improved AGENTS.md for better agent guidance
+- **Version Management**: Established permanent versioning pattern for future releases
+
 ## [1.2.0+29] - 2025-09-10
 
 ### Fixed
