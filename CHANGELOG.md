@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2+29] - 2025-09-10
+
+### Added
+- **Enhanced Photo Picker**: Added camera and gallery options for image selection
+  - Implemented modal bottom sheet with image source selection
+  - Added camera capture functionality with proper permissions
+  - Enhanced gallery picker with image compression (80% quality, max 1200x1200)
+  - Improved error handling for image selection operations
+  - Added fallback mechanisms for different device capabilities
+
+### Changed
+- **Update Profile Page Redesign**: Complete UI/UX overhaul to match contact_us_page design
+  - Created new ProfileHeader widget with consistent blue theme
+  - Restructured layout with SafeArea and SingleChildScrollView
+  - Added form sections with bordered containers and proper spacing
+  - Updated button styling to match app design system (blue.shade600)
+  - Improved visual hierarchy with section titles and consistent typography
+  - Enhanced photo display with centered container and proper aspect ratio
+  - Added loading states with GlobalLoadingWidget integration
+
+### Technical Improvements
+- **Photo Section Enhancement**: Improved image handling and display
+  - Added container with fixed dimensions (200px height) for consistent display
+  - Implemented proper image centering with BoxFit.cover
+  - Added placeholder and error states for better user experience
+  - Enhanced image compression to reduce file sizes and improve performance
+  - Updated selectedPoster method across all usage locations (3 files)
+
+- **Code Architecture**: Better component organization and reusability
+  - Created dedicated ProfileHeader widget for update profile page
+  - Improved method signatures with proper parameter passing
+  - Enhanced error handling and user feedback mechanisms
+  - Better separation of concerns between UI components
+
 ## [1.2.1+29] - 2025-09-10
 
 ### Changed
