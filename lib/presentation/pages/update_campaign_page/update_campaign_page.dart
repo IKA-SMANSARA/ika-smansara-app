@@ -132,6 +132,7 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
             ref: ref,
             imageUrl: widget.campaignDocument.photoThumbnail ?? '',
             isLoading: updateDataState.isLoading,
+            context: context,
           ),
           Padding(
             padding: const EdgeInsets.all(16),

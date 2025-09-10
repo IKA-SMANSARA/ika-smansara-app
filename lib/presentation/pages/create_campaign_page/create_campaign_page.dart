@@ -72,6 +72,7 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
             ref: ref,
             imageUrl: '',
             isLoading: saveDataState.isLoading,
+            context: context,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
