@@ -26,10 +26,16 @@ Future<MidtransTransactionResponse?> getUrlWebview(
   }
 
   // Check for common invalid email patterns
+  final emailParts = email.split('@');
   if (email.contains('test.com') ||
       email.contains('example.com') ||
-      email.split('@')[0].length < 2 ||
-      email.split('@')[1].split('.')[0].length < 2) {
+      emailParts.length != 2 ||
+      emailParts[0].length < 2) {
+    throw Exception('Please use a valid email address (not test/example emails)');
+  }
+
+  final domainParts = emailParts[1].split('.');
+  if (domainParts.length < 2 || domainParts[0].length < 2) {
     throw Exception('Please use a valid email address (not test/example emails)');
   }
 
@@ -43,6 +49,6 @@ Future<MidtransTransactionResponse?> getUrlWebview(
 
   return switch (result) {
     Success(value: final data) => data,
-    Failed(:final message) => throw Exception(message ?? 'Payment initialization failed'),
+    Failed(:final message) => throw Exception(message),
   };
 }

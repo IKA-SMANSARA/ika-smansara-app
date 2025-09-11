@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4+29] - 2025-09-11
+
+### Fixed
+- **Build Runner Compatibility**: Resolved build_runner compilation errors
+  - Updated `custom_lint` dependency from `^0.5.4` to `^0.7.0` to fix compatibility issues
+  - Fixed `custom_lint_core` version conflicts with analyzer package
+  - Resolved `LintCode` import conflicts and type definition errors
+  - Enabled successful `dart run build_runner build` execution
+
+- **WebView Provider Warning**: Fixed lint warning in `get_url_webview_provider.dart`
+  - Removed unnecessary null-aware expression (`message ?? 'Payment initialization failed'`)
+  - Enhanced email validation with proper bounds checking to prevent IndexOutOfBoundsException
+  - Improved crash prevention for invalid email formats
+  - Added safe array access validation for email domain parsing
+
+### Technical Improvements
+- **Code Quality**: Enhanced error handling and validation robustness
+  - Better email format validation with comprehensive bounds checking
+  - Improved crash prevention mechanisms in payment flow
+  - Cleaner code with removed unnecessary null-aware operators
+  - More reliable build system with updated dependencies
+
 ## [1.2.3+29] - 2025-09-10
 
 ### Fixed
