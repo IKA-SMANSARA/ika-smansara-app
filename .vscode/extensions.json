@@ -1,0 +1,37 @@
+{
+  "recommendations": [
+    "Dart-Code.dart-code",
+    "Dart-Code.flutter",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "streetsidesoftware.code-spell-checker",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-eslint",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-git-graph",
+    "eamodio.gitlens",
+    "ms-vscode.vscode-git-graph",
+    "gruntfuggly.todo-tree",
+    "ms-vscode.test-adapter-converter",
+    "hbenl.vscode-test-explorer",
+    "ms-vscode.vscode-test-adapter-converter",
+    "ryanluker.vscode-coverage-gutters",
+    "ms-vscode.vscode-env",
+    "mikestead.dotenv",
+    "ms-vscode.vscode-icons",
+    "PKief.material-icon-theme",
+    "ms-vscode.theme-predawn",
+    "zhuangtongfa.material-theme",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode.vscode-docker",
+    "ms-vscode.vscode-remote.remote-ssh",
+    "ms-vscode.vscode-remote.remote-ssh-edit"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript",
+    "ms-vscode.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

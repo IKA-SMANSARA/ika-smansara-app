@@ -12,6 +12,7 @@ A comprehensive Flutter application for IKA Smansara, a crowdfunding platform th
 - [Architecture](#architecture)
 - [Development Workflow](#development-workflow)
 - [Building & Running](#building--running)
+- [Running with VSCode](#running-with-vscode)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [Troubleshooting](#troubleshooting)
@@ -94,9 +95,21 @@ IKA Smansara is a mobile application built with Flutter that serves as a crowdfu
 ### Software Requirements
 - **Flutter SDK**: Version 3.32.8 (exactly this version)
 - **Dart SDK**: Compatible with Flutter 3.32.8
-- **Android Studio** or **VS Code** with Flutter extensions
+- **VS Code** (recommended) or **Android Studio** with Flutter extensions
 - **Git**: Version control system
 - **Java JDK**: Version 11 or higher (for Android development)
+
+### Recommended VSCode Extensions
+When using VSCode, install these recommended extensions for optimal development experience:
+- **Dart-Code.dart-code**: Official Dart extension
+- **Dart-Code.flutter**: Official Flutter extension
+- **ms-vscode.vscode-json**: JSON language support
+- **redhat.vscode-yaml**: YAML language support
+- **streetsidesoftware.code-spell-checker**: Spell checking
+- **ms-vscode.vscode-env**: Environment file support
+- **eamodio.gitlens**: Enhanced Git capabilities
+
+> 💡 **Tip**: VSCode will automatically recommend these extensions when you open the project
 
 ### Version Management Tools
 Choose one of the following to manage Flutter versions:
@@ -225,6 +238,12 @@ ika-smansara-app/
 ├── pubspec.yaml            # Flutter dependencies
 ├── analysis_options.yaml   # Code analysis configuration
 ├── AGENTS.md              # Agent development guidelines
+├── .vscode/               # VSCode configuration files
+│   ├── launch.json       # Launch configurations for different environments
+│   ├── tasks.json        # Build tasks and commands
+│   ├── settings.json     # Workspace settings and preferences
+│   ├── extensions.json   # Recommended extensions
+│   └── README.md         # VSCode configuration guide
 └── README.md              # This file
 ```
 
@@ -310,6 +329,16 @@ Future<CampaignDocument?> getCampaignDetail(
 }
 ```
 
+### 4. VSCode Development
+For the best development experience, use the pre-configured VSCode setup:
+
+- **Launch Configurations**: Ready-to-use debug configurations for all flavors
+- **Build Tasks**: Automated tasks for common operations (clean, build, test)
+- **Hot Reload**: Instant code updates during development
+- **Integrated Terminal**: Run Flutter commands directly in VSCode
+
+> 📖 **See [Running with VSCode](#running-with-vscode) for detailed instructions**
+
 ## 🏃‍♂️ Building & Running
 
 ### Development Mode
@@ -317,8 +346,10 @@ Future<CampaignDocument?> getCampaignDetail(
 # Run development flavor
 flutter run --flavor development --target lib/main_development.dart
 
-# Or use VS Code/Android Studio launch configurations
+# Or use VS Code launch configurations (see below)
 ```
+
+> 📖 **For detailed VSCode setup and usage, see [Running with VSCode](#running-with-vscode)**
 
 ### Staging Mode
 ```bash
@@ -340,6 +371,109 @@ flutter build apk --flavor development --target lib/main_development.dart
 # Build production AAB for Play Store
 flutter build appbundle --flavor production --target lib/main_production.dart
 ```
+
+## 💻 Running with VSCode
+
+This project includes optimized VSCode configurations for easy development and debugging. The `.vscode/` directory contains pre-configured launch configurations and tasks.
+
+### Prerequisites
+1. **Install VSCode** with Flutter and Dart extensions
+2. **Install recommended extensions** (see `.vscode/extensions.json`)
+3. **Configure Flutter SDK path** in `.vscode/settings.json` for your version manager (mise/fvm)
+
+### Launch Configurations
+
+The project includes several launch configurations for different environments:
+
+- **"IKA Smansara - Development"**: Debug mode for development environment
+- **"IKA Smansara - Staging"**: Debug mode for staging environment
+- **"IKA Smansara - Production"**: Debug mode for production environment
+- **"IKA Smansara - Development (Profile)"**: Profile mode for performance analysis
+- **"IKA Smansara - Production (Release)"**: Release mode for production testing
+
+### How to Run
+
+#### Method 1: Using Run Panel (Recommended)
+1. Open the project in VSCode
+2. Click the **Run** icon in the sidebar (play button with bug)
+3. Select desired configuration from the dropdown (e.g., "IKA Smansara - Development")
+4. Click the green **Play** button or press `F5`
+
+#### Method 2: Using Command Palette
+1. Open Command Palette: `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS)
+2. Type: "Debug: Select and Start Debugging"
+3. Select your desired configuration
+4. Press Enter
+
+#### Method 3: Using Terminal
+1. Open integrated terminal in VSCode: `Ctrl+Shift+``
+2. Run: `flutter run --flavor development --target lib/main_development.dart`
+
+### VSCode Tasks
+
+The project includes several useful tasks accessible via Command Palette:
+
+- **Flutter: Clean**: Clean build artifacts
+- **Flutter: Get Dependencies**: Install/update dependencies
+- **Flutter: Generate Code**: Run build_runner to generate code
+- **Flutter: Watch Code Generation**: Continuous code generation during development
+- **Flutter: Analyze**: Run static analysis
+- **Flutter: Run Tests**: Execute unit tests
+- **Flutter: Run Tests with Coverage**: Run tests with coverage report
+- **Flutter: Build Development APK**: Build APK for development
+- **Flutter: Build Production APK**: Build APK for production
+- **Flutter: Build Production AAB**: Build AAB for Play Store
+
+#### How to Use Tasks
+1. Open Command Palette: `Ctrl+Shift+P`
+2. Type: "Tasks: Run Task"
+3. Select desired task from the list
+
+### Keyboard Shortcuts
+- `F5`: Start debugging with selected configuration
+- `Ctrl+Shift+P` / `Cmd+Shift+P`: Open Command Palette
+- `Ctrl+Shift+B` / `Cmd+Shift+B`: Run build task
+- `Ctrl+S` / `Cmd+S`: Save and auto-format
+
+### Hot Reload & Hot Restart
+When running the app:
+- Press `r` in terminal for **Hot Reload**
+- Press `R` (Shift+r) for **Hot Restart**
+- Press `Shift+F5` to **Stop debugging**
+
+### Running on Specific Device
+```bash
+# List available devices
+flutter devices
+
+# Run on specific device
+flutter run --flavor development --target lib/main_development.dart -d <device_id>
+```
+
+### Troubleshooting VSCode
+
+#### Flutter SDK Not Found
+1. Check `.vscode/settings.json` for correct Flutter SDK path
+2. Ensure mise/fvm is properly configured
+3. Restart VSCode
+
+#### Launch Configuration Not Working
+1. Verify environment files exist in `assets/*/`
+2. Check device/emulator is connected
+3. Ensure all dependencies are installed: `flutter pub get`
+
+#### Extensions Not Working
+1. Open Extensions panel: `Ctrl+Shift+X`
+2. Install missing extensions manually
+3. Reload VSCode window: `Ctrl+Shift+P` → "Developer: Reload Window"
+
+### VSCode Configuration Files
+
+- **`.vscode/launch.json`**: Launch configurations for different environments
+- **`.vscode/tasks.json`**: Build tasks and commands
+- **`.vscode/settings.json`**: Workspace settings and preferences
+- **`.vscode/extensions.json`**: Recommended extensions
+- **`.vscode/README.md`**: Detailed VSCode configuration guide
 
 ## 🧪 Testing
 
@@ -494,10 +628,26 @@ cd ..
 flutter doctor --android-licenses
 ```
 
+**6. VSCode Issues**
+```bash
+# Reload VSCode window
+Ctrl+Shift+P → "Developer: Reload Window"
+
+# Check Flutter SDK path in VSCode settings
+# File → Preferences → Settings → Search "flutter"
+
+# Verify VSCode extensions are installed
+# View → Extensions → Search for "flutter" and "dart"
+
+# Reset VSCode workspace settings
+# Remove .vscode/settings.json and restart VSCode
+```
+
 ### Getting Help
 - Check the [Issues](../../issues) page for known problems
 - Review the [AGENTS.md](./AGENTS.md) for development guidelines
 - Check the [TEST_REPORT.md](./TEST_REPORT.md) for testing information
+- See [.vscode/README.md](./.vscode/README.md) for detailed VSCode troubleshooting
 
 ## 📚 API Documentation
 
@@ -524,7 +674,30 @@ flutter doctor --android-licenses
 - ✅ **Bug Fixes**: All identified bugs have been resolved
 - ✅ **Documentation**: Complete setup and development guides
 - ✅ **Architecture**: Clean Architecture with proper separation of concerns
+- ✅ **VSCode Integration**: Pre-configured launch configurations and tasks
 - ✅ **CI/CD Ready**: Configured for automated testing and deployment
+
+---
+
+## 💻 VSCode Development
+
+This project is fully configured for VSCode development with:
+
+- 🚀 **Launch Configurations**: Ready-to-use debug configurations for all environments
+- 🔧 **Build Tasks**: Automated tasks for common Flutter operations
+- 📝 **Code Formatting**: Auto-format on save with proper Dart/Flutter formatting
+- 🔍 **IntelliSense**: Full Dart and Flutter language support
+- 🐛 **Debugging**: Integrated debugging with hot reload/hot restart
+- 📊 **Testing**: Built-in test runner with coverage reporting
+- 🎨 **Extensions**: Recommended extensions for optimal development experience
+
+**Quick Start with VSCode:**
+1. Open project in VSCode
+2. Install recommended extensions (auto-prompted)
+3. Select "IKA Smansara - Development" from Run panel
+4. Press F5 to start debugging
+
+> 📖 **For detailed VSCode setup, see [Running with VSCode](#running-with-vscode)**
 
 ---
 
