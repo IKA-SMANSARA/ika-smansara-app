@@ -126,7 +126,7 @@ Future<void> _pickImage(WidgetRef ref, ImageSource source) async {
   }
 }
 
-List<Widget> selectedPoster({
+Widget selectedPoster({
   required WidgetRef ref,
   required String imageUrl,
   required bool isLoading,
@@ -136,88 +136,112 @@ List<Widget> selectedPoster({
   final hasExistingImage = imageUrl.isNotEmpty;
   final hasSelectedImage = selectedImage != null;
 
-  return [
-    // Image Display Section
-    Container(
-      width: double.infinity,
-      height: 200,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      child: hasSelectedImage
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.file(
-                selectedImage,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
+  return Container(
+    padding: const EdgeInsets.all(24),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.05),
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Poster Acara',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: const Color(0xFF104993),
               ),
-            )
-          : hasExistingImage
+        ),
+        const SizedBox(height: 16),
+        // Image Display Section
+        Container(
+          width: double.infinity,
+          height: 200,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: hasSelectedImage
               ? ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: CachedNetworkImage(
-                    imageUrl: imageUrl,
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.file(
+                    selectedImage,
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: double.infinity,
-                    placeholder: (context, url) => Center(
-                      child: LoadingAnimationWidget.newtonCradle(
-                        color: Colors.amber,
-                        size: 35,
+                  ),
+                )
+              : hasExistingImage
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                        placeholder: (context, url) => Center(
+                          child: LoadingAnimationWidget.newtonCradle(
+                            color: Colors.amber,
+                            size: 35,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => const Center(
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
-                    ),
-                    errorWidget: (context, url, error) => const Center(
+                    )
+                  : const Center(
                       child: Icon(
-                        Icons.image_not_supported,
-                        size: 50,
+                        Icons.image_rounded,
+                        size: 70,
                         color: Colors.grey,
                       ),
                     ),
-                  ),
-                )
-              : const Center(
-                  child: Icon(
-                    Icons.image_rounded,
-                    size: 70,
-                    color: Colors.grey,
-                  ),
-                ),
-    ),
-
-    // Button Section
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue.shade600,
-          minimumSize: const Size(double.infinity, 50),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          elevation: 0,
         ),
-        onPressed: isLoading
-            ? null
-            : () => _showImageSourceDialog(ref, context),
-        child: isLoading
-            ? LoadingAnimationWidget.newtonCradle(
-                color: Colors.amber,
-                size: 35,
-              )
-            : const Text(
-                'Pilih Foto / Gambar',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+        const SizedBox(height: 16),
+        // Button Section
+        SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF104993),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
-      ),
+              elevation: 2,
+            ),
+            onPressed: isLoading
+                ? null
+                : () => _showImageSourceDialog(ref, context),
+            child: isLoading
+                ? LoadingAnimationWidget.newtonCradle(
+                    color: Colors.amber,
+                    size: 35,
+                  )
+                : const Text(
+                    'Pilih Foto / Gambar',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+          ),
+        ),
+      ],
     ),
-  ];
+  );
 }

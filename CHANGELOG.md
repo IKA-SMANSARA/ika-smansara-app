@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.5+29] - 2025-09-13
+
+### Changed
+- **Create Campaign Page Redesign**: Complete UI/UX overhaul to match login/register page design
+  - Removed AppBar and implemented fullscreen layout with SafeArea
+  - Added consistent title and subtitle styling matching login/register pages
+  - Restructured layout with SingleChildScrollView and proper padding (24px horizontal, 20px vertical)
+  - Created modular widget architecture with dedicated widgets/ and methods/ folders
+  - Enhanced form validation with comprehensive error handling and user feedback
+  - Improved poster image selection with consistent container styling and shadow effects
+  - Updated button styling to match app design system (Color(0xFF104993), rounded corners, elevation)
+
+### Added
+- **New Widget Components**: Created reusable components for create campaign page
+  - `CampaignForm`: Self-contained form widget with all input fields and validation
+  - `CampaignFormMethods`: Centralized validation logic with Indonesian error messages
+  - Enhanced `selectedPoster` method with improved UI consistency across pages
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with clean separation of concerns
+  - Better folder structure following established patterns (widgets/, methods/)
+  - Improved widget reusability and component isolation
+  - Enhanced error handling and state management
+  - Consistent code style and formatting
+  - Updated selectedPoster method signature across all usage locations
+
+- **UI/UX Consistency**: Unified design language matching login/register page patterns
+  - Consistent color scheme (Color(0xFF104993)) and typography
+  - Matching container styling with shadows and rounded corners
+  - Same spacing patterns and layout structure
+  - Unified button styling and interaction patterns
+
+- **Form Validation**: Enhanced user experience with comprehensive validation
+  - Campaign name, description, and goal amount validation
+  - Date range validation with proper error messaging
+  - Category selection validation
+  - Image upload validation with clear user feedback
+  - Indonesian language error messages for better user understanding
+
 ## [1.2.4+29] - 2025-09-11
 
 ### Fixed

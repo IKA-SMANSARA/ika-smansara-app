@@ -87,7 +87,7 @@ class _UpdateUserProfilePageState extends ConsumerState<UpdateUserProfilePage> {
                     const SizedBox(height: 24),
 
                     // Photo Section
-                    ...selectedPoster(
+                    selectedPoster(
                       ref: ref,
                       imageUrl:
                           widget.userProfileDocument.photoProfileUrl ?? '',

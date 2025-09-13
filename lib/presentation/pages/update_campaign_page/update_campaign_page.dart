@@ -128,7 +128,7 @@ class _UpdateCampaignPageState extends ConsumerState<UpdateCampaignPage> {
       ),
       body: ListView(
         children: [
-          ...selectedPoster(
+          selectedPoster(
             ref: ref,
             imageUrl: widget.campaignDocument.photoThumbnail ?? '',
             isLoading: updateDataState.isLoading,
