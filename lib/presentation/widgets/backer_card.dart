@@ -1,15 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BackerCard extends StatelessWidget {
   final String backerName;
   final String amount;
   final String dateTime;
+  final String? profileImageUrl;
   const BackerCard({
     super.key,
     required this.backerName,
     required this.amount,
     required this.dateTime,
+    this.profileImageUrl,
   });
 
   @override
@@ -19,7 +22,7 @@ class BackerCard extends StatelessWidget {
 
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,11 +31,55 @@ class BackerCard extends StatelessWidget {
               flex: 3,
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 20,
-                    child: Icon(Icons.person),
+                  // Profile Image
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.grey.shade300,
+                        width: 2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(25),
+                      child: profileImageUrl != null
+                          ? CachedNetworkImage(
+                              imageUrl: profileImageUrl!,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                color: Colors.grey[300],
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 25,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          : Container(
+                              color: Colors.grey[300],
+                              child: const Icon(
+                                Icons.person,
+                                size: 25,
+                                color: Colors.white,
+                              ),
+                            ),
+                    ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,20 +89,23 @@ class BackerCard extends StatelessWidget {
                           backerName.isNotEmpty ? backerName : 'Anonymous',
                           style: TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           minFontSize: 12,
                         ),
+                        const SizedBox(height: 4),
                         AutoSizeText(
                           dateTime.isNotEmpty ? dateTime : 'Unknown date',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
+                            color: Colors.grey[600],
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          minFontSize: 8,
+                          minFontSize: 10,
                         ),
                       ],
                     ),
@@ -68,12 +118,13 @@ class BackerCard extends StatelessWidget {
               child: AutoSizeText(
                 amount.isNotEmpty ? amount : 'Rp 0',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                minFontSize: 10,
+                minFontSize: 12,
                 textAlign: TextAlign.right,
               ),
             ),

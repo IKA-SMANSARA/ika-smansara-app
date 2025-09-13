@@ -5,6 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.8+29] - 2025-09-13
+
+### Changed
+- **BackerListPage Design Update**: Enhanced backer list with profile image support
+  - Updated BackerCard widget to include profile image display using CachedNetworkImage
+  - Added circular profile image with border and shadow effects similar to account_page design
+  - Improved card layout with better spacing and typography
+  - Enhanced visual hierarchy with larger profile images (50x50) and improved text styling
+  - Added proper loading and error states for profile images
+  - Updated backer_list_page to use ListView.separated with consistent padding and spacing
+
+- **UserProfilePage State Management**: Fixed developer mode switch refresh issue
+  - Converted UserProfilePage from ConsumerWidget to ConsumerStatefulWidget
+  - Added proper state management for developer mode toggle with _isDevMode state variable
+  - Implemented _toggleDevMode method to handle switch changes and trigger UI refresh
+  - Enhanced Hive storage synchronization with local state
+  - Improved user experience with immediate UI feedback on switch toggle
+
+### Technical Improvements
+- **Widget Architecture**: Better state management patterns
+  - ConsumerStatefulWidget implementation for pages requiring local state
+  - Proper setState() usage for immediate UI updates
+  - Enhanced state synchronization between local variables and persistent storage
+  - Improved widget lifecycle management with initState() and proper disposal
+
+- **UI/UX Consistency**: Unified design patterns across profile-related pages
+  - Consistent profile image styling between account_page and backer_list_page
+  - Matching color schemes and typography for better visual coherence
+  - Enhanced spacing patterns and layout consistency
+  - Improved accessibility with proper contrast and sizing
+
 ## [1.2.7+29] - 2025-09-13
 
 ### Fixed

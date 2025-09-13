@@ -10,14 +10,37 @@ import 'package:ika_smansara/presentation/widgets/global_error_widget.dart';
 import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'package:ika_smansara/utils/constants.dart';
 
-class UserProfilePage extends ConsumerWidget {
+class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final asyncUserData = ref.watch(userDataProvider);
+  ConsumerState<UserProfilePage> createState() => _UserProfilePageState();
+}
+
+class _UserProfilePageState extends ConsumerState<UserProfilePage> {
+  late bool _isDevMode;
+
+  @override
+  void initState() {
+    super.initState();
     final devModeBox = Hive.box('dev mode');
-    final isDevMode = devModeBox.get('isDevMode') ?? false;
+    _isDevMode = devModeBox.get('isDevMode') ?? false;
+  }
+
+  void _toggleDevMode(bool status) {
+    setState(() {
+      _isDevMode = status;
+    });
+    final devModeBox = Hive.box('dev mode');
+    devModeBox.put('isDevMode', status);
+    Constants.logger.d(
+      'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final asyncUserData = ref.watch(userDataProvider);
 
     // Show error messages
     ref.listen(
@@ -109,16 +132,11 @@ class UserProfilePage extends ConsumerWidget {
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),
-                                    Switch.adaptive(
-                                      value: isDevMode,
-                                      activeColor: const Color(0xFFD52014),
-                                      onChanged: (bool status) {
-                                        devModeBox.put('isDevMode', status);
-                                        Constants.logger.d(
-                                          'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
-                                        );
-                                      },
-                                    ),
+                                     Switch.adaptive(
+                                       value: _isDevMode,
+                                       activeColor: const Color(0xFFD52014),
+                                       onChanged: _toggleDevMode,
+                                     ),
                                   ],
                                 ),
                               ),
