@@ -4,6 +4,8 @@
 - **Setup**: `mise install` + `fvm use` (Flutter 3.32.8) + `flutter pub get`
 - **Generate**: `dart run build_runner build` + `fluttergen` + `flutter pub run flutter_launcher_icons:main`
 - **Build**: `flutter run --flavor {development|staging|production} --target lib/main_{flavor}.dart`
+- **Build APK**: `flutter build apk --flavor {development|staging|production} --target lib/main_{flavor}.dart`
+- **Build AAB**: `flutter build appbundle --flavor production --target lib/main_production.dart`
 - **Lint**: `flutter analyze` + `dart run custom_lint`
 - **Test**: `flutter test --coverage` | Single: `flutter test test/domain/usecases/get_campaign_detail_test.dart`
 - **Clean**: `flutter clean && flutter pub get`

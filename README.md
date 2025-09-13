@@ -364,13 +364,57 @@ flutter run --flavor production --target lib/main_production.dart
 ```
 
 ### Build APK/AAB
+
+#### Using Command Line
 ```bash
 # Build development APK
 flutter build apk --flavor development --target lib/main_development.dart
 
+# Build staging APK
+flutter build apk --flavor staging --target lib/main_staging.dart
+
+# Build production APK
+flutter build apk --flavor production --target lib/main_production.dart
+
 # Build production AAB for Play Store
 flutter build appbundle --flavor production --target lib/main_production.dart
 ```
+
+#### Using VSCode Tasks (Recommended)
+1. Open VSCode Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
+2. Type "Tasks: Run Task"
+3. Select one of the build tasks:
+   - **Flutter: Build Development APK**
+   - **Flutter: Build Staging APK**
+   - **Flutter: Build Production APK**
+   - **Flutter: Build Production AAB**
+
+#### Build Output Locations
+```bash
+# APK files will be generated in:
+build/app/outputs/flutter-apk/
+├── app-development-release.apk    # Development APK
+├── app-staging-release.apk        # Staging APK
+└── app-production-release.apk     # Production APK
+
+# AAB files will be generated in:
+build/app/outputs/bundle/productionRelease/
+└── app-production-release.aab     # Production AAB for Play Store
+```
+
+#### Build Options
+```bash
+# Build without tree-shaking (larger APK size)
+flutter build apk --flavor development --target lib/main_development.dart --no-tree-shake-icons
+
+# Build with verbose output
+flutter build apk --flavor development --target lib/main_development.dart --verbose
+
+# Build debug APK (not recommended for production)
+flutter build apk --debug --flavor development --target lib/main_development.dart
+```
+
+> 📱 **Note**: All APK builds use release mode by default for optimal performance and smaller size. Debug builds are larger and slower.
 
 ## 💻 Running with VSCode
 
@@ -390,6 +434,22 @@ The project includes several launch configurations for different environments:
 - **"IKA Smansara - Production"**: Debug mode for production environment
 - **"IKA Smansara - Development (Profile)"**: Profile mode for performance analysis
 - **"IKA Smansara - Production (Release)"**: Release mode for production testing
+
+### Build Tasks
+
+The project includes automated build tasks for APK generation:
+
+- **Flutter: Build Development APK**: Build APK for development environment
+- **Flutter: Build Staging APK**: Build APK for staging environment
+- **Flutter: Build Production APK**: Build APK for production environment
+- **Flutter: Build Production AAB**: Build AAB bundle for Google Play Store
+
+#### How to Use Build Tasks
+1. Open VSCode Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
+2. Type "Tasks: Run Task" and select
+3. Choose your desired build task
+4. Wait for the build to complete
+5. Find the generated APK/AAB in the output directories
 
 ### How to Run
 
