@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.6+29] - 2025-09-13
+
+### Changed
+- **Campaign Page UI Refactoring**: Unified create and update campaign page interfaces
+  - Refactored `update_campaign_page` to match `create_campaign_page` UI design
+  - Implemented consistent header styling with title and subtitle matching create page pattern
+  - Restructured layout with SafeArea and SingleChildScrollView for better UX
+  - Added unified spacing patterns (24px horizontal, 20px vertical padding)
+  - Enhanced visual consistency with matching color scheme and typography
+
+### Added
+- **Shared Widget Components**: Created reusable components for campaign management
+  - `CampaignForm`: Universal form widget supporting both create and update operations
+  - Enhanced `selectedPoster` method moved to global `presentation/misc/` folder
+  - `CampaignFormMethods`: Centralized validation logic with conditional update handling
+  - Improved component reusability across create and update campaign pages
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Moved shared methods to `presentation/misc/` folder for better organization
+  - Created global `CampaignForm` widget in `presentation/widgets/` folder
+  - Improved separation of concerns between UI components and business logic
+  - Enhanced widget reusability and reduced code duplication
+  - Better error handling and state management patterns
+
+- **UI/UX Consistency**: Unified design language across campaign management pages
+  - Consistent form layout and styling between create and update pages
+  - Matching button designs and loading states
+  - Unified validation feedback and error messaging
+  - Improved user experience with consistent interaction patterns
+  - Enhanced visual hierarchy and spacing consistency
+
+- **Component Organization**: Better folder structure and code organization
+  - Removed redundant files from page-specific folders
+  - Centralized shared components in appropriate global folders
+  - Improved import management and dependency organization
+  - Enhanced code maintainability and developer experience
+
+### Fixed
+- **Import Path Updates**: Fixed all import statements across affected files
+  - Updated `create_campaign_page.dart` to use global components
+  - Updated `update_campaign_page.dart` to use shared widgets
+  - Fixed `update_user_profile_page.dart` import paths
+  - Resolved all compilation errors related to moved components
+
 ## [1.2.5+29] - 2025-09-13
 
 ### Changed

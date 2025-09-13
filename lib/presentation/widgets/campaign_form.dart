@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_button/group_button.dart';
+import 'package:ika_smansara/domain/entities/campaign_document.dart';
 import 'package:ika_smansara/domain/entities/campaign_request.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
+import 'package:ika_smansara/presentation/misc/campaign_form_methods.dart';
 import 'package:ika_smansara/presentation/misc/methods.dart';
-import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/campaign_form_methods.dart';
 import 'package:ika_smansara/presentation/providers/campaign/create_new_campaign_provider.dart';
+import 'package:ika_smansara/presentation/providers/campaign/update_campaign_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_date_time_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
@@ -20,6 +23,9 @@ class CampaignForm extends ConsumerStatefulWidget {
   final TextEditingController campaignStartDateController;
   final TextEditingController campaignEndDateController;
   final List<String> categoriesData;
+  final bool isUpdate;
+  final CampaignDocument? campaignDocument;
+  final GroupButtonController? categoriesGroupButtonController;
 
   const CampaignForm({
     super.key,
@@ -29,6 +35,9 @@ class CampaignForm extends ConsumerStatefulWidget {
     required this.campaignStartDateController,
     required this.campaignEndDateController,
     required this.categoriesData,
+    this.isUpdate = false,
+    this.campaignDocument,
+    this.categoriesGroupButtonController,
   });
 
   @override
@@ -40,6 +49,9 @@ class _CampaignFormState extends ConsumerState<CampaignForm> {
   Widget build(BuildContext context) {
     final selectedImage = ref.watch(selectedImageProvider);
     final saveDataState = ref.watch(createNewCampaignProvider);
+    final updateDataState = ref.watch(updateCampaignDocProvider);
+
+    final isLoading = widget.isUpdate ? updateDataState.isLoading : saveDataState.isLoading;
 
     return Container(
       padding: const EdgeInsets.all(24),
@@ -161,6 +173,7 @@ class _CampaignFormState extends ConsumerState<CampaignForm> {
           ),
           const SizedBox(height: 8),
           GroupButton(
+            controller: widget.categoriesGroupButtonController,
             buttons: ref
                     .watch(getListCategoryProvider)
                     .valueOrNull
@@ -199,7 +212,7 @@ class _CampaignFormState extends ConsumerState<CampaignForm> {
             width: double.infinity,
             height: 50,
             child: ElevatedButton(
-              onPressed: saveDataState.isLoading
+              onPressed: isLoading
                   ? null
                   : () {
                       if (CampaignFormMethods.validateForm(
@@ -211,39 +224,80 @@ class _CampaignFormState extends ConsumerState<CampaignForm> {
                         categoriesData: widget.categoriesData,
                         ref: ref,
                         context: context,
+                        isUpdate: widget.isUpdate,
                       )) {
-                        ref
-                            .read(
-                              createNewCampaignProvider.notifier,
-                            )
-                            .postNewCampaign(
-                              campaignRequest: CampaignRequest(
-                                backerCount: 0,
-                                campaignDescription:
-                                    widget.campaignDescriptionController.text,
-                                campaignName: widget.campaignNameController.text,
-                                categories: widget.categoriesData,
-                                createdBy: ref
-                                    .read(userDataProvider)
-                                    .valueOrNull
-                                    ?.authKey,
-                                currentAmount: 0,
-                                dateEndCampaign:
-                                    widget.campaignEndDateController.text,
-                                dateStartCampaign:
-                                    widget.campaignStartDateController.text,
-                                goalAmount: int.parse(
-                                  widget.campaignGoalAmountController.text
-                                      .replaceAll('.', '')
-                                      .replaceAll('Rp', '')
-                                      .replaceAll(' ', '0')
-                                      .replaceAll('-', '0'),
+                        if (widget.isUpdate && widget.campaignDocument != null) {
+                          // Update operation
+                          ref
+                              .read(updateCampaignDocProvider.notifier)
+                              .updateCampaignDoc(
+                                campaignRequest: CampaignRequest(
+                                  id: widget.campaignDocument!.id,
+                                  photoThumbnail: (selectedImage == null)
+                                      ? widget.campaignDocument!.photoThumbnail
+                                      : '',
+                                  backerCount: widget.campaignDocument!.backerCount,
+                                  campaignDescription:
+                                      widget.campaignDescriptionController.text,
+                                  campaignName: widget.campaignNameController.text,
+                                  categories: widget.categoriesData,
+                                  createdBy: ref
+                                      .read(userDataProvider)
+                                      .valueOrNull
+                                      ?.authKey,
+                                  currentAmount: widget.campaignDocument!.currentAmount,
+                                  dateEndCampaign:
+                                      widget.campaignEndDateController.text,
+                                  dateStartCampaign:
+                                      widget.campaignStartDateController.text,
+                                  goalAmount: int.parse(
+                                    widget.campaignGoalAmountController.text
+                                        .replaceAll('.', '')
+                                        .replaceAll('Rp', '')
+                                        .replaceAll(' ', '0')
+                                        .replaceAll('-', '0'),
+                                  ),
+                                  isActive: true,
+                                  isDeleted: false,
                                 ),
-                                isActive: true,
-                                isDeleted: false,
-                              ),
-                              imageFile: selectedImage,
-                            );
+                                imageFile: (selectedImage != null)
+                                    ? selectedImage
+                                    : null,
+                              );
+                          ref.read(routerProvider).pop();
+                        } else {
+                          // Create operation
+                          ref
+                              .read(createNewCampaignProvider.notifier)
+                              .postNewCampaign(
+                                campaignRequest: CampaignRequest(
+                                  backerCount: 0,
+                                  campaignDescription:
+                                      widget.campaignDescriptionController.text,
+                                  campaignName: widget.campaignNameController.text,
+                                  categories: widget.categoriesData,
+                                  createdBy: ref
+                                      .read(userDataProvider)
+                                      .valueOrNull
+                                      ?.authKey,
+                                  currentAmount: 0,
+                                  dateEndCampaign:
+                                      widget.campaignEndDateController.text,
+                                  dateStartCampaign:
+                                      widget.campaignStartDateController.text,
+                                  goalAmount: int.parse(
+                                    widget.campaignGoalAmountController.text
+                                        .replaceAll('.', '')
+                                        .replaceAll('Rp', '')
+                                        .replaceAll(' ', '0')
+                                        .replaceAll('-', '0'),
+                                  ),
+                                  isActive: true,
+                                  isDeleted: false,
+                                ),
+                                imageFile: selectedImage,
+                              );
+                        }
                       }
                     },
               style: ElevatedButton.styleFrom(
@@ -254,14 +308,14 @@ class _CampaignFormState extends ConsumerState<CampaignForm> {
                 ),
                 elevation: 2,
               ),
-              child: saveDataState.isLoading
+              child: isLoading
                   ? LoadingAnimationWidget.newtonCradle(
                       color: Colors.amber,
                       size: 35,
                     )
-                  : const Text(
-                      'Publikasi Acara',
-                      style: TextStyle(
+                  : Text(
+                      widget.isUpdate ? 'Update Informasi Acara' : 'Publikasi Acara',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),

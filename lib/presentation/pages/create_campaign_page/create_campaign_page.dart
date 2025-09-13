@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
-import 'package:ika_smansara/presentation/pages/create_campaign_page/widgets/campaign_form.dart';
+import 'package:ika_smansara/presentation/misc/selected_poster.dart';
 import 'package:ika_smansara/presentation/providers/campaign/create_new_campaign_provider.dart';
+import 'package:ika_smansara/presentation/widgets/campaign_form.dart';
 
 class CreateCampaignPage extends ConsumerStatefulWidget {
   const CreateCampaignPage({super.key});
@@ -81,15 +81,16 @@ class _CreateCampaignPageState extends ConsumerState<CreateCampaignPage> {
                 context: context,
               ),
               const SizedBox(height: 32),
-              // Campaign form
-              CampaignForm(
-                campaignNameController: campaignNameController,
-                campaignDescriptionController: campaignDescriptionController,
-                campaignGoalAmountController: campaignGoalAmountController,
-                campaignStartDateController: campaignStartDateController,
-                campaignEndDateController: campaignEndDateController,
-                categoriesData: categoriesData,
-              ),
+               // Campaign form
+               CampaignForm(
+                 campaignNameController: campaignNameController,
+                 campaignDescriptionController: campaignDescriptionController,
+                 campaignGoalAmountController: campaignGoalAmountController,
+                 campaignStartDateController: campaignStartDateController,
+                 campaignEndDateController: campaignEndDateController,
+                 categoriesData: categoriesData,
+                 isUpdate: false,
+               ),
               const SizedBox(height: 20),
             ],
           ),

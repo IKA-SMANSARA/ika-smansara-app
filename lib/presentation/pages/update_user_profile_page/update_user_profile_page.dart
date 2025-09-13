@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
-import 'package:ika_smansara/presentation/pages/create_campaign_page/methods/selected_poster.dart';
+import 'package:ika_smansara/presentation/misc/selected_poster.dart';
 import 'package:ika_smansara/presentation/providers/common/selected_image_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/update_user_profile_provider.dart';

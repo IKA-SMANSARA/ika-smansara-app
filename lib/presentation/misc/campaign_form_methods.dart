@@ -21,6 +21,7 @@ class CampaignFormMethods {
     required List<String> categoriesData,
     required WidgetRef ref,
     required BuildContext context,
+    bool isUpdate = false,
   }) {
     final campaignName = campaignNameController.text.trim();
     final campaignDescription = campaignDescriptionController.text.trim();
@@ -64,7 +65,8 @@ class CampaignFormMethods {
       return false;
     }
 
-    if (selectedImage == null) {
+    // For create operation, image is required. For update, it's optional
+    if (!isUpdate && selectedImage == null) {
       showErrorSnackBar(context, 'Pilih gambar poster acara');
       return false;
     }
