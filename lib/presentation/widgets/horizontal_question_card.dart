@@ -55,27 +55,33 @@ class HorizontalQuestionCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      username,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      formatDate(postDate),
-                      style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+               Expanded(
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     AutoSizeText(
+                       username,
+                       style: const TextStyle(
+                         fontWeight: FontWeight.bold,
+                         fontSize: 16,
+                       ),
+                       maxLines: 1,
+                       minFontSize: 14,
+                       overflow: TextOverflow.ellipsis,
+                     ),
+                     AutoSizeText(
+                       formatDate(postDate),
+                       style: TextStyle(
+                         color: Colors.grey.shade600,
+                         fontSize: 12,
+                       ),
+                       maxLines: 1,
+                       minFontSize: 10,
+                       overflow: TextOverflow.ellipsis,
+                     ),
+                   ],
+                 ),
+               ),
               // Status Badge
               Visibility(
                 visible: !isAnswer,
@@ -87,7 +93,7 @@ class HorizontalQuestionCard extends StatelessWidget {
                         : Colors.red.shade100,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
+                  child: AutoSizeText(
                     questionStatus ? 'Terbuka' : 'Ditutup',
                     style: TextStyle(
                       color: questionStatus
@@ -96,6 +102,9 @@ class HorizontalQuestionCard extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),
+                    maxLines: 1,
+                    minFontSize: 10,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
@@ -104,34 +113,30 @@ class HorizontalQuestionCard extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Question Content
-          isLongContent
-              ? AutoSizeText(
-                  content,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    height: 1.5,
-                  ),
-                )
-              : Text(
-                  content,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    height: 1.5,
-                  ),
-                ),
+          AutoSizeText(
+            content,
+            style: const TextStyle(
+              fontSize: 16,
+              height: 1.5,
+            ),
+            maxLines: isLongContent ? 5 : 2,
+            minFontSize: 14,
+            overflow: TextOverflow.ellipsis,
+          ),
 
           // Edited indicator
           if (editedStatus) ...[
             const SizedBox(height: 8),
-            Text(
+            AutoSizeText(
               'Diedit',
               style: TextStyle(
                 color: Colors.grey.shade500,
                 fontSize: 12,
                 fontStyle: FontStyle.italic,
               ),
+              maxLines: 1,
+              minFontSize: 10,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ],

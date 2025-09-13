@@ -42,7 +42,10 @@ class CampaignInfoSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Row(
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 4,
                 children: [
                   Text(
                     (campaign.currentAmount ?? 0).toIDRCurrencyFormat(),
@@ -51,6 +54,7 @@ class CampaignInfoSection extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF104993),
                     ),
+                    softWrap: true,
                   ),
                   const Text(
                     ' dari ',
@@ -58,6 +62,7 @@ class CampaignInfoSection extends StatelessWidget {
                       fontSize: 14,
                       color: Colors.black54,
                     ),
+                    softWrap: true,
                   ),
                   Text(
                     (campaign.goalAmount ?? 0).toIDRCurrencyFormat(),
@@ -66,15 +71,20 @@ class CampaignInfoSection extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
+                    softWrap: true,
                   ),
                 ],
               ),
             ),
-            Text(
-              getRemainingDays(dateEndCampaign: campaign.dateEndCampaign),
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black54,
+            Flexible(
+              child: Text(
+                getRemainingDays(dateEndCampaign: campaign.dateEndCampaign),
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+                softWrap: true,
+                maxLines: 2,
               ),
             ),
           ],

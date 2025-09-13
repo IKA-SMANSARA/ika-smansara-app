@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class GlobalSectionHeader extends StatelessWidget {
@@ -21,13 +22,16 @@ class GlobalSectionHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: crossAxisAlignment!,
         children: [
-          Text(
+          AutoSizeText(
             title,
             style: titleStyle ??
                 Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: Colors.black87,
                     ),
+            maxLines: 2,
+            minFontSize: 16,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 16),
         ],

@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.7+29] - 2025-09-13
+
+### Fixed
+- **Text Overflow Issues**: Comprehensive fix for all text overflow problems when text size is enlarged (125%+)
+  - Fixed `horizontal_campaign_card.dart` - Amount Collected and Time Remaining sections with unbounded constraints
+  - Fixed `campaign_list.dart` - Header "Kampanye Terbaru" and "selengkapnya" button overflow
+  - Fixed `backer_list.dart` - Header "Donatur" and "Lihat Semua" button overflow
+  - Fixed `header_campaign_detail.dart` - Amount display and remaining days overflow
+  - Fixed `horizontal_transaction_card.dart` - Campaign name, payment status, date, and amount overflow
+  - Fixed `payment_summary.dart` - Label and value overflow in summary rows
+  - Fixed `payment_breakdown_card.dart` - Label and amount overflow in breakdown rows
+
+### Technical Improvements
+- **Layout Stability**: Enhanced flex layout management with proper flex factors
+  - Replaced `Expanded` with `Flexible(fit: FlexFit.loose)` for better constraint handling
+  - Added `mainAxisSize: MainAxisSize.min` to prevent unbounded height expansion
+  - Implemented proper flex ratios (3:2, 2:1) for balanced space distribution
+  - Enhanced AutoSizeText configuration with appropriate minFontSize values
+
+- **Responsive Design**: Improved text scaling and overflow handling
+  - Added comprehensive AutoSizeText implementation across all text widgets
+  - Implemented proper maxLines and overflow handling for all text elements
+  - Enhanced text wrapping with Wrap widgets for complex layouts
+  - Added textAlign properties for better visual alignment
+
+- **Performance Optimization**: Reduced layout conflicts and improved rendering
+  - Eliminated unbounded constraints that caused RenderFlex overflow errors
+  - Optimized Column and Row layouts with proper flex management
+  - Improved widget tree structure for better performance
+  - Enhanced memory efficiency with proper widget disposal
+
+### Accessibility Improvements
+- **Text Scaling Support**: Full support for enlarged text sizes (125%+)
+  - All text widgets now properly scale without causing overflow
+  - Maintained readability and visual hierarchy at all text sizes
+  - Consistent spacing and layout across different text scaling settings
+  - Better user experience for users with visual accessibility needs
+
 ## [1.2.6+29] - 2025-09-13
 
 ### Changed

@@ -72,7 +72,12 @@ Widget categoryList({
         },
       ),
       error: (error, stackTrace) => const Center(
-        child: Text('NETWORK ERROR!'),
+        child: AutoSizeText(
+          'NETWORK ERROR!',
+          maxLines: 1,
+          minFontSize: 14,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       loading: () => Center(
         child: LoadingAnimationWidget.inkDrop(

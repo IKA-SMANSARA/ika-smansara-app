@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class NavigationCard extends StatelessWidget {
@@ -35,7 +36,7 @@ class NavigationCard extends StatelessWidget {
                 color: color,
               ),
               const SizedBox(height: 8),
-              Text(
+              AutoSizeText(
                 title,
                 style: TextStyle(
                   fontSize: 12,
@@ -43,6 +44,9 @@ class NavigationCard extends StatelessWidget {
                   color: color,
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                minFontSize: 10,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

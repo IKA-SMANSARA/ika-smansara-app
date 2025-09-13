@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class GlobalPrimaryButton extends StatelessWidget {
@@ -42,13 +43,16 @@ class GlobalPrimaryButton extends StatelessWidget {
           elevation: 0,
           padding: padding,
         ),
-        child: Text(
+        child: AutoSizeText(
           text,
           style: textStyle ??
               const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
+          maxLines: 1,
+          minFontSize: 14,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

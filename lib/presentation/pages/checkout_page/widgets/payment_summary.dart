@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class PaymentSummary extends StatelessWidget {
@@ -73,20 +74,33 @@ class PaymentSummary extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            color: isTotal ? Colors.black87 : Colors.grey.shade600,
-            fontWeight: isTotal ? FontWeight.w600 : FontWeight.normal,
+        Expanded(
+          flex: 2,
+          child: AutoSizeText(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              color: isTotal ? Colors.black87 : Colors.grey.shade600,
+              fontWeight: isTotal ? FontWeight.w600 : FontWeight.normal,
+            ),
+            maxLines: 1,
+            minFontSize: 12,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 14,
-            color: isTotal ? const Color(0xFF104993) : Colors.black87,
-            fontWeight: isTotal ? FontWeight.w600 : FontWeight.normal,
+        Flexible(
+          flex: 1,
+          child: AutoSizeText(
+            value,
+            style: TextStyle(
+              fontSize: 14,
+              color: isTotal ? const Color(0xFF104993) : Colors.black87,
+              fontWeight: isTotal ? FontWeight.w600 : FontWeight.normal,
+            ),
+            maxLines: 1,
+            minFontSize: 12,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.right,
           ),
         ),
       ],

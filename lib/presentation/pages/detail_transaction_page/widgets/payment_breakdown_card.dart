@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
 
@@ -80,20 +81,33 @@ class PaymentBreakdownCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey.shade600,
-            fontWeight: isBold ? FontWeight.w600 : FontWeight.normal,
+        Expanded(
+          flex: 2,
+          child: AutoSizeText(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey.shade600,
+              fontWeight: isBold ? FontWeight.w600 : FontWeight.normal,
+            ),
+            maxLines: 1,
+            minFontSize: 12,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text(
-          amount,
-          style: TextStyle(
-            fontSize: 14,
-            color: color,
-            fontWeight: isBold ? FontWeight.w700 : FontWeight.w600,
+        Flexible(
+          flex: 1,
+          child: AutoSizeText(
+            amount,
+            style: TextStyle(
+              fontSize: 14,
+              color: color,
+              fontWeight: isBold ? FontWeight.w700 : FontWeight.w600,
+            ),
+            maxLines: 1,
+            minFontSize: 12,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.right,
           ),
         ),
       ],

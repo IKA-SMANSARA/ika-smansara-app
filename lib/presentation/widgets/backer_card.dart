@@ -14,49 +14,67 @@ class BackerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Debug logging for troubleshooting
+    debugPrint('BackerCard - Name: "$backerName", Amount: "$amount", DateTime: "$dateTime"');
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  height: 40,
-                  child: CircleAvatar(
-                    minRadius: 10,
-                    maxRadius: 30,
+            Expanded(
+              flex: 3,
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
                     child: Icon(Icons.person),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      backerName,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AutoSizeText(
+                          backerName.isNotEmpty ? backerName : 'Anonymous',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          minFontSize: 12,
+                        ),
+                        AutoSizeText(
+                          dateTime.isNotEmpty ? dateTime : 'Unknown date',
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          minFontSize: 8,
+                        ),
+                      ],
                     ),
-                    AutoSizeText(
-                      dateTime,
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-            AutoSizeText(
-              amount,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
+            Expanded(
+              flex: 2,
+              child: AutoSizeText(
+                amount.isNotEmpty ? amount : 'Rp 0',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                minFontSize: 10,
+                textAlign: TextAlign.right,
               ),
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
@@ -39,18 +40,24 @@ class MenuItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      AutoSizeText(
                         title,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
+                        maxLines: 1,
+                        minFontSize: 12,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 2),
-                      Text(
+                      AutoSizeText(
                         subtitle,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.grey[600],
                             ),
+                        maxLines: 2,
+                        minFontSize: 10,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
@@ -31,12 +32,15 @@ class ListCampaignPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: AutoSizeText(
           (category?.nameCategory ?? '').toUpperCase(),
           style: const TextStyle(
             fontWeight: FontWeight.w700,
             letterSpacing: -0.5,
           ),
+          maxLines: 1,
+          minFontSize: 16,
+          overflow: TextOverflow.ellipsis,
         ),
         elevation: 0,
         backgroundColor: const Color(0xFF104993),
@@ -74,7 +78,7 @@ class ListCampaignPage extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                Text(
+                AutoSizeText(
                   'Terjadi kesalahan saat memuat data',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w700,
@@ -82,15 +86,21 @@ class ListCampaignPage extends ConsumerWidget {
                         letterSpacing: -0.5,
                       ),
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  minFontSize: 18,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 12),
-                Text(
+                AutoSizeText(
                   'Silakan coba lagi nanti',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.grey[600],
                         height: 1.6,
                       ),
                   textAlign: TextAlign.center,
+                  maxLines: 2,
+                  minFontSize: 14,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 32),
                 ElevatedButton(
@@ -106,12 +116,15 @@ class ListCampaignPage extends ConsumerWidget {
                     elevation: 4,
                     shadowColor: const Color(0xFFD52014).withValues(alpha: 0.3),
                   ),
-                  child: const Text(
+                  child: const AutoSizeText(
                     'Coba Lagi',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
                     ),
+                    maxLines: 1,
+                    minFontSize: 14,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
@@ -148,7 +161,7 @@ class ListCampaignPage extends ConsumerWidget {
                     const SizedBox(height: 24),
 
                     // Title with better typography
-                    Text(
+                    AutoSizeText(
                       'Belum Ada Kegiatan',
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w700,
@@ -156,18 +169,24 @@ class ListCampaignPage extends ConsumerWidget {
                             letterSpacing: -0.5,
                           ),
                       textAlign: TextAlign.center,
+                      maxLines: 2,
+                      minFontSize: 18,
+                      overflow: TextOverflow.ellipsis,
                     ),
 
                     const SizedBox(height: 12),
 
                     // Description with better spacing
-                    Text(
+                    AutoSizeText(
                       'Belum ada kegiatan dalam kategori ini.\nMari lihat kategori lainnya!',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: Colors.grey[600],
                             height: 1.6,
                           ),
                       textAlign: TextAlign.center,
+                      maxLines: 3,
+                      minFontSize: 14,
+                      overflow: TextOverflow.ellipsis,
                     ),
 
                     const SizedBox(height: 32),
@@ -202,12 +221,15 @@ class ListCampaignPage extends ConsumerWidget {
                             size: 24,
                           ),
                           const SizedBox(width: 12),
-                          Text(
+                          AutoSizeText(
                             'Jelajahi Kategori Lain',
                             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                 ),
+                            maxLines: 1,
+                            minFontSize: 14,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),

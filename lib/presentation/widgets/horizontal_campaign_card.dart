@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ika_smansara/presentation/extensions/int_extension.dart';
@@ -93,7 +94,7 @@ class HorizontalCampaignCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Campaign Name
-                      Text(
+                      AutoSizeText(
                         campaignName,
                         style: const TextStyle(
                           fontSize: 16,
@@ -102,6 +103,7 @@ class HorizontalCampaignCard extends StatelessWidget {
                         ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
+                        minFontSize: 12,
                       ),
 
                       const SizedBox(height: 8),
@@ -110,72 +112,97 @@ class HorizontalCampaignCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Amount Collected
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Terkumpul',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                              const SizedBox(height: 2),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFD52014).withValues(alpha: 0.1),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text(
-                                  campaignCurrentAmount.toIDRCurrencyFormat(),
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xFFD52014),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          // Time Remaining
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Row(
+                            // Amount Collected
+                            Flexible(
+                              fit: FlexFit.loose,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Icon(
-                                    Icons.schedule,
-                                    size: 14,
-                                    color: Colors.grey[600],
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    'Sisa Waktu',
+                                  AutoSizeText(
+                                    'Terkumpul',
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.grey[600],
                                     ),
+                                    maxLines: 1,
+                                    minFontSize: 10,
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 4,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFD52014).withValues(alpha: 0.1),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: AutoSizeText(
+                                      campaignCurrentAmount.toIDRCurrencyFormat(),
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xFFD52014),
+                                      ),
+                                      maxLines: 1,
+                                      minFontSize: 12,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 2),
-                              Text(
-                                getRemainingDays(
-                                  dateEndCampaign: dateEndCampaign,
+                            ),
+
+                          // Time Remaining
+                          Flexible(
+                            fit: FlexFit.loose,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.schedule,
+                                      size: 14,
+                                      color: Colors.grey[600],
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Flexible(
+                                      fit: FlexFit.loose,
+                                      child: AutoSizeText(
+                                        'Sisa Waktu',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey[600],
+                                        ),
+                                        maxLines: 1,
+                                        minFontSize: 10,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF104993),
+                                const SizedBox(height: 2),
+                                Flexible(
+                                  fit: FlexFit.loose,
+                                  child: AutoSizeText(
+                                    getRemainingDays(
+                                      dateEndCampaign: dateEndCampaign,
+                                    ),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xFF104993),
+                                    ),
+                                    maxLines: 1,
+                                    minFontSize: 12,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -189,19 +216,28 @@ class HorizontalCampaignCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Progress',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey[600],
+                              Expanded(
+                                child: AutoSizeText(
+                                  'Progress',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey[600],
+                                  ),
+                                  maxLines: 1,
+                                  minFontSize: 10,
                                 ),
                               ),
-                              Text(
-                                '${((campaignCurrentAmount / campaignGoalAmount) * 100).toStringAsFixed(1)}%',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF104993),
+                              Flexible(
+                                child: AutoSizeText(
+                                  '${((campaignCurrentAmount / campaignGoalAmount) * 100).toStringAsFixed(1)}%',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xFF104993),
+                                  ),
+                                  maxLines: 1,
+                                  minFontSize: 10,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
