@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.9+29] - 2025-09-14
+
+### Changed
+- **Bank Account List Page Redesign**: Complete UI/UX overhaul with modern design patterns
+  - Converted from ConsumerStatefulWidget to ConsumerWidget for cleaner code architecture
+  - Created new BankAccountCard widget with modern card design, shadows, and proper spacing
+  - Implemented EmptyBankAccountState widget for better empty state experience
+  - Moved delete dialog logic to separate methods file for better code organization
+  - Replaced ElevatedButton.icon with GlobalPrimaryButton for design consistency
+  - Added SafeArea wrapper with consistent padding and section headers
+  - Enhanced visual hierarchy with proper typography and color scheme
+  - Improved error and loading states with GlobalErrorWidget and GlobalLoadingWidget
+  - Added gradient AppBar matching the app's design language
+  - Implemented proper responsive design with AutoSizeText throughout
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Better separation of concerns between UI components and business logic
+  - Improved widget reusability and component isolation
+  - Cleaner code organization following established patterns (widgets/, methods/ folders)
+  - Enhanced error handling and state management patterns
+  - Removed old bank_account_item.dart method file for cleaner codebase
+
+- **Design Consistency**: Unified design language matching other pages in the application
+  - Consistent color scheme (Color(0xFF104993) for primary blue, Color(0xFFD52014) for red)
+  - Matching button styling and sizing with GlobalPrimaryButton
+  - Same spacing patterns and layout structure as other pages
+  - Unified typography using Theme.of(context).textTheme
+  - Consistent card design with shadows and rounded corners
+
+- **User Experience**: Improved interaction patterns and visual feedback
+  - Better empty state with informative messaging and visual elements
+  - Enhanced delete confirmation dialog with detailed account information
+  - Improved loading and error states with proper user feedback
+  - More intuitive navigation and action buttons
+  - Better accessibility with proper contrast and sizing
+
 ## [1.2.8+29] - 2025-09-13
 
 ### Changed
