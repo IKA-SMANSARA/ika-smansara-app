@@ -41,50 +41,53 @@ class HomePage extends ConsumerWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-             const LogoSection(),
-            const SizedBox(height: 16),
-            carouselImages(
-              context: context,
-              carouselImagesValue: ref.watch(getListCarouselsProvider),
-            ),
-            const SizedBox(height: 24),
-             Column(
-               children: [
-                 GlobalSectionHeader(title: 'Kategori Kampanye'),
-                 categoryList(
-                   context: context,
-                   categories: ref.watch(getListCategoryProvider),
-                   onTap: (category) {
-                     ref.read(routerProvider).pushNamed(
-                           'list-campaign-page',
-                           extra: category,
-                           );
-                   },
-                 ),
-               ],
-             ),
-            const SizedBox(height: 24),
-            ...campaignList(
-              title: 'Kampanye Terbaru',
-              campaigns: ref.watch(getNewCampaignsListProvider),
-              onTap: (campaign) {
-                ref.read(routerProvider).pushNamed(
-                      'campaign-detail-page',
-                      extra: campaign,
-                    );
-              },
-              onPressed: () {
-                ref.read(routerProvider).pushNamed(
-                      'list-campaign-page',
-                      extra: CategoryDocument(),
-                    );
-              },
-            ),
-            const SizedBox(height: 32),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 80),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+               const LogoSection(),
+              const SizedBox(height: 16),
+              carouselImages(
+                context: context,
+                carouselImagesValue: ref.watch(getListCarouselsProvider),
+              ),
+              const SizedBox(height: 24),
+               Column(
+                 children: [
+                   GlobalSectionHeader(title: 'Kategori Kampanye'),
+                   categoryList(
+                     context: context,
+                     categories: ref.watch(getListCategoryProvider),
+                     onTap: (category) {
+                       ref.read(routerProvider).pushNamed(
+                             'list-campaign-page',
+                             extra: category,
+                             );
+                     },
+                   ),
+                 ],
+               ),
+              const SizedBox(height: 24),
+              ...campaignList(
+                title: 'Kampanye Terbaru',
+                campaigns: ref.watch(getNewCampaignsListProvider),
+                onTap: (campaign) {
+                  ref.read(routerProvider).pushNamed(
+                        'campaign-detail-page',
+                        extra: campaign,
+                      );
+                },
+                onPressed: () {
+                  ref.read(routerProvider).pushNamed(
+                        'list-campaign-page',
+                        extra: CategoryDocument(),
+                      );
+                },
+              ),
+              const SizedBox(height: 32),
+            ],
+          ),
         ),
       ),
     );

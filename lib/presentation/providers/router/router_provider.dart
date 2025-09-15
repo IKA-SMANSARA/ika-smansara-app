@@ -5,6 +5,7 @@ import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
+import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
@@ -13,12 +14,13 @@ import 'package:ika_smansara/presentation/pages/contact_us_page/contact_us_page.
 import 'package:ika_smansara/presentation/pages/create_account_bank_page/create_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_transaction_page.dart';
-import 'package:ika_smansara/presentation/pages/list_all_question_page/list_all_question_page.dart';
 import 'package:ika_smansara/presentation/pages/get_question_detail_page/get_question_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
+import 'package:ika_smansara/presentation/pages/list_all_question_page/list_all_question_page.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/list_user_question_page/list_user_question_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
+import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
 import 'package:ika_smansara/presentation/pages/my_donation_page/my_donation_page.dart';
 import 'package:ika_smansara/presentation/pages/payout_history_page/payout_history_page.dart';
@@ -31,7 +33,6 @@ import 'package:ika_smansara/presentation/pages/update_user_profile_page/update_
 import 'package:ika_smansara/presentation/pages/user_profile_page/user_profile_page.dart';
 import 'package:ika_smansara/presentation/pages/video_tutorial_page/video_tutorial_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
-import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -39,6 +40,11 @@ part 'router_provider.g.dart';
 @Riverpod(keepAlive: true)
 Raw<GoRouter> router(RouterRef ref) => GoRouter(
       routes: [
+        GoRoute(
+          path: '/main',
+          name: 'main',
+          builder: (context, state) => MainPage(),
+        ),
         GoRoute(
           path: '/home',
           name: 'home',
@@ -274,5 +280,5 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => const VideoTutorialPage(),
         ),
       ],
-      initialLocation: '/home',
+      initialLocation: '/login',
     );

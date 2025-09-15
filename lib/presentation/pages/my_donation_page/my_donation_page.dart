@@ -113,12 +113,15 @@ class MyDonationPage extends ConsumerWidget {
                   return const MyDonationEmpty();
                 }
 
-                return Column(
-                  children: [
-                    Expanded(
-                      child: MyDonationList(transactions: transactionsAsync),
-                    ),
-                  ],
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 80),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: MyDonationList(transactions: transactionsAsync),
+                      ),
+                    ],
+                  ),
                 );
               },
             );

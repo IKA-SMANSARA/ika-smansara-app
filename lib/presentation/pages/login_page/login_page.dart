@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
-import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_already_logged_in_state.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_form.dart';
 import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_error_state.dart';
+import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 
 class LoginPage extends ConsumerWidget {
   final TextEditingController emailController = TextEditingController();
@@ -22,7 +22,7 @@ class LoginPage extends ConsumerWidget {
       (previous, next) {
         if (next is AsyncData) {
           if (next.value != null) {
-            ref.read(routerProvider).goNamed('home');
+            ref.read(routerProvider).goNamed('main');
           }
         } else if (next is AsyncError) {
           // Error saat login process, bukan saat pengecekan status
@@ -56,4 +56,3 @@ class LoginPage extends ConsumerWidget {
     );
   }
 }
-
