@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.11+29] - 2025-09-15
+
+### Added
+- **Internet Connectivity Check**: Enhanced video tutorial page with real-time internet connection monitoring
+  - Added `connectivity_plus: ^6.0.5` dependency for network status detection
+  - Implemented automatic connection status monitoring with real-time updates
+  - Added user-friendly offline state with clear messaging and visual indicators
+  - Disabled video controls when offline to prevent user confusion
+  - Enhanced user experience with seamless online/offline state transitions
+
+### Changed
+- **Video Tutorial Page Enhancement**: Improved video playback experience with connectivity awareness
+  - Added comprehensive connection status tracking throughout video session
+  - Implemented conditional UI rendering based on internet availability
+  - Enhanced error handling for network-related video playback issues
+  - Improved user feedback with informative offline messaging in Indonesian
+  - Added proper gesture handling that respects connection status
+
+### Technical Improvements
+- **Connectivity Management**: Robust network state management implementation
+  - Added Connectivity instance with proper lifecycle management
+  - Implemented listener-based connectivity monitoring with error handling
+  - Enhanced state management with connection status persistence
+  - Added proper cleanup of connectivity listeners to prevent memory leaks
+  - Improved async connectivity checking with comprehensive error handling
+
+- **UI State Management**: Better conditional rendering based on network status
+  - Implemented connection-aware UI components with proper state synchronization
+  - Added offline visual indicators with consistent design language
+  - Enhanced user interaction patterns that adapt to connection status
+  - Improved accessibility with clear offline state communication
+
 ## [1.2.10+29] - 2025-09-14
 
 ### Changed

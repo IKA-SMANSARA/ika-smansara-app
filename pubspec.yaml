@@ -1,6 +1,6 @@
 name: ika_smansara
 description: IKA SMANSARA
-version: 1.2.10+29
+version: 1.2.11+29
 publish_to: none
 
 environment:
@@ -54,6 +54,8 @@ dependencies:
    url_launcher: ^6.1.12
    uuid: ^4.4.0
    video_player: ^2.8.6
+   youtube_player_flutter: ^9.1.2
+   connectivity_plus: ^6.0.5
 
 # dependency_overrides:
 #   flutter_web_auth_2: ^4.1.0
