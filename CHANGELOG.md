@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.13+29] - 2025-09-16
+
+### Changed
+- **Home Page Enhancement**: Major UI/UX improvements and code refactoring
+  - Restructured home page layout with improved component organization
+  - Enhanced header section with better logo positioning and spacing
+  - Improved responsive design and visual hierarchy
+  - Better integration with campaign list and carousel components
+
+- **Bottom Navigation Bar Restoration**: Complete restoration of bottom navigation functionality
+  - Restored bottom navigation bar across all main pages
+  - Enhanced navigation between Home, My Donation, Contact Us, and Account pages
+  - Improved page controller implementation with proper state management
+  - Updated account page widgets for better navigation integration
+  - Enhanced user experience with seamless page transitions
+
+### Technical Improvements
+- **Code Architecture**: Enhanced component organization and maintainability
+  - Better separation of concerns in home page components
+  - Improved widget reusability and code structure
+  - Cleaner navigation implementation with proper state management
+  - Enhanced error handling and user feedback mechanisms
+
+- **UI/UX Consistency**: Unified navigation experience across the application
+  - Consistent bottom navigation bar styling and behavior
+  - Improved page transition animations and responsiveness
+  - Better integration between different app sections
+  - Enhanced accessibility and user interaction patterns
+
 ## [1.2.12+29] - 2025-09-15
 
 ### Added
