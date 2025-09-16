@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
 
 class EmptyBankAccountState extends StatelessWidget {
   const EmptyBankAccountState({super.key});

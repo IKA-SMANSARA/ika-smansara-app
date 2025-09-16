@@ -10,6 +10,9 @@
 - **Test**: `flutter test --coverage` | Single: `flutter test test/domain/usecases/get_campaign_detail_test.dart`
 - **Clean**: `flutter clean && flutter pub get`
 
+## Build Troubleshooting
+- **Signing Error**: If you get "SigningConfig 'release' is missing required property 'storeFile'", the build system will automatically fall back to debug signing for development builds
+
 ## Code Style
 - **Architecture**: Clean Architecture (Domain → Data → Presentation)
 - **State**: Riverpod with `@riverpod` + riverpod_generator + riverpod_lint

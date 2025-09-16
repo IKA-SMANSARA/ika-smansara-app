@@ -19,13 +19,22 @@ class BankAccountListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = ref.read(userDataProvider).valueOrNull?.authKey;
+
+    if (userId == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text('User not authenticated'),
+        ),
+      );
+    }
+
     final asyncAccountBankData = ref.watch(
-      getAccountBankByUserIdProvider(userId: userId ?? ''),
+      getAccountBankByUserIdProvider(userId: userId),
     );
 
     // Listen for errors
     ref.listen(
-      getAccountBankByUserIdProvider(userId: userId ?? ''),
+      getAccountBankByUserIdProvider(userId: userId),
       (_, state) => state.showSnackbarOnError(context),
     );
 
@@ -56,7 +65,8 @@ class BankAccountListPage extends ConsumerWidget {
         padding: const EdgeInsets.only(bottom: 20, right: 20),
         child: GlobalPrimaryButton(
           text: 'Tambah Rekening',
-          onPressed: () => ref.read(routerProvider).pushNamed('create-bank-account-page'),
+          onPressed: () =>
+              ref.read(routerProvider).pushNamed('create-bank-account-page'),
           width: null,
           height: 50,
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -65,7 +75,7 @@ class BankAccountListPage extends ConsumerWidget {
       body: SafeArea(
         child: asyncAccountBankData.when(
           data: (data) {
-            if (data == null || data.isEmpty) {
+            if (false || data.isEmpty) {
               return const EmptyBankAccountState();
             }
 
@@ -77,10 +87,11 @@ class BankAccountListPage extends ConsumerWidget {
                   // Section Header
                   GlobalSectionHeader(
                     title: 'Rekening Bank Anda',
-                    titleStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF104993),
-                        ),
+                    titleStyle:
+                        Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF104993),
+                            ),
                   ),
 
                   // Bank Account List
@@ -92,10 +103,10 @@ class BankAccountListPage extends ConsumerWidget {
                             extra: accountBank,
                           ),
                       onDelete: () => showDeleteBankAccountDialog(
-                            context,
-                            accountBank,
-                            ref,
-                          ),
+                        context,
+                        accountBank,
+                        ref,
+                      ),
                     ),
                   ),
 
