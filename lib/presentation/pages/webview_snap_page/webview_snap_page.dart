@@ -31,6 +31,7 @@ import 'package:ika_smansara/presentation/misc/methods.dart';
 import 'package:ika_smansara/presentation/providers/transaction/get_url_webview_provider.dart';
 import 'package:ika_smansara/presentation/providers/transaction/save_payment_transaction_provider.dart';
 import 'package:ika_smansara/utils/constants.dart';
+import 'package:ika_smansara/utils/scoped_storage_helper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:open_file/open_file.dart';
@@ -87,13 +88,14 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
 
       String downloadDir;
       if (defaultTargetPlatform == TargetPlatform.android) {
-        final directory = await getExternalStorageDirectory();
-        downloadDir = directory?.path ?? '/storage/emulated/0/Download';
-        Constants.logger.d('Using Android download directory: $downloadDir');
+        // Use app-specific directory for Android
+        final directory = await getApplicationDocumentsDirectory();
+        downloadDir = '${directory.path}/Downloads';
+        Constants.logger.d('Using Android app downloads directory: $downloadDir');
       } else {
         final directory = await getApplicationDocumentsDirectory();
-        downloadDir = directory.path;
-        Constants.logger.d('Using iOS download directory: $downloadDir');
+        downloadDir = '${directory.path}/Downloads';
+        Constants.logger.d('Using iOS downloads directory: $downloadDir');
       }
 
       // Ensure download directory exists
@@ -488,66 +490,28 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
     try {
       Constants.logger.d('Saving screenshot to gallery: $fileName');
 
-      String screenshotsDir;
+      // Generate unique filename to avoid conflicts
+      String uniqueFileName = ScopedStorageHelper.generateUniqueFileName(fileName);
 
-      if (defaultTargetPlatform == TargetPlatform.android) {
-        // Try to use DCIM/Screenshots first, fallback to Pictures/Screenshots
-        try {
-          final dcimDir = Directory('/storage/emulated/0/DCIM/Screenshots');
-          if (!await dcimDir.exists()) {
-            await dcimDir.create(recursive: true);
-          }
-          screenshotsDir = dcimDir.path;
-          Constants.logger.d('Using DCIM/Screenshots directory: $screenshotsDir');
-        } catch (e) {
-          Constants.logger.w('DCIM/Screenshots not accessible, trying Pictures/Screenshots');
-          try {
-            final picturesDir = Directory('/storage/emulated/0/Pictures/Screenshots');
-            if (!await picturesDir.exists()) {
-              await picturesDir.create(recursive: true);
-            }
-            screenshotsDir = picturesDir.path;
-            Constants.logger.d('Using Pictures/Screenshots directory: $screenshotsDir');
-          } catch (e2) {
-            Constants.logger.w('Pictures/Screenshots not accessible, using Downloads');
-            final directory = await getExternalStorageDirectory();
-            screenshotsDir = directory?.path ?? '/storage/emulated/0/Download';
-            Constants.logger.d('Using fallback directory: $screenshotsDir');
-          }
-        }
-      } else {
-        // For iOS and other platforms
-        final directory = await getApplicationDocumentsDirectory();
-        screenshotsDir = directory.path;
-        Constants.logger.d('Using iOS documents directory: $screenshotsDir');
+      // Save screenshot using scoped storage
+      final filePath = await ScopedStorageHelper.saveScreenshot(screenshotData, uniqueFileName);
+
+      if (filePath == null) {
+        showDownloadSnackBar(context, 'Failed to save screenshot');
+        Constants.logger.e('Scoped storage screenshot save failed');
+        return;
       }
 
-      // Ensure unique filename
-      String uniqueFileName = fileName;
-      int counter = 1;
-      while (File("$screenshotsDir/$uniqueFileName").existsSync()) {
-        final nameParts = fileName.split('.');
-        if (nameParts.length > 1) {
-          uniqueFileName = '${nameParts[0]}_$counter.${nameParts[1]}';
-        } else {
-          uniqueFileName = '${fileName}_$counter';
-        }
-        counter++;
-      }
-
-      final file = File("$screenshotsDir/$uniqueFileName");
-      await file.writeAsBytes(screenshotData);
-
-      Constants.logger.i('Screenshot saved successfully: ${file.path}');
+      Constants.logger.i('Screenshot saved successfully: $filePath');
 
       // Show success message
       showDownloadSnackBar(context, 'QR screenshot saved to gallery');
 
       // Try to open the file
       try {
-        final result = await OpenFile.open(file.path);
+        final result = await OpenFile.open(filePath);
         if (result.type == ResultType.done) {
-          Constants.logger.i('Screenshot opened successfully: ${file.path}');
+          Constants.logger.i('Screenshot opened successfully: $filePath');
         } else {
           Constants.logger.w('Screenshot open result: ${result.message}');
         }
@@ -869,50 +833,28 @@ class _WebviewSnapPageState extends ConsumerState<WebviewSnapPage> {
         Constants.logger.w('Decoded file is very small: ${bytes.length} bytes');
       }
 
-      String downloadDir;
-      if (defaultTargetPlatform == TargetPlatform.android) {
-        final directory = await getExternalStorageDirectory();
-        downloadDir = directory?.path ?? '/storage/emulated/0/Download';
-        Constants.logger.d('Using Android download directory: $downloadDir');
-      } else {
-        final directory = await getApplicationDocumentsDirectory();
-        downloadDir = directory.path;
-        Constants.logger.d('Using iOS download directory: $downloadDir');
+      // Generate unique filename to avoid conflicts
+      String uniqueFileName = ScopedStorageHelper.generateUniqueFileName(fileName);
+
+      // Save file using scoped storage
+      final filePath = await ScopedStorageHelper.saveToDownloads(bytes, uniqueFileName);
+
+      if (filePath == null) {
+        showDownloadSnackBar(context, 'Failed to save QRIS file');
+        Constants.logger.e('Scoped storage save failed');
+        return;
       }
 
-      // Ensure download directory exists
-      final dir = Directory(downloadDir);
-      if (!await dir.exists()) {
-        await dir.create(recursive: true);
-        Constants.logger.d('Created download directory: $downloadDir');
-      }
-
-      // Ensure unique filename to avoid conflicts
-      String uniqueFileName = fileName;
-      int counter = 1;
-      while (File("$downloadDir/$uniqueFileName").existsSync()) {
-        final nameParts = fileName.split('.');
-        if (nameParts.length > 1) {
-          uniqueFileName = '${nameParts[0]}_$counter.${nameParts[1]}';
-        } else {
-          uniqueFileName = '${fileName}_$counter';
-        }
-        counter++;
-      }
-
-      final file = File("$downloadDir/$uniqueFileName");
-      await file.writeAsBytes(bytes);
-
-      Constants.logger.i('File saved successfully: ${file.path}');
+      Constants.logger.i('File saved successfully: $filePath');
 
       // Show success message
       showDownloadSnackBar(context, 'QRIS saved as $uniqueFileName');
 
       // Try to open the file
       try {
-        final result = await OpenFile.open(file.path);
+        final result = await OpenFile.open(filePath);
         if (result.type == ResultType.done) {
-          Constants.logger.i('File opened successfully: ${file.path}');
+          Constants.logger.i('File opened successfully: $filePath');
         } else {
           Constants.logger.w('File open result: ${result.message}');
         }
