@@ -20,26 +20,43 @@ List<Widget> backerList({
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AutoSizeText(
-            'Donatur ($backerCount)',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              ref.read(routerProvider).pushNamed(
-                    'backer-list-page',
-                    extra: campaign,
-                  );
-            },
+          Expanded(
+            flex: 3,
             child: AutoSizeText(
-              'Lihat Semua',
+              'Donatur ($backerCount)',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF104993),
+              ),
+              maxLines: 1,
+              minFontSize: 12,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Flexible(
+            flex: 2,
+            child: TextButton(
+              onPressed: () {
+                ref.read(routerProvider).pushNamed(
+                      'backer-list-page',
+                      extra: campaign,
+                    );
+              },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              child: AutoSizeText(
+                'Lihat Semua',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xFF104993),
+                ),
+                maxLines: 1,
+                minFontSize: 12,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),

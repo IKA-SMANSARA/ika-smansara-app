@@ -1,7 +1,7 @@
 import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/presentation/pages/common_methods/list_campaigns.dart';
+import 'package:ika_smansara/presentation/widgets/list_campaigns.dart';
 import 'package:ika_smansara/presentation/providers/campaign/get_campaign_by_user_id_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 

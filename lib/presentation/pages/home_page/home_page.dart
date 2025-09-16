@@ -1,5 +1,4 @@
 import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/category_document.dart';
@@ -12,36 +11,12 @@ import 'package:ika_smansara/presentation/providers/campaign/get_new_campaigns_l
 import 'package:ika_smansara/presentation/providers/carousel/get_list_carousels_provider.dart';
 import 'package:ika_smansara/presentation/providers/category/get_list_category_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
-import 'package:video_player/video_player.dart';
 
-class HomePage extends ConsumerStatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
-}
-
-class _HomePageState extends ConsumerState<HomePage> {
-  late VideoPlayerController _videoPlayerController;
-
-  @override
-  void initState() {
-    super.initState();
-    _videoPlayerController = VideoPlayerController.asset(
-      'assets/images/tutorial.mp4',
-    )..initialize().then((_) {
-        _videoPlayerController.play();
-      });
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: [
         Stack(
@@ -80,29 +55,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                           ),
                         ),
                       ).onClick(
-                        () => {
-                          // play video
-                          setState(() {
-                            _videoPlayerController.play();
-                            _videoPlayerController.setLooping(true);
-                          }),
-
-                          showAdaptiveDialog(
-                            context: context,
-                            builder: (context) {
-                              return Dialog(
-                                child: Container(
-                                  child: _videoPlayerController
-                                          .value.isInitialized
-                                      ? VideoPlayer(_videoPlayerController)
-                                      : Container(
-                                          child: AutoSizeText('Network Error!'),
-                                        ),
-                                ),
-                              );
-                            },
-                          )
-                        },
+                        () => ref
+                            .read(routerProvider)
+                            .pushNamed('video-tutorial-page'),
                       ),
                     ),
                   ],

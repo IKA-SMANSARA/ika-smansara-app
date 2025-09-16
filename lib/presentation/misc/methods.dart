@@ -202,3 +202,49 @@ String validateStringLength(String defaultString) {
     return defaultString.substring(0, 19).toString();
   }
 }
+
+// Snackbar utility functions for consistent UI feedback
+void showDownloadSnackBar(BuildContext context, String message) {
+  if (context.mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
+        action: SnackBarAction(
+          label: 'OK',
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
+}
+
+void showDownloadErrorSnackBar(BuildContext context, String message, {String? details}) {
+  if (context.mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(message),
+            if (details != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                details,
+                style: const TextStyle(fontSize: 12, color: Colors.white70),
+              ),
+            ],
+          ],
+        ),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(
+          label: 'Retry',
+          onPressed: () {
+            // Could implement retry logic here
+          },
+        ),
+      ),
+    );
+  }
+}

@@ -13,56 +13,71 @@ Widget categoryList({
 }) =>
     categories.when(
       data: (data) => GridView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: responsiveGridMenuCrossAxisCount(context),
-          mainAxisSpacing: 10,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          childAspectRatio: 0.8,
         ),
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => onTap?.call(data[index]),
-            child: Column(
-              children: [
-                SvgPicture.network(
-                  data[index].categoryIcon ?? '',
-                  placeholderBuilder: (context) => Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.amber,
-                      size: 35,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Wrap(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: Center(
-                          child: AutoSizeText(
-                            data[index].nameCategory?.toUpperCase() ?? '',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
+           return GestureDetector(
+             onTap: () => onTap?.call(data[index]),
+             child: ClipRect(
+               child: Container(
+                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                 child: Column(
+                   mainAxisSize: MainAxisSize.min,
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Expanded(
+                       flex: 2,
+                       child: Container(
+                         constraints: const BoxConstraints(maxHeight: 55, maxWidth: 55),
+                         child: SvgPicture.network(
+                           data[index].categoryIcon ?? '',
+                           placeholderBuilder: (context) => Center(
+                             child: LoadingAnimationWidget.inkDrop(
+                               color: Colors.amber,
+                               size: 30,
+                             ),
+                           ),
+                           fit: BoxFit.contain,
+                         ),
+                       ),
+                     ),
+                     const SizedBox(height: 6),
+                     Expanded(
+                       flex: 1,
+                       child: AutoSizeText(
+                         data[index].nameCategory?.toUpperCase() ?? '',
+                         style: const TextStyle(
+                           fontSize: 14,
+                           fontWeight: FontWeight.w600,
+                         ),
+                         maxLines: 2,
+                         overflow: TextOverflow.ellipsis,
+                         textAlign: TextAlign.center,
+                         minFontSize: 10,
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+             ),
+           );
         },
       ),
       error: (error, stackTrace) => const Center(
-        child: Text('NETWORK ERROR!'),
+        child: AutoSizeText(
+          'NETWORK ERROR!',
+          maxLines: 1,
+          minFontSize: 14,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       loading: () => Center(
         child: LoadingAnimationWidget.inkDrop(

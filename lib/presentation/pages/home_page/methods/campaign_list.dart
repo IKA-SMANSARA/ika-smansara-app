@@ -16,23 +16,41 @@ List<Widget> campaignList({
         padding: const EdgeInsets.only(
           left: 16,
           right: 16,
+          bottom: 16,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AutoSizeText(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+            Expanded(
+              flex: 3,
+              child: AutoSizeText(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 1,
+                minFontSize: 14,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-            TextButton(
-              onPressed: onPressed,
-              child: AutoSizeText(
-                'selengkapnya',
-                style: TextStyle(
-                  color: const Color(0xFF104993),
+            Flexible(
+              flex: 2,
+              child: TextButton(
+                onPressed: onPressed,
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: AutoSizeText(
+                  'selengkapnya',
+                  style: TextStyle(
+                    color: const Color(0xFF104993),
+                  ),
+                  maxLines: 1,
+                  minFontSize: 12,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
@@ -65,7 +83,12 @@ List<Widget> campaignList({
           ),
         ),
         error: (error, stackTrace) => const Center(
-          child: Text('NETWORK ERROR!'),
+          child: AutoSizeText(
+            'NETWORK ERROR!',
+            maxLines: 1,
+            minFontSize: 14,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         loading: () => Padding(
           padding: const EdgeInsets.all(16),

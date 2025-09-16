@@ -2,15 +2,15 @@ import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/domain/entities/threads_request.dart';
 import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/create_answer_provider.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/get_list_answer_provider.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/get_user_question_detail_provider.dart';
 import 'package:ika_smansara/presentation/providers/contact_us/update_thread_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:ika_smansara/presentation/widgets/horizontal_question_card.dart';
+
+import 'widgets/answers_section.dart';
+import 'widgets/question_section.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class GetQuestionDetailPage extends ConsumerStatefulWidget {
@@ -22,7 +22,7 @@ class GetQuestionDetailPage extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
+  ConsumerState<GetQuestionDetailPage> createState() =>
       _GetQuestionDetailPageState();
 }
 
@@ -30,44 +30,93 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
   final TextEditingController responseTextController = TextEditingController();
   final TextEditingController questionTextController = TextEditingController();
 
+  // Add refresh counter to force UI rebuild
+  int _refreshCounter = 0;
+
+  @override
+  void dispose() {
+    responseTextController.dispose();
+    questionTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var userData = ref.watch(userDataProvider);
-    var postAnswerData = ref.watch(createAnswerProvider);
-
-    var listAnswerData = ref.watch(
-      getListAnswerProvider(
-        threadId: widget.threadId,
-      ),
+    final userData = ref.watch(userDataProvider);
+    final listAnswerData = ref.watch(
+      getListAnswerProvider(threadId: widget.threadId),
+    );
+    final questionDetailData = ref.watch(
+      getUserQuestionDetailProvider(threadId: widget.threadId),
     );
 
-    var questionDetailData = ref.watch(
-      getUserQuestionDetailProvider(
-        threadId: widget.threadId,
-      ),
-    );
+    // Listen for update thread provider changes to auto refresh UI
+    ref.listen(updateUserThreadProvider, (previous, next) {
+      // Debug logging
+      print('UpdateThreadProvider listener triggered: ${next}');
+      if (next.isLoading) {
+        print('UpdateThreadProvider: Loading state detected');
+      } else if (next.hasValue && next.value != null) {
+        print('UpdateThreadProvider: Success detected, refreshing UI');
+        // Force UI rebuild by updating local state
+        setState(() {
+          _refreshCounter++;
+        });
 
-    // reset text field content and open question detail page, if success post question
-    if (postAnswerData.asData != null) {
-      setState(() {
-        responseTextController.text = '';
-      });
-    }
+        // Also invalidate providers for fresh data
+        ref.invalidate(getUserQuestionDetailProvider(threadId: widget.threadId));
+        ref.invalidate(getListAnswerProvider(threadId: widget.threadId));
 
-    // show error text if failed get question
+        // Show success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Perubahan berhasil disimpan')),
+        );
+      } else if (next.hasError) {
+        print('UpdateThreadProvider: Error detected - ${next.error}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${next.error}')),
+        );
+      } else {
+        print('UpdateThreadProvider: No value or error - state reset');
+      }
+    });
+
+    // Listen for create answer provider changes to refresh answers list
+    ref.listen(createAnswerProvider, (previous, next) {
+      if (next.isLoading) {
+        print('CreateAnswerProvider: Loading state detected');
+      } else if (next.hasValue && next.value != null) {
+        print('CreateAnswerProvider: Success detected, refreshing answers');
+        // Force UI rebuild by updating local state
+        setState(() {
+          _refreshCounter++;
+        });
+        // Clear the input field
+        responseTextController.clear();
+        // Also invalidate provider to ensure fresh data
+        ref.invalidate(getListAnswerProvider(threadId: widget.threadId));
+
+        // Show success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Jawaban berhasil dikirim')),
+        );
+      } else if (next.hasError) {
+        print('CreateAnswerProvider: Error detected - ${next.error}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${next.error}')),
+        );
+      }
+    });
+
+    // Show error messages for failed operations
     ref.listen(
       getUserQuestionDetailProvider(threadId: widget.threadId),
-      (_, state) {
-        state.showSnackbarOnError(context);
-      },
+      (_, state) => state.showSnackbarOnError(context),
     );
 
-    // show error text if failed get answers
     ref.listen(
-      getUserQuestionDetailProvider(threadId: widget.threadId),
-      (_, state) {
-        state.showSnackbarOnError(context);
-      },
+      getListAnswerProvider(threadId: widget.threadId),
+      (_, state) => state.showSnackbarOnError(context),
     );
 
     return Scaffold(
@@ -87,264 +136,23 @@ class _GetQuestionDetailPageState extends ConsumerState<GetQuestionDetailPage> {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                HorizontalQuestionCard(
-                  isAnswer: questionDetailData.valueOrNull?.isAnswer ?? false,
-                  content: questionDetailData.valueOrNull?.threadContent ?? '',
-                  editedStatus:
-                      questionDetailData.valueOrNull?.isEdited ?? false,
-                  postDate: questionDetailData.valueOrNull?.updatedAt ?? '',
-                  questionStatus:
-                      questionDetailData.valueOrNull?.isOpen ?? false,
-                  username: questionDetailData.valueOrNull?.username ?? '',
-                  isLongContent: true,
+                QuestionSection(
+                  key: ValueKey('question_${_refreshCounter}'),
+                  questionData: questionDetailData.valueOrNull,
+                  userData: userData.valueOrNull,
+                  questionController: questionTextController,
+                  ref: ref,
                 ),
-                verticalSpace(32),
-                ...(listAnswerData.whenOrNull(
-                      data: (data) {
-                        if (data == []) {
-                          return [
-                            Column(
-                              children: [
-                                AutoSizeText('Belum ada Jawaban'),
-                              ],
-                            ),
-                          ];
-                        } else {
-                          return data?.map(
-                            (answer) => HorizontalQuestionCard(
-                              username: answer.username ?? ''.toUpperCase(),
-                              questionStatus: answer.isQuestion ?? false,
-                              editedStatus: answer.isEdited ?? false,
-                              postDate: answer.updatedAt ?? '',
-                              content: answer.threadContent ?? '',
-                              isLongContent: true,
-                              isAnswer: answer.isAnswer ?? false,
-                            ),
-                          );
-                        }
-                      },
-                      error: (error, stackTrace) => [
-                        AutoSizeText('Network Error'),
-                      ],
-                      loading: () => [
-                        Container(
-                          padding: const EdgeInsets.all(16),
-                          child: Center(
-                            child: LoadingAnimationWidget.inkDrop(
-                              color: Colors.amber,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ) ??
-                    [
-                      AutoSizeText('Belum ada Jawaban'),
-                    ]),
-                verticalSpace(32),
-                Visibility(
-                  visible: (questionDetailData.valueOrNull?.isOpen == true) &&
-                      (userData.valueOrNull?.isAdmin == true),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 250,
-                        child: CustomTextField(
-                          labelText: 'Tulis Jawaban Disini',
-                          expands: true,
-                          maxLines: null,
-                          textAlignVertical: TextAlignVertical.top,
-                          controller: responseTextController,
-                        ),
-                      ),
-                      verticalSpace(16),
-                      ElevatedButton(
-                        onPressed: () {
-                          context.displayAlertDialog(
-                            title: 'Kirim Jawaban',
-                            content: 'Yakin untuk mengirim jawaban ?',
-                            positiveButtonText: 'Kirim',
-                            onPositivePressed: () {
-                              var threadsRequest = ThreadsRequest(
-                                isAnswer: true,
-                                isDeleted: false,
-                                isEdited: false,
-                                isOpen: false,
-                                isQuestion: false,
-                                threadContent:
-                                    responseTextController.text.trim(),
-                                userId: userData.valueOrNull?.authKey,
-                                username: userData.valueOrNull?.name,
-                                replyingThreadId: widget.threadId,
-                              );
-
-                              ref
-                                  .read(createAnswerProvider.notifier)
-                                  .postAnswer(
-                                    threadsRequest: threadsRequest,
-                                    questionId: widget.threadId,
-                                  );
-
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                        child: AutoSizeText(
-                          'Kirim Jawaban',
-                        ),
-                      ),
-                    ],
-                  ),
+                verticalSpace(24),
+                AnswersSection(
+                  key: ValueKey('answers_${_refreshCounter}'),
+                  listAnswerData: listAnswerData,
+                  userData: userData.valueOrNull,
+                  responseController: responseTextController,
+                  questionData: questionDetailData.valueOrNull,
+                  ref: ref,
+                  threadId: widget.threadId,
                 ),
-                verticalSpace(32),
-                Visibility(
-                  visible: questionDetailData.valueOrNull?.isOpen == true &&
-                      (questionDetailData.valueOrNull?.userId ==
-                          userData.valueOrNull?.authKey),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          // initial default edit text for edit question
-                          setState(() {
-                            questionTextController.text =
-                                questionDetailData.valueOrNull?.threadContent ??
-                                    '';
-                          });
-                          showDialog(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (_) => Dialog(
-                              insetPadding: const EdgeInsets.all(16),
-                              child: ListView(
-                                padding: const EdgeInsets.all(16),
-                                children: [
-                                  verticalSpace(16),
-                                  AutoSizeText(
-                                    'Ubah Pertanyaan',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24,
-                                    ),
-                                  ),
-                                  verticalSpace(16),
-                                  SizedBox(
-                                    height: context.height / 2,
-                                    child: CustomTextField(
-                                      maxLines: null,
-                                      expands: true,
-                                      textAlignVertical: TextAlignVertical.top,
-                                      labelText: 'Tulis pertanyaan',
-                                      controller: questionTextController,
-                                    ),
-                                  ),
-                                  verticalSpace(16),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      context.displayAlertDialog(
-                                        title: 'Ubah Pertanyaan',
-                                        content:
-                                            'Apakah anda yakin ingin mengubah pertanyaan ?',
-                                        positiveButtonText: 'Ya',
-                                        onPositivePressed: () {
-                                          var threadsRequest = ThreadsRequest(
-                                            id: questionDetailData
-                                                .valueOrNull?.id,
-                                            isAnswer: questionDetailData
-                                                .valueOrNull?.isAnswer,
-                                            isDeleted: questionDetailData
-                                                .valueOrNull?.isDeleted,
-                                            isEdited: questionDetailData
-                                                .valueOrNull?.isEdited,
-                                            isOpen: questionDetailData
-                                                .valueOrNull?.isOpen,
-                                            isQuestion: questionDetailData
-                                                .valueOrNull?.isQuestion,
-                                            threadContent:
-                                                questionTextController.text
-                                                    .trim(),
-                                            userId: questionDetailData
-                                                .valueOrNull?.userId,
-                                            username: questionDetailData
-                                                .valueOrNull?.username,
-                                            replyingThreadId: questionDetailData
-                                                .valueOrNull?.replyingThreadId,
-                                          );
-
-                                          ref
-                                              .read(updateUserThreadProvider
-                                                  .notifier)
-                                              .postUpdateThread(
-                                                threadsRequest: threadsRequest,
-                                              );
-
-                                          Navigator.pop(context);
-                                        },
-                                      );
-                                    },
-                                    child: AutoSizeText('Ubah Pertanyaan'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF28A262),
-                        ),
-                        child: AutoSizeText(
-                          'Ubah Pertanyaan',
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          context.displayAlertDialog(
-                            title: 'Tutup Pertanyaan',
-                            content: 'Apakah pertanyaan anda terjawab ?',
-                            positiveButtonText: 'Ya',
-                            onPositivePressed: () {
-                              var threadsRequest = ThreadsRequest(
-                                id: questionDetailData.valueOrNull?.id,
-                                isAnswer:
-                                    questionDetailData.valueOrNull?.isAnswer,
-                                isDeleted:
-                                    questionDetailData.valueOrNull?.isDeleted,
-                                isEdited:
-                                    questionDetailData.valueOrNull?.isEdited,
-                                isOpen: false,
-                                isQuestion:
-                                    questionDetailData.valueOrNull?.isQuestion,
-                                threadContent: questionDetailData
-                                    .valueOrNull?.threadContent,
-                                userId: questionDetailData.valueOrNull?.userId,
-                                username:
-                                    questionDetailData.valueOrNull?.username,
-                                replyingThreadId: questionDetailData
-                                    .valueOrNull?.replyingThreadId,
-                              );
-
-                              ref
-                                  .read(updateUserThreadProvider.notifier)
-                                  .closeThread(
-                                    threadsRequest: threadsRequest,
-                                  );
-
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFEE5858),
-                        ),
-                        child: AutoSizeText(
-                          'Tutup Pertanyaan',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                verticalSpace(16),
               ],
             ),
     );

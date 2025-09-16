@@ -1,236 +1,158 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
+import 'package:ika_smansara/presentation/extensions/async_value_extension.dart';
+import 'package:ika_smansara/presentation/pages/account_page/widgets/user_profile_header.dart';
+import 'package:ika_smansara/presentation/pages/user_profile_page/widgets/profile_actions_section.dart';
+import 'package:ika_smansara/presentation/pages/user_profile_page/widgets/profile_info_section.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_error_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
+import 'package:ika_smansara/utils/constants.dart';
 
 class UserProfilePage extends ConsumerStatefulWidget {
   const UserProfilePage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _UserProfilePageState();
+  ConsumerState<UserProfilePage> createState() => _UserProfilePageState();
 }
 
 class _UserProfilePageState extends ConsumerState<UserProfilePage> {
-  late final Box devModeBox;
-  var _isDevMode = false;
+  late bool _isDevMode;
 
   @override
   void initState() {
     super.initState();
+    final devModeBox = Hive.box('dev mode');
+    _isDevMode = devModeBox.get('isDevMode') ?? false;
+  }
 
-    devModeBox = Hive.box('dev mode');
-
-    _isDevMode = devModeBox.get('isDevMode');
+  void _toggleDevMode(bool status) {
+    setState(() {
+      _isDevMode = status;
+    });
+    final devModeBox = Hive.box('dev mode');
+    devModeBox.put('isDevMode', status);
+    Constants.logger.d(
+      'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var asyncUserData = ref.watch(userDataProvider);
+    final asyncUserData = ref.watch(userDataProvider);
+
+    // Show error messages
+    ref.listen(
+      userDataProvider,
+      (_, state) => state.showSnackbarOnError(context),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText('Profile'),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => ref.read(routerProvider).pushNamed(
-              'update-user-profile-page',
-              extra: asyncUserData.valueOrNull,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFF104993),
+                Color(0xFF1a5fb4),
+              ],
             ),
-        label: AutoSizeText('Ubah Profile'),
-        icon: Icon(
-          Icons.edit,
+          ),
         ),
+        foregroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: ListView(
-        children: [
-          verticalSpace(16),
-          ...(asyncUserData.whenOrNull(
-                error: (error, stackTrace) => [
-                  Center(
-                    child: AutoSizeText(
-                      'NETWORK ERROR!',
-                    ),
-                  ),
-                ],
-                loading: () => [
-                  Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.amber,
-                      size: 35,
-                    ),
-                  ),
-                ],
-                data: (data) => [
-                  (data?.photoProfileUrl != null)
-                      ? CircleAvatar(
-                          radius: 100,
-                          child: ClipOval(
-                            child: CachedNetworkImage(
-                              height: 200,
-                              fit: BoxFit.contain,
-                              imageUrl: data?.photoProfileUrl ??
-                                  'https://i.pravatar.cc/150?img=3',
-                            ),
-                          ),
-                        )
-                      : const CircleAvatar(
-                          radius: 50,
-                          child: Icon(
-                            Icons.add_a_photo,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        ),
-                  verticalSpace(24),
-                  Center(
-                    child: AutoSizeText(
-                      data?.name?.toUpperCase() ?? '',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  verticalSpace(16),
+      body: SafeArea(
+        child: asyncUserData.when(
+          loading: () => const GlobalLoadingWidget(
+            color: Color(0xFFD52014),
+          ),
+          error: (error, stack) => GlobalErrorWidget(
+            onRetry: () => ref.invalidate(userDataProvider),
+          ),
+          data: (userData) {
+            if (userData == null) {
+              return const Center(
+                child: Text('Silakan login untuk melihat profil Anda'),
+              );
+            }
+
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // User Profile Header
+                  UserProfileHeader(userData: userData),
+
+                  const SizedBox(height: 20),
+
+                  // Content with padding
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Table(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TableRow(children: [
-                          AutoSizeText(
-                            'E-mail',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          AutoSizeText(
-                            data?.email ?? '',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                        ]),
-                        TableRow(
-                          children: [
-                            verticalSpace(16),
-                            verticalSpace(16),
-                          ],
-                        ),
-                        TableRow(children: [
-                          AutoSizeText(
-                            'Telepon',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          AutoSizeText(
-                            data?.phone ?? '',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                        ]),
-                        TableRow(
-                          children: [
-                            verticalSpace(16),
-                            verticalSpace(16),
-                          ],
-                        ),
-                        TableRow(children: [
-                          AutoSizeText(
-                            'Alamat',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.start,
-                          ),
-                          AutoSizeText(
-                            data?.address ?? '',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                        ]),
-                        TableRow(
-                          children: [
-                            verticalSpace(16),
-                            verticalSpace(16),
-                          ],
-                        ),
-                        TableRow(children: [
-                          Visibility(
-                            visible: data?.isAlumni ?? false,
-                            child: AutoSizeText(
-                              'Alumni Tahun',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                        // Profile Information Section
+                        ProfileInfoSection(userData: userData),
+
+                        const SizedBox(height: 24),
+
+                        // Profile Actions Section
+                        ProfileActionsSection(userData: userData),
+
+                        // Dev Mode Section (only for admins)
+                        if (userData.isAdmin == true) ...[
+                          const SizedBox(height: 24),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Pengaturan Developer',
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xFF104993),
+                                    ),
                               ),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          Visibility(
-                            visible: data?.isAlumni ?? false,
-                            child: AutoSizeText(
-                              data?.graduateYear ?? '',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                              const SizedBox(height: 12),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF104993).withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Developer Mode',
+                                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                     Switch.adaptive(
+                                       value: _isDevMode,
+                                       activeColor: const Color(0xFFD52014),
+                                       onChanged: _toggleDevMode,
+                                     ),
+                                  ],
+                                ),
                               ),
-                              textAlign: TextAlign.end,
-                            ),
+                            ],
                           ),
-                        ]),
-                        TableRow(
-                          children: [
-                            verticalSpace(16),
-                            verticalSpace(16),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Visibility(
-                    visible: data?.isAdmin ?? false,
-                    child: Row(
-                      children: [
-                        AutoSizeText('Dev Mode'),
-                        Switch.adaptive(
-                          value: _isDevMode,
-                          onChanged: (bool status) {
-                            setState(() {
-                              _isDevMode = status;
-                              devModeBox.put('isDevMode', _isDevMode);
-                              Constants.logger.d(
-                                'DEVELOPER MODE STATUS ${devModeBox.get("isDevMode")}',
-                              );
-                            });
-                          },
-                        ),
+                        ],
+
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),
                 ],
-              ) ??
-              []),
-          verticalSpace(16),
-        ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

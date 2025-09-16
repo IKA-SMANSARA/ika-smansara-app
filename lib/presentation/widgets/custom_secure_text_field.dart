@@ -4,11 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomSecureTextField extends StatefulWidget {
   final String labelText;
   final TextEditingController controller;
+  final bool enabled;
 
   const CustomSecureTextField({
     super.key,
     required this.labelText,
     required this.controller,
+    this.enabled = true,
   });
 
   @override
@@ -23,6 +25,7 @@ class _CustomSecureTextFieldState extends State<CustomSecureTextField> {
     return TextField(
       controller: widget.controller,
       obscureText: _isObscure,
+      enabled: widget.enabled,
       decoration: InputDecoration(
         labelText: widget.labelText,
         labelStyle: const TextStyle(

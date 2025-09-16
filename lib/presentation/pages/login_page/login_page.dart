@@ -1,13 +1,11 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ika_smansara/gen/assets.gen.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_already_logged_in_state.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_form.dart';
+import 'package:ika_smansara/presentation/pages/login_page/widgets/login_initial_error_state.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
-import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
-import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 
 class LoginPage extends ConsumerWidget {
   final TextEditingController emailController = TextEditingController();
@@ -17,6 +15,8 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final userDataAsync = ref.watch(userDataProvider);
+
     ref.listen(
       userDataProvider,
       (previous, next) {
@@ -25,102 +25,33 @@ class LoginPage extends ConsumerWidget {
             ref.read(routerProvider).goNamed('main');
           }
         } else if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
-          );
+          // Error saat login process, bukan saat pengecekan status
+          if (previous is AsyncData && previous?.value == null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(next.error.toString())),
+            );
+          }
         }
       },
     );
 
     return Scaffold(
-      body: ListView(
-        children: [
-          verticalSpace(200),
-          Center(
-            child: Assets.images.logoIkaSmansaraColored.svg(),
-          ),
-          verticalSpace(16),
-          AutoSizeText(
-            'Selamat Datang',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          child: userDataAsync.when(
+            loading: () => const GlobalLoadingWidget(
+              color: Color(0xFFD52014),
             ),
+            error: (error, stack) => LoginInitialErrorState(ref: ref),
+            data: (userData) => userData != null
+                ? const LoginAlreadyLoggedInState()
+                : LoginForm(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  ),
           ),
-          verticalSpace(50),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: 'Email',
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                verticalSpace(24),
-                CustomSecureTextField(
-                  labelText: 'Password',
-                  controller: passwordController,
-                ),
-                verticalSpace(24),
-                switch (ref.watch(userDataProvider)) {
-                  AsyncData(:final value) => value == null
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              ref.read(userDataProvider.notifier).login(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF104993),
-                            ),
-                            child: AutoSizeText(
-                              'Login',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        )
-                      : LoadingAnimationWidget.newtonCradle(
-                          color: Colors.amber,
-                          size: 35,
-                        ),
-                  _ => LoadingAnimationWidget.newtonCradle(
-                      color: Colors.amber,
-                      size: 35,
-                    ),
-                },
-                verticalSpace(24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AutoSizeText('Belum punya akun ? '),
-                    TextButton(
-                      onPressed: () {
-                        ref.read(routerProvider).pushNamed('register');
-                      },
-                      child: AutoSizeText(
-                        'Daftar',
-                        style: TextStyle(
-                          color: const Color(0xFF104993),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

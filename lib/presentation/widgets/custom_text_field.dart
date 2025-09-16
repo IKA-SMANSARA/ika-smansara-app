@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final bool expands;
   final bool enabled;
+  final bool forceMultiline;
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final TextAlignVertical? textAlignVertical;
@@ -18,25 +19,40 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.maxLines,
     this.expands = false,
-    this.textInputAction = TextInputAction.next,
-    this.keyboardType = TextInputType.text,
+    this.forceMultiline = false,
+    TextInputAction? textInputAction,
+    TextInputType? keyboardType,
     this.textAlignVertical,
     this.onChanged,
     this.onTap,
     this.enabled = true,
-  });
+  })  : textInputAction = textInputAction ?? ((expands || forceMultiline) ? TextInputAction.newline : TextInputAction.done),
+        keyboardType = keyboardType ?? ((expands || forceMultiline) ? TextInputType.multiline : TextInputType.text);
 
   @override
   Widget build(BuildContext context) {
+    // Determine effective values based on multiline requirements
+    final isMultiline = expands || forceMultiline;
+    final effectiveMaxLines = isMultiline ? null : (maxLines ?? 1);
+    final effectiveMinLines = isMultiline ? null : 1;
+    final effectiveTextInputAction = textInputAction;
+    final effectiveKeyboardType = keyboardType;
+
+    // Ensure keyboardType is compatible with textInputAction for multiline
+    final finalKeyboardType = (effectiveTextInputAction == TextInputAction.newline && effectiveKeyboardType == TextInputType.text)
+        ? TextInputType.multiline
+        : effectiveKeyboardType;
+
     return TextField(
       onTap: onTap,
       enabled: enabled,
       onChanged: onChanged,
-      maxLines: maxLines,
+      maxLines: effectiveMaxLines,
+      minLines: effectiveMinLines,
       controller: controller,
       expands: expands,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
+      textInputAction: effectiveTextInputAction,
+      keyboardType: finalKeyboardType,
       textAlignVertical: textAlignVertical,
       decoration: InputDecoration(
         labelText: labelText,

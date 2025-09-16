@@ -71,7 +71,8 @@ class VerticalCampaignCard extends StatelessWidget {
                       AutoSizeText(
                         campaignName,
                         overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                        maxLines: 2,
+                        minFontSize: 12,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -83,25 +84,37 @@ class VerticalCampaignCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                         ),
+                        maxLines: 1,
+                        minFontSize: 10,
                       ),
                       verticalSpace(4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          AutoSizeText(
-                            campaignCurrentAmount.toIDRCurrencyFormat(),
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w700,
+                          Expanded(
+                            child: AutoSizeText(
+                              campaignCurrentAmount.toIDRCurrencyFormat(),
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              maxLines: 1,
+                              minFontSize: 9,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          AutoSizeText(
-                            getRemainingDays(
-                              dateEndCampaign: dateEndCampaign,
-                            ),
-                            style: TextStyle(
-                              fontSize: 11,
+                          Flexible(
+                            child: AutoSizeText(
+                              getRemainingDays(
+                                dateEndCampaign: dateEndCampaign,
+                              ),
+                              style: TextStyle(
+                                fontSize: 11,
+                              ),
+                              maxLines: 1,
+                              minFontSize: 9,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],

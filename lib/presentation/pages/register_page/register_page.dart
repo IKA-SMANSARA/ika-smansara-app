@@ -1,12 +1,11 @@
-import 'package:adaptive_responsive_util/adaptive_responsive_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
 import 'package:ika_smansara/presentation/widgets/custom_secure_text_field.dart';
 import 'package:ika_smansara/presentation/widgets/custom_text_field.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'methods/index.dart';
+import 'widgets/index.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
@@ -15,26 +14,14 @@ class RegisterPage extends ConsumerStatefulWidget {
 }
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController retypePasswordController =
-      TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController graduateYearController = TextEditingController();
+  final RegisterControllers _controllers = RegisterControllers();
   var _isAlumni = false;
+  var _isLoading = false;
 
   @override
   void dispose() {
+    _controllers.dispose();
     super.dispose();
-    nameController.dispose();
-    passwordController.dispose();
-    retypePasswordController.dispose();
-    emailController.dispose();
-    addressController.dispose();
-    phoneController.dispose();
-    graduateYearController.dispose();
   }
 
   @override
@@ -43,181 +30,130 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
       userDataProvider,
       (previous, next) {
         if (next is AsyncData && next.value != null) {
-          ref.read(routerProvider).goNamed('main');
+          ref.read(routerProvider).goNamed('home');
         } else if (next is AsyncError) {
-          context.showSnackBar(
-            next.error.toString(),
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(next.error.toString())),
           );
         }
       },
     );
+
     return Scaffold(
       appBar: AppBar(
-        title: AutoSizeText('Daftar'),
+        title: const Text('Daftar'),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                verticalSpace(24),
-                AutoSizeText(
-                  'Mari mulai berbagi kebaikan untuk sesama',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                verticalSpace(16),
-                Divider(
-                  height: 1,
-                  color: Colors.black,
-                ),
-                verticalSpace(24),
-                CustomTextField(
-                  labelText: 'Email',
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                verticalSpace(24),
-                CustomTextField(
-                  labelText: 'Nama Lengkap',
-                  controller: nameController,
-                  keyboardType: TextInputType.name,
-                ),
-                verticalSpace(24),
-                SizedBox(
-                  height: 200,
-                  child: CustomTextField(
-                    labelText: 'Alamat',
-                    controller: addressController,
-                    expands: true,
-                    maxLines: null,
-                    keyboardType: TextInputType.streetAddress,
-                    textAlignVertical: TextAlignVertical.top,
-                  ),
-                ),
-                verticalSpace(24),
-                CustomTextField(
-                  labelText: 'Nomor Telepon',
-                  controller: phoneController,
-                  keyboardType: TextInputType.phone,
-                ),
-                verticalSpace(8),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: AutoSizeText(
-                    '*awali dengan angka 0, bukan +62',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.redAccent,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Text(
+                'Buat Akun Baru',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF104993),
                     ),
-                  ),
-                ),
-                verticalSpace(24),
-                CheckboxListTile.adaptive(
-                  title: AutoSizeText(
-                    'Apakah anda lulusan dari SMA Negeri 1 Jepara ?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Lengkapi data diri Anda untuk mendaftar',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
                     ),
-                  ),
-                  value: _isAlumni,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      _isAlumni = value ?? false;
-
-                      if (_isAlumni == false) {
-                        graduateYearController.text = '';
-                      }
-                    });
-                  },
-                ),
-                Visibility(
-                  visible: _isAlumni,
-                  child: Column(
-                    children: [
-                      verticalSpace(24),
-                      CustomTextField(
-                        labelText: 'Tahun Lulus',
-                        controller: graduateYearController,
-                        keyboardType: TextInputType.number,
-                      ),
-                      verticalSpace(8),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: AutoSizeText(
-                          '*tulis tahun saja cnt: 2008',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.redAccent,
-                          ),
+              ),
+              const SizedBox(height: 32),
+              CustomTextField(
+                labelText: 'Nama Lengkap',
+                controller: _controllers.nameController,
+                enabled: !_isLoading,
+              ),
+              const SizedBox(height: 16),
+              CustomTextField(
+                labelText: 'Email',
+                controller: _controllers.emailController,
+                keyboardType: TextInputType.emailAddress,
+                enabled: !_isLoading,
+              ),
+              const SizedBox(height: 16),
+              CustomTextField(
+                labelText: 'Alamat',
+                controller: _controllers.addressController,
+                enabled: !_isLoading,
+              ),
+              const SizedBox(height: 16),
+              CustomTextField(
+                labelText: 'Nomor Telepon',
+                controller: _controllers.phoneController,
+                keyboardType: TextInputType.phone,
+                enabled: !_isLoading,
+              ),
+              const SizedBox(height: 16),
+              CustomSecureTextField(
+                labelText: 'Password',
+                controller: _controllers.passwordController,
+                enabled: !_isLoading,
+              ),
+              const SizedBox(height: 16),
+              CustomSecureTextField(
+                labelText: 'Konfirmasi Password',
+                controller: _controllers.retypePasswordController,
+                enabled: !_isLoading,
+              ),
+               const SizedBox(height: 16),
+               AlumniCheckbox(
+                 isAlumni: _isAlumni,
+                 onChanged: (bool? value) {
+                   setState(() {
+                     _isAlumni = value ?? false;
+                     if (!_isAlumni) {
+                       _controllers.graduateYearController.clear();
+                     }
+                   });
+                 },
+                 enabled: !_isLoading,
+               ),
+               ...(_isAlumni
+                   ? [
+                       const SizedBox(height: 16),
+                        GraduateYearField(
+                          controller: _controllers.graduateYearController,
+                          enabled: !_isLoading,
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                verticalSpace(24),
-                CustomSecureTextField(
-                  labelText: 'Password',
-                  controller: passwordController,
-                ),
-                verticalSpace(24),
-                CustomSecureTextField(
-                  labelText: 'Ulangi Password',
-                  controller: retypePasswordController,
-                ),
-                verticalSpace(24),
-                switch (ref.watch(userDataProvider)) {
-                  AsyncData(:final value) => value == null
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (passwordController.text ==
-                                  retypePasswordController.text) {
-                                ref.read(userDataProvider.notifier).register(
-                                      name: nameController.text,
-                                      email: emailController.text,
-                                      address: addressController.text,
-                                      phone: phoneController.text,
-                                      password: retypePasswordController.text,
-                                      graduateYear: graduateYearController.text,
-                                      isAlumni: _isAlumni,
-                                    );
-                              } else {
-                                context.showSnackBar(
-                                  'Silakan ketik ulang kata sandi Anda dengan nilai yang sama dengan kolom password',
-                                );
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF104993),
-                            ),
-                            child: AutoSizeText(
-                              'Daftar',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        )
-                      : LoadingAnimationWidget.newtonCradle(
-                        color: Colors.amber,
-                        size: 35,
-                      ),
-                  _ => LoadingAnimationWidget.newtonCradle(
-                        color: Colors.amber,
-                        size: 35,
-                      ),
-                },
-                verticalSpace(24)
-              ],
-            ),
+                      ]
+                    : []),
+              const SizedBox(height: 24),
+              RegisterButton(
+                onPressed: _isLoading
+                    ? () {}
+                    : () {
+                        RegisterHandler.handleRegistration(
+                          nameController: _controllers.nameController,
+                          emailController: _controllers.emailController,
+                          addressController: _controllers.addressController,
+                          phoneController: _controllers.phoneController,
+                          passwordController: _controllers.passwordController,
+                          retypePasswordController: _controllers.retypePasswordController,
+                          graduateYearController: _controllers.graduateYearController,
+                          isAlumni: _isAlumni,
+                          context: context,
+                          ref: ref,
+                          setLoading: (bool loading) {
+                            setState(() {
+                              _isLoading = loading;
+                            });
+                          },
+                        );
+                      },
+                isLoading: _isLoading,
+              ),
+              const SizedBox(height: 16),
+              const LoginLink(),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -5,20 +5,24 @@ import 'package:ika_smansara/domain/entities/category_document.dart';
 import 'package:ika_smansara/domain/entities/transaction_request.dart';
 import 'package:ika_smansara/domain/entities/user_account_bank_document.dart';
 import 'package:ika_smansara/domain/entities/user_profile_document.dart';
+import 'package:ika_smansara/presentation/pages/account_page/account_page.dart';
 import 'package:ika_smansara/presentation/pages/backer_list_page/backer_list_page.dart';
 import 'package:ika_smansara/presentation/pages/bank_account_list_page/bank_account_list_page.dart';
 import 'package:ika_smansara/presentation/pages/campaign_detail_page/campaign_detail_page.dart';
 import 'package:ika_smansara/presentation/pages/checkout_page/checkout_page.dart';
+import 'package:ika_smansara/presentation/pages/contact_us_page/contact_us_page.dart';
 import 'package:ika_smansara/presentation/pages/create_account_bank_page/create_account_bank_page.dart';
 import 'package:ika_smansara/presentation/pages/create_campaign_page/create_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/detail_transaction_page/detail_transaction_page.dart';
-import 'package:ika_smansara/presentation/pages/list_all_question_page/list_all_question_page.dart';
 import 'package:ika_smansara/presentation/pages/get_question_detail_page/get_question_detail_page.dart';
+import 'package:ika_smansara/presentation/pages/home_page/home_page.dart';
+import 'package:ika_smansara/presentation/pages/list_all_question_page/list_all_question_page.dart';
 import 'package:ika_smansara/presentation/pages/list_campaign_page/list_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/list_user_question_page/list_user_question_page.dart';
 import 'package:ika_smansara/presentation/pages/login_page/login_page.dart';
 import 'package:ika_smansara/presentation/pages/main_page/main_page.dart';
 import 'package:ika_smansara/presentation/pages/my_campaigns_page/my_campaigns_page.dart';
+import 'package:ika_smansara/presentation/pages/my_donation_page/my_donation_page.dart';
 import 'package:ika_smansara/presentation/pages/payout_history_page/payout_history_page.dart';
 import 'package:ika_smansara/presentation/pages/register_page/register_page.dart';
 import 'package:ika_smansara/presentation/pages/request_payout_page/request_payout_page.dart';
@@ -27,6 +31,7 @@ import 'package:ika_smansara/presentation/pages/update_account_bank_page/update_
 import 'package:ika_smansara/presentation/pages/update_campaign_page/update_campaign_page.dart';
 import 'package:ika_smansara/presentation/pages/update_user_profile_page/update_user_profile_page.dart';
 import 'package:ika_smansara/presentation/pages/user_profile_page/user_profile_page.dart';
+import 'package:ika_smansara/presentation/pages/video_tutorial_page/video_tutorial_page.dart';
 import 'package:ika_smansara/presentation/pages/webview_snap_page/webview_snap_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -39,6 +44,26 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           path: '/main',
           name: 'main',
           builder: (context, state) => MainPage(),
+        ),
+        GoRoute(
+          path: '/home',
+          name: 'home',
+          builder: (context, state) => HomePage(),
+        ),
+        GoRoute(
+          path: '/my-donation',
+          name: 'my-donation',
+          builder: (context, state) => const MyDonationPage(),
+        ),
+        GoRoute(
+          path: '/account',
+          name: 'account',
+          builder: (context, state) => const AccountPage(),
+        ),
+        GoRoute(
+          path: '/contact-us',
+          name: 'contact-us',
+          builder: (context, state) => const ContactUsPage(),
         ),
         GoRoute(
           path: '/login',
@@ -183,6 +208,16 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => const PayoutHistoryPage(),
         ),
         GoRoute(
+          path: '/my-donation-page',
+          name: 'my_donation_page',
+          builder: (context, state) => const MyDonationPage(),
+        ),
+        GoRoute(
+          path: '/contact-us-page',
+          name: 'contact-us-page',
+          builder: (context, state) => const ContactUsPage(),
+        ),
+        GoRoute(
           path: '/request-payout-page',
           name: 'request-payout-page',
           builder: (context, state) => const RequestPayoutPage(),
@@ -238,6 +273,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(
           builder: (context, state) => UpdateCampaignPage(
             campaignDocument: state.extra as CampaignDocument,
           ),
+        ),
+        GoRoute(
+          path: '/video-tutorial-page',
+          name: 'video-tutorial-page',
+          builder: (context, state) => const VideoTutorialPage(),
         ),
       ],
       initialLocation: '/login',
