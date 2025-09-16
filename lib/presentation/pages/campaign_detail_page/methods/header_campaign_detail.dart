@@ -31,36 +31,56 @@ List<Widget> headerCampaignDetail({
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              AutoSizeText(
-                currentAmount,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
+          Expanded(
+            flex: 3,
+            child: Wrap(
+              alignment: WrapAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 4,
+              children: [
+                AutoSizeText(
+                  currentAmount,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  maxLines: 1,
+                  minFontSize: 12,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              AutoSizeText(
-                ' dari ',
-                style: TextStyle(
-                  fontSize: 14,
+                AutoSizeText(
+                  ' dari ',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                  maxLines: 1,
+                  minFontSize: 12,
                 ),
-              ),
-              AutoSizeText(
-                goalAmount,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade900,
+                AutoSizeText(
+                  goalAmount,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue.shade900,
+                  ),
+                  maxLines: 1,
+                  minFontSize: 12,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          AutoSizeText(
-            remainingDays,
-            style: TextStyle(
-              fontSize: 14,
+          Flexible(
+            flex: 2,
+            child: AutoSizeText(
+              remainingDays,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+              maxLines: 1,
+              minFontSize: 12,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

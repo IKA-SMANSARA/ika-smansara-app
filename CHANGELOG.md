@@ -5,6 +5,681 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.13+29] - 2025-09-16
+
+### Changed
+- **Home Page Enhancement**: Major UI/UX improvements and code refactoring
+  - Restructured home page layout with improved component organization
+  - Enhanced header section with better logo positioning and spacing
+  - Improved responsive design and visual hierarchy
+  - Better integration with campaign list and carousel components
+
+- **Bottom Navigation Bar Restoration**: Complete restoration of bottom navigation functionality
+  - Restored bottom navigation bar across all main pages
+  - Enhanced navigation between Home, My Donation, Contact Us, and Account pages
+  - Improved page controller implementation with proper state management
+  - Updated account page widgets for better navigation integration
+  - Enhanced user experience with seamless page transitions
+
+### Technical Improvements
+- **Code Architecture**: Enhanced component organization and maintainability
+  - Better separation of concerns in home page components
+  - Improved widget reusability and code structure
+  - Cleaner navigation implementation with proper state management
+  - Enhanced error handling and user feedback mechanisms
+
+- **UI/UX Consistency**: Unified navigation experience across the application
+  - Consistent bottom navigation bar styling and behavior
+  - Improved page transition animations and responsiveness
+  - Better integration between different app sections
+  - Enhanced accessibility and user interaction patterns
+
+## [1.2.12+29] - 2025-09-15
+
+### Added
+- **AGENTS.md Enhancement**: Updated development documentation with improved formatting and comprehensive guidelines
+  - Enhanced code style guidelines and architecture patterns
+  - Added detailed development workflow documentation
+  - Improved formatting with better code examples
+  - Added specific testing patterns and conventions
+
+### Technical Improvements
+- **Documentation Quality**: Enhanced developer experience with comprehensive AGENTS.md
+- **Code Style**: Improved consistency and maintainability guidelines
+- **Development Workflow**: Better documentation for build, test, and deployment processes
+
+## [1.2.11+29] - 2025-09-15
+
+### Added
+- **Internet Connectivity Check**: Enhanced video tutorial page with real-time internet connection monitoring
+  - Added `connectivity_plus: ^6.0.5` dependency for network status detection
+  - Implemented automatic connection status monitoring with real-time updates
+  - Added user-friendly offline state with clear messaging and visual indicators
+  - Disabled video controls when offline to prevent user confusion
+  - Enhanced user experience with seamless online/offline state transitions
+
+### Changed
+- **Video Tutorial Page Enhancement**: Improved video playback experience with connectivity awareness
+  - Added comprehensive connection status tracking throughout video session
+  - Implemented conditional UI rendering based on internet availability
+  - Enhanced error handling for network-related video playback issues
+  - Improved user feedback with informative offline messaging in Indonesian
+  - Added proper gesture handling that respects connection status
+
+### Technical Improvements
+- **Connectivity Management**: Robust network state management implementation
+  - Added Connectivity instance with proper lifecycle management
+  - Implemented listener-based connectivity monitoring with error handling
+  - Enhanced state management with connection status persistence
+  - Added proper cleanup of connectivity listeners to prevent memory leaks
+  - Improved async connectivity checking with comprehensive error handling
+
+- **UI State Management**: Better conditional rendering based on network status
+  - Implemented connection-aware UI components with proper state synchronization
+  - Added offline visual indicators with consistent design language
+  - Enhanced user interaction patterns that adapt to connection status
+  - Improved accessibility with clear offline state communication
+
+## [1.2.10+29] - 2025-09-14
+
+### Changed
+- **Create Account Bank Page Redesign**: Complete UI/UX overhaul to match presentation layer design patterns
+  - Converted from ConsumerStatefulWidget to ConsumerWidget for cleaner architecture
+  - Implemented SafeArea wrapper with SingleChildScrollView for consistent layout
+  - Added proper header section with title and subtitle matching other pages
+  - Restructured layout with consistent padding (20px all sides) and spacing patterns
+  - Created modular widget architecture with dedicated widgets/ and methods/ folders
+  - Enhanced form validation with comprehensive error handling and user feedback
+  - Improved bank selection modal with reusable BankSelectionModal widget
+  - Updated button styling to match app design system (Color(0xFF104993), rounded corners)
+  - Enhanced visual hierarchy with proper typography and color scheme
+
+### Added
+- **New Widget Components**: Created reusable components for create account bank page
+  - `BankSelectionModal`: Self-contained modal widget for bank selection with proper error handling
+  - `CreateAccountBankForm`: Modular form widget with all input fields and validation
+  - `CreateAccountBankControllers`: Centralized form controller management
+  - `CreateAccountBankHandler`: Form submission logic with proper error handling
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Better separation of concerns between UI components and business logic
+  - Improved widget reusability and component isolation
+  - Cleaner code organization following established patterns (widgets/, methods/ folders)
+  - Enhanced error handling and state management patterns
+  - Consistent code style and formatting
+
+- **Design Consistency**: Unified design language matching other pages in the application
+  - Consistent color scheme (Color(0xFF104993) for primary blue)
+  - Matching button styling and sizing with other pages
+  - Same spacing patterns and layout structure as login/register/contact pages
+  - Unified typography using Theme.of(context).textTheme
+  - Consistent form layout and styling
+
+- **User Experience**: Improved interaction patterns and visual feedback
+  - Better form validation with immediate user feedback
+  - Enhanced bank selection modal with proper loading and error states
+  - Improved visual hierarchy with section headers and consistent spacing
+  - More intuitive navigation and form interactions
+  - Better accessibility with proper contrast and sizing
+
+## [1.2.9+29] - 2025-09-14
+
+### Changed
+- **Bank Account List Page Redesign**: Complete UI/UX overhaul with modern design patterns
+  - Converted from ConsumerStatefulWidget to ConsumerWidget for cleaner code architecture
+  - Created new BankAccountCard widget with modern card design, shadows, and proper spacing
+  - Implemented EmptyBankAccountState widget for better empty state experience
+  - Moved delete dialog logic to separate methods file for better code organization
+  - Replaced ElevatedButton.icon with GlobalPrimaryButton for design consistency
+  - Added SafeArea wrapper with consistent padding and section headers
+  - Enhanced visual hierarchy with proper typography and color scheme
+  - Improved error and loading states with GlobalErrorWidget and GlobalLoadingWidget
+  - Added gradient AppBar matching the app's design language
+  - Implemented proper responsive design with AutoSizeText throughout
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Better separation of concerns between UI components and business logic
+  - Improved widget reusability and component isolation
+  - Cleaner code organization following established patterns (widgets/, methods/ folders)
+  - Enhanced error handling and state management patterns
+  - Removed old bank_account_item.dart method file for cleaner codebase
+
+- **Design Consistency**: Unified design language matching other pages in the application
+  - Consistent color scheme (Color(0xFF104993) for primary blue, Color(0xFFD52014) for red)
+  - Matching button styling and sizing with GlobalPrimaryButton
+  - Same spacing patterns and layout structure as other pages
+  - Unified typography using Theme.of(context).textTheme
+  - Consistent card design with shadows and rounded corners
+
+- **User Experience**: Improved interaction patterns and visual feedback
+  - Better empty state with informative messaging and visual elements
+  - Enhanced delete confirmation dialog with detailed account information
+  - Improved loading and error states with proper user feedback
+  - More intuitive navigation and action buttons
+  - Better accessibility with proper contrast and sizing
+
+## [1.2.8+29] - 2025-09-13
+
+### Changed
+- **BackerListPage Design Update**: Enhanced backer list with profile image support
+  - Updated BackerCard widget to include profile image display using CachedNetworkImage
+  - Added circular profile image with border and shadow effects similar to account_page design
+  - Improved card layout with better spacing and typography
+  - Enhanced visual hierarchy with larger profile images (50x50) and improved text styling
+  - Added proper loading and error states for profile images
+  - Updated backer_list_page to use ListView.separated with consistent padding and spacing
+
+- **UserProfilePage State Management**: Fixed developer mode switch refresh issue
+  - Converted UserProfilePage from ConsumerWidget to ConsumerStatefulWidget
+  - Added proper state management for developer mode toggle with _isDevMode state variable
+  - Implemented _toggleDevMode method to handle switch changes and trigger UI refresh
+  - Enhanced Hive storage synchronization with local state
+  - Improved user experience with immediate UI feedback on switch toggle
+
+### Technical Improvements
+- **Widget Architecture**: Better state management patterns
+  - ConsumerStatefulWidget implementation for pages requiring local state
+  - Proper setState() usage for immediate UI updates
+  - Enhanced state synchronization between local variables and persistent storage
+  - Improved widget lifecycle management with initState() and proper disposal
+
+- **UI/UX Consistency**: Unified design patterns across profile-related pages
+  - Consistent profile image styling between account_page and backer_list_page
+  - Matching color schemes and typography for better visual coherence
+  - Enhanced spacing patterns and layout consistency
+  - Improved accessibility with proper contrast and sizing
+
+## [1.2.7+29] - 2025-09-13
+
+### Fixed
+- **Text Overflow Issues**: Comprehensive fix for all text overflow problems when text size is enlarged (125%+)
+  - Fixed `horizontal_campaign_card.dart` - Amount Collected and Time Remaining sections with unbounded constraints
+  - Fixed `campaign_list.dart` - Header "Kampanye Terbaru" and "selengkapnya" button overflow
+  - Fixed `backer_list.dart` - Header "Donatur" and "Lihat Semua" button overflow
+  - Fixed `header_campaign_detail.dart` - Amount display and remaining days overflow
+  - Fixed `horizontal_transaction_card.dart` - Campaign name, payment status, date, and amount overflow
+  - Fixed `payment_summary.dart` - Label and value overflow in summary rows
+  - Fixed `payment_breakdown_card.dart` - Label and amount overflow in breakdown rows
+
+### Technical Improvements
+- **Layout Stability**: Enhanced flex layout management with proper flex factors
+  - Replaced `Expanded` with `Flexible(fit: FlexFit.loose)` for better constraint handling
+  - Added `mainAxisSize: MainAxisSize.min` to prevent unbounded height expansion
+  - Implemented proper flex ratios (3:2, 2:1) for balanced space distribution
+  - Enhanced AutoSizeText configuration with appropriate minFontSize values
+
+- **Responsive Design**: Improved text scaling and overflow handling
+  - Added comprehensive AutoSizeText implementation across all text widgets
+  - Implemented proper maxLines and overflow handling for all text elements
+  - Enhanced text wrapping with Wrap widgets for complex layouts
+  - Added textAlign properties for better visual alignment
+
+- **Performance Optimization**: Reduced layout conflicts and improved rendering
+  - Eliminated unbounded constraints that caused RenderFlex overflow errors
+  - Optimized Column and Row layouts with proper flex management
+  - Improved widget tree structure for better performance
+  - Enhanced memory efficiency with proper widget disposal
+
+### Accessibility Improvements
+- **Text Scaling Support**: Full support for enlarged text sizes (125%+)
+  - All text widgets now properly scale without causing overflow
+  - Maintained readability and visual hierarchy at all text sizes
+  - Consistent spacing and layout across different text scaling settings
+  - Better user experience for users with visual accessibility needs
+
+## [1.2.6+29] - 2025-09-13
+
+### Changed
+- **Campaign Page UI Refactoring**: Unified create and update campaign page interfaces
+  - Refactored `update_campaign_page` to match `create_campaign_page` UI design
+  - Implemented consistent header styling with title and subtitle matching create page pattern
+  - Restructured layout with SafeArea and SingleChildScrollView for better UX
+  - Added unified spacing patterns (24px horizontal, 20px vertical padding)
+  - Enhanced visual consistency with matching color scheme and typography
+
+### Added
+- **Shared Widget Components**: Created reusable components for campaign management
+  - `CampaignForm`: Universal form widget supporting both create and update operations
+  - Enhanced `selectedPoster` method moved to global `presentation/misc/` folder
+  - `CampaignFormMethods`: Centralized validation logic with conditional update handling
+  - Improved component reusability across create and update campaign pages
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Moved shared methods to `presentation/misc/` folder for better organization
+  - Created global `CampaignForm` widget in `presentation/widgets/` folder
+  - Improved separation of concerns between UI components and business logic
+  - Enhanced widget reusability and reduced code duplication
+  - Better error handling and state management patterns
+
+- **UI/UX Consistency**: Unified design language across campaign management pages
+  - Consistent form layout and styling between create and update pages
+  - Matching button designs and loading states
+  - Unified validation feedback and error messaging
+  - Improved user experience with consistent interaction patterns
+  - Enhanced visual hierarchy and spacing consistency
+
+- **Component Organization**: Better folder structure and code organization
+  - Removed redundant files from page-specific folders
+  - Centralized shared components in appropriate global folders
+  - Improved import management and dependency organization
+  - Enhanced code maintainability and developer experience
+
+### Fixed
+- **Import Path Updates**: Fixed all import statements across affected files
+  - Updated `create_campaign_page.dart` to use global components
+  - Updated `update_campaign_page.dart` to use shared widgets
+  - Fixed `update_user_profile_page.dart` import paths
+  - Resolved all compilation errors related to moved components
+
+## [1.2.5+29] - 2025-09-13
+
+### Changed
+- **Create Campaign Page Redesign**: Complete UI/UX overhaul to match login/register page design
+  - Removed AppBar and implemented fullscreen layout with SafeArea
+  - Added consistent title and subtitle styling matching login/register pages
+  - Restructured layout with SingleChildScrollView and proper padding (24px horizontal, 20px vertical)
+  - Created modular widget architecture with dedicated widgets/ and methods/ folders
+  - Enhanced form validation with comprehensive error handling and user feedback
+  - Improved poster image selection with consistent container styling and shadow effects
+  - Updated button styling to match app design system (Color(0xFF104993), rounded corners, elevation)
+
+### Added
+- **New Widget Components**: Created reusable components for create campaign page
+  - `CampaignForm`: Self-contained form widget with all input fields and validation
+  - `CampaignFormMethods`: Centralized validation logic with Indonesian error messages
+  - Enhanced `selectedPoster` method with improved UI consistency across pages
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with clean separation of concerns
+  - Better folder structure following established patterns (widgets/, methods/)
+  - Improved widget reusability and component isolation
+  - Enhanced error handling and state management
+  - Consistent code style and formatting
+  - Updated selectedPoster method signature across all usage locations
+
+- **UI/UX Consistency**: Unified design language matching login/register page patterns
+  - Consistent color scheme (Color(0xFF104993)) and typography
+  - Matching container styling with shadows and rounded corners
+  - Same spacing patterns and layout structure
+  - Unified button styling and interaction patterns
+
+- **Form Validation**: Enhanced user experience with comprehensive validation
+  - Campaign name, description, and goal amount validation
+  - Date range validation with proper error messaging
+  - Category selection validation
+  - Image upload validation with clear user feedback
+  - Indonesian language error messages for better user understanding
+
+## [1.2.4+29] - 2025-09-11
+
+### Fixed
+- **Build Runner Compatibility**: Resolved build_runner compilation errors
+  - Updated `custom_lint` dependency from `^0.5.4` to `^0.7.0` to fix compatibility issues
+  - Fixed `custom_lint_core` version conflicts with analyzer package
+  - Resolved `LintCode` import conflicts and type definition errors
+  - Enabled successful `dart run build_runner build` execution
+
+- **WebView Provider Warning**: Fixed lint warning in `get_url_webview_provider.dart`
+  - Removed unnecessary null-aware expression (`message ?? 'Payment initialization failed'`)
+  - Enhanced email validation with proper bounds checking to prevent IndexOutOfBoundsException
+  - Improved crash prevention for invalid email formats
+  - Added safe array access validation for email domain parsing
+
+### Technical Improvements
+- **Code Quality**: Enhanced error handling and validation robustness
+  - Better email format validation with comprehensive bounds checking
+  - Improved crash prevention mechanisms in payment flow
+  - Cleaner code with removed unnecessary null-aware operators
+  - More reliable build system with updated dependencies
+
+## [1.2.3+29] - 2025-09-10
+
+### Fixed
+- **Unit Test Improvements**: Enhanced test suite reliability and output clarity
+  - Fixed router provider test compilation errors due to outdated GoRouter API
+  - Updated test to use current GoRouter API with ProviderContainer
+  - Suppressed debug logging during test execution to reduce noise
+  - Configured logger to only show warnings and errors in test environment
+  - Improved test output readability and focus on actual issues
+
+### Technical Improvements
+- **Test Infrastructure**: Better test environment configuration
+  - Environment-aware logging configuration
+  - Cleaner test output with reduced debug noise
+  - More reliable router provider testing
+  - Enhanced test maintainability and debugging experience
+
+## [1.2.2+29] - 2025-09-10
+
+### Added
+- **Enhanced Photo Picker**: Added camera and gallery options for image selection
+  - Implemented modal bottom sheet with image source selection
+  - Added camera capture functionality with proper permissions
+  - Enhanced gallery picker with image compression (80% quality, max 1200x1200)
+  - Improved error handling for image selection operations
+  - Added fallback mechanisms for different device capabilities
+
+### Changed
+- **Update Profile Page Redesign**: Complete UI/UX overhaul to match contact_us_page design
+  - Created new ProfileHeader widget with consistent blue theme
+  - Restructured layout with SafeArea and SingleChildScrollView
+  - Added form sections with bordered containers and proper spacing
+  - Updated button styling to match app design system (blue.shade600)
+  - Improved visual hierarchy with section titles and consistent typography
+  - Enhanced photo display with centered container and proper aspect ratio
+  - Added loading states with GlobalLoadingWidget integration
+
+### Technical Improvements
+- **Photo Section Enhancement**: Improved image handling and display
+  - Added container with fixed dimensions (200px height) for consistent display
+  - Implemented proper image centering with BoxFit.cover
+  - Added placeholder and error states for better user experience
+  - Enhanced image compression to reduce file sizes and improve performance
+  - Updated selectedPoster method across all usage locations (3 files)
+
+- **Code Architecture**: Better component organization and reusability
+  - Created dedicated ProfileHeader widget for update profile page
+  - Improved method signatures with proper parameter passing
+  - Enhanced error handling and user feedback mechanisms
+  - Better separation of concerns between UI components
+
+## [1.2.1+29] - 2025-09-10
+
+### Changed
+- **Version Numbering Fix**: Corrected semantic versioning pattern
+  - Fixed incorrect build number incrementing (was 1.2.0+30, +31, etc.)
+  - Established proper patch version increments (1.2.0+29 → 1.2.1+29)
+  - Build number after + remains constant at 29 for all releases
+  - Consolidated all recent changes under single version 1.2.0+29
+
+- **AGENTS.md Enhancement**: Improved developer documentation
+  - Made file more concise while maintaining essential information
+  - Better formatting and clearer code examples
+  - Enhanced development workflow documentation
+
+### Technical Improvements
+- **Documentation Quality**: Enhanced changelog structure and versioning consistency
+- **Developer Experience**: Improved AGENTS.md for better agent guidance
+- **Version Management**: Established permanent versioning pattern for future releases
+
+## [1.2.0+29] - 2025-09-10
+
+### Fixed
+- **Build Errors**: Resolved critical syntax error preventing app compilation
+  - Fixed missing closing parenthesis in register_page.dart Scaffold widget
+  - Ensured app builds successfully for all flavors (development, staging, production)
+  - Verified APK generation works correctly
+
+- **Register Page Structure**: Major code organization improvements
+  - Refactored register page with modular architecture (methods/ and widgets/ folders)
+  - Created reusable widget components (AlumniCheckbox, GraduateYearField, RegisterButton, LoginLink)
+  - Extracted validation logic to separate RegisterFormValidation class
+  - Improved code maintainability and separation of concerns
+
+- **Form Validation**: Enhanced alumni registration with comprehensive validation
+  - Added email format validation with regex patterns
+  - Implemented password length validation (minimum 6 characters)
+  - Added phone number validation (minimum 10 digits)
+  - Created graduate year validation with range checking (1900-current year)
+  - Conditional validation based on alumni status
+
+- **Test File Fixes**: Resolved compilation errors in test suites
+  - Fixed const constructor issues in get_campaign_detail_test.dart and login_test.dart
+  - Updated Session and CampaignDocument test instances to use proper constructors
+  - Fixed null handling in test mocks and assertions
+
+- **QR Code Download Issues**: Complete resolution of QRIS download problems in Midtrans Snap
+  - Fixed XHR network error in WebView blob download handler
+  - Implemented dual-method JavaScript blob handler (fetch + XHR fallback)
+  - Added alternative download methods when JavaScript execution fails
+  - Fixed CallAsyncJavaScriptResult operator errors and compilation issues
+  - Enhanced error handling with detailed user feedback and logging
+  - Added QRIS-specific download detection and handling
+  - Implemented screenshot capture as fallback for QR code extraction
+  - Improved base64 validation and MIME type detection
+  - Added data URL handling for direct QR code downloads
+  - Fixed all compilation errors and warnings in webview_snap_page.dart
+
+- **Auto-Refresh Bug**: Fixed question detail page not refreshing after creator closes question
+  - Resolved infinite loop in GetQuestionDetailPage state management
+  - Improved provider state reset mechanism
+  - Fixed UI update issues when question status changes
+
+- **Multiline Text Input**: Fixed Enter key not working for line breaks in text fields
+  - Resolved Flutter assertion error in CustomTextField
+  - Fixed keyboardType compatibility issues with multiline input
+  - Updated ContactUsPage, GetQuestionDetailPage, and related forms
+  - Ensured proper TextInputAction.newline behavior
+
+- **Submit Button Issues**: Fixed various submit button activation problems
+  - Resolved ContactUsPage submit button disabled state
+  - Fixed double-click requirement on dialog submit buttons
+  - Improved state management for form submissions
+  - Enhanced user feedback with proper validation dialogs
+
+- **Dialog UX Issues**: Improved dialog user experience across the app
+  - Fixed double confirmation dialogs causing confusion
+  - Enhanced dialog styling and button placement
+  - Improved dialog context management and navigation
+  - Added proper async handling for dialog operations
+
+### Added
+- **New Widget Components**: Multiple reusable UI components
+  - `AlumniCheckbox`: Toggle for alumni status with state management
+  - `GraduateYearField`: Conditional year input with validation
+  - `RegisterButton`: Loading-aware submit button with proper styling
+  - `LoginLink`: Navigation link to login page
+  - `RegisterControllers`: Centralized form controller management
+  - `NavigationCard`: Global widget for consistent navigation cards
+  - `ContactUsHeader`: Dedicated header component for contact page
+  - `ContactUsForm`: Self-contained form component with validation
+
+- **Validation Methods**: Comprehensive form validation system
+  - `RegisterFormValidation`: Email, password, phone, and graduate year validation
+  - `RegisterHandler`: Form submission with loading states and error handling
+  - `LoginFormMethods`: Extracted validation methods for login form
+  - Proper error messaging in Indonesian language
+
+- **Video Tutorial Page**: Dedicated fullscreen video tutorial experience
+  - Created VideoTutorialPage with immersive video player
+  - Added comprehensive video controls (play/pause, progress bar, fullscreen)
+  - Implemented orientation lock for fullscreen mode
+  - Added tap-to-show controls with auto-hide functionality
+  - Integrated with account page tutorial navigation
+
+- **Enhanced Validation**: Improved form validation and user feedback
+  - Smart validation dialogs for empty content
+  - Better error messages and user guidance
+  - Consistent validation patterns across forms
+  - Improved user experience with immediate feedback
+
+### Changed
+- **Register Page**: Complete UI/UX enhancement with alumni support
+  - Added alumni checkbox with conditional graduate year field
+  - Improved form layout and user experience
+  - Enhanced validation feedback and error display
+  - Better loading states and user feedback
+
+- **Login Page Enhancements**: Multiple improvements to login functionality
+  - Added password validation with minimum 8-character requirement
+  - Added comprehensive email format validation with regex patterns
+  - Updated login page background to white for cleaner appearance
+  - Improved error display for authentication failures
+  - Enhanced form validation and user feedback
+
+- **My Donation Page Redesign**: Complete UI/UX overhaul with simplified and modern design
+  - Removed header, stats, and carousel sections for cleaner, focused layout
+  - Redesigned transaction list with modern card-based design and improved visual hierarchy
+  - Fixed app bar color to app blue (#104993) for brand consistency
+  - Fixed list view scrolling issue with proper Expanded layout structure
+  - Changed donation amount text color to app blue (#104993) for brand consistency
+  - Enhanced empty state design with consistent branding and better user guidance
+  - Improved date formatting with user-friendly relative dates ("Hari ini", "Kemarin", etc.)
+  - Added status badges with color-coded payment status indicators
+  - Optimized layout for better mobile experience and touch interactions
+
+- **Tutorial Navigation**: Improved user experience for tutorial access
+  - Changed from dialog-based tutorial to dedicated fullscreen page
+  - Enhanced video playback with better controls and responsiveness
+  - Improved navigation flow from account page to tutorial
+
+- **AGENTS.md Enhancement**: Comprehensive documentation improvements
+  - Updated Freezed fromJson pattern to match actual codebase usage (manual implementation)
+  - Added detailed code style guidelines and architecture patterns
+  - Improved formatting with better code examples and explanations
+  - Enhanced development workflow documentation
+  - Added specific testing patterns and conventions
+
+- **Home Page Design Update**: Visual improvements to home page layout
+  - Replaced campaign icon with IKA Smansara logo SVG for better branding
+  - Improved padding and responsive sizing for logo display
+  - Enhanced visual hierarchy and user experience
+
+- **UI Component Refactoring**: Major redesign of question-related UI components
+  - Converted GetQuestionDetailPage from StatefulWidget to ConsumerWidget for better performance
+  - Refactored HorizontalQuestionCard with consistent design pattern
+  - Updated ContactUsPage with simplified state management
+  - Improved widget separation and reusability
+
+- **Code Architecture**: Enhanced code organization and maintainability
+  - Extracted ContactUsForm and ContactUsHeader into separate widget files
+  - Created NavigationCard global widget for consistent navigation UI
+  - Improved separation of concerns between UI and business logic
+  - Better error handling and state management patterns
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with clean separation
+  - Better folder structure following established patterns
+  - Improved widget reusability and component isolation
+  - Enhanced error handling and state management
+  - Consistent code style and formatting
+  - Converted multiple pages from ConsumerStatefulWidget to ConsumerWidget
+
+- **Video Player Integration**: Enhanced video handling and controls
+  - Added VideoPlayerController with proper lifecycle management
+  - Implemented fullscreen mode with system UI management
+  - Added progress tracking and scrubbing functionality
+  - Proper disposal of video resources to prevent memory leaks
+  - Fixed video distortion ('gepeng') issue in fullscreen mode
+
+- **WebView Download Handler**: Comprehensive improvements to QR code download functionality
+  - Better CORS and security policy handling
+  - Enhanced fallback mechanisms for different download scenarios
+  - Improved user experience with informative error messages
+  - Added unique filename generation to prevent conflicts
+  - Better file validation and error recovery
+
+- **State Management**: Enhanced Riverpod provider patterns
+  - Better state reset mechanisms
+  - Improved async operation handling
+  - More reliable provider lifecycle management
+  - Reduced memory leaks and performance issues
+
+- **Error Handling**: Enhanced error detection and user feedback
+  - Comprehensive logging for troubleshooting download issues
+  - Improved error handling and user feedback
+  - Better error messages and user guidance
+  - Consistent validation patterns across forms
+
+- **Performance Optimizations**: Reduced memory usage and improved app responsiveness
+  - Eliminated infinite loops and unnecessary rebuilds
+  - Optimized provider state management
+  - Improved widget lifecycle management
+  - Enhanced async operation handling
+
+- **Build System**: Verified compilation across all target platforms
+  - Development, staging, and production flavor builds confirmed working
+  - APK generation successful with proper signing
+  - No blocking compilation errors remaining
+
+- **UI/UX Enhancements**: Improved user interface and experience
+  - Consistent design patterns across pages
+  - Better dialog and form interactions
+  - Enhanced visual feedback and transitions
+  - More intuitive user flows and navigation
+  - Unified design language across contact us, checkout, and campaign detail pages
+
+- **Test Coverage**: Enhanced test infrastructure
+  - Added comprehensive unit tests for email validation
+  - Updated login form tests for new architecture
+  - Maintained comprehensive test coverage for validation logic
+  - Added tests for password length validation
+
+## [1.1.1+27] - 2025-01-30
+
+### Changed
+- **Campaign Detail Page Redesign**: Complete UI/UX overhaul following consistent design language
+  - Converted from ConsumerStatefulWidget to ConsumerWidget for better performance
+  - Applied SafeArea wrapper with consistent padding (20px all sides)
+  - Updated AppBar styling with elevation: 0 to match other pages
+  - Redesigned action button with consistent styling (Color(0xFF104993), rounded corners, no elevation)
+  - Enhanced loading and error states with proper icons and Indonesian messaging
+  - Improved spacing patterns (24px between sections, 32px before action button)
+
+### Added
+- **Modular Widget Components**: Created 5 reusable widget components for campaign detail page
+  - `CampaignHeaderImage`: Dedicated campaign image display component
+  - `CampaignInfoSection`: Campaign title, progress bar, and backer information
+  - `CampaignDescriptionSection`: Expandable campaign description with consistent styling
+  - `CampaignBackerSection`: Donatur list with "View All" navigation
+  - `CampaignActionButton`: Main CTA button with consistent design language
+
+### Technical Improvements
+- **Code Architecture**: Enhanced maintainability with modular component structure
+  - Better separation of concerns between UI components
+  - Improved widget reusability and consistency
+  - Cleaner code organization following established patterns
+  - Enhanced error handling and state management
+
+- **Design Consistency**: Unified design language across contact us, checkout, and campaign detail pages
+  - Consistent color scheme and typography
+  - Matching button styling and sizing
+  - Same loading animation patterns
+  - Unified spacing and layout structure
+
+### Fixed
+- **AGENTS.md Enhancement**: Improved development guidelines and formatting
+  - Added fluttergen command for asset generation
+  - Enhanced import guidelines (no package: imports)
+  - Added security guidelines for environment variables
+  - Expanded workflow section with asset generation step
+
+## [1.2.0+28] - 2025-01-31
+
+### Fixed
+- **QR Code Download Issues**: Complete resolution of QRIS download problems in Midtrans Snap
+  - Fixed XHR network error in WebView blob download handler
+  - Implemented dual-method JavaScript blob handler (fetch + XHR fallback)
+  - Added alternative download methods when JavaScript execution fails
+  - Fixed CallAsyncJavaScriptResult operator errors and compilation issues
+  - Enhanced error handling with detailed user feedback and logging
+  - Added QRIS-specific download detection and handling
+  - Implemented screenshot capture as fallback for QR code extraction
+  - Improved base64 validation and MIME type detection
+  - Added data URL handling for direct QR code downloads
+  - Fixed all compilation errors and warnings in webview_snap_page.dart
+
+- **WebView Download Handler**: Comprehensive improvements to QR code download functionality
+  - Better CORS and security policy handling
+  - Enhanced fallback mechanisms for different download scenarios
+  - Improved user experience with informative error messages
+  - Added unique filename generation to prevent conflicts
+  - Better file validation and error recovery
+
+### Technical Improvements
+- **Error Handling**: Enhanced error detection and user feedback
+- **Code Quality**: Fixed all compilation errors and improved code structure
+- **Performance**: Optimized WebView download operations
+- **Reliability**: Added multiple fallback methods for download failures
+- **Debugging**: Comprehensive logging for troubleshooting download issues
+
+### Changed
+- **AGENTS.md**: Improved formatting and development guidelines
+- **WebView Implementation**: Enhanced QR code download with robust error handling
+
 ## [1.2.0+28] - 2025-01-31
 
 ### Fixed
@@ -180,114 +855,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Build Time Improvement**: Faster compilation with fewer dependencies
 - **Maintenance**: Cleaner dependency tree for easier updates
 
-## [1.0.24+25] - Previous Version
-
-### Fixed
-- **Build Errors**: Fixed multiple Flutter build compilation errors
-  - Added missing `package:flutter/material.dart` import in router_provider.dart
-  - Resolved `flutter_local_notifications` ambiguous method reference error
-  - Fixed `flutter_web_auth_2` Kotlin compilation issues
-  - Updated Android SDK compatibility issues
-
-### Changed
-- **Dependencies Updates**:
-  - Updated `flutter_local_notifications` from `^16.1.0` to `^17.2.2`
-  - Updated `appwrite` from `^12.0.3` to `^18.0.0`
-  - Updated `upgrader` from `^10.3.0` to `^11.5.0`
-  - Added dependency override for `flutter_web_auth_2: ^4.1.0`
-
-### Removed
-- **Unused Dependencies** (Cleaned up to reduce app size and build time):
-  - `crypto: ^3.0.3` (now transitive dependency)
-  - `firebase_app_check: ^0.1.5` and related packages
-  - `firebase_in_app_messaging: ^0.7.3+3` and related packages
-  - `firebase_performance: ^0.9.2+3` and related packages
-  - `firebase_remote_config: ^4.2.3` and related packages
-  - `flutter_timer_countdown: ^1.0.7`
-  - `hive_test: ^1.0.1` (dev dependency)
-
-### Added
-- **AGENTS.md**: Created comprehensive development guide containing:
-  - Build, lint, and test commands
-  - Code style guidelines and conventions
-  - Architecture patterns and best practices
-  - File structure documentation
-
-### Performance
-- **App Size Reduction**: Removed 7 unused dependencies, reducing APK size
-- **Build Time Improvement**: Faster compilation with fewer dependencies
-- **Maintenance**: Cleaner dependency tree for easier updates
-
-## [1.0.24+25] - Previous Version
+## [1.0.24+25] - 2025-01-28
 - Initial release with core IKA SMANSARA functionality
 - Flutter app with Firebase integration
 - Appwrite backend integration
 - Payment gateway implementation
 - Campaign management system
-
----
-
-### Session Summary [1.2.0+28]
-- **UI/UX Fixes**: Complete resolution of auto-refresh, multiline input, and submit button issues
-- **Performance**: Eliminated infinite loops and improved state management
-- **Code Architecture**: Major refactoring with ConsumerWidget pattern and widget extraction
-- **User Experience**: Enhanced form validation, dialog UX, and navigation consistency
-- **Widget Components**: Added reusable NavigationCard, ContactUsHeader, and ContactUsForm
-- **State Management**: Improved Riverpod patterns with better error handling
-
-### Key Improvements Summary
-- **Fixed**: 4 major UI/UX bugs (auto-refresh, multiline input, submit buttons, dialogs)
-- **Refactored**: 3 major pages with ConsumerWidget pattern for better performance
-- **Added**: 3 new reusable widget components
-- **Enhanced**: State management and error handling throughout the app
-- **Optimized**: Memory usage and app responsiveness
-
-### Technical Notes
-- All changes maintain backward compatibility
-- No breaking changes to existing functionality
-- Improved Flutter widget lifecycle management
-- Enhanced Riverpod provider patterns
-- Better separation of concerns between UI and business logic
-- Comprehensive error handling and user feedback
-- Optimized for better mobile performance
-
-### Session Summary [1.1.1+27]
-- **Appwrite Migration**: Complete v18.0.0 compatibility (10 repository files updated)
-- **Documentation**: Comprehensive README.md rewrite + AGENTS.md enhancement
-- **Configuration**: Environment files synchronization
-- **Testing**: Repository tests fully functional (6/6 pass)
-- **Code Quality**: Enhanced null safety and error handling
-
-### Dependency Changes Summary
-- **Removed**: 7 unused dependencies
-- **Updated**: 4 major dependencies for compatibility
-- **Added**: 1 dependency override for stability
-- **Total Impact**: 14 dependency changes, cleaner codebase
-
-### Technical Notes
-- All changes maintain backward compatibility
-- No breaking changes to existing functionality
-- Improved Android SDK compatibility
-- Enhanced development workflow with comprehensive documentation
-- Full Appwrite v18.0.0 compatibility achieved
-- Repository layer fully tested and functional
-
----
-
-## Commit Message Template
-
-```
-feat: complete Appwrite v18.0.0 migration and documentation enhancement
-
-- Migrate all Appwrite repositories from Databases to TablesDB interface
-- Update createDocument/getDocument to createRow/getRow methods
-- Fix null safety issues and environment variable handling
-- Rewrite README.md with comprehensive developer documentation
-- Enhance AGENTS.md with improved development guidelines
-- Synchronize .env_example with development environment
-- Fix repository tests for new Appwrite interface compatibility
-- Improve error handling and code quality throughout
-
-BREAKING: Appwrite interface changes (internal only, no API changes)
-Version: 1.1.1+27
-```

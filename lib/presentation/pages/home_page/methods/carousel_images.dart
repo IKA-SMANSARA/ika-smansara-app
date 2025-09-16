@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:ika_smansara/domain/entities/carousel_image_document.dart';
@@ -27,7 +28,12 @@ Widget carouselImages({
         ),
       ),
       error: (error, stackTrace) => const Center(
-        child: Text('NETWORK ERROR!'),
+        child: AutoSizeText(
+          'NETWORK ERROR!',
+          maxLines: 1,
+          minFontSize: 14,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       loading: () => Center(
         child: LoadingAnimationWidget.inkDrop(

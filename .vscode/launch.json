@@ -1,0 +1,72 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "IKA Smansara - Development",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--flavor",
+        "development"
+      ],
+      "flutterMode": "debug",
+      "cwd": "${workspaceFolder}",
+      "console": "terminal"
+    },
+    {
+      "name": "IKA Smansara - Staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_staging.dart",
+      "args": [
+        "--flavor",
+        "staging"
+      ],
+      "flutterMode": "debug",
+      "cwd": "${workspaceFolder}",
+      "console": "terminal"
+    },
+    {
+      "name": "IKA Smansara - Production",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_production.dart",
+      "args": [
+        "--flavor",
+        "production"
+      ],
+      "flutterMode": "debug",
+      "cwd": "${workspaceFolder}",
+      "console": "terminal"
+    },
+    {
+      "name": "IKA Smansara - Development (Profile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_development.dart",
+      "args": [
+        "--flavor",
+        "development",
+        "--profile"
+      ],
+      "flutterMode": "profile",
+      "cwd": "${workspaceFolder}",
+      "console": "terminal"
+    },
+    {
+      "name": "IKA Smansara - Production (Release)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_production.dart",
+      "args": [
+        "--flavor",
+        "production",
+        "--release"
+      ],
+      "flutterMode": "release",
+      "cwd": "${workspaceFolder}",
+      "console": "terminal"
+    }
+  ]
+}

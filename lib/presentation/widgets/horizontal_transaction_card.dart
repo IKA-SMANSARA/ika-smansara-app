@@ -70,35 +70,43 @@ class HorizontalTransactionCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
+                            Expanded(
+                              flex: 2,
                               child: AutoSizeText(
                                 campaignName,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
+                                minFontSize: 8,
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color:
-                                    paymentStatusBackgroundColor(paymentStatus),
-                                borderRadius:
-                                    BorderRadius.all(Radius.elliptical(50, 50)),
-                              ),
-                              height: 20,
-                              width: MediaQuery.of(context).size.width / 6,
-                              child: Center(
-                                child: AutoSizeText(
-                                  paymentStatus.toUpperCase(),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.white,
+                            Flexible(
+                              flex: 1,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color:
+                                      paymentStatusBackgroundColor(paymentStatus),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.elliptical(50, 50)),
+                                ),
+                                height: 20,
+                                constraints: BoxConstraints(
+                                  minWidth: MediaQuery.of(context).size.width / 8,
+                                  maxWidth: MediaQuery.of(context).size.width / 6,
+                                ),
+                                child: Center(
+                                  child: AutoSizeText(
+                                    paymentStatus.toUpperCase(),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    minFontSize: 8,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -109,18 +117,31 @@ class HorizontalTransactionCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AutoSizeText(
-                              countDays(currentUpdate),
-                              style: TextStyle(
-                                fontSize: 11,
+                            Expanded(
+                              flex: 1,
+                              child: AutoSizeText(
+                                countDays(currentUpdate),
+                                style: TextStyle(
+                                  fontSize: 11,
+                                ),
+                                maxLines: 1,
+                                minFontSize: 9,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            AutoSizeText(
-                              amount.toIDRCurrencyFormat(),
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
+                            Flexible(
+                              flex: 1,
+                              child: AutoSizeText(
+                                amount.toIDRCurrencyFormat(),
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                maxLines: 1,
+                                minFontSize: 9,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.right,
                               ),
                             ),
                           ],

@@ -94,9 +94,9 @@ void main() {
       expect(result.errorMessage, errorMessage);
     });
 
-    test('should handle null userId from session', () async {
+    test('should handle empty userId from session', () async {
       // Arrange
-      const sessionWithNullUserId = Session(
+      final sessionWithEmptyUserId = Session(
         sessionId: 'session-123',
         userId: '', // Empty userId
       );
@@ -104,7 +104,7 @@ void main() {
       when(mockAuthentication.login(
         email: anyNamed('email'),
         password: anyNamed('password'),
-      )).thenAnswer((_) async => Result.success(sessionWithNullUserId));
+      )).thenAnswer((_) async => Result.success(sessionWithEmptyUserId));
 
       when(mockUserRepository.getUser(uid: anyNamed('uid')))
           .thenAnswer((_) async => Result.success(tUserProfile));

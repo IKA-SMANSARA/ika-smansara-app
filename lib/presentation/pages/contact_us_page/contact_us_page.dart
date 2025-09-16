@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ika_smansara/domain/entities/threads_request.dart';
@@ -6,8 +5,9 @@ import 'package:ika_smansara/presentation/extensions/async_value_extension.dart'
 import 'package:ika_smansara/presentation/providers/contact_us/create_question_provider.dart';
 import 'package:ika_smansara/presentation/providers/router/router_provider.dart';
 import 'package:ika_smansara/presentation/providers/user_data/user_data_provider.dart';
+import 'package:ika_smansara/presentation/widgets/global_loading_widget.dart';
 import 'package:ika_smansara/presentation/widgets/navigation_card.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+
 import 'widgets/contact_us_form.dart';
 import 'widgets/contact_us_header.dart';
 
@@ -33,30 +33,31 @@ class ContactUsPage extends ConsumerWidget {
     // Handle successful submission
     ref.listen(createQuestionProvider, (previous, next) {
       if (next.hasValue && next.value != null) {
+        final isAdmin = userData.valueOrNull?.isAdmin ?? false;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Pertanyaan berhasil dikirim')),
+          SnackBar(
+            content: Text(isAdmin
+                ? 'Jawaban berhasil dikirim'
+                : 'Pertanyaan berhasil dikirim'),
+          ),
         );
       }
     });
 
+    final isAdmin = userData.valueOrNull?.isAdmin ?? false;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hubungi Kami'),
+        title: Text(isAdmin ? 'Forum Diskusi' : 'Hubungi Kami'),
         elevation: 0,
       ),
       body: SafeArea(
         child: postQuestionData.isLoading
-            ? Container(
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: LoadingAnimationWidget.inkDrop(
-                    color: Colors.amber,
-                    size: 50,
-                  ),
-                ),
+            ? const GlobalLoadingWidget(
+                color: Colors.amber,
               )
             : SingleChildScrollView(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -67,16 +68,17 @@ class ContactUsPage extends ConsumerWidget {
 
                     // Form Section
                     ContactUsForm(
-                      onSubmit: (content) => _showSubmitDialog(context, ref, userData, content),
+                      onSubmit: (content) =>
+                          _showSubmitDialog(context, ref, userData, content),
                       isLoading: postQuestionData.isLoading,
                     ),
 
                     const SizedBox(height: 32),
 
                     // Navigation Section
-                    const Text(
-                      'Lihat Pertanyaan',
-                      style: TextStyle(
+                    Text(
+                      isAdmin ? 'Kelola Pertanyaan' : 'Lihat Pertanyaan',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
@@ -87,17 +89,22 @@ class ContactUsPage extends ConsumerWidget {
                     Row(
                       children: [
                         NavigationCard(
-                          title: 'Pertanyaan Lain',
+                          title:
+                              isAdmin ? 'Semua Pertanyaan' : 'Pertanyaan Lain',
                           icon: Icons.question_answer_outlined,
                           color: Colors.green,
-                          onTap: () => ref.read(routerProvider).pushNamed('list_all_question'),
+                          onTap: () => ref
+                              .read(routerProvider)
+                              .pushNamed('list_all_question'),
                         ),
                         const SizedBox(width: 12),
                         NavigationCard(
                           title: 'Pertanyaan Saya',
                           icon: Icons.person_outline,
                           color: Colors.orange,
-                          onTap: () => ref.read(routerProvider).pushNamed('list_user_question'),
+                          onTap: () => ref
+                              .read(routerProvider)
+                              .pushNamed('list_user_question'),
                         ),
                       ],
                     ),
@@ -110,7 +117,10 @@ class ContactUsPage extends ConsumerWidget {
     );
   }
 
-  void _showSubmitDialog(BuildContext context, WidgetRef ref, AsyncValue userData, String content) {
+  void _showSubmitDialog(BuildContext context, WidgetRef ref,
+      AsyncValue userData, String content) {
+    final isAdmin = userData.valueOrNull?.isAdmin ?? false;
+
     showDialog(
       context: context,
       builder: (BuildContext dialogContext) {
@@ -118,19 +128,22 @@ class ContactUsPage extends ConsumerWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          title: const Text(
-            'Kirim Pertanyaan',
-            style: TextStyle(
+          title: Text(
+            isAdmin ? 'Kirim Jawaban' : 'Kirim Pertanyaan',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-          content: const Text(
-            'Apakah Anda yakin ingin mengirim pertanyaan ini?',
-            style: TextStyle(height: 1.5),
+          content: Text(
+            isAdmin
+                ? 'Apakah Anda yakin ingin mengirim jawaban ini?'
+                : 'Apakah Anda yakin ingin mengirim pertanyaan ini?',
+            style: const TextStyle(height: 1.5),
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(), // Use parent context
+              onPressed: () =>
+                  Navigator.of(context).pop(), // Use parent context
               child: Text(
                 'Batal',
                 style: TextStyle(color: Colors.grey.shade600),
@@ -153,11 +166,12 @@ class ContactUsPage extends ConsumerWidget {
                 Navigator.of(context).pop();
 
                 // Then submit
-                await Future.delayed(const Duration(milliseconds: 100)); // Small delay
+                await Future.delayed(
+                    const Duration(milliseconds: 100)); // Small delay
                 if (context.mounted) {
                   ref.read(createQuestionProvider.notifier).postQuestion(
-                    threadsRequest: threadsRequest,
-                  );
+                        threadsRequest: threadsRequest,
+                      );
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -166,13 +180,11 @@ class ContactUsPage extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
               ),
-              child: const Text('Kirim'),
+              child: Text(isAdmin ? 'Kirim Jawaban' : 'Kirim'),
             ),
           ],
         );
       },
     );
   }
-
-
 }

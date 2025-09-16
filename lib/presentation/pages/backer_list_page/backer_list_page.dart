@@ -25,42 +25,68 @@ class BackerListPage extends ConsumerWidget {
       appBar: AppBar(
         title: AutoSizeText('Donatur (${campaign.backerCount})'),
       ),
-      body: ListView(
-        children: [
-          ...(asyncBackerList.whenOrNull(
-                data: (data) => data
-                    .map(
-                      (e) => BackerCard(
-                        backerName: e.userName ?? '',
-                        amount: (e.amount ?? 0).toIDRCurrencyFormat(),
-                        dateTime: countDays(
-                          e.createdAt,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                error: (error, stackTrace) => [
-                  const Center(
-                    child: Text(
-                      'NETWORK ERROR!',
-                    ),
-                  ),
-                ],
-                loading: () => [
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Center(
-                      child: LoadingAnimationWidget.inkDrop(
-                        color: Colors.amber,
-                        size: 35,
-                      ),
-                    ),
-                  ),
-                ],
-              ) ??
-              []),
-        ],
-      ),
+       body: asyncBackerList.isLoading
+           ? Container(
+               padding: const EdgeInsets.all(16),
+               child: Center(
+                 child: LoadingAnimationWidget.inkDrop(
+                   color: Colors.amber,
+                   size: 50,
+                 ),
+               ),
+             )
+           : asyncBackerList.whenOrNull(
+               data: (data) => data.isNotEmpty
+                   ? ListView.separated(
+                       padding: const EdgeInsets.all(16),
+                       separatorBuilder: (context, index) => const SizedBox(height: 12),
+                       itemCount: data.length,
+                       itemBuilder: (context, index) {
+                         final backer = data[index];
+                         return BackerCard(
+                           backerName: backer.userName ?? '',
+                           amount: (backer.amount ?? 0).toIDRCurrencyFormat(),
+                           dateTime: countDays(
+                             backer.createdAt,
+                           ),
+                           profileImageUrl: null, // TODO: Add profile image URL from backend
+                         );
+                       },
+                     )
+                   : Container(
+                       padding: const EdgeInsets.all(16),
+                       child: Center(
+                         child: AutoSizeText(
+                           'Belum ada donatur',
+                           style: TextStyle(
+                             color: Colors.grey.shade600,
+                             fontSize: 16,
+                           ),
+                         ),
+                       ),
+                     ),
+               error: (error, stackTrace) => Container(
+                 padding: const EdgeInsets.all(16),
+                 child: Center(
+                   child: AutoSizeText(
+                     'Terjadi kesalahan saat memuat data',
+                     style: TextStyle(
+                       color: Colors.grey.shade600,
+                       fontSize: 16,
+                     ),
+                   ),
+                 ),
+               ),
+             ) ??
+             Container(
+               padding: const EdgeInsets.all(16),
+               child: Center(
+                 child: LoadingAnimationWidget.inkDrop(
+                   color: Colors.amber,
+                   size: 50,
+                 ),
+               ),
+             ),
     );
   }
 }
