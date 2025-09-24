@@ -9,6 +9,7 @@
 - **Lint**: `flutter analyze` + `dart run custom_lint`
 - **Test**: `flutter test --coverage` | Single: `flutter test test/domain/usecases/get_campaign_detail_test.dart`
 - **Clean**: `flutter clean && flutter pub get`
+- **Serve Docs**: `./serve.sh` (Jekyll documentation site)
 
 ## Build Troubleshooting
 - **Signing Error**: If you get "SigningConfig 'release' is missing required property 'storeFile'", the build system will automatically fall back to debug signing for development builds

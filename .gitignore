@@ -143,3 +143,10 @@ assets/production/.env
 
 # fvm
 .fvm/*
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock

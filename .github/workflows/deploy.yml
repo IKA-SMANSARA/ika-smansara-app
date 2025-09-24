@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.32.8'
+        channel: 'stable'
+
+    - name: Enable web support
+      run: flutter config --enable-web
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Generate code
+      run: |
+        dart run build_runner build --delete-conflicting-outputs
+        fluttergen
+
+    - name: Build web
+      run: flutter build web --release --target lib/main_production.dart --base-href "/ika-smansara-app/"
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/web
+        cname: ika-smansara-app.github.io

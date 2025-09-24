@@ -1,0 +1,55 @@
+# Site settings
+title: "IKA Smansara App"
+description: "Flutter application for IKA Smansara"
+url: "https://yourusername.github.io"
+baseurl: "/ika-smansara-app"
+# repository: yourusername/ika-smansara-app  # Update with your actual repository
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - android/
+  - ios/
+  - lib/
+  - test/
+  - .vscode/
+  - .github/
+  - assets/images/
+  - .env*
+
+# Include files
+include:
+  - _pages
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

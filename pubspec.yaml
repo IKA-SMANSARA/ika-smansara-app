@@ -90,6 +90,10 @@ flutter:
     - assets/staging/.env
     - assets/production/.env
 
+# Web configuration for GitHub Pages
+web:
+  generate: true
+
 flutter_gen:
   line_length: 80
   integrations:
