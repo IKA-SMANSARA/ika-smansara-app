@@ -34,79 +34,77 @@ class _MainPageState extends ConsumerState<MainPage> {
         }
       },
     );
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          elevation: 0.0,
-        ),
-        body: Stack(
-          children: [
-            PageView(
-              controller: pageController,
-              onPageChanged: (value) => setState(() {
-                selectedPage = value;
-              }),
-              children: [
-                Center(
-                  child: HomePage(),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        elevation: 0.0,
+      ),
+      body: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            onPageChanged: (value) => setState(() {
+              selectedPage = value;
+            }),
+            children: [
+              Center(
+                child: HomePage(),
+              ),
+              Center(
+                child: MyDonationPage(),
+              ),
+              Center(
+                child: AccountPage(),
+              ),
+              Center(
+                child: ContactUsPage(),
+              ),
+            ],
+          ),
+          BottomNavBar(
+            items: [
+              BottomNavBarItem(
+                index: 0,
+                isSelected: selectedPage == 0,
+                title: 'Beranda',
+                iconData: Icons.home_outlined,
+                selectedIconData: Icons.home_filled,
+              ),
+              BottomNavBarItem(
+                index: 1,
+                isSelected: selectedPage == 1,
+                title: 'Donasiku',
+                iconData: Icons.favorite_outline,
+                selectedIconData: Icons.favorite,
+              ),
+              BottomNavBarItem(
+                index: 2,
+                isSelected: selectedPage == 2,
+                title: 'Akun',
+                iconData: Icons.person_outline,
+                selectedIconData: Icons.person,
+              ),
+              BottomNavBarItem(
+                index: 3,
+                isSelected: selectedPage == 3,
+                title: 'Hubungi Kami',
+                iconData: Icons.headset_mic_outlined,
+                selectedIconData: Icons.headset_mic,
+              ),
+            ],
+            onTap: (index) {
+              selectedPage = index;
+              pageController.animateToPage(
+                selectedPage,
+                duration: const Duration(
+                  milliseconds: 200,
                 ),
-                Center(
-                  child: MyDonationPage(),
-                ),
-                Center(
-                  child: AccountPage(),
-                ),
-                Center(
-                  child: ContactUsPage(),
-                ),
-              ],
-            ),
-            BottomNavBar(
-              items: [
-                BottomNavBarItem(
-                  index: 0,
-                  isSelected: selectedPage == 0,
-                  title: 'Beranda',
-                  iconData: Icons.home_outlined,
-                  selectedIconData: Icons.home_filled,
-                ),
-                BottomNavBarItem(
-                  index: 1,
-                  isSelected: selectedPage == 1,
-                  title: 'Donasiku',
-                  iconData: Icons.favorite_outline,
-                  selectedIconData: Icons.favorite,
-                ),
-                BottomNavBarItem(
-                  index: 2,
-                  isSelected: selectedPage == 2,
-                  title: 'Akun',
-                  iconData: Icons.person_outline,
-                  selectedIconData: Icons.person,
-                ),
-                BottomNavBarItem(
-                  index: 3,
-                  isSelected: selectedPage == 3,
-                  title: 'Hubungi Kami',
-                  iconData: Icons.headset_mic_outlined,
-                  selectedIconData: Icons.headset_mic,
-                ),
-              ],
-              onTap: (index) {
-                selectedPage = index;
-                pageController.animateToPage(
-                  selectedPage,
-                  duration: const Duration(
-                    milliseconds: 200,
-                  ),
-                  curve: Curves.easeInOut,
-                );
-              },
-              selectedIndex: 0,
-            ),
-          ],
-        ),
+                curve: Curves.easeInOut,
+              );
+            },
+            selectedIndex: 0,
+          ),
+        ],
       ),
     );
   }
