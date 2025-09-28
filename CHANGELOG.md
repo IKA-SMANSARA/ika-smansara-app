@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.14+30] - 2025-09-16
+
+### Fixed
+- **Screenshot Storage Accessibility**: Fixed screenshot storage location to be accessible via file manager
+  - Changed from app-specific internal storage to accessible Downloads folder
+  - Screenshots now saved to `/storage/emulated/0/Download/IKA Smansara/Screenshots/`
+  - Added proper permission handling for Android storage access
+  - Fixed duplicate WRITE_EXTERNAL_STORAGE permission in AndroidManifest.xml
+  - Enhanced ScopedStorageHelper with fallback mechanisms for different Android versions
+
+### Technical Improvements
+- **Storage Architecture**: Improved storage handling with accessible folder structure
+  - Created organized folder hierarchy: `Downloads/IKA Smansara/Screenshots/`
+  - Added permission request handling for storage access
+  - Implemented robust fallback mechanisms for different Android versions
+  - Enhanced error handling and user feedback for storage operations
+
 ## [1.2.13+29] - 2025-09-16
 
 ### Changed
